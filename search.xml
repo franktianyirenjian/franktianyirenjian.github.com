@@ -51,15 +51,6 @@
       </categories>
   </entry>
   <entry>
-    <title>IOS Xcode7.1新建纯代码工程</title>
-    <url>/2016/03/17/IOS-Xcode7-1%E6%96%B0%E5%BB%BA%E7%BA%AF%E4%BB%A3%E7%A0%81%E5%B7%A5%E7%A8%8B/</url>
-    <content><![CDATA[<p>今天准备纯代码做下计算器；<br>xcode已升级到version 7.1；<br>创建singleview后改造空工程；<br>删除main.storyboard，<br>创建windows并设置背景色为黑色；<br>满怀期待的command+R；<br>结果提示我:<br>以上是摘要<a id="more"></a><br>2015-10-30 18:15:29.933 计算器[1696:127982] <strong>* Assertion failure in -[UIApplication _runWithMainScene:transitionContext:completion:], /BuildRoot/Library/Caches/com.apple.xbs/Sources/UIKit_Sim/UIKit-3512.29.5/UIApplication.m:3299<br>2015-10-30 18:15:29.939 计算器[1696:127982] *</strong> Terminating app due to uncaught exception ‘NSInternalInconsistencyException’, reason: ‘Application windows are expected to have a root view controller at the end of application launch’<br>*** First throw call stack:<br>(<br>0   CoreFoundation                      0x02524a84 <strong>exceptionPreprocess + 180<br>1   libobjc.A.dylib                     0x00550e02 objc_exception_throw + 50<br>2   CoreFoundation                      0x0252491a +[NSException raise:format:arguments:] + 138<br>3   Foundation                          0x001cfe86 -[NSAssertionHandler handleFailureInMethod:object:file:lineNumber:description:] + 118<br>4   UIKit                               0x00957a9b -[UIApplication _runWithMainScene:transitionContext:completion:] + 3975<br>5   UIKit                               0x0097be4d __84-[UIApplication _handleApplicationActivationWithScene:transitionContext:completion:]_block_invoke3208 + 68<br>6   UIKit                               0x00953fb4 -[UIApplication workspaceDidEndTransaction:] + 163<br>7   FrontBoardServices                  0x036fdca4 __37-[FBSWorkspace clientEndTransaction:]_block_invoke_2 + 71<br>8   FrontBoardServices                  0x036fd77b __40-[FBSWorkspace _performDelegateCallOut:]_block_invoke + 54<br>9   FrontBoardServices                  0x0371b1a3 -[FBSSerialQueue _performNext] + 184<br>10  FrontBoardServices                  0x0371b5da -[FBSSerialQueue _performNextFromRunLoopSource] + 52<br>11  FrontBoardServices                  0x0371a8d6 FBSSerialQueueRunLoopSourceHandler + 33<br>12  CoreFoundation                      0x0243ed1f __CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE0_PERFORM_FUNCTION</strong> + 15<br>13  CoreFoundation                      0x024349ab __CFRunLoopDoSources0 + 523<br>14  CoreFoundation                      0x02433dc8 __CFRunLoopRun + 1032<br>15  CoreFoundation                      0x02433706 CFRunLoopRunSpecific + 470<br>16  CoreFoundation                      0x0243351b CFRunLoopRunInMode + 123<br>17  UIKit                               0x00953854 -[UIApplication _run] + 540<br>18  UIKit                               0x009591eb UIApplicationMain + 160<br>19  ËÆ°ÁÆóÂô®                           0x00082baa main + 138<br>20  libdyld.dylib                       0x030eba21 start + 1<br>)<br>libc++abi.dylib: terminating with uncaught exception of type NSException<br>(lldb)<br>然后就开始了艰辛的解决历程；<br>自己英语很渣，只有慢慢度娘；<br>百度出来的百分之九十九是xcode6.1改造空工程的方法；<br>没用啊，我现在用的就是它这个方法；<br>只有不断换关键字；<br>结果当我输入：“xcode7如何创建空工程”keywords后；<br>第四个答案正是我想要的；<br>東東同学的新浪博客：<a href="http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html</a><br>原来提示的意思是：“必须给windows创建一个rootviewcontroller；<br>这一句话足够了；果断添加rootview，再次command+R；果断通过；<br>它是否意味着windows创建好后不能直接显示了，必须添加rootviewcontroller才可以运行呢？<br>已经给東東留言等回复。<br>总之任何一个细小的问题，通过自己的努力或者得到别人指点得到解决后，那种欣喜都是情不自禁的。<br>完毕！</p>
-]]></content>
-      <categories>
-        <category>IOS</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Mac端通过Hexo搭建独立博客</title>
     <url>/2016/03/17/Mac%E7%AB%AF%E9%80%9A%E8%BF%87Hexo%E6%90%AD%E5%BB%BA%E7%8B%AC%E7%AB%8B%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<h4 id="一、为什么选择Hexo"><a href="#一、为什么选择Hexo" class="headerlink" title="一、为什么选择Hexo"></a>一、为什么选择Hexo</h4><p>我对搭建自己的独立博客兴致盎然，<br>独立的才真正是自己的，<br>马克思说研究需要充分占有材料，<br>我因此大量阅读了关于搭建独立博客的文章和资料，<br>知道了有Octopress，jekyll等独立博客搭建系统，<br>但看到好多程序员童鞋都说：Octopress和jekyll很难搞定，<br>所以对于我这种小白来说，就更不用考虑了，<br>听说Hexo是hacker必备的博客搭建系统，因此果断选它。<br>以上是摘要<a id="more"></a></p>
@@ -105,6 +96,52 @@
       </categories>
   </entry>
   <entry>
+    <title>IOS Xcode7.1新建纯代码工程</title>
+    <url>/2016/03/17/IOS-Xcode7-1%E6%96%B0%E5%BB%BA%E7%BA%AF%E4%BB%A3%E7%A0%81%E5%B7%A5%E7%A8%8B/</url>
+    <content><![CDATA[<p>今天准备纯代码做下计算器；<br>xcode已升级到version 7.1；<br>创建singleview后改造空工程；<br>删除main.storyboard，<br>创建windows并设置背景色为黑色；<br>满怀期待的command+R；<br>结果提示我:<br>以上是摘要<a id="more"></a><br>2015-10-30 18:15:29.933 计算器[1696:127982] <strong>* Assertion failure in -[UIApplication _runWithMainScene:transitionContext:completion:], /BuildRoot/Library/Caches/com.apple.xbs/Sources/UIKit_Sim/UIKit-3512.29.5/UIApplication.m:3299<br>2015-10-30 18:15:29.939 计算器[1696:127982] *</strong> Terminating app due to uncaught exception ‘NSInternalInconsistencyException’, reason: ‘Application windows are expected to have a root view controller at the end of application launch’<br>*** First throw call stack:<br>(<br>0   CoreFoundation                      0x02524a84 <strong>exceptionPreprocess + 180<br>1   libobjc.A.dylib                     0x00550e02 objc_exception_throw + 50<br>2   CoreFoundation                      0x0252491a +[NSException raise:format:arguments:] + 138<br>3   Foundation                          0x001cfe86 -[NSAssertionHandler handleFailureInMethod:object:file:lineNumber:description:] + 118<br>4   UIKit                               0x00957a9b -[UIApplication _runWithMainScene:transitionContext:completion:] + 3975<br>5   UIKit                               0x0097be4d __84-[UIApplication _handleApplicationActivationWithScene:transitionContext:completion:]_block_invoke3208 + 68<br>6   UIKit                               0x00953fb4 -[UIApplication workspaceDidEndTransaction:] + 163<br>7   FrontBoardServices                  0x036fdca4 __37-[FBSWorkspace clientEndTransaction:]_block_invoke_2 + 71<br>8   FrontBoardServices                  0x036fd77b __40-[FBSWorkspace _performDelegateCallOut:]_block_invoke + 54<br>9   FrontBoardServices                  0x0371b1a3 -[FBSSerialQueue _performNext] + 184<br>10  FrontBoardServices                  0x0371b5da -[FBSSerialQueue _performNextFromRunLoopSource] + 52<br>11  FrontBoardServices                  0x0371a8d6 FBSSerialQueueRunLoopSourceHandler + 33<br>12  CoreFoundation                      0x0243ed1f __CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE0_PERFORM_FUNCTION</strong> + 15<br>13  CoreFoundation                      0x024349ab __CFRunLoopDoSources0 + 523<br>14  CoreFoundation                      0x02433dc8 __CFRunLoopRun + 1032<br>15  CoreFoundation                      0x02433706 CFRunLoopRunSpecific + 470<br>16  CoreFoundation                      0x0243351b CFRunLoopRunInMode + 123<br>17  UIKit                               0x00953854 -[UIApplication _run] + 540<br>18  UIKit                               0x009591eb UIApplicationMain + 160<br>19  ËÆ°ÁÆóÂô®                           0x00082baa main + 138<br>20  libdyld.dylib                       0x030eba21 start + 1<br>)<br>libc++abi.dylib: terminating with uncaught exception of type NSException<br>(lldb)<br>然后就开始了艰辛的解决历程；<br>自己英语很渣，只有慢慢度娘；<br>百度出来的百分之九十九是xcode6.1改造空工程的方法；<br>没用啊，我现在用的就是它这个方法；<br>只有不断换关键字；<br>结果当我输入：“xcode7如何创建空工程”keywords后；<br>第四个答案正是我想要的；<br>東東同学的新浪博客：<a href="http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html</a><br>原来提示的意思是：“必须给windows创建一个rootviewcontroller；<br>这一句话足够了；果断添加rootview，再次command+R；果断通过；<br>它是否意味着windows创建好后不能直接显示了，必须添加rootviewcontroller才可以运行呢？<br>已经给東東留言等回复。<br>总之任何一个细小的问题，通过自己的努力或者得到别人指点得到解决后，那种欣喜都是情不自禁的。<br>完毕！</p>
+]]></content>
+      <categories>
+        <category>IOS</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Hexo添加本地搜索，全网最全终极解决之道：mac+landscape主题</title>
+    <url>/2020/05/01/mac-landscape%E4%B8%BB%E9%A2%98%E4%B8%8B%E6%B7%BB%E5%8A%A0%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2%E5%92%8Cgoogle%E7%AB%99%E5%86%85%E6%90%9C%E7%B4%A2%E8%B8%A9%E5%88%B0%E7%9A%84%E5%A4%A7%E5%9D%91/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>基于能搜到这篇文章的人，<br>肯定是急于解决这个问题的人，<br>因此，我直接展现解决方案</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>这篇文章里的方法，<br>针对的配置环境是这样的：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">硬件: MacBook Air</span><br><span class="line">系统: macOS Catalina 10.15.4</span><br><span class="line">hexo版本：4.2.0</span><br><span class="line">node版本：13.13.0</span><br><span class="line">hexo主题：landscape</span><br></pre></td></tr></table></figure>
+
+<p>那咱们就开始吧</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;!---more&gt;</span><br><span class="line">参考的两篇博客地址分别是：</span><br><span class="line">第一篇帮我解决了添加js和css的问题，</span><br><span class="line">第二篇帮我解决了search.xml解析的问题。</span><br><span class="line">&#96;&#96;&#96;python</span><br><span class="line">https:&#x2F;&#x2F;gitee.com&#x2F;sjclub&#x2F;hexo-search-plugin&#x2F;tree&#x2F;master</span><br><span class="line">https:&#x2F;&#x2F;liam.page&#x2F;2017&#x2F;09&#x2F;21&#x2F;local-search-engine-in-Hexo-site&#x2F;</span><br></pre></td></tr></table></figure>
+
+<p>方法的具体步骤：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">首先，按照第一个博客里的流程一步不少的走完，</span><br><span class="line">这里需要重点说明下，</span><br><span class="line">第一，第一篇博客的博主对引入文件，说的不是很详细。</span><br><span class="line">其实你把load.js和search.js两个文件直接在footer.ejs里引入就可以。</span><br><span class="line">引入代码：</span><br><span class="line">```python</span><br><span class="line"> &lt;%- partial(<span class="string">'_partial/search'</span>) %&gt; 引入search.ejs,这个文件的作用是生成搜索框</span><br><span class="line">  &lt;%- js(<span class="string">'js/load'</span>) %&gt; 引入load.js,这个文件的作用是加载search.xml</span><br><span class="line">  &lt;%- js(<span class="string">'js/search'</span>) %&gt; 引入search.js这个文件的作用是解析search.xml</span><br></pre></td></tr></table></figure>
+<p>第二，博主有些语焉不详，<br>他下面说的是search.styl,<br>其实在plugin目录里的是search.stylus<br>实际操作时，你只需要把search.stylus里的代码复制，然后粘贴命名为search.styl文件里就行。</p>
+<p>其次，将第二个博客里的search.js里的代码全部复制，替换已经添加到theme目录下的search.js里的代码。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">打完收工。</span><br><span class="line"></span><br><span class="line">然后重新提交一下就可以了。</span><br><span class="line"></span><br><span class="line">为了防止看到这篇的人迷惑。</span><br><span class="line">我这里简单的说下，</span><br><span class="line">其实就是第一篇博客里的解析代码没用，也就是search.js里的代码没用。</span><br><span class="line">而，第二篇博客里的search.js是有用的。</span><br><span class="line"></span><br><span class="line">因此，我们先完全按照第一篇博客的流程走完之后，</span><br><span class="line">只需要将第一篇博客search.js文件清空，</span><br><span class="line">将第二篇博客search.js文件里的代码粘贴过来即可。</span><br><span class="line"></span><br><span class="line">《完》</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">### 狠狠地吐槽</span><br><span class="line">##### 1、填坑的开始</span><br><span class="line"></span><br><span class="line">重装hexo时，解决了node版本错误和中文乱码之后，</span><br><span class="line">满心欢喜，</span><br><span class="line">本以为可以愉快的重复以下过程了</span><br><span class="line">&#96;&#96;&#96;python</span><br><span class="line">hexo new xxx</span><br><span class="line">写文章</span><br><span class="line">hexo clean</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+<p>结果真是图样图森破，<br>填坑才刚刚开始。</p>
+<p>眼看着博客文章越来越多，<br>重装之后，就想先添加本地搜索。</p>
+<h5 id="2、重要声明"><a href="#2、重要声明" class="headerlink" title="2、重要声明"></a>2、重要声明</h5><p>先声明下，之所以标题这么长，<br>是因为我受够了自己利用搜索引擎，<br>解决问题过程中，<br>一些纯傻逼的行为，<br>它们不但人云亦云。<br>而且还不知所云。<br>根本不说自己是在什么系统，什么主题下，去修改hexo的配置，<br>这让我吃够了苦头。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">人云亦云和不知所云，</span><br><span class="line">我在下文，会举例说明。</span><br></pre></td></tr></table></figure>
+<p>所以，我要声明下，</p>
+<p>这里最重要的配置参数是硬件和hexo主题。<br>其它应该问题不大，<br>之所以说应该，<br>因为我没有把每一个hexo和node可用版本，<br>都尝试一遍。</p>
+<h3 id="landscape自带搜索是摆设"><a href="#landscape自带搜索是摆设" class="headerlink" title="landscape自带搜索是摆设"></a>landscape自带搜索是摆设</h3><p>因为hexo默认主题landscape下自带的搜索框，<br>就是一个纯粹的摆设。<br>因为它默认搜索的是你被谷歌搜索引擎收录的网页，<br>你才刚开始写博客，<br>或者你还没做SEO，<br>怎么可能在谷歌搜索引擎被收录呢？</p>
+<h3 id="什么是本地搜索和谷歌站内搜索"><a href="#什么是本地搜索和谷歌站内搜索" class="headerlink" title="什么是本地搜索和谷歌站内搜索"></a>什么是本地搜索和谷歌站内搜索</h3><p>基于以上原因，决定寻找landscape主题下，<br>添加本地搜索和谷歌站内搜索的方法。<br>先解释一下本地搜索和谷歌站内搜索两个概念，<br>看文章的你，不要嫌我烦。<br>我真是被网上某些傻逼给害苦了。<br>所以我写文章的时候，尽量详细，<br>因为你可能一句话写不到。<br>别人就会走很多弯路。<br>甚至本来看了你的文章，<br>可以解决的问题，<br>结果因为你少了一句话的缘故，<br>别人的问题，最后没有得到解决。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">本地搜索：在你的博客内，对所有文章的搜索，</span><br><span class="line">当你输入关键词，不用按回车，</span><br><span class="line">会自动显示有搜索关键词的文章列表。</span><br><span class="line"></span><br><span class="line">谷歌站内搜索：也是在你的博客内完成搜索的输入，</span><br><span class="line">就是landscape主题自带的那个搜索框，</span><br><span class="line">但是当你按下回车或者点击放大镜，</span><br><span class="line">它的搜索结果会在谷歌搜索引擎里呈现。</span><br><span class="line">简单来说就是两种搜索方式，</span><br><span class="line">都可以搜索你所有的文章，</span><br><span class="line">但是展现的地方不同，</span><br><span class="line">一种在博客里展示，就是本地搜索，</span><br><span class="line">另一种在谷歌浏览器展示，就是谷歌站内搜索。</span><br><span class="line">而lanscape主题自带的搜索框，</span><br><span class="line">搜索的是你的博客被谷歌引擎收录的文章网页。</span><br><span class="line">这个确实不是一般的坑爹。</span><br></pre></td></tr></table></figure>
+
+<h3 id="hexo有用的资料真少"><a href="#hexo有用的资料真少" class="headerlink" title="hexo有用的资料真少"></a>hexo有用的资料真少</h3><p>hexo的确很火，它免费，好用，既不用买域名也不用租服务器。<br>因此，是很多愿意折腾的人的最佳选择。<br>所以，互联网上也就有了很多关于hexo的网页。</p>
+<p>但是这些网页存在着三个严重的问题：<br>第一条最严重，其它依次递减。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">多数人写文章的目的是炫耀加展现自己的成果，并没有想要帮助别人，而后者才是写文章分享的本质目的。</span><br><span class="line">许多人只说正常的流程。</span><br><span class="line">很多人只是道听途说，甚至直接复制粘贴。</span><br><span class="line">更多人是人云亦云。</span><br></pre></td></tr></table></figure>
+<p>基于以上原因，你以hexo为关键词一搜索网页一大把，<br>但是真正有用的，能帮助你解决问题的少之又少。<br>而且往往这种真正能帮你解决问题的文章，话不多，简洁明了。<br>这种现象正印证了那句话：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">高手从来不拔刀，高僧只说家常话。</span><br></pre></td></tr></table></figure>
+<p>这里回应下开头人云亦云和不知所云，<br>人云亦云还分两种类型，<br>第一种直接粘贴复制别人的文章，<br>第二种比照别人的文章自己写一遍。<br>反正自己就是不看文章。<br>这种人最可恶，<br>浪费互联网资源不说，<br>自己既没解决问题，<br>还不能帮助别人有效解决问题，<br>甚至还浪费别人的时间和精力。</p>
+<p>不知所云的是这种人，<br>他们不写具体问题，<br>只是按照官方或者正常流程叙述一遍。<br>以为自己特具分享精神，<br>其实特可恶，浪费别人的时间和精力。<br>更有甚者，直接粘贴自己的站点配置文件，<br>连一句中文注释都没有。<br>以上两种人真是可恶至极，<br>特招人恨。<br>唉，不说了，说起来能写一本书。</p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+  </entry>
+  <entry>
     <title>OC中委托和协议</title>
     <url>/2016/03/17/OC%E4%B8%AD%E5%A7%94%E6%89%98%E5%92%8C%E5%8D%8F%E8%AE%AE/</url>
     <content><![CDATA[<p>一、为什么写这篇文章</p>
@@ -118,15 +155,6 @@
 <p>总结：<br>1、委托行为借助协议得以完成；这里王五通过FindworkDelegat协议委托马六找工作；协议要求钱多事儿少离家近；<br>2、并且规定必须遵守这个协议的要求找工作才可以付钱：@property(nonatomic,weak)id <FindworkDelegate>delegate;<br>3、委托找两份工作因此每反馈回来一次，需要判断是哪份工作的内容介绍：使用respondsToSelector:@selector(moneyMax:)方法进行判断。<br>Wangwu*WW1=[[Wangwu alloc]init];第一份工作</p>
 <p>Wangwu*WW2=[[Wangwu alloc]init];第二份工作</p>
 <p>if ([_delegate respondsToSelector:@selector(moneyMax:)]||[_delegate respondsToSelector:@selector(treatMent:)]){<br>[_delegate moneyMax:self];self是指具体是哪份工作？<br>[_delegate treatMent:self];<br>}<br>over！</p>
-]]></content>
-      <categories>
-        <category>IOS</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>UIviewcontroller与UIview</title>
-    <url>/2016/03/17/UIviewcontroller%E4%B8%8EUIview/</url>
-    <content><![CDATA[<p>UIviewcontroller名字叫做视图控制器，是一个类，UIview也是一个类；<br>UIviewcontroller控制放在它上面的所有UIview的事件；<br>UIview只负责加载数据与图片；<br>UIviewcontroller顾名思义，就是控制；<br>比如飞机大战中，加载子弹和飞机的图片需要UIview实现；<br>而发射子弹则需要UIviewcontroller来实现。<br>目前就理解到这个程度。</p>
 ]]></content>
       <categories>
         <category>IOS</category>
@@ -149,6 +177,15 @@
 <p>比如‘人’是一个类，‘张三’则是人的一个对象；</p>
 <p>张三的姓名、性别与年龄则构成了‘人’这个类的成员变量；</p>
 <p>而姓名、性别与年龄则要靠方法去实现。​</p>
+]]></content>
+      <categories>
+        <category>IOS</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>UIviewcontroller与UIview</title>
+    <url>/2016/03/17/UIviewcontroller%E4%B8%8EUIview/</url>
+    <content><![CDATA[<p>UIviewcontroller名字叫做视图控制器，是一个类，UIview也是一个类；<br>UIviewcontroller控制放在它上面的所有UIview的事件；<br>UIview只负责加载数据与图片；<br>UIviewcontroller顾名思义，就是控制；<br>比如飞机大战中，加载子弹和飞机的图片需要UIview实现；<br>而发射子弹则需要UIviewcontroller来实现。<br>目前就理解到这个程度。</p>
 ]]></content>
       <categories>
         <category>IOS</category>
@@ -243,29 +280,6 @@
       </categories>
   </entry>
   <entry>
-    <title>工夫与境界（二）</title>
-    <url>/2016/03/17/%E5%B7%A5%E5%A4%AB%E4%B8%8E%E5%A2%83%E7%95%8C%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
-    <content><![CDATA[<p>一、境界为何？<br>境界字面理解，<br>境乃环境，界乃界限；<br>突破界限到达新环境就叫做境界。<br>境界不是自己标榜的，<br>真正到达新境界的人，<br>行事言语都会有所体现。</p>
-<p>二、境</p>
-<p>1、客观环境<br>首先从环境说起，<br>环境又分为外在与内在；<br>外在叫客观环境，<br>内在叫做心境。</p>
-<p>客观环境没什么好说的，<br>无论你生于贫苦之家，<br>还是钟鸣鼎食之家，<br>这都不是你能定的，<br>那是所有人的起点，<br>你只有接受，没有选择。<br>以上是摘要<a id="more"></a><br>2、心境<br>至于心境，则要好好说一下；<br>《心经》开篇第一句话：<br>观自在菩萨，<br>行深般若波罗蜜多，<br>照见五蕴皆空，<br>度一切苦厄。<br>这说的就是心境。<br>展开说比较复杂，<br>简单从几个概念说起。</p>
-<p>三毒：贪嗔痴，<br>三法印：诸行无常，诸法无我，寂静涅槃；<br>五蕴：受想行色识<br>般若波罗密多：到达彼岸的智慧。</p>
-<p>为什么要说心经呢？<br>你可能会纳闷？<br>我们讲的不是心学吗？<br>对了正因为我们讲的是心学。<br>而客观环境，多数情况下我们无能为力。<br>多数情况下，我能改变的只有心境。<br>《心经》为我们提供了一种改变心境的伟大方法。<br>你没看错，就是伟大的方法。<br>因为它解决的是根本问题，直指人心，<br>心经讲的就是为什么我们会感到人生皆苦。</p>
-<p>我们之所以感到人生皆苦，<br>是因为有：‘我执’。<br>我执的意思是我们以为世间万物都是恒定不变的。<br>这是所有苦的根源。<br>苦又分为：求不得，爱别离，怨憎会。</p>
-<p>事实是，世间万物每时每刻都在变化，<br>因为有：‘我执’，因此我们都中了三毒。<br>我们贪婪是因为：<br>我们以为拥有了某些东西，它就会永远属于我们，<br>并且因为得不到而纠结不已。<br>我们愤怒是因为：<br>我们以为所有的糟糕事情都会一直糟糕下去，<br>并且为此生出恐惧来吓唬自己。<br>明天要交报表了，做不出来怎么办？<br>明天要考试了，考不过怎么办？<br>明天又要考核绩效了，达不到怎么办？<br>我们总是夸大事情本身的后果。<br>我们痴傻是因为，我们以为一瞬即永恒，<br>并且相信自己对永恒的判断。</p>
-<p>事实是，也许你刚买到梦寐以求的保时捷，<br>第二天就出车祸撞死了。<br>也许你刚刚与他吵过架的室友或朋友，<br>是因为最近家里老人得了病，心情不好。<br>也许你内心许诺一生只爱她一人的女友，<br>正在和新认识的帅哥微信聊天。</p>
-<p>那么，我们有必要知道三法印的存在，<br>诸行无常，诸法无我，寂静涅槃，<br>万事万物都在变化，你以为你面前的桌子和电脑是静止的？<br>非也，电脑里面每时每刻二进制数据都在变化，<br>桌子的基本组成粒子，无时无刻不在老化。<br>你以为你就是你吗？<br>这句话可能有点儿绕，<br>我的意思是：<br>你以为今天的你还是昨天的你吗？<br>你以为此刻的你还是上一刻的你吗？<br>你以为现在的你还是六岁时候的你吗？<br>抛开外形的变化不说。</p>
-<p>为了便于理解我们举个例子，<br>比如你的名字叫张三<br>基于你的名字来说，<br>你觉得张三的对象是谁？<br>是六岁时候的你？<br>还是现在的你？<br>你说当然是现在的你？<br>你这不是搞笑吗？<br>那好，我再问，是上一刻的你，<br>还是这一刻的你？<br>到底哪个‘你’是张三？<br>到底是在吃饭的你是张三？<br>还是在撒尿的你是张三？<br>你又说：“当然两个都是张三”，<br>但是这一刻的你已经不是上一刻的你了，<br>你的血液在不断更新，你的细胞在不断更新。<br>你的思维意识瞬间万变。<br>到底哪一个才是作为张三的你？<br>因此张三这个名字只是个假名。<br>没有真的张三存在。<br>只是你自己太过于执着你是张三这件事。<br>而你并不知道并没有真的张三存在？<br>此为诸行无常，诸法无我。</p>
-<p>当你悟了诸行无常，诸法无我，自然会寂静涅槃。<br>虽然有点儿抽象，但我绝不是顺口胡诌。<br>我自己是真正体验过这种思考的。</p>
-<p>这段实在太抽象，<br>因为梁文道这等厉害人物在《一千零一夜》，<br>用了六集才讲清楚《心经》的前两句话。<br>个中奥义，不花一番功夫实难领会。<br>另外小结中有些概念实在无法展开叙述，<br>有心人可以自行搜索资料进行学习。<br>做下小结吧：“我执”是三毒：“贪、嗔、痴”的根源；<br>陷入三毒世人皆苦，苦分为：“求不得、爱别离、怨憎会”<br>三法印：诸行无常、诸法无我、寂静涅槃会让我们理解空不异色，色不异空，空即是色，色即是空，从而获得到达彼岸的大智慧。<br>只有运用般若波罗蜜多：到达彼岸的大智慧才能照见五蕴皆空，度一切苦厄。</p>
-<p>3、界<br>关于界限我要说的不多，<br>大家应该都知道有个舒适区，学习区与恐慌区的划分。<br>那么我只有一个建议，经常挑战下你的恐慌区。<br>怕和女孩搭讪，偏偏要在餐馆吃午饭时和邻桌的漂亮妹妹搭个讪，<br>怕在群众面前演讲，偏偏要在公园等人扎堆的地方，让自己来上一段，<br>怕在高处眺望，偏偏周末要去体验一下蹦极时血脉贲张的酸爽。<br>你说：“臣妾真的做不到啊！”。<br>我只说一件事：<br>最近重看了一遍86版的《西游记》，<br>至于演员演得好，导演拍的好，不赘述。<br>只一点，第一集就让我明白了以前看不可能明白的道理。<br>孙悟空和众猴打赌，自己能从水帘洞进去且出来。<br>你想一想，<br>有的猴子已经在这片区域生活了很多年，<br>却没勇气进去看一看，<br>那一刻我知道，人生所有的艰难困苦都是纸老虎。<br>再有，进去后欢宴期间一猴子突然死亡，<br>那一刻我知道，人生无常，达人自玉。<br>最后，孙悟空决定远行学艺。<br>在市集间被俗人们当作异类而嘲笑<br>那一刻我知道，哪怕任何人的嘲笑，<br>都比不过你自己的一个决心。</p>
-<p>本期推荐书籍：<br>1、《增长黑客》豆瓣评分8.1 作者：范冰<br>细节非常独到，我还试了下里面通过curl －o命令抓取唱吧图片。<br>最重要的一点树立T型知识结构的意识。<br>归纳略显不足，只描述案例，不归纳本质的东西，做互联网的同学可以作为手边书翻一翻。<br>2、《黑客与画家》作者：保罗格雷厄姆<br>任何一门知识，做到极致都是艺术，编程亦然。<br>3、《物演通论》作者：王东岳<br>我只记住了一个：“递弱代偿法则”，其他看不懂，你若有高见，欢迎和我讨论。<br>本期推荐电影：<br>1、《三傻大闹宝莱坞》<br>我已经看过三遍了，不多说了，和梦想有关和现实无联。<br>2、《无法触碰》<br>这个看了两遍，马上看第三遍，和生命有关和人生无联。<br>3、《野草莓》<br>英格玛·伯格曼代表作，和生命无关和心灵有联。</p>
-]]></content>
-      <categories>
-        <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
     <title>开始学习python了</title>
     <url>/2016/12/27/%E5%BC%80%E5%A7%8B%E5%AD%A6%E4%B9%A0python%E4%BA%86/</url>
     <content><![CDATA[<p>从接触编程到现在已经三年多了，多数是浅尝辄止，因为我的主要工作是运营；<br>也没有必要把编程学的这么深入，从刚开始的html，到后来的php以及去年学的OC；<br>终于要学python了，为什么要学习python呢？<br>更深的我也不懂，我只知道两点。</p>
@@ -326,6 +340,29 @@
       </categories>
   </entry>
   <entry>
+    <title>工夫与境界（二）</title>
+    <url>/2016/03/17/%E5%B7%A5%E5%A4%AB%E4%B8%8E%E5%A2%83%E7%95%8C%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+    <content><![CDATA[<p>一、境界为何？<br>境界字面理解，<br>境乃环境，界乃界限；<br>突破界限到达新环境就叫做境界。<br>境界不是自己标榜的，<br>真正到达新境界的人，<br>行事言语都会有所体现。</p>
+<p>二、境</p>
+<p>1、客观环境<br>首先从环境说起，<br>环境又分为外在与内在；<br>外在叫客观环境，<br>内在叫做心境。</p>
+<p>客观环境没什么好说的，<br>无论你生于贫苦之家，<br>还是钟鸣鼎食之家，<br>这都不是你能定的，<br>那是所有人的起点，<br>你只有接受，没有选择。<br>以上是摘要<a id="more"></a><br>2、心境<br>至于心境，则要好好说一下；<br>《心经》开篇第一句话：<br>观自在菩萨，<br>行深般若波罗蜜多，<br>照见五蕴皆空，<br>度一切苦厄。<br>这说的就是心境。<br>展开说比较复杂，<br>简单从几个概念说起。</p>
+<p>三毒：贪嗔痴，<br>三法印：诸行无常，诸法无我，寂静涅槃；<br>五蕴：受想行色识<br>般若波罗密多：到达彼岸的智慧。</p>
+<p>为什么要说心经呢？<br>你可能会纳闷？<br>我们讲的不是心学吗？<br>对了正因为我们讲的是心学。<br>而客观环境，多数情况下我们无能为力。<br>多数情况下，我能改变的只有心境。<br>《心经》为我们提供了一种改变心境的伟大方法。<br>你没看错，就是伟大的方法。<br>因为它解决的是根本问题，直指人心，<br>心经讲的就是为什么我们会感到人生皆苦。</p>
+<p>我们之所以感到人生皆苦，<br>是因为有：‘我执’。<br>我执的意思是我们以为世间万物都是恒定不变的。<br>这是所有苦的根源。<br>苦又分为：求不得，爱别离，怨憎会。</p>
+<p>事实是，世间万物每时每刻都在变化，<br>因为有：‘我执’，因此我们都中了三毒。<br>我们贪婪是因为：<br>我们以为拥有了某些东西，它就会永远属于我们，<br>并且因为得不到而纠结不已。<br>我们愤怒是因为：<br>我们以为所有的糟糕事情都会一直糟糕下去，<br>并且为此生出恐惧来吓唬自己。<br>明天要交报表了，做不出来怎么办？<br>明天要考试了，考不过怎么办？<br>明天又要考核绩效了，达不到怎么办？<br>我们总是夸大事情本身的后果。<br>我们痴傻是因为，我们以为一瞬即永恒，<br>并且相信自己对永恒的判断。</p>
+<p>事实是，也许你刚买到梦寐以求的保时捷，<br>第二天就出车祸撞死了。<br>也许你刚刚与他吵过架的室友或朋友，<br>是因为最近家里老人得了病，心情不好。<br>也许你内心许诺一生只爱她一人的女友，<br>正在和新认识的帅哥微信聊天。</p>
+<p>那么，我们有必要知道三法印的存在，<br>诸行无常，诸法无我，寂静涅槃，<br>万事万物都在变化，你以为你面前的桌子和电脑是静止的？<br>非也，电脑里面每时每刻二进制数据都在变化，<br>桌子的基本组成粒子，无时无刻不在老化。<br>你以为你就是你吗？<br>这句话可能有点儿绕，<br>我的意思是：<br>你以为今天的你还是昨天的你吗？<br>你以为此刻的你还是上一刻的你吗？<br>你以为现在的你还是六岁时候的你吗？<br>抛开外形的变化不说。</p>
+<p>为了便于理解我们举个例子，<br>比如你的名字叫张三<br>基于你的名字来说，<br>你觉得张三的对象是谁？<br>是六岁时候的你？<br>还是现在的你？<br>你说当然是现在的你？<br>你这不是搞笑吗？<br>那好，我再问，是上一刻的你，<br>还是这一刻的你？<br>到底哪个‘你’是张三？<br>到底是在吃饭的你是张三？<br>还是在撒尿的你是张三？<br>你又说：“当然两个都是张三”，<br>但是这一刻的你已经不是上一刻的你了，<br>你的血液在不断更新，你的细胞在不断更新。<br>你的思维意识瞬间万变。<br>到底哪一个才是作为张三的你？<br>因此张三这个名字只是个假名。<br>没有真的张三存在。<br>只是你自己太过于执着你是张三这件事。<br>而你并不知道并没有真的张三存在？<br>此为诸行无常，诸法无我。</p>
+<p>当你悟了诸行无常，诸法无我，自然会寂静涅槃。<br>虽然有点儿抽象，但我绝不是顺口胡诌。<br>我自己是真正体验过这种思考的。</p>
+<p>这段实在太抽象，<br>因为梁文道这等厉害人物在《一千零一夜》，<br>用了六集才讲清楚《心经》的前两句话。<br>个中奥义，不花一番功夫实难领会。<br>另外小结中有些概念实在无法展开叙述，<br>有心人可以自行搜索资料进行学习。<br>做下小结吧：“我执”是三毒：“贪、嗔、痴”的根源；<br>陷入三毒世人皆苦，苦分为：“求不得、爱别离、怨憎会”<br>三法印：诸行无常、诸法无我、寂静涅槃会让我们理解空不异色，色不异空，空即是色，色即是空，从而获得到达彼岸的大智慧。<br>只有运用般若波罗蜜多：到达彼岸的大智慧才能照见五蕴皆空，度一切苦厄。</p>
+<p>3、界<br>关于界限我要说的不多，<br>大家应该都知道有个舒适区，学习区与恐慌区的划分。<br>那么我只有一个建议，经常挑战下你的恐慌区。<br>怕和女孩搭讪，偏偏要在餐馆吃午饭时和邻桌的漂亮妹妹搭个讪，<br>怕在群众面前演讲，偏偏要在公园等人扎堆的地方，让自己来上一段，<br>怕在高处眺望，偏偏周末要去体验一下蹦极时血脉贲张的酸爽。<br>你说：“臣妾真的做不到啊！”。<br>我只说一件事：<br>最近重看了一遍86版的《西游记》，<br>至于演员演得好，导演拍的好，不赘述。<br>只一点，第一集就让我明白了以前看不可能明白的道理。<br>孙悟空和众猴打赌，自己能从水帘洞进去且出来。<br>你想一想，<br>有的猴子已经在这片区域生活了很多年，<br>却没勇气进去看一看，<br>那一刻我知道，人生所有的艰难困苦都是纸老虎。<br>再有，进去后欢宴期间一猴子突然死亡，<br>那一刻我知道，人生无常，达人自玉。<br>最后，孙悟空决定远行学艺。<br>在市集间被俗人们当作异类而嘲笑<br>那一刻我知道，哪怕任何人的嘲笑，<br>都比不过你自己的一个决心。</p>
+<p>本期推荐书籍：<br>1、《增长黑客》豆瓣评分8.1 作者：范冰<br>细节非常独到，我还试了下里面通过curl －o命令抓取唱吧图片。<br>最重要的一点树立T型知识结构的意识。<br>归纳略显不足，只描述案例，不归纳本质的东西，做互联网的同学可以作为手边书翻一翻。<br>2、《黑客与画家》作者：保罗格雷厄姆<br>任何一门知识，做到极致都是艺术，编程亦然。<br>3、《物演通论》作者：王东岳<br>我只记住了一个：“递弱代偿法则”，其他看不懂，你若有高见，欢迎和我讨论。<br>本期推荐电影：<br>1、《三傻大闹宝莱坞》<br>我已经看过三遍了，不多说了，和梦想有关和现实无联。<br>2、《无法触碰》<br>这个看了两遍，马上看第三遍，和生命有关和人生无联。<br>3、《野草莓》<br>英格玛·伯格曼代表作，和生命无关和心灵有联。</p>
+]]></content>
+      <categories>
+        <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
     <title>当你说知行合一的时候你在说什么</title>
     <url>/2016/03/17/%E5%BD%93%E4%BD%A0%E8%AF%B4%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E7%9A%84%E6%97%B6%E5%80%99%E4%BD%A0%E5%9C%A8%E8%AF%B4%E4%BB%80%E4%B9%88/</url>
     <content><![CDATA[<p>一、前面的话<br>知行合一是心学的支柱和核心，<br>心学没了知行合一也就不是心学，<br>因此我要反复讲，时时刻刻讲，<br>这篇也不例外，还是要讲知行合一。</p>
@@ -355,6 +392,15 @@
       </categories>
   </entry>
   <entry>
+    <title>我与音乐的初缘</title>
+    <url>/2016/03/17/%E6%88%91%E4%B8%8E%E9%9F%B3%E4%B9%90%E7%9A%84%E5%88%9D%E7%BC%98/</url>
+    <content><![CDATA[<p>我高中学过一年半音乐，<br>上过高中的都知道：『小三门』；<br>不知现在还这么叫吗？<br>我学音乐的原因有三：<br>一、小时候我爸买过一支笛子，我爸捣鼓好长时间，没吹响，<br>我后来不但吹响了，而且还能看简谱吹奏《没有共产党就没有新中国》和《中学时代》等歌曲，<br>我觉得我自己真是tmd太有才了，所以老师一说报名『小三门』，我立即就积极响应了。<br>至于我到底有没有音乐天赋，我到今天也没搞清楚。<br>二、文化课要求分数低，只要音乐过就能上个还不错的本科学校，一本也不是没可能；<br>三、我感觉学音乐是一件很酷的事情；<br>事实证明一年半的成果还可以，<br>可是经济基础，决定上层建筑，<br>最后考上了新乡一个叫做：『平原大学』的音乐系，<br>我估计是二本吧，<br>学费太昂贵，最后只好选择去学机械制造。<br>然后就与音乐绝缘了。<br>以上是摘要<a id="more"></a><br>但还是会买支笛子，<br>有空吹奏一番，<br>曲子当然不会再是初学的那些了，<br>好歹也有了些乐理知识，<br>可以识谱演奏了。<br>然后机械制造毕业，去做工人，<br>再然后到北京做电子商务，<br>始终还是放不下音乐，<br>梦想着有一天自己也能开一场自己的演唱会，<br>现在经济自立了，<br>也会买把吉他，学弹吉他，<br>有时间还会读《中国音乐简史》之类的书，<br>加深音乐素养，<br>权当一爱好，<br>但谁说爱好就不能学的专业一点儿，<br>因此，开辟这个专栏，<br>记录我平常累积的音乐知识<br>以及学习音乐过程中的欢乐。</p>
+]]></content>
+      <categories>
+        <category>音乐学习</category>
+      </categories>
+  </entry>
+  <entry>
     <title>我为什么三十岁还要学习IOS</title>
     <url>/2016/03/17/%E6%88%91%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%89%E5%8D%81%E5%B2%81%E8%BF%98%E8%A6%81%E5%AD%A6%E4%B9%A0IOS/</url>
     <content><![CDATA[<p>一、前面的话</p>
@@ -369,70 +415,6 @@
 ]]></content>
       <categories>
         <category>IOS</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>我与音乐的初缘</title>
-    <url>/2016/03/17/%E6%88%91%E4%B8%8E%E9%9F%B3%E4%B9%90%E7%9A%84%E5%88%9D%E7%BC%98/</url>
-    <content><![CDATA[<p>我高中学过一年半音乐，<br>上过高中的都知道：『小三门』；<br>不知现在还这么叫吗？<br>我学音乐的原因有三：<br>一、小时候我爸买过一支笛子，我爸捣鼓好长时间，没吹响，<br>我后来不但吹响了，而且还能看简谱吹奏《没有共产党就没有新中国》和《中学时代》等歌曲，<br>我觉得我自己真是tmd太有才了，所以老师一说报名『小三门』，我立即就积极响应了。<br>至于我到底有没有音乐天赋，我到今天也没搞清楚。<br>二、文化课要求分数低，只要音乐过就能上个还不错的本科学校，一本也不是没可能；<br>三、我感觉学音乐是一件很酷的事情；<br>事实证明一年半的成果还可以，<br>可是经济基础，决定上层建筑，<br>最后考上了新乡一个叫做：『平原大学』的音乐系，<br>我估计是二本吧，<br>学费太昂贵，最后只好选择去学机械制造。<br>然后就与音乐绝缘了。<br>以上是摘要<a id="more"></a><br>但还是会买支笛子，<br>有空吹奏一番，<br>曲子当然不会再是初学的那些了，<br>好歹也有了些乐理知识，<br>可以识谱演奏了。<br>然后机械制造毕业，去做工人，<br>再然后到北京做电子商务，<br>始终还是放不下音乐，<br>梦想着有一天自己也能开一场自己的演唱会，<br>现在经济自立了，<br>也会买把吉他，学弹吉他，<br>有时间还会读《中国音乐简史》之类的书，<br>加深音乐素养，<br>权当一爱好，<br>但谁说爱好就不能学的专业一点儿，<br>因此，开辟这个专栏，<br>记录我平常累积的音乐知识<br>以及学习音乐过程中的欢乐。</p>
-]]></content>
-      <categories>
-        <category>音乐学习</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>我是这样认识王阳明的</title>
-    <url>/2016/03/17/%E6%88%91%E6%98%AF%E8%BF%99%E6%A0%B7%E8%AE%A4%E8%AF%86%E7%8E%8B%E9%98%B3%E6%98%8E%E7%9A%84/</url>
-    <content><![CDATA[<p>大多数喜欢王阳明的朋友，总是标榜“知行合一”，“致良知”；<br>我的微信关注了一个也标榜自己喜欢阳明思想的朋友；<br>做什么事都和：“心性”、“致良知”这些字眼联系起来；</p>
-<p>细看了下，要么就是参加了一个活动，说今天主讲人讲的真好；<br>是：“知行合一”；是“致良知”云云。<br>要么就是参加了个管理培训班，<br>完后就说：稻盛和夫的管理哲学和致良知完美契合。<br>  以上是文章摘要 <a id="more"></a> 以下是余下全文<br>我也真是醉了，哲学本来就和生活息息相关；<br>经常和生活联系起来倒也合情合理。<br>但是拉个屎撒个尿都要和知行合一与致良知联系起来，<br>要么就是没有真正理解阳明先生的思想。<br>要么就是中了“教条主义”的毒。</p>
-<p>在下不才，从听说王阳明这个人到最后逐渐对其思想了解一些；<br>也将近有十年的时间了。<br>遥想当年哥在高中学的是小三门儿—音乐；<br>上过高中的都知道，这个专业考试要提前考。<br>05年春节去郑州进行专业考试；<br>有天晚上和同去的同学到外面逛街，<br>逛到地下通道，有个书摊大家便驻足观看；<br>我一眼就看到了周月亮写的那本《王阳明大传》；<br>盗版的。</p>
-<p>封皮上的两句话把我给震住了。<br>“雅可上九天揽月，俗可下五洋捉鳖”；<br>当时连王阳明是谁都不知道，<br>更不会懂什么知行合一和致良知了。<br>但就觉得这两句话真牛逼；<br>说到我心里去了。</p>
-<p>之后，王阳明这个名字算是记住了。<br>当时对于买不买还是有些踌躇；<br>这时有个同学一句话让我下了买的决心；<br>他说：“你遇见了就一定要买，即使贵一点儿，免得以后后悔。<br>（当时的二十块一本盗版，对我等把县城当大城市的高中生来说的确算贵得。）</p>
-<p>随后这本周月亮的《王阳明大传》，<br>跟随我转战南北，东奔西跑；<br>南到浙杭，北到首都；<br>中间阅览无数遍，<br>每次看都有新感悟；<br>透明胶和尼龙绳修补多次；<br>最终，在最近一次搬家中遗失掉了。</p>
-<p>随着这本书打开我对王阳明的一扇门；<br>随后又在网上下载了好多关于王阳明的书；<br>什么《明朝一哥王阳明》，《王阳明的哲学精神》<br>乃至《有无之境》；<br>一路看下来，最后必须要看《传习录》啊！<br>就买了本叶圣陶解读的《传习录》来看；<br>虽然大师解读，但在下古文修养不高；<br>看着也是半懂不懂。</p>
-<p>最后就逛贴吧，逛论坛；<br>偶尔在天涯上发现了“沙滩孤雁”的帖子；<br>看了一页之后，惊为天人；<br>然后就开始了对这本《开谈传习录》的反复阅读。<br>以上大概就是我对王阳明的认识过程。<br>也许文字枯燥，也许词不达意；<br>也许行文不畅；<br>但作为自己对一个伟人的从认识到熟悉的回顾；<br>我想还是足够了。</p>
-]]></content>
-      <categories>
-        <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>我的英语学习小结</title>
-    <url>/2016/03/17/%E6%88%91%E7%9A%84%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93/</url>
-    <content><![CDATA[<p>之所以有这篇文章；<br>是因为最近正在学习ios开发，<br>需要看很多英语文档及英文网站 ；<br>并且成考那边也需要加强英语学习；<br>无论从开阔眼界或和人用英语聊天（装逼）而言；<br>都到了不得不学，逼上梁山的地步；</p>
-<p>学了这么多年英语，<br>才发现自己的两个问题 ；<br>也真是笨的可以；<br>第一原来在学校学习英语完全是为了应付考试；<br>根本没想到将来它会如何有用；</p>
-<p>第二是原来学校老师的水平确实有限；<br>最重要的是老师没教给我们正确的语音；<br>以上是摘要<a id="more"></a><br>我去年听赖世雄的英语教学录音；<br>才真正掌握了正确练习英语读音的方法；<br>印象最深刻的是关于：“good、book以及look”的读法；<br>问了身边几个英语还不错的人；<br>他们都读：“古德，不渴以及鲁克”；<br>可是正确的读音应该是：“格奥德，博哦可以及乐额科”；</p>
-<p>这才发现不但读音不对；<br>最重要的是发现自己断断续续学了这么多年英语；<br>竟然连正确的拼读方法都不会；<br>因为老师直接上去就教你念一个单词；<br>而不会一个一个去教你怎么拼读；<br>只要你最后读出来的效果听起来和老师差不多；<br>就觉得自己学得差不多了；<br>但是，你根本不知道它是怎么拼读出来的；</p>
-<p>就我个人目前的英语水平来说；<br>读一篇英语文章，障碍可能不大；<br>但听录音之后才发觉；<br>我靠，我每个单词都认识；<br>自己把一篇文章顺下来也没问题；<br>可就是录音一句都TMD听不懂；<br>就这样陆陆续续又看了些网上的文章；<br>渐渐有了些学英语的心得；<br>最后终于寻寻觅觅，积攒了一些小心得；<br>在此记录下来，以备后查；</p>
-<p>首先，时间是必须投入的资源；<br>少于一万小时是不靠谱的；<br>其次，必须掌握单词的拼写方法及句子的拼读方法，才算入门而已；<br>单独的单词你会读了，不一定能将句子读的连贯顺畅；<br>这两种读法是完全不同的；<br>最后，一定要坚持练习。</p>
-<p>在积攒这些心得过程中发现；<br>根本没有放之四海皆准的方法论；<br>无论谁以三寸不烂之舌，<br>说某个方法多么管用；<br>都完全是扯淡；<br>即便真的对他自己很有用；<br>但是如果每个人不是自己去摸索一套适合自己的方法；<br>其他人再经典的方法；<br>也基本无用；</p>
-<p>很简单的一个例子，雷军用：“专注、极致、口碑、快”七字诀打造出了小米；<br>你觉得还有谁可以在国内用这个方法复制一个小米吗?<br>所以说方法永远都是对别人有用的东西；<br>你真正要学的其实是别人思考的路径，<br>以及别人看事情的角度；<br>而不仅仅是人云亦云的方法论。<br>所以说所有将某个牛人的方法论拿来学习的人或者公司，基本结局都会很惨；</p>
-<p>硬功夫是省不得的；<br>所以必须用自己的时间，加上自己摸索出来的一套方法；<br>才可以让你离目标更近一些。</p>
-]]></content>
-      <categories>
-        <category>外语学习</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>智慧与思想之花因何而开</title>
-    <url>/2016/03/17/%E6%99%BA%E6%85%A7%E4%B8%8E%E6%80%9D%E6%83%B3%E4%B9%8B%E8%8A%B1%E5%9B%A0%E4%BD%95%E8%80%8C%E5%BC%80/</url>
-    <content><![CDATA[<p>圣人之所以为圣人，<br>就是因为在百死千难中，<br>不断努力的思考自己的思维的过程；<br>而这个过程就是思想和智慧了。</p>
-<p>上次撰文说到致良知，<br>那么，致良知与智慧和思想是什么关系呢？<br>答案是没一毛钱关系。</p>
-<p>那么问题来了，<br>既然智慧和思想，和致良知没一毛钱关系。<br>那阳明先生为什么整个致良知之学呢？<br>莫急，听咱家慢慢道来；<br>以上是摘要<a id="more"></a><br>雾满拦江说，<br>人类所有学科的基础是哲学、数学与逻辑形式；<br>所有人类的学科莫不是建立在此三个要素上；<br>而阳明先生龙场悟道的“道”，却不在此列。<br>因为无论这三者再精密，<br>他还是属于人类已有的语言和思维范畴，<br>显然终极智慧和思想，是比此三者更高境界的东西。</p>
-<p>所以说圣人可以自己悟道，<br>但是他是无法用语言和你清晰描述的，<br>不然阳明也不会有：“吾性自足”一说了；</p>
-<p>打个比方说，<br>世上未通终极智慧之人，<br>都像是背对着一副栅栏和栅栏外的一堆篝火；<br>栅栏就是遮蔽良知也就是本心的欲望，<br>而篝火正是道家说的道，<br>儒家的一以及佛家的无无明。</p>
-<p>所有人是不知道自己后面的栅栏和篝火的，<br>一旦像阳明先生这样的人，<br>告诉他们你们身后有栅栏和篝火；<br>他们是不会信的，<br>这就像你和盲者谈论颜色，<br>你说得再惟妙惟肖，<br>他也是没有认识颜色的工具的，<br>或者聋哑人谈论音律，<br>即使你说的再声情并茂，<br>他也是没有认识音律的工具的。</p>
-<p>因此圣人先贤悟道终极智慧之后，<br>也是没有描述终极智慧的工具的。</p>
-<p>尽管终极智慧和致良知之间，<br>没有一毛钱的关系，<br>但如果你追求善良，苦求于良知；<br>那么你对这个世界的认知角度，<br>就会从外界转向对自己内心的审视。</p>
-<p>如此你会减少与外界的摩擦，<br>不会再苛求别人按你的想法行事，<br>而会反求诸己。</p>
-<p>反之如果你不追求善良，<br>不从内心审视自己，<br>就会将关注焦点放在外界，<br>而这种关注，必然会让你远离思想和智慧。</p>
-<p>思想与智慧无法复制也无法传承；<br>甚至连对身边人熏陶的功能都不存在，<br>比如苏格拉底与其妻子，<br>比如阳明先生身后的妻离子散。</p>
-<p>这是因为智慧和思想完全是个人化的思维运作过程，<br>是单独一个人不断采用探究式的思维模式，<br>对自己的大脑进行个人化开发，<br>这种开发的过程就是智慧与思想本身，</p>
-<p>而圣贤所能表达的不过是智慧和思想的结果，<br>但这个结果既不是思想也不是智慧，<br>最多不过是思想与智慧的行进方向而已。</p>
-<p>所以阳明先生说：“致良知”，<br>良知不是智慧，<br>致良知更不是思想，<br>思想与智慧，<br>是指你不断地努力，<br>让自己达到致良知境界的思维过程。<br>换句话说，<br>你可以把致良知理解为这个思维过程（也即思想和智慧过程）的一个显性结果以及方向。</p>
-]]></content>
-      <categories>
-        <category>阳明心学</category>
       </categories>
   </entry>
   <entry>
@@ -496,6 +478,44 @@
       </categories>
   </entry>
   <entry>
+    <title>智慧与思想之花因何而开</title>
+    <url>/2016/03/17/%E6%99%BA%E6%85%A7%E4%B8%8E%E6%80%9D%E6%83%B3%E4%B9%8B%E8%8A%B1%E5%9B%A0%E4%BD%95%E8%80%8C%E5%BC%80/</url>
+    <content><![CDATA[<p>圣人之所以为圣人，<br>就是因为在百死千难中，<br>不断努力的思考自己的思维的过程；<br>而这个过程就是思想和智慧了。</p>
+<p>上次撰文说到致良知，<br>那么，致良知与智慧和思想是什么关系呢？<br>答案是没一毛钱关系。</p>
+<p>那么问题来了，<br>既然智慧和思想，和致良知没一毛钱关系。<br>那阳明先生为什么整个致良知之学呢？<br>莫急，听咱家慢慢道来；<br>以上是摘要<a id="more"></a><br>雾满拦江说，<br>人类所有学科的基础是哲学、数学与逻辑形式；<br>所有人类的学科莫不是建立在此三个要素上；<br>而阳明先生龙场悟道的“道”，却不在此列。<br>因为无论这三者再精密，<br>他还是属于人类已有的语言和思维范畴，<br>显然终极智慧和思想，是比此三者更高境界的东西。</p>
+<p>所以说圣人可以自己悟道，<br>但是他是无法用语言和你清晰描述的，<br>不然阳明也不会有：“吾性自足”一说了；</p>
+<p>打个比方说，<br>世上未通终极智慧之人，<br>都像是背对着一副栅栏和栅栏外的一堆篝火；<br>栅栏就是遮蔽良知也就是本心的欲望，<br>而篝火正是道家说的道，<br>儒家的一以及佛家的无无明。</p>
+<p>所有人是不知道自己后面的栅栏和篝火的，<br>一旦像阳明先生这样的人，<br>告诉他们你们身后有栅栏和篝火；<br>他们是不会信的，<br>这就像你和盲者谈论颜色，<br>你说得再惟妙惟肖，<br>他也是没有认识颜色的工具的，<br>或者聋哑人谈论音律，<br>即使你说的再声情并茂，<br>他也是没有认识音律的工具的。</p>
+<p>因此圣人先贤悟道终极智慧之后，<br>也是没有描述终极智慧的工具的。</p>
+<p>尽管终极智慧和致良知之间，<br>没有一毛钱的关系，<br>但如果你追求善良，苦求于良知；<br>那么你对这个世界的认知角度，<br>就会从外界转向对自己内心的审视。</p>
+<p>如此你会减少与外界的摩擦，<br>不会再苛求别人按你的想法行事，<br>而会反求诸己。</p>
+<p>反之如果你不追求善良，<br>不从内心审视自己，<br>就会将关注焦点放在外界，<br>而这种关注，必然会让你远离思想和智慧。</p>
+<p>思想与智慧无法复制也无法传承；<br>甚至连对身边人熏陶的功能都不存在，<br>比如苏格拉底与其妻子，<br>比如阳明先生身后的妻离子散。</p>
+<p>这是因为智慧和思想完全是个人化的思维运作过程，<br>是单独一个人不断采用探究式的思维模式，<br>对自己的大脑进行个人化开发，<br>这种开发的过程就是智慧与思想本身，</p>
+<p>而圣贤所能表达的不过是智慧和思想的结果，<br>但这个结果既不是思想也不是智慧，<br>最多不过是思想与智慧的行进方向而已。</p>
+<p>所以阳明先生说：“致良知”，<br>良知不是智慧，<br>致良知更不是思想，<br>思想与智慧，<br>是指你不断地努力，<br>让自己达到致良知境界的思维过程。<br>换句话说，<br>你可以把致良知理解为这个思维过程（也即思想和智慧过程）的一个显性结果以及方向。</p>
+]]></content>
+      <categories>
+        <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>我是这样认识王阳明的</title>
+    <url>/2016/03/17/%E6%88%91%E6%98%AF%E8%BF%99%E6%A0%B7%E8%AE%A4%E8%AF%86%E7%8E%8B%E9%98%B3%E6%98%8E%E7%9A%84/</url>
+    <content><![CDATA[<p>大多数喜欢王阳明的朋友，总是标榜“知行合一”，“致良知”；<br>我的微信关注了一个也标榜自己喜欢阳明思想的朋友；<br>做什么事都和：“心性”、“致良知”这些字眼联系起来；</p>
+<p>细看了下，要么就是参加了一个活动，说今天主讲人讲的真好；<br>是：“知行合一”；是“致良知”云云。<br>要么就是参加了个管理培训班，<br>完后就说：稻盛和夫的管理哲学和致良知完美契合。<br>  以上是文章摘要 <a id="more"></a> 以下是余下全文<br>我也真是醉了，哲学本来就和生活息息相关；<br>经常和生活联系起来倒也合情合理。<br>但是拉个屎撒个尿都要和知行合一与致良知联系起来，<br>要么就是没有真正理解阳明先生的思想。<br>要么就是中了“教条主义”的毒。</p>
+<p>在下不才，从听说王阳明这个人到最后逐渐对其思想了解一些；<br>也将近有十年的时间了。<br>遥想当年哥在高中学的是小三门儿—音乐；<br>上过高中的都知道，这个专业考试要提前考。<br>05年春节去郑州进行专业考试；<br>有天晚上和同去的同学到外面逛街，<br>逛到地下通道，有个书摊大家便驻足观看；<br>我一眼就看到了周月亮写的那本《王阳明大传》；<br>盗版的。</p>
+<p>封皮上的两句话把我给震住了。<br>“雅可上九天揽月，俗可下五洋捉鳖”；<br>当时连王阳明是谁都不知道，<br>更不会懂什么知行合一和致良知了。<br>但就觉得这两句话真牛逼；<br>说到我心里去了。</p>
+<p>之后，王阳明这个名字算是记住了。<br>当时对于买不买还是有些踌躇；<br>这时有个同学一句话让我下了买的决心；<br>他说：“你遇见了就一定要买，即使贵一点儿，免得以后后悔。<br>（当时的二十块一本盗版，对我等把县城当大城市的高中生来说的确算贵得。）</p>
+<p>随后这本周月亮的《王阳明大传》，<br>跟随我转战南北，东奔西跑；<br>南到浙杭，北到首都；<br>中间阅览无数遍，<br>每次看都有新感悟；<br>透明胶和尼龙绳修补多次；<br>最终，在最近一次搬家中遗失掉了。</p>
+<p>随着这本书打开我对王阳明的一扇门；<br>随后又在网上下载了好多关于王阳明的书；<br>什么《明朝一哥王阳明》，《王阳明的哲学精神》<br>乃至《有无之境》；<br>一路看下来，最后必须要看《传习录》啊！<br>就买了本叶圣陶解读的《传习录》来看；<br>虽然大师解读，但在下古文修养不高；<br>看着也是半懂不懂。</p>
+<p>最后就逛贴吧，逛论坛；<br>偶尔在天涯上发现了“沙滩孤雁”的帖子；<br>看了一页之后，惊为天人；<br>然后就开始了对这本《开谈传习录》的反复阅读。<br>以上大概就是我对王阳明的认识过程。<br>也许文字枯燥，也许词不达意；<br>也许行文不畅；<br>但作为自己对一个伟人的从认识到熟悉的回顾；<br>我想还是足够了。</p>
+]]></content>
+      <categories>
+        <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
     <title>知行合一与坚持</title>
     <url>/2016/03/17/%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E4%B8%8E%E5%9D%9A%E6%8C%81/</url>
     <content><![CDATA[<p>你确定你真的在坚持？</p>
@@ -517,20 +537,40 @@
       </categories>
   </entry>
   <entry>
-    <title>王阳明之所以为王阳明</title>
-    <url>/2016/03/17/%E7%8E%8B%E9%98%B3%E6%98%8E%E4%B9%8B%E6%89%80%E4%BB%A5%E4%B8%BA%E7%8E%8B%E9%98%B3%E6%98%8E/</url>
-    <content><![CDATA[<p>上篇文说到，<br>圣人都是在百死千难中，<br>对自己的思维进行苦苦思索；<br>方才悟得圣人之道。<br>那我等芸芸众生欲窥得圣人一二门径，<br>应该如何做呢？</p>
-<p>一、让擅长成为精通<br>道理人人会讲，成者寥寥无几？<br>何也？<br>知其然，不知其所以然也！<br>首先要做的就是做回你自己，<br>所谓做回你自己，<br>意思就是想清楚你能干神马，<br>无论你想干神马，你喜欢干神马，<br>你首先要想清楚，你能干神马。<br>先从你最擅长的地方入手，<br>把你擅长的事情精通了。<br>以上是摘要<a id="more"></a><br>你如果喜欢喝酒，<br>那就成为品酒专家，<br>你如果喜欢旅游，<br>那就让你的水平，<br>可以去做旅游杂志主编，<br>如果你喜欢食物，<br>那就让自己可以做到像蔡澜那样，<br>可以以此出书做节目。</p>
-<p>二、找到适合你自己的路<br>都云小米成于饥饿营销，<br>但凡客陈年和雷军是好基友；<br>不可谓不倾囊相授，<br>不可谓不耳提面命；<br>现在也在亦庄苦苦学习小米的一套，<br>怎么不见泛起什么浪花呢？</p>
-<p>凡客自一万之众，<br>搬往亦庄后的三百余人，<br>也是痛下决心，<br>要从白衬衫单点突破；</p>
-<p>结果如何？<br>去年8月份江苏省质量技术监督局抽查中，<br>其99元衬衫六项参数不合格。<br>去年11月份国家质检总局抽检中，<br>又有<br>凡客在休闲服装、皮鞋、旅游鞋、背提包4种产品中被发现有不合格现象。<br>何也？立定脚跟做事，<br>也没咬紧牙关做人。</p>
-<p>三、掌握规律<br>每个人的人生是不同的，<br>每个人的人生路径是不同的，<br>因此每个人都会有一条最适合自己的路径；<br>所以，即使雷军操盘凡客，<br>照着小米的玩法全部来一遍，<br>也不见得会有起死回生之效。<br>但是事情成败有其自身规律，<br>这是毋庸置疑的。</p>
-<p>正如上篇所讲，<br>圣人自己成为了圣人，<br>他成圣的方法与路径，<br>是无法对你言说的，<br>即使他是圣人。</p>
-<p>因此，不要妄想有一套放之四海而皆准的方法，<br>可以使你一夜暴富，或者是一夜成名成圣。</p>
-<p>你必须在精通一件事情之后，<br>回过头去总结归纳规律性的东西，<br>使之成为自己的东西之后，<br>再将其应用到其他同类事情中，<br>才可以说你掌握了规律。</p>
-<p>这种规律性的知识累积到一定程度，<br>你才能在一件事情开头，<br>就能看到其发展的趋势，<br>你内心才会安定，<br>内心安定，你才能对局势更明晰。<br>才有利于你的杀伐决断。<br>此所谓：『定而后能静，静而后能安，安而后能虑』。<br>如果你因同事一句嘲讽的话，就怏怏不乐半天，<br>因老友一句玩笑式的调侃就郁闷半天，<br>如何能明晰局势，杀伐决断呢？</p>
-<p>阳明之所以为阳明，<br>除了天性聪慧，<br>勤于思索之外，<br>更在于其利用自身优势，<br>广泛出入佛老，溺于辞章之后，<br>有了对规律的全面认识，<br>方有龙场悟道之圆满。</p>
-<p>无论是现世的成功企业，<br>以及古往今来成功的个人，<br>都一定是把握了规律之后，<br>对规律的详加运用。<br>才成就一番功业。</p>
+    <title>我的英语学习小结</title>
+    <url>/2016/03/17/%E6%88%91%E7%9A%84%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93/</url>
+    <content><![CDATA[<p>之所以有这篇文章；<br>是因为最近正在学习ios开发，<br>需要看很多英语文档及英文网站 ；<br>并且成考那边也需要加强英语学习；<br>无论从开阔眼界或和人用英语聊天（装逼）而言；<br>都到了不得不学，逼上梁山的地步；</p>
+<p>学了这么多年英语，<br>才发现自己的两个问题 ；<br>也真是笨的可以；<br>第一原来在学校学习英语完全是为了应付考试；<br>根本没想到将来它会如何有用；</p>
+<p>第二是原来学校老师的水平确实有限；<br>最重要的是老师没教给我们正确的语音；<br>以上是摘要<a id="more"></a><br>我去年听赖世雄的英语教学录音；<br>才真正掌握了正确练习英语读音的方法；<br>印象最深刻的是关于：“good、book以及look”的读法；<br>问了身边几个英语还不错的人；<br>他们都读：“古德，不渴以及鲁克”；<br>可是正确的读音应该是：“格奥德，博哦可以及乐额科”；</p>
+<p>这才发现不但读音不对；<br>最重要的是发现自己断断续续学了这么多年英语；<br>竟然连正确的拼读方法都不会；<br>因为老师直接上去就教你念一个单词；<br>而不会一个一个去教你怎么拼读；<br>只要你最后读出来的效果听起来和老师差不多；<br>就觉得自己学得差不多了；<br>但是，你根本不知道它是怎么拼读出来的；</p>
+<p>就我个人目前的英语水平来说；<br>读一篇英语文章，障碍可能不大；<br>但听录音之后才发觉；<br>我靠，我每个单词都认识；<br>自己把一篇文章顺下来也没问题；<br>可就是录音一句都TMD听不懂；<br>就这样陆陆续续又看了些网上的文章；<br>渐渐有了些学英语的心得；<br>最后终于寻寻觅觅，积攒了一些小心得；<br>在此记录下来，以备后查；</p>
+<p>首先，时间是必须投入的资源；<br>少于一万小时是不靠谱的；<br>其次，必须掌握单词的拼写方法及句子的拼读方法，才算入门而已；<br>单独的单词你会读了，不一定能将句子读的连贯顺畅；<br>这两种读法是完全不同的；<br>最后，一定要坚持练习。</p>
+<p>在积攒这些心得过程中发现；<br>根本没有放之四海皆准的方法论；<br>无论谁以三寸不烂之舌，<br>说某个方法多么管用；<br>都完全是扯淡；<br>即便真的对他自己很有用；<br>但是如果每个人不是自己去摸索一套适合自己的方法；<br>其他人再经典的方法；<br>也基本无用；</p>
+<p>很简单的一个例子，雷军用：“专注、极致、口碑、快”七字诀打造出了小米；<br>你觉得还有谁可以在国内用这个方法复制一个小米吗?<br>所以说方法永远都是对别人有用的东西；<br>你真正要学的其实是别人思考的路径，<br>以及别人看事情的角度；<br>而不仅仅是人云亦云的方法论。<br>所以说所有将某个牛人的方法论拿来学习的人或者公司，基本结局都会很惨；</p>
+<p>硬功夫是省不得的；<br>所以必须用自己的时间，加上自己摸索出来的一套方法；<br>才可以让你离目标更近一些。</p>
+]]></content>
+      <categories>
+        <category>外语学习</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>知行合一与工夫</title>
+    <url>/2016/03/17/%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E4%B8%8E%E5%B7%A5%E5%A4%AB/</url>
+    <content><![CDATA[<p>一、写在前面<br>你真的自私？<br>这里‘自私’是指：<br>一件事，<br>不会对你有害，<br>只会对你有益。</p>
+<p>你一定有过这番经历，<br>跑步有益健康，嫌累懒得跑，<br>读书使人明智，枯燥懒得读，<br>学习使人进步，嫌烦懒得学，</p>
+<p>所有悔不当初的事，<br>都会让人变得更好。<br>如果你真的‘自私’，<br>为什么你不做呢？<br>原因就是你并非真的‘自私’。<br>以上是摘要<a id="more"></a><br>二、诚意为何物？<br>诚意就是真的下决心<br>也是心学的第一要义，<br>不是嘴上说说的那种下决心，<br>而是你铁定了就是要做成这件事，<br>在这件事做成之前半途而废或者打退堂鼓，<br>都是意不诚的表现，也就是决心不够。</p>
+<p>三、知行合一与工夫<br>工夫的难点是格物致知<br>读过《大学》的，对就是『四书』里面的那个《大学》，<br>应该都知道：意诚，心正，身修，家齐，国治，天下平；<br>少了两个词儿，这都被你看到了，<br>没错就是格物致知。<br>物格而后知至。<br>《大学》这一段提到的几个专有名词统称：“三纲八目”。<br>格物，致知，正心，修身，齐家，治国，平天下就是八目。</p>
+<p>你说我知道呀，早就背的滚瓜烂熟了，可是也没从里面学到什么啊！<br>没错，学习心学以前我也有你同样的困惑，<br>心里经常会念叨，我靠不是正心，修身，齐家，治国，平天下吗？<br>现在哪里还需要你去平天下啊？<br>再看看现在的自己，当个县长什么的估计也没盼头；<br>还谈什么平天下？<br>所有考试不及格的学生大概都曲解了考题本身的意思，<br>我这么说大概没人反对吧？</p>
+<p>我先说说我以前是怎么理解《大学》里面这几句话的？<br>格物不就是掌握世上每件事情的规律吗？<br>致知不就是知道真理吗？<br>别笑，我以前就是这么理解的，<br>那么正心，修身不就是道德品质好，身体健康，做社会主义四有新人吗？<br>如果你也有和此相似的理解，我会说错错错，大错特错。</p>
+<p>1、格物<br>这里格物两字要分开讲，掰开了揉碎了讲，<br>“格”字在阳明理解就是正，<br>正的是什么？正的就是物；<br>物是什么呢？<br>‘物’既不是大家理解的物质，也不是事情的意思，<br>意之所在便是物，<br>那意又是什么呢？<br>心之所发便是意。<br>还有好奇的同学问？<br>心又是什么呢？<br>身之主宰便是心，这里的心绝对不是那团血肉，<br>而是天理之心，良知之心。</p>
+<p>格物的意思就是是纠正在你心上的事情，<br>使其符合良知之心，符合天理。<br>也就是不在你心上的事情，你是无法去格的，<br>此即谓：“心外无物”。</p>
+<p>你若问我天理是什么？<br>详细解释一篇论文的篇幅不够，<br>这里简单说下所谓天理，它已经存在于你的内心，<br>只不过被私欲所遮蔽，你去去一分私欲，便存一分天理。<br>好了现在意也诚了，物也格了，下面就该致知了，<br>大白话意思就是决心已下，在心上的事情也纠正的符合天理了。<br>这其实就是致知了。</p>
+<p>简单总结下：<br>要做到知行合一需要先做工夫（工夫包含很多，此篇只讲格物致知）<br>工夫的难点是格物致知，<br>诚意是格物致知的前提，格物致知是诚意的工夫；<br>诚意是格物致知的阶段性目的，格物致知是八目的起点。<br>而意越诚，也就是决心越大，则格物致知成效也就越大。<br>所以阳明才说，格物致知实际就是诚意的事情。<br>两者是相互促进的，格物致知增加决心，决心越大，格物致知成效也愈大，形成良性循环，但是切记要循序渐进。<br>格物告一段落，妈呀，解释清楚这俩字真的好难，喝口水，继续。</p>
+<p>2、致知<br>致知就是致良知，<br>说白了良知和天理是一个东西，都是不需学而可得。<br>这里良知和天理千万不要理解成道德层面的东西。<br>在心中的良知没有任何阻碍得以自然流行的时候，就是‘致知’。<br>只不过多数人良知被私欲遮蔽，因此需要致良知。</p>
+<p>你可能会好奇格物和致知的关系，<br>我也很好奇，一起来探索下吧。<br>我们格的是什么？<br>是物啊？<br>物是什么呢？<br>意之所在便是物啊？<br>那么好！意又是什么呢？<br>意的本体是知啊！<br>意的本体就是良知啊。<br>明白了吗？<br>我格的那个物是意之所在的物，它的本质是良知。<br>我格物的过程就是致良知的过程啊。<br>所以说格物致知本就是一件事情。<br>格物是致知的过程，致知是格物的最终目的。</p>
+<p>文行至此你会说，<br>上面就看格物致知了，<br>与“知行合一”有什么关系？<br>问得好，破天荒我引用一段原文：<br>知者，良知也，天然自有，即至善也。<br>物者，良知所知之事也。<br>格者，格其不正以归于正也。<br>格之斯实致之矣。<br>–《遗言录-明-王守仁》<br>引用完美解答了知行合一与格物致知的关系，<br>《知行合一与至善》一文提到，知行合一的最终目的就是“至善”。<br>而至善即是良知，致知即是致至善，<br>也就是知行合一的最终目的。<br>换句话说格物和知行合一的最终目的都是致良知，也都是至善，<br>因为良知和至善本来就是一回事的两种说法。<br>你问我知行合一和格物什么关系呀？且听下回分解。</p>
+<p>本期推荐电影：<br>一、《天堂的孩子》<br>推荐语：一对兄妹和一双鞋子的故事，很温暖。<br>二、《欺诈计划》<br>推荐语：这是部不露肉的伦理片，家庭靠感情还是靠血缘维系？<br>三《双旗镇刀客》<br>推荐语：喜欢武侠的这部绝对看了不下十遍吧，不解释。</p>
+<p>本期推荐书籍：<br>一、《岩中花树》作者：赵柏田<br>推荐语：以第一人称写王阳明的一生。<br>二、《华尔街日报是如何讲故事的》作者：威廉 布隆代尔<br>推荐语：对文案情有独钟的同学一定要精读。<br>三、《宫女谈往录》金易 沈义玲<br>推荐语：慈禧的起居与宫闱里的往事，细节独到，是谁道人生无常？</p>
 ]]></content>
       <categories>
         <category>阳明心学</category>
@@ -568,29 +608,6 @@
       </categories>
   </entry>
   <entry>
-    <title>知行合一与工夫</title>
-    <url>/2016/03/17/%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E4%B8%8E%E5%B7%A5%E5%A4%AB/</url>
-    <content><![CDATA[<p>一、写在前面<br>你真的自私？<br>这里‘自私’是指：<br>一件事，<br>不会对你有害，<br>只会对你有益。</p>
-<p>你一定有过这番经历，<br>跑步有益健康，嫌累懒得跑，<br>读书使人明智，枯燥懒得读，<br>学习使人进步，嫌烦懒得学，</p>
-<p>所有悔不当初的事，<br>都会让人变得更好。<br>如果你真的‘自私’，<br>为什么你不做呢？<br>原因就是你并非真的‘自私’。<br>以上是摘要<a id="more"></a><br>二、诚意为何物？<br>诚意就是真的下决心<br>也是心学的第一要义，<br>不是嘴上说说的那种下决心，<br>而是你铁定了就是要做成这件事，<br>在这件事做成之前半途而废或者打退堂鼓，<br>都是意不诚的表现，也就是决心不够。</p>
-<p>三、知行合一与工夫<br>工夫的难点是格物致知<br>读过《大学》的，对就是『四书』里面的那个《大学》，<br>应该都知道：意诚，心正，身修，家齐，国治，天下平；<br>少了两个词儿，这都被你看到了，<br>没错就是格物致知。<br>物格而后知至。<br>《大学》这一段提到的几个专有名词统称：“三纲八目”。<br>格物，致知，正心，修身，齐家，治国，平天下就是八目。</p>
-<p>你说我知道呀，早就背的滚瓜烂熟了，可是也没从里面学到什么啊！<br>没错，学习心学以前我也有你同样的困惑，<br>心里经常会念叨，我靠不是正心，修身，齐家，治国，平天下吗？<br>现在哪里还需要你去平天下啊？<br>再看看现在的自己，当个县长什么的估计也没盼头；<br>还谈什么平天下？<br>所有考试不及格的学生大概都曲解了考题本身的意思，<br>我这么说大概没人反对吧？</p>
-<p>我先说说我以前是怎么理解《大学》里面这几句话的？<br>格物不就是掌握世上每件事情的规律吗？<br>致知不就是知道真理吗？<br>别笑，我以前就是这么理解的，<br>那么正心，修身不就是道德品质好，身体健康，做社会主义四有新人吗？<br>如果你也有和此相似的理解，我会说错错错，大错特错。</p>
-<p>1、格物<br>这里格物两字要分开讲，掰开了揉碎了讲，<br>“格”字在阳明理解就是正，<br>正的是什么？正的就是物；<br>物是什么呢？<br>‘物’既不是大家理解的物质，也不是事情的意思，<br>意之所在便是物，<br>那意又是什么呢？<br>心之所发便是意。<br>还有好奇的同学问？<br>心又是什么呢？<br>身之主宰便是心，这里的心绝对不是那团血肉，<br>而是天理之心，良知之心。</p>
-<p>格物的意思就是是纠正在你心上的事情，<br>使其符合良知之心，符合天理。<br>也就是不在你心上的事情，你是无法去格的，<br>此即谓：“心外无物”。</p>
-<p>你若问我天理是什么？<br>详细解释一篇论文的篇幅不够，<br>这里简单说下所谓天理，它已经存在于你的内心，<br>只不过被私欲所遮蔽，你去去一分私欲，便存一分天理。<br>好了现在意也诚了，物也格了，下面就该致知了，<br>大白话意思就是决心已下，在心上的事情也纠正的符合天理了。<br>这其实就是致知了。</p>
-<p>简单总结下：<br>要做到知行合一需要先做工夫（工夫包含很多，此篇只讲格物致知）<br>工夫的难点是格物致知，<br>诚意是格物致知的前提，格物致知是诚意的工夫；<br>诚意是格物致知的阶段性目的，格物致知是八目的起点。<br>而意越诚，也就是决心越大，则格物致知成效也就越大。<br>所以阳明才说，格物致知实际就是诚意的事情。<br>两者是相互促进的，格物致知增加决心，决心越大，格物致知成效也愈大，形成良性循环，但是切记要循序渐进。<br>格物告一段落，妈呀，解释清楚这俩字真的好难，喝口水，继续。</p>
-<p>2、致知<br>致知就是致良知，<br>说白了良知和天理是一个东西，都是不需学而可得。<br>这里良知和天理千万不要理解成道德层面的东西。<br>在心中的良知没有任何阻碍得以自然流行的时候，就是‘致知’。<br>只不过多数人良知被私欲遮蔽，因此需要致良知。</p>
-<p>你可能会好奇格物和致知的关系，<br>我也很好奇，一起来探索下吧。<br>我们格的是什么？<br>是物啊？<br>物是什么呢？<br>意之所在便是物啊？<br>那么好！意又是什么呢？<br>意的本体是知啊！<br>意的本体就是良知啊。<br>明白了吗？<br>我格的那个物是意之所在的物，它的本质是良知。<br>我格物的过程就是致良知的过程啊。<br>所以说格物致知本就是一件事情。<br>格物是致知的过程，致知是格物的最终目的。</p>
-<p>文行至此你会说，<br>上面就看格物致知了，<br>与“知行合一”有什么关系？<br>问得好，破天荒我引用一段原文：<br>知者，良知也，天然自有，即至善也。<br>物者，良知所知之事也。<br>格者，格其不正以归于正也。<br>格之斯实致之矣。<br>–《遗言录-明-王守仁》<br>引用完美解答了知行合一与格物致知的关系，<br>《知行合一与至善》一文提到，知行合一的最终目的就是“至善”。<br>而至善即是良知，致知即是致至善，<br>也就是知行合一的最终目的。<br>换句话说格物和知行合一的最终目的都是致良知，也都是至善，<br>因为良知和至善本来就是一回事的两种说法。<br>你问我知行合一和格物什么关系呀？且听下回分解。</p>
-<p>本期推荐电影：<br>一、《天堂的孩子》<br>推荐语：一对兄妹和一双鞋子的故事，很温暖。<br>二、《欺诈计划》<br>推荐语：这是部不露肉的伦理片，家庭靠感情还是靠血缘维系？<br>三《双旗镇刀客》<br>推荐语：喜欢武侠的这部绝对看了不下十遍吧，不解释。</p>
-<p>本期推荐书籍：<br>一、《岩中花树》作者：赵柏田<br>推荐语：以第一人称写王阳明的一生。<br>二、《华尔街日报是如何讲故事的》作者：威廉 布隆代尔<br>推荐语：对文案情有独钟的同学一定要精读。<br>三、《宫女谈往录》金易 沈义玲<br>推荐语：慈禧的起居与宫闱里的往事，细节独到，是谁道人生无常？</p>
-]]></content>
-      <categories>
-        <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
     <title>知行合一与至善</title>
     <url>/2016/03/17/%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E4%B8%8E%E8%87%B3%E5%96%84/</url>
     <content><![CDATA[<p>一、前面的话</p>
@@ -621,93 +638,23 @@
       </categories>
   </entry>
   <entry>
-    <title>诚意与格物</title>
-    <url>/2016/03/17/%E8%AF%9A%E6%84%8F%E4%B8%8E%E6%A0%BC%E7%89%A9/</url>
-    <content><![CDATA[<p>一、前面的话</p>
-<p>阳明心学的概念和结构跟《大学》关系密切，<br>诚意作为三纲八目的起点，至关重要，<br>格物又是致良知和诚意的核心工夫，<br>因此，很有必要单独聊聊诚意和格物。</p>
-<p>二、诚意<br>诚意就是下决心，真的下决心<br>但不是下一次就可以，<br>因为决心需要格物和知行合一的支撑。<br>前文有述及，<br>决心与格物和知行合一是一个循序渐进，<br>相互促进的过程。<br>以上是摘要<a id="more"></a><br>多说无用，举例说明。<br>假如你要学习IOS编程，<br>从对IOS编程一无所知，<br>到完成自己的app，<br>对你来说肯定是一件很苦逼的事，<br>你觉得这时候决心对你有用吗 ？<br>答案是屁用没有，</p>
-<p>没错，决心对这时候的你来说，<br>绝对屁用没有，<br>那你就问了，<br>我靠，屁用没有，<br>那我学诚意有毛用，<br>别急，诚意不是一个孤立的单品，<br>是一个需要配合格物和知行合一一起使用的产品。<br>正如电和灯泡的关系，<br>有了电，屁用没有，<br>每天晚上还是无尽的黑暗，<br>但是伟大的爱迪生发明了灯泡，<br>我们夜晚的世界就变成了五彩缤纷的天堂。</p>
-<p>所以说下了学习编程的决心，<br>立马就要去格学习IOS编程这件事。<br>这就是诚意的作用，<br>诚意是电，有了它格物和知行合一这两个灯泡，<br>才能照亮你人生之夜的天空。</p>
-<p>二、格物<br>格物是诚意的手段，<br>诚意是格物的目的。<br>现在下了学习IOS编程的决心了，<br>那要怎么学呢？</p>
-<p>接着诚意的例子讲，<br>格学习编程这件事，<br>首先，你得知道IOS编程分几部分吧，<br>开始先得学C和OC的语法，<br>其次要学UI，要学数据库，网络和多线程等。</p>
-<p>刚开始肯定是茫无头绪的，<br>但是有勿忘勿助啊，<br>不要急着去精通，<br>但是也不要一曝十寒，<br>也就是既不要急吼吼的，<br>也不要三天打鱼两天晒网。<br>当你从一无所知，<br>学会了C里面的运算符，数据类型，循环体和选择语法，<br>这时候诚意就有作用了，<br>你的决心肯定加大了。<br>学了C,OC就很容易了，</p>
-<p>接下来该学习UI了，<br>当你学完UI，<br>并且第一次自己写出了一个简单的加法计算器或者QQ登录界面，<br>这时候的成就感肯定是你无法想象的。<br>那这时候的决心简直不要不要的了。</p>
-<p>就这样一步步前进，<br>每学完一个部分，<br>决心会随之增加，<br>最后当你做出自己的一个app，<br>并且在APPStore上架，<br>这就是一个完整的格物和知行合一的过程，<br>也是一个完整的诚意过程。</p>
-<p>在《知行合一与格物》里讲过，<br>格物偏向思考层面，<br>知行合一偏向行动层面，<br>因此学编程这件事里，<br>格物是让你弄清楚学习编程的整个路线图，<br>而知行合一确保你能自己亲自动手去练习写代码，<br>而不只是听视频里的课程，却并不动手。<br>诚意则是让你能够坚持学下去。</p>
-<p>三、诚意与格物的抽象表述</p>
-<p>当你第一次下决心后，<br>如果真正去格物和知行合一了，<br>这样便会增加你的决心，<br>又促成了你再次的格物和知行合一，<br>这样又使你的决心更进一步，<br>从而形成良性循环，<br>直到最后要格的物符合了天理。<br>从而完成一个完整的格物致知的过程。</p>
-<p>本期推荐电影电视剧：<br>一、《趟过女人河的男人》<br>推荐语：演员是一份工作，明星是一个标签，厌烦了如今电视剧中明星狗血表演的你，来重温下演员们的表演吧。<br>二、《低俗小说》<br>推荐语：<br>逼片届的一座高峰，要不就永远不要看，看了就得夸它赞，否则会被凶猛的影迷怒吼“LZ大傻逼，看你的《无极》去吧！”<br>三、《大卫戈尔的一生》<br>推荐语：你确定你有信仰，确定是吧？那就看看戈尔们是怎样维护自己的信仰的？<br>本期推荐书籍：<br>一、《读书毁了我》作者：王强<br>推荐语：读书是一件很花费时间的事情，既成就人，也毁人的时间，看看书是怎么毁去新东方三驾马车之一的王强的时间的吧。<br>二、《尼采：在世纪的转折点上》作者：周国平<br>推荐语：虽然我恨他现在大量生产鸡汤，但是这人早期的这本书写的还是很有见地的。<br>三、《旁观者》作者：德鲁克<br>推荐语：作者本人的回忆录，但是故事讲得很好，每个故事都有些独特的人在演绎，如果你也喜欢听真实的故事，不妨一阅。</p>
+    <title>王阳明之所以为王阳明</title>
+    <url>/2016/03/17/%E7%8E%8B%E9%98%B3%E6%98%8E%E4%B9%8B%E6%89%80%E4%BB%A5%E4%B8%BA%E7%8E%8B%E9%98%B3%E6%98%8E/</url>
+    <content><![CDATA[<p>上篇文说到，<br>圣人都是在百死千难中，<br>对自己的思维进行苦苦思索；<br>方才悟得圣人之道。<br>那我等芸芸众生欲窥得圣人一二门径，<br>应该如何做呢？</p>
+<p>一、让擅长成为精通<br>道理人人会讲，成者寥寥无几？<br>何也？<br>知其然，不知其所以然也！<br>首先要做的就是做回你自己，<br>所谓做回你自己，<br>意思就是想清楚你能干神马，<br>无论你想干神马，你喜欢干神马，<br>你首先要想清楚，你能干神马。<br>先从你最擅长的地方入手，<br>把你擅长的事情精通了。<br>以上是摘要<a id="more"></a><br>你如果喜欢喝酒，<br>那就成为品酒专家，<br>你如果喜欢旅游，<br>那就让你的水平，<br>可以去做旅游杂志主编，<br>如果你喜欢食物，<br>那就让自己可以做到像蔡澜那样，<br>可以以此出书做节目。</p>
+<p>二、找到适合你自己的路<br>都云小米成于饥饿营销，<br>但凡客陈年和雷军是好基友；<br>不可谓不倾囊相授，<br>不可谓不耳提面命；<br>现在也在亦庄苦苦学习小米的一套，<br>怎么不见泛起什么浪花呢？</p>
+<p>凡客自一万之众，<br>搬往亦庄后的三百余人，<br>也是痛下决心，<br>要从白衬衫单点突破；</p>
+<p>结果如何？<br>去年8月份江苏省质量技术监督局抽查中，<br>其99元衬衫六项参数不合格。<br>去年11月份国家质检总局抽检中，<br>又有<br>凡客在休闲服装、皮鞋、旅游鞋、背提包4种产品中被发现有不合格现象。<br>何也？立定脚跟做事，<br>也没咬紧牙关做人。</p>
+<p>三、掌握规律<br>每个人的人生是不同的，<br>每个人的人生路径是不同的，<br>因此每个人都会有一条最适合自己的路径；<br>所以，即使雷军操盘凡客，<br>照着小米的玩法全部来一遍，<br>也不见得会有起死回生之效。<br>但是事情成败有其自身规律，<br>这是毋庸置疑的。</p>
+<p>正如上篇所讲，<br>圣人自己成为了圣人，<br>他成圣的方法与路径，<br>是无法对你言说的，<br>即使他是圣人。</p>
+<p>因此，不要妄想有一套放之四海而皆准的方法，<br>可以使你一夜暴富，或者是一夜成名成圣。</p>
+<p>你必须在精通一件事情之后，<br>回过头去总结归纳规律性的东西，<br>使之成为自己的东西之后，<br>再将其应用到其他同类事情中，<br>才可以说你掌握了规律。</p>
+<p>这种规律性的知识累积到一定程度，<br>你才能在一件事情开头，<br>就能看到其发展的趋势，<br>你内心才会安定，<br>内心安定，你才能对局势更明晰。<br>才有利于你的杀伐决断。<br>此所谓：『定而后能静，静而后能安，安而后能虑』。<br>如果你因同事一句嘲讽的话，就怏怏不乐半天，<br>因老友一句玩笑式的调侃就郁闷半天，<br>如何能明晰局势，杀伐决断呢？</p>
+<p>阳明之所以为阳明，<br>除了天性聪慧，<br>勤于思索之外，<br>更在于其利用自身优势，<br>广泛出入佛老，溺于辞章之后，<br>有了对规律的全面认识，<br>方有龙场悟道之圆满。</p>
+<p>无论是现世的成功企业，<br>以及古往今来成功的个人，<br>都一定是把握了规律之后，<br>对规律的详加运用。<br>才成就一番功业。</p>
 ]]></content>
       <categories>
         <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>编程学习心得</title>
-    <url>/2016/03/17/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/</url>
-    <content><![CDATA[<p>似乎每个人对一件从未接触过的事物着迷时；<br>都恨不得一下子就对其融会贯通；<br>这种急切心理，极有可能导致稍遇挫折，便丧失兴趣。</p>
-<p>比如我对编程的学习；<br>在刚开始时的确一腔热情；<br>但是稍微接触到不容易理解的地方；<br>就会不由自主地怀疑自己！<br>自己真的适合学编程吗?<br>我怎么这么笨？<br>我这个年龄学编程还成吗？</p>
-<p>其实，这都是由于刚开始热情太盛；<br>努力一段时间后，<br>得不到自己期望的效果，<br>便兴趣缺缺了。<br>以上是摘要<a id="more"></a><br>学习始终遵循循序渐进的原则；<br>而不是像玩游戏一样，<br>能得到及时的满足和成就感。<br>所以很多颇有成就的人，<br>都是最善于推迟自己满足感的人。</p>
-<p>其实我最该问的问题不应该是以上那些；<br>而只应该问一个问题？<br>我怎么才能学好编程?<br>那些已经有了些许成就的程序员，<br>是如何取得今天的成就的？</p>
-<p>在学习中还发现一个问题；<br>就是学习一个知识点，<br>一定不要紧追着一个人的讲解不放；<br>同是一个知识点，<br>这个人讲解的既轻松又清晰，<br>而你紧抱着不放的那个则是既繁琐又模糊。</p>
-<p>所以在学习中必须灵活，<br>灵活不是投机取巧；<br>而是在网络信息如此发达的今日；<br>不应该紧抱着某一个信息源不放；<br>某个信息源的讲解听不明白，<br>则必须及时寻找能让你更容易明白的信息源；<br>相信我，一定可以找得到。</p>
-<p>比如在学习oc的三大特性封装、继承与多态时；<br>我花钱买的课程讲解时既模糊又乏味；<br>这时我就对自己产生怀疑了；<br>难道我真的笨蛋如此；<br>可是后来偶然间看到一篇博客；<br>瞬间让我豁然开朗。<br>就是那种梦里千百度，蓦然回首处的感觉。</p>
-<p>总之学习一定不是揪着某个问题不放；<br>当然不是真的放下不管；<br>而是先放到潜意识里；<br>往往会出现这种情况；</p>
-<p>某日你对A问题产生疑惑；<br>又一日，你对B问题更是纠结不已；<br>但是，还一日，你去查找C问题的答案，<br>发现竟然找到了A的答案。<br>这往往是持续学习中，<br>最令人痛快之时。</p>
-]]></content>
-      <categories>
-        <category>IOS</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>苏阿芒—自学外语怎能不知道他</title>
-    <url>/2016/03/17/%E8%8B%8F%E9%98%BF%E8%8A%92%E2%80%94%E8%87%AA%E5%AD%A6%E5%A4%96%E8%AF%AD%E6%80%8E%E8%83%BD%E4%B8%8D%E7%9F%A5%E9%81%93%E4%BB%96/</url>
-    <content><![CDATA[<p>原籍安徽省太平县（今黄山区）广阳乡（今属安徽石台）人，本名苏承宗，因发表作品多以苏阿芒为名，故以苏阿芒一名蜚声海内外。<br>中学毕业后曾任天津机床厂夜校英文教师，1957年加入世界语协会，历任国际世界语博物馆馆员，<br>国际世界语《世界文学》特约撰稿人，国际世界读者青年联合会中央委员，“文革”中1968年蒙冤入狱，1979年平反后任百花出版社编辑。<br>1951年开始发表作品。1979年加入中国作家协会。<br>以上借用一段百科文字，<br>我知道苏阿芒其人其事，<br>是在父亲书箱里翻到的一本叫做《成才之路》的书上。<br>以上是摘要<a id="more"></a><br>当时看到就热血沸腾，<br>最近在学习日语和英语，<br>又想起这个名字。<br>由苏阿芒的故事，<br>我觉得无论学习外语还是学习其他东西，<br>就是不疯魔不成活。<br>想想你我诸位，<br>谁在地铁或者在商务活动中，<br>没有遇到过这样的场景：<br>你原本很以为难的一门外语，<br>在地铁中你身旁的一位美女或者老兄，<br>正在和外国人侃侃而谈，<br>不时发出爽朗的笑声。<br>又或者在商务活动中，<br>你的同事与谈判对手，<br>正在用一门你觉得很难的外语，<br>唇枪舌剑，你来我往。<br>当时你除了发蒙，<br>第二个感觉就是，<br>真TMD的太牛逼了。<br>我要是外语也这么牛逼，<br>那该多好啊！<br>可你就是无法做到……<br>这么牛逼！<br>是的你无法做到。</p>
-<p>因为等你下了地铁或者在结束那次谈判后，<br>你就又想着今天回去吃什么，<br>或者想着购物车里那件好看的鞋子或者衣服，<br>是不是又降价了。<br>事实就是如此，<br>我从遇到这种情况之后，<br>发奋学英语，<br>到如今也已有五六年时间，<br>到如今英语的水平，<br>也只能令自己呵呵了。<br>自己看了下掌握多门外语的牛逼人物，<br>远者如辜鸿铭，近者如苏阿芒。<br>他们有神马了不得方法吗？<br>还是天赋异禀。<br>非也！<br>唯苦练勤学尔。<br>我自己的猜测啊！<br>学第一门外语的难度，<br>和第二门第三门外语的难度肯定成几何级降低的。<br>因为你在学第一门外语的时候，<br>已经有了一套成熟的方法论；<br>区别只是在学其他外语的时候，<br>对方法论体系中的某个细节进行改动，<br>并且随着学的外语门数增多；<br>这个方法论的体系一定会不断完善，不断得到补充；<br>那么等到你学第二十门的时候，<br>肯定已经是手到擒来，如探囊取物般容易了。<br>所以根结在神马地方，<br>第一个是恒心，第二个是勤奋；<br>第三是保证你自己必须先学会一门外语。<br>如果你想学更多门外语，肯定会越来越容易的。<br>因此，无论你学英语还是韩语，无论意大利语还是西班牙语。<br>如果你真的想学多门外语，保证你先精通一门外语。<br>其他外语定然是可以得其门而入的。<br>那么你一定要知道苏阿芒的故事，<br>也就是题中应有之意了。</p>
-]]></content>
-      <categories>
-        <category>外语学习</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>读《中国文脉》</title>
-    <url>/2016/03/17/%E8%AF%BB%E3%80%8A%E4%B8%AD%E5%9B%BD%E6%96%87%E8%84%89%E3%80%8B/</url>
-    <content><![CDATA[<p>一、前面的话：关于官员与辅导员</p>
-<p>最近看到余秋雨《中国文脉》中关于佛教魅力的阐释，感觉深得我心，记录在此备用。<br>以前陈丹青评价余秋雨与于丹一个是无耻官员，一个是能说会道的辅导员。<br>在我看，恰恰是反过来的，那只是表象。<br>无耻官员，是他安身立命的根本，是楔入社会的门径。<br>正如于丹是以能说会道的辅导员楔入社会一样。<br>其实都是他们楔入社会的门径而已。</p>
-<p>因此，你说我是一个无耻官员，其实我是一个真正的辅导员，<br>我看过余的《文化苦旅》，虽然他因有官方身份才得了这份差事，<br>但文笔确实酣畅，洋洋洒洒，将整个文化脉络阐述的清晰且直接。<br>无论你说他是无耻官员也好，官僚也好，但我却是从他的书中汲取很多营养。<br>给他点赞。<br>以上是摘要<a id="more"></a><br>至于于丹，我觉得她才是披着辅导员外衣的不是官员的无耻官员，<br>从《百家讲坛》出名以来，你看他说的那些话，写的那些书，<br>整个一山寨鸡汤生产集团。<br>这样的人作为辅导员，整天把为人师表挂在嘴上，<br>我得说，于阿姨，你不误人子弟就不错了，<br>这辈子，就别梦想为人师表了。</p>
-<p>二、佛教魅力</p>
-<p>闲话略多，说下佛教的四大魅力；</p>
-<p>一、定位准<br>怎么准法，无论皇亲贵胄，还是贩夫走卒，<br>都逃不开的坎儿，生、老、病、死。<br>这是产生吸引力的根源。</p>
-<p>二、立论清<br>佛说人生就是苦，苦的原因是三毒：“贪、嗔、痴”，<br>好了，现在告诉你人生的本质了，也告诉你产生苦的原因了，<br>那我还告诉你我有方法破，你想不想知道，<br>有这等好事，傻子才不想知道，<br>小孩学费一年比一年高，<br>这个月房贷又该还了，<br>想想都烦死了，<br>有这等好法子，傻子才不想知道。</p>
-<p>接下来该放大招了，先分下类吧，<br>苦又分为：“求不得，爱别离，怨憎会”；</p>
-<p>好了，那具体方法是什么，别急！<br>你还得先知道，你是怎样与外界发生联系的，<br>那就是五蕴：“色、受、想、行、识”，</p>
-<p>好了基本知识都掌握了，<br>现在该放出方法了，<br>既然我们知道，三毒是人生苦的根源，<br>我们通过五蕴与外界发生联系，使我们不能摆脱三毒，<br>那么我们就要从入口处五蕴开始，<br>那就是用六波罗蜜多：布施，持戒，忍辱，精进，禅定，般若，<br>不断的修炼，才能达到彼岸，摆脱一切苦。</p>
-<p>光修炼不知道目的还不行啊，<br>你说我的目的就是摆脱一切苦啊，<br>这没错，但这是最终目的，<br>在最终目的之前修炼六波罗蜜多的目的还有一个，<br>那就是三法印：诸行无常，诸法无我，寂静涅槃，<br>你只有先达到这个目的，才可以最重摆脱一切苦，达到寂静涅槃的境界。</p>
-<p>路线是这样的：<br>人生皆苦，生老病死；<br>上至天子，下至庶民；<br>需要修炼，我有方法<br>波罗蜜多，先修法印，<br>苦集灭道，寂静涅槃。<br>大道一成，淡看人生。<br>佛教第二魅力，更加吸引人了。</p>
-<p>三、规则好<br>哪般好法？请看！<br>你我眼前有一座宅院，<br>回廊曲水，亭台楼阁，<br>里面有华美夫人，可口点心，<br>称心机灵的仆随，你可看到？<br>你擦擦已睁大的眼，用力看，什么都没有。<br>你说我靠一块墙砖都没看到啊！</p>
-<p>别急，入了佛门你就看到了，<br>没错，宅院首先要有墙，才是宅院的明证，<br>佛教这座宅院的墙，就是戒律，<br>有了墙，才让人觉得可信。</p>
-<p>你和朋友爬野山，<br>为什么要爬野山啊，<br>别问我，我也不知道是你朋友脑子进水，还是你诗兴大发；<br>反正你和你朋友现在正在野山下唉声叹气，<br>叹：乍看眼前千条路，再看眼前无一路，<br>正自踌躇间，忽见一农夫沿一小径攀援而下，<br>上前询问农夫告曰：下面不算什么，上面更险，但沿此路，必能登顶。<br>你和朋友当然豪气干云，心说，不险还不值得我一爬呢。</p>
-<p>你猜对了，这也是佛教的戒律，<br>告诉你佛教这座山，是有路的，<br>但这条路阶多势陡，极难攀登，但你肯攀一定能成佛。<br>有了路，才让人觉得可行。</p>
-<p>四、组织好</p>
-<p>佛教的弘法团队，统一服饰，统一言行，统一作息。<br>这要是军队，你说战斗力强不强。<br>而且团队内部又有一系列和谐原则，使组织内部内耗最小。</p>
-<p>这就是佛教的四大魅力了，看了之后，你想不想成佛呢？</p>
-]]></content>
-      <categories>
-        <category>读完就谈</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>读《一个人的村庄》</title>
-    <url>/2016/03/17/%E8%AF%BB%E3%80%8A%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E6%9D%91%E5%BA%84%E3%80%8B/</url>
-    <content><![CDATA[<p>一、书和作者<br>《一个人的村庄》作者：刘亮程<br>刘亮程，作家，1962年出生在新疆古尔班通古特沙漠边缘的一个小村庄。<br>著有诗集《晒晒黄沙梁的太阳》，<br>散文集《虚土》《一个人的村庄》《在新疆》等。<br>被誉为“20世纪中国最后一位散文家”和“乡村哲学家”。</p>
-<p>二、我的家乡<br>读到这本书中的文字，<br>情不自禁想到我的家乡，<br>和儿时在家乡的我，<br>那时每到夏天，<br>暑假可以去河里摸鱼抓虾，<br>一顿美美的野餐是少不了的，<br>晚饭后可以去树林摸蝉换钱，<br>第二天的冰棍就有了保证，<br>傍晚可以去家附近的池塘洗个痛快的凉水澡，<br>一下子从一个小泥人儿，变成了一个滑皮溜。<br>以上是摘要<a id="more"></a><br>那时每到麦收，<br>镰刀总会割到手，<br>但简单止血后，不用包扎还可以愉快的割麦子，<br>买不起口香糖，<br>麦子去皮后直接放到口中咀嚼，<br>瞬间唇齿留香，麦香四溢，<br>比口香糖还有嚼头，<br>麦秸垛落成后，<br>那里是每个孩子的天堂。</p>
-<p>那时每到瓜熟季节<br>各种瓜果是当饭吃的，<br>西红柿是在衣服上抹一下就吃的，<br>西瓜汁是被当作最佳冷饮的。</p>
-<p>可是我有时会孤独，<br>为了不被理解的忧伤，<br>为了小小的愿望被流放，<br>为了不知何时走出这片累弯腰的黄土。<br>我有时会绝望，<br>为了好像永远割不完的麦行，<br>为了不知道自己的未来会怎样，<br>为了不知道如何改变现在的孤独和绝望。</p>
-<p>后来我终于远离那片黄土，<br>再也没有割不完的麦行，<br>再也没有不被理解的忧伤，<br>再也没有被流放的小愿望，<br>可是儿时家乡的那种快乐，<br>不知何时远离了我的心房。</p>
-<p>三、故乡情结<br>每个人都有故乡情结，<br>或许是儿时与玩伴的戏耍，<br>或者是捉拿河里鱼虾，<br>甚至是故乡的一片树林、土岗，<br>午夜梦回哭湿了枕套，<br>你可回到了哪个儿时的故乡，<br>你的故乡情结是什么呢？</p>
-]]></content>
-      <categories>
-        <category>读完就谈</category>
       </categories>
   </entry>
   <entry>
@@ -749,6 +696,106 @@
 ]]></content>
       <categories>
         <category>思维提升</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>诚意与格物</title>
+    <url>/2016/03/17/%E8%AF%9A%E6%84%8F%E4%B8%8E%E6%A0%BC%E7%89%A9/</url>
+    <content><![CDATA[<p>一、前面的话</p>
+<p>阳明心学的概念和结构跟《大学》关系密切，<br>诚意作为三纲八目的起点，至关重要，<br>格物又是致良知和诚意的核心工夫，<br>因此，很有必要单独聊聊诚意和格物。</p>
+<p>二、诚意<br>诚意就是下决心，真的下决心<br>但不是下一次就可以，<br>因为决心需要格物和知行合一的支撑。<br>前文有述及，<br>决心与格物和知行合一是一个循序渐进，<br>相互促进的过程。<br>以上是摘要<a id="more"></a><br>多说无用，举例说明。<br>假如你要学习IOS编程，<br>从对IOS编程一无所知，<br>到完成自己的app，<br>对你来说肯定是一件很苦逼的事，<br>你觉得这时候决心对你有用吗 ？<br>答案是屁用没有，</p>
+<p>没错，决心对这时候的你来说，<br>绝对屁用没有，<br>那你就问了，<br>我靠，屁用没有，<br>那我学诚意有毛用，<br>别急，诚意不是一个孤立的单品，<br>是一个需要配合格物和知行合一一起使用的产品。<br>正如电和灯泡的关系，<br>有了电，屁用没有，<br>每天晚上还是无尽的黑暗，<br>但是伟大的爱迪生发明了灯泡，<br>我们夜晚的世界就变成了五彩缤纷的天堂。</p>
+<p>所以说下了学习编程的决心，<br>立马就要去格学习IOS编程这件事。<br>这就是诚意的作用，<br>诚意是电，有了它格物和知行合一这两个灯泡，<br>才能照亮你人生之夜的天空。</p>
+<p>二、格物<br>格物是诚意的手段，<br>诚意是格物的目的。<br>现在下了学习IOS编程的决心了，<br>那要怎么学呢？</p>
+<p>接着诚意的例子讲，<br>格学习编程这件事，<br>首先，你得知道IOS编程分几部分吧，<br>开始先得学C和OC的语法，<br>其次要学UI，要学数据库，网络和多线程等。</p>
+<p>刚开始肯定是茫无头绪的，<br>但是有勿忘勿助啊，<br>不要急着去精通，<br>但是也不要一曝十寒，<br>也就是既不要急吼吼的，<br>也不要三天打鱼两天晒网。<br>当你从一无所知，<br>学会了C里面的运算符，数据类型，循环体和选择语法，<br>这时候诚意就有作用了，<br>你的决心肯定加大了。<br>学了C,OC就很容易了，</p>
+<p>接下来该学习UI了，<br>当你学完UI，<br>并且第一次自己写出了一个简单的加法计算器或者QQ登录界面，<br>这时候的成就感肯定是你无法想象的。<br>那这时候的决心简直不要不要的了。</p>
+<p>就这样一步步前进，<br>每学完一个部分，<br>决心会随之增加，<br>最后当你做出自己的一个app，<br>并且在APPStore上架，<br>这就是一个完整的格物和知行合一的过程，<br>也是一个完整的诚意过程。</p>
+<p>在《知行合一与格物》里讲过，<br>格物偏向思考层面，<br>知行合一偏向行动层面，<br>因此学编程这件事里，<br>格物是让你弄清楚学习编程的整个路线图，<br>而知行合一确保你能自己亲自动手去练习写代码，<br>而不只是听视频里的课程，却并不动手。<br>诚意则是让你能够坚持学下去。</p>
+<p>三、诚意与格物的抽象表述</p>
+<p>当你第一次下决心后，<br>如果真正去格物和知行合一了，<br>这样便会增加你的决心，<br>又促成了你再次的格物和知行合一，<br>这样又使你的决心更进一步，<br>从而形成良性循环，<br>直到最后要格的物符合了天理。<br>从而完成一个完整的格物致知的过程。</p>
+<p>本期推荐电影电视剧：<br>一、《趟过女人河的男人》<br>推荐语：演员是一份工作，明星是一个标签，厌烦了如今电视剧中明星狗血表演的你，来重温下演员们的表演吧。<br>二、《低俗小说》<br>推荐语：<br>逼片届的一座高峰，要不就永远不要看，看了就得夸它赞，否则会被凶猛的影迷怒吼“LZ大傻逼，看你的《无极》去吧！”<br>三、《大卫戈尔的一生》<br>推荐语：你确定你有信仰，确定是吧？那就看看戈尔们是怎样维护自己的信仰的？<br>本期推荐书籍：<br>一、《读书毁了我》作者：王强<br>推荐语：读书是一件很花费时间的事情，既成就人，也毁人的时间，看看书是怎么毁去新东方三驾马车之一的王强的时间的吧。<br>二、《尼采：在世纪的转折点上》作者：周国平<br>推荐语：虽然我恨他现在大量生产鸡汤，但是这人早期的这本书写的还是很有见地的。<br>三、《旁观者》作者：德鲁克<br>推荐语：作者本人的回忆录，但是故事讲得很好，每个故事都有些独特的人在演绎，如果你也喜欢听真实的故事，不妨一阅。</p>
+]]></content>
+      <categories>
+        <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>苏阿芒—自学外语怎能不知道他</title>
+    <url>/2016/03/17/%E8%8B%8F%E9%98%BF%E8%8A%92%E2%80%94%E8%87%AA%E5%AD%A6%E5%A4%96%E8%AF%AD%E6%80%8E%E8%83%BD%E4%B8%8D%E7%9F%A5%E9%81%93%E4%BB%96/</url>
+    <content><![CDATA[<p>原籍安徽省太平县（今黄山区）广阳乡（今属安徽石台）人，本名苏承宗，因发表作品多以苏阿芒为名，故以苏阿芒一名蜚声海内外。<br>中学毕业后曾任天津机床厂夜校英文教师，1957年加入世界语协会，历任国际世界语博物馆馆员，<br>国际世界语《世界文学》特约撰稿人，国际世界读者青年联合会中央委员，“文革”中1968年蒙冤入狱，1979年平反后任百花出版社编辑。<br>1951年开始发表作品。1979年加入中国作家协会。<br>以上借用一段百科文字，<br>我知道苏阿芒其人其事，<br>是在父亲书箱里翻到的一本叫做《成才之路》的书上。<br>以上是摘要<a id="more"></a><br>当时看到就热血沸腾，<br>最近在学习日语和英语，<br>又想起这个名字。<br>由苏阿芒的故事，<br>我觉得无论学习外语还是学习其他东西，<br>就是不疯魔不成活。<br>想想你我诸位，<br>谁在地铁或者在商务活动中，<br>没有遇到过这样的场景：<br>你原本很以为难的一门外语，<br>在地铁中你身旁的一位美女或者老兄，<br>正在和外国人侃侃而谈，<br>不时发出爽朗的笑声。<br>又或者在商务活动中，<br>你的同事与谈判对手，<br>正在用一门你觉得很难的外语，<br>唇枪舌剑，你来我往。<br>当时你除了发蒙，<br>第二个感觉就是，<br>真TMD的太牛逼了。<br>我要是外语也这么牛逼，<br>那该多好啊！<br>可你就是无法做到……<br>这么牛逼！<br>是的你无法做到。</p>
+<p>因为等你下了地铁或者在结束那次谈判后，<br>你就又想着今天回去吃什么，<br>或者想着购物车里那件好看的鞋子或者衣服，<br>是不是又降价了。<br>事实就是如此，<br>我从遇到这种情况之后，<br>发奋学英语，<br>到如今也已有五六年时间，<br>到如今英语的水平，<br>也只能令自己呵呵了。<br>自己看了下掌握多门外语的牛逼人物，<br>远者如辜鸿铭，近者如苏阿芒。<br>他们有神马了不得方法吗？<br>还是天赋异禀。<br>非也！<br>唯苦练勤学尔。<br>我自己的猜测啊！<br>学第一门外语的难度，<br>和第二门第三门外语的难度肯定成几何级降低的。<br>因为你在学第一门外语的时候，<br>已经有了一套成熟的方法论；<br>区别只是在学其他外语的时候，<br>对方法论体系中的某个细节进行改动，<br>并且随着学的外语门数增多；<br>这个方法论的体系一定会不断完善，不断得到补充；<br>那么等到你学第二十门的时候，<br>肯定已经是手到擒来，如探囊取物般容易了。<br>所以根结在神马地方，<br>第一个是恒心，第二个是勤奋；<br>第三是保证你自己必须先学会一门外语。<br>如果你想学更多门外语，肯定会越来越容易的。<br>因此，无论你学英语还是韩语，无论意大利语还是西班牙语。<br>如果你真的想学多门外语，保证你先精通一门外语。<br>其他外语定然是可以得其门而入的。<br>那么你一定要知道苏阿芒的故事，<br>也就是题中应有之意了。</p>
+]]></content>
+      <categories>
+        <category>外语学习</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>编程学习心得</title>
+    <url>/2016/03/17/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/</url>
+    <content><![CDATA[<p>似乎每个人对一件从未接触过的事物着迷时；<br>都恨不得一下子就对其融会贯通；<br>这种急切心理，极有可能导致稍遇挫折，便丧失兴趣。</p>
+<p>比如我对编程的学习；<br>在刚开始时的确一腔热情；<br>但是稍微接触到不容易理解的地方；<br>就会不由自主地怀疑自己！<br>自己真的适合学编程吗?<br>我怎么这么笨？<br>我这个年龄学编程还成吗？</p>
+<p>其实，这都是由于刚开始热情太盛；<br>努力一段时间后，<br>得不到自己期望的效果，<br>便兴趣缺缺了。<br>以上是摘要<a id="more"></a><br>学习始终遵循循序渐进的原则；<br>而不是像玩游戏一样，<br>能得到及时的满足和成就感。<br>所以很多颇有成就的人，<br>都是最善于推迟自己满足感的人。</p>
+<p>其实我最该问的问题不应该是以上那些；<br>而只应该问一个问题？<br>我怎么才能学好编程?<br>那些已经有了些许成就的程序员，<br>是如何取得今天的成就的？</p>
+<p>在学习中还发现一个问题；<br>就是学习一个知识点，<br>一定不要紧追着一个人的讲解不放；<br>同是一个知识点，<br>这个人讲解的既轻松又清晰，<br>而你紧抱着不放的那个则是既繁琐又模糊。</p>
+<p>所以在学习中必须灵活，<br>灵活不是投机取巧；<br>而是在网络信息如此发达的今日；<br>不应该紧抱着某一个信息源不放；<br>某个信息源的讲解听不明白，<br>则必须及时寻找能让你更容易明白的信息源；<br>相信我，一定可以找得到。</p>
+<p>比如在学习oc的三大特性封装、继承与多态时；<br>我花钱买的课程讲解时既模糊又乏味；<br>这时我就对自己产生怀疑了；<br>难道我真的笨蛋如此；<br>可是后来偶然间看到一篇博客；<br>瞬间让我豁然开朗。<br>就是那种梦里千百度，蓦然回首处的感觉。</p>
+<p>总之学习一定不是揪着某个问题不放；<br>当然不是真的放下不管；<br>而是先放到潜意识里；<br>往往会出现这种情况；</p>
+<p>某日你对A问题产生疑惑；<br>又一日，你对B问题更是纠结不已；<br>但是，还一日，你去查找C问题的答案，<br>发现竟然找到了A的答案。<br>这往往是持续学习中，<br>最令人痛快之时。</p>
+]]></content>
+      <categories>
+        <category>IOS</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>读《一个人的村庄》</title>
+    <url>/2016/03/17/%E8%AF%BB%E3%80%8A%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E6%9D%91%E5%BA%84%E3%80%8B/</url>
+    <content><![CDATA[<p>一、书和作者<br>《一个人的村庄》作者：刘亮程<br>刘亮程，作家，1962年出生在新疆古尔班通古特沙漠边缘的一个小村庄。<br>著有诗集《晒晒黄沙梁的太阳》，<br>散文集《虚土》《一个人的村庄》《在新疆》等。<br>被誉为“20世纪中国最后一位散文家”和“乡村哲学家”。</p>
+<p>二、我的家乡<br>读到这本书中的文字，<br>情不自禁想到我的家乡，<br>和儿时在家乡的我，<br>那时每到夏天，<br>暑假可以去河里摸鱼抓虾，<br>一顿美美的野餐是少不了的，<br>晚饭后可以去树林摸蝉换钱，<br>第二天的冰棍就有了保证，<br>傍晚可以去家附近的池塘洗个痛快的凉水澡，<br>一下子从一个小泥人儿，变成了一个滑皮溜。<br>以上是摘要<a id="more"></a><br>那时每到麦收，<br>镰刀总会割到手，<br>但简单止血后，不用包扎还可以愉快的割麦子，<br>买不起口香糖，<br>麦子去皮后直接放到口中咀嚼，<br>瞬间唇齿留香，麦香四溢，<br>比口香糖还有嚼头，<br>麦秸垛落成后，<br>那里是每个孩子的天堂。</p>
+<p>那时每到瓜熟季节<br>各种瓜果是当饭吃的，<br>西红柿是在衣服上抹一下就吃的，<br>西瓜汁是被当作最佳冷饮的。</p>
+<p>可是我有时会孤独，<br>为了不被理解的忧伤，<br>为了小小的愿望被流放，<br>为了不知何时走出这片累弯腰的黄土。<br>我有时会绝望，<br>为了好像永远割不完的麦行，<br>为了不知道自己的未来会怎样，<br>为了不知道如何改变现在的孤独和绝望。</p>
+<p>后来我终于远离那片黄土，<br>再也没有割不完的麦行，<br>再也没有不被理解的忧伤，<br>再也没有被流放的小愿望，<br>可是儿时家乡的那种快乐，<br>不知何时远离了我的心房。</p>
+<p>三、故乡情结<br>每个人都有故乡情结，<br>或许是儿时与玩伴的戏耍，<br>或者是捉拿河里鱼虾，<br>甚至是故乡的一片树林、土岗，<br>午夜梦回哭湿了枕套，<br>你可回到了哪个儿时的故乡，<br>你的故乡情结是什么呢？</p>
+]]></content>
+      <categories>
+        <category>读完就谈</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>读《中国文脉》</title>
+    <url>/2016/03/17/%E8%AF%BB%E3%80%8A%E4%B8%AD%E5%9B%BD%E6%96%87%E8%84%89%E3%80%8B/</url>
+    <content><![CDATA[<p>一、前面的话：关于官员与辅导员</p>
+<p>最近看到余秋雨《中国文脉》中关于佛教魅力的阐释，感觉深得我心，记录在此备用。<br>以前陈丹青评价余秋雨与于丹一个是无耻官员，一个是能说会道的辅导员。<br>在我看，恰恰是反过来的，那只是表象。<br>无耻官员，是他安身立命的根本，是楔入社会的门径。<br>正如于丹是以能说会道的辅导员楔入社会一样。<br>其实都是他们楔入社会的门径而已。</p>
+<p>因此，你说我是一个无耻官员，其实我是一个真正的辅导员，<br>我看过余的《文化苦旅》，虽然他因有官方身份才得了这份差事，<br>但文笔确实酣畅，洋洋洒洒，将整个文化脉络阐述的清晰且直接。<br>无论你说他是无耻官员也好，官僚也好，但我却是从他的书中汲取很多营养。<br>给他点赞。<br>以上是摘要<a id="more"></a><br>至于于丹，我觉得她才是披着辅导员外衣的不是官员的无耻官员，<br>从《百家讲坛》出名以来，你看他说的那些话，写的那些书，<br>整个一山寨鸡汤生产集团。<br>这样的人作为辅导员，整天把为人师表挂在嘴上，<br>我得说，于阿姨，你不误人子弟就不错了，<br>这辈子，就别梦想为人师表了。</p>
+<p>二、佛教魅力</p>
+<p>闲话略多，说下佛教的四大魅力；</p>
+<p>一、定位准<br>怎么准法，无论皇亲贵胄，还是贩夫走卒，<br>都逃不开的坎儿，生、老、病、死。<br>这是产生吸引力的根源。</p>
+<p>二、立论清<br>佛说人生就是苦，苦的原因是三毒：“贪、嗔、痴”，<br>好了，现在告诉你人生的本质了，也告诉你产生苦的原因了，<br>那我还告诉你我有方法破，你想不想知道，<br>有这等好事，傻子才不想知道，<br>小孩学费一年比一年高，<br>这个月房贷又该还了，<br>想想都烦死了，<br>有这等好法子，傻子才不想知道。</p>
+<p>接下来该放大招了，先分下类吧，<br>苦又分为：“求不得，爱别离，怨憎会”；</p>
+<p>好了，那具体方法是什么，别急！<br>你还得先知道，你是怎样与外界发生联系的，<br>那就是五蕴：“色、受、想、行、识”，</p>
+<p>好了基本知识都掌握了，<br>现在该放出方法了，<br>既然我们知道，三毒是人生苦的根源，<br>我们通过五蕴与外界发生联系，使我们不能摆脱三毒，<br>那么我们就要从入口处五蕴开始，<br>那就是用六波罗蜜多：布施，持戒，忍辱，精进，禅定，般若，<br>不断的修炼，才能达到彼岸，摆脱一切苦。</p>
+<p>光修炼不知道目的还不行啊，<br>你说我的目的就是摆脱一切苦啊，<br>这没错，但这是最终目的，<br>在最终目的之前修炼六波罗蜜多的目的还有一个，<br>那就是三法印：诸行无常，诸法无我，寂静涅槃，<br>你只有先达到这个目的，才可以最重摆脱一切苦，达到寂静涅槃的境界。</p>
+<p>路线是这样的：<br>人生皆苦，生老病死；<br>上至天子，下至庶民；<br>需要修炼，我有方法<br>波罗蜜多，先修法印，<br>苦集灭道，寂静涅槃。<br>大道一成，淡看人生。<br>佛教第二魅力，更加吸引人了。</p>
+<p>三、规则好<br>哪般好法？请看！<br>你我眼前有一座宅院，<br>回廊曲水，亭台楼阁，<br>里面有华美夫人，可口点心，<br>称心机灵的仆随，你可看到？<br>你擦擦已睁大的眼，用力看，什么都没有。<br>你说我靠一块墙砖都没看到啊！</p>
+<p>别急，入了佛门你就看到了，<br>没错，宅院首先要有墙，才是宅院的明证，<br>佛教这座宅院的墙，就是戒律，<br>有了墙，才让人觉得可信。</p>
+<p>你和朋友爬野山，<br>为什么要爬野山啊，<br>别问我，我也不知道是你朋友脑子进水，还是你诗兴大发；<br>反正你和你朋友现在正在野山下唉声叹气，<br>叹：乍看眼前千条路，再看眼前无一路，<br>正自踌躇间，忽见一农夫沿一小径攀援而下，<br>上前询问农夫告曰：下面不算什么，上面更险，但沿此路，必能登顶。<br>你和朋友当然豪气干云，心说，不险还不值得我一爬呢。</p>
+<p>你猜对了，这也是佛教的戒律，<br>告诉你佛教这座山，是有路的，<br>但这条路阶多势陡，极难攀登，但你肯攀一定能成佛。<br>有了路，才让人觉得可行。</p>
+<p>四、组织好</p>
+<p>佛教的弘法团队，统一服饰，统一言行，统一作息。<br>这要是军队，你说战斗力强不强。<br>而且团队内部又有一系列和谐原则，使组织内部内耗最小。</p>
+<p>这就是佛教的四大魅力了，看了之后，你想不想成佛呢？</p>
+]]></content>
+      <categories>
+        <category>读完就谈</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>读《所有的男人都是消耗品》</title>
+    <url>/2016/03/17/%E8%AF%BB%E3%80%8A%E6%89%80%E6%9C%89%E7%9A%84%E7%94%B7%E4%BA%BA%E9%83%BD%E6%98%AF%E6%B6%88%E8%80%97%E5%93%81%E3%80%8B/</url>
+    <content><![CDATA[<p>一、书和作者<br>《所有的男人都是消耗品》作者村上龙，<br>和村上春树合称：W村上；<br>这本书是其最有代表性的随笔；<br>从男女，恋爱，性出发，<br>对日本经济社会的功能不全进行猛烈抨击。<br>我是全盘读完的，<br>追求速度的同学建议只读和书同名的文章即可，<br>和书同名的只有三篇，速度会很快，<br>但是收获绝对不会少。<br>其他篇章要么只适用于日本国内，<br>要么就是其它碎碎念。</p>
+<p>由于全书都是格言式的话语，<br>没有论证等要素，<br>因此，照录我比较认同的话在下。<br>以上是摘要<a id="more"></a><br>二、女人与和平<br>女大学生气焰嚣张这是不言而喻的，<br>和平持续的时间越长，女人就越是飞扬跋扈。<br>我最认同的一句话，<br>有句话也说得不错，<br>忘记在哪儿看到的了，<br>它说：和平年代的主题是体育和女人，战争年代的主题是武器和男人。<br>谁说不是呢，真是太tmd精辟啦。<br>三、快乐和才能<br>如果想要得到快乐，就必须冒风险站到体制外面去，<br>郑渊洁自己在家教育郑亚旗，效果还可以吧，<br>倪匡当年从内蒙古偷渡到香港，今天的日子是相当逍遥啊。<br>才能是没有理由的，没有才能的家伙才希望找到理由。<br>靠努力是不能孕育才能的。<br>四、关于女人<br>女人总是在发情，<br>女人有希望被强暴的愿望，<br>娘们儿正垂涎三尺的等待被勾引，<br>如果成为强悍的男人，女人要多少都可以弄到手。<br>这出自一位自称玩笑的女权主义者之口，<br>真的是玩笑吗？<br>这是一个值得你我深思的问题。</p>
+]]></content>
+      <categories>
+        <category>读完就谈</category>
       </categories>
   </entry>
   <entry>
@@ -811,16 +858,6 @@
 ]]></content>
       <categories>
         <category>Hexo</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>读《所有的男人都是消耗品》</title>
-    <url>/2016/03/17/%E8%AF%BB%E3%80%8A%E6%89%80%E6%9C%89%E7%9A%84%E7%94%B7%E4%BA%BA%E9%83%BD%E6%98%AF%E6%B6%88%E8%80%97%E5%93%81%E3%80%8B/</url>
-    <content><![CDATA[<p>一、书和作者<br>《所有的男人都是消耗品》作者村上龙，<br>和村上春树合称：W村上；<br>这本书是其最有代表性的随笔；<br>从男女，恋爱，性出发，<br>对日本经济社会的功能不全进行猛烈抨击。<br>我是全盘读完的，<br>追求速度的同学建议只读和书同名的文章即可，<br>和书同名的只有三篇，速度会很快，<br>但是收获绝对不会少。<br>其他篇章要么只适用于日本国内，<br>要么就是其它碎碎念。</p>
-<p>由于全书都是格言式的话语，<br>没有论证等要素，<br>因此，照录我比较认同的话在下。<br>以上是摘要<a id="more"></a><br>二、女人与和平<br>女大学生气焰嚣张这是不言而喻的，<br>和平持续的时间越长，女人就越是飞扬跋扈。<br>我最认同的一句话，<br>有句话也说得不错，<br>忘记在哪儿看到的了，<br>它说：和平年代的主题是体育和女人，战争年代的主题是武器和男人。<br>谁说不是呢，真是太tmd精辟啦。<br>三、快乐和才能<br>如果想要得到快乐，就必须冒风险站到体制外面去，<br>郑渊洁自己在家教育郑亚旗，效果还可以吧，<br>倪匡当年从内蒙古偷渡到香港，今天的日子是相当逍遥啊。<br>才能是没有理由的，没有才能的家伙才希望找到理由。<br>靠努力是不能孕育才能的。<br>四、关于女人<br>女人总是在发情，<br>女人有希望被强暴的愿望，<br>娘们儿正垂涎三尺的等待被勾引，<br>如果成为强悍的男人，女人要多少都可以弄到手。<br>这出自一位自称玩笑的女权主义者之口，<br>真的是玩笑吗？<br>这是一个值得你我深思的问题。</p>
-]]></content>
-      <categories>
-        <category>读完就谈</category>
       </categories>
   </entry>
   <entry>
