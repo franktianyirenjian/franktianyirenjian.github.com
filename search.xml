@@ -28,6 +28,29 @@
       </categories>
   </entry>
   <entry>
+    <title>Hexo添加Rss和评论插件</title>
+    <url>/2016/03/20/Hexo%E6%B7%BB%E5%8A%A0Rss%E5%92%8C%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/</url>
+    <content><![CDATA[<p>一、添加RSS<br>我的主题配置文件已含有rss：  /atom.xml<br>因此我就直接安装部署了。<br>根目录下的配置信息：在# Extensions中添加，已经有的就免了。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plugins: hexo-generator-feed</span><br></pre></td></tr></table></figure>
+<p>打开Terminal（终端）输入：运行</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">npm install hero-generator-feed</span><br></pre></td></tr></table></figure>
+<p>重新部署：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo d -</span><br></pre></td></tr></table></figure>
+<p>以上是摘要<a id="more"></a><br>二、开启评论<br>1、首先，注册多说，并在根目录下的配置文件添加shot_name,这里是duoshuo_shortname<br>short name指你在注册多说时二级域名里你自己输入的那部分，不包括htpp://和.duoshuo.com。<br>这里有人说在主题配置信息里配置duoshuo_shortname，但是我的始终搞不定，<br>我曾怀疑是不是data－thread－key等三个参数的问题，然后将page.path改为post.path,<br>仍然不行，只能慢慢试验了。<br>2、若使用默认主题landscape，则进入themes\landscape\layout_partial\articles.ejs中，<br>将这段div中的disqus_shortname统统改为duoshuo_shortname，有的人没有这段，按实际情况来。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;footer class="article-footer"&gt;</span></span><br><span class="line"><span class="regexp">&lt;a data-url="&lt;%- post.permalink %&gt;" data-id="&lt;%= post._id %&gt;" class="article-share-link"&gt;</span></span><br><span class="line"><span class="regexp">&lt;%= __('share') %&gt;&lt;/</span>a&gt;</span><br><span class="line">&lt;% <span class="keyword">if</span> (post.comments &amp;&amp; config.duoshuo_shortname)&#123; %&gt;</span><br><span class="line">&lt;a href=<span class="string">"&lt;%- post.permalink %&gt;#duoshuo_thread"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"article-comment-link"</span>&gt;&lt;%= __(<span class="string">'comment'</span>) %&gt;&lt;<span class="regexp">/a&gt;</span></span><br><span class="line"><span class="regexp">&lt;% &#125; %&gt;</span></span><br><span class="line"><span class="regexp">&lt;%- partial('post/</span>tag<span class="string">') %&gt;</span></span><br><span class="line"><span class="string">&lt;/footer&gt;</span></span><br><span class="line"><span class="string">&lt;/div&gt;</span></span><br></pre></td></tr></table></figure>
+<p>3、网上大多数的都是说的这段代码替换：<br>替换&lt;% section %&gt;到&lt;／section&gt;之间的部分。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments &amp;&amp; config.disqus_shortname)&#123; %&gt;</span><br><span class="line">&lt;section id=<span class="string">"comments"</span>&gt;</span><br><span class="line">&lt;div id=<span class="string">"disqus_thread"</span>&gt;</span><br><span class="line">&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=<span class="string">"//disqus.com/?ref_noscript"</span>&gt;comments </span><br><span class="line">powered by Disqus.&lt;<span class="regexp">/a&gt;&lt;/</span>noscript&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>section&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+<p>替换为：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments &amp;&amp; config.duoshuo_shortname)&#123; %&gt;</span><br><span class="line">&lt;section id=<span class="string">"comments"</span>&gt;</span><br><span class="line">&lt;!-- 多说评论框 start --&gt;</span><br><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"ds-thread"</span> data-thread-key=<span class="string">"&lt;%= post.path %&gt;"</span> data-title=<span class="string">"&lt;%= page.title %&gt;"</span> </span><br><span class="line">data-url=<span class="string">"&lt;%= page.permalink %&gt;"</span>&gt;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;!-- 多说评论框 end --&gt;</span></span><br><span class="line"><span class="regexp">&lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;</span></span><br><span class="line"><span class="regexp">&lt;script type="text/</span>javascript<span class="string">"&gt;</span></span><br><span class="line"><span class="string">var duoshuoQuery = &#123;short_name:'&lt;%= config.duoshuo_shortname %&gt;'&#125;;</span></span><br><span class="line"><span class="string">(function() &#123;</span></span><br><span class="line"><span class="string">var ds = document.createElement('script');</span></span><br><span class="line"><span class="string">ds.type = 'text/javascript';ds.async = true;</span></span><br><span class="line"><span class="string">ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') </span></span><br><span class="line"><span class="string">+ '//static.duoshuo.com/embed.js';</span></span><br><span class="line"><span class="string">ds.charset = 'UTF-8';</span></span><br><span class="line"><span class="string">(document.getElementsByTagName('head')[0] </span></span><br><span class="line"><span class="string">|| document.getElementsByTagName('body')[0]).appendChild(ds);</span></span><br><span class="line"><span class="string">&#125;)();</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;!-- 多说公共JS代码 end --&gt;</span></span><br><span class="line"><span class="string">&lt;/section&gt;</span></span><br><span class="line"><span class="string">&lt;% &#125; %&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这里需要注意的是data-thread-key等三个参数，对小白来说并不知道如何设置：<br>我的设置如下：大多数网上的也都设的这个。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">data-thread-key：&lt;%= page.path %&gt;</span><br><span class="line">data-title：&lt;%= page.title %&gt;</span><br><span class="line">data-url（稳定版没有这个，开发版有这个参数）：&lt;%= page.permalink %&gt;</span><br></pre></td></tr></table></figure>
+<p>4、重新部署<br>hexo clean<br>hexo d －<br>搞定。</p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+  </entry>
+  <entry>
     <title>IOS Xcode7.1新建纯代码工程</title>
     <url>/2016/03/17/IOS-Xcode7-1%E6%96%B0%E5%BB%BA%E7%BA%AF%E4%BB%A3%E7%A0%81%E5%B7%A5%E7%A8%8B/</url>
     <content><![CDATA[<p>今天准备纯代码做下计算器；<br>xcode已升级到version 7.1；<br>创建singleview后改造空工程；<br>删除main.storyboard，<br>创建windows并设置背景色为黑色；<br>满怀期待的command+R；<br>结果提示我:<br>以上是摘要<a id="more"></a><br>2015-10-30 18:15:29.933 计算器[1696:127982] <strong>* Assertion failure in -[UIApplication _runWithMainScene:transitionContext:completion:], /BuildRoot/Library/Caches/com.apple.xbs/Sources/UIKit_Sim/UIKit-3512.29.5/UIApplication.m:3299<br>2015-10-30 18:15:29.939 计算器[1696:127982] *</strong> Terminating app due to uncaught exception ‘NSInternalInconsistencyException’, reason: ‘Application windows are expected to have a root view controller at the end of application launch’<br>*** First throw call stack:<br>(<br>0   CoreFoundation                      0x02524a84 <strong>exceptionPreprocess + 180<br>1   libobjc.A.dylib                     0x00550e02 objc_exception_throw + 50<br>2   CoreFoundation                      0x0252491a +[NSException raise:format:arguments:] + 138<br>3   Foundation                          0x001cfe86 -[NSAssertionHandler handleFailureInMethod:object:file:lineNumber:description:] + 118<br>4   UIKit                               0x00957a9b -[UIApplication _runWithMainScene:transitionContext:completion:] + 3975<br>5   UIKit                               0x0097be4d __84-[UIApplication _handleApplicationActivationWithScene:transitionContext:completion:]_block_invoke3208 + 68<br>6   UIKit                               0x00953fb4 -[UIApplication workspaceDidEndTransaction:] + 163<br>7   FrontBoardServices                  0x036fdca4 __37-[FBSWorkspace clientEndTransaction:]_block_invoke_2 + 71<br>8   FrontBoardServices                  0x036fd77b __40-[FBSWorkspace _performDelegateCallOut:]_block_invoke + 54<br>9   FrontBoardServices                  0x0371b1a3 -[FBSSerialQueue _performNext] + 184<br>10  FrontBoardServices                  0x0371b5da -[FBSSerialQueue _performNextFromRunLoopSource] + 52<br>11  FrontBoardServices                  0x0371a8d6 FBSSerialQueueRunLoopSourceHandler + 33<br>12  CoreFoundation                      0x0243ed1f __CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE0_PERFORM_FUNCTION</strong> + 15<br>13  CoreFoundation                      0x024349ab __CFRunLoopDoSources0 + 523<br>14  CoreFoundation                      0x02433dc8 __CFRunLoopRun + 1032<br>15  CoreFoundation                      0x02433706 CFRunLoopRunSpecific + 470<br>16  CoreFoundation                      0x0243351b CFRunLoopRunInMode + 123<br>17  UIKit                               0x00953854 -[UIApplication _run] + 540<br>18  UIKit                               0x009591eb UIApplicationMain + 160<br>19  ËÆ°ÁÆóÂô®                           0x00082baa main + 138<br>20  libdyld.dylib                       0x030eba21 start + 1<br>)<br>libc++abi.dylib: terminating with uncaught exception of type NSException<br>(lldb)<br>然后就开始了艰辛的解决历程；<br>自己英语很渣，只有慢慢度娘；<br>百度出来的百分之九十九是xcode6.1改造空工程的方法；<br>没用啊，我现在用的就是它这个方法；<br>只有不断换关键字；<br>结果当我输入：“xcode7如何创建空工程”keywords后；<br>第四个答案正是我想要的；<br>東東同学的新浪博客：<a href="http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html</a><br>原来提示的意思是：“必须给windows创建一个rootviewcontroller；<br>这一句话足够了；果断添加rootview，再次command+R；果断通过；<br>它是否意味着windows创建好后不能直接显示了，必须添加rootviewcontroller才可以运行呢？<br>已经给東東留言等回复。<br>总之任何一个细小的问题，通过自己的努力或者得到别人指点得到解决后，那种欣喜都是情不自禁的。<br>完毕！</p>
@@ -82,28 +105,6 @@
       </categories>
   </entry>
   <entry>
-    <title>oc中的类和对象</title>
-    <url>/2016/03/17/oc%E4%B8%AD%E7%9A%84%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/</url>
-    <content><![CDATA[<p>一、类是什么</p>
-<p>首先类是一个抽象的概念，</p>
-<p>其次类只有实例化才有意义。</p>
-<p>比如手机就是一个类；</p>
-<p>汽车也是一个类。​，</p>
-<p>电脑、自行车、丝袜都是一个类。​<br>以上是摘要<a id="more"></a><br>二、类和对象的关系</p>
-<p>好比先有鸡还是先有蛋；</p>
-<p>现实中肯定是先有了好多具体的对象，</p>
-<p>人们才会对其进行分门别类；</p>
-<p>而网络编程中则需要先建立一个类；</p>
-<p>然后再去设置这个类的对象；</p>
-<p>比如‘人’是一个类，‘张三’则是人的一个对象；</p>
-<p>张三的姓名、性别与年龄则构成了‘人’这个类的成员变量；</p>
-<p>而姓名、性别与年龄则要靠方法去实现。​</p>
-]]></content>
-      <categories>
-        <category>IOS</category>
-      </categories>
-  </entry>
-  <entry>
     <title>OC中委托和协议</title>
     <url>/2016/03/17/OC%E4%B8%AD%E5%A7%94%E6%89%98%E5%92%8C%E5%8D%8F%E8%AE%AE/</url>
     <content><![CDATA[<p>一、为什么写这篇文章</p>
@@ -126,6 +127,28 @@
     <title>UIviewcontroller与UIview</title>
     <url>/2016/03/17/UIviewcontroller%E4%B8%8EUIview/</url>
     <content><![CDATA[<p>UIviewcontroller名字叫做视图控制器，是一个类，UIview也是一个类；<br>UIviewcontroller控制放在它上面的所有UIview的事件；<br>UIview只负责加载数据与图片；<br>UIviewcontroller顾名思义，就是控制；<br>比如飞机大战中，加载子弹和飞机的图片需要UIview实现；<br>而发射子弹则需要UIviewcontroller来实现。<br>目前就理解到这个程度。</p>
+]]></content>
+      <categories>
+        <category>IOS</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>oc中的类和对象</title>
+    <url>/2016/03/17/oc%E4%B8%AD%E7%9A%84%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/</url>
+    <content><![CDATA[<p>一、类是什么</p>
+<p>首先类是一个抽象的概念，</p>
+<p>其次类只有实例化才有意义。</p>
+<p>比如手机就是一个类；</p>
+<p>汽车也是一个类。​，</p>
+<p>电脑、自行车、丝袜都是一个类。​<br>以上是摘要<a id="more"></a><br>二、类和对象的关系</p>
+<p>好比先有鸡还是先有蛋；</p>
+<p>现实中肯定是先有了好多具体的对象，</p>
+<p>人们才会对其进行分门别类；</p>
+<p>而网络编程中则需要先建立一个类；</p>
+<p>然后再去设置这个类的对象；</p>
+<p>比如‘人’是一个类，‘张三’则是人的一个对象；</p>
+<p>张三的姓名、性别与年龄则构成了‘人’这个类的成员变量；</p>
+<p>而姓名、性别与年龄则要靠方法去实现。​</p>
 ]]></content>
       <categories>
         <category>IOS</category>
@@ -186,6 +209,19 @@
       </categories>
   </entry>
   <entry>
+    <title>可还记得《甘十九妹》</title>
+    <url>/2016/03/17/%E5%8F%AF%E8%BF%98%E8%AE%B0%E5%BE%97%E3%80%8A%E7%94%98%E5%8D%81%E4%B9%9D%E5%A6%B9%E3%80%8B/</url>
+    <content><![CDATA[<p>一、《甘十九妹》是谁？<br>《甘十九妹》是我小时候看的一部武侠剧，<br>原著是萧逸先生。<br>故事是说一个男人对一个女人始乱终弃后，<br>女人从沮丧、堕落到后来复仇的故事。</p>
+<p>结果恩怨就传递到了下一辈身上，<br>作为那个男人后代的尹剑平，<br>与作为那个女人二弟子的甘十九妹，<br>由仇到怨以至于最后双双殉情。<br>以上是摘要<a id="more"></a><br>二、为什么写《甘十九妹》<br>之所以想起为这部武侠剧写篇文章作纪念，<br>有两点原因<br>其一，小时候的所有记忆如今想起来都是最美好的，<br>不同意的出去；<br>其二，电视剧的制作水平，<br>无论是武打动作，服装造型以及演员的选择，<br>就今天看来也堪称完美，<br>倘若再对比下如今许多粗制滥造<br>杀马特造型充斥的武侠剧，<br>那这部《甘十九妹》简直就是完美了。</p>
+<p>三、一部好的武侠剧是什么样的？<br>写到这里想到一个问题，<br>什么样的武侠剧是一部高水平的武侠剧？<br>我的观点是这样，<br>首先，演员必须要选准；<br>外貌要符合武侠剧剧本中的人物形象<br>性格要匹配剧本的描写；<br>其次，武打动作以及整个故事的编排一定要引人入胜。<br>比如《甘十九妹》中，<br>以灭『岳阳门』开场，<br>绝对是个妙笔。<br>第三，武侠剧本身一定要传递一些本质的东西，<br>那么什么是本质的东西呢，<br>正如我在《今人谁识侠客行》所写，<br>大音希声，大象无形，<br>什么东西越大越没有脾气；<br>这都可以很精准的传递本质的东西。</p>
+<p>这些年看的武侠剧里面我觉得能同时做到这三点的有以下几部；<br>《侠客行》，《笑傲江湖》，《燕子李三》，再有就是这部《甘十九妹》了。<br>听度娘说08年山东卫视对《甘十九妹》进行了高清数码修复；<br>2010年已出版发行，见到后我一定来两套一套收藏，一套常观。</p>
+<p>四、经典永不过时<br>距小时候观看《甘十九妹》这部武侠剧，<br>虽然已过去了二十多年，<br>但今天重复观看，仍然是暗叹不已，惊喜连连；<br>小时候只会看男主角够不够英雄，武功够不够好，<br>女主角够不够漂亮（绝对是最纯真的那种漂亮），<br>从来不会关注现实中演员的信息，<br>以及里面人物对话背后所传递的东西。<br>但如今看，确实是妙不可言，<br>会去百度每个演员的经历，<br>会去思考经典对白为什么经典，<br>剧本作者对白背后想传递什么价值观或者什么信息。<br>总之常看常新。<br>着实验证了一句话。<br>经典永不过时。<br>so『魑魅喜人过，文章憎命达』也好，<br>『文以人传，人以文传』也好。<br>做一个经典的人，绝对永不过时。</p>
+]]></content>
+      <categories>
+        <category>笑傲江湖</category>
+      </categories>
+  </entry>
+  <entry>
     <title>如何利用知行合一提升学习效率</title>
     <url>/2016/03/20/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E6%8F%90%E5%8D%87%E5%AD%A6%E4%B9%A0%E6%95%88%E7%8E%87/</url>
     <content><![CDATA[<p>一、心学里的三类人<br>阳明将人分三类：生知安行，学知力行，困知勉行。<br>生知安行就是我们现在所说的天才，<br>如果按二八法则，全人类中，<br>似乎会有百分之二十的天才存在，<br>可是去掉那些后来伤仲永的，<br>最多会留下百分之十，就不错了。<br>困知勉行，就是脑袋死不开窍的，<br>最多也就百分之十，<br>剩下的就是百分之八十的普通人了。</p>
@@ -240,29 +276,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Hexo添加Rss和评论插件</title>
-    <url>/2016/03/20/Hexo%E6%B7%BB%E5%8A%A0Rss%E5%92%8C%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/</url>
-    <content><![CDATA[<p>一、添加RSS<br>我的主题配置文件已含有rss：  /atom.xml<br>因此我就直接安装部署了。<br>根目录下的配置信息：在# Extensions中添加，已经有的就免了。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plugins: hexo-generator-feed</span><br></pre></td></tr></table></figure>
-<p>打开Terminal（终端）输入：运行</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">npm install hero-generator-feed</span><br></pre></td></tr></table></figure>
-<p>重新部署：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo d -</span><br></pre></td></tr></table></figure>
-<p>以上是摘要<a id="more"></a><br>二、开启评论<br>1、首先，注册多说，并在根目录下的配置文件添加shot_name,这里是duoshuo_shortname<br>short name指你在注册多说时二级域名里你自己输入的那部分，不包括htpp://和.duoshuo.com。<br>这里有人说在主题配置信息里配置duoshuo_shortname，但是我的始终搞不定，<br>我曾怀疑是不是data－thread－key等三个参数的问题，然后将page.path改为post.path,<br>仍然不行，只能慢慢试验了。<br>2、若使用默认主题landscape，则进入themes\landscape\layout_partial\articles.ejs中，<br>将这段div中的disqus_shortname统统改为duoshuo_shortname，有的人没有这段，按实际情况来。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;footer class="article-footer"&gt;</span></span><br><span class="line"><span class="regexp">&lt;a data-url="&lt;%- post.permalink %&gt;" data-id="&lt;%= post._id %&gt;" class="article-share-link"&gt;</span></span><br><span class="line"><span class="regexp">&lt;%= __('share') %&gt;&lt;/</span>a&gt;</span><br><span class="line">&lt;% <span class="keyword">if</span> (post.comments &amp;&amp; config.duoshuo_shortname)&#123; %&gt;</span><br><span class="line">&lt;a href=<span class="string">"&lt;%- post.permalink %&gt;#duoshuo_thread"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"article-comment-link"</span>&gt;&lt;%= __(<span class="string">'comment'</span>) %&gt;&lt;<span class="regexp">/a&gt;</span></span><br><span class="line"><span class="regexp">&lt;% &#125; %&gt;</span></span><br><span class="line"><span class="regexp">&lt;%- partial('post/</span>tag<span class="string">') %&gt;</span></span><br><span class="line"><span class="string">&lt;/footer&gt;</span></span><br><span class="line"><span class="string">&lt;/div&gt;</span></span><br></pre></td></tr></table></figure>
-<p>3、网上大多数的都是说的这段代码替换：<br>替换&lt;% section %&gt;到&lt;／section&gt;之间的部分。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments &amp;&amp; config.disqus_shortname)&#123; %&gt;</span><br><span class="line">&lt;section id=<span class="string">"comments"</span>&gt;</span><br><span class="line">&lt;div id=<span class="string">"disqus_thread"</span>&gt;</span><br><span class="line">&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=<span class="string">"//disqus.com/?ref_noscript"</span>&gt;comments </span><br><span class="line">powered by Disqus.&lt;<span class="regexp">/a&gt;&lt;/</span>noscript&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>section&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
-<p>替换为：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments &amp;&amp; config.duoshuo_shortname)&#123; %&gt;</span><br><span class="line">&lt;section id=<span class="string">"comments"</span>&gt;</span><br><span class="line">&lt;!-- 多说评论框 start --&gt;</span><br><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"ds-thread"</span> data-thread-key=<span class="string">"&lt;%= post.path %&gt;"</span> data-title=<span class="string">"&lt;%= page.title %&gt;"</span> </span><br><span class="line">data-url=<span class="string">"&lt;%= page.permalink %&gt;"</span>&gt;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;!-- 多说评论框 end --&gt;</span></span><br><span class="line"><span class="regexp">&lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;</span></span><br><span class="line"><span class="regexp">&lt;script type="text/</span>javascript<span class="string">"&gt;</span></span><br><span class="line"><span class="string">var duoshuoQuery = &#123;short_name:'&lt;%= config.duoshuo_shortname %&gt;'&#125;;</span></span><br><span class="line"><span class="string">(function() &#123;</span></span><br><span class="line"><span class="string">var ds = document.createElement('script');</span></span><br><span class="line"><span class="string">ds.type = 'text/javascript';ds.async = true;</span></span><br><span class="line"><span class="string">ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') </span></span><br><span class="line"><span class="string">+ '//static.duoshuo.com/embed.js';</span></span><br><span class="line"><span class="string">ds.charset = 'UTF-8';</span></span><br><span class="line"><span class="string">(document.getElementsByTagName('head')[0] </span></span><br><span class="line"><span class="string">|| document.getElementsByTagName('body')[0]).appendChild(ds);</span></span><br><span class="line"><span class="string">&#125;)();</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;!-- 多说公共JS代码 end --&gt;</span></span><br><span class="line"><span class="string">&lt;/section&gt;</span></span><br><span class="line"><span class="string">&lt;% &#125; %&gt;</span></span><br></pre></td></tr></table></figure>
-<p>这里需要注意的是data-thread-key等三个参数，对小白来说并不知道如何设置：<br>我的设置如下：大多数网上的也都设的这个。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">data-thread-key：&lt;%= page.path %&gt;</span><br><span class="line">data-title：&lt;%= page.title %&gt;</span><br><span class="line">data-url（稳定版没有这个，开发版有这个参数）：&lt;%= page.permalink %&gt;</span><br></pre></td></tr></table></figure>
-<p>4、重新部署<br>hexo clean<br>hexo d －<br>搞定。</p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-  </entry>
-  <entry>
     <title>工夫与境界（二）</title>
     <url>/2016/03/17/%E5%B7%A5%E5%A4%AB%E4%B8%8E%E5%A2%83%E7%95%8C%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
     <content><![CDATA[<p>一、境界为何？<br>境界字面理解，<br>境乃环境，界乃界限；<br>突破界限到达新环境就叫做境界。<br>境界不是自己标榜的，<br>真正到达新境界的人，<br>行事言语都会有所体现。</p>
@@ -280,35 +293,6 @@
 <p>这段实在太抽象，<br>因为梁文道这等厉害人物在《一千零一夜》，<br>用了六集才讲清楚《心经》的前两句话。<br>个中奥义，不花一番功夫实难领会。<br>另外小结中有些概念实在无法展开叙述，<br>有心人可以自行搜索资料进行学习。<br>做下小结吧：“我执”是三毒：“贪、嗔、痴”的根源；<br>陷入三毒世人皆苦，苦分为：“求不得、爱别离、怨憎会”<br>三法印：诸行无常、诸法无我、寂静涅槃会让我们理解空不异色，色不异空，空即是色，色即是空，从而获得到达彼岸的大智慧。<br>只有运用般若波罗蜜多：到达彼岸的大智慧才能照见五蕴皆空，度一切苦厄。</p>
 <p>3、界<br>关于界限我要说的不多，<br>大家应该都知道有个舒适区，学习区与恐慌区的划分。<br>那么我只有一个建议，经常挑战下你的恐慌区。<br>怕和女孩搭讪，偏偏要在餐馆吃午饭时和邻桌的漂亮妹妹搭个讪，<br>怕在群众面前演讲，偏偏要在公园等人扎堆的地方，让自己来上一段，<br>怕在高处眺望，偏偏周末要去体验一下蹦极时血脉贲张的酸爽。<br>你说：“臣妾真的做不到啊！”。<br>我只说一件事：<br>最近重看了一遍86版的《西游记》，<br>至于演员演得好，导演拍的好，不赘述。<br>只一点，第一集就让我明白了以前看不可能明白的道理。<br>孙悟空和众猴打赌，自己能从水帘洞进去且出来。<br>你想一想，<br>有的猴子已经在这片区域生活了很多年，<br>却没勇气进去看一看，<br>那一刻我知道，人生所有的艰难困苦都是纸老虎。<br>再有，进去后欢宴期间一猴子突然死亡，<br>那一刻我知道，人生无常，达人自玉。<br>最后，孙悟空决定远行学艺。<br>在市集间被俗人们当作异类而嘲笑<br>那一刻我知道，哪怕任何人的嘲笑，<br>都比不过你自己的一个决心。</p>
 <p>本期推荐书籍：<br>1、《增长黑客》豆瓣评分8.1 作者：范冰<br>细节非常独到，我还试了下里面通过curl －o命令抓取唱吧图片。<br>最重要的一点树立T型知识结构的意识。<br>归纳略显不足，只描述案例，不归纳本质的东西，做互联网的同学可以作为手边书翻一翻。<br>2、《黑客与画家》作者：保罗格雷厄姆<br>任何一门知识，做到极致都是艺术，编程亦然。<br>3、《物演通论》作者：王东岳<br>我只记住了一个：“递弱代偿法则”，其他看不懂，你若有高见，欢迎和我讨论。<br>本期推荐电影：<br>1、《三傻大闹宝莱坞》<br>我已经看过三遍了，不多说了，和梦想有关和现实无联。<br>2、《无法触碰》<br>这个看了两遍，马上看第三遍，和生命有关和人生无联。<br>3、《野草莓》<br>英格玛·伯格曼代表作，和生命无关和心灵有联。</p>
-]]></content>
-      <categories>
-        <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>当你说知行合一的时候你在说什么</title>
-    <url>/2016/03/17/%E5%BD%93%E4%BD%A0%E8%AF%B4%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E7%9A%84%E6%97%B6%E5%80%99%E4%BD%A0%E5%9C%A8%E8%AF%B4%E4%BB%80%E4%B9%88/</url>
-    <content><![CDATA[<p>一、前面的话<br>知行合一是心学的支柱和核心，<br>心学没了知行合一也就不是心学，<br>因此我要反复讲，时时刻刻讲，<br>这篇也不例外，还是要讲知行合一。</p>
-<p>前几篇虽然也讲了知行合一，<br>可能对你来说还是只是理论而已，<br>它让你搞明白了知行合一和格物，至善以及工夫的关系，<br>但然并卵，你可能还是不得要领，<br>这篇就是专门讲述，<br>当你说你知行合一的时候，<br>你指的到底具体是什么事？<br>以上是摘要<a id="more"></a><br>二、知行合一与爱好音乐<br>咱们就从：『爱好』音乐说起吧，<br>你觉得当你说爱好音乐的时候，<br>你具体是什么意思？</p>
-<p>你说你爱好是音乐，<br>可是支撑它的是什么东西呢?<br>支撑你理直气壮说出爱好音乐的是什么呢?</p>
-<p>如果你真的知行合一，<br>当你说你爱好音乐的时候，<br>你起码要知道音乐的三种唱法：美声，民族和通俗；<br>三个声部是：高音，中音和低音。<br>并且知道它们之间的区别；<br>唱《滚滚长江东逝水》的杨洪基是标准的男中音，<br>目前世界三大男高音分别是：帕瓦罗蒂，多明戈和卡雷拉斯。<br>没错，多明戈就是和宋祖英在08奥运会合唱《爱的火焰》的那个西班牙老头。<br>中国被称为：『人声低音炮』的赵鹏是典型的男低音歌手。</p>
-<p>当你说你爱好音乐的时候，<br>你起码要知道这三种唱法里排名前三的歌手，<br>并且知道每位歌手的代表作。<br>而且真的理解每首代表作创作的背景和要表达的意境是什么。</p>
-<p>当你说你爱好音乐的时候，<br>你起码要知道意大利盛产男高音，<br>男中音和男低音在歌唱界是稀有动物，<br>而且音乐的起源是数学。</p>
-<p>三、知行合一与爱好电影<br>当你说你爱好电影的时候，<br>你实际的意思应该是这样的，<br>你起码看过世界十大禁片，<br>那样你会知道为什么会被禁？</p>
-<p>当你说爱好电影的时候，<br>你起码要知道各国著名导演和其代表作，<br>而且你都是看过的，<br>别问我哪里有种子，<br>我真的不知道。</p>
-<p>当你说你爱好电影的时候，<br>你起码要知道电影分两大类故事片和非故事片；<br>故事片又分为：西部片，强盗片，科幻片，恐怖片，喜剧片，灾难片以及战争片，当然还有我们大中华独有的武侠片。<br>非故事片又分为：广告片，新闻片，纪录片，科学片，教学片以及风景片。</p>
-<p>当你说你爱好电影的时候你起码要知道电影的基本构成要素是影像和声音，<br>影像又分为：景别，运动，光线和色彩，<br>声音又分为：人声，音响，音乐，声画关系，长镜头以及蒙太奇。</p>
-<p>可是你说，靠，我就是爱好，没必要这样吧，<br>可是爱好真实的面貌就是这样，你起码能说出个一二三来，<br>这些全部是支撑你理直气壮说出你爱好某件事情或者某样东西的基础。<br>不然呢，你说你爱好音乐可是音乐几种唱法，你说不知道，<br>男高音，男中音和男低音的代表歌手是谁，你说不知道？<br>那你算哪门子爱好音乐呢？</p>
-<p>如果你真的爱好，应该是这样的，<br>当你看过某部电影之后，你会这样说：<br>哇喔，这部喜剧片拍的蛮不错，长镜头运用的非常到位，<br>蒙太奇运用的也恰到好处，<br>某个地方的光线如果再足一点就更完美了。</p>
-<p>没错，你说你爱好某样东西，<br>它的实际意思是即便你不靠这件事情谋生，<br>你在这件事情上面也是绝对的行家，<br>而不是那种看完后只对故事本身吐槽。<br>再明白一点儿就是，<br>这部电影好，好在哪里？<br>这首曲子不好，不好在哪里？<br>景别，长镜头，蒙太奇，副歌，旋律，节奏，歌词以及唱法，<br>你得说出个一二三来。</p>
-<p>四、爱好音乐与电影的背后</p>
-<p>机灵的同学，可能已经发现了，<br>如果爱好是这样，它是要花费大量时间的，<br>所以，肯定可以这样说，<br>你的爱好在哪里？<br>你的时间就应该在哪里。<br>如果你说你爱好音乐，<br>而你的大部分时间却用来打羽毛球或者dota，<br>不好意思，你只能说你的爱好是羽毛球或游戏。</p>
-<p>因此，下回如果遇到某人再说自己爱好音乐或者电影，<br>你基本三步就可以试出来，他到底是真爱，还是叶公好龙。<br>第一，音乐的三种唱法是什么？<br>第二，三个声部是什么？<br>第三，三个声部的代表人物分别是谁？</p>
-<p>同样，你想验证自己在某件事情上是否真正知行合一，<br>除了要和格物（纠正在心上的事情，使其符合天理）相结合之外。<br>一个简单的方法就是你统计下，<br>你平时的时间是否大部分花在了这件事情上。</p>
-<p>五、总结</p>
-<p>爱好实际需要你花费大量时间，<br>不然就不是真的知行合一去爱了，<br>时间是你惟一的财富，<br>你的时间花在了哪里，<br>那很有可能你的爱好就在哪里？<br>当然并不绝对，<br>比如你说你就爱好发呆或者睡觉，<br>那我就只能借用王大锤的话了：『你说得好有道理，我竟无言以对』。<br>你平时时间花在哪里？<br>是验证你在某件事上是否真正知行合一，<br>一个简单但非常有用的方法。</p>
-<p>本期推荐电影：<br>一、《龙虾》<br>推荐语：如果不结婚就变动物，是不是匪夷所思，《龙虾》就是这样的电影。<br>二、《房间》<br>推荐语：想不想知道一个被伤害的母亲是怎样为自己孩子在一间狭小且上了锁的房间里，打造出一个小小天堂的？<br>三、《你是好孩子》<br>推荐语：我们小时候受过的伤害，在长大后都会以自己被伤害的方式再现。</p>
-<p>本期推荐书籍：<br>一、《蔡澜谈吃》作者：蔡澜<br>推荐语：蔡澜包括，倪匡、黄霑和金庸，都是我非常钦佩的人，钦佩程度根据名字排序；<br>蔡澜爱好吃，所以就有了这本书以及《蔡澜品味》等节目。<br>看看这本书，你会知道《想说爱好真的不容易》。<br>二、《今生今世，民国名媛情事》作者：萧萧<br>推荐语：名媛难再有，但可以学学这些名媛处人生低谷的人生态度。名媛不唯能享富贵，更可处贫贱而仍优雅如初。<br>三、《一个人的村庄》作者：刘亮程<br>推荐语：观察生活的角度比较独特，散文里比较出奇的。</p>
 ]]></content>
       <categories>
         <category>阳明心学</category>
@@ -342,16 +326,32 @@
       </categories>
   </entry>
   <entry>
-    <title>可还记得《甘十九妹》</title>
-    <url>/2016/03/17/%E5%8F%AF%E8%BF%98%E8%AE%B0%E5%BE%97%E3%80%8A%E7%94%98%E5%8D%81%E4%B9%9D%E5%A6%B9%E3%80%8B/</url>
-    <content><![CDATA[<p>一、《甘十九妹》是谁？<br>《甘十九妹》是我小时候看的一部武侠剧，<br>原著是萧逸先生。<br>故事是说一个男人对一个女人始乱终弃后，<br>女人从沮丧、堕落到后来复仇的故事。</p>
-<p>结果恩怨就传递到了下一辈身上，<br>作为那个男人后代的尹剑平，<br>与作为那个女人二弟子的甘十九妹，<br>由仇到怨以至于最后双双殉情。<br>以上是摘要<a id="more"></a><br>二、为什么写《甘十九妹》<br>之所以想起为这部武侠剧写篇文章作纪念，<br>有两点原因<br>其一，小时候的所有记忆如今想起来都是最美好的，<br>不同意的出去；<br>其二，电视剧的制作水平，<br>无论是武打动作，服装造型以及演员的选择，<br>就今天看来也堪称完美，<br>倘若再对比下如今许多粗制滥造<br>杀马特造型充斥的武侠剧，<br>那这部《甘十九妹》简直就是完美了。</p>
-<p>三、一部好的武侠剧是什么样的？<br>写到这里想到一个问题，<br>什么样的武侠剧是一部高水平的武侠剧？<br>我的观点是这样，<br>首先，演员必须要选准；<br>外貌要符合武侠剧剧本中的人物形象<br>性格要匹配剧本的描写；<br>其次，武打动作以及整个故事的编排一定要引人入胜。<br>比如《甘十九妹》中，<br>以灭『岳阳门』开场，<br>绝对是个妙笔。<br>第三，武侠剧本身一定要传递一些本质的东西，<br>那么什么是本质的东西呢，<br>正如我在《今人谁识侠客行》所写，<br>大音希声，大象无形，<br>什么东西越大越没有脾气；<br>这都可以很精准的传递本质的东西。</p>
-<p>这些年看的武侠剧里面我觉得能同时做到这三点的有以下几部；<br>《侠客行》，《笑傲江湖》，《燕子李三》，再有就是这部《甘十九妹》了。<br>听度娘说08年山东卫视对《甘十九妹》进行了高清数码修复；<br>2010年已出版发行，见到后我一定来两套一套收藏，一套常观。</p>
-<p>四、经典永不过时<br>距小时候观看《甘十九妹》这部武侠剧，<br>虽然已过去了二十多年，<br>但今天重复观看，仍然是暗叹不已，惊喜连连；<br>小时候只会看男主角够不够英雄，武功够不够好，<br>女主角够不够漂亮（绝对是最纯真的那种漂亮），<br>从来不会关注现实中演员的信息，<br>以及里面人物对话背后所传递的东西。<br>但如今看，确实是妙不可言，<br>会去百度每个演员的经历，<br>会去思考经典对白为什么经典，<br>剧本作者对白背后想传递什么价值观或者什么信息。<br>总之常看常新。<br>着实验证了一句话。<br>经典永不过时。<br>so『魑魅喜人过，文章憎命达』也好，<br>『文以人传，人以文传』也好。<br>做一个经典的人，绝对永不过时。</p>
+    <title>当你说知行合一的时候你在说什么</title>
+    <url>/2016/03/17/%E5%BD%93%E4%BD%A0%E8%AF%B4%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E7%9A%84%E6%97%B6%E5%80%99%E4%BD%A0%E5%9C%A8%E8%AF%B4%E4%BB%80%E4%B9%88/</url>
+    <content><![CDATA[<p>一、前面的话<br>知行合一是心学的支柱和核心，<br>心学没了知行合一也就不是心学，<br>因此我要反复讲，时时刻刻讲，<br>这篇也不例外，还是要讲知行合一。</p>
+<p>前几篇虽然也讲了知行合一，<br>可能对你来说还是只是理论而已，<br>它让你搞明白了知行合一和格物，至善以及工夫的关系，<br>但然并卵，你可能还是不得要领，<br>这篇就是专门讲述，<br>当你说你知行合一的时候，<br>你指的到底具体是什么事？<br>以上是摘要<a id="more"></a><br>二、知行合一与爱好音乐<br>咱们就从：『爱好』音乐说起吧，<br>你觉得当你说爱好音乐的时候，<br>你具体是什么意思？</p>
+<p>你说你爱好是音乐，<br>可是支撑它的是什么东西呢?<br>支撑你理直气壮说出爱好音乐的是什么呢?</p>
+<p>如果你真的知行合一，<br>当你说你爱好音乐的时候，<br>你起码要知道音乐的三种唱法：美声，民族和通俗；<br>三个声部是：高音，中音和低音。<br>并且知道它们之间的区别；<br>唱《滚滚长江东逝水》的杨洪基是标准的男中音，<br>目前世界三大男高音分别是：帕瓦罗蒂，多明戈和卡雷拉斯。<br>没错，多明戈就是和宋祖英在08奥运会合唱《爱的火焰》的那个西班牙老头。<br>中国被称为：『人声低音炮』的赵鹏是典型的男低音歌手。</p>
+<p>当你说你爱好音乐的时候，<br>你起码要知道这三种唱法里排名前三的歌手，<br>并且知道每位歌手的代表作。<br>而且真的理解每首代表作创作的背景和要表达的意境是什么。</p>
+<p>当你说你爱好音乐的时候，<br>你起码要知道意大利盛产男高音，<br>男中音和男低音在歌唱界是稀有动物，<br>而且音乐的起源是数学。</p>
+<p>三、知行合一与爱好电影<br>当你说你爱好电影的时候，<br>你实际的意思应该是这样的，<br>你起码看过世界十大禁片，<br>那样你会知道为什么会被禁？</p>
+<p>当你说爱好电影的时候，<br>你起码要知道各国著名导演和其代表作，<br>而且你都是看过的，<br>别问我哪里有种子，<br>我真的不知道。</p>
+<p>当你说你爱好电影的时候，<br>你起码要知道电影分两大类故事片和非故事片；<br>故事片又分为：西部片，强盗片，科幻片，恐怖片，喜剧片，灾难片以及战争片，当然还有我们大中华独有的武侠片。<br>非故事片又分为：广告片，新闻片，纪录片，科学片，教学片以及风景片。</p>
+<p>当你说你爱好电影的时候你起码要知道电影的基本构成要素是影像和声音，<br>影像又分为：景别，运动，光线和色彩，<br>声音又分为：人声，音响，音乐，声画关系，长镜头以及蒙太奇。</p>
+<p>可是你说，靠，我就是爱好，没必要这样吧，<br>可是爱好真实的面貌就是这样，你起码能说出个一二三来，<br>这些全部是支撑你理直气壮说出你爱好某件事情或者某样东西的基础。<br>不然呢，你说你爱好音乐可是音乐几种唱法，你说不知道，<br>男高音，男中音和男低音的代表歌手是谁，你说不知道？<br>那你算哪门子爱好音乐呢？</p>
+<p>如果你真的爱好，应该是这样的，<br>当你看过某部电影之后，你会这样说：<br>哇喔，这部喜剧片拍的蛮不错，长镜头运用的非常到位，<br>蒙太奇运用的也恰到好处，<br>某个地方的光线如果再足一点就更完美了。</p>
+<p>没错，你说你爱好某样东西，<br>它的实际意思是即便你不靠这件事情谋生，<br>你在这件事情上面也是绝对的行家，<br>而不是那种看完后只对故事本身吐槽。<br>再明白一点儿就是，<br>这部电影好，好在哪里？<br>这首曲子不好，不好在哪里？<br>景别，长镜头，蒙太奇，副歌，旋律，节奏，歌词以及唱法，<br>你得说出个一二三来。</p>
+<p>四、爱好音乐与电影的背后</p>
+<p>机灵的同学，可能已经发现了，<br>如果爱好是这样，它是要花费大量时间的，<br>所以，肯定可以这样说，<br>你的爱好在哪里？<br>你的时间就应该在哪里。<br>如果你说你爱好音乐，<br>而你的大部分时间却用来打羽毛球或者dota，<br>不好意思，你只能说你的爱好是羽毛球或游戏。</p>
+<p>因此，下回如果遇到某人再说自己爱好音乐或者电影，<br>你基本三步就可以试出来，他到底是真爱，还是叶公好龙。<br>第一，音乐的三种唱法是什么？<br>第二，三个声部是什么？<br>第三，三个声部的代表人物分别是谁？</p>
+<p>同样，你想验证自己在某件事情上是否真正知行合一，<br>除了要和格物（纠正在心上的事情，使其符合天理）相结合之外。<br>一个简单的方法就是你统计下，<br>你平时的时间是否大部分花在了这件事情上。</p>
+<p>五、总结</p>
+<p>爱好实际需要你花费大量时间，<br>不然就不是真的知行合一去爱了，<br>时间是你惟一的财富，<br>你的时间花在了哪里，<br>那很有可能你的爱好就在哪里？<br>当然并不绝对，<br>比如你说你就爱好发呆或者睡觉，<br>那我就只能借用王大锤的话了：『你说得好有道理，我竟无言以对』。<br>你平时时间花在哪里？<br>是验证你在某件事上是否真正知行合一，<br>一个简单但非常有用的方法。</p>
+<p>本期推荐电影：<br>一、《龙虾》<br>推荐语：如果不结婚就变动物，是不是匪夷所思，《龙虾》就是这样的电影。<br>二、《房间》<br>推荐语：想不想知道一个被伤害的母亲是怎样为自己孩子在一间狭小且上了锁的房间里，打造出一个小小天堂的？<br>三、《你是好孩子》<br>推荐语：我们小时候受过的伤害，在长大后都会以自己被伤害的方式再现。</p>
+<p>本期推荐书籍：<br>一、《蔡澜谈吃》作者：蔡澜<br>推荐语：蔡澜包括，倪匡、黄霑和金庸，都是我非常钦佩的人，钦佩程度根据名字排序；<br>蔡澜爱好吃，所以就有了这本书以及《蔡澜品味》等节目。<br>看看这本书，你会知道《想说爱好真的不容易》。<br>二、《今生今世，民国名媛情事》作者：萧萧<br>推荐语：名媛难再有，但可以学学这些名媛处人生低谷的人生态度。名媛不唯能享富贵，更可处贫贱而仍优雅如初。<br>三、《一个人的村庄》作者：刘亮程<br>推荐语：观察生活的角度比较独特，散文里比较出奇的。</p>
 ]]></content>
       <categories>
-        <category>笑傲江湖</category>
+        <category>阳明心学</category>
       </categories>
   </entry>
   <entry>
@@ -372,6 +372,15 @@
       </categories>
   </entry>
   <entry>
+    <title>我与音乐的初缘</title>
+    <url>/2016/03/17/%E6%88%91%E4%B8%8E%E9%9F%B3%E4%B9%90%E7%9A%84%E5%88%9D%E7%BC%98/</url>
+    <content><![CDATA[<p>我高中学过一年半音乐，<br>上过高中的都知道：『小三门』；<br>不知现在还这么叫吗？<br>我学音乐的原因有三：<br>一、小时候我爸买过一支笛子，我爸捣鼓好长时间，没吹响，<br>我后来不但吹响了，而且还能看简谱吹奏《没有共产党就没有新中国》和《中学时代》等歌曲，<br>我觉得我自己真是tmd太有才了，所以老师一说报名『小三门』，我立即就积极响应了。<br>至于我到底有没有音乐天赋，我到今天也没搞清楚。<br>二、文化课要求分数低，只要音乐过就能上个还不错的本科学校，一本也不是没可能；<br>三、我感觉学音乐是一件很酷的事情；<br>事实证明一年半的成果还可以，<br>可是经济基础，决定上层建筑，<br>最后考上了新乡一个叫做：『平原大学』的音乐系，<br>我估计是二本吧，<br>学费太昂贵，最后只好选择去学机械制造。<br>然后就与音乐绝缘了。<br>以上是摘要<a id="more"></a><br>但还是会买支笛子，<br>有空吹奏一番，<br>曲子当然不会再是初学的那些了，<br>好歹也有了些乐理知识，<br>可以识谱演奏了。<br>然后机械制造毕业，去做工人，<br>再然后到北京做电子商务，<br>始终还是放不下音乐，<br>梦想着有一天自己也能开一场自己的演唱会，<br>现在经济自立了，<br>也会买把吉他，学弹吉他，<br>有时间还会读《中国音乐简史》之类的书，<br>加深音乐素养，<br>权当一爱好，<br>但谁说爱好就不能学的专业一点儿，<br>因此，开辟这个专栏，<br>记录我平常累积的音乐知识<br>以及学习音乐过程中的欢乐。</p>
+]]></content>
+      <categories>
+        <category>音乐学习</category>
+      </categories>
+  </entry>
+  <entry>
     <title>我是这样认识王阳明的</title>
     <url>/2016/03/17/%E6%88%91%E6%98%AF%E8%BF%99%E6%A0%B7%E8%AE%A4%E8%AF%86%E7%8E%8B%E9%98%B3%E6%98%8E%E7%9A%84/</url>
     <content><![CDATA[<p>大多数喜欢王阳明的朋友，总是标榜“知行合一”，“致良知”；<br>我的微信关注了一个也标榜自己喜欢阳明思想的朋友；<br>做什么事都和：“心性”、“致良知”这些字眼联系起来；</p>
@@ -385,15 +394,6 @@
 ]]></content>
       <categories>
         <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>我与音乐的初缘</title>
-    <url>/2016/03/17/%E6%88%91%E4%B8%8E%E9%9F%B3%E4%B9%90%E7%9A%84%E5%88%9D%E7%BC%98/</url>
-    <content><![CDATA[<p>我高中学过一年半音乐，<br>上过高中的都知道：『小三门』；<br>不知现在还这么叫吗？<br>我学音乐的原因有三：<br>一、小时候我爸买过一支笛子，我爸捣鼓好长时间，没吹响，<br>我后来不但吹响了，而且还能看简谱吹奏《没有共产党就没有新中国》和《中学时代》等歌曲，<br>我觉得我自己真是tmd太有才了，所以老师一说报名『小三门』，我立即就积极响应了。<br>至于我到底有没有音乐天赋，我到今天也没搞清楚。<br>二、文化课要求分数低，只要音乐过就能上个还不错的本科学校，一本也不是没可能；<br>三、我感觉学音乐是一件很酷的事情；<br>事实证明一年半的成果还可以，<br>可是经济基础，决定上层建筑，<br>最后考上了新乡一个叫做：『平原大学』的音乐系，<br>我估计是二本吧，<br>学费太昂贵，最后只好选择去学机械制造。<br>然后就与音乐绝缘了。<br>以上是摘要<a id="more"></a><br>但还是会买支笛子，<br>有空吹奏一番，<br>曲子当然不会再是初学的那些了，<br>好歹也有了些乐理知识，<br>可以识谱演奏了。<br>然后机械制造毕业，去做工人，<br>再然后到北京做电子商务，<br>始终还是放不下音乐，<br>梦想着有一天自己也能开一场自己的演唱会，<br>现在经济自立了，<br>也会买把吉他，学弹吉他，<br>有时间还会读《中国音乐简史》之类的书，<br>加深音乐素养，<br>权当一爱好，<br>但谁说爱好就不能学的专业一点儿，<br>因此，开辟这个专栏，<br>记录我平常累积的音乐知识<br>以及学习音乐过程中的欢乐。</p>
-]]></content>
-      <categories>
-        <category>音乐学习</category>
       </categories>
   </entry>
   <entry>
@@ -411,28 +411,6 @@
 ]]></content>
       <categories>
         <category>外语学习</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>智慧与思想之花因何而开</title>
-    <url>/2016/03/17/%E6%99%BA%E6%85%A7%E4%B8%8E%E6%80%9D%E6%83%B3%E4%B9%8B%E8%8A%B1%E5%9B%A0%E4%BD%95%E8%80%8C%E5%BC%80/</url>
-    <content><![CDATA[<p>圣人之所以为圣人，<br>就是因为在百死千难中，<br>不断努力的思考自己的思维的过程；<br>而这个过程就是思想和智慧了。</p>
-<p>上次撰文说到致良知，<br>那么，致良知与智慧和思想是什么关系呢？<br>答案是没一毛钱关系。</p>
-<p>那么问题来了，<br>既然智慧和思想，和致良知没一毛钱关系。<br>那阳明先生为什么整个致良知之学呢？<br>莫急，听咱家慢慢道来；<br>以上是摘要<a id="more"></a><br>雾满拦江说，<br>人类所有学科的基础是哲学、数学与逻辑形式；<br>所有人类的学科莫不是建立在此三个要素上；<br>而阳明先生龙场悟道的“道”，却不在此列。<br>因为无论这三者再精密，<br>他还是属于人类已有的语言和思维范畴，<br>显然终极智慧和思想，是比此三者更高境界的东西。</p>
-<p>所以说圣人可以自己悟道，<br>但是他是无法用语言和你清晰描述的，<br>不然阳明也不会有：“吾性自足”一说了；</p>
-<p>打个比方说，<br>世上未通终极智慧之人，<br>都像是背对着一副栅栏和栅栏外的一堆篝火；<br>栅栏就是遮蔽良知也就是本心的欲望，<br>而篝火正是道家说的道，<br>儒家的一以及佛家的无无明。</p>
-<p>所有人是不知道自己后面的栅栏和篝火的，<br>一旦像阳明先生这样的人，<br>告诉他们你们身后有栅栏和篝火；<br>他们是不会信的，<br>这就像你和盲者谈论颜色，<br>你说得再惟妙惟肖，<br>他也是没有认识颜色的工具的，<br>或者聋哑人谈论音律，<br>即使你说的再声情并茂，<br>他也是没有认识音律的工具的。</p>
-<p>因此圣人先贤悟道终极智慧之后，<br>也是没有描述终极智慧的工具的。</p>
-<p>尽管终极智慧和致良知之间，<br>没有一毛钱的关系，<br>但如果你追求善良，苦求于良知；<br>那么你对这个世界的认知角度，<br>就会从外界转向对自己内心的审视。</p>
-<p>如此你会减少与外界的摩擦，<br>不会再苛求别人按你的想法行事，<br>而会反求诸己。</p>
-<p>反之如果你不追求善良，<br>不从内心审视自己，<br>就会将关注焦点放在外界，<br>而这种关注，必然会让你远离思想和智慧。</p>
-<p>思想与智慧无法复制也无法传承；<br>甚至连对身边人熏陶的功能都不存在，<br>比如苏格拉底与其妻子，<br>比如阳明先生身后的妻离子散。</p>
-<p>这是因为智慧和思想完全是个人化的思维运作过程，<br>是单独一个人不断采用探究式的思维模式，<br>对自己的大脑进行个人化开发，<br>这种开发的过程就是智慧与思想本身，</p>
-<p>而圣贤所能表达的不过是智慧和思想的结果，<br>但这个结果既不是思想也不是智慧，<br>最多不过是思想与智慧的行进方向而已。</p>
-<p>所以阳明先生说：“致良知”，<br>良知不是智慧，<br>致良知更不是思想，<br>思想与智慧，<br>是指你不断地努力，<br>让自己达到致良知境界的思维过程。<br>换句话说，<br>你可以把致良知理解为这个思维过程（也即思想和智慧过程）的一个显性结果以及方向。</p>
-]]></content>
-      <categories>
-        <category>阳明心学</category>
       </categories>
   </entry>
   <entry>
@@ -496,6 +474,28 @@
       </categories>
   </entry>
   <entry>
+    <title>智慧与思想之花因何而开</title>
+    <url>/2016/03/17/%E6%99%BA%E6%85%A7%E4%B8%8E%E6%80%9D%E6%83%B3%E4%B9%8B%E8%8A%B1%E5%9B%A0%E4%BD%95%E8%80%8C%E5%BC%80/</url>
+    <content><![CDATA[<p>圣人之所以为圣人，<br>就是因为在百死千难中，<br>不断努力的思考自己的思维的过程；<br>而这个过程就是思想和智慧了。</p>
+<p>上次撰文说到致良知，<br>那么，致良知与智慧和思想是什么关系呢？<br>答案是没一毛钱关系。</p>
+<p>那么问题来了，<br>既然智慧和思想，和致良知没一毛钱关系。<br>那阳明先生为什么整个致良知之学呢？<br>莫急，听咱家慢慢道来；<br>以上是摘要<a id="more"></a><br>雾满拦江说，<br>人类所有学科的基础是哲学、数学与逻辑形式；<br>所有人类的学科莫不是建立在此三个要素上；<br>而阳明先生龙场悟道的“道”，却不在此列。<br>因为无论这三者再精密，<br>他还是属于人类已有的语言和思维范畴，<br>显然终极智慧和思想，是比此三者更高境界的东西。</p>
+<p>所以说圣人可以自己悟道，<br>但是他是无法用语言和你清晰描述的，<br>不然阳明也不会有：“吾性自足”一说了；</p>
+<p>打个比方说，<br>世上未通终极智慧之人，<br>都像是背对着一副栅栏和栅栏外的一堆篝火；<br>栅栏就是遮蔽良知也就是本心的欲望，<br>而篝火正是道家说的道，<br>儒家的一以及佛家的无无明。</p>
+<p>所有人是不知道自己后面的栅栏和篝火的，<br>一旦像阳明先生这样的人，<br>告诉他们你们身后有栅栏和篝火；<br>他们是不会信的，<br>这就像你和盲者谈论颜色，<br>你说得再惟妙惟肖，<br>他也是没有认识颜色的工具的，<br>或者聋哑人谈论音律，<br>即使你说的再声情并茂，<br>他也是没有认识音律的工具的。</p>
+<p>因此圣人先贤悟道终极智慧之后，<br>也是没有描述终极智慧的工具的。</p>
+<p>尽管终极智慧和致良知之间，<br>没有一毛钱的关系，<br>但如果你追求善良，苦求于良知；<br>那么你对这个世界的认知角度，<br>就会从外界转向对自己内心的审视。</p>
+<p>如此你会减少与外界的摩擦，<br>不会再苛求别人按你的想法行事，<br>而会反求诸己。</p>
+<p>反之如果你不追求善良，<br>不从内心审视自己，<br>就会将关注焦点放在外界，<br>而这种关注，必然会让你远离思想和智慧。</p>
+<p>思想与智慧无法复制也无法传承；<br>甚至连对身边人熏陶的功能都不存在，<br>比如苏格拉底与其妻子，<br>比如阳明先生身后的妻离子散。</p>
+<p>这是因为智慧和思想完全是个人化的思维运作过程，<br>是单独一个人不断采用探究式的思维模式，<br>对自己的大脑进行个人化开发，<br>这种开发的过程就是智慧与思想本身，</p>
+<p>而圣贤所能表达的不过是智慧和思想的结果，<br>但这个结果既不是思想也不是智慧，<br>最多不过是思想与智慧的行进方向而已。</p>
+<p>所以阳明先生说：“致良知”，<br>良知不是智慧，<br>致良知更不是思想，<br>思想与智慧，<br>是指你不断地努力，<br>让自己达到致良知境界的思维过程。<br>换句话说，<br>你可以把致良知理解为这个思维过程（也即思想和智慧过程）的一个显性结果以及方向。</p>
+]]></content>
+      <categories>
+        <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
     <title>王阳明之所以为王阳明</title>
     <url>/2016/03/17/%E7%8E%8B%E9%98%B3%E6%98%8E%E4%B9%8B%E6%89%80%E4%BB%A5%E4%B8%BA%E7%8E%8B%E9%98%B3%E6%98%8E/</url>
     <content><![CDATA[<p>上篇文说到，<br>圣人都是在百死千难中，<br>对自己的思维进行苦苦思索；<br>方才悟得圣人之道。<br>那我等芸芸众生欲窥得圣人一二门径，<br>应该如何做呢？</p>
@@ -510,6 +510,27 @@
 <p>这种规律性的知识累积到一定程度，<br>你才能在一件事情开头，<br>就能看到其发展的趋势，<br>你内心才会安定，<br>内心安定，你才能对局势更明晰。<br>才有利于你的杀伐决断。<br>此所谓：『定而后能静，静而后能安，安而后能虑』。<br>如果你因同事一句嘲讽的话，就怏怏不乐半天，<br>因老友一句玩笑式的调侃就郁闷半天，<br>如何能明晰局势，杀伐决断呢？</p>
 <p>阳明之所以为阳明，<br>除了天性聪慧，<br>勤于思索之外，<br>更在于其利用自身优势，<br>广泛出入佛老，溺于辞章之后，<br>有了对规律的全面认识，<br>方有龙场悟道之圆满。</p>
 <p>无论是现世的成功企业，<br>以及古往今来成功的个人，<br>都一定是把握了规律之后，<br>对规律的详加运用。<br>才成就一番功业。</p>
+]]></content>
+      <categories>
+        <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>知行合一与坚持</title>
+    <url>/2016/03/17/%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E4%B8%8E%E5%9D%9A%E6%8C%81/</url>
+    <content><![CDATA[<p>你确定你真的在坚持？</p>
+<p>如果你真的在坚持知行合一，此生一件事足矣；<br>我们经常听到：“只管付出，莫问收获”这句话；<br>其实呢？试问几个人能做到，真正知行合一的坚持这句话；<br>如果坚持的人够多，就不会有微信朋友圈N多的鸡汤转来转去；<br>百度贴吧各种论坛和各种qq群也不会有那么多吐槽或抱怨的话；<br>比如：“今天那个谁又在背后说我坏话，谁谁谁说好某日还我钱，到了时候又不还”。<br>我的意思是说什么呢？<br>以上是摘要<a id="more"></a><br>既然每个人都不是圣人，就没必要将大多数人转来转去的那些你还并没有真正理解其内涵的话当作座右铭或者至理名言。<br>甚至将他在自己的朋友圈转出去，再荼毒其他不明内涵的人们。</p>
+<p>抱怨的理由何在？</p>
+<p>既然每个人都不是圣人，做不到真正的温良恭俭让，<br>也做不到不愠不火，每天如履薄冰，如临深渊。<br>那就试着不让这种容易引起你抱怨的事开始；<br>你抱怨某个嘴贱的人每天在背后对你叨逼叨，<br>要么辞职换工作，别告诉我你还没准备好，<br>你有抱怨的时间，早就准备好了。<br>要么就尽量不去听，不去想；<br>安心做好你自己的份内事。<br>你抱怨某个看起来很仗义的那个贱人，<br>借了你钱就是不还，那一开始就做好风险评估；<br>借的金额在你可承受范围内；<br>在你这里信用度降低到一定级别，<br>直接拒绝借出。<br>别告诉我你人好，不会拒绝人；<br>那你还tm抱怨个啥。</p>
+<p>关于那些贱人们<br>人有各种各样，形形色色，<br>被称为贱人的这些人，<br>他们也许在自己家人面前是乖孩子，在亲戚长辈中是有为青年，可就是你跟他们接触中，表现的一次比一次贱；<br>工作生涯中，这种碎嘴子的贱人超多，这种人大致又分为两种，<br>一种是长舌妇，到处宣扬一些小道消息，或是不确定真假的消息；<br>一种是别有用心，利用各种机会散布你的谣言，破坏你的心情。<br>活在现代社会，贱人避免不了。<br>你要么让自己更强大，要么比贱人更贱，你自己选吧。</p>
+<p>大学时我们有一个政治老师讲过一个故事；<br>当一架飞机升空时，发现有一群老鼠在咬油箱；<br>这时飞机上只有飞行员一个人，<br>他若扔下飞机去抓老鼠，飞机就会坠毁；<br>如果不抓，老鼠咬破油箱，油箱泄漏，也会坠毁。<br>这时应该怎么办呢？</p>
+<p>答案是将飞机升上云雨层，憋死丫一堆老鼠。</p>
+<p>你说，呀！这个故事我听过；<br>是的，太阳底下没有新鲜事；<br>如果你只是知道这个故事，那没什么了不起；<br>重要的是你能让自己知行合一吗？<br>哪怕你知道吃多了是要发胖的，<br>你能每天中午少吃块蛋糕，<br>或者夏天少吃个冰激凌吗？<br>又或者，你知道不学习是要落后的<br>落后是要挨打的；<br>可是你还是一边内心自责着，<br>一边又默默的点开了dota的启动键。<br>你能说你真的知道了吗？</p>
+<p>你明白了吧，为什么你身边的这些贱人们，<br>对你言语中伤后，每天还过的逍遥自在，<br>即便你恨的牙痒痒，也不能把他们怎么着。<br>一个是因为：<br>无论你承不承认，社会就是有阶层存在的，<br>他们和你在一个层次，可以放心的咬你的油箱。<br>咬完之后还可以咂摸咂摸嘴赞叹道：“真好吃”；<br>另一个是因为：<br>他们压根不信你丫还能通过自己默默的努力，<br>在一段时间后，上升到一个他们不可企及的人生高度。<br>然后活活让贱点子，把他们自己憋死。<br>因为他们无处耍贱了，哈哈。</p>
+<p>这是他们真正肆无忌惮的做贱人的最本质原因。</p>
+<p>而你如果能真正知道知行合一的意义，<br>你现在唯一要做的就是锻炼好自己的驾驶技能；<br>然后升上云雨层，将丫的活活憋死。<br>你想学编程，好啊，去看视频，去写代码；<br>你说你喜欢音乐，好呀，网上免费资源多的是；<br>百度总会吧，谷歌总会吧，加qq群总会吧；<br>不会，鼻子底下是什么，问呗。</p>
+<p>关于坚持的那些事儿</p>
+<p>我总觉得语言有时候太乏力，<br>只有自己真正理解了的东西，<br>才能自动的运用；<br>说起来运用之妙，存乎一心有些玄乎；<br>可是事实却是如此。<br>所以故事大家肯定看过很多很多了。<br>我只想为大家推荐两部电影两本书；<br>我觉得都很好的诠释了坚持的本质。<br>我非常反感鸡汤，我认为所有的鸡汤都是意淫，<br>过后全部是疲惫和更大的失落。<br>所以我不会推荐鸡汤的电影或书籍。<br>电影：<br>一、《编舟记》<br>该片讲述了在一家出版社的辞典编辑部里，在完成辞典《大渡海》编辑工作中发生的故事。主角是一个眼镜男，属于宅男那种类型。<br>这部片子告诉你，只要你足够坚持你会无意中成为点燃别人激情的人，<br>不错，和阿甘跑步那个片段非常像。<br>二、《风雨哈佛路》<br>我只想说：“谁不是千辛万苦才得到一点儿”；<br>比你苦的人，累的人，比你悲催和苦逼的大有人在；<br>不然你可以去看一看《浮生一日》；<br>让你一天看尽五大洋七大洲不同的人在同一天所发生的故事。<br>你没必要总是顾影自怜或者自怨自哀；<br>要知道大多数人智商相差不多；<br>后天的坚持和努力占了很大一部分。<br>书籍：<br>一、《越读者》<br>跟坚持无直接关系，可是如果你能坚持读一辈子的书，<br>谁敢说你不是在坚持呢？作者本身是个坐在轮椅上的人，<br>浸淫出版业多年，这是他自己写的一本书；<br>主要告诉人们该如何选择一本好书；<br>书籍是人类的精神食粮，<br>如果你把读书这件事坚持一辈子，<br>谁敢说你不牛逼呢？<br>二、《季羡林日记》<br>这本书本身就告诉你，坚持每天记流水账都可以出书；<br>呵呵，玩笑了，不过你不觉得每天记日记，<br>是最容易开始的一件和坚持有关的事情吗？<br>日记内文有的都不到一百字，好多还是重复的；<br>可是人家硬是坚持写了七十多年直到2002年住院才作罢。<br>所以说，坚持无须多么高大上，<br>也不必让全世界都知道；<br>只要你真的在坚持并且知行合一了，一件事足矣。</p>
 ]]></content>
       <categories>
         <category>阳明心学</category>
@@ -533,36 +554,6 @@
 <p>文行至此你会说，<br>上面就看格物致知了，<br>与“知行合一”有什么关系？<br>问得好，破天荒我引用一段原文：<br>知者，良知也，天然自有，即至善也。<br>物者，良知所知之事也。<br>格者，格其不正以归于正也。<br>格之斯实致之矣。<br>–《遗言录-明-王守仁》<br>引用完美解答了知行合一与格物致知的关系，<br>《知行合一与至善》一文提到，知行合一的最终目的就是“至善”。<br>而至善即是良知，致知即是致至善，<br>也就是知行合一的最终目的。<br>换句话说格物和知行合一的最终目的都是致良知，也都是至善，<br>因为良知和至善本来就是一回事的两种说法。<br>你问我知行合一和格物什么关系呀？且听下回分解。</p>
 <p>本期推荐电影：<br>一、《天堂的孩子》<br>推荐语：一对兄妹和一双鞋子的故事，很温暖。<br>二、《欺诈计划》<br>推荐语：这是部不露肉的伦理片，家庭靠感情还是靠血缘维系？<br>三《双旗镇刀客》<br>推荐语：喜欢武侠的这部绝对看了不下十遍吧，不解释。</p>
 <p>本期推荐书籍：<br>一、《岩中花树》作者：赵柏田<br>推荐语：以第一人称写王阳明的一生。<br>二、《华尔街日报是如何讲故事的》作者：威廉 布隆代尔<br>推荐语：对文案情有独钟的同学一定要精读。<br>三、《宫女谈往录》金易 沈义玲<br>推荐语：慈禧的起居与宫闱里的往事，细节独到，是谁道人生无常？</p>
-]]></content>
-      <categories>
-        <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>知行合一与至善</title>
-    <url>/2016/03/17/%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E4%B8%8E%E8%87%B3%E5%96%84/</url>
-    <content><![CDATA[<p>一、前面的话</p>
-<p>关注此号者，必为热爱生活，<br>并以毕生追求自己理想生活方式为荣的人。<br>因此，有必要将“知行合一”以通俗方式说一下，<br>我们一般对知行合一的理解，<br>无外乎知是理论和行是实践。<br>这个不够清晰，也不够直接；</p>
-<p>知是行之始，行是知之成。<br>因此，知行本来就是一个东西的不同阶段。<br>别蒙圈，容我慢慢说。<br>以上是摘要<a id="more"></a><br>二、知行合一的工夫</p>
-<p>解说前，首先强调下，<br>你要知道知行合一不是你想就可以，<br>是要刀刀见血，刀刀剜肉的修炼的，<br>因为它直接对抗的是你的私欲以及旧有的恶习。<br>如果不了解我说的血肉是什么建议参考：《曾国藩的正面和侧面》一书，<br>学学曾国藩的：结硬寨，打呆仗的工夫便知。</p>
-<p>三、知行合一的目的</p>
-<p>我们先来了解下知行合一的目的是什么 ？<br>你要说啦，知行合一，不就是可以达到成功吗？<br>我就呵呵了，如果一代大儒王阳明的心学，<br>竟然只让你用来追求你所谓的成功，<br>那真是暴殄天物。</p>
-<p>知行合一的目的用大白话说，<br>就是变化人的气质，<br>让每个人成为一个大写的人。<br>偏理论一些就是让人臻与至善。</p>
-<p>至善即是人的本心与自然原有天理合二为一的一个点。<br>而不是我们平常认为的道德评判范畴的善恶的善，切记。<br>那么天理是什么呢?<br>这里的天理更近于我们已经了解的，<br>指的是已经映射到我们内心的真理，规律。<br>有已经映射到我们内心的状态，肯定也有未映射的状态，<br>未映射的状态：便是我们非常熟悉的：“道”，<br>也是：道可道，非常道里的道。</p>
-<p>四、知行合一的演绎</p>
-<p>由于确实不太好理解，我们稍作梳理；<br>知行合一本是一体，<br>举个例子，你要去丽江旅行<br>假设你只知道有丽江这一个地方，<br>却并不知道要怎么坐车，坐几点的车，<br>也不知道到了之后落脚何处？<br>该游览哪些景点。<br>这其实是你并未知。<br>如果你已知，<br>那么你既已经掌握了坐车的地点和时间，<br>也会了解到丽江之后，如何落脚，哪些景点值得一游。</p>
-<p>意思就是你若称一件事你已经知了，<br>那么这件事的所有细节以及步骤你都已经了解了。<br>不要说我还没来得及查看攻略，<br>也没来得及准备旅行的装备，<br>未曾想到丽江这么冷，厚衣服都没带。<br>如果你称你已经知了，那么我会默认这些你都已经了解透彻了。</p>
-<p>你说谁旅行之前，要做这么多预测与计划，<br>神仙也做不到，每个意外都设想到吧。<br>非也！不是要你预测和计划，<br>前文已经说过，假如你真的知行合一，<br>那便是你本心已经没有丝毫私欲遮蔽了，<br>既然这样，你的本心肯定已经和自然原本的天理合一了。<br>不是这样的话，你就不要说你已经知了。</p>
-<p>虽然做了梳理你可能还不是很了解，<br>那么不要嫌弃我麻烦，<br>前面说过知行合一是要修炼的，<br>天下没有免费的午餐，<br>更何况是让你脱胎换骨变化气质的知识呢？</p>
-<p>因此，这里重申知行合一的两个修炼方法，<br>静坐与未发之中，<br>对坐禅稍有了解的都明白静坐，不赘述，<br>这里说下未发之中，<br>未发之中的意思是说，<br>不是要你在旅行头天晚上再去想，<br>什么还没准备，哪些细节还没考虑到。<br>而是你下定决心去丽江旅行的时候，<br>你就要开始思考了，<br>没错就是在脑子里想象，你已经去丽江了。<br>你会不断地演绎去旅行要准备那些东西，<br>要关注那些细节。</p>
-<p>我靠，这不就是意淫吗？<br>非也！这里还有个‘行’管着呢！<br>你不是只想不去准备，<br>而是在你不断的演绎间隙，<br>把你目前条件下能准备的全部准备了。<br>这才能称为知行合一，<br>而不是让你一遍遍在脑子里过电影，<br>而完全不去采取任何行动。</p>
-<p>你说我还是不太明白，<br>好，那么你肯定知道：山崩于前而不惊，地陷于后而不惧这句话：<br>你以为有人生来就具有这样的气概吗？<br>非也，那是要经过不断的锻炼自己的内心和意志之后得到的一种无无明的从容与淡定后才有的气魄。</p>
-<p>那你说我明白了，你意思就是别比比，直接开干对吧?<br>非也！如果你想抢劫银行，盗窃金库也能说开干就开干吗？<br>你说我要成功，赚很多钱，走上人生巅峰，成为高富帅，迎娶白富美。<br>开干就能成了吗？<br>更是大错特错。</p>
-<p>在这之前你必须保证自己已经达到至善了，<br>也即你已经达到了本心不被丝毫私欲遮蔽，<br>与自然原本的天理重合为一了，这时候开干才是真正的：“知行合一”。<br>可能偏理论了，但我已经将天理至善解释清楚了，<br>你需要的只是利用方法和工具，达到惟精惟一的至善境地。<br>那么工具和方法是什么呢?<br>就是：博学，审问，慎思，明辨。<br>至于惟精惟一和至善，如果解释起来篇幅实在太大，<br>建议你直接去读沙滩孤雁的《开谈传习录》，里面很详细。<br>我在文后也会以注释的形式添加。<br>如果这时候你还是一脑袋官司，眉头紧锁，满脸的问号，<br>在下实在才疏学浅，只能帮你到这里了。</p>
-<p>注解：惟精惟一，这里的一即是知行合一的‘一’；<br>惟精惟一与至善的关系，打个比方，<br>惟一是元帅，运筹帷幄，决胜千里；<br>惟精是将军，杀伐决断，排兵布阵，考察地形；<br>而博学，审问，慎思，明辨便是士兵了，也即心学里所说的：‘工夫’。<br>我们通过修炼‘工夫’达到惟精惟一，进而达到知行合一，便可以至善了。<br>做个小结吧，我们通过博学，审问，慎思，明辨的工夫达到惟精惟一，从而可以知行合一，可以臻于至善，臻于本心与自然原有天理合一的那个点。<br>具体的修炼方法，我说了有心人可以参考佛家的坐禅与曾国藩的：‘结硬寨，打呆仗’。<br>如果有更聪慧的人应该会问：每个人都用同一种修炼方法吗？<br>好问题，这个如果讲的话，必须得是论文篇幅的。有机会会写的。</p>
-<p>本期推荐电影：<br>一、《保持缄默》<br>多句嘴，我们看电影不都是为了寻找意义多数是为了追寻快乐是吗?<br>那么这部电影会让你很快乐。<br>评价：五星级，太风趣了，前所未有的笑料集合，老太太真霸气。<br>二、《守法公民》<br>这部片让我想到我大天朝城管与摊贩的关系。<br>评价：如果他们（公权力）剥夺了你争取公正的权利怎么办？那你就自己办。<br>三、《big fish（大鱼奇缘）》<br>评价：如果从未想象过你的人生可以怎样精彩，那就从这部电影开始想象吧。<br>四、《剪刀手爱德华》<br>这部太经典了，估计很多人已看过了，我还是忍不住推荐了。<br>评价：对被大家看做异类的人好一点儿，可以吗？他们真的很纯真，却又容易受伤害。</p>
-<p>本期推荐书籍：</p>
-<p>一、《开谈传习录》作者：沙滩孤雁<br>书评：我近几年看到的讲解《传习录》，最有深度的一部书，没有之一。<br>二、《空谷幽兰》<br>书评：如果你也对隐士的神秘生活感兴趣，可以神往一下。<br>三、《不文集》<br>书评：人生不满百，常怀千岁忧，还是开口笑一笑吧，‘不文霑’经典内涵不文笑话；让你捧腹不止。</p>
 ]]></content>
       <categories>
         <category>阳明心学</category>
@@ -600,22 +591,30 @@
       </categories>
   </entry>
   <entry>
-    <title>诚意与格物</title>
-    <url>/2016/03/17/%E8%AF%9A%E6%84%8F%E4%B8%8E%E6%A0%BC%E7%89%A9/</url>
+    <title>知行合一与至善</title>
+    <url>/2016/03/17/%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E4%B8%8E%E8%87%B3%E5%96%84/</url>
     <content><![CDATA[<p>一、前面的话</p>
-<p>阳明心学的概念和结构跟《大学》关系密切，<br>诚意作为三纲八目的起点，至关重要，<br>格物又是致良知和诚意的核心工夫，<br>因此，很有必要单独聊聊诚意和格物。</p>
-<p>二、诚意<br>诚意就是下决心，真的下决心<br>但不是下一次就可以，<br>因为决心需要格物和知行合一的支撑。<br>前文有述及，<br>决心与格物和知行合一是一个循序渐进，<br>相互促进的过程。<br>以上是摘要<a id="more"></a><br>多说无用，举例说明。<br>假如你要学习IOS编程，<br>从对IOS编程一无所知，<br>到完成自己的app，<br>对你来说肯定是一件很苦逼的事，<br>你觉得这时候决心对你有用吗 ？<br>答案是屁用没有，</p>
-<p>没错，决心对这时候的你来说，<br>绝对屁用没有，<br>那你就问了，<br>我靠，屁用没有，<br>那我学诚意有毛用，<br>别急，诚意不是一个孤立的单品，<br>是一个需要配合格物和知行合一一起使用的产品。<br>正如电和灯泡的关系，<br>有了电，屁用没有，<br>每天晚上还是无尽的黑暗，<br>但是伟大的爱迪生发明了灯泡，<br>我们夜晚的世界就变成了五彩缤纷的天堂。</p>
-<p>所以说下了学习编程的决心，<br>立马就要去格学习IOS编程这件事。<br>这就是诚意的作用，<br>诚意是电，有了它格物和知行合一这两个灯泡，<br>才能照亮你人生之夜的天空。</p>
-<p>二、格物<br>格物是诚意的手段，<br>诚意是格物的目的。<br>现在下了学习IOS编程的决心了，<br>那要怎么学呢？</p>
-<p>接着诚意的例子讲，<br>格学习编程这件事，<br>首先，你得知道IOS编程分几部分吧，<br>开始先得学C和OC的语法，<br>其次要学UI，要学数据库，网络和多线程等。</p>
-<p>刚开始肯定是茫无头绪的，<br>但是有勿忘勿助啊，<br>不要急着去精通，<br>但是也不要一曝十寒，<br>也就是既不要急吼吼的，<br>也不要三天打鱼两天晒网。<br>当你从一无所知，<br>学会了C里面的运算符，数据类型，循环体和选择语法，<br>这时候诚意就有作用了，<br>你的决心肯定加大了。<br>学了C,OC就很容易了，</p>
-<p>接下来该学习UI了，<br>当你学完UI，<br>并且第一次自己写出了一个简单的加法计算器或者QQ登录界面，<br>这时候的成就感肯定是你无法想象的。<br>那这时候的决心简直不要不要的了。</p>
-<p>就这样一步步前进，<br>每学完一个部分，<br>决心会随之增加，<br>最后当你做出自己的一个app，<br>并且在APPStore上架，<br>这就是一个完整的格物和知行合一的过程，<br>也是一个完整的诚意过程。</p>
-<p>在《知行合一与格物》里讲过，<br>格物偏向思考层面，<br>知行合一偏向行动层面，<br>因此学编程这件事里，<br>格物是让你弄清楚学习编程的整个路线图，<br>而知行合一确保你能自己亲自动手去练习写代码，<br>而不只是听视频里的课程，却并不动手。<br>诚意则是让你能够坚持学下去。</p>
-<p>三、诚意与格物的抽象表述</p>
-<p>当你第一次下决心后，<br>如果真正去格物和知行合一了，<br>这样便会增加你的决心，<br>又促成了你再次的格物和知行合一，<br>这样又使你的决心更进一步，<br>从而形成良性循环，<br>直到最后要格的物符合了天理。<br>从而完成一个完整的格物致知的过程。</p>
-<p>本期推荐电影电视剧：<br>一、《趟过女人河的男人》<br>推荐语：演员是一份工作，明星是一个标签，厌烦了如今电视剧中明星狗血表演的你，来重温下演员们的表演吧。<br>二、《低俗小说》<br>推荐语：<br>逼片届的一座高峰，要不就永远不要看，看了就得夸它赞，否则会被凶猛的影迷怒吼“LZ大傻逼，看你的《无极》去吧！”<br>三、《大卫戈尔的一生》<br>推荐语：你确定你有信仰，确定是吧？那就看看戈尔们是怎样维护自己的信仰的？<br>本期推荐书籍：<br>一、《读书毁了我》作者：王强<br>推荐语：读书是一件很花费时间的事情，既成就人，也毁人的时间，看看书是怎么毁去新东方三驾马车之一的王强的时间的吧。<br>二、《尼采：在世纪的转折点上》作者：周国平<br>推荐语：虽然我恨他现在大量生产鸡汤，但是这人早期的这本书写的还是很有见地的。<br>三、《旁观者》作者：德鲁克<br>推荐语：作者本人的回忆录，但是故事讲得很好，每个故事都有些独特的人在演绎，如果你也喜欢听真实的故事，不妨一阅。</p>
+<p>关注此号者，必为热爱生活，<br>并以毕生追求自己理想生活方式为荣的人。<br>因此，有必要将“知行合一”以通俗方式说一下，<br>我们一般对知行合一的理解，<br>无外乎知是理论和行是实践。<br>这个不够清晰，也不够直接；</p>
+<p>知是行之始，行是知之成。<br>因此，知行本来就是一个东西的不同阶段。<br>别蒙圈，容我慢慢说。<br>以上是摘要<a id="more"></a><br>二、知行合一的工夫</p>
+<p>解说前，首先强调下，<br>你要知道知行合一不是你想就可以，<br>是要刀刀见血，刀刀剜肉的修炼的，<br>因为它直接对抗的是你的私欲以及旧有的恶习。<br>如果不了解我说的血肉是什么建议参考：《曾国藩的正面和侧面》一书，<br>学学曾国藩的：结硬寨，打呆仗的工夫便知。</p>
+<p>三、知行合一的目的</p>
+<p>我们先来了解下知行合一的目的是什么 ？<br>你要说啦，知行合一，不就是可以达到成功吗？<br>我就呵呵了，如果一代大儒王阳明的心学，<br>竟然只让你用来追求你所谓的成功，<br>那真是暴殄天物。</p>
+<p>知行合一的目的用大白话说，<br>就是变化人的气质，<br>让每个人成为一个大写的人。<br>偏理论一些就是让人臻与至善。</p>
+<p>至善即是人的本心与自然原有天理合二为一的一个点。<br>而不是我们平常认为的道德评判范畴的善恶的善，切记。<br>那么天理是什么呢?<br>这里的天理更近于我们已经了解的，<br>指的是已经映射到我们内心的真理，规律。<br>有已经映射到我们内心的状态，肯定也有未映射的状态，<br>未映射的状态：便是我们非常熟悉的：“道”，<br>也是：道可道，非常道里的道。</p>
+<p>四、知行合一的演绎</p>
+<p>由于确实不太好理解，我们稍作梳理；<br>知行合一本是一体，<br>举个例子，你要去丽江旅行<br>假设你只知道有丽江这一个地方，<br>却并不知道要怎么坐车，坐几点的车，<br>也不知道到了之后落脚何处？<br>该游览哪些景点。<br>这其实是你并未知。<br>如果你已知，<br>那么你既已经掌握了坐车的地点和时间，<br>也会了解到丽江之后，如何落脚，哪些景点值得一游。</p>
+<p>意思就是你若称一件事你已经知了，<br>那么这件事的所有细节以及步骤你都已经了解了。<br>不要说我还没来得及查看攻略，<br>也没来得及准备旅行的装备，<br>未曾想到丽江这么冷，厚衣服都没带。<br>如果你称你已经知了，那么我会默认这些你都已经了解透彻了。</p>
+<p>你说谁旅行之前，要做这么多预测与计划，<br>神仙也做不到，每个意外都设想到吧。<br>非也！不是要你预测和计划，<br>前文已经说过，假如你真的知行合一，<br>那便是你本心已经没有丝毫私欲遮蔽了，<br>既然这样，你的本心肯定已经和自然原本的天理合一了。<br>不是这样的话，你就不要说你已经知了。</p>
+<p>虽然做了梳理你可能还不是很了解，<br>那么不要嫌弃我麻烦，<br>前面说过知行合一是要修炼的，<br>天下没有免费的午餐，<br>更何况是让你脱胎换骨变化气质的知识呢？</p>
+<p>因此，这里重申知行合一的两个修炼方法，<br>静坐与未发之中，<br>对坐禅稍有了解的都明白静坐，不赘述，<br>这里说下未发之中，<br>未发之中的意思是说，<br>不是要你在旅行头天晚上再去想，<br>什么还没准备，哪些细节还没考虑到。<br>而是你下定决心去丽江旅行的时候，<br>你就要开始思考了，<br>没错就是在脑子里想象，你已经去丽江了。<br>你会不断地演绎去旅行要准备那些东西，<br>要关注那些细节。</p>
+<p>我靠，这不就是意淫吗？<br>非也！这里还有个‘行’管着呢！<br>你不是只想不去准备，<br>而是在你不断的演绎间隙，<br>把你目前条件下能准备的全部准备了。<br>这才能称为知行合一，<br>而不是让你一遍遍在脑子里过电影，<br>而完全不去采取任何行动。</p>
+<p>你说我还是不太明白，<br>好，那么你肯定知道：山崩于前而不惊，地陷于后而不惧这句话：<br>你以为有人生来就具有这样的气概吗？<br>非也，那是要经过不断的锻炼自己的内心和意志之后得到的一种无无明的从容与淡定后才有的气魄。</p>
+<p>那你说我明白了，你意思就是别比比，直接开干对吧?<br>非也！如果你想抢劫银行，盗窃金库也能说开干就开干吗？<br>你说我要成功，赚很多钱，走上人生巅峰，成为高富帅，迎娶白富美。<br>开干就能成了吗？<br>更是大错特错。</p>
+<p>在这之前你必须保证自己已经达到至善了，<br>也即你已经达到了本心不被丝毫私欲遮蔽，<br>与自然原本的天理重合为一了，这时候开干才是真正的：“知行合一”。<br>可能偏理论了，但我已经将天理至善解释清楚了，<br>你需要的只是利用方法和工具，达到惟精惟一的至善境地。<br>那么工具和方法是什么呢?<br>就是：博学，审问，慎思，明辨。<br>至于惟精惟一和至善，如果解释起来篇幅实在太大，<br>建议你直接去读沙滩孤雁的《开谈传习录》，里面很详细。<br>我在文后也会以注释的形式添加。<br>如果这时候你还是一脑袋官司，眉头紧锁，满脸的问号，<br>在下实在才疏学浅，只能帮你到这里了。</p>
+<p>注解：惟精惟一，这里的一即是知行合一的‘一’；<br>惟精惟一与至善的关系，打个比方，<br>惟一是元帅，运筹帷幄，决胜千里；<br>惟精是将军，杀伐决断，排兵布阵，考察地形；<br>而博学，审问，慎思，明辨便是士兵了，也即心学里所说的：‘工夫’。<br>我们通过修炼‘工夫’达到惟精惟一，进而达到知行合一，便可以至善了。<br>做个小结吧，我们通过博学，审问，慎思，明辨的工夫达到惟精惟一，从而可以知行合一，可以臻于至善，臻于本心与自然原有天理合一的那个点。<br>具体的修炼方法，我说了有心人可以参考佛家的坐禅与曾国藩的：‘结硬寨，打呆仗’。<br>如果有更聪慧的人应该会问：每个人都用同一种修炼方法吗？<br>好问题，这个如果讲的话，必须得是论文篇幅的。有机会会写的。</p>
+<p>本期推荐电影：<br>一、《保持缄默》<br>多句嘴，我们看电影不都是为了寻找意义多数是为了追寻快乐是吗?<br>那么这部电影会让你很快乐。<br>评价：五星级，太风趣了，前所未有的笑料集合，老太太真霸气。<br>二、《守法公民》<br>这部片让我想到我大天朝城管与摊贩的关系。<br>评价：如果他们（公权力）剥夺了你争取公正的权利怎么办？那你就自己办。<br>三、《big fish（大鱼奇缘）》<br>评价：如果从未想象过你的人生可以怎样精彩，那就从这部电影开始想象吧。<br>四、《剪刀手爱德华》<br>这部太经典了，估计很多人已看过了，我还是忍不住推荐了。<br>评价：对被大家看做异类的人好一点儿，可以吗？他们真的很纯真，却又容易受伤害。</p>
+<p>本期推荐书籍：</p>
+<p>一、《开谈传习录》作者：沙滩孤雁<br>书评：我近几年看到的讲解《传习录》，最有深度的一部书，没有之一。<br>二、《空谷幽兰》<br>书评：如果你也对隐士的神秘生活感兴趣，可以神往一下。<br>三、《不文集》<br>书评：人生不满百，常怀千岁忧，还是开口笑一笑吧，‘不文霑’经典内涵不文笑话；让你捧腹不止。</p>
 ]]></content>
       <categories>
         <category>阳明心学</category>
@@ -636,6 +635,16 @@
 ]]></content>
       <categories>
         <category>IOS</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>苏阿芒—自学外语怎能不知道他</title>
+    <url>/2016/03/17/%E8%8B%8F%E9%98%BF%E8%8A%92%E2%80%94%E8%87%AA%E5%AD%A6%E5%A4%96%E8%AF%AD%E6%80%8E%E8%83%BD%E4%B8%8D%E7%9F%A5%E9%81%93%E4%BB%96/</url>
+    <content><![CDATA[<p>原籍安徽省太平县（今黄山区）广阳乡（今属安徽石台）人，本名苏承宗，因发表作品多以苏阿芒为名，故以苏阿芒一名蜚声海内外。<br>中学毕业后曾任天津机床厂夜校英文教师，1957年加入世界语协会，历任国际世界语博物馆馆员，<br>国际世界语《世界文学》特约撰稿人，国际世界读者青年联合会中央委员，“文革”中1968年蒙冤入狱，1979年平反后任百花出版社编辑。<br>1951年开始发表作品。1979年加入中国作家协会。<br>以上借用一段百科文字，<br>我知道苏阿芒其人其事，<br>是在父亲书箱里翻到的一本叫做《成才之路》的书上。<br>以上是摘要<a id="more"></a><br>当时看到就热血沸腾，<br>最近在学习日语和英语，<br>又想起这个名字。<br>由苏阿芒的故事，<br>我觉得无论学习外语还是学习其他东西，<br>就是不疯魔不成活。<br>想想你我诸位，<br>谁在地铁或者在商务活动中，<br>没有遇到过这样的场景：<br>你原本很以为难的一门外语，<br>在地铁中你身旁的一位美女或者老兄，<br>正在和外国人侃侃而谈，<br>不时发出爽朗的笑声。<br>又或者在商务活动中，<br>你的同事与谈判对手，<br>正在用一门你觉得很难的外语，<br>唇枪舌剑，你来我往。<br>当时你除了发蒙，<br>第二个感觉就是，<br>真TMD的太牛逼了。<br>我要是外语也这么牛逼，<br>那该多好啊！<br>可你就是无法做到……<br>这么牛逼！<br>是的你无法做到。</p>
+<p>因为等你下了地铁或者在结束那次谈判后，<br>你就又想着今天回去吃什么，<br>或者想着购物车里那件好看的鞋子或者衣服，<br>是不是又降价了。<br>事实就是如此，<br>我从遇到这种情况之后，<br>发奋学英语，<br>到如今也已有五六年时间，<br>到如今英语的水平，<br>也只能令自己呵呵了。<br>自己看了下掌握多门外语的牛逼人物，<br>远者如辜鸿铭，近者如苏阿芒。<br>他们有神马了不得方法吗？<br>还是天赋异禀。<br>非也！<br>唯苦练勤学尔。<br>我自己的猜测啊！<br>学第一门外语的难度，<br>和第二门第三门外语的难度肯定成几何级降低的。<br>因为你在学第一门外语的时候，<br>已经有了一套成熟的方法论；<br>区别只是在学其他外语的时候，<br>对方法论体系中的某个细节进行改动，<br>并且随着学的外语门数增多；<br>这个方法论的体系一定会不断完善，不断得到补充；<br>那么等到你学第二十门的时候，<br>肯定已经是手到擒来，如探囊取物般容易了。<br>所以根结在神马地方，<br>第一个是恒心，第二个是勤奋；<br>第三是保证你自己必须先学会一门外语。<br>如果你想学更多门外语，肯定会越来越容易的。<br>因此，无论你学英语还是韩语，无论意大利语还是西班牙语。<br>如果你真的想学多门外语，保证你先精通一门外语。<br>其他外语定然是可以得其门而入的。<br>那么你一定要知道苏阿芒的故事，<br>也就是题中应有之意了。</p>
+]]></content>
+      <categories>
+        <category>外语学习</category>
       </categories>
   </entry>
   <entry>
@@ -680,6 +689,28 @@
       </categories>
   </entry>
   <entry>
+    <title>诚意与格物</title>
+    <url>/2016/03/17/%E8%AF%9A%E6%84%8F%E4%B8%8E%E6%A0%BC%E7%89%A9/</url>
+    <content><![CDATA[<p>一、前面的话</p>
+<p>阳明心学的概念和结构跟《大学》关系密切，<br>诚意作为三纲八目的起点，至关重要，<br>格物又是致良知和诚意的核心工夫，<br>因此，很有必要单独聊聊诚意和格物。</p>
+<p>二、诚意<br>诚意就是下决心，真的下决心<br>但不是下一次就可以，<br>因为决心需要格物和知行合一的支撑。<br>前文有述及，<br>决心与格物和知行合一是一个循序渐进，<br>相互促进的过程。<br>以上是摘要<a id="more"></a><br>多说无用，举例说明。<br>假如你要学习IOS编程，<br>从对IOS编程一无所知，<br>到完成自己的app，<br>对你来说肯定是一件很苦逼的事，<br>你觉得这时候决心对你有用吗 ？<br>答案是屁用没有，</p>
+<p>没错，决心对这时候的你来说，<br>绝对屁用没有，<br>那你就问了，<br>我靠，屁用没有，<br>那我学诚意有毛用，<br>别急，诚意不是一个孤立的单品，<br>是一个需要配合格物和知行合一一起使用的产品。<br>正如电和灯泡的关系，<br>有了电，屁用没有，<br>每天晚上还是无尽的黑暗，<br>但是伟大的爱迪生发明了灯泡，<br>我们夜晚的世界就变成了五彩缤纷的天堂。</p>
+<p>所以说下了学习编程的决心，<br>立马就要去格学习IOS编程这件事。<br>这就是诚意的作用，<br>诚意是电，有了它格物和知行合一这两个灯泡，<br>才能照亮你人生之夜的天空。</p>
+<p>二、格物<br>格物是诚意的手段，<br>诚意是格物的目的。<br>现在下了学习IOS编程的决心了，<br>那要怎么学呢？</p>
+<p>接着诚意的例子讲，<br>格学习编程这件事，<br>首先，你得知道IOS编程分几部分吧，<br>开始先得学C和OC的语法，<br>其次要学UI，要学数据库，网络和多线程等。</p>
+<p>刚开始肯定是茫无头绪的，<br>但是有勿忘勿助啊，<br>不要急着去精通，<br>但是也不要一曝十寒，<br>也就是既不要急吼吼的，<br>也不要三天打鱼两天晒网。<br>当你从一无所知，<br>学会了C里面的运算符，数据类型，循环体和选择语法，<br>这时候诚意就有作用了，<br>你的决心肯定加大了。<br>学了C,OC就很容易了，</p>
+<p>接下来该学习UI了，<br>当你学完UI，<br>并且第一次自己写出了一个简单的加法计算器或者QQ登录界面，<br>这时候的成就感肯定是你无法想象的。<br>那这时候的决心简直不要不要的了。</p>
+<p>就这样一步步前进，<br>每学完一个部分，<br>决心会随之增加，<br>最后当你做出自己的一个app，<br>并且在APPStore上架，<br>这就是一个完整的格物和知行合一的过程，<br>也是一个完整的诚意过程。</p>
+<p>在《知行合一与格物》里讲过，<br>格物偏向思考层面，<br>知行合一偏向行动层面，<br>因此学编程这件事里，<br>格物是让你弄清楚学习编程的整个路线图，<br>而知行合一确保你能自己亲自动手去练习写代码，<br>而不只是听视频里的课程，却并不动手。<br>诚意则是让你能够坚持学下去。</p>
+<p>三、诚意与格物的抽象表述</p>
+<p>当你第一次下决心后，<br>如果真正去格物和知行合一了，<br>这样便会增加你的决心，<br>又促成了你再次的格物和知行合一，<br>这样又使你的决心更进一步，<br>从而形成良性循环，<br>直到最后要格的物符合了天理。<br>从而完成一个完整的格物致知的过程。</p>
+<p>本期推荐电影电视剧：<br>一、《趟过女人河的男人》<br>推荐语：演员是一份工作，明星是一个标签，厌烦了如今电视剧中明星狗血表演的你，来重温下演员们的表演吧。<br>二、《低俗小说》<br>推荐语：<br>逼片届的一座高峰，要不就永远不要看，看了就得夸它赞，否则会被凶猛的影迷怒吼“LZ大傻逼，看你的《无极》去吧！”<br>三、《大卫戈尔的一生》<br>推荐语：你确定你有信仰，确定是吧？那就看看戈尔们是怎样维护自己的信仰的？<br>本期推荐书籍：<br>一、《读书毁了我》作者：王强<br>推荐语：读书是一件很花费时间的事情，既成就人，也毁人的时间，看看书是怎么毁去新东方三驾马车之一的王强的时间的吧。<br>二、《尼采：在世纪的转折点上》作者：周国平<br>推荐语：虽然我恨他现在大量生产鸡汤，但是这人早期的这本书写的还是很有见地的。<br>三、《旁观者》作者：德鲁克<br>推荐语：作者本人的回忆录，但是故事讲得很好，每个故事都有些独特的人在演绎，如果你也喜欢听真实的故事，不妨一阅。</p>
+]]></content>
+      <categories>
+        <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
     <title>读《一个人的村庄》</title>
     <url>/2016/03/17/%E8%AF%BB%E3%80%8A%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E6%9D%91%E5%BA%84%E3%80%8B/</url>
     <content><![CDATA[<p>一、书和作者<br>《一个人的村庄》作者：刘亮程<br>刘亮程，作家，1962年出生在新疆古尔班通古特沙漠边缘的一个小村庄。<br>著有诗集《晒晒黄沙梁的太阳》，<br>散文集《虚土》《一个人的村庄》《在新疆》等。<br>被誉为“20世纪中国最后一位散文家”和“乡村哲学家”。</p>
@@ -691,16 +722,6 @@
 ]]></content>
       <categories>
         <category>读完就谈</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>苏阿芒—自学外语怎能不知道他</title>
-    <url>/2016/03/17/%E8%8B%8F%E9%98%BF%E8%8A%92%E2%80%94%E8%87%AA%E5%AD%A6%E5%A4%96%E8%AF%AD%E6%80%8E%E8%83%BD%E4%B8%8D%E7%9F%A5%E9%81%93%E4%BB%96/</url>
-    <content><![CDATA[<p>原籍安徽省太平县（今黄山区）广阳乡（今属安徽石台）人，本名苏承宗，因发表作品多以苏阿芒为名，故以苏阿芒一名蜚声海内外。<br>中学毕业后曾任天津机床厂夜校英文教师，1957年加入世界语协会，历任国际世界语博物馆馆员，<br>国际世界语《世界文学》特约撰稿人，国际世界读者青年联合会中央委员，“文革”中1968年蒙冤入狱，1979年平反后任百花出版社编辑。<br>1951年开始发表作品。1979年加入中国作家协会。<br>以上借用一段百科文字，<br>我知道苏阿芒其人其事，<br>是在父亲书箱里翻到的一本叫做《成才之路》的书上。<br>以上是摘要<a id="more"></a><br>当时看到就热血沸腾，<br>最近在学习日语和英语，<br>又想起这个名字。<br>由苏阿芒的故事，<br>我觉得无论学习外语还是学习其他东西，<br>就是不疯魔不成活。<br>想想你我诸位，<br>谁在地铁或者在商务活动中，<br>没有遇到过这样的场景：<br>你原本很以为难的一门外语，<br>在地铁中你身旁的一位美女或者老兄，<br>正在和外国人侃侃而谈，<br>不时发出爽朗的笑声。<br>又或者在商务活动中，<br>你的同事与谈判对手，<br>正在用一门你觉得很难的外语，<br>唇枪舌剑，你来我往。<br>当时你除了发蒙，<br>第二个感觉就是，<br>真TMD的太牛逼了。<br>我要是外语也这么牛逼，<br>那该多好啊！<br>可你就是无法做到……<br>这么牛逼！<br>是的你无法做到。</p>
-<p>因为等你下了地铁或者在结束那次谈判后，<br>你就又想着今天回去吃什么，<br>或者想着购物车里那件好看的鞋子或者衣服，<br>是不是又降价了。<br>事实就是如此，<br>我从遇到这种情况之后，<br>发奋学英语，<br>到如今也已有五六年时间，<br>到如今英语的水平，<br>也只能令自己呵呵了。<br>自己看了下掌握多门外语的牛逼人物，<br>远者如辜鸿铭，近者如苏阿芒。<br>他们有神马了不得方法吗？<br>还是天赋异禀。<br>非也！<br>唯苦练勤学尔。<br>我自己的猜测啊！<br>学第一门外语的难度，<br>和第二门第三门外语的难度肯定成几何级降低的。<br>因为你在学第一门外语的时候，<br>已经有了一套成熟的方法论；<br>区别只是在学其他外语的时候，<br>对方法论体系中的某个细节进行改动，<br>并且随着学的外语门数增多；<br>这个方法论的体系一定会不断完善，不断得到补充；<br>那么等到你学第二十门的时候，<br>肯定已经是手到擒来，如探囊取物般容易了。<br>所以根结在神马地方，<br>第一个是恒心，第二个是勤奋；<br>第三是保证你自己必须先学会一门外语。<br>如果你想学更多门外语，肯定会越来越容易的。<br>因此，无论你学英语还是韩语，无论意大利语还是西班牙语。<br>如果你真的想学多门外语，保证你先精通一门外语。<br>其他外语定然是可以得其门而入的。<br>那么你一定要知道苏阿芒的故事，<br>也就是题中应有之意了。</p>
-]]></content>
-      <categories>
-        <category>外语学习</category>
       </categories>
   </entry>
   <entry>
@@ -738,68 +759,6 @@
 ]]></content>
       <categories>
         <category>读完就谈</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>重装Hexo遇到的坑</title>
-    <url>/2020/04/28/%E9%87%8D%E8%A3%85Hexo%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/</url>
-    <content><![CDATA[<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">我的前言只有三段话</span><br></pre></td></tr></table></figure>
-
-<h4 id="第一段"><a href="#第一段" class="headerlink" title="第一段"></a>第一段</h4><p>以前曾经用两天一夜的时间，<br>成功的以一个小白的身份，<br>用Mac+Hexo+Github,<br>搭建了自己的独立博客，<br>并且还简单学习了js和markdown，<br>当然还有python的简单用法，<br>可以说是收获颇丰。</p>
-<h4 id="第二段"><a href="#第二段" class="headerlink" title="第二段"></a>第二段</h4><p>随着生活日益繁忙，<br>便兴趣缺缺了。<br>所以，一度曾尝试彻底卸载Hexo,<br>最后当然没有成功，<br>只是在本地卸载了hexo和node，<br>但是hexo本地文件夹始终保存着，<br>幸好保存了，<br>不然今天就没这篇文章了。</p>
-<h4 id="第三段"><a href="#第三段" class="headerlink" title="第三段"></a>第三段</h4><p>最近生活有了些闲暇，<br>也读了很多书，<br>忽然又想找个地方写一下，<br>所以决定重装Hexo，<br>这便是踏坑的开始。</p>
-<a id="more"></a>
-
-<h3 id="第一个坑：node版本和hexo不兼容"><a href="#第一个坑：node版本和hexo不兼容" class="headerlink" title="第一个坑：node版本和hexo不兼容"></a>第一个坑：node版本和hexo不兼容</h3><p>我重新装了node和hexo，<br>满心欢喜在终端输入：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<p>结果给我来了一串的node警告，<br>只要不是错误，那我忍着，<br>继续输入：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-<p>这时候node坐不住了，<br>它报错了，错误如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">TypeError [ERR_INVALID_ARG_TYPE]: </span><br><span class="line"></span><br><span class="line">The &quot;mode&quot; argument must be integer. Received an instance of Object</span><br></pre></td></tr></table></figure>
-<p>然后下面是at什么什么，反正一堆错误。</p>
-<p>我用了一晚上的时间，<br>熬到凌晨四点多，<br>最后在搜索引擎，根本没有找到答案，<br>有人说是因为node版本问题，<br>我没当回事儿，<br>我想怎么可能是node版本问题呢？<br>我这node和hexo都是新装的，<br>结果，你越不认可的原因，<br>事实证明，就是那个原因，<br>在第二天上午又找了将近一上午的情况下，<br>我去了google，结果在github，看到了标准答案。<br>就是因为node 14.0.0和hexo不兼容的问题。</p>
-<p>然后啥也别想了，<br>直接打开命令行，开始装nvm</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew install nvm</span><br></pre></td></tr></table></figure>
-<p>接下来，用nvm安装离node 14.0.0比较近的版本，<br>那就选node 13.13.0吧，<br>开装，</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nvm install v13.13.0</span><br></pre></td></tr></table></figure>
-<p>安装完毕，<br>接下来将v13.13.0用nvm设置成默认的node版本</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nvm use v13.13.0</span><br></pre></td></tr></table></figure>
-<p>以上只是单次有用，<br>要想每次默认的node都是13.13.0，<br>必须设置别名：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">node alias default v13.13.0</span><br></pre></td></tr></table></figure>
-<p>接下来在终端输入查看下目前默认node版本是否是v13.13.0：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nvm current</span><br></pre></td></tr></table></figure>
-<p>终端显示更改默认node版本成功。</p>
-<p>至此用nvm管理node版本步骤完毕。</p>
-<p>来不及顾及其他，<br>直接在终端输入：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<p>成功！！！<br>恼人的node警告终于消停了，<br>世界终于清净了，<br>继续输入：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-<p>提交成功，堪称完美。</p>
-<p>至此完美解决打开本地服务器和提交到github时，<br>node警告和报错的问题。<br>至此，第一个坑，算是填完了。</p>
-<h3 id="第二个坑：网站名称和主页导航栏中文乱码"><a href="#第二个坑：网站名称和主页导航栏中文乱码" class="headerlink" title="第二个坑：网站名称和主页导航栏中文乱码"></a>第二个坑：网站名称和主页导航栏中文乱码</h3><p>先声明这个坑，我到现在也没跳出来。<br>根本找不到原因。</p>
-<p>发现网站名称和导航栏中文乱码后，<br>展开一波搜索大法，<br>效果并不好，<br>在翻山越岭爬山涉水般的，各种尝试之后，<br>决定退而求其次，<br>我用原来hexo文件夹里的_config.yml和themes文件夹的_config.yml，<br>直接覆盖当前站点的这两个配置文件。<br>结果再也没乱码。</p>
-<p>网上好多人说中文乱码是因为用了文本编辑器编辑_config.yml，<br>是编码错误，改成utf8云云。</p>
-<p>可是并没有卵用，<br>如果是因为编码问题，<br>我文章直接就是用文本编辑器写的，一点儿也不乱。</p>
-<p>所以说，网上搜索答案的时候，<br>人云亦云的人是真多，<br>不但解决不了问题，<br>还浪费想找到答案的人的时间和精力。<br>有的人真的可恶至极，直接复制粘贴。<br>连问题都没写清楚，<br>还能期望他会有靠谱的答案吗？</p>
-<p>至此，算是勉强跳出两个大坑。</p>
-<p>最近决定集中研究下，hexo博客的装修问题。</p>
-<p>什么主题啦，修改ejs啦，等等，一定很好玩儿。</p>
-<p>再次使用hexo，有了第一次的基础，</p>
-<p>这次对hexo的文件结构和功能明了多了。</p>
-<p>慢慢来，<br>世界上一切事情都是这样的，<br>慢就是快，<br>快就是慢<br>有一句话说的很好，与诸君共勉：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">### Slow is smooth, and smooth is fast.</span><br><span class="line">    慢是光滑的，而光滑是快的。</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>Hexo</category>
       </categories>
   </entry>
   <entry>
@@ -925,24 +884,65 @@
       </categories>
   </entry>
   <entry>
-    <title>知行合一与坚持</title>
-    <url>/2016/03/17/%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E4%B8%8E%E5%9D%9A%E6%8C%81/</url>
-    <content><![CDATA[<p>你确定你真的在坚持？</p>
-<p>如果你真的在坚持知行合一，此生一件事足矣；<br>我们经常听到：“只管付出，莫问收获”这句话；<br>其实呢？试问几个人能做到，真正知行合一的坚持这句话；<br>如果坚持的人够多，就不会有微信朋友圈N多的鸡汤转来转去；<br>百度贴吧各种论坛和各种qq群也不会有那么多吐槽或抱怨的话；<br>比如：“今天那个谁又在背后说我坏话，谁谁谁说好某日还我钱，到了时候又不还”。<br>我的意思是说什么呢？<br>以上是摘要<a id="more"></a><br>既然每个人都不是圣人，就没必要将大多数人转来转去的那些你还并没有真正理解其内涵的话当作座右铭或者至理名言。<br>甚至将他在自己的朋友圈转出去，再荼毒其他不明内涵的人们。</p>
-<p>抱怨的理由何在？</p>
-<p>既然每个人都不是圣人，做不到真正的温良恭俭让，<br>也做不到不愠不火，每天如履薄冰，如临深渊。<br>那就试着不让这种容易引起你抱怨的事开始；<br>你抱怨某个嘴贱的人每天在背后对你叨逼叨，<br>要么辞职换工作，别告诉我你还没准备好，<br>你有抱怨的时间，早就准备好了。<br>要么就尽量不去听，不去想；<br>安心做好你自己的份内事。<br>你抱怨某个看起来很仗义的那个贱人，<br>借了你钱就是不还，那一开始就做好风险评估；<br>借的金额在你可承受范围内；<br>在你这里信用度降低到一定级别，<br>直接拒绝借出。<br>别告诉我你人好，不会拒绝人；<br>那你还tm抱怨个啥。</p>
-<p>关于那些贱人们<br>人有各种各样，形形色色，<br>被称为贱人的这些人，<br>他们也许在自己家人面前是乖孩子，在亲戚长辈中是有为青年，可就是你跟他们接触中，表现的一次比一次贱；<br>工作生涯中，这种碎嘴子的贱人超多，这种人大致又分为两种，<br>一种是长舌妇，到处宣扬一些小道消息，或是不确定真假的消息；<br>一种是别有用心，利用各种机会散布你的谣言，破坏你的心情。<br>活在现代社会，贱人避免不了。<br>你要么让自己更强大，要么比贱人更贱，你自己选吧。</p>
-<p>大学时我们有一个政治老师讲过一个故事；<br>当一架飞机升空时，发现有一群老鼠在咬油箱；<br>这时飞机上只有飞行员一个人，<br>他若扔下飞机去抓老鼠，飞机就会坠毁；<br>如果不抓，老鼠咬破油箱，油箱泄漏，也会坠毁。<br>这时应该怎么办呢？</p>
-<p>答案是将飞机升上云雨层，憋死丫一堆老鼠。</p>
-<p>你说，呀！这个故事我听过；<br>是的，太阳底下没有新鲜事；<br>如果你只是知道这个故事，那没什么了不起；<br>重要的是你能让自己知行合一吗？<br>哪怕你知道吃多了是要发胖的，<br>你能每天中午少吃块蛋糕，<br>或者夏天少吃个冰激凌吗？<br>又或者，你知道不学习是要落后的<br>落后是要挨打的；<br>可是你还是一边内心自责着，<br>一边又默默的点开了dota的启动键。<br>你能说你真的知道了吗？</p>
-<p>你明白了吧，为什么你身边的这些贱人们，<br>对你言语中伤后，每天还过的逍遥自在，<br>即便你恨的牙痒痒，也不能把他们怎么着。<br>一个是因为：<br>无论你承不承认，社会就是有阶层存在的，<br>他们和你在一个层次，可以放心的咬你的油箱。<br>咬完之后还可以咂摸咂摸嘴赞叹道：“真好吃”；<br>另一个是因为：<br>他们压根不信你丫还能通过自己默默的努力，<br>在一段时间后，上升到一个他们不可企及的人生高度。<br>然后活活让贱点子，把他们自己憋死。<br>因为他们无处耍贱了，哈哈。</p>
-<p>这是他们真正肆无忌惮的做贱人的最本质原因。</p>
-<p>而你如果能真正知道知行合一的意义，<br>你现在唯一要做的就是锻炼好自己的驾驶技能；<br>然后升上云雨层，将丫的活活憋死。<br>你想学编程，好啊，去看视频，去写代码；<br>你说你喜欢音乐，好呀，网上免费资源多的是；<br>百度总会吧，谷歌总会吧，加qq群总会吧；<br>不会，鼻子底下是什么，问呗。</p>
-<p>关于坚持的那些事儿</p>
-<p>我总觉得语言有时候太乏力，<br>只有自己真正理解了的东西，<br>才能自动的运用；<br>说起来运用之妙，存乎一心有些玄乎；<br>可是事实却是如此。<br>所以故事大家肯定看过很多很多了。<br>我只想为大家推荐两部电影两本书；<br>我觉得都很好的诠释了坚持的本质。<br>我非常反感鸡汤，我认为所有的鸡汤都是意淫，<br>过后全部是疲惫和更大的失落。<br>所以我不会推荐鸡汤的电影或书籍。<br>电影：<br>一、《编舟记》<br>该片讲述了在一家出版社的辞典编辑部里，在完成辞典《大渡海》编辑工作中发生的故事。主角是一个眼镜男，属于宅男那种类型。<br>这部片子告诉你，只要你足够坚持你会无意中成为点燃别人激情的人，<br>不错，和阿甘跑步那个片段非常像。<br>二、《风雨哈佛路》<br>我只想说：“谁不是千辛万苦才得到一点儿”；<br>比你苦的人，累的人，比你悲催和苦逼的大有人在；<br>不然你可以去看一看《浮生一日》；<br>让你一天看尽五大洋七大洲不同的人在同一天所发生的故事。<br>你没必要总是顾影自怜或者自怨自哀；<br>要知道大多数人智商相差不多；<br>后天的坚持和努力占了很大一部分。<br>书籍：<br>一、《越读者》<br>跟坚持无直接关系，可是如果你能坚持读一辈子的书，<br>谁敢说你不是在坚持呢？作者本身是个坐在轮椅上的人，<br>浸淫出版业多年，这是他自己写的一本书；<br>主要告诉人们该如何选择一本好书；<br>书籍是人类的精神食粮，<br>如果你把读书这件事坚持一辈子，<br>谁敢说你不牛逼呢？<br>二、《季羡林日记》<br>这本书本身就告诉你，坚持每天记流水账都可以出书；<br>呵呵，玩笑了，不过你不觉得每天记日记，<br>是最容易开始的一件和坚持有关的事情吗？<br>日记内文有的都不到一百字，好多还是重复的；<br>可是人家硬是坚持写了七十多年直到2002年住院才作罢。<br>所以说，坚持无须多么高大上，<br>也不必让全世界都知道；<br>只要你真的在坚持并且知行合一了，一件事足矣。</p>
+    <title>重装Hexo遇到的坑</title>
+    <url>/2020/04/28/%E9%87%8D%E8%A3%85Hexo%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/</url>
+    <content><![CDATA[<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">我的前言只有三段话</span><br></pre></td></tr></table></figure>
+
+<h4 id="第一段"><a href="#第一段" class="headerlink" title="第一段"></a>第一段</h4><p>以前曾经用两天一夜的时间，<br>成功的以一个小白的身份，<br>用Mac+Hexo+Github,<br>搭建了自己的独立博客，<br>并且还简单学习了js和markdown，<br>当然还有python的简单用法，<br>可以说是收获颇丰。</p>
+<h4 id="第二段"><a href="#第二段" class="headerlink" title="第二段"></a>第二段</h4><p>随着生活日益繁忙，<br>便兴趣缺缺了。<br>所以，一度曾尝试彻底卸载Hexo,<br>最后当然没有成功，<br>只是在本地卸载了hexo和node，<br>但是hexo本地文件夹始终保存着，<br>幸好保存了，<br>不然今天就没这篇文章了。</p>
+<h4 id="第三段"><a href="#第三段" class="headerlink" title="第三段"></a>第三段</h4><p>最近生活有了些闲暇，<br>也读了很多书，<br>忽然又想找个地方写一下，<br>所以决定重装Hexo，<br>这便是踏坑的开始。</p>
+<a id="more"></a>
+
+<h3 id="第一个坑：node版本和hexo不兼容"><a href="#第一个坑：node版本和hexo不兼容" class="headerlink" title="第一个坑：node版本和hexo不兼容"></a>第一个坑：node版本和hexo不兼容</h3><p>我重新装了node和hexo，<br>满心欢喜在终端输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>结果给我来了一串的node警告，<br>只要不是错误，那我忍着，<br>继续输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+<p>这时候node坐不住了，<br>它报错了，错误如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">TypeError [ERR_INVALID_ARG_TYPE]: </span><br><span class="line"></span><br><span class="line">The &quot;mode&quot; argument must be integer. Received an instance of Object</span><br></pre></td></tr></table></figure>
+<p>然后下面是at什么什么，反正一堆错误。</p>
+<p>我用了一晚上的时间，<br>熬到凌晨四点多，<br>最后在搜索引擎，根本没有找到答案，<br>有人说是因为node版本问题，<br>我没当回事儿，<br>我想怎么可能是node版本问题呢？<br>我这node和hexo都是新装的，<br>结果，你越不认可的原因，<br>事实证明，就是那个原因，<br>在第二天上午又找了将近一上午的情况下，<br>我去了google，结果在github，看到了标准答案。<br>就是因为node 14.0.0和hexo不兼容的问题。</p>
+<p>然后啥也别想了，<br>直接打开命令行，开始装nvm</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew install nvm</span><br></pre></td></tr></table></figure>
+<p>接下来，用nvm安装离node 14.0.0比较近的版本，<br>那就选node 13.13.0吧，<br>开装，</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nvm install v13.13.0</span><br></pre></td></tr></table></figure>
+<p>安装完毕，<br>接下来将v13.13.0用nvm设置成默认的node版本</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nvm use v13.13.0</span><br></pre></td></tr></table></figure>
+<p>以上只是单次有用，<br>要想每次默认的node都是13.13.0，<br>必须设置别名：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">node alias default v13.13.0</span><br></pre></td></tr></table></figure>
+<p>接下来在终端输入查看下目前默认node版本是否是v13.13.0：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nvm current</span><br></pre></td></tr></table></figure>
+<p>终端显示更改默认node版本成功。</p>
+<p>至此用nvm管理node版本步骤完毕。</p>
+<p>来不及顾及其他，<br>直接在终端输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>成功！！！<br>恼人的node警告终于消停了，<br>世界终于清净了，<br>继续输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+<p>提交成功，堪称完美。</p>
+<p>至此完美解决打开本地服务器和提交到github时，<br>node警告和报错的问题。<br>至此，第一个坑，算是填完了。</p>
+<h3 id="第二个坑：网站名称和主页导航栏中文乱码"><a href="#第二个坑：网站名称和主页导航栏中文乱码" class="headerlink" title="第二个坑：网站名称和主页导航栏中文乱码"></a>第二个坑：网站名称和主页导航栏中文乱码</h3><p>先声明这个坑，我到现在也没跳出来。<br>根本找不到原因。</p>
+<p>发现网站名称和导航栏中文乱码后，<br>展开一波搜索大法，<br>效果并不好，<br>在翻山越岭爬山涉水般的，各种尝试之后，<br>决定退而求其次，<br>我用原来hexo文件夹里的_config.yml和themes文件夹的_config.yml，<br>直接覆盖当前站点的这两个配置文件。<br>结果再也没乱码。</p>
+<p>网上好多人说中文乱码是因为用了文本编辑器编辑_config.yml，<br>是编码错误，改成utf8云云。</p>
+<p>可是并没有卵用，<br>如果是因为编码问题，<br>我文章直接就是用文本编辑器写的，一点儿也不乱。</p>
+<p>所以说，网上搜索答案的时候，<br>人云亦云的人是真多，<br>不但解决不了问题，<br>还浪费想找到答案的人的时间和精力。<br>有的人真的可恶至极，直接复制粘贴。<br>连问题都没写清楚，<br>还能期望他会有靠谱的答案吗？</p>
+<p>至此，算是勉强跳出两个大坑。</p>
+<p>最近决定集中研究下，hexo博客的装修问题。</p>
+<p>什么主题啦，修改ejs啦，等等，一定很好玩儿。</p>
+<p>再次使用hexo，有了第一次的基础，</p>
+<p>这次对hexo的文件结构和功能明了多了。</p>
+<p>慢慢来，<br>世界上一切事情都是这样的，<br>慢就是快，<br>快就是慢<br>有一句话说的很好，与诸君共勉：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">### Slow is smooth, and smooth is fast.</span><br><span class="line">    慢是光滑的，而光滑是快的。</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
 ]]></content>
       <categories>
-        <category>阳明心学</category>
+        <category>Hexo</category>
       </categories>
   </entry>
 </search>

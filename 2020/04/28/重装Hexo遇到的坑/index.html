@@ -156,7 +156,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://franktianyirenjian.github.io/2020/04/28/%E9%87%8D%E8%A3%85Hexo%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/" data-id="ck9n01e8o0020qinu6qgn8s5k" class="article-share-link">分享</a>
+      <a data-url="https://franktianyirenjian.github.io/2020/04/28/%E9%87%8D%E8%A3%85Hexo%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/" data-id="ck9n078si0024tcnuhgt66yo6" class="article-share-link">分享</a>
       
       
     </footer>
@@ -256,18 +256,12 @@
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
-  {% if theme.scheme %}
-  <form class="site-search-form">
-    <input type="text" id="local-search-input" class="st-search-input" />
-  </form>
-  <div id="local-search-result" class="local-search-result-cls"></div>
-{% endif %}
+  
+  <span class="local-search local-search-google local-search-plugin" style="right: 50px;top: 30px;;position:absolute;z-index:2;">
+      <input type="search" placeholder="站内搜索" id="local-search-input" class="local-search-input-cls" style="">
+      <div id="local-search-result" class="local-search-result-cls"></div>
+  </span>
 
-<script type="text/javascript" id="local.search.active">
-var inputArea       = document.querySelector("#local-search-input");
-inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
-inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
-</script>
   
 <script src="/js/load.js"></script>
 
