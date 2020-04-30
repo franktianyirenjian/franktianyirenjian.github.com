@@ -107,7 +107,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://franktianyirenjian.github.io/2016/03/17/%E5%8F%AF%E8%BF%98%E8%AE%B0%E5%BE%97%E3%80%8A%E7%94%98%E5%8D%81%E4%B9%9D%E5%A6%B9%E3%80%8B/" data-id="ck9n09trq000gv9nu5md20be4" class="article-share-link">分享</a>
+      <a data-url="https://franktianyirenjian.github.io/2016/03/17/%E5%8F%AF%E8%BF%98%E8%AE%B0%E5%BE%97%E3%80%8A%E7%94%98%E5%8D%81%E4%B9%9D%E5%A6%B9%E3%80%8B/" data-id="ck9n0fxyj000hxqnu0eguef2r" class="article-share-link">分享</a>
       
       
     </footer>
@@ -213,6 +213,11 @@
       <div id="local-search-result" class="local-search-result-cls"></div>
   </span>
 
+<script type="text/javascript" id="local.search.active">
+var inputArea       = document.querySelector("#local-search-input");
+inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script>
   
 <script src="/js/load.js"></script>
 
