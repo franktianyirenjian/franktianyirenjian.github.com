@@ -852,7 +852,7 @@
     </div>
   </div>
   
-{% if theme.scheme %}
+{% theme.local_search.enable %}
   <form class="site-search-form">
     <input type="text" id="local-search-input" class="st-search-input" />
   </form>
@@ -863,7 +863,6 @@ inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
 inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
 </script>
 {% endif %}
-
 
   
 <script src="/js/load.js"></script>

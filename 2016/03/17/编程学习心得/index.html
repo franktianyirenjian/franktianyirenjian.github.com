@@ -111,7 +111,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://franktianyirenjian.github.io/2016/03/17/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/" data-id="ck9mvtzj1001jj8nuct1d22lb" class="article-share-link">分享</a>
+      <a data-url="https://franktianyirenjian.github.io/2016/03/17/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/" data-id="ck9mvzvwp001ol5nu01cb8fp3" class="article-share-link">分享</a>
       
       
     </footer>
@@ -212,7 +212,7 @@
     </div>
   </div>
   
-{% if theme.scheme %}
+{% theme.local_search.enable %}
   <form class="site-search-form">
     <input type="text" id="local-search-input" class="st-search-input" />
   </form>
@@ -223,7 +223,6 @@ inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
 inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
 </script>
 {% endif %}
-
 
   
 <script src="/js/load.js"></script>
