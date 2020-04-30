@@ -121,7 +121,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://franktianyirenjian.github.io/2016/03/17/%E8%AF%BB%E3%80%8A%E4%B8%AD%E5%9B%BD%E6%96%87%E8%84%89%E3%80%8B/" data-id="ck9mw8bh1001uownugs73dvjk" class="article-share-link">分享</a>
+      <a data-url="https://franktianyirenjian.github.io/2016/03/17/%E8%AF%BB%E3%80%8A%E4%B8%AD%E5%9B%BD%E6%96%87%E8%84%89%E3%80%8B/" data-id="ck9mwbrqe001wqpnueovc0awo" class="article-share-link">分享</a>
       
       
     </footer>
@@ -223,6 +223,11 @@
   </div>
   
 {% theme.local_search.enable %}
+   <span class="local-search local-search-google local-search-plugin" style="right: 50px;top: 30px;;position:absolute;z-index:2;">
+      <input type="search" placeholder="站内搜索" id="local-search-input" class="local-search-input-cls" style="">
+      <div id="local-search-result" class="local-search-result-cls"></div>
+  </span>
+
   <form class="site-search-form">
     <input type="text" id="local-search-input" class="st-search-input" />
   </form>
@@ -233,6 +238,7 @@ inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
 inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
 </script>
 {% endif %}
+
 
   
 <script src="/js/load.js"></script>
