@@ -28,6 +28,38 @@ hexo cleanhexo d -
       </categories>
   </entry>
   <entry>
+    <title>IOS Xcode7.1新建纯代码工程</title>
+    <url>/2016/03/17/IOS-Xcode7-1%E6%96%B0%E5%BB%BA%E7%BA%AF%E4%BB%A3%E7%A0%81%E5%B7%A5%E7%A8%8B/</url>
+    <content><![CDATA[今天准备纯代码做下计算器；xcode已升级到version 7.1；创建singleview后改造空工程；删除main.storyboard，创建windows并设置背景色为黑色；满怀期待的command+R；结果提示我:以上是摘要2015-10-30 18:15:29.933 计算器[1696:127982] * Assertion failure in -[UIApplication _runWithMainScene:transitionContext:completion:], /BuildRoot/Library/Caches/com.apple.xbs/Sources/UIKit_Sim/UIKit-3512.29.5/UIApplication.m:32992015-10-30 18:15:29.939 计算器[1696:127982] * Terminating app due to uncaught exception ‘NSInternalInconsistencyException’, reason: ‘Application windows are expected to have a root view controller at the end of application launch’*** First throw call stack:(0   CoreFoundation                      0x02524a84 exceptionPreprocess + 1801   libobjc.A.dylib                     0x00550e02 objc_exception_throw + 502   CoreFoundation                      0x0252491a +[NSException raise:format:arguments:] + 1383   Foundation                          0x001cfe86 -[NSAssertionHandler handleFailureInMethod:object:file:lineNumber:description:] + 1184   UIKit                               0x00957a9b -[UIApplication _runWithMainScene:transitionContext:completion:] + 39755   UIKit                               0x0097be4d __84-[UIApplication _handleApplicationActivationWithScene:transitionContext:completion:]_block_invoke3208 + 686   UIKit                               0x00953fb4 -[UIApplication workspaceDidEndTransaction:] + 1637   FrontBoardServices                  0x036fdca4 __37-[FBSWorkspace clientEndTransaction:]_block_invoke_2 + 718   FrontBoardServices                  0x036fd77b __40-[FBSWorkspace _performDelegateCallOut:]_block_invoke + 549   FrontBoardServices                  0x0371b1a3 -[FBSSerialQueue _performNext] + 18410  FrontBoardServices                  0x0371b5da -[FBSSerialQueue _performNextFromRunLoopSource] + 5211  FrontBoardServices                  0x0371a8d6 FBSSerialQueueRunLoopSourceHandler + 3312  CoreFoundation                      0x0243ed1f __CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE0_PERFORM_FUNCTION + 1513  CoreFoundation                      0x024349ab __CFRunLoopDoSources0 + 52314  CoreFoundation                      0x02433dc8 __CFRunLoopRun + 103215  CoreFoundation                      0x02433706 CFRunLoopRunSpecific + 47016  CoreFoundation                      0x0243351b CFRunLoopRunInMode + 12317  UIKit                               0x00953854 -[UIApplication _run] + 54018  UIKit                               0x009591eb UIApplicationMain + 16019  ËÆ°ÁÆóÂô®                           0x00082baa main + 13820  libdyld.dylib                       0x030eba21 start + 1)libc++abi.dylib: terminating with uncaught exception of type NSException(lldb)然后就开始了艰辛的解决历程；自己英语很渣，只有慢慢度娘；百度出来的百分之九十九是xcode6.1改造空工程的方法；没用啊，我现在用的就是它这个方法；只有不断换关键字；结果当我输入：“xcode7如何创建空工程”keywords后；第四个答案正是我想要的；東東同学的新浪博客：http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html原来提示的意思是：“必须给windows创建一个rootviewcontroller；这一句话足够了；果断添加rootview，再次command+R；果断通过；它是否意味着windows创建好后不能直接显示了，必须添加rootviewcontroller才可以运行呢？已经给東東留言等回复。总之任何一个细小的问题，通过自己的努力或者得到别人指点得到解决后，那种欣喜都是情不自禁的。完毕！
+]]></content>
+      <categories>
+        <category>IOS</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Hexo添加Rss和评论插件</title>
+    <url>/2016/03/20/Hexo%E6%B7%BB%E5%8A%A0Rss%E5%92%8C%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/</url>
+    <content><![CDATA[一、添加RSS我的主题配置文件已含有rss：  /atom.xml因此我就直接安装部署了。根目录下的配置信息：在# Extensions中添加，已经有的就免了。
+plugins: hexo-generator-feed
+打开Terminal（终端）输入：运行
+npm install hero-generator-feed
+重新部署：
+hexo cleanhexo d -
+以上是摘要二、开启评论1、首先，注册多说，并在根目录下的配置文件添加shot_name,这里是duoshuo_shortnameshort name指你在注册多说时二级域名里你自己输入的那部分，不包括htpp://和.duoshuo.com。这里有人说在主题配置信息里配置duoshuo_shortname，但是我的始终搞不定，我曾怀疑是不是data－thread－key等三个参数的问题，然后将page.path改为post.path,仍然不行，只能慢慢试验了。2、若使用默认主题landscape，则进入themes\landscape\layout_partial\articles.ejs中，将这段div中的disqus_shortname统统改为duoshuo_shortname，有的人没有这段，按实际情况来。
+&lt;/div&gt;&lt;footer class="article-footer"&gt;&lt;a data-url="&lt;%- post.permalink %&gt;" data-id="&lt;%= post._id %&gt;" class="article-share-link"&gt;&lt;%= __('share') %&gt;&lt;/a&gt;&lt;% if (post.comments &amp;&amp; config.duoshuo_shortname)&#123; %&gt;&lt;a href="&lt;%- post.permalink %&gt;#duoshuo_thread" class="article-comment-link"&gt;&lt;%= __('comment') %&gt;&lt;/a&gt;&lt;% &#125; %&gt;&lt;%- partial('post/tag') %&gt;&lt;/footer&gt;&lt;/div&gt;
+3、网上大多数的都是说的这段代码替换：替换&lt;% section %&gt;到&lt;／section&gt;之间的部分。
+&lt;% if (!index &amp;&amp; post.comments &amp;&amp; config.disqus_shortname)&#123; %&gt;&lt;section id="comments"&gt;&lt;div id="disqus_thread"&gt;&lt;noscript&gt;Please enable JavaScript to view the &lt;a href="//disqus.com/?ref_noscript"&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;&lt;/div&gt;&lt;/section&gt;&lt;% &#125; %&gt;
+替换为：
+&lt;% if (!index &amp;&amp; post.comments &amp;&amp; config.duoshuo_shortname)&#123; %&gt;&lt;section id="comments"&gt;&lt;!-- 多说评论框 start --&gt;&lt;div class="ds-thread" data-thread-key="&lt;%= post.path %&gt;" data-title="&lt;%= page.title %&gt;" data-url="&lt;%= page.permalink %&gt;"&gt;&lt;/div&gt;&lt;!-- 多说评论框 end --&gt;&lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;&lt;script type="text/javascript"&gt;var duoshuoQuery = &#123;short_name:'&lt;%= config.duoshuo_shortname %&gt;'&#125;;(function() &#123;var ds = document.createElement('script');ds.type = 'text/javascript';ds.async = true;ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';ds.charset = 'UTF-8';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);&#125;)();&lt;/script&gt;&lt;!-- 多说公共JS代码 end --&gt;&lt;/section&gt;&lt;% &#125; %&gt;
+这里需要注意的是data-thread-key等三个参数，对小白来说并不知道如何设置：我的设置如下：大多数网上的也都设的这个。
+data-thread-key：&lt;%= page.path %&gt;data-title：&lt;%= page.title %&gt;data-url（稳定版没有这个，开发版有这个参数）：&lt;%= page.permalink %&gt;
+4、重新部署hexo cleanhexo d －搞定。
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Mac端通过Hexo搭建独立博客</title>
     <url>/2016/03/17/Mac%E7%AB%AF%E9%80%9A%E8%BF%87Hexo%E6%90%AD%E5%BB%BA%E7%8B%AC%E7%AB%8B%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[一、为什么选择Hexo我对搭建自己的独立博客兴致盎然，独立的才真正是自己的，马克思说研究需要充分占有材料，我因此大量阅读了关于搭建独立博客的文章和资料，知道了有Octopress，jekyll等独立博客搭建系统，但看到好多程序员童鞋都说：Octopress和jekyll很难搞定，所以对于我这种小白来说，就更不用考虑了，听说Hexo是hacker必备的博客搭建系统，因此果断选它。以上是摘要
@@ -73,32 +105,19 @@ hexo server
       </categories>
   </entry>
   <entry>
-    <title>Hexo添加Rss和评论插件</title>
-    <url>/2016/03/20/Hexo%E6%B7%BB%E5%8A%A0Rss%E5%92%8C%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/</url>
-    <content><![CDATA[一、添加RSS我的主题配置文件已含有rss：  /atom.xml因此我就直接安装部署了。根目录下的配置信息：在# Extensions中添加，已经有的就免了。
-plugins: hexo-generator-feed
-打开Terminal（终端）输入：运行
-npm install hero-generator-feed
-重新部署：
-hexo cleanhexo d -
-以上是摘要二、开启评论1、首先，注册多说，并在根目录下的配置文件添加shot_name,这里是duoshuo_shortnameshort name指你在注册多说时二级域名里你自己输入的那部分，不包括htpp://和.duoshuo.com。这里有人说在主题配置信息里配置duoshuo_shortname，但是我的始终搞不定，我曾怀疑是不是data－thread－key等三个参数的问题，然后将page.path改为post.path,仍然不行，只能慢慢试验了。2、若使用默认主题landscape，则进入themes\landscape\layout_partial\articles.ejs中，将这段div中的disqus_shortname统统改为duoshuo_shortname，有的人没有这段，按实际情况来。
-&lt;/div&gt;&lt;footer class="article-footer"&gt;&lt;a data-url="&lt;%- post.permalink %&gt;" data-id="&lt;%= post._id %&gt;" class="article-share-link"&gt;&lt;%= __('share') %&gt;&lt;/a&gt;&lt;% if (post.comments &amp;&amp; config.duoshuo_shortname)&#123; %&gt;&lt;a href="&lt;%- post.permalink %&gt;#duoshuo_thread" class="article-comment-link"&gt;&lt;%= __('comment') %&gt;&lt;/a&gt;&lt;% &#125; %&gt;&lt;%- partial('post/tag') %&gt;&lt;/footer&gt;&lt;/div&gt;
-3、网上大多数的都是说的这段代码替换：替换&lt;% section %&gt;到&lt;／section&gt;之间的部分。
-&lt;% if (!index &amp;&amp; post.comments &amp;&amp; config.disqus_shortname)&#123; %&gt;&lt;section id="comments"&gt;&lt;div id="disqus_thread"&gt;&lt;noscript&gt;Please enable JavaScript to view the &lt;a href="//disqus.com/?ref_noscript"&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;&lt;/div&gt;&lt;/section&gt;&lt;% &#125; %&gt;
-替换为：
-&lt;% if (!index &amp;&amp; post.comments &amp;&amp; config.duoshuo_shortname)&#123; %&gt;&lt;section id="comments"&gt;&lt;!-- 多说评论框 start --&gt;&lt;div class="ds-thread" data-thread-key="&lt;%= post.path %&gt;" data-title="&lt;%= page.title %&gt;" data-url="&lt;%= page.permalink %&gt;"&gt;&lt;/div&gt;&lt;!-- 多说评论框 end --&gt;&lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;&lt;script type="text/javascript"&gt;var duoshuoQuery = &#123;short_name:'&lt;%= config.duoshuo_shortname %&gt;'&#125;;(function() &#123;var ds = document.createElement('script');ds.type = 'text/javascript';ds.async = true;ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';ds.charset = 'UTF-8';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);&#125;)();&lt;/script&gt;&lt;!-- 多说公共JS代码 end --&gt;&lt;/section&gt;&lt;% &#125; %&gt;
-这里需要注意的是data-thread-key等三个参数，对小白来说并不知道如何设置：我的设置如下：大多数网上的也都设的这个。
-data-thread-key：&lt;%= page.path %&gt;data-title：&lt;%= page.title %&gt;data-url（稳定版没有这个，开发版有这个参数）：&lt;%= page.permalink %&gt;
-4、重新部署hexo cleanhexo d －搞定。
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>IOS Xcode7.1新建纯代码工程</title>
-    <url>/2016/03/17/IOS-Xcode7-1%E6%96%B0%E5%BB%BA%E7%BA%AF%E4%BB%A3%E7%A0%81%E5%B7%A5%E7%A8%8B/</url>
-    <content><![CDATA[今天准备纯代码做下计算器；xcode已升级到version 7.1；创建singleview后改造空工程；删除main.storyboard，创建windows并设置背景色为黑色；满怀期待的command+R；结果提示我:以上是摘要2015-10-30 18:15:29.933 计算器[1696:127982] * Assertion failure in -[UIApplication _runWithMainScene:transitionContext:completion:], /BuildRoot/Library/Caches/com.apple.xbs/Sources/UIKit_Sim/UIKit-3512.29.5/UIApplication.m:32992015-10-30 18:15:29.939 计算器[1696:127982] * Terminating app due to uncaught exception ‘NSInternalInconsistencyException’, reason: ‘Application windows are expected to have a root view controller at the end of application launch’*** First throw call stack:(0   CoreFoundation                      0x02524a84 exceptionPreprocess + 1801   libobjc.A.dylib                     0x00550e02 objc_exception_throw + 502   CoreFoundation                      0x0252491a +[NSException raise:format:arguments:] + 1383   Foundation                          0x001cfe86 -[NSAssertionHandler handleFailureInMethod:object:file:lineNumber:description:] + 1184   UIKit                               0x00957a9b -[UIApplication _runWithMainScene:transitionContext:completion:] + 39755   UIKit                               0x0097be4d __84-[UIApplication _handleApplicationActivationWithScene:transitionContext:completion:]_block_invoke3208 + 686   UIKit                               0x00953fb4 -[UIApplication workspaceDidEndTransaction:] + 1637   FrontBoardServices                  0x036fdca4 __37-[FBSWorkspace clientEndTransaction:]_block_invoke_2 + 718   FrontBoardServices                  0x036fd77b __40-[FBSWorkspace _performDelegateCallOut:]_block_invoke + 549   FrontBoardServices                  0x0371b1a3 -[FBSSerialQueue _performNext] + 18410  FrontBoardServices                  0x0371b5da -[FBSSerialQueue _performNextFromRunLoopSource] + 5211  FrontBoardServices                  0x0371a8d6 FBSSerialQueueRunLoopSourceHandler + 3312  CoreFoundation                      0x0243ed1f __CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE0_PERFORM_FUNCTION + 1513  CoreFoundation                      0x024349ab __CFRunLoopDoSources0 + 52314  CoreFoundation                      0x02433dc8 __CFRunLoopRun + 103215  CoreFoundation                      0x02433706 CFRunLoopRunSpecific + 47016  CoreFoundation                      0x0243351b CFRunLoopRunInMode + 12317  UIKit                               0x00953854 -[UIApplication _run] + 54018  UIKit                               0x009591eb UIApplicationMain + 16019  ËÆ°ÁÆóÂô®                           0x00082baa main + 13820  libdyld.dylib                       0x030eba21 start + 1)libc++abi.dylib: terminating with uncaught exception of type NSException(lldb)然后就开始了艰辛的解决历程；自己英语很渣，只有慢慢度娘；百度出来的百分之九十九是xcode6.1改造空工程的方法；没用啊，我现在用的就是它这个方法；只有不断换关键字；结果当我输入：“xcode7如何创建空工程”keywords后；第四个答案正是我想要的；東東同学的新浪博客：http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html原来提示的意思是：“必须给windows创建一个rootviewcontroller；这一句话足够了；果断添加rootview，再次command+R；果断通过；它是否意味着windows创建好后不能直接显示了，必须添加rootviewcontroller才可以运行呢？已经给東東留言等回复。总之任何一个细小的问题，通过自己的努力或者得到别人指点得到解决后，那种欣喜都是情不自禁的。完毕！
+    <title>OC中委托和协议</title>
+    <url>/2016/03/17/OC%E4%B8%AD%E5%A7%94%E6%89%98%E5%92%8C%E5%8D%8F%E8%AE%AE/</url>
+    <content><![CDATA[一、为什么写这篇文章
+我目前在编程方面是菜鸟，这篇文章也只适合刚入行的菜鸟，之所以写这篇文章有两个目的：第一是为了自己复习用，第二，为了给和我一样的菜鸟们一个参考；我发觉好多介绍这两个概念的文章，要么一开头就写在java中如何，在c＋＋中如何，大哥，我就是一菜鸟，未入行前是小白，我只略懂oc这一门编程语言，你给我扯什么java，C＋＋只能令我更迷茫。以上是摘要二、委托和协议的区别
+委托是一种编程设计模式，王五想找份工作，自己没门路，就委托有门路的马六去找，王五要求签订一个合同（就是协议）保证帮他找到工作。只有按照合同的条款找到帮他找到工作他才会付款。然后马六接受了合同，最后帮王五找到了工作，这就是一个完整的委托了。别再告诉我什么回调函数，什么callback 了，我ted真听不懂，这里王五委托马六找工作就是一个委托。
+协议就是例子中的合同了，它里面是具体的条款（方法），马六保证都能办到（实现方法），王五才会付钱给他。
+三、王五和马六的买卖怎么做？
+1、王五分析了自己找工作的需求制定了一个协议，要求钱多事儿少离家近，协议如下；#import &lt;Foundation/Foundation.h&gt;@class Wangwu;//王五的协议内容@protocol FindworkDelegate -(void)moneyMax:(Wangwu)WW;-(void)treatMent:(Wangwu)WW;@end2、王五的要求是只要遵守协议里的要求办任何人都可以帮我找工作，因此授权形式如下，并且开始和截止日期的决定权在王五自己手里。@interface Wangwu :NSObject//代理的授权范围,谁干都行，但必须遵守我的协议@property(nonatomic,weak)id delegate;-(void)goodWork;//什么时候开始找，什么时候不找我说了算。@end
+3、马六认为自己门路广可以接这个活儿，然后马六就遵守了协议帮王五去找工作；//遵守协议条款#import &lt;Foundation/Foundation.h&gt;#import “Maliu.h”@protocolFindworkDelegate;……//对协议进行提前声明和@class用途一致@interface Maliu :NSObject @end//开始寻找符合王五协议要求的工作；（实现方法）#import “Maliu.h”#import “Wangwu.h”……//保证实现方法的时候有提示@implementation Maliu-(void)moneyMax:(Wangwu )WW{NSLog(@”这个工作%@大大滴有钱！”,WW);}-(void)treatMent:(Wangwu *)WW{NSLog(@”这个工作%@待遇大大滴好！”,WW);}@end4、王五开始发指令：马六啊，钱多事儿少离家近的工作赶紧帮我找，找两份啊，供我备选。#import &lt;Foundation/Foundation.h&gt;#import “Wangwu.h”#import “Maliu.h”int main(int argc,constchar * argv[]) {@autoreleasepool {//初始化王五和马六WangwuWW1=[[Wangwualloc]init];MaliuML=[[Maliualloc]init];//马六把找工作的情况反馈给王五WW1.delegate=ML;//王五放出找工作大招[WW1 goodWork];//王五再次委托马六找工作WangwuWW2=[[Wangwualloc]init];WW2.delegate=ML;//王五再次放出找工作大招[WW2 goodWork];}return 0;}
+5、马六说已经找好了，赶紧拿钱来#import “Wangwu.h”@implementation Wangwu-(void)goodWork{//王五说甭急，我比较下这两份工作再做决定（传回来的参数可以判断是那份工作的内容介绍）if ([_delegaterespondsToSelector:@selector(moneyMax:)]||[_delegaterespondsToSelector:@selector(treatMent:)]){[_delegatemoneyMax:self];[_delegatetreatMent:self];}else{NSLog(@”找到的工作不符合王五的要求”);}}@end6、王五说选好了，那个，啊，我支付宝给你确认下，准备收钱吧。2016-03-14 00:51:29.005 work[3383:360865] 这个工作&lt;Wangwu: 0x100103a60&gt;大大滴有钱！2016-03-14 00:51:29.008 work[3383:360865] 这个工作&lt;Wangwu: 0x100103a60&gt;待遇大大滴好！2016-03-14 00:51:29.008 work[3383:360865] 这个工作&lt;Wangwu: 0x1003001b0&gt;大大滴有钱！2016-03-14 00:51:29.008 work[3383:360865] 这个工作&lt;Wangwu: 0x1003001b0&gt;待遇大大滴好！Program ended with exit code: 0
+总结：1、委托行为借助协议得以完成；这里王五通过FindworkDelegat协议委托马六找工作；协议要求钱多事儿少离家近；2、并且规定必须遵守这个协议的要求找工作才可以付钱：@property(nonatomic,weak)id delegate;3、委托找两份工作因此每反馈回来一次，需要判断是哪份工作的内容介绍：使用respondsToSelector:@selector(moneyMax:)方法进行判断。Wangwu*WW1=[[Wangwu alloc]init];第一份工作
+Wangwu*WW2=[[Wangwu alloc]init];第二份工作
+if ([_delegate respondsToSelector:@selector(moneyMax:)]||[_delegate respondsToSelector:@selector(treatMent:)]){[_delegate moneyMax:self];self是指具体是哪份工作？[_delegate treatMent:self];}over！
 ]]></content>
       <categories>
         <category>IOS</category>
@@ -111,18 +130,6 @@ data-thread-key：&lt;%= page.path %&gt;data-title：&lt;%= page.title %&gt;data
 ]]></content>
       <categories>
         <category>IOS</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>《王阳明大传》读后感</title>
-    <url>/2016/03/17/%E3%80%8A%E7%8E%8B%E9%98%B3%E6%98%8E%E5%A4%A7%E4%BC%A0%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/</url>
-    <content><![CDATA[最近读了《王阳明大传》模模糊糊理解了一些王阳明心学要解决的问题是什么?记录在此，以备后用。心学在阳明后来讲学时，为使学生容易理解，便表述为良知学，而实现的方法则是致良知。
-心学要解决的问题就是：找到“人生的意义”，在百千万年的人类史中，人类肯定形成了同一的人性内容，也就是阳明心学中讲的“心体”，也就是本元，最初的那种状态，在阳明以前人们为了找到‘意义’，都会去求助于外物，从外物求理，以期望最终找到‘意义’。以上是摘要但是阳明‘龙场悟道’后，告诉大家，意义不在外界万物上，而在每个人心上；但是人们搞不懂，既然在每个人心上，那我们都有心，为什么没有找到‘意义’所在呢？这时王先生告诉他们：不是没有，而是已经被遮蔽了。是被外界鸡零狗碎的私心杂念蒙蔽了。王先生不但告诉他们为什么你们现在从自己心上找不到意义，而且还说我有方法能让你们找到，那就是：“知行合一”；只要坚持知行合一肯定会有人，能将那些鸡零狗碎的私心杂念的遮蔽去掉，看到自己的心的本体，找到意义所在。
-注意他说的是有人会，有人会找到，肯定就有人不会找到所以心学本身对于每个个人来说是一个悲喜参半的对意义的答案，喜的是终于有方法能找到那个终极的问题的答案了。而悲的则是，即使你真去知行合一了，临死之前也不一定能找到。
-从王先生自己的经历来说，他笃信每个人原本都是圣人，只要坚持知行合一，找到意义，最后每个人都会成为真正的圣人。但是这里就有个时间的死结，每个人的时间都不是无限，
-]]></content>
-      <categories>
-        <category>阳明心学</category>
       </categories>
   </entry>
   <entry>
@@ -148,6 +155,18 @@ data-thread-key：&lt;%= page.path %&gt;data-title：&lt;%= page.title %&gt;data
       </categories>
   </entry>
   <entry>
+    <title>《王阳明大传》读后感</title>
+    <url>/2016/03/17/%E3%80%8A%E7%8E%8B%E9%98%B3%E6%98%8E%E5%A4%A7%E4%BC%A0%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/</url>
+    <content><![CDATA[最近读了《王阳明大传》模模糊糊理解了一些王阳明心学要解决的问题是什么?记录在此，以备后用。心学在阳明后来讲学时，为使学生容易理解，便表述为良知学，而实现的方法则是致良知。
+心学要解决的问题就是：找到“人生的意义”，在百千万年的人类史中，人类肯定形成了同一的人性内容，也就是阳明心学中讲的“心体”，也就是本元，最初的那种状态，在阳明以前人们为了找到‘意义’，都会去求助于外物，从外物求理，以期望最终找到‘意义’。以上是摘要但是阳明‘龙场悟道’后，告诉大家，意义不在外界万物上，而在每个人心上；但是人们搞不懂，既然在每个人心上，那我们都有心，为什么没有找到‘意义’所在呢？这时王先生告诉他们：不是没有，而是已经被遮蔽了。是被外界鸡零狗碎的私心杂念蒙蔽了。王先生不但告诉他们为什么你们现在从自己心上找不到意义，而且还说我有方法能让你们找到，那就是：“知行合一”；只要坚持知行合一肯定会有人，能将那些鸡零狗碎的私心杂念的遮蔽去掉，看到自己的心的本体，找到意义所在。
+注意他说的是有人会，有人会找到，肯定就有人不会找到所以心学本身对于每个个人来说是一个悲喜参半的对意义的答案，喜的是终于有方法能找到那个终极的问题的答案了。而悲的则是，即使你真去知行合一了，临死之前也不一定能找到。
+从王先生自己的经历来说，他笃信每个人原本都是圣人，只要坚持知行合一，找到意义，最后每个人都会成为真正的圣人。但是这里就有个时间的死结，每个人的时间都不是无限，
+]]></content>
+      <categories>
+        <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
     <title>为什么读完就谈</title>
     <url>/2016/03/17/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AF%BB%E5%AE%8C%E5%B0%B1%E8%B0%88/</url>
     <content><![CDATA[一、教学相长的好处教学相长，绝对是一个人进步的最快方法；这个经验是我从自己写微信公众号体会到的。并且由此公众号的写作，逐渐理清了自己以后的知识架构；一直以来我都想为自己建立一个知识系统；这个系统是完全属于自己的，并且系统里面的每个元素我都能达到专业水平。
@@ -157,59 +176,6 @@ data-thread-key：&lt;%= page.path %&gt;data-title：&lt;%= page.title %&gt;data
 ]]></content>
       <categories>
         <category>读完就谈</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>可还记得《甘十九妹》</title>
-    <url>/2016/03/17/%E5%8F%AF%E8%BF%98%E8%AE%B0%E5%BE%97%E3%80%8A%E7%94%98%E5%8D%81%E4%B9%9D%E5%A6%B9%E3%80%8B/</url>
-    <content><![CDATA[一、《甘十九妹》是谁？《甘十九妹》是我小时候看的一部武侠剧，原著是萧逸先生。故事是说一个男人对一个女人始乱终弃后，女人从沮丧、堕落到后来复仇的故事。
-结果恩怨就传递到了下一辈身上，作为那个男人后代的尹剑平，与作为那个女人二弟子的甘十九妹，由仇到怨以至于最后双双殉情。以上是摘要二、为什么写《甘十九妹》之所以想起为这部武侠剧写篇文章作纪念，有两点原因其一，小时候的所有记忆如今想起来都是最美好的，不同意的出去；其二，电视剧的制作水平，无论是武打动作，服装造型以及演员的选择，就今天看来也堪称完美，倘若再对比下如今许多粗制滥造杀马特造型充斥的武侠剧，那这部《甘十九妹》简直就是完美了。
-三、一部好的武侠剧是什么样的？写到这里想到一个问题，什么样的武侠剧是一部高水平的武侠剧？我的观点是这样，首先，演员必须要选准；外貌要符合武侠剧剧本中的人物形象性格要匹配剧本的描写；其次，武打动作以及整个故事的编排一定要引人入胜。比如《甘十九妹》中，以灭『岳阳门』开场，绝对是个妙笔。第三，武侠剧本身一定要传递一些本质的东西，那么什么是本质的东西呢，正如我在《今人谁识侠客行》所写，大音希声，大象无形，什么东西越大越没有脾气；这都可以很精准的传递本质的东西。
-这些年看的武侠剧里面我觉得能同时做到这三点的有以下几部；《侠客行》，《笑傲江湖》，《燕子李三》，再有就是这部《甘十九妹》了。听度娘说08年山东卫视对《甘十九妹》进行了高清数码修复；2010年已出版发行，见到后我一定来两套一套收藏，一套常观。
-四、经典永不过时距小时候观看《甘十九妹》这部武侠剧，虽然已过去了二十多年，但今天重复观看，仍然是暗叹不已，惊喜连连；小时候只会看男主角够不够英雄，武功够不够好，女主角够不够漂亮（绝对是最纯真的那种漂亮），从来不会关注现实中演员的信息，以及里面人物对话背后所传递的东西。但如今看，确实是妙不可言，会去百度每个演员的经历，会去思考经典对白为什么经典，剧本作者对白背后想传递什么价值观或者什么信息。总之常看常新。着实验证了一句话。经典永不过时。so『魑魅喜人过，文章憎命达』也好，『文以人传，人以文传』也好。做一个经典的人，绝对永不过时。
-]]></content>
-      <categories>
-        <category>笑傲江湖</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>OC中委托和协议</title>
-    <url>/2016/03/17/OC%E4%B8%AD%E5%A7%94%E6%89%98%E5%92%8C%E5%8D%8F%E8%AE%AE/</url>
-    <content><![CDATA[一、为什么写这篇文章
-我目前在编程方面是菜鸟，这篇文章也只适合刚入行的菜鸟，之所以写这篇文章有两个目的：第一是为了自己复习用，第二，为了给和我一样的菜鸟们一个参考；我发觉好多介绍这两个概念的文章，要么一开头就写在java中如何，在c＋＋中如何，大哥，我就是一菜鸟，未入行前是小白，我只略懂oc这一门编程语言，你给我扯什么java，C＋＋只能令我更迷茫。以上是摘要二、委托和协议的区别
-委托是一种编程设计模式，王五想找份工作，自己没门路，就委托有门路的马六去找，王五要求签订一个合同（就是协议）保证帮他找到工作。只有按照合同的条款找到帮他找到工作他才会付款。然后马六接受了合同，最后帮王五找到了工作，这就是一个完整的委托了。别再告诉我什么回调函数，什么callback 了，我ted真听不懂，这里王五委托马六找工作就是一个委托。
-协议就是例子中的合同了，它里面是具体的条款（方法），马六保证都能办到（实现方法），王五才会付钱给他。
-三、王五和马六的买卖怎么做？
-1、王五分析了自己找工作的需求制定了一个协议，要求钱多事儿少离家近，协议如下；#import &lt;Foundation/Foundation.h&gt;@class Wangwu;//王五的协议内容@protocol FindworkDelegate -(void)moneyMax:(Wangwu)WW;-(void)treatMent:(Wangwu)WW;@end2、王五的要求是只要遵守协议里的要求办任何人都可以帮我找工作，因此授权形式如下，并且开始和截止日期的决定权在王五自己手里。@interface Wangwu :NSObject//代理的授权范围,谁干都行，但必须遵守我的协议@property(nonatomic,weak)id delegate;-(void)goodWork;//什么时候开始找，什么时候不找我说了算。@end
-3、马六认为自己门路广可以接这个活儿，然后马六就遵守了协议帮王五去找工作；//遵守协议条款#import &lt;Foundation/Foundation.h&gt;#import “Maliu.h”@protocolFindworkDelegate;……//对协议进行提前声明和@class用途一致@interface Maliu :NSObject @end//开始寻找符合王五协议要求的工作；（实现方法）#import “Maliu.h”#import “Wangwu.h”……//保证实现方法的时候有提示@implementation Maliu-(void)moneyMax:(Wangwu )WW{NSLog(@”这个工作%@大大滴有钱！”,WW);}-(void)treatMent:(Wangwu *)WW{NSLog(@”这个工作%@待遇大大滴好！”,WW);}@end4、王五开始发指令：马六啊，钱多事儿少离家近的工作赶紧帮我找，找两份啊，供我备选。#import &lt;Foundation/Foundation.h&gt;#import “Wangwu.h”#import “Maliu.h”int main(int argc,constchar * argv[]) {@autoreleasepool {//初始化王五和马六WangwuWW1=[[Wangwualloc]init];MaliuML=[[Maliualloc]init];//马六把找工作的情况反馈给王五WW1.delegate=ML;//王五放出找工作大招[WW1 goodWork];//王五再次委托马六找工作WangwuWW2=[[Wangwualloc]init];WW2.delegate=ML;//王五再次放出找工作大招[WW2 goodWork];}return 0;}
-5、马六说已经找好了，赶紧拿钱来#import “Wangwu.h”@implementation Wangwu-(void)goodWork{//王五说甭急，我比较下这两份工作再做决定（传回来的参数可以判断是那份工作的内容介绍）if ([_delegaterespondsToSelector:@selector(moneyMax:)]||[_delegaterespondsToSelector:@selector(treatMent:)]){[_delegatemoneyMax:self];[_delegatetreatMent:self];}else{NSLog(@”找到的工作不符合王五的要求”);}}@end6、王五说选好了，那个，啊，我支付宝给你确认下，准备收钱吧。2016-03-14 00:51:29.005 work[3383:360865] 这个工作&lt;Wangwu: 0x100103a60&gt;大大滴有钱！2016-03-14 00:51:29.008 work[3383:360865] 这个工作&lt;Wangwu: 0x100103a60&gt;待遇大大滴好！2016-03-14 00:51:29.008 work[3383:360865] 这个工作&lt;Wangwu: 0x1003001b0&gt;大大滴有钱！2016-03-14 00:51:29.008 work[3383:360865] 这个工作&lt;Wangwu: 0x1003001b0&gt;待遇大大滴好！Program ended with exit code: 0
-总结：1、委托行为借助协议得以完成；这里王五通过FindworkDelegat协议委托马六找工作；协议要求钱多事儿少离家近；2、并且规定必须遵守这个协议的要求找工作才可以付钱：@property(nonatomic,weak)id delegate;3、委托找两份工作因此每反馈回来一次，需要判断是哪份工作的内容介绍：使用respondsToSelector:@selector(moneyMax:)方法进行判断。Wangwu*WW1=[[Wangwu alloc]init];第一份工作
-Wangwu*WW2=[[Wangwu alloc]init];第二份工作
-if ([_delegate respondsToSelector:@selector(moneyMax:)]||[_delegate respondsToSelector:@selector(treatMent:)]){[_delegate moneyMax:self];self是指具体是哪份工作？[_delegate treatMent:self];}over！
-]]></content>
-      <categories>
-        <category>IOS</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>如何利用知行合一提升学习效率</title>
-    <url>/2016/03/20/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E6%8F%90%E5%8D%87%E5%AD%A6%E4%B9%A0%E6%95%88%E7%8E%87/</url>
-    <content><![CDATA[一、心学里的三类人阳明将人分三类：生知安行，学知力行，困知勉行。生知安行就是我们现在所说的天才，如果按二八法则，全人类中，似乎会有百分之二十的天才存在，可是去掉那些后来伤仲永的，最多会留下百分之十，就不错了。困知勉行，就是脑袋死不开窍的，最多也就百分之十，剩下的就是百分之八十的普通人了。
-所以如果你自认为是天才，那这篇文章就不用看了。这篇文章的方法主要是针对，和我一样那百分之八十中的普通人。以上是摘要二、万物有源世间所有的事物，都有一个本源，每家家谱的存在，便是一个很好的例证，我们家家谱开头的第一句话便是：饮水思源，慎终追远，以知其本也。
-你今天看媒体上的马云风光无限，公众眼里的刘强东风头尽出，可是源头在哪里？他们是横空出世吗？非也！马云今天指点江山的魄力离不开当年推荐中国黄页时，被人拒之门外的尴尬做注脚；刘强东今日的意气风发，少不了当年因为做生意和前妻离婚的神伤做铺垫。所以，学习也是有源头的。
-三、知行合一与学习效率学习有源，源头在哪里？上次讲过格物更偏向于思考层面，知行合一更偏向于行动层面。若想利用知行合一提高学习效率，首先必须得格学习这件事。学习就是学和习，绝不是废话。所以学习的源头就是：不但学理论还要以最快的速度去验证理论。而不是仅仅让理论在脑子里呆一辈子。这就是用知行合一提高学习效率的唯一方法。
-比如，你听人说Hexo＋Github搭建独立博客，快速，简便，强大。那么怎么个快速，简便，强大法呢？如果你不去搭建一个自己的独立博客，你知道的也仅限于几个名词和三个形容词。
-那么心学的做法是什么呢？首先查资料啊，通过查资料了解到，Hexo不但很多程序员在用，而且好多人还说是hacker必备的博客搭建框架，基于多数人对带有神秘色彩的黑客的向往，这时候会更有动力去行动。
-那么好了，基本的概念有了，接下来还是和学习IOS开发如出一辙，要了解路线图啊，首先需要安装Node.js和Git程序，然后安装并初始化Hexo框架，最后启动本地服务器，本地的Hexo框架就搭建完成了，这时候打开服务器给的地址，你已经可以看到完全属于你自己的独立博客的雏形了，这样就更进一步加深你对这件事的热衷度，也就是你的自信进一步提高了。
-到这里为止你通过最初的诚意，下决心做用Hexo搭建独立博客这件事，然后通过格这件事，你了解了整个的路线图，并且通过知行合一，你已经搭建出了本地的博客雏形。你对这件事的兴趣以及对完成它的自信心，已经不要不要的了。因为你看到阶段性成果了。
-那接下来，配置博客信息，安装SSH密钥，并且关联GIthub的库，最终把你的本地独立博客部署到互联网上，就是顺理成章的事了。
-等到你输入自己的博客网址，在任何联网的电脑或手机都能看到自己的精神家园，这时候你才真正体会到开头那三个形容词的含义，快速是因为编程小白，也能按流程一步一步搭建它，简便是因为搭建好后，只需两条命令就可以把自己的博客更新到互联网，强大是因为，它几乎支持你以前的博客框架，包括Jekyll，Octopress和Wordpress所有的功能。但基本要求就是只需要一台联网的电脑和你按照步骤去搭建。
-四、关于理由即便看到这里，我相信很多人还是能找到，拒绝做自己应该做的事情的理由。我相信还是有很多人会说：你不知道我有多忙，你说得倒轻巧，我都看不懂你说的这些什么Hexo和Github，怎么去搭建？balabalabala……好吧，我承认大家都很忙，这里稍微跟大家玩个文字游戏，大家比较下‘忙’和‘忘’两个字，没错，聪明的已经看出来了，你的心躺下自己就什么都忘了，你的心立起来，自然一直都很忙。so，如果你到现在还找各种理由，不去做自己应该做的事情，那我只能说你决心还不够，而你老说自己忙，则是需要重新修炼心学的静坐工夫，还是建议参考曾剃头的方法。
-最后，借用陌陌的广告词送给那些迟迟不下决心做自己向往事情的人们：别和陌生人说话，别做新鲜事，继续过平常的生活，胆小一点儿，别好奇，就玩你会的，离冒险远远的，有些事想想就好，没必要改变，待在熟悉的地方，最好待在家里，听一样的音乐，见一样的人，重复同样的话题，心思别太活，梦想要实际，不要什么都尝试，就这样活着吧。
-本期推荐电影：一、《沙漠之花》导演：雪瑞·霍尔曼推荐语：如果你曾对沙漠里是否真的能开出花产生过疑问，这部片子很肯定的告诉你：能。二、《白日火焰》导演：刁亦男推荐语：对豆瓣什么的一些影评，我没太多感觉，本片亮点在于开始五分钟在你认为不可能发生的时候，两个警察被干掉了。三、《爱在战火蔓延时》导演：戴维·塞尔策推荐语：片子不算超精彩的那种，但是里面有一个场景令我很触动，当男女主角在国境线外呼救的时候，边防兵无动于衷，但当他们跨进国境线那一刻，边防兵毫不客气的还击。本期推荐书籍：一、《一阵风，留下了千古绝唱》作者：章诒和推荐语：书里讲马连良对精致生活的享受部分，很是引人入胜。二、《王阳明大传》作者：周月亮推荐语：用通俗的话语较有深度的讲述了王阳明的一生，看完这个，就没必要看其学生吕峥写的《明朝一哥王阳明》了，基本照抄，没太多新意。三、《历史深处的民国》作者：江城推荐语：框架比《民国就是这么生猛》搭的好，细节则没后者全，但里面用数据分析了一个很有意思的现象，袁世凯家里的牛人没有活过58岁的。
-]]></content>
-      <categories>
-        <category>阳明心学</category>
       </categories>
   </entry>
   <entry>
@@ -237,6 +203,19 @@ if ([_delegate respondsToSelector:@selector(moneyMax:)]||[_delegate respondsToSe
 看如今，均知生死无来去，仍自角逐行；
 想起：“事了拂衣去，深藏身于名”；
 暗叹：“脱剑膝前横，谁识侠客行”？​
+]]></content>
+      <categories>
+        <category>笑傲江湖</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>可还记得《甘十九妹》</title>
+    <url>/2016/03/17/%E5%8F%AF%E8%BF%98%E8%AE%B0%E5%BE%97%E3%80%8A%E7%94%98%E5%8D%81%E4%B9%9D%E5%A6%B9%E3%80%8B/</url>
+    <content><![CDATA[一、《甘十九妹》是谁？《甘十九妹》是我小时候看的一部武侠剧，原著是萧逸先生。故事是说一个男人对一个女人始乱终弃后，女人从沮丧、堕落到后来复仇的故事。
+结果恩怨就传递到了下一辈身上，作为那个男人后代的尹剑平，与作为那个女人二弟子的甘十九妹，由仇到怨以至于最后双双殉情。以上是摘要二、为什么写《甘十九妹》之所以想起为这部武侠剧写篇文章作纪念，有两点原因其一，小时候的所有记忆如今想起来都是最美好的，不同意的出去；其二，电视剧的制作水平，无论是武打动作，服装造型以及演员的选择，就今天看来也堪称完美，倘若再对比下如今许多粗制滥造杀马特造型充斥的武侠剧，那这部《甘十九妹》简直就是完美了。
+三、一部好的武侠剧是什么样的？写到这里想到一个问题，什么样的武侠剧是一部高水平的武侠剧？我的观点是这样，首先，演员必须要选准；外貌要符合武侠剧剧本中的人物形象性格要匹配剧本的描写；其次，武打动作以及整个故事的编排一定要引人入胜。比如《甘十九妹》中，以灭『岳阳门』开场，绝对是个妙笔。第三，武侠剧本身一定要传递一些本质的东西，那么什么是本质的东西呢，正如我在《今人谁识侠客行》所写，大音希声，大象无形，什么东西越大越没有脾气；这都可以很精准的传递本质的东西。
+这些年看的武侠剧里面我觉得能同时做到这三点的有以下几部；《侠客行》，《笑傲江湖》，《燕子李三》，再有就是这部《甘十九妹》了。听度娘说08年山东卫视对《甘十九妹》进行了高清数码修复；2010年已出版发行，见到后我一定来两套一套收藏，一套常观。
+四、经典永不过时距小时候观看《甘十九妹》这部武侠剧，虽然已过去了二十多年，但今天重复观看，仍然是暗叹不已，惊喜连连；小时候只会看男主角够不够英雄，武功够不够好，女主角够不够漂亮（绝对是最纯真的那种漂亮），从来不会关注现实中演员的信息，以及里面人物对话背后所传递的东西。但如今看，确实是妙不可言，会去百度每个演员的经历，会去思考经典对白为什么经典，剧本作者对白背后想传递什么价值观或者什么信息。总之常看常新。着实验证了一句话。经典永不过时。so『魑魅喜人过，文章憎命达』也好，『文以人传，人以文传』也好。做一个经典的人，绝对永不过时。
 ]]></content>
       <categories>
         <category>笑傲江湖</category>
@@ -276,59 +255,24 @@ if ([_delegate respondsToSelector:@selector(moneyMax:)]||[_delegate respondsToSe
       </categories>
   </entry>
   <entry>
-    <title>当你说知行合一的时候你在说什么</title>
-    <url>/2016/03/17/%E5%BD%93%E4%BD%A0%E8%AF%B4%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E7%9A%84%E6%97%B6%E5%80%99%E4%BD%A0%E5%9C%A8%E8%AF%B4%E4%BB%80%E4%B9%88/</url>
-    <content><![CDATA[一、前面的话知行合一是心学的支柱和核心，心学没了知行合一也就不是心学，因此我要反复讲，时时刻刻讲，这篇也不例外，还是要讲知行合一。
-前几篇虽然也讲了知行合一，可能对你来说还是只是理论而已，它让你搞明白了知行合一和格物，至善以及工夫的关系，但然并卵，你可能还是不得要领，这篇就是专门讲述，当你说你知行合一的时候，你指的到底具体是什么事？以上是摘要二、知行合一与爱好音乐咱们就从：『爱好』音乐说起吧，你觉得当你说爱好音乐的时候，你具体是什么意思？
-你说你爱好是音乐，可是支撑它的是什么东西呢?支撑你理直气壮说出爱好音乐的是什么呢?
-如果你真的知行合一，当你说你爱好音乐的时候，你起码要知道音乐的三种唱法：美声，民族和通俗；三个声部是：高音，中音和低音。并且知道它们之间的区别；唱《滚滚长江东逝水》的杨洪基是标准的男中音，目前世界三大男高音分别是：帕瓦罗蒂，多明戈和卡雷拉斯。没错，多明戈就是和宋祖英在08奥运会合唱《爱的火焰》的那个西班牙老头。中国被称为：『人声低音炮』的赵鹏是典型的男低音歌手。
-当你说你爱好音乐的时候，你起码要知道这三种唱法里排名前三的歌手，并且知道每位歌手的代表作。而且真的理解每首代表作创作的背景和要表达的意境是什么。
-当你说你爱好音乐的时候，你起码要知道意大利盛产男高音，男中音和男低音在歌唱界是稀有动物，而且音乐的起源是数学。
-三、知行合一与爱好电影当你说你爱好电影的时候，你实际的意思应该是这样的，你起码看过世界十大禁片，那样你会知道为什么会被禁？
-当你说爱好电影的时候，你起码要知道各国著名导演和其代表作，而且你都是看过的，别问我哪里有种子，我真的不知道。
-当你说你爱好电影的时候，你起码要知道电影分两大类故事片和非故事片；故事片又分为：西部片，强盗片，科幻片，恐怖片，喜剧片，灾难片以及战争片，当然还有我们大中华独有的武侠片。非故事片又分为：广告片，新闻片，纪录片，科学片，教学片以及风景片。
-当你说你爱好电影的时候你起码要知道电影的基本构成要素是影像和声音，影像又分为：景别，运动，光线和色彩，声音又分为：人声，音响，音乐，声画关系，长镜头以及蒙太奇。
-可是你说，靠，我就是爱好，没必要这样吧，可是爱好真实的面貌就是这样，你起码能说出个一二三来，这些全部是支撑你理直气壮说出你爱好某件事情或者某样东西的基础。不然呢，你说你爱好音乐可是音乐几种唱法，你说不知道，男高音，男中音和男低音的代表歌手是谁，你说不知道？那你算哪门子爱好音乐呢？
-如果你真的爱好，应该是这样的，当你看过某部电影之后，你会这样说：哇喔，这部喜剧片拍的蛮不错，长镜头运用的非常到位，蒙太奇运用的也恰到好处，某个地方的光线如果再足一点就更完美了。
-没错，你说你爱好某样东西，它的实际意思是即便你不靠这件事情谋生，你在这件事情上面也是绝对的行家，而不是那种看完后只对故事本身吐槽。再明白一点儿就是，这部电影好，好在哪里？这首曲子不好，不好在哪里？景别，长镜头，蒙太奇，副歌，旋律，节奏，歌词以及唱法，你得说出个一二三来。
-四、爱好音乐与电影的背后
-机灵的同学，可能已经发现了，如果爱好是这样，它是要花费大量时间的，所以，肯定可以这样说，你的爱好在哪里？你的时间就应该在哪里。如果你说你爱好音乐，而你的大部分时间却用来打羽毛球或者dota，不好意思，你只能说你的爱好是羽毛球或游戏。
-因此，下回如果遇到某人再说自己爱好音乐或者电影，你基本三步就可以试出来，他到底是真爱，还是叶公好龙。第一，音乐的三种唱法是什么？第二，三个声部是什么？第三，三个声部的代表人物分别是谁？
-同样，你想验证自己在某件事情上是否真正知行合一，除了要和格物（纠正在心上的事情，使其符合天理）相结合之外。一个简单的方法就是你统计下，你平时的时间是否大部分花在了这件事情上。
-五、总结
-爱好实际需要你花费大量时间，不然就不是真的知行合一去爱了，时间是你惟一的财富，你的时间花在了哪里，那很有可能你的爱好就在哪里？当然并不绝对，比如你说你就爱好发呆或者睡觉，那我就只能借用王大锤的话了：『你说得好有道理，我竟无言以对』。你平时时间花在哪里？是验证你在某件事上是否真正知行合一，一个简单但非常有用的方法。
-本期推荐电影：一、《龙虾》推荐语：如果不结婚就变动物，是不是匪夷所思，《龙虾》就是这样的电影。二、《房间》推荐语：想不想知道一个被伤害的母亲是怎样为自己孩子在一间狭小且上了锁的房间里，打造出一个小小天堂的？三、《你是好孩子》推荐语：我们小时候受过的伤害，在长大后都会以自己被伤害的方式再现。
-本期推荐书籍：一、《蔡澜谈吃》作者：蔡澜推荐语：蔡澜包括，倪匡、黄霑和金庸，都是我非常钦佩的人，钦佩程度根据名字排序；蔡澜爱好吃，所以就有了这本书以及《蔡澜品味》等节目。看看这本书，你会知道《想说爱好真的不容易》。二、《今生今世，民国名媛情事》作者：萧萧推荐语：名媛难再有，但可以学学这些名媛处人生低谷的人生态度。名媛不唯能享富贵，更可处贫贱而仍优雅如初。三、《一个人的村庄》作者：刘亮程推荐语：观察生活的角度比较独特，散文里比较出奇的。
+    <title>如何利用知行合一提升学习效率</title>
+    <url>/2016/03/20/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E6%8F%90%E5%8D%87%E5%AD%A6%E4%B9%A0%E6%95%88%E7%8E%87/</url>
+    <content><![CDATA[一、心学里的三类人阳明将人分三类：生知安行，学知力行，困知勉行。生知安行就是我们现在所说的天才，如果按二八法则，全人类中，似乎会有百分之二十的天才存在，可是去掉那些后来伤仲永的，最多会留下百分之十，就不错了。困知勉行，就是脑袋死不开窍的，最多也就百分之十，剩下的就是百分之八十的普通人了。
+所以如果你自认为是天才，那这篇文章就不用看了。这篇文章的方法主要是针对，和我一样那百分之八十中的普通人。以上是摘要二、万物有源世间所有的事物，都有一个本源，每家家谱的存在，便是一个很好的例证，我们家家谱开头的第一句话便是：饮水思源，慎终追远，以知其本也。
+你今天看媒体上的马云风光无限，公众眼里的刘强东风头尽出，可是源头在哪里？他们是横空出世吗？非也！马云今天指点江山的魄力离不开当年推荐中国黄页时，被人拒之门外的尴尬做注脚；刘强东今日的意气风发，少不了当年因为做生意和前妻离婚的神伤做铺垫。所以，学习也是有源头的。
+三、知行合一与学习效率学习有源，源头在哪里？上次讲过格物更偏向于思考层面，知行合一更偏向于行动层面。若想利用知行合一提高学习效率，首先必须得格学习这件事。学习就是学和习，绝不是废话。所以学习的源头就是：不但学理论还要以最快的速度去验证理论。而不是仅仅让理论在脑子里呆一辈子。这就是用知行合一提高学习效率的唯一方法。
+比如，你听人说Hexo＋Github搭建独立博客，快速，简便，强大。那么怎么个快速，简便，强大法呢？如果你不去搭建一个自己的独立博客，你知道的也仅限于几个名词和三个形容词。
+那么心学的做法是什么呢？首先查资料啊，通过查资料了解到，Hexo不但很多程序员在用，而且好多人还说是hacker必备的博客搭建框架，基于多数人对带有神秘色彩的黑客的向往，这时候会更有动力去行动。
+那么好了，基本的概念有了，接下来还是和学习IOS开发如出一辙，要了解路线图啊，首先需要安装Node.js和Git程序，然后安装并初始化Hexo框架，最后启动本地服务器，本地的Hexo框架就搭建完成了，这时候打开服务器给的地址，你已经可以看到完全属于你自己的独立博客的雏形了，这样就更进一步加深你对这件事的热衷度，也就是你的自信进一步提高了。
+到这里为止你通过最初的诚意，下决心做用Hexo搭建独立博客这件事，然后通过格这件事，你了解了整个的路线图，并且通过知行合一，你已经搭建出了本地的博客雏形。你对这件事的兴趣以及对完成它的自信心，已经不要不要的了。因为你看到阶段性成果了。
+那接下来，配置博客信息，安装SSH密钥，并且关联GIthub的库，最终把你的本地独立博客部署到互联网上，就是顺理成章的事了。
+等到你输入自己的博客网址，在任何联网的电脑或手机都能看到自己的精神家园，这时候你才真正体会到开头那三个形容词的含义，快速是因为编程小白，也能按流程一步一步搭建它，简便是因为搭建好后，只需两条命令就可以把自己的博客更新到互联网，强大是因为，它几乎支持你以前的博客框架，包括Jekyll，Octopress和Wordpress所有的功能。但基本要求就是只需要一台联网的电脑和你按照步骤去搭建。
+四、关于理由即便看到这里，我相信很多人还是能找到，拒绝做自己应该做的事情的理由。我相信还是有很多人会说：你不知道我有多忙，你说得倒轻巧，我都看不懂你说的这些什么Hexo和Github，怎么去搭建？balabalabala……好吧，我承认大家都很忙，这里稍微跟大家玩个文字游戏，大家比较下‘忙’和‘忘’两个字，没错，聪明的已经看出来了，你的心躺下自己就什么都忘了，你的心立起来，自然一直都很忙。so，如果你到现在还找各种理由，不去做自己应该做的事情，那我只能说你决心还不够，而你老说自己忙，则是需要重新修炼心学的静坐工夫，还是建议参考曾剃头的方法。
+最后，借用陌陌的广告词送给那些迟迟不下决心做自己向往事情的人们：别和陌生人说话，别做新鲜事，继续过平常的生活，胆小一点儿，别好奇，就玩你会的，离冒险远远的，有些事想想就好，没必要改变，待在熟悉的地方，最好待在家里，听一样的音乐，见一样的人，重复同样的话题，心思别太活，梦想要实际，不要什么都尝试，就这样活着吧。
+本期推荐电影：一、《沙漠之花》导演：雪瑞·霍尔曼推荐语：如果你曾对沙漠里是否真的能开出花产生过疑问，这部片子很肯定的告诉你：能。二、《白日火焰》导演：刁亦男推荐语：对豆瓣什么的一些影评，我没太多感觉，本片亮点在于开始五分钟在你认为不可能发生的时候，两个警察被干掉了。三、《爱在战火蔓延时》导演：戴维·塞尔策推荐语：片子不算超精彩的那种，但是里面有一个场景令我很触动，当男女主角在国境线外呼救的时候，边防兵无动于衷，但当他们跨进国境线那一刻，边防兵毫不客气的还击。本期推荐书籍：一、《一阵风，留下了千古绝唱》作者：章诒和推荐语：书里讲马连良对精致生活的享受部分，很是引人入胜。二、《王阳明大传》作者：周月亮推荐语：用通俗的话语较有深度的讲述了王阳明的一生，看完这个，就没必要看其学生吕峥写的《明朝一哥王阳明》了，基本照抄，没太多新意。三、《历史深处的民国》作者：江城推荐语：框架比《民国就是这么生猛》搭的好，细节则没后者全，但里面用数据分析了一个很有意思的现象，袁世凯家里的牛人没有活过58岁的。
 ]]></content>
       <categories>
         <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>开始学习python了</title>
-    <url>/2016/12/27/%E5%BC%80%E5%A7%8B%E5%AD%A6%E4%B9%A0python%E4%BA%86/</url>
-    <content><![CDATA[从接触编程到现在已经三年多了，多数是浅尝辄止，因为我的主要工作是运营；也没有必要把编程学的这么深入，从刚开始的html，到后来的php以及去年学的OC；终于要学python了，为什么要学习python呢？更深的我也不懂，我只知道两点。
-第一，python能做大数据方面的东西；第二，python还能做Machine Learning方面的东西。
-重要的是我对这两方面都非常感兴趣，所以我就要学习python了。
-
-马克思说，研究首先要充分的占有资料，所以就非常投入的查了很多资料。而学习一门语言首先要搭建IDE啊，我没听说python有像开发IOS的Xcode一样的IDE，最初的想法就是赶紧搭建出来一个IDE，开始学习敲代码，于是苦逼的填坑就开始了，什么pycharm、sublime txt，脑袋整个一浆糊。最后终于搞清楚了，他娘的Mac自带python2.7和Vim。只需要简单配置vim的配置文件vimrc，就可以开始简单的自学python了。
-但是，坑，才刚刚开始，因为用Xcode习惯了，所以一上来肯定想着python也可以一键执行啊。于是找到一个老兄回答的配置一键执行的答案，就是在这里我遇到了初学python的一个大坑。
-我想既然一键执行，那就开启vim的配置文件vimrc开始配置吧。一查才知道，/usr/share/vim/vimrc是系统级的文件，不可妄动。那好，那就用Teriminal在用户下新建一个唄！
-vi ~/.vimrc
-建好了就开始写唄，于是就把java和c以及python在vim中的一键执行配置全部添加上。呶！就是下面这堆!
-map &lt;F5&gt; :call CompileRunGcc()&lt;CR&gt;func! CompileRunGcc()exec "w"if &amp;filetype == 'c'exec "!g++ % -o %&lt;"exec "!time ./%&lt;"elseif &amp;filetype == 'cpp'exec "!g++ % -o %&lt;"exec "!time ./%&lt;"elseif &amp;filetype == 'java'exec "!javac %"exec "!time java %&lt;"elseif &amp;filetype == 'sh':!time bash %elseif &amp;filetype == 'python'exec "!time python2.7 %"elseif &amp;filetype == 'html'exec "!firefox % &amp;"elseif &amp;filetype == 'go'"        exec "!go build %&lt;"exec "!time go run %"elseif &amp;filetype == 'mkd'exec "!~/.vim/markdown.pl % &gt; %.html &amp;"exec "!firefox %.html &amp;"endifendfunc
-上面的意思是在vim中写c、java和python的时候在命令模式下，可以按F5，或者Fn+F5一键执行，查看编译效果。
-可坑爹的是，我在vim中写完python的代码后，在命令模式下，无论怎么敲F5，都没反应。而且由于vim的命令还不熟悉，在从Teriminal进入vimrc时，老是出现错误，因为不懂啊，于是就感觉出了很大的错误，后来才知道，原来写vim时会生成两个文件，一个临时的一个存储在磁盘上，如果写完vim忘记保存，那么那个叫做XX,swp的临时文件，会搞得你欲生欲死。
-没办法啊，身边也没有python大牛，只能继续翻网页。
-直到无意中把下面一行代码加入vi~/.vimrc(用户目录下的vim配置文件，它的优先级是高于vim的系统级配置文件的)中，然后奇迹的事情发生了，我靠我的.py文件不但高亮显示了，最重要的是，当我在命令模式下，按下Fn+F5，竟然可以一键执行了，这时候，我知道，终于跳出了我初学python的第一个坑。
-syntax on
-没错就这两个单词，意思是：语法高亮。
-反思：我为什么会在这个在行家看来是弱智问题的坑上徘徊这么久呢？有四点：
-第一，通过Teriminal用vi ~/.vimrc命令在用户目录下创建的vim配置文件是隐藏的；我没看到，就以为没有，然后就复制了系统下的vimrc文件来进行修改，肯定无效。第二，由于不知道在用户目录下新建的vimrc配置文件是隐藏的，而在Teriminal中试图进入vimrc时，又频频出错，于是就束手无策了。第三、由于不知道用户目录下新建的vimrc文件是隐藏的，而在用Teriminal进入时，又频频出错；于是我就试图自己在vim里新建一个名为vimrc的文件，绝壁无效。第四、由于，我是抱着，我对vim和python都懂得不多，所有跟配置一键执行无关的网页都是一扫而过；导致错过了提前解决问题的可能。就酱！
-下面就要开始正式学习vim的命令和python语法了，我会一直更新滴！
-]]></content>
-      <categories>
-        <category>Python</category>
       </categories>
   </entry>
   <entry>
@@ -372,6 +316,71 @@ syntax on
       </categories>
   </entry>
   <entry>
+    <title>开始学习python了</title>
+    <url>/2016/12/27/%E5%BC%80%E5%A7%8B%E5%AD%A6%E4%B9%A0python%E4%BA%86/</url>
+    <content><![CDATA[从接触编程到现在已经三年多了，多数是浅尝辄止，因为我的主要工作是运营；也没有必要把编程学的这么深入，从刚开始的html，到后来的php以及去年学的OC；终于要学python了，为什么要学习python呢？更深的我也不懂，我只知道两点。
+第一，python能做大数据方面的东西；第二，python还能做Machine Learning方面的东西。
+重要的是我对这两方面都非常感兴趣，所以我就要学习python了。
+
+马克思说，研究首先要充分的占有资料，所以就非常投入的查了很多资料。而学习一门语言首先要搭建IDE啊，我没听说python有像开发IOS的Xcode一样的IDE，最初的想法就是赶紧搭建出来一个IDE，开始学习敲代码，于是苦逼的填坑就开始了，什么pycharm、sublime txt，脑袋整个一浆糊。最后终于搞清楚了，他娘的Mac自带python2.7和Vim。只需要简单配置vim的配置文件vimrc，就可以开始简单的自学python了。
+但是，坑，才刚刚开始，因为用Xcode习惯了，所以一上来肯定想着python也可以一键执行啊。于是找到一个老兄回答的配置一键执行的答案，就是在这里我遇到了初学python的一个大坑。
+我想既然一键执行，那就开启vim的配置文件vimrc开始配置吧。一查才知道，/usr/share/vim/vimrc是系统级的文件，不可妄动。那好，那就用Teriminal在用户下新建一个唄！
+vi ~/.vimrc
+建好了就开始写唄，于是就把java和c以及python在vim中的一键执行配置全部添加上。呶！就是下面这堆!
+map &lt;F5&gt; :call CompileRunGcc()&lt;CR&gt;func! CompileRunGcc()exec "w"if &amp;filetype == 'c'exec "!g++ % -o %&lt;"exec "!time ./%&lt;"elseif &amp;filetype == 'cpp'exec "!g++ % -o %&lt;"exec "!time ./%&lt;"elseif &amp;filetype == 'java'exec "!javac %"exec "!time java %&lt;"elseif &amp;filetype == 'sh':!time bash %elseif &amp;filetype == 'python'exec "!time python2.7 %"elseif &amp;filetype == 'html'exec "!firefox % &amp;"elseif &amp;filetype == 'go'"        exec "!go build %&lt;"exec "!time go run %"elseif &amp;filetype == 'mkd'exec "!~/.vim/markdown.pl % &gt; %.html &amp;"exec "!firefox %.html &amp;"endifendfunc
+上面的意思是在vim中写c、java和python的时候在命令模式下，可以按F5，或者Fn+F5一键执行，查看编译效果。
+可坑爹的是，我在vim中写完python的代码后，在命令模式下，无论怎么敲F5，都没反应。而且由于vim的命令还不熟悉，在从Teriminal进入vimrc时，老是出现错误，因为不懂啊，于是就感觉出了很大的错误，后来才知道，原来写vim时会生成两个文件，一个临时的一个存储在磁盘上，如果写完vim忘记保存，那么那个叫做XX,swp的临时文件，会搞得你欲生欲死。
+没办法啊，身边也没有python大牛，只能继续翻网页。
+直到无意中把下面一行代码加入vi~/.vimrc(用户目录下的vim配置文件，它的优先级是高于vim的系统级配置文件的)中，然后奇迹的事情发生了，我靠我的.py文件不但高亮显示了，最重要的是，当我在命令模式下，按下Fn+F5，竟然可以一键执行了，这时候，我知道，终于跳出了我初学python的第一个坑。
+syntax on
+没错就这两个单词，意思是：语法高亮。
+反思：我为什么会在这个在行家看来是弱智问题的坑上徘徊这么久呢？有四点：
+第一，通过Teriminal用vi ~/.vimrc命令在用户目录下创建的vim配置文件是隐藏的；我没看到，就以为没有，然后就复制了系统下的vimrc文件来进行修改，肯定无效。第二，由于不知道在用户目录下新建的vimrc配置文件是隐藏的，而在Teriminal中试图进入vimrc时，又频频出错，于是就束手无策了。第三、由于不知道用户目录下新建的vimrc文件是隐藏的，而在用Teriminal进入时，又频频出错；于是我就试图自己在vim里新建一个名为vimrc的文件，绝壁无效。第四、由于，我是抱着，我对vim和python都懂得不多，所有跟配置一键执行无关的网页都是一扫而过；导致错过了提前解决问题的可能。就酱！
+下面就要开始正式学习vim的命令和python语法了，我会一直更新滴！
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>我与音乐的初缘</title>
+    <url>/2016/03/17/%E6%88%91%E4%B8%8E%E9%9F%B3%E4%B9%90%E7%9A%84%E5%88%9D%E7%BC%98/</url>
+    <content><![CDATA[我高中学过一年半音乐，上过高中的都知道：『小三门』；不知现在还这么叫吗？我学音乐的原因有三：一、小时候我爸买过一支笛子，我爸捣鼓好长时间，没吹响，我后来不但吹响了，而且还能看简谱吹奏《没有共产党就没有新中国》和《中学时代》等歌曲，我觉得我自己真是tmd太有才了，所以老师一说报名『小三门』，我立即就积极响应了。至于我到底有没有音乐天赋，我到今天也没搞清楚。二、文化课要求分数低，只要音乐过就能上个还不错的本科学校，一本也不是没可能；三、我感觉学音乐是一件很酷的事情；事实证明一年半的成果还可以，可是经济基础，决定上层建筑，最后考上了新乡一个叫做：『平原大学』的音乐系，我估计是二本吧，学费太昂贵，最后只好选择去学机械制造。然后就与音乐绝缘了。以上是摘要但还是会买支笛子，有空吹奏一番，曲子当然不会再是初学的那些了，好歹也有了些乐理知识，可以识谱演奏了。然后机械制造毕业，去做工人，再然后到北京做电子商务，始终还是放不下音乐，梦想着有一天自己也能开一场自己的演唱会，现在经济自立了，也会买把吉他，学弹吉他，有时间还会读《中国音乐简史》之类的书，加深音乐素养，权当一爱好，但谁说爱好就不能学的专业一点儿，因此，开辟这个专栏，记录我平常累积的音乐知识以及学习音乐过程中的欢乐。
+]]></content>
+      <categories>
+        <category>音乐学习</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>当你说知行合一的时候你在说什么</title>
+    <url>/2016/03/17/%E5%BD%93%E4%BD%A0%E8%AF%B4%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E7%9A%84%E6%97%B6%E5%80%99%E4%BD%A0%E5%9C%A8%E8%AF%B4%E4%BB%80%E4%B9%88/</url>
+    <content><![CDATA[一、前面的话知行合一是心学的支柱和核心，心学没了知行合一也就不是心学，因此我要反复讲，时时刻刻讲，这篇也不例外，还是要讲知行合一。
+前几篇虽然也讲了知行合一，可能对你来说还是只是理论而已，它让你搞明白了知行合一和格物，至善以及工夫的关系，但然并卵，你可能还是不得要领，这篇就是专门讲述，当你说你知行合一的时候，你指的到底具体是什么事？以上是摘要二、知行合一与爱好音乐咱们就从：『爱好』音乐说起吧，你觉得当你说爱好音乐的时候，你具体是什么意思？
+你说你爱好是音乐，可是支撑它的是什么东西呢?支撑你理直气壮说出爱好音乐的是什么呢?
+如果你真的知行合一，当你说你爱好音乐的时候，你起码要知道音乐的三种唱法：美声，民族和通俗；三个声部是：高音，中音和低音。并且知道它们之间的区别；唱《滚滚长江东逝水》的杨洪基是标准的男中音，目前世界三大男高音分别是：帕瓦罗蒂，多明戈和卡雷拉斯。没错，多明戈就是和宋祖英在08奥运会合唱《爱的火焰》的那个西班牙老头。中国被称为：『人声低音炮』的赵鹏是典型的男低音歌手。
+当你说你爱好音乐的时候，你起码要知道这三种唱法里排名前三的歌手，并且知道每位歌手的代表作。而且真的理解每首代表作创作的背景和要表达的意境是什么。
+当你说你爱好音乐的时候，你起码要知道意大利盛产男高音，男中音和男低音在歌唱界是稀有动物，而且音乐的起源是数学。
+三、知行合一与爱好电影当你说你爱好电影的时候，你实际的意思应该是这样的，你起码看过世界十大禁片，那样你会知道为什么会被禁？
+当你说爱好电影的时候，你起码要知道各国著名导演和其代表作，而且你都是看过的，别问我哪里有种子，我真的不知道。
+当你说你爱好电影的时候，你起码要知道电影分两大类故事片和非故事片；故事片又分为：西部片，强盗片，科幻片，恐怖片，喜剧片，灾难片以及战争片，当然还有我们大中华独有的武侠片。非故事片又分为：广告片，新闻片，纪录片，科学片，教学片以及风景片。
+当你说你爱好电影的时候你起码要知道电影的基本构成要素是影像和声音，影像又分为：景别，运动，光线和色彩，声音又分为：人声，音响，音乐，声画关系，长镜头以及蒙太奇。
+可是你说，靠，我就是爱好，没必要这样吧，可是爱好真实的面貌就是这样，你起码能说出个一二三来，这些全部是支撑你理直气壮说出你爱好某件事情或者某样东西的基础。不然呢，你说你爱好音乐可是音乐几种唱法，你说不知道，男高音，男中音和男低音的代表歌手是谁，你说不知道？那你算哪门子爱好音乐呢？
+如果你真的爱好，应该是这样的，当你看过某部电影之后，你会这样说：哇喔，这部喜剧片拍的蛮不错，长镜头运用的非常到位，蒙太奇运用的也恰到好处，某个地方的光线如果再足一点就更完美了。
+没错，你说你爱好某样东西，它的实际意思是即便你不靠这件事情谋生，你在这件事情上面也是绝对的行家，而不是那种看完后只对故事本身吐槽。再明白一点儿就是，这部电影好，好在哪里？这首曲子不好，不好在哪里？景别，长镜头，蒙太奇，副歌，旋律，节奏，歌词以及唱法，你得说出个一二三来。
+四、爱好音乐与电影的背后
+机灵的同学，可能已经发现了，如果爱好是这样，它是要花费大量时间的，所以，肯定可以这样说，你的爱好在哪里？你的时间就应该在哪里。如果你说你爱好音乐，而你的大部分时间却用来打羽毛球或者dota，不好意思，你只能说你的爱好是羽毛球或游戏。
+因此，下回如果遇到某人再说自己爱好音乐或者电影，你基本三步就可以试出来，他到底是真爱，还是叶公好龙。第一，音乐的三种唱法是什么？第二，三个声部是什么？第三，三个声部的代表人物分别是谁？
+同样，你想验证自己在某件事情上是否真正知行合一，除了要和格物（纠正在心上的事情，使其符合天理）相结合之外。一个简单的方法就是你统计下，你平时的时间是否大部分花在了这件事情上。
+五、总结
+爱好实际需要你花费大量时间，不然就不是真的知行合一去爱了，时间是你惟一的财富，你的时间花在了哪里，那很有可能你的爱好就在哪里？当然并不绝对，比如你说你就爱好发呆或者睡觉，那我就只能借用王大锤的话了：『你说得好有道理，我竟无言以对』。你平时时间花在哪里？是验证你在某件事上是否真正知行合一，一个简单但非常有用的方法。
+本期推荐电影：一、《龙虾》推荐语：如果不结婚就变动物，是不是匪夷所思，《龙虾》就是这样的电影。二、《房间》推荐语：想不想知道一个被伤害的母亲是怎样为自己孩子在一间狭小且上了锁的房间里，打造出一个小小天堂的？三、《你是好孩子》推荐语：我们小时候受过的伤害，在长大后都会以自己被伤害的方式再现。
+本期推荐书籍：一、《蔡澜谈吃》作者：蔡澜推荐语：蔡澜包括，倪匡、黄霑和金庸，都是我非常钦佩的人，钦佩程度根据名字排序；蔡澜爱好吃，所以就有了这本书以及《蔡澜品味》等节目。看看这本书，你会知道《想说爱好真的不容易》。二、《今生今世，民国名媛情事》作者：萧萧推荐语：名媛难再有，但可以学学这些名媛处人生低谷的人生态度。名媛不唯能享富贵，更可处贫贱而仍优雅如初。三、《一个人的村庄》作者：刘亮程推荐语：观察生活的角度比较独特，散文里比较出奇的。
+]]></content>
+      <categories>
+        <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
     <title>我是这样认识王阳明的</title>
     <url>/2016/03/17/%E6%88%91%E6%98%AF%E8%BF%99%E6%A0%B7%E8%AE%A4%E8%AF%86%E7%8E%8B%E9%98%B3%E6%98%8E%E7%9A%84/</url>
     <content><![CDATA[大多数喜欢王阳明的朋友，总是标榜“知行合一”，“致良知”；我的微信关注了一个也标榜自己喜欢阳明思想的朋友；做什么事都和：“心性”、“致良知”这些字眼联系起来；
@@ -407,15 +416,6 @@ syntax on
 ]]></content>
       <categories>
         <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>我与音乐的初缘</title>
-    <url>/2016/03/17/%E6%88%91%E4%B8%8E%E9%9F%B3%E4%B9%90%E7%9A%84%E5%88%9D%E7%BC%98/</url>
-    <content><![CDATA[我高中学过一年半音乐，上过高中的都知道：『小三门』；不知现在还这么叫吗？我学音乐的原因有三：一、小时候我爸买过一支笛子，我爸捣鼓好长时间，没吹响，我后来不但吹响了，而且还能看简谱吹奏《没有共产党就没有新中国》和《中学时代》等歌曲，我觉得我自己真是tmd太有才了，所以老师一说报名『小三门』，我立即就积极响应了。至于我到底有没有音乐天赋，我到今天也没搞清楚。二、文化课要求分数低，只要音乐过就能上个还不错的本科学校，一本也不是没可能；三、我感觉学音乐是一件很酷的事情；事实证明一年半的成果还可以，可是经济基础，决定上层建筑，最后考上了新乡一个叫做：『平原大学』的音乐系，我估计是二本吧，学费太昂贵，最后只好选择去学机械制造。然后就与音乐绝缘了。以上是摘要但还是会买支笛子，有空吹奏一番，曲子当然不会再是初学的那些了，好歹也有了些乐理知识，可以识谱演奏了。然后机械制造毕业，去做工人，再然后到北京做电子商务，始终还是放不下音乐，梦想着有一天自己也能开一场自己的演唱会，现在经济自立了，也会买把吉他，学弹吉他，有时间还会读《中国音乐简史》之类的书，加深音乐素养，权当一爱好，但谁说爱好就不能学的专业一点儿，因此，开辟这个专栏，记录我平常累积的音乐知识以及学习音乐过程中的欢乐。
-]]></content>
-      <categories>
-        <category>音乐学习</category>
       </categories>
   </entry>
   <entry>
@@ -496,6 +496,26 @@ hexo clean:清楚缓存和temp文件；hexo d -g:生成静态文件并部署到G
       </categories>
   </entry>
   <entry>
+    <title>王阳明之所以为王阳明</title>
+    <url>/2016/03/17/%E7%8E%8B%E9%98%B3%E6%98%8E%E4%B9%8B%E6%89%80%E4%BB%A5%E4%B8%BA%E7%8E%8B%E9%98%B3%E6%98%8E/</url>
+    <content><![CDATA[上篇文说到，圣人都是在百死千难中，对自己的思维进行苦苦思索；方才悟得圣人之道。那我等芸芸众生欲窥得圣人一二门径，应该如何做呢？
+一、让擅长成为精通道理人人会讲，成者寥寥无几？何也？知其然，不知其所以然也！首先要做的就是做回你自己，所谓做回你自己，意思就是想清楚你能干神马，无论你想干神马，你喜欢干神马，你首先要想清楚，你能干神马。先从你最擅长的地方入手，把你擅长的事情精通了。以上是摘要你如果喜欢喝酒，那就成为品酒专家，你如果喜欢旅游，那就让你的水平，可以去做旅游杂志主编，如果你喜欢食物，那就让自己可以做到像蔡澜那样，可以以此出书做节目。
+二、找到适合你自己的路都云小米成于饥饿营销，但凡客陈年和雷军是好基友；不可谓不倾囊相授，不可谓不耳提面命；现在也在亦庄苦苦学习小米的一套，怎么不见泛起什么浪花呢？
+凡客自一万之众，搬往亦庄后的三百余人，也是痛下决心，要从白衬衫单点突破；
+结果如何？去年8月份江苏省质量技术监督局抽查中，其99元衬衫六项参数不合格。去年11月份国家质检总局抽检中，又有凡客在休闲服装、皮鞋、旅游鞋、背提包4种产品中被发现有不合格现象。何也？立定脚跟做事，也没咬紧牙关做人。
+三、掌握规律每个人的人生是不同的，每个人的人生路径是不同的，因此每个人都会有一条最适合自己的路径；所以，即使雷军操盘凡客，照着小米的玩法全部来一遍，也不见得会有起死回生之效。但是事情成败有其自身规律，这是毋庸置疑的。
+正如上篇所讲，圣人自己成为了圣人，他成圣的方法与路径，是无法对你言说的，即使他是圣人。
+因此，不要妄想有一套放之四海而皆准的方法，可以使你一夜暴富，或者是一夜成名成圣。
+你必须在精通一件事情之后，回过头去总结归纳规律性的东西，使之成为自己的东西之后，再将其应用到其他同类事情中，才可以说你掌握了规律。
+这种规律性的知识累积到一定程度，你才能在一件事情开头，就能看到其发展的趋势，你内心才会安定，内心安定，你才能对局势更明晰。才有利于你的杀伐决断。此所谓：『定而后能静，静而后能安，安而后能虑』。如果你因同事一句嘲讽的话，就怏怏不乐半天，因老友一句玩笑式的调侃就郁闷半天，如何能明晰局势，杀伐决断呢？
+阳明之所以为阳明，除了天性聪慧，勤于思索之外，更在于其利用自身优势，广泛出入佛老，溺于辞章之后，有了对规律的全面认识，方有龙场悟道之圆满。
+无论是现世的成功企业，以及古往今来成功的个人，都一定是把握了规律之后，对规律的详加运用。才成就一番功业。
+]]></content>
+      <categories>
+        <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
     <title>知行合一与坚持</title>
     <url>/2016/03/17/%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E4%B8%8E%E5%9D%9A%E6%8C%81/</url>
     <content><![CDATA[你确定你真的在坚持？
@@ -542,26 +562,6 @@ hexo clean:清楚缓存和temp文件；hexo d -g:生成静态文件并部署到G
 本期推荐电影一、《坏老师》推荐语：卡梅隆·迪亚茨表演超棒，一个超级可爱的坏老师，我上学时怎么一个都没碰到呢？想改变自己的命运没错，但是得拿出行动来，坏老师教你怎么行动起来。二、《刀》推荐语：这部是我高中逃课租碟去看的，目前为止看了多少遍自己也数不清了，个人认为是徐克导演的武侠片里目前最好的一部；《龙门飞甲》用了3D，但我仍觉得不如这部。尤其是片尾曲《伤痛》，每次都听得我内牛满面。三、《恶魔的艺术2》推荐语：胆小莫看，第一部和第三部都是单纯讲故事，唯独第二部有些片子之外的东西，直接上经典台词了：在我们的生命之路上，会有诸多选择。有时，你根本不知道你的选择会带来怎样的结果；但是，许多次我们知道应该或不应该做一件事情的时候，我们却没能做出明智的选择。但是，这样说肯定是对的：有时，如果我们一开始就作出了正确的选择，死神就不会离我们如此之近。
 本期推荐书籍：
 一、《我的母亲杨沫》作者：老鬼推荐语：上次推荐的电影《欺诈计划》探讨了家庭是靠血缘还是靠感情维系，这是杨沫最小的儿子：“老鬼”对自己母亲最真实的再现。其实探讨的是狂热组织对个人思维的摧毁。尤其难能可贵的是自曝母亲与其秘书的暧昧情事。二、《我有这样一个母亲》作者：李南央推荐语：原来我们知道的延安的事，只是想让我们知道的，有些在当时很有名的人，我们现在许多人甚至连名字都不知道，李南央的母亲范元甄就是这样一个人？当时延安四大美女之一，后来比杨沫的个人思维被摧毁的更厉害。老鬼和李南央的这两部书，都会让我们思考，当一个组织狂热之后，对个体的损害是有多么彻底。三、《乱时候，穷时候》作者：姜淑梅推荐语：如果你觉得自己做任何事已经晚了的时候，那么看看这位可爱老太太的经历，六十岁开始认字，六十五岁开始写作，目前已经出版两本著作，这本是其处女作。对战乱年代民众真实生活感兴趣的可以看看。
-]]></content>
-      <categories>
-        <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>王阳明之所以为王阳明</title>
-    <url>/2016/03/17/%E7%8E%8B%E9%98%B3%E6%98%8E%E4%B9%8B%E6%89%80%E4%BB%A5%E4%B8%BA%E7%8E%8B%E9%98%B3%E6%98%8E/</url>
-    <content><![CDATA[上篇文说到，圣人都是在百死千难中，对自己的思维进行苦苦思索；方才悟得圣人之道。那我等芸芸众生欲窥得圣人一二门径，应该如何做呢？
-一、让擅长成为精通道理人人会讲，成者寥寥无几？何也？知其然，不知其所以然也！首先要做的就是做回你自己，所谓做回你自己，意思就是想清楚你能干神马，无论你想干神马，你喜欢干神马，你首先要想清楚，你能干神马。先从你最擅长的地方入手，把你擅长的事情精通了。以上是摘要你如果喜欢喝酒，那就成为品酒专家，你如果喜欢旅游，那就让你的水平，可以去做旅游杂志主编，如果你喜欢食物，那就让自己可以做到像蔡澜那样，可以以此出书做节目。
-二、找到适合你自己的路都云小米成于饥饿营销，但凡客陈年和雷军是好基友；不可谓不倾囊相授，不可谓不耳提面命；现在也在亦庄苦苦学习小米的一套，怎么不见泛起什么浪花呢？
-凡客自一万之众，搬往亦庄后的三百余人，也是痛下决心，要从白衬衫单点突破；
-结果如何？去年8月份江苏省质量技术监督局抽查中，其99元衬衫六项参数不合格。去年11月份国家质检总局抽检中，又有凡客在休闲服装、皮鞋、旅游鞋、背提包4种产品中被发现有不合格现象。何也？立定脚跟做事，也没咬紧牙关做人。
-三、掌握规律每个人的人生是不同的，每个人的人生路径是不同的，因此每个人都会有一条最适合自己的路径；所以，即使雷军操盘凡客，照着小米的玩法全部来一遍，也不见得会有起死回生之效。但是事情成败有其自身规律，这是毋庸置疑的。
-正如上篇所讲，圣人自己成为了圣人，他成圣的方法与路径，是无法对你言说的，即使他是圣人。
-因此，不要妄想有一套放之四海而皆准的方法，可以使你一夜暴富，或者是一夜成名成圣。
-你必须在精通一件事情之后，回过头去总结归纳规律性的东西，使之成为自己的东西之后，再将其应用到其他同类事情中，才可以说你掌握了规律。
-这种规律性的知识累积到一定程度，你才能在一件事情开头，就能看到其发展的趋势，你内心才会安定，内心安定，你才能对局势更明晰。才有利于你的杀伐决断。此所谓：『定而后能静，静而后能安，安而后能虑』。如果你因同事一句嘲讽的话，就怏怏不乐半天，因老友一句玩笑式的调侃就郁闷半天，如何能明晰局势，杀伐决断呢？
-阳明之所以为阳明，除了天性聪慧，勤于思索之外，更在于其利用自身优势，广泛出入佛老，溺于辞章之后，有了对规律的全面认识，方有龙场悟道之圆满。
-无论是现世的成功企业，以及古往今来成功的个人，都一定是把握了规律之后，对规律的详加运用。才成就一番功业。
 ]]></content>
       <categories>
         <category>阳明心学</category>
@@ -621,6 +621,55 @@ hexo clean:清楚缓存和temp文件；hexo d -g:生成静态文件并部署到G
       </categories>
   </entry>
   <entry>
+    <title>编程学习心得</title>
+    <url>/2016/03/17/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/</url>
+    <content><![CDATA[似乎每个人对一件从未接触过的事物着迷时；都恨不得一下子就对其融会贯通；这种急切心理，极有可能导致稍遇挫折，便丧失兴趣。
+比如我对编程的学习；在刚开始时的确一腔热情；但是稍微接触到不容易理解的地方；就会不由自主地怀疑自己！自己真的适合学编程吗?我怎么这么笨？我这个年龄学编程还成吗？
+其实，这都是由于刚开始热情太盛；努力一段时间后，得不到自己期望的效果，便兴趣缺缺了。以上是摘要学习始终遵循循序渐进的原则；而不是像玩游戏一样，能得到及时的满足和成就感。所以很多颇有成就的人，都是最善于推迟自己满足感的人。
+其实我最该问的问题不应该是以上那些；而只应该问一个问题？我怎么才能学好编程?那些已经有了些许成就的程序员，是如何取得今天的成就的？
+在学习中还发现一个问题；就是学习一个知识点，一定不要紧追着一个人的讲解不放；同是一个知识点，这个人讲解的既轻松又清晰，而你紧抱着不放的那个则是既繁琐又模糊。
+所以在学习中必须灵活，灵活不是投机取巧；而是在网络信息如此发达的今日；不应该紧抱着某一个信息源不放；某个信息源的讲解听不明白，则必须及时寻找能让你更容易明白的信息源；相信我，一定可以找得到。
+比如在学习oc的三大特性封装、继承与多态时；我花钱买的课程讲解时既模糊又乏味；这时我就对自己产生怀疑了；难道我真的笨蛋如此；可是后来偶然间看到一篇博客；瞬间让我豁然开朗。就是那种梦里千百度，蓦然回首处的感觉。
+总之学习一定不是揪着某个问题不放；当然不是真的放下不管；而是先放到潜意识里；往往会出现这种情况；
+某日你对A问题产生疑惑；又一日，你对B问题更是纠结不已；但是，还一日，你去查找C问题的答案，发现竟然找到了A的答案。这往往是持续学习中，最令人痛快之时。
+]]></content>
+      <categories>
+        <category>IOS</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>苏阿芒—自学外语怎能不知道他</title>
+    <url>/2016/03/17/%E8%8B%8F%E9%98%BF%E8%8A%92%E2%80%94%E8%87%AA%E5%AD%A6%E5%A4%96%E8%AF%AD%E6%80%8E%E8%83%BD%E4%B8%8D%E7%9F%A5%E9%81%93%E4%BB%96/</url>
+    <content><![CDATA[原籍安徽省太平县（今黄山区）广阳乡（今属安徽石台）人，本名苏承宗，因发表作品多以苏阿芒为名，故以苏阿芒一名蜚声海内外。中学毕业后曾任天津机床厂夜校英文教师，1957年加入世界语协会，历任国际世界语博物馆馆员，国际世界语《世界文学》特约撰稿人，国际世界读者青年联合会中央委员，“文革”中1968年蒙冤入狱，1979年平反后任百花出版社编辑。1951年开始发表作品。1979年加入中国作家协会。以上借用一段百科文字，我知道苏阿芒其人其事，是在父亲书箱里翻到的一本叫做《成才之路》的书上。以上是摘要当时看到就热血沸腾，最近在学习日语和英语，又想起这个名字。由苏阿芒的故事，我觉得无论学习外语还是学习其他东西，就是不疯魔不成活。想想你我诸位，谁在地铁或者在商务活动中，没有遇到过这样的场景：你原本很以为难的一门外语，在地铁中你身旁的一位美女或者老兄，正在和外国人侃侃而谈，不时发出爽朗的笑声。又或者在商务活动中，你的同事与谈判对手，正在用一门你觉得很难的外语，唇枪舌剑，你来我往。当时你除了发蒙，第二个感觉就是，真TMD的太牛逼了。我要是外语也这么牛逼，那该多好啊！可你就是无法做到……这么牛逼！是的你无法做到。
+因为等你下了地铁或者在结束那次谈判后，你就又想着今天回去吃什么，或者想着购物车里那件好看的鞋子或者衣服，是不是又降价了。事实就是如此，我从遇到这种情况之后，发奋学英语，到如今也已有五六年时间，到如今英语的水平，也只能令自己呵呵了。自己看了下掌握多门外语的牛逼人物，远者如辜鸿铭，近者如苏阿芒。他们有神马了不得方法吗？还是天赋异禀。非也！唯苦练勤学尔。我自己的猜测啊！学第一门外语的难度，和第二门第三门外语的难度肯定成几何级降低的。因为你在学第一门外语的时候，已经有了一套成熟的方法论；区别只是在学其他外语的时候，对方法论体系中的某个细节进行改动，并且随着学的外语门数增多；这个方法论的体系一定会不断完善，不断得到补充；那么等到你学第二十门的时候，肯定已经是手到擒来，如探囊取物般容易了。所以根结在神马地方，第一个是恒心，第二个是勤奋；第三是保证你自己必须先学会一门外语。如果你想学更多门外语，肯定会越来越容易的。因此，无论你学英语还是韩语，无论意大利语还是西班牙语。如果你真的想学多门外语，保证你先精通一门外语。其他外语定然是可以得其门而入的。那么你一定要知道苏阿芒的故事，也就是题中应有之意了。
+]]></content>
+      <categories>
+        <category>外语学习</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>诚意与格物</title>
+    <url>/2016/03/17/%E8%AF%9A%E6%84%8F%E4%B8%8E%E6%A0%BC%E7%89%A9/</url>
+    <content><![CDATA[一、前面的话
+阳明心学的概念和结构跟《大学》关系密切，诚意作为三纲八目的起点，至关重要，格物又是致良知和诚意的核心工夫，因此，很有必要单独聊聊诚意和格物。
+二、诚意诚意就是下决心，真的下决心但不是下一次就可以，因为决心需要格物和知行合一的支撑。前文有述及，决心与格物和知行合一是一个循序渐进，相互促进的过程。以上是摘要多说无用，举例说明。假如你要学习IOS编程，从对IOS编程一无所知，到完成自己的app，对你来说肯定是一件很苦逼的事，你觉得这时候决心对你有用吗 ？答案是屁用没有，
+没错，决心对这时候的你来说，绝对屁用没有，那你就问了，我靠，屁用没有，那我学诚意有毛用，别急，诚意不是一个孤立的单品，是一个需要配合格物和知行合一一起使用的产品。正如电和灯泡的关系，有了电，屁用没有，每天晚上还是无尽的黑暗，但是伟大的爱迪生发明了灯泡，我们夜晚的世界就变成了五彩缤纷的天堂。
+所以说下了学习编程的决心，立马就要去格学习IOS编程这件事。这就是诚意的作用，诚意是电，有了它格物和知行合一这两个灯泡，才能照亮你人生之夜的天空。
+二、格物格物是诚意的手段，诚意是格物的目的。现在下了学习IOS编程的决心了，那要怎么学呢？
+接着诚意的例子讲，格学习编程这件事，首先，你得知道IOS编程分几部分吧，开始先得学C和OC的语法，其次要学UI，要学数据库，网络和多线程等。
+刚开始肯定是茫无头绪的，但是有勿忘勿助啊，不要急着去精通，但是也不要一曝十寒，也就是既不要急吼吼的，也不要三天打鱼两天晒网。当你从一无所知，学会了C里面的运算符，数据类型，循环体和选择语法，这时候诚意就有作用了，你的决心肯定加大了。学了C,OC就很容易了，
+接下来该学习UI了，当你学完UI，并且第一次自己写出了一个简单的加法计算器或者QQ登录界面，这时候的成就感肯定是你无法想象的。那这时候的决心简直不要不要的了。
+就这样一步步前进，每学完一个部分，决心会随之增加，最后当你做出自己的一个app，并且在APPStore上架，这就是一个完整的格物和知行合一的过程，也是一个完整的诚意过程。
+在《知行合一与格物》里讲过，格物偏向思考层面，知行合一偏向行动层面，因此学编程这件事里，格物是让你弄清楚学习编程的整个路线图，而知行合一确保你能自己亲自动手去练习写代码，而不只是听视频里的课程，却并不动手。诚意则是让你能够坚持学下去。
+三、诚意与格物的抽象表述
+当你第一次下决心后，如果真正去格物和知行合一了，这样便会增加你的决心，又促成了你再次的格物和知行合一，这样又使你的决心更进一步，从而形成良性循环，直到最后要格的物符合了天理。从而完成一个完整的格物致知的过程。
+本期推荐电影电视剧：一、《趟过女人河的男人》推荐语：演员是一份工作，明星是一个标签，厌烦了如今电视剧中明星狗血表演的你，来重温下演员们的表演吧。二、《低俗小说》推荐语：逼片届的一座高峰，要不就永远不要看，看了就得夸它赞，否则会被凶猛的影迷怒吼“LZ大傻逼，看你的《无极》去吧！”三、《大卫戈尔的一生》推荐语：你确定你有信仰，确定是吧？那就看看戈尔们是怎样维护自己的信仰的？本期推荐书籍：一、《读书毁了我》作者：王强推荐语：读书是一件很花费时间的事情，既成就人，也毁人的时间，看看书是怎么毁去新东方三驾马车之一的王强的时间的吧。二、《尼采：在世纪的转折点上》作者：周国平推荐语：虽然我恨他现在大量生产鸡汤，但是这人早期的这本书写的还是很有见地的。三、《旁观者》作者：德鲁克推荐语：作者本人的回忆录，但是故事讲得很好，每个故事都有些独特的人在演绎，如果你也喜欢听真实的故事，不妨一阅。
+]]></content>
+      <categories>
+        <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
     <title>要赚钱先提升思维</title>
     <url>/2020/04/29/%E8%A6%81%E8%B5%9A%E9%92%B1%E5%85%88%E6%8F%90%E5%8D%87%E6%80%9D%E7%BB%B4/</url>
     <content><![CDATA[前言以前听到有谁说，思维提升这个词，那我基本上会判定他是个骗子。并且认为思维提升是个伪命题，对这个概念本身也是排斥的。
@@ -662,42 +711,17 @@ Slow  is  smooth ,  and  smooth  is  fast.慢是平滑的，  而平滑是快的
       </categories>
   </entry>
   <entry>
-    <title>诚意与格物</title>
-    <url>/2016/03/17/%E8%AF%9A%E6%84%8F%E4%B8%8E%E6%A0%BC%E7%89%A9/</url>
-    <content><![CDATA[一、前面的话
-阳明心学的概念和结构跟《大学》关系密切，诚意作为三纲八目的起点，至关重要，格物又是致良知和诚意的核心工夫，因此，很有必要单独聊聊诚意和格物。
-二、诚意诚意就是下决心，真的下决心但不是下一次就可以，因为决心需要格物和知行合一的支撑。前文有述及，决心与格物和知行合一是一个循序渐进，相互促进的过程。以上是摘要多说无用，举例说明。假如你要学习IOS编程，从对IOS编程一无所知，到完成自己的app，对你来说肯定是一件很苦逼的事，你觉得这时候决心对你有用吗 ？答案是屁用没有，
-没错，决心对这时候的你来说，绝对屁用没有，那你就问了，我靠，屁用没有，那我学诚意有毛用，别急，诚意不是一个孤立的单品，是一个需要配合格物和知行合一一起使用的产品。正如电和灯泡的关系，有了电，屁用没有，每天晚上还是无尽的黑暗，但是伟大的爱迪生发明了灯泡，我们夜晚的世界就变成了五彩缤纷的天堂。
-所以说下了学习编程的决心，立马就要去格学习IOS编程这件事。这就是诚意的作用，诚意是电，有了它格物和知行合一这两个灯泡，才能照亮你人生之夜的天空。
-二、格物格物是诚意的手段，诚意是格物的目的。现在下了学习IOS编程的决心了，那要怎么学呢？
-接着诚意的例子讲，格学习编程这件事，首先，你得知道IOS编程分几部分吧，开始先得学C和OC的语法，其次要学UI，要学数据库，网络和多线程等。
-刚开始肯定是茫无头绪的，但是有勿忘勿助啊，不要急着去精通，但是也不要一曝十寒，也就是既不要急吼吼的，也不要三天打鱼两天晒网。当你从一无所知，学会了C里面的运算符，数据类型，循环体和选择语法，这时候诚意就有作用了，你的决心肯定加大了。学了C,OC就很容易了，
-接下来该学习UI了，当你学完UI，并且第一次自己写出了一个简单的加法计算器或者QQ登录界面，这时候的成就感肯定是你无法想象的。那这时候的决心简直不要不要的了。
-就这样一步步前进，每学完一个部分，决心会随之增加，最后当你做出自己的一个app，并且在APPStore上架，这就是一个完整的格物和知行合一的过程，也是一个完整的诚意过程。
-在《知行合一与格物》里讲过，格物偏向思考层面，知行合一偏向行动层面，因此学编程这件事里，格物是让你弄清楚学习编程的整个路线图，而知行合一确保你能自己亲自动手去练习写代码，而不只是听视频里的课程，却并不动手。诚意则是让你能够坚持学下去。
-三、诚意与格物的抽象表述
-当你第一次下决心后，如果真正去格物和知行合一了，这样便会增加你的决心，又促成了你再次的格物和知行合一，这样又使你的决心更进一步，从而形成良性循环，直到最后要格的物符合了天理。从而完成一个完整的格物致知的过程。
-本期推荐电影电视剧：一、《趟过女人河的男人》推荐语：演员是一份工作，明星是一个标签，厌烦了如今电视剧中明星狗血表演的你，来重温下演员们的表演吧。二、《低俗小说》推荐语：逼片届的一座高峰，要不就永远不要看，看了就得夸它赞，否则会被凶猛的影迷怒吼“LZ大傻逼，看你的《无极》去吧！”三、《大卫戈尔的一生》推荐语：你确定你有信仰，确定是吧？那就看看戈尔们是怎样维护自己的信仰的？本期推荐书籍：一、《读书毁了我》作者：王强推荐语：读书是一件很花费时间的事情，既成就人，也毁人的时间，看看书是怎么毁去新东方三驾马车之一的王强的时间的吧。二、《尼采：在世纪的转折点上》作者：周国平推荐语：虽然我恨他现在大量生产鸡汤，但是这人早期的这本书写的还是很有见地的。三、《旁观者》作者：德鲁克推荐语：作者本人的回忆录，但是故事讲得很好，每个故事都有些独特的人在演绎，如果你也喜欢听真实的故事，不妨一阅。
+    <title>读《一个人的村庄》</title>
+    <url>/2016/03/17/%E8%AF%BB%E3%80%8A%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E6%9D%91%E5%BA%84%E3%80%8B/</url>
+    <content><![CDATA[一、书和作者《一个人的村庄》作者：刘亮程刘亮程，作家，1962年出生在新疆古尔班通古特沙漠边缘的一个小村庄。著有诗集《晒晒黄沙梁的太阳》，散文集《虚土》《一个人的村庄》《在新疆》等。被誉为“20世纪中国最后一位散文家”和“乡村哲学家”。
+二、我的家乡读到这本书中的文字，情不自禁想到我的家乡，和儿时在家乡的我，那时每到夏天，暑假可以去河里摸鱼抓虾，一顿美美的野餐是少不了的，晚饭后可以去树林摸蝉换钱，第二天的冰棍就有了保证，傍晚可以去家附近的池塘洗个痛快的凉水澡，一下子从一个小泥人儿，变成了一个滑皮溜。以上是摘要那时每到麦收，镰刀总会割到手，但简单止血后，不用包扎还可以愉快的割麦子，买不起口香糖，麦子去皮后直接放到口中咀嚼，瞬间唇齿留香，麦香四溢，比口香糖还有嚼头，麦秸垛落成后，那里是每个孩子的天堂。
+那时每到瓜熟季节各种瓜果是当饭吃的，西红柿是在衣服上抹一下就吃的，西瓜汁是被当作最佳冷饮的。
+可是我有时会孤独，为了不被理解的忧伤，为了小小的愿望被流放，为了不知何时走出这片累弯腰的黄土。我有时会绝望，为了好像永远割不完的麦行，为了不知道自己的未来会怎样，为了不知道如何改变现在的孤独和绝望。
+后来我终于远离那片黄土，再也没有割不完的麦行，再也没有不被理解的忧伤，再也没有被流放的小愿望，可是儿时家乡的那种快乐，不知何时远离了我的心房。
+三、故乡情结每个人都有故乡情结，或许是儿时与玩伴的戏耍，或者是捉拿河里鱼虾，甚至是故乡的一片树林、土岗，午夜梦回哭湿了枕套，你可回到了哪个儿时的故乡，你的故乡情结是什么呢？
 ]]></content>
       <categories>
-        <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>编程学习心得</title>
-    <url>/2016/03/17/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/</url>
-    <content><![CDATA[似乎每个人对一件从未接触过的事物着迷时；都恨不得一下子就对其融会贯通；这种急切心理，极有可能导致稍遇挫折，便丧失兴趣。
-比如我对编程的学习；在刚开始时的确一腔热情；但是稍微接触到不容易理解的地方；就会不由自主地怀疑自己！自己真的适合学编程吗?我怎么这么笨？我这个年龄学编程还成吗？
-其实，这都是由于刚开始热情太盛；努力一段时间后，得不到自己期望的效果，便兴趣缺缺了。以上是摘要学习始终遵循循序渐进的原则；而不是像玩游戏一样，能得到及时的满足和成就感。所以很多颇有成就的人，都是最善于推迟自己满足感的人。
-其实我最该问的问题不应该是以上那些；而只应该问一个问题？我怎么才能学好编程?那些已经有了些许成就的程序员，是如何取得今天的成就的？
-在学习中还发现一个问题；就是学习一个知识点，一定不要紧追着一个人的讲解不放；同是一个知识点，这个人讲解的既轻松又清晰，而你紧抱着不放的那个则是既繁琐又模糊。
-所以在学习中必须灵活，灵活不是投机取巧；而是在网络信息如此发达的今日；不应该紧抱着某一个信息源不放；某个信息源的讲解听不明白，则必须及时寻找能让你更容易明白的信息源；相信我，一定可以找得到。
-比如在学习oc的三大特性封装、继承与多态时；我花钱买的课程讲解时既模糊又乏味；这时我就对自己产生怀疑了；难道我真的笨蛋如此；可是后来偶然间看到一篇博客；瞬间让我豁然开朗。就是那种梦里千百度，蓦然回首处的感觉。
-总之学习一定不是揪着某个问题不放；当然不是真的放下不管；而是先放到潜意识里；往往会出现这种情况；
-某日你对A问题产生疑惑；又一日，你对B问题更是纠结不已；但是，还一日，你去查找C问题的答案，发现竟然找到了A的答案。这往往是持续学习中，最令人痛快之时。
-]]></content>
-      <categories>
-        <category>IOS</category>
+        <category>读完就谈</category>
       </categories>
   </entry>
   <entry>
@@ -722,30 +746,6 @@ Slow  is  smooth ,  and  smooth  is  fast.慢是平滑的，  而平滑是快的
 四、组织好
 佛教的弘法团队，统一服饰，统一言行，统一作息。这要是军队，你说战斗力强不强。而且团队内部又有一系列和谐原则，使组织内部内耗最小。
 这就是佛教的四大魅力了，看了之后，你想不想成佛呢？
-]]></content>
-      <categories>
-        <category>读完就谈</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>苏阿芒—自学外语怎能不知道他</title>
-    <url>/2016/03/17/%E8%8B%8F%E9%98%BF%E8%8A%92%E2%80%94%E8%87%AA%E5%AD%A6%E5%A4%96%E8%AF%AD%E6%80%8E%E8%83%BD%E4%B8%8D%E7%9F%A5%E9%81%93%E4%BB%96/</url>
-    <content><![CDATA[原籍安徽省太平县（今黄山区）广阳乡（今属安徽石台）人，本名苏承宗，因发表作品多以苏阿芒为名，故以苏阿芒一名蜚声海内外。中学毕业后曾任天津机床厂夜校英文教师，1957年加入世界语协会，历任国际世界语博物馆馆员，国际世界语《世界文学》特约撰稿人，国际世界读者青年联合会中央委员，“文革”中1968年蒙冤入狱，1979年平反后任百花出版社编辑。1951年开始发表作品。1979年加入中国作家协会。以上借用一段百科文字，我知道苏阿芒其人其事，是在父亲书箱里翻到的一本叫做《成才之路》的书上。以上是摘要当时看到就热血沸腾，最近在学习日语和英语，又想起这个名字。由苏阿芒的故事，我觉得无论学习外语还是学习其他东西，就是不疯魔不成活。想想你我诸位，谁在地铁或者在商务活动中，没有遇到过这样的场景：你原本很以为难的一门外语，在地铁中你身旁的一位美女或者老兄，正在和外国人侃侃而谈，不时发出爽朗的笑声。又或者在商务活动中，你的同事与谈判对手，正在用一门你觉得很难的外语，唇枪舌剑，你来我往。当时你除了发蒙，第二个感觉就是，真TMD的太牛逼了。我要是外语也这么牛逼，那该多好啊！可你就是无法做到……这么牛逼！是的你无法做到。
-因为等你下了地铁或者在结束那次谈判后，你就又想着今天回去吃什么，或者想着购物车里那件好看的鞋子或者衣服，是不是又降价了。事实就是如此，我从遇到这种情况之后，发奋学英语，到如今也已有五六年时间，到如今英语的水平，也只能令自己呵呵了。自己看了下掌握多门外语的牛逼人物，远者如辜鸿铭，近者如苏阿芒。他们有神马了不得方法吗？还是天赋异禀。非也！唯苦练勤学尔。我自己的猜测啊！学第一门外语的难度，和第二门第三门外语的难度肯定成几何级降低的。因为你在学第一门外语的时候，已经有了一套成熟的方法论；区别只是在学其他外语的时候，对方法论体系中的某个细节进行改动，并且随着学的外语门数增多；这个方法论的体系一定会不断完善，不断得到补充；那么等到你学第二十门的时候，肯定已经是手到擒来，如探囊取物般容易了。所以根结在神马地方，第一个是恒心，第二个是勤奋；第三是保证你自己必须先学会一门外语。如果你想学更多门外语，肯定会越来越容易的。因此，无论你学英语还是韩语，无论意大利语还是西班牙语。如果你真的想学多门外语，保证你先精通一门外语。其他外语定然是可以得其门而入的。那么你一定要知道苏阿芒的故事，也就是题中应有之意了。
-]]></content>
-      <categories>
-        <category>外语学习</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>读《一个人的村庄》</title>
-    <url>/2016/03/17/%E8%AF%BB%E3%80%8A%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E6%9D%91%E5%BA%84%E3%80%8B/</url>
-    <content><![CDATA[一、书和作者《一个人的村庄》作者：刘亮程刘亮程，作家，1962年出生在新疆古尔班通古特沙漠边缘的一个小村庄。著有诗集《晒晒黄沙梁的太阳》，散文集《虚土》《一个人的村庄》《在新疆》等。被誉为“20世纪中国最后一位散文家”和“乡村哲学家”。
-二、我的家乡读到这本书中的文字，情不自禁想到我的家乡，和儿时在家乡的我，那时每到夏天，暑假可以去河里摸鱼抓虾，一顿美美的野餐是少不了的，晚饭后可以去树林摸蝉换钱，第二天的冰棍就有了保证，傍晚可以去家附近的池塘洗个痛快的凉水澡，一下子从一个小泥人儿，变成了一个滑皮溜。以上是摘要那时每到麦收，镰刀总会割到手，但简单止血后，不用包扎还可以愉快的割麦子，买不起口香糖，麦子去皮后直接放到口中咀嚼，瞬间唇齿留香，麦香四溢，比口香糖还有嚼头，麦秸垛落成后，那里是每个孩子的天堂。
-那时每到瓜熟季节各种瓜果是当饭吃的，西红柿是在衣服上抹一下就吃的，西瓜汁是被当作最佳冷饮的。
-可是我有时会孤独，为了不被理解的忧伤，为了小小的愿望被流放，为了不知何时走出这片累弯腰的黄土。我有时会绝望，为了好像永远割不完的麦行，为了不知道自己的未来会怎样，为了不知道如何改变现在的孤独和绝望。
-后来我终于远离那片黄土，再也没有割不完的麦行，再也没有不被理解的忧伤，再也没有被流放的小愿望，可是儿时家乡的那种快乐，不知何时远离了我的心房。
-三、故乡情结每个人都有故乡情结，或许是儿时与玩伴的戏耍，或者是捉拿河里鱼虾，甚至是故乡的一片树林、土岗，午夜梦回哭湿了枕套，你可回到了哪个儿时的故乡，你的故乡情结是什么呢？
 ]]></content>
       <categories>
         <category>读完就谈</category>
