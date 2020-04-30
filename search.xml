@@ -1,6 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hexo添加Rss和评论插件</title>
+    <url>/2016/03/20/Hexo%E6%B7%BB%E5%8A%A0Rss%E5%92%8C%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/</url>
+    <content><![CDATA[一、添加RSS我的主题配置文件已含有rss：  /atom.xml因此我就直接安装部署了。根目录下的配置信息：在# Extensions中添加，已经有的就免了。
+plugins: hexo-generator-feed
+打开Terminal（终端）输入：运行
+npm install hero-generator-feed
+重新部署：
+hexo cleanhexo d -
+以上是摘要二、开启评论1、首先，注册多说，并在根目录下的配置文件添加shot_name,这里是duoshuo_shortnameshort name指你在注册多说时二级域名里你自己输入的那部分，不包括htpp://和.duoshuo.com。这里有人说在主题配置信息里配置duoshuo_shortname，但是我的始终搞不定，我曾怀疑是不是data－thread－key等三个参数的问题，然后将page.path改为post.path,仍然不行，只能慢慢试验了。2、若使用默认主题landscape，则进入themes\landscape\layout_partial\articles.ejs中，将这段div中的disqus_shortname统统改为duoshuo_shortname，有的人没有这段，按实际情况来。
+&lt;/div&gt;&lt;footer class="article-footer"&gt;&lt;a data-url="&lt;%- post.permalink %&gt;" data-id="&lt;%= post._id %&gt;" class="article-share-link"&gt;&lt;%= __('share') %&gt;&lt;/a&gt;&lt;% if (post.comments &amp;&amp; config.duoshuo_shortname)&#123; %&gt;&lt;a href="&lt;%- post.permalink %&gt;#duoshuo_thread" class="article-comment-link"&gt;&lt;%= __('comment') %&gt;&lt;/a&gt;&lt;% &#125; %&gt;&lt;%- partial('post/tag') %&gt;&lt;/footer&gt;&lt;/div&gt;
+3、网上大多数的都是说的这段代码替换：替换&lt;% section %&gt;到&lt;／section&gt;之间的部分。
+&lt;% if (!index &amp;&amp; post.comments &amp;&amp; config.disqus_shortname)&#123; %&gt;&lt;section id="comments"&gt;&lt;div id="disqus_thread"&gt;&lt;noscript&gt;Please enable JavaScript to view the &lt;a href="//disqus.com/?ref_noscript"&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;&lt;/div&gt;&lt;/section&gt;&lt;% &#125; %&gt;
+替换为：
+&lt;% if (!index &amp;&amp; post.comments &amp;&amp; config.duoshuo_shortname)&#123; %&gt;&lt;section id="comments"&gt;&lt;!-- 多说评论框 start --&gt;&lt;div class="ds-thread" data-thread-key="&lt;%= post.path %&gt;" data-title="&lt;%= page.title %&gt;" data-url="&lt;%= page.permalink %&gt;"&gt;&lt;/div&gt;&lt;!-- 多说评论框 end --&gt;&lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;&lt;script type="text/javascript"&gt;var duoshuoQuery = &#123;short_name:'&lt;%= config.duoshuo_shortname %&gt;'&#125;;(function() &#123;var ds = document.createElement('script');ds.type = 'text/javascript';ds.async = true;ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';ds.charset = 'UTF-8';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);&#125;)();&lt;/script&gt;&lt;!-- 多说公共JS代码 end --&gt;&lt;/section&gt;&lt;% &#125; %&gt;
+这里需要注意的是data-thread-key等三个参数，对小白来说并不知道如何设置：我的设置如下：大多数网上的也都设的这个。
+data-thread-key：&lt;%= page.path %&gt;data-title：&lt;%= page.title %&gt;data-url（稳定版没有这个，开发版有这个参数）：&lt;%= page.permalink %&gt;
+4、重新部署hexo cleanhexo d －搞定。
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Hexo安装百度统计流程</title>
     <url>/2016/03/22/Hexo%E5%AE%89%E8%A3%85%E7%99%BE%E5%BA%A6%E7%BB%9F%E8%AE%A1%E6%B5%81%E7%A8%8B/</url>
     <content><![CDATA[用了两天时间将Hexo博客搭建好了，之后便开始一点一点儿增加一些小插件，很顺利的安装了RSS和评论插件后，决定安装统计插件，最后经过对比决定安装百度统计，虽然不如谷歌，但还凑合吧。闲言少叙，正文开始
@@ -28,26 +51,12 @@ hexo cleanhexo d -
       </categories>
   </entry>
   <entry>
-    <title>Hexo添加Rss和评论插件</title>
-    <url>/2016/03/20/Hexo%E6%B7%BB%E5%8A%A0Rss%E5%92%8C%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/</url>
-    <content><![CDATA[一、添加RSS我的主题配置文件已含有rss：  /atom.xml因此我就直接安装部署了。根目录下的配置信息：在# Extensions中添加，已经有的就免了。
-plugins: hexo-generator-feed
-打开Terminal（终端）输入：运行
-npm install hero-generator-feed
-重新部署：
-hexo cleanhexo d -
-以上是摘要二、开启评论1、首先，注册多说，并在根目录下的配置文件添加shot_name,这里是duoshuo_shortnameshort name指你在注册多说时二级域名里你自己输入的那部分，不包括htpp://和.duoshuo.com。这里有人说在主题配置信息里配置duoshuo_shortname，但是我的始终搞不定，我曾怀疑是不是data－thread－key等三个参数的问题，然后将page.path改为post.path,仍然不行，只能慢慢试验了。2、若使用默认主题landscape，则进入themes\landscape\layout_partial\articles.ejs中，将这段div中的disqus_shortname统统改为duoshuo_shortname，有的人没有这段，按实际情况来。
-&lt;/div&gt;&lt;footer class="article-footer"&gt;&lt;a data-url="&lt;%- post.permalink %&gt;" data-id="&lt;%= post._id %&gt;" class="article-share-link"&gt;&lt;%= __('share') %&gt;&lt;/a&gt;&lt;% if (post.comments &amp;&amp; config.duoshuo_shortname)&#123; %&gt;&lt;a href="&lt;%- post.permalink %&gt;#duoshuo_thread" class="article-comment-link"&gt;&lt;%= __('comment') %&gt;&lt;/a&gt;&lt;% &#125; %&gt;&lt;%- partial('post/tag') %&gt;&lt;/footer&gt;&lt;/div&gt;
-3、网上大多数的都是说的这段代码替换：替换&lt;% section %&gt;到&lt;／section&gt;之间的部分。
-&lt;% if (!index &amp;&amp; post.comments &amp;&amp; config.disqus_shortname)&#123; %&gt;&lt;section id="comments"&gt;&lt;div id="disqus_thread"&gt;&lt;noscript&gt;Please enable JavaScript to view the &lt;a href="//disqus.com/?ref_noscript"&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;&lt;/div&gt;&lt;/section&gt;&lt;% &#125; %&gt;
-替换为：
-&lt;% if (!index &amp;&amp; post.comments &amp;&amp; config.duoshuo_shortname)&#123; %&gt;&lt;section id="comments"&gt;&lt;!-- 多说评论框 start --&gt;&lt;div class="ds-thread" data-thread-key="&lt;%= post.path %&gt;" data-title="&lt;%= page.title %&gt;" data-url="&lt;%= page.permalink %&gt;"&gt;&lt;/div&gt;&lt;!-- 多说评论框 end --&gt;&lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;&lt;script type="text/javascript"&gt;var duoshuoQuery = &#123;short_name:'&lt;%= config.duoshuo_shortname %&gt;'&#125;;(function() &#123;var ds = document.createElement('script');ds.type = 'text/javascript';ds.async = true;ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';ds.charset = 'UTF-8';(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);&#125;)();&lt;/script&gt;&lt;!-- 多说公共JS代码 end --&gt;&lt;/section&gt;&lt;% &#125; %&gt;
-这里需要注意的是data-thread-key等三个参数，对小白来说并不知道如何设置：我的设置如下：大多数网上的也都设的这个。
-data-thread-key：&lt;%= page.path %&gt;data-title：&lt;%= page.title %&gt;data-url（稳定版没有这个，开发版有这个参数）：&lt;%= page.permalink %&gt;
-4、重新部署hexo cleanhexo d －搞定。
+    <title>IOS Xcode7.1新建纯代码工程</title>
+    <url>/2016/03/17/IOS-Xcode7-1%E6%96%B0%E5%BB%BA%E7%BA%AF%E4%BB%A3%E7%A0%81%E5%B7%A5%E7%A8%8B/</url>
+    <content><![CDATA[今天准备纯代码做下计算器；xcode已升级到version 7.1；创建singleview后改造空工程；删除main.storyboard，创建windows并设置背景色为黑色；满怀期待的command+R；结果提示我:以上是摘要2015-10-30 18:15:29.933 计算器[1696:127982] * Assertion failure in -[UIApplication _runWithMainScene:transitionContext:completion:], /BuildRoot/Library/Caches/com.apple.xbs/Sources/UIKit_Sim/UIKit-3512.29.5/UIApplication.m:32992015-10-30 18:15:29.939 计算器[1696:127982] * Terminating app due to uncaught exception ‘NSInternalInconsistencyException’, reason: ‘Application windows are expected to have a root view controller at the end of application launch’*** First throw call stack:(0   CoreFoundation                      0x02524a84 exceptionPreprocess + 1801   libobjc.A.dylib                     0x00550e02 objc_exception_throw + 502   CoreFoundation                      0x0252491a +[NSException raise:format:arguments:] + 1383   Foundation                          0x001cfe86 -[NSAssertionHandler handleFailureInMethod:object:file:lineNumber:description:] + 1184   UIKit                               0x00957a9b -[UIApplication _runWithMainScene:transitionContext:completion:] + 39755   UIKit                               0x0097be4d __84-[UIApplication _handleApplicationActivationWithScene:transitionContext:completion:]_block_invoke3208 + 686   UIKit                               0x00953fb4 -[UIApplication workspaceDidEndTransaction:] + 1637   FrontBoardServices                  0x036fdca4 __37-[FBSWorkspace clientEndTransaction:]_block_invoke_2 + 718   FrontBoardServices                  0x036fd77b __40-[FBSWorkspace _performDelegateCallOut:]_block_invoke + 549   FrontBoardServices                  0x0371b1a3 -[FBSSerialQueue _performNext] + 18410  FrontBoardServices                  0x0371b5da -[FBSSerialQueue _performNextFromRunLoopSource] + 5211  FrontBoardServices                  0x0371a8d6 FBSSerialQueueRunLoopSourceHandler + 3312  CoreFoundation                      0x0243ed1f __CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE0_PERFORM_FUNCTION + 1513  CoreFoundation                      0x024349ab __CFRunLoopDoSources0 + 52314  CoreFoundation                      0x02433dc8 __CFRunLoopRun + 103215  CoreFoundation                      0x02433706 CFRunLoopRunSpecific + 47016  CoreFoundation                      0x0243351b CFRunLoopRunInMode + 12317  UIKit                               0x00953854 -[UIApplication _run] + 54018  UIKit                               0x009591eb UIApplicationMain + 16019  ËÆ°ÁÆóÂô®                           0x00082baa main + 13820  libdyld.dylib                       0x030eba21 start + 1)libc++abi.dylib: terminating with uncaught exception of type NSException(lldb)然后就开始了艰辛的解决历程；自己英语很渣，只有慢慢度娘；百度出来的百分之九十九是xcode6.1改造空工程的方法；没用啊，我现在用的就是它这个方法；只有不断换关键字；结果当我输入：“xcode7如何创建空工程”keywords后；第四个答案正是我想要的；東東同学的新浪博客：http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html原来提示的意思是：“必须给windows创建一个rootviewcontroller；这一句话足够了；果断添加rootview，再次command+R；果断通过；它是否意味着windows创建好后不能直接显示了，必须添加rootviewcontroller才可以运行呢？已经给東東留言等回复。总之任何一个细小的问题，通过自己的努力或者得到别人指点得到解决后，那种欣喜都是情不自禁的。完毕！
 ]]></content>
       <categories>
-        <category>Hexo</category>
+        <category>IOS</category>
       </categories>
   </entry>
   <entry>
@@ -96,15 +105,6 @@ hexo server
       </categories>
   </entry>
   <entry>
-    <title>IOS Xcode7.1新建纯代码工程</title>
-    <url>/2016/03/17/IOS-Xcode7-1%E6%96%B0%E5%BB%BA%E7%BA%AF%E4%BB%A3%E7%A0%81%E5%B7%A5%E7%A8%8B/</url>
-    <content><![CDATA[今天准备纯代码做下计算器；xcode已升级到version 7.1；创建singleview后改造空工程；删除main.storyboard，创建windows并设置背景色为黑色；满怀期待的command+R；结果提示我:以上是摘要2015-10-30 18:15:29.933 计算器[1696:127982] * Assertion failure in -[UIApplication _runWithMainScene:transitionContext:completion:], /BuildRoot/Library/Caches/com.apple.xbs/Sources/UIKit_Sim/UIKit-3512.29.5/UIApplication.m:32992015-10-30 18:15:29.939 计算器[1696:127982] * Terminating app due to uncaught exception ‘NSInternalInconsistencyException’, reason: ‘Application windows are expected to have a root view controller at the end of application launch’*** First throw call stack:(0   CoreFoundation                      0x02524a84 exceptionPreprocess + 1801   libobjc.A.dylib                     0x00550e02 objc_exception_throw + 502   CoreFoundation                      0x0252491a +[NSException raise:format:arguments:] + 1383   Foundation                          0x001cfe86 -[NSAssertionHandler handleFailureInMethod:object:file:lineNumber:description:] + 1184   UIKit                               0x00957a9b -[UIApplication _runWithMainScene:transitionContext:completion:] + 39755   UIKit                               0x0097be4d __84-[UIApplication _handleApplicationActivationWithScene:transitionContext:completion:]_block_invoke3208 + 686   UIKit                               0x00953fb4 -[UIApplication workspaceDidEndTransaction:] + 1637   FrontBoardServices                  0x036fdca4 __37-[FBSWorkspace clientEndTransaction:]_block_invoke_2 + 718   FrontBoardServices                  0x036fd77b __40-[FBSWorkspace _performDelegateCallOut:]_block_invoke + 549   FrontBoardServices                  0x0371b1a3 -[FBSSerialQueue _performNext] + 18410  FrontBoardServices                  0x0371b5da -[FBSSerialQueue _performNextFromRunLoopSource] + 5211  FrontBoardServices                  0x0371a8d6 FBSSerialQueueRunLoopSourceHandler + 3312  CoreFoundation                      0x0243ed1f __CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE0_PERFORM_FUNCTION + 1513  CoreFoundation                      0x024349ab __CFRunLoopDoSources0 + 52314  CoreFoundation                      0x02433dc8 __CFRunLoopRun + 103215  CoreFoundation                      0x02433706 CFRunLoopRunSpecific + 47016  CoreFoundation                      0x0243351b CFRunLoopRunInMode + 12317  UIKit                               0x00953854 -[UIApplication _run] + 54018  UIKit                               0x009591eb UIApplicationMain + 16019  ËÆ°ÁÆóÂô®                           0x00082baa main + 13820  libdyld.dylib                       0x030eba21 start + 1)libc++abi.dylib: terminating with uncaught exception of type NSException(lldb)然后就开始了艰辛的解决历程；自己英语很渣，只有慢慢度娘；百度出来的百分之九十九是xcode6.1改造空工程的方法；没用啊，我现在用的就是它这个方法；只有不断换关键字；结果当我输入：“xcode7如何创建空工程”keywords后；第四个答案正是我想要的；東東同学的新浪博客：http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html原来提示的意思是：“必须给windows创建一个rootviewcontroller；这一句话足够了；果断添加rootview，再次command+R；果断通过；它是否意味着windows创建好后不能直接显示了，必须添加rootviewcontroller才可以运行呢？已经给東東留言等回复。总之任何一个细小的问题，通过自己的努力或者得到别人指点得到解决后，那种欣喜都是情不自禁的。完毕！
-]]></content>
-      <categories>
-        <category>IOS</category>
-      </categories>
-  </entry>
-  <entry>
     <title>OC中委托和协议</title>
     <url>/2016/03/17/OC%E4%B8%AD%E5%A7%94%E6%89%98%E5%92%8C%E5%8D%8F%E8%AE%AE/</url>
     <content><![CDATA[一、为什么写这篇文章
@@ -127,28 +127,6 @@ if ([_delegate respondsToSelector:@selector(moneyMax:)]||[_delegate respondsToSe
     <title>UIviewcontroller与UIview</title>
     <url>/2016/03/17/UIviewcontroller%E4%B8%8EUIview/</url>
     <content><![CDATA[UIviewcontroller名字叫做视图控制器，是一个类，UIview也是一个类；UIviewcontroller控制放在它上面的所有UIview的事件；UIview只负责加载数据与图片；UIviewcontroller顾名思义，就是控制；比如飞机大战中，加载子弹和飞机的图片需要UIview实现；而发射子弹则需要UIviewcontroller来实现。目前就理解到这个程度。
-]]></content>
-      <categories>
-        <category>IOS</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>oc中的类和对象</title>
-    <url>/2016/03/17/oc%E4%B8%AD%E7%9A%84%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/</url>
-    <content><![CDATA[一、类是什么
-首先类是一个抽象的概念，
-其次类只有实例化才有意义。
-比如手机就是一个类；
-汽车也是一个类。​，
-电脑、自行车、丝袜都是一个类。​以上是摘要二、类和对象的关系
-好比先有鸡还是先有蛋；
-现实中肯定是先有了好多具体的对象，
-人们才会对其进行分门别类；
-而网络编程中则需要先建立一个类；
-然后再去设置这个类的对象；
-比如‘人’是一个类，‘张三’则是人的一个对象；
-张三的姓名、性别与年龄则构成了‘人’这个类的成员变量；
-而姓名、性别与年龄则要靠方法去实现。​
 ]]></content>
       <categories>
         <category>IOS</category>
@@ -179,19 +157,6 @@ if ([_delegate respondsToSelector:@selector(moneyMax:)]||[_delegate respondsToSe
       </categories>
   </entry>
   <entry>
-    <title>可还记得《甘十九妹》</title>
-    <url>/2016/03/17/%E5%8F%AF%E8%BF%98%E8%AE%B0%E5%BE%97%E3%80%8A%E7%94%98%E5%8D%81%E4%B9%9D%E5%A6%B9%E3%80%8B/</url>
-    <content><![CDATA[一、《甘十九妹》是谁？《甘十九妹》是我小时候看的一部武侠剧，原著是萧逸先生。故事是说一个男人对一个女人始乱终弃后，女人从沮丧、堕落到后来复仇的故事。
-结果恩怨就传递到了下一辈身上，作为那个男人后代的尹剑平，与作为那个女人二弟子的甘十九妹，由仇到怨以至于最后双双殉情。以上是摘要二、为什么写《甘十九妹》之所以想起为这部武侠剧写篇文章作纪念，有两点原因其一，小时候的所有记忆如今想起来都是最美好的，不同意的出去；其二，电视剧的制作水平，无论是武打动作，服装造型以及演员的选择，就今天看来也堪称完美，倘若再对比下如今许多粗制滥造杀马特造型充斥的武侠剧，那这部《甘十九妹》简直就是完美了。
-三、一部好的武侠剧是什么样的？写到这里想到一个问题，什么样的武侠剧是一部高水平的武侠剧？我的观点是这样，首先，演员必须要选准；外貌要符合武侠剧剧本中的人物形象性格要匹配剧本的描写；其次，武打动作以及整个故事的编排一定要引人入胜。比如《甘十九妹》中，以灭『岳阳门』开场，绝对是个妙笔。第三，武侠剧本身一定要传递一些本质的东西，那么什么是本质的东西呢，正如我在《今人谁识侠客行》所写，大音希声，大象无形，什么东西越大越没有脾气；这都可以很精准的传递本质的东西。
-这些年看的武侠剧里面我觉得能同时做到这三点的有以下几部；《侠客行》，《笑傲江湖》，《燕子李三》，再有就是这部《甘十九妹》了。听度娘说08年山东卫视对《甘十九妹》进行了高清数码修复；2010年已出版发行，见到后我一定来两套一套收藏，一套常观。
-四、经典永不过时距小时候观看《甘十九妹》这部武侠剧，虽然已过去了二十多年，但今天重复观看，仍然是暗叹不已，惊喜连连；小时候只会看男主角够不够英雄，武功够不够好，女主角够不够漂亮（绝对是最纯真的那种漂亮），从来不会关注现实中演员的信息，以及里面人物对话背后所传递的东西。但如今看，确实是妙不可言，会去百度每个演员的经历，会去思考经典对白为什么经典，剧本作者对白背后想传递什么价值观或者什么信息。总之常看常新。着实验证了一句话。经典永不过时。so『魑魅喜人过，文章憎命达』也好，『文以人传，人以文传』也好。做一个经典的人，绝对永不过时。
-]]></content>
-      <categories>
-        <category>笑傲江湖</category>
-      </categories>
-  </entry>
-  <entry>
     <title>如何利用知行合一提升学习效率</title>
     <url>/2016/03/20/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E6%8F%90%E5%8D%87%E5%AD%A6%E4%B9%A0%E6%95%88%E7%8E%87/</url>
     <content><![CDATA[一、心学里的三类人阳明将人分三类：生知安行，学知力行，困知勉行。生知安行就是我们现在所说的天才，如果按二八法则，全人类中，似乎会有百分之二十的天才存在，可是去掉那些后来伤仲永的，最多会留下百分之十，就不错了。困知勉行，就是脑袋死不开窍的，最多也就百分之十，剩下的就是百分之八十的普通人了。
@@ -210,6 +175,19 @@ if ([_delegate respondsToSelector:@selector(moneyMax:)]||[_delegate respondsToSe
 ]]></content>
       <categories>
         <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>可还记得《甘十九妹》</title>
+    <url>/2016/03/17/%E5%8F%AF%E8%BF%98%E8%AE%B0%E5%BE%97%E3%80%8A%E7%94%98%E5%8D%81%E4%B9%9D%E5%A6%B9%E3%80%8B/</url>
+    <content><![CDATA[一、《甘十九妹》是谁？《甘十九妹》是我小时候看的一部武侠剧，原著是萧逸先生。故事是说一个男人对一个女人始乱终弃后，女人从沮丧、堕落到后来复仇的故事。
+结果恩怨就传递到了下一辈身上，作为那个男人后代的尹剑平，与作为那个女人二弟子的甘十九妹，由仇到怨以至于最后双双殉情。以上是摘要二、为什么写《甘十九妹》之所以想起为这部武侠剧写篇文章作纪念，有两点原因其一，小时候的所有记忆如今想起来都是最美好的，不同意的出去；其二，电视剧的制作水平，无论是武打动作，服装造型以及演员的选择，就今天看来也堪称完美，倘若再对比下如今许多粗制滥造杀马特造型充斥的武侠剧，那这部《甘十九妹》简直就是完美了。
+三、一部好的武侠剧是什么样的？写到这里想到一个问题，什么样的武侠剧是一部高水平的武侠剧？我的观点是这样，首先，演员必须要选准；外貌要符合武侠剧剧本中的人物形象性格要匹配剧本的描写；其次，武打动作以及整个故事的编排一定要引人入胜。比如《甘十九妹》中，以灭『岳阳门』开场，绝对是个妙笔。第三，武侠剧本身一定要传递一些本质的东西，那么什么是本质的东西呢，正如我在《今人谁识侠客行》所写，大音希声，大象无形，什么东西越大越没有脾气；这都可以很精准的传递本质的东西。
+这些年看的武侠剧里面我觉得能同时做到这三点的有以下几部；《侠客行》，《笑傲江湖》，《燕子李三》，再有就是这部《甘十九妹》了。听度娘说08年山东卫视对《甘十九妹》进行了高清数码修复；2010年已出版发行，见到后我一定来两套一套收藏，一套常观。
+四、经典永不过时距小时候观看《甘十九妹》这部武侠剧，虽然已过去了二十多年，但今天重复观看，仍然是暗叹不已，惊喜连连；小时候只会看男主角够不够英雄，武功够不够好，女主角够不够漂亮（绝对是最纯真的那种漂亮），从来不会关注现实中演员的信息，以及里面人物对话背后所传递的东西。但如今看，确实是妙不可言，会去百度每个演员的经历，会去思考经典对白为什么经典，剧本作者对白背后想传递什么价值观或者什么信息。总之常看常新。着实验证了一句话。经典永不过时。so『魑魅喜人过，文章憎命达』也好，『文以人传，人以文传』也好。做一个经典的人，绝对永不过时。
+]]></content>
+      <categories>
+        <category>笑傲江湖</category>
       </categories>
   </entry>
   <entry>
@@ -240,6 +218,35 @@ if ([_delegate respondsToSelector:@selector(moneyMax:)]||[_delegate respondsToSe
 ]]></content>
       <categories>
         <category>笑傲江湖</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>当你说知行合一的时候你在说什么</title>
+    <url>/2016/03/17/%E5%BD%93%E4%BD%A0%E8%AF%B4%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E7%9A%84%E6%97%B6%E5%80%99%E4%BD%A0%E5%9C%A8%E8%AF%B4%E4%BB%80%E4%B9%88/</url>
+    <content><![CDATA[一、前面的话知行合一是心学的支柱和核心，心学没了知行合一也就不是心学，因此我要反复讲，时时刻刻讲，这篇也不例外，还是要讲知行合一。
+前几篇虽然也讲了知行合一，可能对你来说还是只是理论而已，它让你搞明白了知行合一和格物，至善以及工夫的关系，但然并卵，你可能还是不得要领，这篇就是专门讲述，当你说你知行合一的时候，你指的到底具体是什么事？以上是摘要二、知行合一与爱好音乐咱们就从：『爱好』音乐说起吧，你觉得当你说爱好音乐的时候，你具体是什么意思？
+你说你爱好是音乐，可是支撑它的是什么东西呢?支撑你理直气壮说出爱好音乐的是什么呢?
+如果你真的知行合一，当你说你爱好音乐的时候，你起码要知道音乐的三种唱法：美声，民族和通俗；三个声部是：高音，中音和低音。并且知道它们之间的区别；唱《滚滚长江东逝水》的杨洪基是标准的男中音，目前世界三大男高音分别是：帕瓦罗蒂，多明戈和卡雷拉斯。没错，多明戈就是和宋祖英在08奥运会合唱《爱的火焰》的那个西班牙老头。中国被称为：『人声低音炮』的赵鹏是典型的男低音歌手。
+当你说你爱好音乐的时候，你起码要知道这三种唱法里排名前三的歌手，并且知道每位歌手的代表作。而且真的理解每首代表作创作的背景和要表达的意境是什么。
+当你说你爱好音乐的时候，你起码要知道意大利盛产男高音，男中音和男低音在歌唱界是稀有动物，而且音乐的起源是数学。
+三、知行合一与爱好电影当你说你爱好电影的时候，你实际的意思应该是这样的，你起码看过世界十大禁片，那样你会知道为什么会被禁？
+当你说爱好电影的时候，你起码要知道各国著名导演和其代表作，而且你都是看过的，别问我哪里有种子，我真的不知道。
+当你说你爱好电影的时候，你起码要知道电影分两大类故事片和非故事片；故事片又分为：西部片，强盗片，科幻片，恐怖片，喜剧片，灾难片以及战争片，当然还有我们大中华独有的武侠片。非故事片又分为：广告片，新闻片，纪录片，科学片，教学片以及风景片。
+当你说你爱好电影的时候你起码要知道电影的基本构成要素是影像和声音，影像又分为：景别，运动，光线和色彩，声音又分为：人声，音响，音乐，声画关系，长镜头以及蒙太奇。
+可是你说，靠，我就是爱好，没必要这样吧，可是爱好真实的面貌就是这样，你起码能说出个一二三来，这些全部是支撑你理直气壮说出你爱好某件事情或者某样东西的基础。不然呢，你说你爱好音乐可是音乐几种唱法，你说不知道，男高音，男中音和男低音的代表歌手是谁，你说不知道？那你算哪门子爱好音乐呢？
+如果你真的爱好，应该是这样的，当你看过某部电影之后，你会这样说：哇喔，这部喜剧片拍的蛮不错，长镜头运用的非常到位，蒙太奇运用的也恰到好处，某个地方的光线如果再足一点就更完美了。
+没错，你说你爱好某样东西，它的实际意思是即便你不靠这件事情谋生，你在这件事情上面也是绝对的行家，而不是那种看完后只对故事本身吐槽。再明白一点儿就是，这部电影好，好在哪里？这首曲子不好，不好在哪里？景别，长镜头，蒙太奇，副歌，旋律，节奏，歌词以及唱法，你得说出个一二三来。
+四、爱好音乐与电影的背后
+机灵的同学，可能已经发现了，如果爱好是这样，它是要花费大量时间的，所以，肯定可以这样说，你的爱好在哪里？你的时间就应该在哪里。如果你说你爱好音乐，而你的大部分时间却用来打羽毛球或者dota，不好意思，你只能说你的爱好是羽毛球或游戏。
+因此，下回如果遇到某人再说自己爱好音乐或者电影，你基本三步就可以试出来，他到底是真爱，还是叶公好龙。第一，音乐的三种唱法是什么？第二，三个声部是什么？第三，三个声部的代表人物分别是谁？
+同样，你想验证自己在某件事情上是否真正知行合一，除了要和格物（纠正在心上的事情，使其符合天理）相结合之外。一个简单的方法就是你统计下，你平时的时间是否大部分花在了这件事情上。
+五、总结
+爱好实际需要你花费大量时间，不然就不是真的知行合一去爱了，时间是你惟一的财富，你的时间花在了哪里，那很有可能你的爱好就在哪里？当然并不绝对，比如你说你就爱好发呆或者睡觉，那我就只能借用王大锤的话了：『你说得好有道理，我竟无言以对』。你平时时间花在哪里？是验证你在某件事上是否真正知行合一，一个简单但非常有用的方法。
+本期推荐电影：一、《龙虾》推荐语：如果不结婚就变动物，是不是匪夷所思，《龙虾》就是这样的电影。二、《房间》推荐语：想不想知道一个被伤害的母亲是怎样为自己孩子在一间狭小且上了锁的房间里，打造出一个小小天堂的？三、《你是好孩子》推荐语：我们小时候受过的伤害，在长大后都会以自己被伤害的方式再现。
+本期推荐书籍：一、《蔡澜谈吃》作者：蔡澜推荐语：蔡澜包括，倪匡、黄霑和金庸，都是我非常钦佩的人，钦佩程度根据名字排序；蔡澜爱好吃，所以就有了这本书以及《蔡澜品味》等节目。看看这本书，你会知道《想说爱好真的不容易》。二、《今生今世，民国名媛情事》作者：萧萧推荐语：名媛难再有，但可以学学这些名媛处人生低谷的人生态度。名媛不唯能享富贵，更可处贫贱而仍优雅如初。三、《一个人的村庄》作者：刘亮程推荐语：观察生活的角度比较独特，散文里比较出奇的。
+]]></content>
+      <categories>
+        <category>阳明心学</category>
       </categories>
   </entry>
   <entry>
@@ -326,44 +333,6 @@ syntax on
       </categories>
   </entry>
   <entry>
-    <title>当你说知行合一的时候你在说什么</title>
-    <url>/2016/03/17/%E5%BD%93%E4%BD%A0%E8%AF%B4%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E7%9A%84%E6%97%B6%E5%80%99%E4%BD%A0%E5%9C%A8%E8%AF%B4%E4%BB%80%E4%B9%88/</url>
-    <content><![CDATA[一、前面的话知行合一是心学的支柱和核心，心学没了知行合一也就不是心学，因此我要反复讲，时时刻刻讲，这篇也不例外，还是要讲知行合一。
-前几篇虽然也讲了知行合一，可能对你来说还是只是理论而已，它让你搞明白了知行合一和格物，至善以及工夫的关系，但然并卵，你可能还是不得要领，这篇就是专门讲述，当你说你知行合一的时候，你指的到底具体是什么事？以上是摘要二、知行合一与爱好音乐咱们就从：『爱好』音乐说起吧，你觉得当你说爱好音乐的时候，你具体是什么意思？
-你说你爱好是音乐，可是支撑它的是什么东西呢?支撑你理直气壮说出爱好音乐的是什么呢?
-如果你真的知行合一，当你说你爱好音乐的时候，你起码要知道音乐的三种唱法：美声，民族和通俗；三个声部是：高音，中音和低音。并且知道它们之间的区别；唱《滚滚长江东逝水》的杨洪基是标准的男中音，目前世界三大男高音分别是：帕瓦罗蒂，多明戈和卡雷拉斯。没错，多明戈就是和宋祖英在08奥运会合唱《爱的火焰》的那个西班牙老头。中国被称为：『人声低音炮』的赵鹏是典型的男低音歌手。
-当你说你爱好音乐的时候，你起码要知道这三种唱法里排名前三的歌手，并且知道每位歌手的代表作。而且真的理解每首代表作创作的背景和要表达的意境是什么。
-当你说你爱好音乐的时候，你起码要知道意大利盛产男高音，男中音和男低音在歌唱界是稀有动物，而且音乐的起源是数学。
-三、知行合一与爱好电影当你说你爱好电影的时候，你实际的意思应该是这样的，你起码看过世界十大禁片，那样你会知道为什么会被禁？
-当你说爱好电影的时候，你起码要知道各国著名导演和其代表作，而且你都是看过的，别问我哪里有种子，我真的不知道。
-当你说你爱好电影的时候，你起码要知道电影分两大类故事片和非故事片；故事片又分为：西部片，强盗片，科幻片，恐怖片，喜剧片，灾难片以及战争片，当然还有我们大中华独有的武侠片。非故事片又分为：广告片，新闻片，纪录片，科学片，教学片以及风景片。
-当你说你爱好电影的时候你起码要知道电影的基本构成要素是影像和声音，影像又分为：景别，运动，光线和色彩，声音又分为：人声，音响，音乐，声画关系，长镜头以及蒙太奇。
-可是你说，靠，我就是爱好，没必要这样吧，可是爱好真实的面貌就是这样，你起码能说出个一二三来，这些全部是支撑你理直气壮说出你爱好某件事情或者某样东西的基础。不然呢，你说你爱好音乐可是音乐几种唱法，你说不知道，男高音，男中音和男低音的代表歌手是谁，你说不知道？那你算哪门子爱好音乐呢？
-如果你真的爱好，应该是这样的，当你看过某部电影之后，你会这样说：哇喔，这部喜剧片拍的蛮不错，长镜头运用的非常到位，蒙太奇运用的也恰到好处，某个地方的光线如果再足一点就更完美了。
-没错，你说你爱好某样东西，它的实际意思是即便你不靠这件事情谋生，你在这件事情上面也是绝对的行家，而不是那种看完后只对故事本身吐槽。再明白一点儿就是，这部电影好，好在哪里？这首曲子不好，不好在哪里？景别，长镜头，蒙太奇，副歌，旋律，节奏，歌词以及唱法，你得说出个一二三来。
-四、爱好音乐与电影的背后
-机灵的同学，可能已经发现了，如果爱好是这样，它是要花费大量时间的，所以，肯定可以这样说，你的爱好在哪里？你的时间就应该在哪里。如果你说你爱好音乐，而你的大部分时间却用来打羽毛球或者dota，不好意思，你只能说你的爱好是羽毛球或游戏。
-因此，下回如果遇到某人再说自己爱好音乐或者电影，你基本三步就可以试出来，他到底是真爱，还是叶公好龙。第一，音乐的三种唱法是什么？第二，三个声部是什么？第三，三个声部的代表人物分别是谁？
-同样，你想验证自己在某件事情上是否真正知行合一，除了要和格物（纠正在心上的事情，使其符合天理）相结合之外。一个简单的方法就是你统计下，你平时的时间是否大部分花在了这件事情上。
-五、总结
-爱好实际需要你花费大量时间，不然就不是真的知行合一去爱了，时间是你惟一的财富，你的时间花在了哪里，那很有可能你的爱好就在哪里？当然并不绝对，比如你说你就爱好发呆或者睡觉，那我就只能借用王大锤的话了：『你说得好有道理，我竟无言以对』。你平时时间花在哪里？是验证你在某件事上是否真正知行合一，一个简单但非常有用的方法。
-本期推荐电影：一、《龙虾》推荐语：如果不结婚就变动物，是不是匪夷所思，《龙虾》就是这样的电影。二、《房间》推荐语：想不想知道一个被伤害的母亲是怎样为自己孩子在一间狭小且上了锁的房间里，打造出一个小小天堂的？三、《你是好孩子》推荐语：我们小时候受过的伤害，在长大后都会以自己被伤害的方式再现。
-本期推荐书籍：一、《蔡澜谈吃》作者：蔡澜推荐语：蔡澜包括，倪匡、黄霑和金庸，都是我非常钦佩的人，钦佩程度根据名字排序；蔡澜爱好吃，所以就有了这本书以及《蔡澜品味》等节目。看看这本书，你会知道《想说爱好真的不容易》。二、《今生今世，民国名媛情事》作者：萧萧推荐语：名媛难再有，但可以学学这些名媛处人生低谷的人生态度。名媛不唯能享富贵，更可处贫贱而仍优雅如初。三、《一个人的村庄》作者：刘亮程推荐语：观察生活的角度比较独特，散文里比较出奇的。
-]]></content>
-      <categories>
-        <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>我与音乐的初缘</title>
-    <url>/2016/03/17/%E6%88%91%E4%B8%8E%E9%9F%B3%E4%B9%90%E7%9A%84%E5%88%9D%E7%BC%98/</url>
-    <content><![CDATA[我高中学过一年半音乐，上过高中的都知道：『小三门』；不知现在还这么叫吗？我学音乐的原因有三：一、小时候我爸买过一支笛子，我爸捣鼓好长时间，没吹响，我后来不但吹响了，而且还能看简谱吹奏《没有共产党就没有新中国》和《中学时代》等歌曲，我觉得我自己真是tmd太有才了，所以老师一说报名『小三门』，我立即就积极响应了。至于我到底有没有音乐天赋，我到今天也没搞清楚。二、文化课要求分数低，只要音乐过就能上个还不错的本科学校，一本也不是没可能；三、我感觉学音乐是一件很酷的事情；事实证明一年半的成果还可以，可是经济基础，决定上层建筑，最后考上了新乡一个叫做：『平原大学』的音乐系，我估计是二本吧，学费太昂贵，最后只好选择去学机械制造。然后就与音乐绝缘了。以上是摘要但还是会买支笛子，有空吹奏一番，曲子当然不会再是初学的那些了，好歹也有了些乐理知识，可以识谱演奏了。然后机械制造毕业，去做工人，再然后到北京做电子商务，始终还是放不下音乐，梦想着有一天自己也能开一场自己的演唱会，现在经济自立了，也会买把吉他，学弹吉他，有时间还会读《中国音乐简史》之类的书，加深音乐素养，权当一爱好，但谁说爱好就不能学的专业一点儿，因此，开辟这个专栏，记录我平常累积的音乐知识以及学习音乐过程中的欢乐。
-]]></content>
-      <categories>
-        <category>音乐学习</category>
-      </categories>
-  </entry>
-  <entry>
     <title>我为什么三十岁还要学习IOS</title>
     <url>/2016/03/17/%E6%88%91%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%89%E5%8D%81%E5%B2%81%E8%BF%98%E8%A6%81%E5%AD%A6%E4%B9%A0IOS/</url>
     <content><![CDATA[一、前面的话
@@ -378,6 +347,31 @@ syntax on
 ]]></content>
       <categories>
         <category>IOS</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>我是这样认识王阳明的</title>
+    <url>/2016/03/17/%E6%88%91%E6%98%AF%E8%BF%99%E6%A0%B7%E8%AE%A4%E8%AF%86%E7%8E%8B%E9%98%B3%E6%98%8E%E7%9A%84/</url>
+    <content><![CDATA[大多数喜欢王阳明的朋友，总是标榜“知行合一”，“致良知”；我的微信关注了一个也标榜自己喜欢阳明思想的朋友；做什么事都和：“心性”、“致良知”这些字眼联系起来；
+细看了下，要么就是参加了一个活动，说今天主讲人讲的真好；是：“知行合一”；是“致良知”云云。要么就是参加了个管理培训班，完后就说：稻盛和夫的管理哲学和致良知完美契合。  以上是文章摘要  以下是余下全文我也真是醉了，哲学本来就和生活息息相关；经常和生活联系起来倒也合情合理。但是拉个屎撒个尿都要和知行合一与致良知联系起来，要么就是没有真正理解阳明先生的思想。要么就是中了“教条主义”的毒。
+在下不才，从听说王阳明这个人到最后逐渐对其思想了解一些；也将近有十年的时间了。遥想当年哥在高中学的是小三门儿—音乐；上过高中的都知道，这个专业考试要提前考。05年春节去郑州进行专业考试；有天晚上和同去的同学到外面逛街，逛到地下通道，有个书摊大家便驻足观看；我一眼就看到了周月亮写的那本《王阳明大传》；盗版的。
+封皮上的两句话把我给震住了。“雅可上九天揽月，俗可下五洋捉鳖”；当时连王阳明是谁都不知道，更不会懂什么知行合一和致良知了。但就觉得这两句话真牛逼；说到我心里去了。
+之后，王阳明这个名字算是记住了。当时对于买不买还是有些踌躇；这时有个同学一句话让我下了买的决心；他说：“你遇见了就一定要买，即使贵一点儿，免得以后后悔。（当时的二十块一本盗版，对我等把县城当大城市的高中生来说的确算贵得。）
+随后这本周月亮的《王阳明大传》，跟随我转战南北，东奔西跑；南到浙杭，北到首都；中间阅览无数遍，每次看都有新感悟；透明胶和尼龙绳修补多次；最终，在最近一次搬家中遗失掉了。
+随着这本书打开我对王阳明的一扇门；随后又在网上下载了好多关于王阳明的书；什么《明朝一哥王阳明》，《王阳明的哲学精神》乃至《有无之境》；一路看下来，最后必须要看《传习录》啊！就买了本叶圣陶解读的《传习录》来看；虽然大师解读，但在下古文修养不高；看着也是半懂不懂。
+最后就逛贴吧，逛论坛；偶尔在天涯上发现了“沙滩孤雁”的帖子；看了一页之后，惊为天人；然后就开始了对这本《开谈传习录》的反复阅读。以上大概就是我对王阳明的认识过程。也许文字枯燥，也许词不达意；也许行文不畅；但作为自己对一个伟人的从认识到熟悉的回顾；我想还是足够了。
+]]></content>
+      <categories>
+        <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>我与音乐的初缘</title>
+    <url>/2016/03/17/%E6%88%91%E4%B8%8E%E9%9F%B3%E4%B9%90%E7%9A%84%E5%88%9D%E7%BC%98/</url>
+    <content><![CDATA[我高中学过一年半音乐，上过高中的都知道：『小三门』；不知现在还这么叫吗？我学音乐的原因有三：一、小时候我爸买过一支笛子，我爸捣鼓好长时间，没吹响，我后来不但吹响了，而且还能看简谱吹奏《没有共产党就没有新中国》和《中学时代》等歌曲，我觉得我自己真是tmd太有才了，所以老师一说报名『小三门』，我立即就积极响应了。至于我到底有没有音乐天赋，我到今天也没搞清楚。二、文化课要求分数低，只要音乐过就能上个还不错的本科学校，一本也不是没可能；三、我感觉学音乐是一件很酷的事情；事实证明一年半的成果还可以，可是经济基础，决定上层建筑，最后考上了新乡一个叫做：『平原大学』的音乐系，我估计是二本吧，学费太昂贵，最后只好选择去学机械制造。然后就与音乐绝缘了。以上是摘要但还是会买支笛子，有空吹奏一番，曲子当然不会再是初学的那些了，好歹也有了些乐理知识，可以识谱演奏了。然后机械制造毕业，去做工人，再然后到北京做电子商务，始终还是放不下音乐，梦想着有一天自己也能开一场自己的演唱会，现在经济自立了，也会买把吉他，学弹吉他，有时间还会读《中国音乐简史》之类的书，加深音乐素养，权当一爱好，但谁说爱好就不能学的专业一点儿，因此，开辟这个专栏，记录我平常累积的音乐知识以及学习音乐过程中的欢乐。
+]]></content>
+      <categories>
+        <category>音乐学习</category>
       </categories>
   </entry>
   <entry>
@@ -397,22 +391,6 @@ syntax on
 这是因为智慧和思想完全是个人化的思维运作过程，是单独一个人不断采用探究式的思维模式，对自己的大脑进行个人化开发，这种开发的过程就是智慧与思想本身，
 而圣贤所能表达的不过是智慧和思想的结果，但这个结果既不是思想也不是智慧，最多不过是思想与智慧的行进方向而已。
 所以阳明先生说：“致良知”，良知不是智慧，致良知更不是思想，思想与智慧，是指你不断地努力，让自己达到致良知境界的思维过程。换句话说，你可以把致良知理解为这个思维过程（也即思想和智慧过程）的一个显性结果以及方向。
-]]></content>
-      <categories>
-        <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>我是这样认识王阳明的</title>
-    <url>/2016/03/17/%E6%88%91%E6%98%AF%E8%BF%99%E6%A0%B7%E8%AE%A4%E8%AF%86%E7%8E%8B%E9%98%B3%E6%98%8E%E7%9A%84/</url>
-    <content><![CDATA[大多数喜欢王阳明的朋友，总是标榜“知行合一”，“致良知”；我的微信关注了一个也标榜自己喜欢阳明思想的朋友；做什么事都和：“心性”、“致良知”这些字眼联系起来；
-细看了下，要么就是参加了一个活动，说今天主讲人讲的真好；是：“知行合一”；是“致良知”云云。要么就是参加了个管理培训班，完后就说：稻盛和夫的管理哲学和致良知完美契合。  以上是文章摘要  以下是余下全文我也真是醉了，哲学本来就和生活息息相关；经常和生活联系起来倒也合情合理。但是拉个屎撒个尿都要和知行合一与致良知联系起来，要么就是没有真正理解阳明先生的思想。要么就是中了“教条主义”的毒。
-在下不才，从听说王阳明这个人到最后逐渐对其思想了解一些；也将近有十年的时间了。遥想当年哥在高中学的是小三门儿—音乐；上过高中的都知道，这个专业考试要提前考。05年春节去郑州进行专业考试；有天晚上和同去的同学到外面逛街，逛到地下通道，有个书摊大家便驻足观看；我一眼就看到了周月亮写的那本《王阳明大传》；盗版的。
-封皮上的两句话把我给震住了。“雅可上九天揽月，俗可下五洋捉鳖”；当时连王阳明是谁都不知道，更不会懂什么知行合一和致良知了。但就觉得这两句话真牛逼；说到我心里去了。
-之后，王阳明这个名字算是记住了。当时对于买不买还是有些踌躇；这时有个同学一句话让我下了买的决心；他说：“你遇见了就一定要买，即使贵一点儿，免得以后后悔。（当时的二十块一本盗版，对我等把县城当大城市的高中生来说的确算贵得。）
-随后这本周月亮的《王阳明大传》，跟随我转战南北，东奔西跑；南到浙杭，北到首都；中间阅览无数遍，每次看都有新感悟；透明胶和尼龙绳修补多次；最终，在最近一次搬家中遗失掉了。
-随着这本书打开我对王阳明的一扇门；随后又在网上下载了好多关于王阳明的书；什么《明朝一哥王阳明》，《王阳明的哲学精神》乃至《有无之境》；一路看下来，最后必须要看《传习录》啊！就买了本叶圣陶解读的《传习录》来看；虽然大师解读，但在下古文修养不高；看着也是半懂不懂。
-最后就逛贴吧，逛论坛；偶尔在天涯上发现了“沙滩孤雁”的帖子；看了一页之后，惊为天人；然后就开始了对这本《开谈传习录》的反复阅读。以上大概就是我对王阳明的认识过程。也许文字枯燥，也许词不达意；也许行文不畅；但作为自己对一个伟人的从认识到熟悉的回顾；我想还是足够了。
 ]]></content>
       <categories>
         <category>阳明心学</category>
@@ -514,6 +492,28 @@ hexo clean:清楚缓存和temp文件；hexo d -g:生成静态文件并部署到G
 ]]></content>
       <categories>
         <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>oc中的类和对象</title>
+    <url>/2016/03/17/oc%E4%B8%AD%E7%9A%84%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/</url>
+    <content><![CDATA[一、类是什么
+首先类是一个抽象的概念，
+其次类只有实例化才有意义。
+比如手机就是一个类；
+汽车也是一个类。​，
+电脑、自行车、丝袜都是一个类。​以上是摘要二、类和对象的关系
+好比先有鸡还是先有蛋；
+现实中肯定是先有了好多具体的对象，
+人们才会对其进行分门别类；
+而网络编程中则需要先建立一个类；
+然后再去设置这个类的对象；
+比如‘人’是一个类，‘张三’则是人的一个对象；
+张三的姓名、性别与年龄则构成了‘人’这个类的成员变量；
+而姓名、性别与年龄则要靠方法去实现。​
+]]></content>
+      <categories>
+        <category>IOS</category>
       </categories>
   </entry>
   <entry>
@@ -670,6 +670,16 @@ hexo clean:清楚缓存和temp文件；hexo d -g:生成静态文件并部署到G
       </categories>
   </entry>
   <entry>
+    <title>读《所有的男人都是消耗品》</title>
+    <url>/2016/03/17/%E8%AF%BB%E3%80%8A%E6%89%80%E6%9C%89%E7%9A%84%E7%94%B7%E4%BA%BA%E9%83%BD%E6%98%AF%E6%B6%88%E8%80%97%E5%93%81%E3%80%8B/</url>
+    <content><![CDATA[一、书和作者《所有的男人都是消耗品》作者村上龙，和村上春树合称：W村上；这本书是其最有代表性的随笔；从男女，恋爱，性出发，对日本经济社会的功能不全进行猛烈抨击。我是全盘读完的，追求速度的同学建议只读和书同名的文章即可，和书同名的只有三篇，速度会很快，但是收获绝对不会少。其他篇章要么只适用于日本国内，要么就是其它碎碎念。
+由于全书都是格言式的话语，没有论证等要素，因此，照录我比较认同的话在下。以上是摘要二、女人与和平女大学生气焰嚣张这是不言而喻的，和平持续的时间越长，女人就越是飞扬跋扈。我最认同的一句话，有句话也说得不错，忘记在哪儿看到的了，它说：和平年代的主题是体育和女人，战争年代的主题是武器和男人。谁说不是呢，真是太tmd精辟啦。三、快乐和才能如果想要得到快乐，就必须冒风险站到体制外面去，郑渊洁自己在家教育郑亚旗，效果还可以吧，倪匡当年从内蒙古偷渡到香港，今天的日子是相当逍遥啊。才能是没有理由的，没有才能的家伙才希望找到理由。靠努力是不能孕育才能的。四、关于女人女人总是在发情，女人有希望被强暴的愿望，娘们儿正垂涎三尺的等待被勾引，如果成为强悍的男人，女人要多少都可以弄到手。这出自一位自称玩笑的女权主义者之口，真的是玩笑吗？这是一个值得你我深思的问题。
+]]></content>
+      <categories>
+        <category>读完就谈</category>
+      </categories>
+  </entry>
+  <entry>
     <title>读《中国文脉》</title>
     <url>/2016/03/17/%E8%AF%BB%E3%80%8A%E4%B8%AD%E5%9B%BD%E6%96%87%E8%84%89%E3%80%8B/</url>
     <content><![CDATA[一、前面的话：关于官员与辅导员
@@ -749,16 +759,6 @@ Slow  is  smooth ,  and  smooth  is  fast.慢是平滑的，  而平滑是快的
 ]]></content>
       <categories>
         <category>思维提升</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>读《所有的男人都是消耗品》</title>
-    <url>/2016/03/17/%E8%AF%BB%E3%80%8A%E6%89%80%E6%9C%89%E7%9A%84%E7%94%B7%E4%BA%BA%E9%83%BD%E6%98%AF%E6%B6%88%E8%80%97%E5%93%81%E3%80%8B/</url>
-    <content><![CDATA[一、书和作者《所有的男人都是消耗品》作者村上龙，和村上春树合称：W村上；这本书是其最有代表性的随笔；从男女，恋爱，性出发，对日本经济社会的功能不全进行猛烈抨击。我是全盘读完的，追求速度的同学建议只读和书同名的文章即可，和书同名的只有三篇，速度会很快，但是收获绝对不会少。其他篇章要么只适用于日本国内，要么就是其它碎碎念。
-由于全书都是格言式的话语，没有论证等要素，因此，照录我比较认同的话在下。以上是摘要二、女人与和平女大学生气焰嚣张这是不言而喻的，和平持续的时间越长，女人就越是飞扬跋扈。我最认同的一句话，有句话也说得不错，忘记在哪儿看到的了，它说：和平年代的主题是体育和女人，战争年代的主题是武器和男人。谁说不是呢，真是太tmd精辟啦。三、快乐和才能如果想要得到快乐，就必须冒风险站到体制外面去，郑渊洁自己在家教育郑亚旗，效果还可以吧，倪匡当年从内蒙古偷渡到香港，今天的日子是相当逍遥啊。才能是没有理由的，没有才能的家伙才希望找到理由。靠努力是不能孕育才能的。四、关于女人女人总是在发情，女人有希望被强暴的愿望，娘们儿正垂涎三尺的等待被勾引，如果成为强悍的男人，女人要多少都可以弄到手。这出自一位自称玩笑的女权主义者之口，真的是玩笑吗？这是一个值得你我深思的问题。
-]]></content>
-      <categories>
-        <category>读完就谈</category>
       </categories>
   </entry>
   <entry>
