@@ -1,65 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hexo安装百度统计流程</title>
-    <url>/2016/03/22/Hexo%E5%AE%89%E8%A3%85%E7%99%BE%E5%BA%A6%E7%BB%9F%E8%AE%A1%E6%B5%81%E7%A8%8B/</url>
-    <content><![CDATA[<p>用了两天时间将Hexo博客搭建好了，<br>之后便开始一点一点儿增加一些小插件，<br>很顺利的安装了RSS和评论插件后，<br>决定安装统计插件，<br>最后经过对比决定安装百度统计，<br>虽然不如谷歌，但还凑合吧。<br>闲言少叙，正文开始</p>
-<a id="more"></a>
-<p>1、在themes／—_config.yml中配置一行统计信息；</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">baidu_tongji: true</span><br></pre></td></tr></table></figure>
-<p>2、在themes/landscape/layout/_partial路径下直接复制google－analytics.ejs，并将文件名改为:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">baidu_tongji.ejs</span><br></pre></td></tr></table></figure>
-<p>3、去百度统计注册获取统计代码，格式如下：</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">var _hmt = _hmt || [];</span><br><span class="line">(function() &#123;</span><br><span class="line">var hm = document.createElement(<span class="string">"script"</span>);</span><br><span class="line">hm.src = <span class="string">"//hm.baidu.com/hm.js?cf20d66409118a4390e3147d0f31366d"</span>;</span><br><span class="line">var s = document.getElementsByTagName(<span class="string">"script"</span>)[<span class="number">0</span>];</span><br><span class="line">s.parentNode.insertBefore(hm, s);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>粘贴到baidu_tongji.ejs文件中，粘贴后格式如下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (theme.baidu_tongji)&#123; %&gt;</span><br><span class="line">&lt;!-- baidu_tongji --&gt;</span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">var _hmt = _hmt || [];</span><br><span class="line">(function() &#123;</span><br><span class="line">var hm = document.createElement(<span class="string">"script"</span>);</span><br><span class="line">hm.src = <span class="string">"//hm.baidu.com/hm.js?cf20d66409118a4390e3147d0f31366d"</span>;</span><br><span class="line">var s = document.getElementsByTagName(<span class="string">"script"</span>)[<span class="number">0</span>];</span><br><span class="line">s.parentNode.insertBefore(hm, s);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;!-- End baidu_tongji --&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
-<p>4、打开themes/landscape/layout/_partial/head.ejs，添加如下代码：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&lt;%- partial(<span class="string">'baidu_tongji'</span>) %&gt;</span><br></pre></td></tr></table></figure>
-<p>5、重新部署</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo d -</span><br></pre></td></tr></table></figure>
-<p>6、在百度统计检查部署是否成功<br>先检查首页，成功后界面是这样：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">页面代码安装状态：代码安装正确</span><br></pre></td></tr></table></figure>
-<p>如果你想检查其它页面，复制一个其它页面的网址粘贴过去，点开始检查，成功界面如下：</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">代码安装详情</span><br><span class="line">已安装账户<span class="string">"username"</span>的站点<span class="string">"franktianyirenjian.github.io"</span>对应的代码：</span><br><span class="line">&lt;script&gt;</span><br><span class="line">var _hmt = _hmt || [];</span><br><span class="line">(function() &#123;</span><br><span class="line">  var hm = document.createElement(<span class="string">"script"</span>);</span><br><span class="line">  hm.src = <span class="string">"//hm.baidu.com/hm.js?cf20d66409118a4390e3147d0f31366d"</span>;</span><br><span class="line">  var s = document.getElementsByTagName(<span class="string">"script"</span>)[<span class="number">0</span>]; </span><br><span class="line">  s.parentNode.insertBefore(hm, s);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>等候二十分钟你就可以去查看网页统计报告了，打完收功。<br>另外还有人说会出现恶心的百度logo，我也不知道是人云亦云还是怎样，反正我的没有。</p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Hexo添加Rss和评论插件</title>
-    <url>/2016/03/20/Hexo%E6%B7%BB%E5%8A%A0Rss%E5%92%8C%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/</url>
-    <content><![CDATA[<p>一、添加RSS<br>我的主题配置文件已含有rss：  /atom.xml<br>因此我就直接安装部署了。<br>根目录下的配置信息：在# Extensions中添加，已经有的就免了。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plugins: hexo-generator-feed</span><br></pre></td></tr></table></figure>
-<p>打开Terminal（终端）输入：运行</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">npm install hero-generator-feed</span><br></pre></td></tr></table></figure>
-<p>重新部署：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo d -</span><br></pre></td></tr></table></figure>
-<p>以上是摘要<a id="more"></a><br>二、开启评论<br>1、首先，注册多说，并在根目录下的配置文件添加shot_name,这里是duoshuo_shortname<br>short name指你在注册多说时二级域名里你自己输入的那部分，不包括htpp://和.duoshuo.com。<br>这里有人说在主题配置信息里配置duoshuo_shortname，但是我的始终搞不定，<br>我曾怀疑是不是data－thread－key等三个参数的问题，然后将page.path改为post.path,<br>仍然不行，只能慢慢试验了。<br>2、若使用默认主题landscape，则进入themes\landscape\layout_partial\articles.ejs中，<br>将这段div中的disqus_shortname统统改为duoshuo_shortname，有的人没有这段，按实际情况来。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;footer class="article-footer"&gt;</span></span><br><span class="line"><span class="regexp">&lt;a data-url="&lt;%- post.permalink %&gt;" data-id="&lt;%= post._id %&gt;" class="article-share-link"&gt;</span></span><br><span class="line"><span class="regexp">&lt;%= __('share') %&gt;&lt;/</span>a&gt;</span><br><span class="line">&lt;% <span class="keyword">if</span> (post.comments &amp;&amp; config.duoshuo_shortname)&#123; %&gt;</span><br><span class="line">&lt;a href=<span class="string">"&lt;%- post.permalink %&gt;#duoshuo_thread"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"article-comment-link"</span>&gt;&lt;%= __(<span class="string">'comment'</span>) %&gt;&lt;<span class="regexp">/a&gt;</span></span><br><span class="line"><span class="regexp">&lt;% &#125; %&gt;</span></span><br><span class="line"><span class="regexp">&lt;%- partial('post/</span>tag<span class="string">') %&gt;</span></span><br><span class="line"><span class="string">&lt;/footer&gt;</span></span><br><span class="line"><span class="string">&lt;/div&gt;</span></span><br></pre></td></tr></table></figure>
-<p>3、网上大多数的都是说的这段代码替换：<br>替换&lt;% section %&gt;到&lt;／section&gt;之间的部分。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments &amp;&amp; config.disqus_shortname)&#123; %&gt;</span><br><span class="line">&lt;section id=<span class="string">"comments"</span>&gt;</span><br><span class="line">&lt;div id=<span class="string">"disqus_thread"</span>&gt;</span><br><span class="line">&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=<span class="string">"//disqus.com/?ref_noscript"</span>&gt;comments </span><br><span class="line">powered by Disqus.&lt;<span class="regexp">/a&gt;&lt;/</span>noscript&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>section&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
-<p>替换为：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments &amp;&amp; config.duoshuo_shortname)&#123; %&gt;</span><br><span class="line">&lt;section id=<span class="string">"comments"</span>&gt;</span><br><span class="line">&lt;!-- 多说评论框 start --&gt;</span><br><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"ds-thread"</span> data-thread-key=<span class="string">"&lt;%= post.path %&gt;"</span> data-title=<span class="string">"&lt;%= page.title %&gt;"</span> </span><br><span class="line">data-url=<span class="string">"&lt;%= page.permalink %&gt;"</span>&gt;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;!-- 多说评论框 end --&gt;</span></span><br><span class="line"><span class="regexp">&lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;</span></span><br><span class="line"><span class="regexp">&lt;script type="text/</span>javascript<span class="string">"&gt;</span></span><br><span class="line"><span class="string">var duoshuoQuery = &#123;short_name:'&lt;%= config.duoshuo_shortname %&gt;'&#125;;</span></span><br><span class="line"><span class="string">(function() &#123;</span></span><br><span class="line"><span class="string">var ds = document.createElement('script');</span></span><br><span class="line"><span class="string">ds.type = 'text/javascript';ds.async = true;</span></span><br><span class="line"><span class="string">ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') </span></span><br><span class="line"><span class="string">+ '//static.duoshuo.com/embed.js';</span></span><br><span class="line"><span class="string">ds.charset = 'UTF-8';</span></span><br><span class="line"><span class="string">(document.getElementsByTagName('head')[0] </span></span><br><span class="line"><span class="string">|| document.getElementsByTagName('body')[0]).appendChild(ds);</span></span><br><span class="line"><span class="string">&#125;)();</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;!-- 多说公共JS代码 end --&gt;</span></span><br><span class="line"><span class="string">&lt;/section&gt;</span></span><br><span class="line"><span class="string">&lt;% &#125; %&gt;</span></span><br></pre></td></tr></table></figure>
-<p>这里需要注意的是data-thread-key等三个参数，对小白来说并不知道如何设置：<br>我的设置如下：大多数网上的也都设的这个。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">data-thread-key：&lt;%= page.path %&gt;</span><br><span class="line">data-title：&lt;%= page.title %&gt;</span><br><span class="line">data-url（稳定版没有这个，开发版有这个参数）：&lt;%= page.permalink %&gt;</span><br></pre></td></tr></table></figure>
-<p>4、重新部署<br>hexo clean<br>hexo d －<br>搞定。</p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>IOS Xcode7.1新建纯代码工程</title>
-    <url>/2016/03/17/IOS-Xcode7-1%E6%96%B0%E5%BB%BA%E7%BA%AF%E4%BB%A3%E7%A0%81%E5%B7%A5%E7%A8%8B/</url>
-    <content><![CDATA[<p>今天准备纯代码做下计算器；<br>xcode已升级到version 7.1；<br>创建singleview后改造空工程；<br>删除main.storyboard，<br>创建windows并设置背景色为黑色；<br>满怀期待的command+R；<br>结果提示我:<br>以上是摘要<a id="more"></a><br>2015-10-30 18:15:29.933 计算器[1696:127982] <strong>* Assertion failure in -[UIApplication _runWithMainScene:transitionContext:completion:], /BuildRoot/Library/Caches/com.apple.xbs/Sources/UIKit_Sim/UIKit-3512.29.5/UIApplication.m:3299<br>2015-10-30 18:15:29.939 计算器[1696:127982] *</strong> Terminating app due to uncaught exception ‘NSInternalInconsistencyException’, reason: ‘Application windows are expected to have a root view controller at the end of application launch’<br>*** First throw call stack:<br>(<br>0   CoreFoundation                      0x02524a84 <strong>exceptionPreprocess + 180<br>1   libobjc.A.dylib                     0x00550e02 objc_exception_throw + 50<br>2   CoreFoundation                      0x0252491a +[NSException raise:format:arguments:] + 138<br>3   Foundation                          0x001cfe86 -[NSAssertionHandler handleFailureInMethod:object:file:lineNumber:description:] + 118<br>4   UIKit                               0x00957a9b -[UIApplication _runWithMainScene:transitionContext:completion:] + 3975<br>5   UIKit                               0x0097be4d __84-[UIApplication _handleApplicationActivationWithScene:transitionContext:completion:]_block_invoke3208 + 68<br>6   UIKit                               0x00953fb4 -[UIApplication workspaceDidEndTransaction:] + 163<br>7   FrontBoardServices                  0x036fdca4 __37-[FBSWorkspace clientEndTransaction:]_block_invoke_2 + 71<br>8   FrontBoardServices                  0x036fd77b __40-[FBSWorkspace _performDelegateCallOut:]_block_invoke + 54<br>9   FrontBoardServices                  0x0371b1a3 -[FBSSerialQueue _performNext] + 184<br>10  FrontBoardServices                  0x0371b5da -[FBSSerialQueue _performNextFromRunLoopSource] + 52<br>11  FrontBoardServices                  0x0371a8d6 FBSSerialQueueRunLoopSourceHandler + 33<br>12  CoreFoundation                      0x0243ed1f __CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE0_PERFORM_FUNCTION</strong> + 15<br>13  CoreFoundation                      0x024349ab __CFRunLoopDoSources0 + 523<br>14  CoreFoundation                      0x02433dc8 __CFRunLoopRun + 1032<br>15  CoreFoundation                      0x02433706 CFRunLoopRunSpecific + 470<br>16  CoreFoundation                      0x0243351b CFRunLoopRunInMode + 123<br>17  UIKit                               0x00953854 -[UIApplication _run] + 540<br>18  UIKit                               0x009591eb UIApplicationMain + 160<br>19  ËÆ°ÁÆóÂô®                           0x00082baa main + 138<br>20  libdyld.dylib                       0x030eba21 start + 1<br>)<br>libc++abi.dylib: terminating with uncaught exception of type NSException<br>(lldb)<br>然后就开始了艰辛的解决历程；<br>自己英语很渣，只有慢慢度娘；<br>百度出来的百分之九十九是xcode6.1改造空工程的方法；<br>没用啊，我现在用的就是它这个方法；<br>只有不断换关键字；<br>结果当我输入：“xcode7如何创建空工程”keywords后；<br>第四个答案正是我想要的；<br>東東同学的新浪博客：<a href="http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html</a><br>原来提示的意思是：“必须给windows创建一个rootviewcontroller；<br>这一句话足够了；果断添加rootview，再次command+R；果断通过；<br>它是否意味着windows创建好后不能直接显示了，必须添加rootviewcontroller才可以运行呢？<br>已经给東東留言等回复。<br>总之任何一个细小的问题，通过自己的努力或者得到别人指点得到解决后，那种欣喜都是情不自禁的。<br>完毕！</p>
-]]></content>
-      <categories>
-        <category>IOS</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Mac端通过Hexo搭建独立博客</title>
     <url>/2016/03/17/Mac%E7%AB%AF%E9%80%9A%E8%BF%87Hexo%E6%90%AD%E5%BB%BA%E7%8B%AC%E7%AB%8B%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<h4 id="一、为什么选择Hexo"><a href="#一、为什么选择Hexo" class="headerlink" title="一、为什么选择Hexo"></a>一、为什么选择Hexo</h4><p>我对搭建自己的独立博客兴致盎然，<br>独立的才真正是自己的，<br>马克思说研究需要充分占有材料，<br>我因此大量阅读了关于搭建独立博客的文章和资料，<br>知道了有Octopress，jekyll等独立博客搭建系统，<br>但看到好多程序员童鞋都说：Octopress和jekyll很难搞定，<br>所以对于我这种小白来说，就更不用考虑了，<br>听说Hexo是hacker必备的博客搭建系统，因此果断选它。<br>以上是摘要<a id="more"></a></p>
@@ -105,12 +46,26 @@
       </categories>
   </entry>
   <entry>
-    <title>UIviewcontroller与UIview</title>
-    <url>/2016/03/17/UIviewcontroller%E4%B8%8EUIview/</url>
-    <content><![CDATA[<p>UIviewcontroller名字叫做视图控制器，是一个类，UIview也是一个类；<br>UIviewcontroller控制放在它上面的所有UIview的事件；<br>UIview只负责加载数据与图片；<br>UIviewcontroller顾名思义，就是控制；<br>比如飞机大战中，加载子弹和飞机的图片需要UIview实现；<br>而发射子弹则需要UIviewcontroller来实现。<br>目前就理解到这个程度。</p>
+    <title>Hexo添加Rss和评论插件</title>
+    <url>/2016/03/20/Hexo%E6%B7%BB%E5%8A%A0Rss%E5%92%8C%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/</url>
+    <content><![CDATA[<p>一、添加RSS<br>我的主题配置文件已含有rss：  /atom.xml<br>因此我就直接安装部署了。<br>根目录下的配置信息：在# Extensions中添加，已经有的就免了。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plugins: hexo-generator-feed</span><br></pre></td></tr></table></figure>
+<p>打开Terminal（终端）输入：运行</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">npm install hero-generator-feed</span><br></pre></td></tr></table></figure>
+<p>重新部署：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo d -</span><br></pre></td></tr></table></figure>
+<p>以上是摘要<a id="more"></a><br>二、开启评论<br>1、首先，注册多说，并在根目录下的配置文件添加shot_name,这里是duoshuo_shortname<br>short name指你在注册多说时二级域名里你自己输入的那部分，不包括htpp://和.duoshuo.com。<br>这里有人说在主题配置信息里配置duoshuo_shortname，但是我的始终搞不定，<br>我曾怀疑是不是data－thread－key等三个参数的问题，然后将page.path改为post.path,<br>仍然不行，只能慢慢试验了。<br>2、若使用默认主题landscape，则进入themes\landscape\layout_partial\articles.ejs中，<br>将这段div中的disqus_shortname统统改为duoshuo_shortname，有的人没有这段，按实际情况来。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;footer class="article-footer"&gt;</span></span><br><span class="line"><span class="regexp">&lt;a data-url="&lt;%- post.permalink %&gt;" data-id="&lt;%= post._id %&gt;" class="article-share-link"&gt;</span></span><br><span class="line"><span class="regexp">&lt;%= __('share') %&gt;&lt;/</span>a&gt;</span><br><span class="line">&lt;% <span class="keyword">if</span> (post.comments &amp;&amp; config.duoshuo_shortname)&#123; %&gt;</span><br><span class="line">&lt;a href=<span class="string">"&lt;%- post.permalink %&gt;#duoshuo_thread"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"article-comment-link"</span>&gt;&lt;%= __(<span class="string">'comment'</span>) %&gt;&lt;<span class="regexp">/a&gt;</span></span><br><span class="line"><span class="regexp">&lt;% &#125; %&gt;</span></span><br><span class="line"><span class="regexp">&lt;%- partial('post/</span>tag<span class="string">') %&gt;</span></span><br><span class="line"><span class="string">&lt;/footer&gt;</span></span><br><span class="line"><span class="string">&lt;/div&gt;</span></span><br></pre></td></tr></table></figure>
+<p>3、网上大多数的都是说的这段代码替换：<br>替换&lt;% section %&gt;到&lt;／section&gt;之间的部分。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments &amp;&amp; config.disqus_shortname)&#123; %&gt;</span><br><span class="line">&lt;section id=<span class="string">"comments"</span>&gt;</span><br><span class="line">&lt;div id=<span class="string">"disqus_thread"</span>&gt;</span><br><span class="line">&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=<span class="string">"//disqus.com/?ref_noscript"</span>&gt;comments </span><br><span class="line">powered by Disqus.&lt;<span class="regexp">/a&gt;&lt;/</span>noscript&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>section&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+<p>替换为：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments &amp;&amp; config.duoshuo_shortname)&#123; %&gt;</span><br><span class="line">&lt;section id=<span class="string">"comments"</span>&gt;</span><br><span class="line">&lt;!-- 多说评论框 start --&gt;</span><br><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"ds-thread"</span> data-thread-key=<span class="string">"&lt;%= post.path %&gt;"</span> data-title=<span class="string">"&lt;%= page.title %&gt;"</span> </span><br><span class="line">data-url=<span class="string">"&lt;%= page.permalink %&gt;"</span>&gt;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;!-- 多说评论框 end --&gt;</span></span><br><span class="line"><span class="regexp">&lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;</span></span><br><span class="line"><span class="regexp">&lt;script type="text/</span>javascript<span class="string">"&gt;</span></span><br><span class="line"><span class="string">var duoshuoQuery = &#123;short_name:'&lt;%= config.duoshuo_shortname %&gt;'&#125;;</span></span><br><span class="line"><span class="string">(function() &#123;</span></span><br><span class="line"><span class="string">var ds = document.createElement('script');</span></span><br><span class="line"><span class="string">ds.type = 'text/javascript';ds.async = true;</span></span><br><span class="line"><span class="string">ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') </span></span><br><span class="line"><span class="string">+ '//static.duoshuo.com/embed.js';</span></span><br><span class="line"><span class="string">ds.charset = 'UTF-8';</span></span><br><span class="line"><span class="string">(document.getElementsByTagName('head')[0] </span></span><br><span class="line"><span class="string">|| document.getElementsByTagName('body')[0]).appendChild(ds);</span></span><br><span class="line"><span class="string">&#125;)();</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;!-- 多说公共JS代码 end --&gt;</span></span><br><span class="line"><span class="string">&lt;/section&gt;</span></span><br><span class="line"><span class="string">&lt;% &#125; %&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这里需要注意的是data-thread-key等三个参数，对小白来说并不知道如何设置：<br>我的设置如下：大多数网上的也都设的这个。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">data-thread-key：&lt;%= page.path %&gt;</span><br><span class="line">data-title：&lt;%= page.title %&gt;</span><br><span class="line">data-url（稳定版没有这个，开发版有这个参数）：&lt;%= page.permalink %&gt;</span><br></pre></td></tr></table></figure>
+<p>4、重新部署<br>hexo clean<br>hexo d －<br>搞定。</p>
 ]]></content>
       <categories>
-        <category>IOS</category>
+        <category>Hexo</category>
       </categories>
   </entry>
   <entry>
@@ -136,19 +91,9 @@
       </categories>
   </entry>
   <entry>
-    <title>OC中委托和协议</title>
-    <url>/2016/03/17/OC%E4%B8%AD%E5%A7%94%E6%89%98%E5%92%8C%E5%8D%8F%E8%AE%AE/</url>
-    <content><![CDATA[<p>一、为什么写这篇文章</p>
-<p>我目前在编程方面是菜鸟，<br>这篇文章也只适合刚入行的菜鸟，<br>之所以写这篇文章有两个目的：<br>第一是为了自己复习用，<br>第二，为了给和我一样的菜鸟们一个参考；<br>我发觉好多介绍这两个概念的文章，<br>要么一开头就写在java中如何，在c＋＋中如何，<br>大哥，我就是一菜鸟，未入行前是小白，<br>我只略懂oc这一门编程语言，<br>你给我扯什么java，C＋＋只能令我更迷茫。<br>以上是摘要<a id="more"></a><br>二、委托和协议的区别</p>
-<p>委托是一种编程设计模式，<br>王五想找份工作，自己没门路，<br>就委托有门路的马六去找，<br>王五要求签订一个合同（就是协议）保证帮他找到工作。<br>只有按照合同的条款找到帮他找到工作他才会付款。<br>然后马六接受了合同，<br>最后帮王五找到了工作，<br>这就是一个完整的委托了。<br>别再告诉我什么回调函数，什么callback 了，<br>我ted真听不懂，<br>这里王五委托马六找工作就是一个委托。</p>
-<p>协议就是例子中的合同了，<br>它里面是具体的条款（方法），<br>马六保证都能办到（实现方法），<br>王五才会付钱给他。</p>
-<p>三、王五和马六的买卖怎么做？</p>
-<p>1、王五分析了自己找工作的需求制定了一个协议，要求钱多事儿少离家近，协议如下；<br>#import &lt;Foundation/Foundation.h&gt;<br>@class Wangwu;<br>//王五的协议内容<br>@protocol FindworkDelegate <NSObject><br>-(void)moneyMax:(Wangwu<em>)WW;<br>-(void)treatMent:(Wangwu</em>)WW;<br>@end<br>2、王五的要求是只要遵守协议里的要求办任何人都可以帮我找工作，因此授权形式如下，并且开始和截止日期的决定权在王五自己手里。<br>@interface Wangwu :NSObject<br>//代理的授权范围,谁干都行，但必须遵守我的协议<br>@property(nonatomic,weak)id <FindworkDelegate>delegate;<br>-(void)goodWork;//什么时候开始找，什么时候不找我说了算。<br>@end</p>
-<p>3、马六认为自己门路广可以接这个活儿，然后马六就遵守了协议帮王五去找工作；<br>//遵守协议条款<br>#import &lt;Foundation/Foundation.h&gt;<br>#import “Maliu.h”<br>@protocolFindworkDelegate;……//对协议进行提前声明和@class用途一致<br>@interface Maliu :NSObject <FindworkDelegate><br>@end<br>//开始寻找符合王五协议要求的工作；（实现方法）<br>#import “Maliu.h”<br>#import “Wangwu.h”……//保证实现方法的时候有提示<br>@implementation Maliu<br>-(void)moneyMax:(Wangwu <em>)WW{<br>NSLog(@”这个工作%@大大滴有钱！”,WW);<br>}<br>-(void)treatMent:(Wangwu *)WW{<br>NSLog(@”这个工作%@待遇大大滴好！”,WW);<br>}<br>@end<br>4、王五开始发指令：马六啊，钱多事儿少离家近的工作赶紧帮我找，找两份啊，供我备选。<br>#import &lt;Foundation/Foundation.h&gt;<br>#import “Wangwu.h”<br>#import “Maliu.h”<br>int main(int argc,constchar * argv[]) {<br>@autoreleasepool {<br>//初始化王五和马六<br>Wangwu</em>WW1=[[Wangwualloc]init];<br>Maliu<em>ML=[[Maliualloc]init];<br>//马六把找工作的情况反馈给王五<br>WW1.delegate=ML;<br>//王五放出找工作大招<br>[WW1 goodWork];<br>//王五再次委托马六找工作<br>Wangwu</em>WW2=[[Wangwualloc]init];<br>WW2.delegate=ML;<br>//王五再次放出找工作大招<br>[WW2 goodWork];<br>}<br>return 0;<br>}</p>
-<p>5、马六说已经找好了，赶紧拿钱来<br>#import “Wangwu.h”<br>@implementation Wangwu<br>-(void)goodWork{<br>//王五说甭急，我比较下这两份工作再做决定（传回来的参数可以判断是那份工作的内容介绍）<br>if ([_delegaterespondsToSelector:@selector(moneyMax:)]||[_delegaterespondsToSelector:@selector(treatMent:)]){<br>[_delegatemoneyMax:self];<br>[_delegatetreatMent:self];<br>}<br>else{<br>NSLog(@”找到的工作不符合王五的要求”);<br>}<br>}<br>@end<br>6、王五说选好了，那个，啊，我支付宝给你确认下，准备收钱吧。<br>2016-03-14 00:51:29.005 work[3383:360865] 这个工作&lt;Wangwu: 0x100103a60&gt;大大滴有钱！<br>2016-03-14 00:51:29.008 work[3383:360865] 这个工作&lt;Wangwu: 0x100103a60&gt;待遇大大滴好！<br>2016-03-14 00:51:29.008 work[3383:360865] 这个工作&lt;Wangwu: 0x1003001b0&gt;大大滴有钱！<br>2016-03-14 00:51:29.008 work[3383:360865] 这个工作&lt;Wangwu: 0x1003001b0&gt;待遇大大滴好！<br>Program ended with exit code: 0</p>
-<p>总结：<br>1、委托行为借助协议得以完成；这里王五通过FindworkDelegat协议委托马六找工作；协议要求钱多事儿少离家近；<br>2、并且规定必须遵守这个协议的要求找工作才可以付钱：@property(nonatomic,weak)id <FindworkDelegate>delegate;<br>3、委托找两份工作因此每反馈回来一次，需要判断是哪份工作的内容介绍：使用respondsToSelector:@selector(moneyMax:)方法进行判断。<br>Wangwu*WW1=[[Wangwu alloc]init];第一份工作</p>
-<p>Wangwu*WW2=[[Wangwu alloc]init];第二份工作</p>
-<p>if ([_delegate respondsToSelector:@selector(moneyMax:)]||[_delegate respondsToSelector:@selector(treatMent:)]){<br>[_delegate moneyMax:self];self是指具体是哪份工作？<br>[_delegate treatMent:self];<br>}<br>over！</p>
+    <title>IOS Xcode7.1新建纯代码工程</title>
+    <url>/2016/03/17/IOS-Xcode7-1%E6%96%B0%E5%BB%BA%E7%BA%AF%E4%BB%A3%E7%A0%81%E5%B7%A5%E7%A8%8B/</url>
+    <content><![CDATA[<p>今天准备纯代码做下计算器；<br>xcode已升级到version 7.1；<br>创建singleview后改造空工程；<br>删除main.storyboard，<br>创建windows并设置背景色为黑色；<br>满怀期待的command+R；<br>结果提示我:<br>以上是摘要<a id="more"></a><br>2015-10-30 18:15:29.933 计算器[1696:127982] <strong>* Assertion failure in -[UIApplication _runWithMainScene:transitionContext:completion:], /BuildRoot/Library/Caches/com.apple.xbs/Sources/UIKit_Sim/UIKit-3512.29.5/UIApplication.m:3299<br>2015-10-30 18:15:29.939 计算器[1696:127982] *</strong> Terminating app due to uncaught exception ‘NSInternalInconsistencyException’, reason: ‘Application windows are expected to have a root view controller at the end of application launch’<br>*** First throw call stack:<br>(<br>0   CoreFoundation                      0x02524a84 <strong>exceptionPreprocess + 180<br>1   libobjc.A.dylib                     0x00550e02 objc_exception_throw + 50<br>2   CoreFoundation                      0x0252491a +[NSException raise:format:arguments:] + 138<br>3   Foundation                          0x001cfe86 -[NSAssertionHandler handleFailureInMethod:object:file:lineNumber:description:] + 118<br>4   UIKit                               0x00957a9b -[UIApplication _runWithMainScene:transitionContext:completion:] + 3975<br>5   UIKit                               0x0097be4d __84-[UIApplication _handleApplicationActivationWithScene:transitionContext:completion:]_block_invoke3208 + 68<br>6   UIKit                               0x00953fb4 -[UIApplication workspaceDidEndTransaction:] + 163<br>7   FrontBoardServices                  0x036fdca4 __37-[FBSWorkspace clientEndTransaction:]_block_invoke_2 + 71<br>8   FrontBoardServices                  0x036fd77b __40-[FBSWorkspace _performDelegateCallOut:]_block_invoke + 54<br>9   FrontBoardServices                  0x0371b1a3 -[FBSSerialQueue _performNext] + 184<br>10  FrontBoardServices                  0x0371b5da -[FBSSerialQueue _performNextFromRunLoopSource] + 52<br>11  FrontBoardServices                  0x0371a8d6 FBSSerialQueueRunLoopSourceHandler + 33<br>12  CoreFoundation                      0x0243ed1f __CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE0_PERFORM_FUNCTION</strong> + 15<br>13  CoreFoundation                      0x024349ab __CFRunLoopDoSources0 + 523<br>14  CoreFoundation                      0x02433dc8 __CFRunLoopRun + 1032<br>15  CoreFoundation                      0x02433706 CFRunLoopRunSpecific + 470<br>16  CoreFoundation                      0x0243351b CFRunLoopRunInMode + 123<br>17  UIKit                               0x00953854 -[UIApplication _run] + 540<br>18  UIKit                               0x009591eb UIApplicationMain + 160<br>19  ËÆ°ÁÆóÂô®                           0x00082baa main + 138<br>20  libdyld.dylib                       0x030eba21 start + 1<br>)<br>libc++abi.dylib: terminating with uncaught exception of type NSException<br>(lldb)<br>然后就开始了艰辛的解决历程；<br>自己英语很渣，只有慢慢度娘；<br>百度出来的百分之九十九是xcode6.1改造空工程的方法；<br>没用啊，我现在用的就是它这个方法；<br>只有不断换关键字；<br>结果当我输入：“xcode7如何创建空工程”keywords后；<br>第四个答案正是我想要的；<br>東東同学的新浪博客：<a href="http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html</a><br>原来提示的意思是：“必须给windows创建一个rootviewcontroller；<br>这一句话足够了；果断添加rootview，再次command+R；果断通过；<br>它是否意味着windows创建好后不能直接显示了，必须添加rootviewcontroller才可以运行呢？<br>已经给東東留言等回复。<br>总之任何一个细小的问题，通过自己的努力或者得到别人指点得到解决后，那种欣喜都是情不自禁的。<br>完毕！</p>
 ]]></content>
       <categories>
         <category>IOS</category>
@@ -179,47 +124,46 @@
       </categories>
   </entry>
   <entry>
-    <title>如何利用知行合一提升学习效率</title>
-    <url>/2016/03/20/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E6%8F%90%E5%8D%87%E5%AD%A6%E4%B9%A0%E6%95%88%E7%8E%87/</url>
-    <content><![CDATA[<p>一、心学里的三类人<br>阳明将人分三类：生知安行，学知力行，困知勉行。<br>生知安行就是我们现在所说的天才，<br>如果按二八法则，全人类中，<br>似乎会有百分之二十的天才存在，<br>可是去掉那些后来伤仲永的，<br>最多会留下百分之十，就不错了。<br>困知勉行，就是脑袋死不开窍的，<br>最多也就百分之十，<br>剩下的就是百分之八十的普通人了。</p>
-<p>所以如果你自认为是天才，<br>那这篇文章就不用看了。<br>这篇文章的方法主要是针对，<br>和我一样那百分之八十中的普通人。<br>以上是摘要<a id="more"></a><br>二、万物有源<br>世间所有的事物，<br>都有一个本源，<br>每家家谱的存在，<br>便是一个很好的例证，<br>我们家家谱开头的第一句话便是：<br>饮水思源，慎终追远，以知其本也。</p>
-<p>你今天看媒体上的马云风光无限，<br>公众眼里的刘强东风头尽出，<br>可是源头在哪里？<br>他们是横空出世吗？<br>非也！<br>马云今天指点江山的魄力<br>离不开当年推荐中国黄页时，<br>被人拒之门外的尴尬做注脚；<br>刘强东今日的意气风发，<br>少不了当年因为做生意和前妻离婚的神伤做铺垫。<br>所以，学习也是有源头的。</p>
-<p>三、知行合一与学习效率<br>学习有源，源头在哪里？<br>上次讲过<br>格物更偏向于思考层面，<br>知行合一更偏向于行动层面。<br>若想利用知行合一提高学习效率，<br>首先必须得格学习这件事。<br>学习就是学和习，<br>绝不是废话。<br>所以学习的源头就是：<br>不但学理论还要以最快的速度去验证理论。<br>而不是仅仅让理论在脑子里呆一辈子。<br>这就是用知行合一提高学习效率的唯一方法。</p>
-<p>比如，你听人说Hexo＋Github搭建独立博客，快速，简便，强大。<br>那么怎么个快速，简便，强大法呢？<br>如果你不去搭建一个自己的独立博客，<br>你知道的也仅限于几个名词和三个形容词。</p>
-<p>那么心学的做法是什么呢？<br>首先查资料啊，通过查资料了解到，<br>Hexo不但很多程序员在用，<br>而且好多人还说是hacker必备的博客搭建框架，<br>基于多数人对带有神秘色彩的黑客的向往，<br>这时候会更有动力去行动。</p>
-<p>那么好了，基本的概念有了，<br>接下来还是和学习IOS开发如出一辙，<br>要了解路线图啊，<br>首先需要安装Node.js和Git程序，<br>然后安装并初始化Hexo框架，<br>最后启动本地服务器，<br>本地的Hexo框架就搭建完成了，<br>这时候打开服务器给的地址，<br>你已经可以看到完全属于你自己的独立博客的雏形了，<br>这样就更进一步加深你对这件事的热衷度，<br>也就是你的自信进一步提高了。</p>
-<p>到这里为止你通过最初的诚意，<br>下决心做用Hexo搭建独立博客这件事，<br>然后通过格这件事，<br>你了解了整个的路线图，<br>并且通过知行合一，你已经搭建出了本地的博客雏形。<br>你对这件事的兴趣以及对完成它的自信心，<br>已经不要不要的了。<br>因为你看到阶段性成果了。</p>
-<p>那接下来，配置博客信息，<br>安装SSH密钥，并且关联GIthub的库，<br>最终把你的本地独立博客部署到互联网上，<br>就是顺理成章的事了。</p>
-<p>等到你输入自己的博客网址，<br>在任何联网的电脑或手机都能看到自己的精神家园，<br>这时候你才真正体会到开头那三个形容词的含义，<br>快速是因为编程小白，也能按流程一步一步搭建它，<br>简便是因为搭建好后，只需两条命令就可以把自己的博客更新到互联网，<br>强大是因为，它几乎支持你以前的博客框架，<br>包括Jekyll，Octopress和Wordpress所有的功能。<br>但基本要求就是只需要一台联网的电脑和你按照步骤去搭建。</p>
-<p>四、关于理由<br>即便看到这里，<br>我相信很多人还是能找到，<br>拒绝做自己应该做的事情的理由。<br>我相信还是有很多人会说：<br>你不知道我有多忙，<br>你说得倒轻巧，<br>我都看不懂你说的这些什么Hexo和Github，<br>怎么去搭建？<br>balabalabala……<br>好吧，我承认大家都很忙，<br>这里稍微跟大家玩个文字游戏，<br>大家比较下‘忙’和‘忘’两个字，<br>没错，聪明的已经看出来了，<br>你的心躺下自己就什么都忘了，<br>你的心立起来，自然一直都很忙。<br>so，如果你到现在还找各种理由，<br>不去做自己应该做的事情，<br>那我只能说你决心还不够，<br>而你老说自己忙，<br>则是需要重新修炼心学的静坐工夫，<br>还是建议参考曾剃头的方法。</p>
-<p>最后，借用陌陌的广告词<br>送给那些迟迟不下决心做自己向往事情的人们：<br>别和陌生人说话，别做新鲜事，<br>继续过平常的生活，胆小一点儿，<br>别好奇，就玩你会的，离冒险远远的，<br>有些事想想就好，没必要改变，<br>待在熟悉的地方，最好待在家里，<br>听一样的音乐，见一样的人，重复同样的话题，<br>心思别太活，梦想要实际，<br>不要什么都尝试，就这样活着吧。</p>
-<p>本期推荐电影：<br>一、《沙漠之花》导演：雪瑞·霍尔曼<br>推荐语：如果你曾对沙漠里是否真的能开出花产生过疑问，这部片子很肯定的告诉你：能。<br>二、《白日火焰》导演：刁亦男<br>推荐语：对豆瓣什么的一些影评，我没太多感觉，本片亮点在于开始五分钟在你认为不可能发生的时候，两个警察被干掉了。<br>三、《爱在战火蔓延时》导演：戴维·塞尔策<br>推荐语：片子不算超精彩的那种，但是里面有一个场景令我很触动，当男女主角在国境线外呼救的时候，边防兵无动于衷，但当他们跨进国境线那一刻，边防兵毫不客气的还击。<br>本期推荐书籍：<br>一、《一阵风，留下了千古绝唱》作者：章诒和<br>推荐语：书里讲马连良对精致生活的享受部分，很是引人入胜。<br>二、《王阳明大传》作者：周月亮<br>推荐语：用通俗的话语较有深度的讲述了王阳明的一生，看完这个，就没必要看其学生吕峥写的《明朝一哥王阳明》了，基本照抄，没太多新意。<br>三、《历史深处的民国》作者：江城<br>推荐语：框架比《民国就是这么生猛》搭的好，细节则没后者全，但里面用数据分析了一个很有意思的现象，袁世凯家里的牛人没有活过58岁的。</p>
+    <title>今人谁识侠客行</title>
+    <url>/2016/03/17/%E4%BB%8A%E4%BA%BA%E8%B0%81%E8%AF%86%E4%BE%A0%E5%AE%A2%E8%A1%8C/</url>
+    <content><![CDATA[<p>这部著作是武侠迷最不称道的金庸的作品；</p>
+<p>百度词条如是转述网友对《侠客行》的评价；</p>
+<p>我却有完全相反的看法；<br>以上是摘要<a id="more"></a><br>如果让我将金庸的：“飞雪连天射白鹿，笑书神侠倚碧鸳”仅留一部；</p>
+<p>必是《侠客行》，无他；仅一句：“眼花耳热后，意气素霓生” ；</p>
+<p>便让人拍案叫绝，反复吟诵；李白短短120字的《侠客行》；</p>
+<p>被夏梦看不上的那个香港四大才子之一，硬是诠释成了45万字的煌煌巨著；</p>
+<p>我也只有在默诵《侠客行》诗时 ，默默佩服的五体投地；</p>
+<p>更有在诠释中加入的，那些让人醍醐灌顶的点；</p>
+<p>第三十集中狗杂种在白自在怒后说道：</p>
+<p>“晚辈好像只知道，武功臻入化境之人，就没有脾气了，</p>
+<p>什么东西越大呀，就越没脾气”真个和大音希声，大象无形完美契合； 妙不可言！</p>
+<p>整部剧中除了一个终极的哲学命题：“我是谁”之外?</p>
+<p>还有两点是令我暗叹连连的；</p>
+<p>第一点就是狗杂种那种无为以至于无不为的经历；不识字，得以破解侠客行；</p>
+<p>无父无母得以流浪中拾到玄铁令；而后才有了长乐帮、碧螺岛、凌霄城之行；</p>
+<p>尤其是结识赏罚二使那晚；正契合了：“眼花耳热后，意气素霓生”看到此处，不得不道妙妙妙。</p>
+<p>第二点则是好为人徒；这点和射雕里的郭靖非常相像；遇人敬三分，打躬作揖乐呵呵；发自心底的佩服；心底纯然，绝无虚妄之言；皆因对一切全无概念；反倒契合了道法自然之理。 </p>
+<p>无怪乎后来与贝海石之战中被问及什么功夫时；能有：“我什么都不懂，全凭随心所欲”精妙之对答；</p>
+<p>倒与说王熙凤的那两句：“机关算尽太聪明 反误了卿卿性命”形成鲜明对比。</p>
+<p>看如今，均知生死无来去，仍自角逐行；</p>
+<p>想起：“事了拂衣去，深藏身于名”；</p>
+<p>暗叹：“脱剑膝前横，谁识侠客行”？​</p>
 ]]></content>
       <categories>
-        <category>阳明心学</category>
+        <category>笑傲江湖</category>
       </categories>
   </entry>
   <entry>
-    <title>工夫与境界（二）</title>
-    <url>/2016/03/17/%E5%B7%A5%E5%A4%AB%E4%B8%8E%E5%A2%83%E7%95%8C%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
-    <content><![CDATA[<p>一、境界为何？<br>境界字面理解，<br>境乃环境，界乃界限；<br>突破界限到达新环境就叫做境界。<br>境界不是自己标榜的，<br>真正到达新境界的人，<br>行事言语都会有所体现。</p>
-<p>二、境</p>
-<p>1、客观环境<br>首先从环境说起，<br>环境又分为外在与内在；<br>外在叫客观环境，<br>内在叫做心境。</p>
-<p>客观环境没什么好说的，<br>无论你生于贫苦之家，<br>还是钟鸣鼎食之家，<br>这都不是你能定的，<br>那是所有人的起点，<br>你只有接受，没有选择。<br>以上是摘要<a id="more"></a><br>2、心境<br>至于心境，则要好好说一下；<br>《心经》开篇第一句话：<br>观自在菩萨，<br>行深般若波罗蜜多，<br>照见五蕴皆空，<br>度一切苦厄。<br>这说的就是心境。<br>展开说比较复杂，<br>简单从几个概念说起。</p>
-<p>三毒：贪嗔痴，<br>三法印：诸行无常，诸法无我，寂静涅槃；<br>五蕴：受想行色识<br>般若波罗密多：到达彼岸的智慧。</p>
-<p>为什么要说心经呢？<br>你可能会纳闷？<br>我们讲的不是心学吗？<br>对了正因为我们讲的是心学。<br>而客观环境，多数情况下我们无能为力。<br>多数情况下，我能改变的只有心境。<br>《心经》为我们提供了一种改变心境的伟大方法。<br>你没看错，就是伟大的方法。<br>因为它解决的是根本问题，直指人心，<br>心经讲的就是为什么我们会感到人生皆苦。</p>
-<p>我们之所以感到人生皆苦，<br>是因为有：‘我执’。<br>我执的意思是我们以为世间万物都是恒定不变的。<br>这是所有苦的根源。<br>苦又分为：求不得，爱别离，怨憎会。</p>
-<p>事实是，世间万物每时每刻都在变化，<br>因为有：‘我执’，因此我们都中了三毒。<br>我们贪婪是因为：<br>我们以为拥有了某些东西，它就会永远属于我们，<br>并且因为得不到而纠结不已。<br>我们愤怒是因为：<br>我们以为所有的糟糕事情都会一直糟糕下去，<br>并且为此生出恐惧来吓唬自己。<br>明天要交报表了，做不出来怎么办？<br>明天要考试了，考不过怎么办？<br>明天又要考核绩效了，达不到怎么办？<br>我们总是夸大事情本身的后果。<br>我们痴傻是因为，我们以为一瞬即永恒，<br>并且相信自己对永恒的判断。</p>
-<p>事实是，也许你刚买到梦寐以求的保时捷，<br>第二天就出车祸撞死了。<br>也许你刚刚与他吵过架的室友或朋友，<br>是因为最近家里老人得了病，心情不好。<br>也许你内心许诺一生只爱她一人的女友，<br>正在和新认识的帅哥微信聊天。</p>
-<p>那么，我们有必要知道三法印的存在，<br>诸行无常，诸法无我，寂静涅槃，<br>万事万物都在变化，你以为你面前的桌子和电脑是静止的？<br>非也，电脑里面每时每刻二进制数据都在变化，<br>桌子的基本组成粒子，无时无刻不在老化。<br>你以为你就是你吗？<br>这句话可能有点儿绕，<br>我的意思是：<br>你以为今天的你还是昨天的你吗？<br>你以为此刻的你还是上一刻的你吗？<br>你以为现在的你还是六岁时候的你吗？<br>抛开外形的变化不说。</p>
-<p>为了便于理解我们举个例子，<br>比如你的名字叫张三<br>基于你的名字来说，<br>你觉得张三的对象是谁？<br>是六岁时候的你？<br>还是现在的你？<br>你说当然是现在的你？<br>你这不是搞笑吗？<br>那好，我再问，是上一刻的你，<br>还是这一刻的你？<br>到底哪个‘你’是张三？<br>到底是在吃饭的你是张三？<br>还是在撒尿的你是张三？<br>你又说：“当然两个都是张三”，<br>但是这一刻的你已经不是上一刻的你了，<br>你的血液在不断更新，你的细胞在不断更新。<br>你的思维意识瞬间万变。<br>到底哪一个才是作为张三的你？<br>因此张三这个名字只是个假名。<br>没有真的张三存在。<br>只是你自己太过于执着你是张三这件事。<br>而你并不知道并没有真的张三存在？<br>此为诸行无常，诸法无我。</p>
-<p>当你悟了诸行无常，诸法无我，自然会寂静涅槃。<br>虽然有点儿抽象，但我绝不是顺口胡诌。<br>我自己是真正体验过这种思考的。</p>
-<p>这段实在太抽象，<br>因为梁文道这等厉害人物在《一千零一夜》，<br>用了六集才讲清楚《心经》的前两句话。<br>个中奥义，不花一番功夫实难领会。<br>另外小结中有些概念实在无法展开叙述，<br>有心人可以自行搜索资料进行学习。<br>做下小结吧：“我执”是三毒：“贪、嗔、痴”的根源；<br>陷入三毒世人皆苦，苦分为：“求不得、爱别离、怨憎会”<br>三法印：诸行无常、诸法无我、寂静涅槃会让我们理解空不异色，色不异空，空即是色，色即是空，从而获得到达彼岸的大智慧。<br>只有运用般若波罗蜜多：到达彼岸的大智慧才能照见五蕴皆空，度一切苦厄。</p>
-<p>3、界<br>关于界限我要说的不多，<br>大家应该都知道有个舒适区，学习区与恐慌区的划分。<br>那么我只有一个建议，经常挑战下你的恐慌区。<br>怕和女孩搭讪，偏偏要在餐馆吃午饭时和邻桌的漂亮妹妹搭个讪，<br>怕在群众面前演讲，偏偏要在公园等人扎堆的地方，让自己来上一段，<br>怕在高处眺望，偏偏周末要去体验一下蹦极时血脉贲张的酸爽。<br>你说：“臣妾真的做不到啊！”。<br>我只说一件事：<br>最近重看了一遍86版的《西游记》，<br>至于演员演得好，导演拍的好，不赘述。<br>只一点，第一集就让我明白了以前看不可能明白的道理。<br>孙悟空和众猴打赌，自己能从水帘洞进去且出来。<br>你想一想，<br>有的猴子已经在这片区域生活了很多年，<br>却没勇气进去看一看，<br>那一刻我知道，人生所有的艰难困苦都是纸老虎。<br>再有，进去后欢宴期间一猴子突然死亡，<br>那一刻我知道，人生无常，达人自玉。<br>最后，孙悟空决定远行学艺。<br>在市集间被俗人们当作异类而嘲笑<br>那一刻我知道，哪怕任何人的嘲笑，<br>都比不过你自己的一个决心。</p>
-<p>本期推荐书籍：<br>1、《增长黑客》豆瓣评分8.1 作者：范冰<br>细节非常独到，我还试了下里面通过curl －o命令抓取唱吧图片。<br>最重要的一点树立T型知识结构的意识。<br>归纳略显不足，只描述案例，不归纳本质的东西，做互联网的同学可以作为手边书翻一翻。<br>2、《黑客与画家》作者：保罗格雷厄姆<br>任何一门知识，做到极致都是艺术，编程亦然。<br>3、《物演通论》作者：王东岳<br>我只记住了一个：“递弱代偿法则”，其他看不懂，你若有高见，欢迎和我讨论。<br>本期推荐电影：<br>1、《三傻大闹宝莱坞》<br>我已经看过三遍了，不多说了，和梦想有关和现实无联。<br>2、《无法触碰》<br>这个看了两遍，马上看第三遍，和生命有关和人生无联。<br>3、《野草莓》<br>英格玛·伯格曼代表作，和生命无关和心灵有联。</p>
+    <title>可还记得《甘十九妹》</title>
+    <url>/2016/03/17/%E5%8F%AF%E8%BF%98%E8%AE%B0%E5%BE%97%E3%80%8A%E7%94%98%E5%8D%81%E4%B9%9D%E5%A6%B9%E3%80%8B/</url>
+    <content><![CDATA[<p>一、《甘十九妹》是谁？<br>《甘十九妹》是我小时候看的一部武侠剧，<br>原著是萧逸先生。<br>故事是说一个男人对一个女人始乱终弃后，<br>女人从沮丧、堕落到后来复仇的故事。</p>
+<p>结果恩怨就传递到了下一辈身上，<br>作为那个男人后代的尹剑平，<br>与作为那个女人二弟子的甘十九妹，<br>由仇到怨以至于最后双双殉情。<br>以上是摘要<a id="more"></a><br>二、为什么写《甘十九妹》<br>之所以想起为这部武侠剧写篇文章作纪念，<br>有两点原因<br>其一，小时候的所有记忆如今想起来都是最美好的，<br>不同意的出去；<br>其二，电视剧的制作水平，<br>无论是武打动作，服装造型以及演员的选择，<br>就今天看来也堪称完美，<br>倘若再对比下如今许多粗制滥造<br>杀马特造型充斥的武侠剧，<br>那这部《甘十九妹》简直就是完美了。</p>
+<p>三、一部好的武侠剧是什么样的？<br>写到这里想到一个问题，<br>什么样的武侠剧是一部高水平的武侠剧？<br>我的观点是这样，<br>首先，演员必须要选准；<br>外貌要符合武侠剧剧本中的人物形象<br>性格要匹配剧本的描写；<br>其次，武打动作以及整个故事的编排一定要引人入胜。<br>比如《甘十九妹》中，<br>以灭『岳阳门』开场，<br>绝对是个妙笔。<br>第三，武侠剧本身一定要传递一些本质的东西，<br>那么什么是本质的东西呢，<br>正如我在《今人谁识侠客行》所写，<br>大音希声，大象无形，<br>什么东西越大越没有脾气；<br>这都可以很精准的传递本质的东西。</p>
+<p>这些年看的武侠剧里面我觉得能同时做到这三点的有以下几部；<br>《侠客行》，《笑傲江湖》，《燕子李三》，再有就是这部《甘十九妹》了。<br>听度娘说08年山东卫视对《甘十九妹》进行了高清数码修复；<br>2010年已出版发行，见到后我一定来两套一套收藏，一套常观。</p>
+<p>四、经典永不过时<br>距小时候观看《甘十九妹》这部武侠剧，<br>虽然已过去了二十多年，<br>但今天重复观看，仍然是暗叹不已，惊喜连连；<br>小时候只会看男主角够不够英雄，武功够不够好，<br>女主角够不够漂亮（绝对是最纯真的那种漂亮），<br>从来不会关注现实中演员的信息，<br>以及里面人物对话背后所传递的东西。<br>但如今看，确实是妙不可言，<br>会去百度每个演员的经历，<br>会去思考经典对白为什么经典，<br>剧本作者对白背后想传递什么价值观或者什么信息。<br>总之常看常新。<br>着实验证了一句话。<br>经典永不过时。<br>so『魑魅喜人过，文章憎命达』也好，<br>『文以人传，人以文传』也好。<br>做一个经典的人，绝对永不过时。</p>
 ]]></content>
       <categories>
-        <category>阳明心学</category>
+        <category>笑傲江湖</category>
       </categories>
   </entry>
   <entry>
@@ -256,69 +200,47 @@
       </categories>
   </entry>
   <entry>
-    <title>开始学习python了</title>
-    <url>/2016/12/27/%E5%BC%80%E5%A7%8B%E5%AD%A6%E4%B9%A0python%E4%BA%86/</url>
-    <content><![CDATA[<p>从接触编程到现在已经三年多了，多数是浅尝辄止，因为我的主要工作是运营；<br>也没有必要把编程学的这么深入，从刚开始的html，到后来的php以及去年学的OC；<br>终于要学python了，为什么要学习python呢？<br>更深的我也不懂，我只知道两点。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">第一，python能做大数据方面的东西；</span><br><span class="line">第二，python还能做Machine Learning方面的东西。</span><br></pre></td></tr></table></figure>
-<p>重要的是我对这两方面都非常感兴趣，所以我就要学习python了。</p>
-<a id="more"></a>
-<p>马克思说，研究首先要充分的占有资料，所以就非常投入的查了很多资料。<br>而学习一门语言首先要搭建IDE啊，<br>我没听说python有像开发IOS的Xcode一样的IDE，<br>最初的想法就是赶紧搭建出来一个IDE，开始学习敲代码，<br>于是苦逼的填坑就开始了，什么pycharm、sublime txt，脑袋整个一浆糊。<br>最后终于搞清楚了，他娘的Mac自带python2.7和Vim。<br>只需要简单配置vim的配置文件vimrc，就可以开始简单的自学python了。</p>
-<p>但是，坑，才刚刚开始，因为用Xcode习惯了，所以一上来肯定想着python也可以一键执行啊。<br>于是找到一个老兄回答的配置一键执行的答案，就是在这里我遇到了初学python的一个大坑。</p>
-<p>我想既然一键执行，那就开启vim的配置文件vimrc开始配置吧。<br>一查才知道，/usr/share/vim/vimrc是系统级的文件，不可妄动。<br>那好，那就用Teriminal在用户下新建一个唄！</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">vi ~/.vimrc</span><br></pre></td></tr></table></figure>
-<p>建好了就开始写唄，于是就把java和c以及python在vim中的一键执行配置全部添加上。<br>呶！就是下面这堆!</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">map &lt;F5&gt; :call CompileRunGcc()&lt;CR&gt;</span><br><span class="line">func! CompileRunGcc()</span><br><span class="line"><span class="keyword">exec</span> <span class="string">"w"</span></span><br><span class="line"><span class="keyword">if</span> &amp;filetype == <span class="string">'c'</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!g++ % -o %&lt;"</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!time ./%&lt;"</span></span><br><span class="line">elseif &amp;filetype == <span class="string">'cpp'</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!g++ % -o %&lt;"</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!time ./%&lt;"</span></span><br><span class="line">elseif &amp;filetype == <span class="string">'java'</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!javac %"</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!time java %&lt;"</span></span><br><span class="line">elseif &amp;filetype == <span class="string">'sh'</span></span><br><span class="line">:!time bash %</span><br><span class="line">elseif &amp;filetype == <span class="string">'python'</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!time python2.7 %"</span></span><br><span class="line">elseif &amp;filetype == <span class="string">'html'</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!firefox % &amp;"</span></span><br><span class="line">elseif &amp;filetype == <span class="string">'go'</span></span><br><span class="line"><span class="string">"        exec "</span>!go build %&lt;<span class="string">"</span></span><br><span class="line"><span class="string">exec "</span>!time go run %<span class="string">"</span></span><br><span class="line"><span class="string">elseif &amp;filetype == 'mkd'</span></span><br><span class="line"><span class="string">exec "</span>!~/.vim/markdown.pl % &gt; %.html &amp;<span class="string">"</span></span><br><span class="line"><span class="string">exec "</span>!firefox %.html &amp;<span class="string">"</span></span><br><span class="line"><span class="string">endif</span></span><br><span class="line"><span class="string">endfunc</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">上面的意思是在vim中写c、java和python的时候在命令模式下，可以按F5，或者Fn+F5一键执行，查看编译效果。</span><br></pre></td></tr></table></figure>
-<p>可坑爹的是，我在vim中写完python的代码后，在命令模式下，无论怎么敲F5，都没反应。<br>而且由于vim的命令还不熟悉，在从Teriminal进入vimrc时，老是出现错误，<br>因为不懂啊，于是就感觉出了很大的错误，后来才知道，原来写vim时会生成两个文件，一个临时的一个存储在磁盘上，<br>如果写完vim忘记保存，那么那个叫做XX,swp的临时文件，会搞得你欲生欲死。</p>
-<p>没办法啊，身边也没有python大牛，只能继续翻网页。</p>
-<p>直到无意中把下面一行代码加入vi~/.vimrc(用户目录下的vim配置文件，它的优先级是高于vim的系统级配置文件的)中，然后奇迹的事情发生了，<br>我靠我的.py文件不但高亮显示了，最重要的是，当我在命令模式下，按下Fn+F5，竟然可以一键执行了，<br>这时候，我知道，终于跳出了我初学python的第一个坑。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">syntax on</span><br></pre></td></tr></table></figure>
-<p>没错就这两个单词，意思是：语法高亮。</p>
-<p>反思：我为什么会在这个在行家看来是弱智问题的坑上徘徊这么久呢？<br>有四点：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">第一，通过Teriminal用vi ~/.vimrc命令在用户目录下创建的vim配置文件是隐藏的；</span><br><span class="line">我没看到，就以为没有，然后就复制了系统下的vimrc文件来进行修改，肯定无效。</span><br><span class="line">第二，由于不知道在用户目录下新建的vimrc配置文件是隐藏的，而在Teriminal中试图进入vimrc时，又频频出错，于是就束手无策了。</span><br><span class="line">第三、由于不知道用户目录下新建的vimrc文件是隐藏的，而在用Teriminal进入时，又频频出错；</span><br><span class="line">于是我就试图自己在vim里新建一个名为vimrc的文件，绝壁无效。</span><br><span class="line">第四、由于，我是抱着，我对vim和python都懂得不多，所有跟配置一键执行无关的网页都是一扫而过；</span><br><span class="line">导致错过了提前解决问题的可能。</span><br><span class="line">就酱！</span><br></pre></td></tr></table></figure>
-<p>下面就要开始正式学习vim的命令和python语法了，我会一直更新滴！</p>
+    <title>工夫与境界（二）</title>
+    <url>/2016/03/17/%E5%B7%A5%E5%A4%AB%E4%B8%8E%E5%A2%83%E7%95%8C%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+    <content><![CDATA[<p>一、境界为何？<br>境界字面理解，<br>境乃环境，界乃界限；<br>突破界限到达新环境就叫做境界。<br>境界不是自己标榜的，<br>真正到达新境界的人，<br>行事言语都会有所体现。</p>
+<p>二、境</p>
+<p>1、客观环境<br>首先从环境说起，<br>环境又分为外在与内在；<br>外在叫客观环境，<br>内在叫做心境。</p>
+<p>客观环境没什么好说的，<br>无论你生于贫苦之家，<br>还是钟鸣鼎食之家，<br>这都不是你能定的，<br>那是所有人的起点，<br>你只有接受，没有选择。<br>以上是摘要<a id="more"></a><br>2、心境<br>至于心境，则要好好说一下；<br>《心经》开篇第一句话：<br>观自在菩萨，<br>行深般若波罗蜜多，<br>照见五蕴皆空，<br>度一切苦厄。<br>这说的就是心境。<br>展开说比较复杂，<br>简单从几个概念说起。</p>
+<p>三毒：贪嗔痴，<br>三法印：诸行无常，诸法无我，寂静涅槃；<br>五蕴：受想行色识<br>般若波罗密多：到达彼岸的智慧。</p>
+<p>为什么要说心经呢？<br>你可能会纳闷？<br>我们讲的不是心学吗？<br>对了正因为我们讲的是心学。<br>而客观环境，多数情况下我们无能为力。<br>多数情况下，我能改变的只有心境。<br>《心经》为我们提供了一种改变心境的伟大方法。<br>你没看错，就是伟大的方法。<br>因为它解决的是根本问题，直指人心，<br>心经讲的就是为什么我们会感到人生皆苦。</p>
+<p>我们之所以感到人生皆苦，<br>是因为有：‘我执’。<br>我执的意思是我们以为世间万物都是恒定不变的。<br>这是所有苦的根源。<br>苦又分为：求不得，爱别离，怨憎会。</p>
+<p>事实是，世间万物每时每刻都在变化，<br>因为有：‘我执’，因此我们都中了三毒。<br>我们贪婪是因为：<br>我们以为拥有了某些东西，它就会永远属于我们，<br>并且因为得不到而纠结不已。<br>我们愤怒是因为：<br>我们以为所有的糟糕事情都会一直糟糕下去，<br>并且为此生出恐惧来吓唬自己。<br>明天要交报表了，做不出来怎么办？<br>明天要考试了，考不过怎么办？<br>明天又要考核绩效了，达不到怎么办？<br>我们总是夸大事情本身的后果。<br>我们痴傻是因为，我们以为一瞬即永恒，<br>并且相信自己对永恒的判断。</p>
+<p>事实是，也许你刚买到梦寐以求的保时捷，<br>第二天就出车祸撞死了。<br>也许你刚刚与他吵过架的室友或朋友，<br>是因为最近家里老人得了病，心情不好。<br>也许你内心许诺一生只爱她一人的女友，<br>正在和新认识的帅哥微信聊天。</p>
+<p>那么，我们有必要知道三法印的存在，<br>诸行无常，诸法无我，寂静涅槃，<br>万事万物都在变化，你以为你面前的桌子和电脑是静止的？<br>非也，电脑里面每时每刻二进制数据都在变化，<br>桌子的基本组成粒子，无时无刻不在老化。<br>你以为你就是你吗？<br>这句话可能有点儿绕，<br>我的意思是：<br>你以为今天的你还是昨天的你吗？<br>你以为此刻的你还是上一刻的你吗？<br>你以为现在的你还是六岁时候的你吗？<br>抛开外形的变化不说。</p>
+<p>为了便于理解我们举个例子，<br>比如你的名字叫张三<br>基于你的名字来说，<br>你觉得张三的对象是谁？<br>是六岁时候的你？<br>还是现在的你？<br>你说当然是现在的你？<br>你这不是搞笑吗？<br>那好，我再问，是上一刻的你，<br>还是这一刻的你？<br>到底哪个‘你’是张三？<br>到底是在吃饭的你是张三？<br>还是在撒尿的你是张三？<br>你又说：“当然两个都是张三”，<br>但是这一刻的你已经不是上一刻的你了，<br>你的血液在不断更新，你的细胞在不断更新。<br>你的思维意识瞬间万变。<br>到底哪一个才是作为张三的你？<br>因此张三这个名字只是个假名。<br>没有真的张三存在。<br>只是你自己太过于执着你是张三这件事。<br>而你并不知道并没有真的张三存在？<br>此为诸行无常，诸法无我。</p>
+<p>当你悟了诸行无常，诸法无我，自然会寂静涅槃。<br>虽然有点儿抽象，但我绝不是顺口胡诌。<br>我自己是真正体验过这种思考的。</p>
+<p>这段实在太抽象，<br>因为梁文道这等厉害人物在《一千零一夜》，<br>用了六集才讲清楚《心经》的前两句话。<br>个中奥义，不花一番功夫实难领会。<br>另外小结中有些概念实在无法展开叙述，<br>有心人可以自行搜索资料进行学习。<br>做下小结吧：“我执”是三毒：“贪、嗔、痴”的根源；<br>陷入三毒世人皆苦，苦分为：“求不得、爱别离、怨憎会”<br>三法印：诸行无常、诸法无我、寂静涅槃会让我们理解空不异色，色不异空，空即是色，色即是空，从而获得到达彼岸的大智慧。<br>只有运用般若波罗蜜多：到达彼岸的大智慧才能照见五蕴皆空，度一切苦厄。</p>
+<p>3、界<br>关于界限我要说的不多，<br>大家应该都知道有个舒适区，学习区与恐慌区的划分。<br>那么我只有一个建议，经常挑战下你的恐慌区。<br>怕和女孩搭讪，偏偏要在餐馆吃午饭时和邻桌的漂亮妹妹搭个讪，<br>怕在群众面前演讲，偏偏要在公园等人扎堆的地方，让自己来上一段，<br>怕在高处眺望，偏偏周末要去体验一下蹦极时血脉贲张的酸爽。<br>你说：“臣妾真的做不到啊！”。<br>我只说一件事：<br>最近重看了一遍86版的《西游记》，<br>至于演员演得好，导演拍的好，不赘述。<br>只一点，第一集就让我明白了以前看不可能明白的道理。<br>孙悟空和众猴打赌，自己能从水帘洞进去且出来。<br>你想一想，<br>有的猴子已经在这片区域生活了很多年，<br>却没勇气进去看一看，<br>那一刻我知道，人生所有的艰难困苦都是纸老虎。<br>再有，进去后欢宴期间一猴子突然死亡，<br>那一刻我知道，人生无常，达人自玉。<br>最后，孙悟空决定远行学艺。<br>在市集间被俗人们当作异类而嘲笑<br>那一刻我知道，哪怕任何人的嘲笑，<br>都比不过你自己的一个决心。</p>
+<p>本期推荐书籍：<br>1、《增长黑客》豆瓣评分8.1 作者：范冰<br>细节非常独到，我还试了下里面通过curl －o命令抓取唱吧图片。<br>最重要的一点树立T型知识结构的意识。<br>归纳略显不足，只描述案例，不归纳本质的东西，做互联网的同学可以作为手边书翻一翻。<br>2、《黑客与画家》作者：保罗格雷厄姆<br>任何一门知识，做到极致都是艺术，编程亦然。<br>3、《物演通论》作者：王东岳<br>我只记住了一个：“递弱代偿法则”，其他看不懂，你若有高见，欢迎和我讨论。<br>本期推荐电影：<br>1、《三傻大闹宝莱坞》<br>我已经看过三遍了，不多说了，和梦想有关和现实无联。<br>2、《无法触碰》<br>这个看了两遍，马上看第三遍，和生命有关和人生无联。<br>3、《野草莓》<br>英格玛·伯格曼代表作，和生命无关和心灵有联。</p>
 ]]></content>
       <categories>
-        <category>Python</category>
+        <category>阳明心学</category>
       </categories>
   </entry>
   <entry>
-    <title>可还记得《甘十九妹》</title>
-    <url>/2016/03/17/%E5%8F%AF%E8%BF%98%E8%AE%B0%E5%BE%97%E3%80%8A%E7%94%98%E5%8D%81%E4%B9%9D%E5%A6%B9%E3%80%8B/</url>
-    <content><![CDATA[<p>一、《甘十九妹》是谁？<br>《甘十九妹》是我小时候看的一部武侠剧，<br>原著是萧逸先生。<br>故事是说一个男人对一个女人始乱终弃后，<br>女人从沮丧、堕落到后来复仇的故事。</p>
-<p>结果恩怨就传递到了下一辈身上，<br>作为那个男人后代的尹剑平，<br>与作为那个女人二弟子的甘十九妹，<br>由仇到怨以至于最后双双殉情。<br>以上是摘要<a id="more"></a><br>二、为什么写《甘十九妹》<br>之所以想起为这部武侠剧写篇文章作纪念，<br>有两点原因<br>其一，小时候的所有记忆如今想起来都是最美好的，<br>不同意的出去；<br>其二，电视剧的制作水平，<br>无论是武打动作，服装造型以及演员的选择，<br>就今天看来也堪称完美，<br>倘若再对比下如今许多粗制滥造<br>杀马特造型充斥的武侠剧，<br>那这部《甘十九妹》简直就是完美了。</p>
-<p>三、一部好的武侠剧是什么样的？<br>写到这里想到一个问题，<br>什么样的武侠剧是一部高水平的武侠剧？<br>我的观点是这样，<br>首先，演员必须要选准；<br>外貌要符合武侠剧剧本中的人物形象<br>性格要匹配剧本的描写；<br>其次，武打动作以及整个故事的编排一定要引人入胜。<br>比如《甘十九妹》中，<br>以灭『岳阳门』开场，<br>绝对是个妙笔。<br>第三，武侠剧本身一定要传递一些本质的东西，<br>那么什么是本质的东西呢，<br>正如我在《今人谁识侠客行》所写，<br>大音希声，大象无形，<br>什么东西越大越没有脾气；<br>这都可以很精准的传递本质的东西。</p>
-<p>这些年看的武侠剧里面我觉得能同时做到这三点的有以下几部；<br>《侠客行》，《笑傲江湖》，《燕子李三》，再有就是这部《甘十九妹》了。<br>听度娘说08年山东卫视对《甘十九妹》进行了高清数码修复；<br>2010年已出版发行，见到后我一定来两套一套收藏，一套常观。</p>
-<p>四、经典永不过时<br>距小时候观看《甘十九妹》这部武侠剧，<br>虽然已过去了二十多年，<br>但今天重复观看，仍然是暗叹不已，惊喜连连；<br>小时候只会看男主角够不够英雄，武功够不够好，<br>女主角够不够漂亮（绝对是最纯真的那种漂亮），<br>从来不会关注现实中演员的信息，<br>以及里面人物对话背后所传递的东西。<br>但如今看，确实是妙不可言，<br>会去百度每个演员的经历，<br>会去思考经典对白为什么经典，<br>剧本作者对白背后想传递什么价值观或者什么信息。<br>总之常看常新。<br>着实验证了一句话。<br>经典永不过时。<br>so『魑魅喜人过，文章憎命达』也好，<br>『文以人传，人以文传』也好。<br>做一个经典的人，绝对永不过时。</p>
+    <title>如何利用知行合一提升学习效率</title>
+    <url>/2016/03/20/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E6%8F%90%E5%8D%87%E5%AD%A6%E4%B9%A0%E6%95%88%E7%8E%87/</url>
+    <content><![CDATA[<p>一、心学里的三类人<br>阳明将人分三类：生知安行，学知力行，困知勉行。<br>生知安行就是我们现在所说的天才，<br>如果按二八法则，全人类中，<br>似乎会有百分之二十的天才存在，<br>可是去掉那些后来伤仲永的，<br>最多会留下百分之十，就不错了。<br>困知勉行，就是脑袋死不开窍的，<br>最多也就百分之十，<br>剩下的就是百分之八十的普通人了。</p>
+<p>所以如果你自认为是天才，<br>那这篇文章就不用看了。<br>这篇文章的方法主要是针对，<br>和我一样那百分之八十中的普通人。<br>以上是摘要<a id="more"></a><br>二、万物有源<br>世间所有的事物，<br>都有一个本源，<br>每家家谱的存在，<br>便是一个很好的例证，<br>我们家家谱开头的第一句话便是：<br>饮水思源，慎终追远，以知其本也。</p>
+<p>你今天看媒体上的马云风光无限，<br>公众眼里的刘强东风头尽出，<br>可是源头在哪里？<br>他们是横空出世吗？<br>非也！<br>马云今天指点江山的魄力<br>离不开当年推荐中国黄页时，<br>被人拒之门外的尴尬做注脚；<br>刘强东今日的意气风发，<br>少不了当年因为做生意和前妻离婚的神伤做铺垫。<br>所以，学习也是有源头的。</p>
+<p>三、知行合一与学习效率<br>学习有源，源头在哪里？<br>上次讲过<br>格物更偏向于思考层面，<br>知行合一更偏向于行动层面。<br>若想利用知行合一提高学习效率，<br>首先必须得格学习这件事。<br>学习就是学和习，<br>绝不是废话。<br>所以学习的源头就是：<br>不但学理论还要以最快的速度去验证理论。<br>而不是仅仅让理论在脑子里呆一辈子。<br>这就是用知行合一提高学习效率的唯一方法。</p>
+<p>比如，你听人说Hexo＋Github搭建独立博客，快速，简便，强大。<br>那么怎么个快速，简便，强大法呢？<br>如果你不去搭建一个自己的独立博客，<br>你知道的也仅限于几个名词和三个形容词。</p>
+<p>那么心学的做法是什么呢？<br>首先查资料啊，通过查资料了解到，<br>Hexo不但很多程序员在用，<br>而且好多人还说是hacker必备的博客搭建框架，<br>基于多数人对带有神秘色彩的黑客的向往，<br>这时候会更有动力去行动。</p>
+<p>那么好了，基本的概念有了，<br>接下来还是和学习IOS开发如出一辙，<br>要了解路线图啊，<br>首先需要安装Node.js和Git程序，<br>然后安装并初始化Hexo框架，<br>最后启动本地服务器，<br>本地的Hexo框架就搭建完成了，<br>这时候打开服务器给的地址，<br>你已经可以看到完全属于你自己的独立博客的雏形了，<br>这样就更进一步加深你对这件事的热衷度，<br>也就是你的自信进一步提高了。</p>
+<p>到这里为止你通过最初的诚意，<br>下决心做用Hexo搭建独立博客这件事，<br>然后通过格这件事，<br>你了解了整个的路线图，<br>并且通过知行合一，你已经搭建出了本地的博客雏形。<br>你对这件事的兴趣以及对完成它的自信心，<br>已经不要不要的了。<br>因为你看到阶段性成果了。</p>
+<p>那接下来，配置博客信息，<br>安装SSH密钥，并且关联GIthub的库，<br>最终把你的本地独立博客部署到互联网上，<br>就是顺理成章的事了。</p>
+<p>等到你输入自己的博客网址，<br>在任何联网的电脑或手机都能看到自己的精神家园，<br>这时候你才真正体会到开头那三个形容词的含义，<br>快速是因为编程小白，也能按流程一步一步搭建它，<br>简便是因为搭建好后，只需两条命令就可以把自己的博客更新到互联网，<br>强大是因为，它几乎支持你以前的博客框架，<br>包括Jekyll，Octopress和Wordpress所有的功能。<br>但基本要求就是只需要一台联网的电脑和你按照步骤去搭建。</p>
+<p>四、关于理由<br>即便看到这里，<br>我相信很多人还是能找到，<br>拒绝做自己应该做的事情的理由。<br>我相信还是有很多人会说：<br>你不知道我有多忙，<br>你说得倒轻巧，<br>我都看不懂你说的这些什么Hexo和Github，<br>怎么去搭建？<br>balabalabala……<br>好吧，我承认大家都很忙，<br>这里稍微跟大家玩个文字游戏，<br>大家比较下‘忙’和‘忘’两个字，<br>没错，聪明的已经看出来了，<br>你的心躺下自己就什么都忘了，<br>你的心立起来，自然一直都很忙。<br>so，如果你到现在还找各种理由，<br>不去做自己应该做的事情，<br>那我只能说你决心还不够，<br>而你老说自己忙，<br>则是需要重新修炼心学的静坐工夫，<br>还是建议参考曾剃头的方法。</p>
+<p>最后，借用陌陌的广告词<br>送给那些迟迟不下决心做自己向往事情的人们：<br>别和陌生人说话，别做新鲜事，<br>继续过平常的生活，胆小一点儿，<br>别好奇，就玩你会的，离冒险远远的，<br>有些事想想就好，没必要改变，<br>待在熟悉的地方，最好待在家里，<br>听一样的音乐，见一样的人，重复同样的话题，<br>心思别太活，梦想要实际，<br>不要什么都尝试，就这样活着吧。</p>
+<p>本期推荐电影：<br>一、《沙漠之花》导演：雪瑞·霍尔曼<br>推荐语：如果你曾对沙漠里是否真的能开出花产生过疑问，这部片子很肯定的告诉你：能。<br>二、《白日火焰》导演：刁亦男<br>推荐语：对豆瓣什么的一些影评，我没太多感觉，本片亮点在于开始五分钟在你认为不可能发生的时候，两个警察被干掉了。<br>三、《爱在战火蔓延时》导演：戴维·塞尔策<br>推荐语：片子不算超精彩的那种，但是里面有一个场景令我很触动，当男女主角在国境线外呼救的时候，边防兵无动于衷，但当他们跨进国境线那一刻，边防兵毫不客气的还击。<br>本期推荐书籍：<br>一、《一阵风，留下了千古绝唱》作者：章诒和<br>推荐语：书里讲马连良对精致生活的享受部分，很是引人入胜。<br>二、《王阳明大传》作者：周月亮<br>推荐语：用通俗的话语较有深度的讲述了王阳明的一生，看完这个，就没必要看其学生吕峥写的《明朝一哥王阳明》了，基本照抄，没太多新意。<br>三、《历史深处的民国》作者：江城<br>推荐语：框架比《民国就是这么生猛》搭的好，细节则没后者全，但里面用数据分析了一个很有意思的现象，袁世凯家里的牛人没有活过58岁的。</p>
 ]]></content>
       <categories>
-        <category>笑傲江湖</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>我为什么三十岁还要学习IOS</title>
-    <url>/2016/03/17/%E6%88%91%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%89%E5%8D%81%E5%B2%81%E8%BF%98%E8%A6%81%E5%AD%A6%E4%B9%A0IOS/</url>
-    <content><![CDATA[<p>一、前面的话</p>
-<p>终于要开始写IOS学习笔记了，<br>我从15年8月份开始学习IOS；<br>完全自学；<br>中间学学停停，<br>就到了今天，<br>但是比较自豪的一点儿就是，<br>从来没想过放弃学习。</p>
-<p>以上是摘要<a id="more"></a></p>
-<p>二、为什么要学习IOS</p>
-<p>首先，最简单的理由，我就是喜欢，<br>通过敲入代码，然后看着自己的想法，<br>变成触手可及的实物。<br>我对这个过程非常着迷；<br>其次，我自己觉得，<br>未来编程就像今天每个人考驾照一样，<br>会成为大部分人的日常。<br>第三，我想从事相关方面的工作；<br>三、最大的挑战</p>
-<p>最大的挑战就是坚持，<br>因为我永远相信，<br>一件事只要肯坚持，总能干成，<br>当然前提是方向要对。</p>
-<p>没钱买mac，没钱报培训班，<br>没时间学习，都不是最大的挑战。<br>关键是你永远要相信，<br>你绝对可以学成。<br>四、目前的学习状况</p>
-<p>虽然中间有时间不等的停顿，<br>但是还是坚持到了现在，<br>目前正在学数据库和网络，<br>但是发觉oc和ui还有一些不牢固的东西，<br>还会不断返回去复习这两块儿。<br>五、心得</p>
-<p>只要你想干成一件事，<br>任何困难都是纸老虎，<br>因为你没时间管困难，<br>只会看着前面的目标，一直前进。<br>以后，我会不定期的发布自己的学习笔记，<br>作为自己学习的一个过程记录。</p>
-]]></content>
-      <categories>
-        <category>IOS</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>我与音乐的初缘</title>
-    <url>/2016/03/17/%E6%88%91%E4%B8%8E%E9%9F%B3%E4%B9%90%E7%9A%84%E5%88%9D%E7%BC%98/</url>
-    <content><![CDATA[<p>我高中学过一年半音乐，<br>上过高中的都知道：『小三门』；<br>不知现在还这么叫吗？<br>我学音乐的原因有三：<br>一、小时候我爸买过一支笛子，我爸捣鼓好长时间，没吹响，<br>我后来不但吹响了，而且还能看简谱吹奏《没有共产党就没有新中国》和《中学时代》等歌曲，<br>我觉得我自己真是tmd太有才了，所以老师一说报名『小三门』，我立即就积极响应了。<br>至于我到底有没有音乐天赋，我到今天也没搞清楚。<br>二、文化课要求分数低，只要音乐过就能上个还不错的本科学校，一本也不是没可能；<br>三、我感觉学音乐是一件很酷的事情；<br>事实证明一年半的成果还可以，<br>可是经济基础，决定上层建筑，<br>最后考上了新乡一个叫做：『平原大学』的音乐系，<br>我估计是二本吧，<br>学费太昂贵，最后只好选择去学机械制造。<br>然后就与音乐绝缘了。<br>以上是摘要<a id="more"></a><br>但还是会买支笛子，<br>有空吹奏一番，<br>曲子当然不会再是初学的那些了，<br>好歹也有了些乐理知识，<br>可以识谱演奏了。<br>然后机械制造毕业，去做工人，<br>再然后到北京做电子商务，<br>始终还是放不下音乐，<br>梦想着有一天自己也能开一场自己的演唱会，<br>现在经济自立了，<br>也会买把吉他，学弹吉他，<br>有时间还会读《中国音乐简史》之类的书，<br>加深音乐素养，<br>权当一爱好，<br>但谁说爱好就不能学的专业一点儿，<br>因此，开辟这个专栏，<br>记录我平常累积的音乐知识<br>以及学习音乐过程中的欢乐。</p>
-]]></content>
-      <categories>
-        <category>音乐学习</category>
+        <category>阳明心学</category>
       </categories>
   </entry>
   <entry>
@@ -348,6 +270,86 @@
 ]]></content>
       <categories>
         <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>我为什么三十岁还要学习IOS</title>
+    <url>/2016/03/17/%E6%88%91%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%89%E5%8D%81%E5%B2%81%E8%BF%98%E8%A6%81%E5%AD%A6%E4%B9%A0IOS/</url>
+    <content><![CDATA[<p>一、前面的话</p>
+<p>终于要开始写IOS学习笔记了，<br>我从15年8月份开始学习IOS；<br>完全自学；<br>中间学学停停，<br>就到了今天，<br>但是比较自豪的一点儿就是，<br>从来没想过放弃学习。</p>
+<p>以上是摘要<a id="more"></a></p>
+<p>二、为什么要学习IOS</p>
+<p>首先，最简单的理由，我就是喜欢，<br>通过敲入代码，然后看着自己的想法，<br>变成触手可及的实物。<br>我对这个过程非常着迷；<br>其次，我自己觉得，<br>未来编程就像今天每个人考驾照一样，<br>会成为大部分人的日常。<br>第三，我想从事相关方面的工作；<br>三、最大的挑战</p>
+<p>最大的挑战就是坚持，<br>因为我永远相信，<br>一件事只要肯坚持，总能干成，<br>当然前提是方向要对。</p>
+<p>没钱买mac，没钱报培训班，<br>没时间学习，都不是最大的挑战。<br>关键是你永远要相信，<br>你绝对可以学成。<br>四、目前的学习状况</p>
+<p>虽然中间有时间不等的停顿，<br>但是还是坚持到了现在，<br>目前正在学数据库和网络，<br>但是发觉oc和ui还有一些不牢固的东西，<br>还会不断返回去复习这两块儿。<br>五、心得</p>
+<p>只要你想干成一件事，<br>任何困难都是纸老虎，<br>因为你没时间管困难，<br>只会看着前面的目标，一直前进。<br>以后，我会不定期的发布自己的学习笔记，<br>作为自己学习的一个过程记录。</p>
+]]></content>
+      <categories>
+        <category>IOS</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>我与音乐的初缘</title>
+    <url>/2016/03/17/%E6%88%91%E4%B8%8E%E9%9F%B3%E4%B9%90%E7%9A%84%E5%88%9D%E7%BC%98/</url>
+    <content><![CDATA[<p>我高中学过一年半音乐，<br>上过高中的都知道：『小三门』；<br>不知现在还这么叫吗？<br>我学音乐的原因有三：<br>一、小时候我爸买过一支笛子，我爸捣鼓好长时间，没吹响，<br>我后来不但吹响了，而且还能看简谱吹奏《没有共产党就没有新中国》和《中学时代》等歌曲，<br>我觉得我自己真是tmd太有才了，所以老师一说报名『小三门』，我立即就积极响应了。<br>至于我到底有没有音乐天赋，我到今天也没搞清楚。<br>二、文化课要求分数低，只要音乐过就能上个还不错的本科学校，一本也不是没可能；<br>三、我感觉学音乐是一件很酷的事情；<br>事实证明一年半的成果还可以，<br>可是经济基础，决定上层建筑，<br>最后考上了新乡一个叫做：『平原大学』的音乐系，<br>我估计是二本吧，<br>学费太昂贵，最后只好选择去学机械制造。<br>然后就与音乐绝缘了。<br>以上是摘要<a id="more"></a><br>但还是会买支笛子，<br>有空吹奏一番，<br>曲子当然不会再是初学的那些了，<br>好歹也有了些乐理知识，<br>可以识谱演奏了。<br>然后机械制造毕业，去做工人，<br>再然后到北京做电子商务，<br>始终还是放不下音乐，<br>梦想着有一天自己也能开一场自己的演唱会，<br>现在经济自立了，<br>也会买把吉他，学弹吉他，<br>有时间还会读《中国音乐简史》之类的书，<br>加深音乐素养，<br>权当一爱好，<br>但谁说爱好就不能学的专业一点儿，<br>因此，开辟这个专栏，<br>记录我平常累积的音乐知识<br>以及学习音乐过程中的欢乐。</p>
+]]></content>
+      <categories>
+        <category>音乐学习</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>开始学习python了</title>
+    <url>/2016/12/27/%E5%BC%80%E5%A7%8B%E5%AD%A6%E4%B9%A0python%E4%BA%86/</url>
+    <content><![CDATA[<p>从接触编程到现在已经三年多了，多数是浅尝辄止，因为我的主要工作是运营；<br>也没有必要把编程学的这么深入，从刚开始的html，到后来的php以及去年学的OC；<br>终于要学python了，为什么要学习python呢？<br>更深的我也不懂，我只知道两点。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">第一，python能做大数据方面的东西；</span><br><span class="line">第二，python还能做Machine Learning方面的东西。</span><br></pre></td></tr></table></figure>
+<p>重要的是我对这两方面都非常感兴趣，所以我就要学习python了。</p>
+<a id="more"></a>
+<p>马克思说，研究首先要充分的占有资料，所以就非常投入的查了很多资料。<br>而学习一门语言首先要搭建IDE啊，<br>我没听说python有像开发IOS的Xcode一样的IDE，<br>最初的想法就是赶紧搭建出来一个IDE，开始学习敲代码，<br>于是苦逼的填坑就开始了，什么pycharm、sublime txt，脑袋整个一浆糊。<br>最后终于搞清楚了，他娘的Mac自带python2.7和Vim。<br>只需要简单配置vim的配置文件vimrc，就可以开始简单的自学python了。</p>
+<p>但是，坑，才刚刚开始，因为用Xcode习惯了，所以一上来肯定想着python也可以一键执行啊。<br>于是找到一个老兄回答的配置一键执行的答案，就是在这里我遇到了初学python的一个大坑。</p>
+<p>我想既然一键执行，那就开启vim的配置文件vimrc开始配置吧。<br>一查才知道，/usr/share/vim/vimrc是系统级的文件，不可妄动。<br>那好，那就用Teriminal在用户下新建一个唄！</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">vi ~/.vimrc</span><br></pre></td></tr></table></figure>
+<p>建好了就开始写唄，于是就把java和c以及python在vim中的一键执行配置全部添加上。<br>呶！就是下面这堆!</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">map &lt;F5&gt; :call CompileRunGcc()&lt;CR&gt;</span><br><span class="line">func! CompileRunGcc()</span><br><span class="line"><span class="keyword">exec</span> <span class="string">"w"</span></span><br><span class="line"><span class="keyword">if</span> &amp;filetype == <span class="string">'c'</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!g++ % -o %&lt;"</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!time ./%&lt;"</span></span><br><span class="line">elseif &amp;filetype == <span class="string">'cpp'</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!g++ % -o %&lt;"</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!time ./%&lt;"</span></span><br><span class="line">elseif &amp;filetype == <span class="string">'java'</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!javac %"</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!time java %&lt;"</span></span><br><span class="line">elseif &amp;filetype == <span class="string">'sh'</span></span><br><span class="line">:!time bash %</span><br><span class="line">elseif &amp;filetype == <span class="string">'python'</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!time python2.7 %"</span></span><br><span class="line">elseif &amp;filetype == <span class="string">'html'</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!firefox % &amp;"</span></span><br><span class="line">elseif &amp;filetype == <span class="string">'go'</span></span><br><span class="line"><span class="string">"        exec "</span>!go build %&lt;<span class="string">"</span></span><br><span class="line"><span class="string">exec "</span>!time go run %<span class="string">"</span></span><br><span class="line"><span class="string">elseif &amp;filetype == 'mkd'</span></span><br><span class="line"><span class="string">exec "</span>!~/.vim/markdown.pl % &gt; %.html &amp;<span class="string">"</span></span><br><span class="line"><span class="string">exec "</span>!firefox %.html &amp;<span class="string">"</span></span><br><span class="line"><span class="string">endif</span></span><br><span class="line"><span class="string">endfunc</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">上面的意思是在vim中写c、java和python的时候在命令模式下，可以按F5，或者Fn+F5一键执行，查看编译效果。</span><br></pre></td></tr></table></figure>
+<p>可坑爹的是，我在vim中写完python的代码后，在命令模式下，无论怎么敲F5，都没反应。<br>而且由于vim的命令还不熟悉，在从Teriminal进入vimrc时，老是出现错误，<br>因为不懂啊，于是就感觉出了很大的错误，后来才知道，原来写vim时会生成两个文件，一个临时的一个存储在磁盘上，<br>如果写完vim忘记保存，那么那个叫做XX,swp的临时文件，会搞得你欲生欲死。</p>
+<p>没办法啊，身边也没有python大牛，只能继续翻网页。</p>
+<p>直到无意中把下面一行代码加入vi~/.vimrc(用户目录下的vim配置文件，它的优先级是高于vim的系统级配置文件的)中，然后奇迹的事情发生了，<br>我靠我的.py文件不但高亮显示了，最重要的是，当我在命令模式下，按下Fn+F5，竟然可以一键执行了，<br>这时候，我知道，终于跳出了我初学python的第一个坑。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">syntax on</span><br></pre></td></tr></table></figure>
+<p>没错就这两个单词，意思是：语法高亮。</p>
+<p>反思：我为什么会在这个在行家看来是弱智问题的坑上徘徊这么久呢？<br>有四点：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">第一，通过Teriminal用vi ~/.vimrc命令在用户目录下创建的vim配置文件是隐藏的；</span><br><span class="line">我没看到，就以为没有，然后就复制了系统下的vimrc文件来进行修改，肯定无效。</span><br><span class="line">第二，由于不知道在用户目录下新建的vimrc配置文件是隐藏的，而在Teriminal中试图进入vimrc时，又频频出错，于是就束手无策了。</span><br><span class="line">第三、由于不知道用户目录下新建的vimrc文件是隐藏的，而在用Teriminal进入时，又频频出错；</span><br><span class="line">于是我就试图自己在vim里新建一个名为vimrc的文件，绝壁无效。</span><br><span class="line">第四、由于，我是抱着，我对vim和python都懂得不多，所有跟配置一键执行无关的网页都是一扫而过；</span><br><span class="line">导致错过了提前解决问题的可能。</span><br><span class="line">就酱！</span><br></pre></td></tr></table></figure>
+<p>下面就要开始正式学习vim的命令和python语法了，我会一直更新滴！</p>
+]]></content>
+      <categories>
+        <category>Python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Hexo安装百度统计流程</title>
+    <url>/2016/03/22/Hexo%E5%AE%89%E8%A3%85%E7%99%BE%E5%BA%A6%E7%BB%9F%E8%AE%A1%E6%B5%81%E7%A8%8B/</url>
+    <content><![CDATA[<p>用了两天时间将Hexo博客搭建好了，<br>之后便开始一点一点儿增加一些小插件，<br>很顺利的安装了RSS和评论插件后，<br>决定安装统计插件，<br>最后经过对比决定安装百度统计，<br>虽然不如谷歌，但还凑合吧。<br>闲言少叙，正文开始</p>
+<a id="more"></a>
+<p>1、在themes／—_config.yml中配置一行统计信息；</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">baidu_tongji: true</span><br></pre></td></tr></table></figure>
+<p>2、在themes/landscape/layout/_partial路径下直接复制google－analytics.ejs，并将文件名改为:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">baidu_tongji.ejs</span><br></pre></td></tr></table></figure>
+<p>3、去百度统计注册获取统计代码，格式如下：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">var _hmt = _hmt || [];</span><br><span class="line">(function() &#123;</span><br><span class="line">var hm = document.createElement(<span class="string">"script"</span>);</span><br><span class="line">hm.src = <span class="string">"//hm.baidu.com/hm.js?cf20d66409118a4390e3147d0f31366d"</span>;</span><br><span class="line">var s = document.getElementsByTagName(<span class="string">"script"</span>)[<span class="number">0</span>];</span><br><span class="line">s.parentNode.insertBefore(hm, s);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>粘贴到baidu_tongji.ejs文件中，粘贴后格式如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (theme.baidu_tongji)&#123; %&gt;</span><br><span class="line">&lt;!-- baidu_tongji --&gt;</span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">var _hmt = _hmt || [];</span><br><span class="line">(function() &#123;</span><br><span class="line">var hm = document.createElement(<span class="string">"script"</span>);</span><br><span class="line">hm.src = <span class="string">"//hm.baidu.com/hm.js?cf20d66409118a4390e3147d0f31366d"</span>;</span><br><span class="line">var s = document.getElementsByTagName(<span class="string">"script"</span>)[<span class="number">0</span>];</span><br><span class="line">s.parentNode.insertBefore(hm, s);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;!-- End baidu_tongji --&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+<p>4、打开themes/landscape/layout/_partial/head.ejs，添加如下代码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&lt;%- partial(<span class="string">'baidu_tongji'</span>) %&gt;</span><br></pre></td></tr></table></figure>
+<p>5、重新部署</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo d -</span><br></pre></td></tr></table></figure>
+<p>6、在百度统计检查部署是否成功<br>先检查首页，成功后界面是这样：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">页面代码安装状态：代码安装正确</span><br></pre></td></tr></table></figure>
+<p>如果你想检查其它页面，复制一个其它页面的网址粘贴过去，点开始检查，成功界面如下：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">代码安装详情</span><br><span class="line">已安装账户<span class="string">"username"</span>的站点<span class="string">"franktianyirenjian.github.io"</span>对应的代码：</span><br><span class="line">&lt;script&gt;</span><br><span class="line">var _hmt = _hmt || [];</span><br><span class="line">(function() &#123;</span><br><span class="line">  var hm = document.createElement(<span class="string">"script"</span>);</span><br><span class="line">  hm.src = <span class="string">"//hm.baidu.com/hm.js?cf20d66409118a4390e3147d0f31366d"</span>;</span><br><span class="line">  var s = document.getElementsByTagName(<span class="string">"script"</span>)[<span class="number">0</span>]; </span><br><span class="line">  s.parentNode.insertBefore(hm, s);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>等候二十分钟你就可以去查看网页统计报告了，打完收功。<br>另外还有人说会出现恶心的百度logo，我也不知道是人云亦云还是怎样，反正我的没有。</p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
       </categories>
   </entry>
   <entry>
@@ -381,6 +383,27 @@
 ]]></content>
       <categories>
         <category>外语学习</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>知行合一与坚持</title>
+    <url>/2016/03/17/%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E4%B8%8E%E5%9D%9A%E6%8C%81/</url>
+    <content><![CDATA[<p>你确定你真的在坚持？</p>
+<p>如果你真的在坚持知行合一，此生一件事足矣；<br>我们经常听到：“只管付出，莫问收获”这句话；<br>其实呢？试问几个人能做到，真正知行合一的坚持这句话；<br>如果坚持的人够多，就不会有微信朋友圈N多的鸡汤转来转去；<br>百度贴吧各种论坛和各种qq群也不会有那么多吐槽或抱怨的话；<br>比如：“今天那个谁又在背后说我坏话，谁谁谁说好某日还我钱，到了时候又不还”。<br>我的意思是说什么呢？<br>以上是摘要<a id="more"></a><br>既然每个人都不是圣人，就没必要将大多数人转来转去的那些你还并没有真正理解其内涵的话当作座右铭或者至理名言。<br>甚至将他在自己的朋友圈转出去，再荼毒其他不明内涵的人们。</p>
+<p>抱怨的理由何在？</p>
+<p>既然每个人都不是圣人，做不到真正的温良恭俭让，<br>也做不到不愠不火，每天如履薄冰，如临深渊。<br>那就试着不让这种容易引起你抱怨的事开始；<br>你抱怨某个嘴贱的人每天在背后对你叨逼叨，<br>要么辞职换工作，别告诉我你还没准备好，<br>你有抱怨的时间，早就准备好了。<br>要么就尽量不去听，不去想；<br>安心做好你自己的份内事。<br>你抱怨某个看起来很仗义的那个贱人，<br>借了你钱就是不还，那一开始就做好风险评估；<br>借的金额在你可承受范围内；<br>在你这里信用度降低到一定级别，<br>直接拒绝借出。<br>别告诉我你人好，不会拒绝人；<br>那你还tm抱怨个啥。</p>
+<p>关于那些贱人们<br>人有各种各样，形形色色，<br>被称为贱人的这些人，<br>他们也许在自己家人面前是乖孩子，在亲戚长辈中是有为青年，可就是你跟他们接触中，表现的一次比一次贱；<br>工作生涯中，这种碎嘴子的贱人超多，这种人大致又分为两种，<br>一种是长舌妇，到处宣扬一些小道消息，或是不确定真假的消息；<br>一种是别有用心，利用各种机会散布你的谣言，破坏你的心情。<br>活在现代社会，贱人避免不了。<br>你要么让自己更强大，要么比贱人更贱，你自己选吧。</p>
+<p>大学时我们有一个政治老师讲过一个故事；<br>当一架飞机升空时，发现有一群老鼠在咬油箱；<br>这时飞机上只有飞行员一个人，<br>他若扔下飞机去抓老鼠，飞机就会坠毁；<br>如果不抓，老鼠咬破油箱，油箱泄漏，也会坠毁。<br>这时应该怎么办呢？</p>
+<p>答案是将飞机升上云雨层，憋死丫一堆老鼠。</p>
+<p>你说，呀！这个故事我听过；<br>是的，太阳底下没有新鲜事；<br>如果你只是知道这个故事，那没什么了不起；<br>重要的是你能让自己知行合一吗？<br>哪怕你知道吃多了是要发胖的，<br>你能每天中午少吃块蛋糕，<br>或者夏天少吃个冰激凌吗？<br>又或者，你知道不学习是要落后的<br>落后是要挨打的；<br>可是你还是一边内心自责着，<br>一边又默默的点开了dota的启动键。<br>你能说你真的知道了吗？</p>
+<p>你明白了吧，为什么你身边的这些贱人们，<br>对你言语中伤后，每天还过的逍遥自在，<br>即便你恨的牙痒痒，也不能把他们怎么着。<br>一个是因为：<br>无论你承不承认，社会就是有阶层存在的，<br>他们和你在一个层次，可以放心的咬你的油箱。<br>咬完之后还可以咂摸咂摸嘴赞叹道：“真好吃”；<br>另一个是因为：<br>他们压根不信你丫还能通过自己默默的努力，<br>在一段时间后，上升到一个他们不可企及的人生高度。<br>然后活活让贱点子，把他们自己憋死。<br>因为他们无处耍贱了，哈哈。</p>
+<p>这是他们真正肆无忌惮的做贱人的最本质原因。</p>
+<p>而你如果能真正知道知行合一的意义，<br>你现在唯一要做的就是锻炼好自己的驾驶技能；<br>然后升上云雨层，将丫的活活憋死。<br>你想学编程，好啊，去看视频，去写代码；<br>你说你喜欢音乐，好呀，网上免费资源多的是；<br>百度总会吧，谷歌总会吧，加qq群总会吧；<br>不会，鼻子底下是什么，问呗。</p>
+<p>关于坚持的那些事儿</p>
+<p>我总觉得语言有时候太乏力，<br>只有自己真正理解了的东西，<br>才能自动的运用；<br>说起来运用之妙，存乎一心有些玄乎；<br>可是事实却是如此。<br>所以故事大家肯定看过很多很多了。<br>我只想为大家推荐两部电影两本书；<br>我觉得都很好的诠释了坚持的本质。<br>我非常反感鸡汤，我认为所有的鸡汤都是意淫，<br>过后全部是疲惫和更大的失落。<br>所以我不会推荐鸡汤的电影或书籍。<br>电影：<br>一、《编舟记》<br>该片讲述了在一家出版社的辞典编辑部里，在完成辞典《大渡海》编辑工作中发生的故事。主角是一个眼镜男，属于宅男那种类型。<br>这部片子告诉你，只要你足够坚持你会无意中成为点燃别人激情的人，<br>不错，和阿甘跑步那个片段非常像。<br>二、《风雨哈佛路》<br>我只想说：“谁不是千辛万苦才得到一点儿”；<br>比你苦的人，累的人，比你悲催和苦逼的大有人在；<br>不然你可以去看一看《浮生一日》；<br>让你一天看尽五大洋七大洲不同的人在同一天所发生的故事。<br>你没必要总是顾影自怜或者自怨自哀；<br>要知道大多数人智商相差不多；<br>后天的坚持和努力占了很大一部分。<br>书籍：<br>一、《越读者》<br>跟坚持无直接关系，可是如果你能坚持读一辈子的书，<br>谁敢说你不是在坚持呢？作者本身是个坐在轮椅上的人，<br>浸淫出版业多年，这是他自己写的一本书；<br>主要告诉人们该如何选择一本好书；<br>书籍是人类的精神食粮，<br>如果你把读书这件事坚持一辈子，<br>谁敢说你不牛逼呢？<br>二、《季羡林日记》<br>这本书本身就告诉你，坚持每天记流水账都可以出书；<br>呵呵，玩笑了，不过你不觉得每天记日记，<br>是最容易开始的一件和坚持有关的事情吗？<br>日记内文有的都不到一百字，好多还是重复的；<br>可是人家硬是坚持写了七十多年直到2002年住院才作罢。<br>所以说，坚持无须多么高大上，<br>也不必让全世界都知道；<br>只要你真的在坚持并且知行合一了，一件事足矣。</p>
+]]></content>
+      <categories>
+        <category>阳明心学</category>
       </categories>
   </entry>
   <entry>
@@ -466,27 +489,6 @@
       </categories>
   </entry>
   <entry>
-    <title>知行合一与坚持</title>
-    <url>/2016/03/17/%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E4%B8%8E%E5%9D%9A%E6%8C%81/</url>
-    <content><![CDATA[<p>你确定你真的在坚持？</p>
-<p>如果你真的在坚持知行合一，此生一件事足矣；<br>我们经常听到：“只管付出，莫问收获”这句话；<br>其实呢？试问几个人能做到，真正知行合一的坚持这句话；<br>如果坚持的人够多，就不会有微信朋友圈N多的鸡汤转来转去；<br>百度贴吧各种论坛和各种qq群也不会有那么多吐槽或抱怨的话；<br>比如：“今天那个谁又在背后说我坏话，谁谁谁说好某日还我钱，到了时候又不还”。<br>我的意思是说什么呢？<br>以上是摘要<a id="more"></a><br>既然每个人都不是圣人，就没必要将大多数人转来转去的那些你还并没有真正理解其内涵的话当作座右铭或者至理名言。<br>甚至将他在自己的朋友圈转出去，再荼毒其他不明内涵的人们。</p>
-<p>抱怨的理由何在？</p>
-<p>既然每个人都不是圣人，做不到真正的温良恭俭让，<br>也做不到不愠不火，每天如履薄冰，如临深渊。<br>那就试着不让这种容易引起你抱怨的事开始；<br>你抱怨某个嘴贱的人每天在背后对你叨逼叨，<br>要么辞职换工作，别告诉我你还没准备好，<br>你有抱怨的时间，早就准备好了。<br>要么就尽量不去听，不去想；<br>安心做好你自己的份内事。<br>你抱怨某个看起来很仗义的那个贱人，<br>借了你钱就是不还，那一开始就做好风险评估；<br>借的金额在你可承受范围内；<br>在你这里信用度降低到一定级别，<br>直接拒绝借出。<br>别告诉我你人好，不会拒绝人；<br>那你还tm抱怨个啥。</p>
-<p>关于那些贱人们<br>人有各种各样，形形色色，<br>被称为贱人的这些人，<br>他们也许在自己家人面前是乖孩子，在亲戚长辈中是有为青年，可就是你跟他们接触中，表现的一次比一次贱；<br>工作生涯中，这种碎嘴子的贱人超多，这种人大致又分为两种，<br>一种是长舌妇，到处宣扬一些小道消息，或是不确定真假的消息；<br>一种是别有用心，利用各种机会散布你的谣言，破坏你的心情。<br>活在现代社会，贱人避免不了。<br>你要么让自己更强大，要么比贱人更贱，你自己选吧。</p>
-<p>大学时我们有一个政治老师讲过一个故事；<br>当一架飞机升空时，发现有一群老鼠在咬油箱；<br>这时飞机上只有飞行员一个人，<br>他若扔下飞机去抓老鼠，飞机就会坠毁；<br>如果不抓，老鼠咬破油箱，油箱泄漏，也会坠毁。<br>这时应该怎么办呢？</p>
-<p>答案是将飞机升上云雨层，憋死丫一堆老鼠。</p>
-<p>你说，呀！这个故事我听过；<br>是的，太阳底下没有新鲜事；<br>如果你只是知道这个故事，那没什么了不起；<br>重要的是你能让自己知行合一吗？<br>哪怕你知道吃多了是要发胖的，<br>你能每天中午少吃块蛋糕，<br>或者夏天少吃个冰激凌吗？<br>又或者，你知道不学习是要落后的<br>落后是要挨打的；<br>可是你还是一边内心自责着，<br>一边又默默的点开了dota的启动键。<br>你能说你真的知道了吗？</p>
-<p>你明白了吧，为什么你身边的这些贱人们，<br>对你言语中伤后，每天还过的逍遥自在，<br>即便你恨的牙痒痒，也不能把他们怎么着。<br>一个是因为：<br>无论你承不承认，社会就是有阶层存在的，<br>他们和你在一个层次，可以放心的咬你的油箱。<br>咬完之后还可以咂摸咂摸嘴赞叹道：“真好吃”；<br>另一个是因为：<br>他们压根不信你丫还能通过自己默默的努力，<br>在一段时间后，上升到一个他们不可企及的人生高度。<br>然后活活让贱点子，把他们自己憋死。<br>因为他们无处耍贱了，哈哈。</p>
-<p>这是他们真正肆无忌惮的做贱人的最本质原因。</p>
-<p>而你如果能真正知道知行合一的意义，<br>你现在唯一要做的就是锻炼好自己的驾驶技能；<br>然后升上云雨层，将丫的活活憋死。<br>你想学编程，好啊，去看视频，去写代码；<br>你说你喜欢音乐，好呀，网上免费资源多的是；<br>百度总会吧，谷歌总会吧，加qq群总会吧；<br>不会，鼻子底下是什么，问呗。</p>
-<p>关于坚持的那些事儿</p>
-<p>我总觉得语言有时候太乏力，<br>只有自己真正理解了的东西，<br>才能自动的运用；<br>说起来运用之妙，存乎一心有些玄乎；<br>可是事实却是如此。<br>所以故事大家肯定看过很多很多了。<br>我只想为大家推荐两部电影两本书；<br>我觉得都很好的诠释了坚持的本质。<br>我非常反感鸡汤，我认为所有的鸡汤都是意淫，<br>过后全部是疲惫和更大的失落。<br>所以我不会推荐鸡汤的电影或书籍。<br>电影：<br>一、《编舟记》<br>该片讲述了在一家出版社的辞典编辑部里，在完成辞典《大渡海》编辑工作中发生的故事。主角是一个眼镜男，属于宅男那种类型。<br>这部片子告诉你，只要你足够坚持你会无意中成为点燃别人激情的人，<br>不错，和阿甘跑步那个片段非常像。<br>二、《风雨哈佛路》<br>我只想说：“谁不是千辛万苦才得到一点儿”；<br>比你苦的人，累的人，比你悲催和苦逼的大有人在；<br>不然你可以去看一看《浮生一日》；<br>让你一天看尽五大洋七大洲不同的人在同一天所发生的故事。<br>你没必要总是顾影自怜或者自怨自哀；<br>要知道大多数人智商相差不多；<br>后天的坚持和努力占了很大一部分。<br>书籍：<br>一、《越读者》<br>跟坚持无直接关系，可是如果你能坚持读一辈子的书，<br>谁敢说你不是在坚持呢？作者本身是个坐在轮椅上的人，<br>浸淫出版业多年，这是他自己写的一本书；<br>主要告诉人们该如何选择一本好书；<br>书籍是人类的精神食粮，<br>如果你把读书这件事坚持一辈子，<br>谁敢说你不牛逼呢？<br>二、《季羡林日记》<br>这本书本身就告诉你，坚持每天记流水账都可以出书；<br>呵呵，玩笑了，不过你不觉得每天记日记，<br>是最容易开始的一件和坚持有关的事情吗？<br>日记内文有的都不到一百字，好多还是重复的；<br>可是人家硬是坚持写了七十多年直到2002年住院才作罢。<br>所以说，坚持无须多么高大上，<br>也不必让全世界都知道；<br>只要你真的在坚持并且知行合一了，一件事足矣。</p>
-]]></content>
-      <categories>
-        <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
     <title>知行合一与格物</title>
     <url>/2016/03/17/%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E4%B8%8E%E6%A0%BC%E7%89%A9/</url>
     <content><![CDATA[<p>上次文留了一个问题，<br>知行合一与格物的关系，<br>这篇专门说说这个。</p>
@@ -538,29 +540,6 @@
       </categories>
   </entry>
   <entry>
-    <title>知行合一与工夫</title>
-    <url>/2016/03/17/%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E4%B8%8E%E5%B7%A5%E5%A4%AB/</url>
-    <content><![CDATA[<p>一、写在前面<br>你真的自私？<br>这里‘自私’是指：<br>一件事，<br>不会对你有害，<br>只会对你有益。</p>
-<p>你一定有过这番经历，<br>跑步有益健康，嫌累懒得跑，<br>读书使人明智，枯燥懒得读，<br>学习使人进步，嫌烦懒得学，</p>
-<p>所有悔不当初的事，<br>都会让人变得更好。<br>如果你真的‘自私’，<br>为什么你不做呢？<br>原因就是你并非真的‘自私’。<br>以上是摘要<a id="more"></a><br>二、诚意为何物？<br>诚意就是真的下决心<br>也是心学的第一要义，<br>不是嘴上说说的那种下决心，<br>而是你铁定了就是要做成这件事，<br>在这件事做成之前半途而废或者打退堂鼓，<br>都是意不诚的表现，也就是决心不够。</p>
-<p>三、知行合一与工夫<br>工夫的难点是格物致知<br>读过《大学》的，对就是『四书』里面的那个《大学》，<br>应该都知道：意诚，心正，身修，家齐，国治，天下平；<br>少了两个词儿，这都被你看到了，<br>没错就是格物致知。<br>物格而后知至。<br>《大学》这一段提到的几个专有名词统称：“三纲八目”。<br>格物，致知，正心，修身，齐家，治国，平天下就是八目。</p>
-<p>你说我知道呀，早就背的滚瓜烂熟了，可是也没从里面学到什么啊！<br>没错，学习心学以前我也有你同样的困惑，<br>心里经常会念叨，我靠不是正心，修身，齐家，治国，平天下吗？<br>现在哪里还需要你去平天下啊？<br>再看看现在的自己，当个县长什么的估计也没盼头；<br>还谈什么平天下？<br>所有考试不及格的学生大概都曲解了考题本身的意思，<br>我这么说大概没人反对吧？</p>
-<p>我先说说我以前是怎么理解《大学》里面这几句话的？<br>格物不就是掌握世上每件事情的规律吗？<br>致知不就是知道真理吗？<br>别笑，我以前就是这么理解的，<br>那么正心，修身不就是道德品质好，身体健康，做社会主义四有新人吗？<br>如果你也有和此相似的理解，我会说错错错，大错特错。</p>
-<p>1、格物<br>这里格物两字要分开讲，掰开了揉碎了讲，<br>“格”字在阳明理解就是正，<br>正的是什么？正的就是物；<br>物是什么呢？<br>‘物’既不是大家理解的物质，也不是事情的意思，<br>意之所在便是物，<br>那意又是什么呢？<br>心之所发便是意。<br>还有好奇的同学问？<br>心又是什么呢？<br>身之主宰便是心，这里的心绝对不是那团血肉，<br>而是天理之心，良知之心。</p>
-<p>格物的意思就是是纠正在你心上的事情，<br>使其符合良知之心，符合天理。<br>也就是不在你心上的事情，你是无法去格的，<br>此即谓：“心外无物”。</p>
-<p>你若问我天理是什么？<br>详细解释一篇论文的篇幅不够，<br>这里简单说下所谓天理，它已经存在于你的内心，<br>只不过被私欲所遮蔽，你去去一分私欲，便存一分天理。<br>好了现在意也诚了，物也格了，下面就该致知了，<br>大白话意思就是决心已下，在心上的事情也纠正的符合天理了。<br>这其实就是致知了。</p>
-<p>简单总结下：<br>要做到知行合一需要先做工夫（工夫包含很多，此篇只讲格物致知）<br>工夫的难点是格物致知，<br>诚意是格物致知的前提，格物致知是诚意的工夫；<br>诚意是格物致知的阶段性目的，格物致知是八目的起点。<br>而意越诚，也就是决心越大，则格物致知成效也就越大。<br>所以阳明才说，格物致知实际就是诚意的事情。<br>两者是相互促进的，格物致知增加决心，决心越大，格物致知成效也愈大，形成良性循环，但是切记要循序渐进。<br>格物告一段落，妈呀，解释清楚这俩字真的好难，喝口水，继续。</p>
-<p>2、致知<br>致知就是致良知，<br>说白了良知和天理是一个东西，都是不需学而可得。<br>这里良知和天理千万不要理解成道德层面的东西。<br>在心中的良知没有任何阻碍得以自然流行的时候，就是‘致知’。<br>只不过多数人良知被私欲遮蔽，因此需要致良知。</p>
-<p>你可能会好奇格物和致知的关系，<br>我也很好奇，一起来探索下吧。<br>我们格的是什么？<br>是物啊？<br>物是什么呢？<br>意之所在便是物啊？<br>那么好！意又是什么呢？<br>意的本体是知啊！<br>意的本体就是良知啊。<br>明白了吗？<br>我格的那个物是意之所在的物，它的本质是良知。<br>我格物的过程就是致良知的过程啊。<br>所以说格物致知本就是一件事情。<br>格物是致知的过程，致知是格物的最终目的。</p>
-<p>文行至此你会说，<br>上面就看格物致知了，<br>与“知行合一”有什么关系？<br>问得好，破天荒我引用一段原文：<br>知者，良知也，天然自有，即至善也。<br>物者，良知所知之事也。<br>格者，格其不正以归于正也。<br>格之斯实致之矣。<br>–《遗言录-明-王守仁》<br>引用完美解答了知行合一与格物致知的关系，<br>《知行合一与至善》一文提到，知行合一的最终目的就是“至善”。<br>而至善即是良知，致知即是致至善，<br>也就是知行合一的最终目的。<br>换句话说格物和知行合一的最终目的都是致良知，也都是至善，<br>因为良知和至善本来就是一回事的两种说法。<br>你问我知行合一和格物什么关系呀？且听下回分解。</p>
-<p>本期推荐电影：<br>一、《天堂的孩子》<br>推荐语：一对兄妹和一双鞋子的故事，很温暖。<br>二、《欺诈计划》<br>推荐语：这是部不露肉的伦理片，家庭靠感情还是靠血缘维系？<br>三《双旗镇刀客》<br>推荐语：喜欢武侠的这部绝对看了不下十遍吧，不解释。</p>
-<p>本期推荐书籍：<br>一、《岩中花树》作者：赵柏田<br>推荐语：以第一人称写王阳明的一生。<br>二、《华尔街日报是如何讲故事的》作者：威廉 布隆代尔<br>推荐语：对文案情有独钟的同学一定要精读。<br>三、《宫女谈往录》金易 沈义玲<br>推荐语：慈禧的起居与宫闱里的往事，细节独到，是谁道人生无常？</p>
-]]></content>
-      <categories>
-        <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
     <title>知行合一与至善</title>
     <url>/2016/03/17/%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E4%B8%8E%E8%87%B3%E5%96%84/</url>
     <content><![CDATA[<p>一、前面的话</p>
@@ -588,6 +567,97 @@
 ]]></content>
       <categories>
         <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>知行合一与工夫</title>
+    <url>/2016/03/17/%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E4%B8%8E%E5%B7%A5%E5%A4%AB/</url>
+    <content><![CDATA[<p>一、写在前面<br>你真的自私？<br>这里‘自私’是指：<br>一件事，<br>不会对你有害，<br>只会对你有益。</p>
+<p>你一定有过这番经历，<br>跑步有益健康，嫌累懒得跑，<br>读书使人明智，枯燥懒得读，<br>学习使人进步，嫌烦懒得学，</p>
+<p>所有悔不当初的事，<br>都会让人变得更好。<br>如果你真的‘自私’，<br>为什么你不做呢？<br>原因就是你并非真的‘自私’。<br>以上是摘要<a id="more"></a><br>二、诚意为何物？<br>诚意就是真的下决心<br>也是心学的第一要义，<br>不是嘴上说说的那种下决心，<br>而是你铁定了就是要做成这件事，<br>在这件事做成之前半途而废或者打退堂鼓，<br>都是意不诚的表现，也就是决心不够。</p>
+<p>三、知行合一与工夫<br>工夫的难点是格物致知<br>读过《大学》的，对就是『四书』里面的那个《大学》，<br>应该都知道：意诚，心正，身修，家齐，国治，天下平；<br>少了两个词儿，这都被你看到了，<br>没错就是格物致知。<br>物格而后知至。<br>《大学》这一段提到的几个专有名词统称：“三纲八目”。<br>格物，致知，正心，修身，齐家，治国，平天下就是八目。</p>
+<p>你说我知道呀，早就背的滚瓜烂熟了，可是也没从里面学到什么啊！<br>没错，学习心学以前我也有你同样的困惑，<br>心里经常会念叨，我靠不是正心，修身，齐家，治国，平天下吗？<br>现在哪里还需要你去平天下啊？<br>再看看现在的自己，当个县长什么的估计也没盼头；<br>还谈什么平天下？<br>所有考试不及格的学生大概都曲解了考题本身的意思，<br>我这么说大概没人反对吧？</p>
+<p>我先说说我以前是怎么理解《大学》里面这几句话的？<br>格物不就是掌握世上每件事情的规律吗？<br>致知不就是知道真理吗？<br>别笑，我以前就是这么理解的，<br>那么正心，修身不就是道德品质好，身体健康，做社会主义四有新人吗？<br>如果你也有和此相似的理解，我会说错错错，大错特错。</p>
+<p>1、格物<br>这里格物两字要分开讲，掰开了揉碎了讲，<br>“格”字在阳明理解就是正，<br>正的是什么？正的就是物；<br>物是什么呢？<br>‘物’既不是大家理解的物质，也不是事情的意思，<br>意之所在便是物，<br>那意又是什么呢？<br>心之所发便是意。<br>还有好奇的同学问？<br>心又是什么呢？<br>身之主宰便是心，这里的心绝对不是那团血肉，<br>而是天理之心，良知之心。</p>
+<p>格物的意思就是是纠正在你心上的事情，<br>使其符合良知之心，符合天理。<br>也就是不在你心上的事情，你是无法去格的，<br>此即谓：“心外无物”。</p>
+<p>你若问我天理是什么？<br>详细解释一篇论文的篇幅不够，<br>这里简单说下所谓天理，它已经存在于你的内心，<br>只不过被私欲所遮蔽，你去去一分私欲，便存一分天理。<br>好了现在意也诚了，物也格了，下面就该致知了，<br>大白话意思就是决心已下，在心上的事情也纠正的符合天理了。<br>这其实就是致知了。</p>
+<p>简单总结下：<br>要做到知行合一需要先做工夫（工夫包含很多，此篇只讲格物致知）<br>工夫的难点是格物致知，<br>诚意是格物致知的前提，格物致知是诚意的工夫；<br>诚意是格物致知的阶段性目的，格物致知是八目的起点。<br>而意越诚，也就是决心越大，则格物致知成效也就越大。<br>所以阳明才说，格物致知实际就是诚意的事情。<br>两者是相互促进的，格物致知增加决心，决心越大，格物致知成效也愈大，形成良性循环，但是切记要循序渐进。<br>格物告一段落，妈呀，解释清楚这俩字真的好难，喝口水，继续。</p>
+<p>2、致知<br>致知就是致良知，<br>说白了良知和天理是一个东西，都是不需学而可得。<br>这里良知和天理千万不要理解成道德层面的东西。<br>在心中的良知没有任何阻碍得以自然流行的时候，就是‘致知’。<br>只不过多数人良知被私欲遮蔽，因此需要致良知。</p>
+<p>你可能会好奇格物和致知的关系，<br>我也很好奇，一起来探索下吧。<br>我们格的是什么？<br>是物啊？<br>物是什么呢？<br>意之所在便是物啊？<br>那么好！意又是什么呢？<br>意的本体是知啊！<br>意的本体就是良知啊。<br>明白了吗？<br>我格的那个物是意之所在的物，它的本质是良知。<br>我格物的过程就是致良知的过程啊。<br>所以说格物致知本就是一件事情。<br>格物是致知的过程，致知是格物的最终目的。</p>
+<p>文行至此你会说，<br>上面就看格物致知了，<br>与“知行合一”有什么关系？<br>问得好，破天荒我引用一段原文：<br>知者，良知也，天然自有，即至善也。<br>物者，良知所知之事也。<br>格者，格其不正以归于正也。<br>格之斯实致之矣。<br>–《遗言录-明-王守仁》<br>引用完美解答了知行合一与格物致知的关系，<br>《知行合一与至善》一文提到，知行合一的最终目的就是“至善”。<br>而至善即是良知，致知即是致至善，<br>也就是知行合一的最终目的。<br>换句话说格物和知行合一的最终目的都是致良知，也都是至善，<br>因为良知和至善本来就是一回事的两种说法。<br>你问我知行合一和格物什么关系呀？且听下回分解。</p>
+<p>本期推荐电影：<br>一、《天堂的孩子》<br>推荐语：一对兄妹和一双鞋子的故事，很温暖。<br>二、《欺诈计划》<br>推荐语：这是部不露肉的伦理片，家庭靠感情还是靠血缘维系？<br>三《双旗镇刀客》<br>推荐语：喜欢武侠的这部绝对看了不下十遍吧，不解释。</p>
+<p>本期推荐书籍：<br>一、《岩中花树》作者：赵柏田<br>推荐语：以第一人称写王阳明的一生。<br>二、《华尔街日报是如何讲故事的》作者：威廉 布隆代尔<br>推荐语：对文案情有独钟的同学一定要精读。<br>三、《宫女谈往录》金易 沈义玲<br>推荐语：慈禧的起居与宫闱里的往事，细节独到，是谁道人生无常？</p>
+]]></content>
+      <categories>
+        <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>编程学习心得</title>
+    <url>/2016/03/17/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/</url>
+    <content><![CDATA[<p>似乎每个人对一件从未接触过的事物着迷时；<br>都恨不得一下子就对其融会贯通；<br>这种急切心理，极有可能导致稍遇挫折，便丧失兴趣。</p>
+<p>比如我对编程的学习；<br>在刚开始时的确一腔热情；<br>但是稍微接触到不容易理解的地方；<br>就会不由自主地怀疑自己！<br>自己真的适合学编程吗?<br>我怎么这么笨？<br>我这个年龄学编程还成吗？</p>
+<p>其实，这都是由于刚开始热情太盛；<br>努力一段时间后，<br>得不到自己期望的效果，<br>便兴趣缺缺了。<br>以上是摘要<a id="more"></a><br>学习始终遵循循序渐进的原则；<br>而不是像玩游戏一样，<br>能得到及时的满足和成就感。<br>所以很多颇有成就的人，<br>都是最善于推迟自己满足感的人。</p>
+<p>其实我最该问的问题不应该是以上那些；<br>而只应该问一个问题？<br>我怎么才能学好编程?<br>那些已经有了些许成就的程序员，<br>是如何取得今天的成就的？</p>
+<p>在学习中还发现一个问题；<br>就是学习一个知识点，<br>一定不要紧追着一个人的讲解不放；<br>同是一个知识点，<br>这个人讲解的既轻松又清晰，<br>而你紧抱着不放的那个则是既繁琐又模糊。</p>
+<p>所以在学习中必须灵活，<br>灵活不是投机取巧；<br>而是在网络信息如此发达的今日；<br>不应该紧抱着某一个信息源不放；<br>某个信息源的讲解听不明白，<br>则必须及时寻找能让你更容易明白的信息源；<br>相信我，一定可以找得到。</p>
+<p>比如在学习oc的三大特性封装、继承与多态时；<br>我花钱买的课程讲解时既模糊又乏味；<br>这时我就对自己产生怀疑了；<br>难道我真的笨蛋如此；<br>可是后来偶然间看到一篇博客；<br>瞬间让我豁然开朗。<br>就是那种梦里千百度，蓦然回首处的感觉。</p>
+<p>总之学习一定不是揪着某个问题不放；<br>当然不是真的放下不管；<br>而是先放到潜意识里；<br>往往会出现这种情况；</p>
+<p>某日你对A问题产生疑惑；<br>又一日，你对B问题更是纠结不已；<br>但是，还一日，你去查找C问题的答案，<br>发现竟然找到了A的答案。<br>这往往是持续学习中，<br>最令人痛快之时。</p>
+]]></content>
+      <categories>
+        <category>IOS</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>苏阿芒—自学外语怎能不知道他</title>
+    <url>/2016/03/17/%E8%8B%8F%E9%98%BF%E8%8A%92%E2%80%94%E8%87%AA%E5%AD%A6%E5%A4%96%E8%AF%AD%E6%80%8E%E8%83%BD%E4%B8%8D%E7%9F%A5%E9%81%93%E4%BB%96/</url>
+    <content><![CDATA[<p>原籍安徽省太平县（今黄山区）广阳乡（今属安徽石台）人，本名苏承宗，因发表作品多以苏阿芒为名，故以苏阿芒一名蜚声海内外。<br>中学毕业后曾任天津机床厂夜校英文教师，1957年加入世界语协会，历任国际世界语博物馆馆员，<br>国际世界语《世界文学》特约撰稿人，国际世界读者青年联合会中央委员，“文革”中1968年蒙冤入狱，1979年平反后任百花出版社编辑。<br>1951年开始发表作品。1979年加入中国作家协会。<br>以上借用一段百科文字，<br>我知道苏阿芒其人其事，<br>是在父亲书箱里翻到的一本叫做《成才之路》的书上。<br>以上是摘要<a id="more"></a><br>当时看到就热血沸腾，<br>最近在学习日语和英语，<br>又想起这个名字。<br>由苏阿芒的故事，<br>我觉得无论学习外语还是学习其他东西，<br>就是不疯魔不成活。<br>想想你我诸位，<br>谁在地铁或者在商务活动中，<br>没有遇到过这样的场景：<br>你原本很以为难的一门外语，<br>在地铁中你身旁的一位美女或者老兄，<br>正在和外国人侃侃而谈，<br>不时发出爽朗的笑声。<br>又或者在商务活动中，<br>你的同事与谈判对手，<br>正在用一门你觉得很难的外语，<br>唇枪舌剑，你来我往。<br>当时你除了发蒙，<br>第二个感觉就是，<br>真TMD的太牛逼了。<br>我要是外语也这么牛逼，<br>那该多好啊！<br>可你就是无法做到……<br>这么牛逼！<br>是的你无法做到。</p>
+<p>因为等你下了地铁或者在结束那次谈判后，<br>你就又想着今天回去吃什么，<br>或者想着购物车里那件好看的鞋子或者衣服，<br>是不是又降价了。<br>事实就是如此，<br>我从遇到这种情况之后，<br>发奋学英语，<br>到如今也已有五六年时间，<br>到如今英语的水平，<br>也只能令自己呵呵了。<br>自己看了下掌握多门外语的牛逼人物，<br>远者如辜鸿铭，近者如苏阿芒。<br>他们有神马了不得方法吗？<br>还是天赋异禀。<br>非也！<br>唯苦练勤学尔。<br>我自己的猜测啊！<br>学第一门外语的难度，<br>和第二门第三门外语的难度肯定成几何级降低的。<br>因为你在学第一门外语的时候，<br>已经有了一套成熟的方法论；<br>区别只是在学其他外语的时候，<br>对方法论体系中的某个细节进行改动，<br>并且随着学的外语门数增多；<br>这个方法论的体系一定会不断完善，不断得到补充；<br>那么等到你学第二十门的时候，<br>肯定已经是手到擒来，如探囊取物般容易了。<br>所以根结在神马地方，<br>第一个是恒心，第二个是勤奋；<br>第三是保证你自己必须先学会一门外语。<br>如果你想学更多门外语，肯定会越来越容易的。<br>因此，无论你学英语还是韩语，无论意大利语还是西班牙语。<br>如果你真的想学多门外语，保证你先精通一门外语。<br>其他外语定然是可以得其门而入的。<br>那么你一定要知道苏阿芒的故事，<br>也就是题中应有之意了。</p>
+]]></content>
+      <categories>
+        <category>外语学习</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>诚意与格物</title>
+    <url>/2016/03/17/%E8%AF%9A%E6%84%8F%E4%B8%8E%E6%A0%BC%E7%89%A9/</url>
+    <content><![CDATA[<p>一、前面的话</p>
+<p>阳明心学的概念和结构跟《大学》关系密切，<br>诚意作为三纲八目的起点，至关重要，<br>格物又是致良知和诚意的核心工夫，<br>因此，很有必要单独聊聊诚意和格物。</p>
+<p>二、诚意<br>诚意就是下决心，真的下决心<br>但不是下一次就可以，<br>因为决心需要格物和知行合一的支撑。<br>前文有述及，<br>决心与格物和知行合一是一个循序渐进，<br>相互促进的过程。<br>以上是摘要<a id="more"></a><br>多说无用，举例说明。<br>假如你要学习IOS编程，<br>从对IOS编程一无所知，<br>到完成自己的app，<br>对你来说肯定是一件很苦逼的事，<br>你觉得这时候决心对你有用吗 ？<br>答案是屁用没有，</p>
+<p>没错，决心对这时候的你来说，<br>绝对屁用没有，<br>那你就问了，<br>我靠，屁用没有，<br>那我学诚意有毛用，<br>别急，诚意不是一个孤立的单品，<br>是一个需要配合格物和知行合一一起使用的产品。<br>正如电和灯泡的关系，<br>有了电，屁用没有，<br>每天晚上还是无尽的黑暗，<br>但是伟大的爱迪生发明了灯泡，<br>我们夜晚的世界就变成了五彩缤纷的天堂。</p>
+<p>所以说下了学习编程的决心，<br>立马就要去格学习IOS编程这件事。<br>这就是诚意的作用，<br>诚意是电，有了它格物和知行合一这两个灯泡，<br>才能照亮你人生之夜的天空。</p>
+<p>二、格物<br>格物是诚意的手段，<br>诚意是格物的目的。<br>现在下了学习IOS编程的决心了，<br>那要怎么学呢？</p>
+<p>接着诚意的例子讲，<br>格学习编程这件事，<br>首先，你得知道IOS编程分几部分吧，<br>开始先得学C和OC的语法，<br>其次要学UI，要学数据库，网络和多线程等。</p>
+<p>刚开始肯定是茫无头绪的，<br>但是有勿忘勿助啊，<br>不要急着去精通，<br>但是也不要一曝十寒，<br>也就是既不要急吼吼的，<br>也不要三天打鱼两天晒网。<br>当你从一无所知，<br>学会了C里面的运算符，数据类型，循环体和选择语法，<br>这时候诚意就有作用了，<br>你的决心肯定加大了。<br>学了C,OC就很容易了，</p>
+<p>接下来该学习UI了，<br>当你学完UI，<br>并且第一次自己写出了一个简单的加法计算器或者QQ登录界面，<br>这时候的成就感肯定是你无法想象的。<br>那这时候的决心简直不要不要的了。</p>
+<p>就这样一步步前进，<br>每学完一个部分，<br>决心会随之增加，<br>最后当你做出自己的一个app，<br>并且在APPStore上架，<br>这就是一个完整的格物和知行合一的过程，<br>也是一个完整的诚意过程。</p>
+<p>在《知行合一与格物》里讲过，<br>格物偏向思考层面，<br>知行合一偏向行动层面，<br>因此学编程这件事里，<br>格物是让你弄清楚学习编程的整个路线图，<br>而知行合一确保你能自己亲自动手去练习写代码，<br>而不只是听视频里的课程，却并不动手。<br>诚意则是让你能够坚持学下去。</p>
+<p>三、诚意与格物的抽象表述</p>
+<p>当你第一次下决心后，<br>如果真正去格物和知行合一了，<br>这样便会增加你的决心，<br>又促成了你再次的格物和知行合一，<br>这样又使你的决心更进一步，<br>从而形成良性循环，<br>直到最后要格的物符合了天理。<br>从而完成一个完整的格物致知的过程。</p>
+<p>本期推荐电影电视剧：<br>一、《趟过女人河的男人》<br>推荐语：演员是一份工作，明星是一个标签，厌烦了如今电视剧中明星狗血表演的你，来重温下演员们的表演吧。<br>二、《低俗小说》<br>推荐语：<br>逼片届的一座高峰，要不就永远不要看，看了就得夸它赞，否则会被凶猛的影迷怒吼“LZ大傻逼，看你的《无极》去吧！”<br>三、《大卫戈尔的一生》<br>推荐语：你确定你有信仰，确定是吧？那就看看戈尔们是怎样维护自己的信仰的？<br>本期推荐书籍：<br>一、《读书毁了我》作者：王强<br>推荐语：读书是一件很花费时间的事情，既成就人，也毁人的时间，看看书是怎么毁去新东方三驾马车之一的王强的时间的吧。<br>二、《尼采：在世纪的转折点上》作者：周国平<br>推荐语：虽然我恨他现在大量生产鸡汤，但是这人早期的这本书写的还是很有见地的。<br>三、《旁观者》作者：德鲁克<br>推荐语：作者本人的回忆录，但是故事讲得很好，每个故事都有些独特的人在演绎，如果你也喜欢听真实的故事，不妨一阅。</p>
+]]></content>
+      <categories>
+        <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>OC中委托和协议</title>
+    <url>/2016/03/17/OC%E4%B8%AD%E5%A7%94%E6%89%98%E5%92%8C%E5%8D%8F%E8%AE%AE/</url>
+    <content><![CDATA[<p>一、为什么写这篇文章</p>
+<p>我目前在编程方面是菜鸟，<br>这篇文章也只适合刚入行的菜鸟，<br>之所以写这篇文章有两个目的：<br>第一是为了自己复习用，<br>第二，为了给和我一样的菜鸟们一个参考；<br>我发觉好多介绍这两个概念的文章，<br>要么一开头就写在java中如何，在c＋＋中如何，<br>大哥，我就是一菜鸟，未入行前是小白，<br>我只略懂oc这一门编程语言，<br>你给我扯什么java，C＋＋只能令我更迷茫。<br>以上是摘要<a id="more"></a><br>二、委托和协议的区别</p>
+<p>委托是一种编程设计模式，<br>王五想找份工作，自己没门路，<br>就委托有门路的马六去找，<br>王五要求签订一个合同（就是协议）保证帮他找到工作。<br>只有按照合同的条款找到帮他找到工作他才会付款。<br>然后马六接受了合同，<br>最后帮王五找到了工作，<br>这就是一个完整的委托了。<br>别再告诉我什么回调函数，什么callback 了，<br>我ted真听不懂，<br>这里王五委托马六找工作就是一个委托。</p>
+<p>协议就是例子中的合同了，<br>它里面是具体的条款（方法），<br>马六保证都能办到（实现方法），<br>王五才会付钱给他。</p>
+<p>三、王五和马六的买卖怎么做？</p>
+<p>1、王五分析了自己找工作的需求制定了一个协议，要求钱多事儿少离家近，协议如下；<br>#import &lt;Foundation/Foundation.h&gt;<br>@class Wangwu;<br>//王五的协议内容<br>@protocol FindworkDelegate <NSObject><br>-(void)moneyMax:(Wangwu<em>)WW;<br>-(void)treatMent:(Wangwu</em>)WW;<br>@end<br>2、王五的要求是只要遵守协议里的要求办任何人都可以帮我找工作，因此授权形式如下，并且开始和截止日期的决定权在王五自己手里。<br>@interface Wangwu :NSObject<br>//代理的授权范围,谁干都行，但必须遵守我的协议<br>@property(nonatomic,weak)id <FindworkDelegate>delegate;<br>-(void)goodWork;//什么时候开始找，什么时候不找我说了算。<br>@end</p>
+<p>3、马六认为自己门路广可以接这个活儿，然后马六就遵守了协议帮王五去找工作；<br>//遵守协议条款<br>#import &lt;Foundation/Foundation.h&gt;<br>#import “Maliu.h”<br>@protocolFindworkDelegate;……//对协议进行提前声明和@class用途一致<br>@interface Maliu :NSObject <FindworkDelegate><br>@end<br>//开始寻找符合王五协议要求的工作；（实现方法）<br>#import “Maliu.h”<br>#import “Wangwu.h”……//保证实现方法的时候有提示<br>@implementation Maliu<br>-(void)moneyMax:(Wangwu <em>)WW{<br>NSLog(@”这个工作%@大大滴有钱！”,WW);<br>}<br>-(void)treatMent:(Wangwu *)WW{<br>NSLog(@”这个工作%@待遇大大滴好！”,WW);<br>}<br>@end<br>4、王五开始发指令：马六啊，钱多事儿少离家近的工作赶紧帮我找，找两份啊，供我备选。<br>#import &lt;Foundation/Foundation.h&gt;<br>#import “Wangwu.h”<br>#import “Maliu.h”<br>int main(int argc,constchar * argv[]) {<br>@autoreleasepool {<br>//初始化王五和马六<br>Wangwu</em>WW1=[[Wangwualloc]init];<br>Maliu<em>ML=[[Maliualloc]init];<br>//马六把找工作的情况反馈给王五<br>WW1.delegate=ML;<br>//王五放出找工作大招<br>[WW1 goodWork];<br>//王五再次委托马六找工作<br>Wangwu</em>WW2=[[Wangwualloc]init];<br>WW2.delegate=ML;<br>//王五再次放出找工作大招<br>[WW2 goodWork];<br>}<br>return 0;<br>}</p>
+<p>5、马六说已经找好了，赶紧拿钱来<br>#import “Wangwu.h”<br>@implementation Wangwu<br>-(void)goodWork{<br>//王五说甭急，我比较下这两份工作再做决定（传回来的参数可以判断是那份工作的内容介绍）<br>if ([_delegaterespondsToSelector:@selector(moneyMax:)]||[_delegaterespondsToSelector:@selector(treatMent:)]){<br>[_delegatemoneyMax:self];<br>[_delegatetreatMent:self];<br>}<br>else{<br>NSLog(@”找到的工作不符合王五的要求”);<br>}<br>}<br>@end<br>6、王五说选好了，那个，啊，我支付宝给你确认下，准备收钱吧。<br>2016-03-14 00:51:29.005 work[3383:360865] 这个工作&lt;Wangwu: 0x100103a60&gt;大大滴有钱！<br>2016-03-14 00:51:29.008 work[3383:360865] 这个工作&lt;Wangwu: 0x100103a60&gt;待遇大大滴好！<br>2016-03-14 00:51:29.008 work[3383:360865] 这个工作&lt;Wangwu: 0x1003001b0&gt;大大滴有钱！<br>2016-03-14 00:51:29.008 work[3383:360865] 这个工作&lt;Wangwu: 0x1003001b0&gt;待遇大大滴好！<br>Program ended with exit code: 0</p>
+<p>总结：<br>1、委托行为借助协议得以完成；这里王五通过FindworkDelegat协议委托马六找工作；协议要求钱多事儿少离家近；<br>2、并且规定必须遵守这个协议的要求找工作才可以付钱：@property(nonatomic,weak)id <FindworkDelegate>delegate;<br>3、委托找两份工作因此每反馈回来一次，需要判断是哪份工作的内容介绍：使用respondsToSelector:@selector(moneyMax:)方法进行判断。<br>Wangwu*WW1=[[Wangwu alloc]init];第一份工作</p>
+<p>Wangwu*WW2=[[Wangwu alloc]init];第二份工作</p>
+<p>if ([_delegate respondsToSelector:@selector(moneyMax:)]||[_delegate respondsToSelector:@selector(treatMent:)]){<br>[_delegate moneyMax:self];self是指具体是哪份工作？<br>[_delegate treatMent:self];<br>}<br>over！</p>
+]]></content>
+      <categories>
+        <category>IOS</category>
       </categories>
   </entry>
   <entry>
@@ -629,55 +699,6 @@
 ]]></content>
       <categories>
         <category>思维提升</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>诚意与格物</title>
-    <url>/2016/03/17/%E8%AF%9A%E6%84%8F%E4%B8%8E%E6%A0%BC%E7%89%A9/</url>
-    <content><![CDATA[<p>一、前面的话</p>
-<p>阳明心学的概念和结构跟《大学》关系密切，<br>诚意作为三纲八目的起点，至关重要，<br>格物又是致良知和诚意的核心工夫，<br>因此，很有必要单独聊聊诚意和格物。</p>
-<p>二、诚意<br>诚意就是下决心，真的下决心<br>但不是下一次就可以，<br>因为决心需要格物和知行合一的支撑。<br>前文有述及，<br>决心与格物和知行合一是一个循序渐进，<br>相互促进的过程。<br>以上是摘要<a id="more"></a><br>多说无用，举例说明。<br>假如你要学习IOS编程，<br>从对IOS编程一无所知，<br>到完成自己的app，<br>对你来说肯定是一件很苦逼的事，<br>你觉得这时候决心对你有用吗 ？<br>答案是屁用没有，</p>
-<p>没错，决心对这时候的你来说，<br>绝对屁用没有，<br>那你就问了，<br>我靠，屁用没有，<br>那我学诚意有毛用，<br>别急，诚意不是一个孤立的单品，<br>是一个需要配合格物和知行合一一起使用的产品。<br>正如电和灯泡的关系，<br>有了电，屁用没有，<br>每天晚上还是无尽的黑暗，<br>但是伟大的爱迪生发明了灯泡，<br>我们夜晚的世界就变成了五彩缤纷的天堂。</p>
-<p>所以说下了学习编程的决心，<br>立马就要去格学习IOS编程这件事。<br>这就是诚意的作用，<br>诚意是电，有了它格物和知行合一这两个灯泡，<br>才能照亮你人生之夜的天空。</p>
-<p>二、格物<br>格物是诚意的手段，<br>诚意是格物的目的。<br>现在下了学习IOS编程的决心了，<br>那要怎么学呢？</p>
-<p>接着诚意的例子讲，<br>格学习编程这件事，<br>首先，你得知道IOS编程分几部分吧，<br>开始先得学C和OC的语法，<br>其次要学UI，要学数据库，网络和多线程等。</p>
-<p>刚开始肯定是茫无头绪的，<br>但是有勿忘勿助啊，<br>不要急着去精通，<br>但是也不要一曝十寒，<br>也就是既不要急吼吼的，<br>也不要三天打鱼两天晒网。<br>当你从一无所知，<br>学会了C里面的运算符，数据类型，循环体和选择语法，<br>这时候诚意就有作用了，<br>你的决心肯定加大了。<br>学了C,OC就很容易了，</p>
-<p>接下来该学习UI了，<br>当你学完UI，<br>并且第一次自己写出了一个简单的加法计算器或者QQ登录界面，<br>这时候的成就感肯定是你无法想象的。<br>那这时候的决心简直不要不要的了。</p>
-<p>就这样一步步前进，<br>每学完一个部分，<br>决心会随之增加，<br>最后当你做出自己的一个app，<br>并且在APPStore上架，<br>这就是一个完整的格物和知行合一的过程，<br>也是一个完整的诚意过程。</p>
-<p>在《知行合一与格物》里讲过，<br>格物偏向思考层面，<br>知行合一偏向行动层面，<br>因此学编程这件事里，<br>格物是让你弄清楚学习编程的整个路线图，<br>而知行合一确保你能自己亲自动手去练习写代码，<br>而不只是听视频里的课程，却并不动手。<br>诚意则是让你能够坚持学下去。</p>
-<p>三、诚意与格物的抽象表述</p>
-<p>当你第一次下决心后，<br>如果真正去格物和知行合一了，<br>这样便会增加你的决心，<br>又促成了你再次的格物和知行合一，<br>这样又使你的决心更进一步，<br>从而形成良性循环，<br>直到最后要格的物符合了天理。<br>从而完成一个完整的格物致知的过程。</p>
-<p>本期推荐电影电视剧：<br>一、《趟过女人河的男人》<br>推荐语：演员是一份工作，明星是一个标签，厌烦了如今电视剧中明星狗血表演的你，来重温下演员们的表演吧。<br>二、《低俗小说》<br>推荐语：<br>逼片届的一座高峰，要不就永远不要看，看了就得夸它赞，否则会被凶猛的影迷怒吼“LZ大傻逼，看你的《无极》去吧！”<br>三、《大卫戈尔的一生》<br>推荐语：你确定你有信仰，确定是吧？那就看看戈尔们是怎样维护自己的信仰的？<br>本期推荐书籍：<br>一、《读书毁了我》作者：王强<br>推荐语：读书是一件很花费时间的事情，既成就人，也毁人的时间，看看书是怎么毁去新东方三驾马车之一的王强的时间的吧。<br>二、《尼采：在世纪的转折点上》作者：周国平<br>推荐语：虽然我恨他现在大量生产鸡汤，但是这人早期的这本书写的还是很有见地的。<br>三、《旁观者》作者：德鲁克<br>推荐语：作者本人的回忆录，但是故事讲得很好，每个故事都有些独特的人在演绎，如果你也喜欢听真实的故事，不妨一阅。</p>
-]]></content>
-      <categories>
-        <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>编程学习心得</title>
-    <url>/2016/03/17/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/</url>
-    <content><![CDATA[<p>似乎每个人对一件从未接触过的事物着迷时；<br>都恨不得一下子就对其融会贯通；<br>这种急切心理，极有可能导致稍遇挫折，便丧失兴趣。</p>
-<p>比如我对编程的学习；<br>在刚开始时的确一腔热情；<br>但是稍微接触到不容易理解的地方；<br>就会不由自主地怀疑自己！<br>自己真的适合学编程吗?<br>我怎么这么笨？<br>我这个年龄学编程还成吗？</p>
-<p>其实，这都是由于刚开始热情太盛；<br>努力一段时间后，<br>得不到自己期望的效果，<br>便兴趣缺缺了。<br>以上是摘要<a id="more"></a><br>学习始终遵循循序渐进的原则；<br>而不是像玩游戏一样，<br>能得到及时的满足和成就感。<br>所以很多颇有成就的人，<br>都是最善于推迟自己满足感的人。</p>
-<p>其实我最该问的问题不应该是以上那些；<br>而只应该问一个问题？<br>我怎么才能学好编程?<br>那些已经有了些许成就的程序员，<br>是如何取得今天的成就的？</p>
-<p>在学习中还发现一个问题；<br>就是学习一个知识点，<br>一定不要紧追着一个人的讲解不放；<br>同是一个知识点，<br>这个人讲解的既轻松又清晰，<br>而你紧抱着不放的那个则是既繁琐又模糊。</p>
-<p>所以在学习中必须灵活，<br>灵活不是投机取巧；<br>而是在网络信息如此发达的今日；<br>不应该紧抱着某一个信息源不放；<br>某个信息源的讲解听不明白，<br>则必须及时寻找能让你更容易明白的信息源；<br>相信我，一定可以找得到。</p>
-<p>比如在学习oc的三大特性封装、继承与多态时；<br>我花钱买的课程讲解时既模糊又乏味；<br>这时我就对自己产生怀疑了；<br>难道我真的笨蛋如此；<br>可是后来偶然间看到一篇博客；<br>瞬间让我豁然开朗。<br>就是那种梦里千百度，蓦然回首处的感觉。</p>
-<p>总之学习一定不是揪着某个问题不放；<br>当然不是真的放下不管；<br>而是先放到潜意识里；<br>往往会出现这种情况；</p>
-<p>某日你对A问题产生疑惑；<br>又一日，你对B问题更是纠结不已；<br>但是，还一日，你去查找C问题的答案，<br>发现竟然找到了A的答案。<br>这往往是持续学习中，<br>最令人痛快之时。</p>
-]]></content>
-      <categories>
-        <category>IOS</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>苏阿芒—自学外语怎能不知道他</title>
-    <url>/2016/03/17/%E8%8B%8F%E9%98%BF%E8%8A%92%E2%80%94%E8%87%AA%E5%AD%A6%E5%A4%96%E8%AF%AD%E6%80%8E%E8%83%BD%E4%B8%8D%E7%9F%A5%E9%81%93%E4%BB%96/</url>
-    <content><![CDATA[<p>原籍安徽省太平县（今黄山区）广阳乡（今属安徽石台）人，本名苏承宗，因发表作品多以苏阿芒为名，故以苏阿芒一名蜚声海内外。<br>中学毕业后曾任天津机床厂夜校英文教师，1957年加入世界语协会，历任国际世界语博物馆馆员，<br>国际世界语《世界文学》特约撰稿人，国际世界读者青年联合会中央委员，“文革”中1968年蒙冤入狱，1979年平反后任百花出版社编辑。<br>1951年开始发表作品。1979年加入中国作家协会。<br>以上借用一段百科文字，<br>我知道苏阿芒其人其事，<br>是在父亲书箱里翻到的一本叫做《成才之路》的书上。<br>以上是摘要<a id="more"></a><br>当时看到就热血沸腾，<br>最近在学习日语和英语，<br>又想起这个名字。<br>由苏阿芒的故事，<br>我觉得无论学习外语还是学习其他东西，<br>就是不疯魔不成活。<br>想想你我诸位，<br>谁在地铁或者在商务活动中，<br>没有遇到过这样的场景：<br>你原本很以为难的一门外语，<br>在地铁中你身旁的一位美女或者老兄，<br>正在和外国人侃侃而谈，<br>不时发出爽朗的笑声。<br>又或者在商务活动中，<br>你的同事与谈判对手，<br>正在用一门你觉得很难的外语，<br>唇枪舌剑，你来我往。<br>当时你除了发蒙，<br>第二个感觉就是，<br>真TMD的太牛逼了。<br>我要是外语也这么牛逼，<br>那该多好啊！<br>可你就是无法做到……<br>这么牛逼！<br>是的你无法做到。</p>
-<p>因为等你下了地铁或者在结束那次谈判后，<br>你就又想着今天回去吃什么，<br>或者想着购物车里那件好看的鞋子或者衣服，<br>是不是又降价了。<br>事实就是如此，<br>我从遇到这种情况之后，<br>发奋学英语，<br>到如今也已有五六年时间，<br>到如今英语的水平，<br>也只能令自己呵呵了。<br>自己看了下掌握多门外语的牛逼人物，<br>远者如辜鸿铭，近者如苏阿芒。<br>他们有神马了不得方法吗？<br>还是天赋异禀。<br>非也！<br>唯苦练勤学尔。<br>我自己的猜测啊！<br>学第一门外语的难度，<br>和第二门第三门外语的难度肯定成几何级降低的。<br>因为你在学第一门外语的时候，<br>已经有了一套成熟的方法论；<br>区别只是在学其他外语的时候，<br>对方法论体系中的某个细节进行改动，<br>并且随着学的外语门数增多；<br>这个方法论的体系一定会不断完善，不断得到补充；<br>那么等到你学第二十门的时候，<br>肯定已经是手到擒来，如探囊取物般容易了。<br>所以根结在神马地方，<br>第一个是恒心，第二个是勤奋；<br>第三是保证你自己必须先学会一门外语。<br>如果你想学更多门外语，肯定会越来越容易的。<br>因此，无论你学英语还是韩语，无论意大利语还是西班牙语。<br>如果你真的想学多门外语，保证你先精通一门外语。<br>其他外语定然是可以得其门而入的。<br>那么你一定要知道苏阿芒的故事，<br>也就是题中应有之意了。</p>
-]]></content>
-      <categories>
-        <category>外语学习</category>
       </categories>
   </entry>
   <entry>
@@ -729,68 +750,6 @@
 ]]></content>
       <categories>
         <category>读完就谈</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>重装Hexo遇到的坑</title>
-    <url>/2020/04/28/%E9%87%8D%E8%A3%85Hexo%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/</url>
-    <content><![CDATA[<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">我的前言只有三段话</span><br></pre></td></tr></table></figure>
-
-<h4 id="第一段"><a href="#第一段" class="headerlink" title="第一段"></a>第一段</h4><p>以前曾经用两天一夜的时间，<br>成功的以一个小白的身份，<br>用Mac+Hexo+Github,<br>搭建了自己的独立博客，<br>并且还简单学习了js和markdown，<br>当然还有python的简单用法，<br>可以说是收获颇丰。</p>
-<h4 id="第二段"><a href="#第二段" class="headerlink" title="第二段"></a>第二段</h4><p>随着生活日益繁忙，<br>便兴趣缺缺了。<br>所以，一度曾尝试彻底卸载Hexo,<br>最后当然没有成功，<br>只是在本地卸载了hexo和node，<br>但是hexo本地文件夹始终保存着，<br>幸好保存了，<br>不然今天就没这篇文章了。</p>
-<h4 id="第三段"><a href="#第三段" class="headerlink" title="第三段"></a>第三段</h4><p>最近生活有了些闲暇，<br>也读了很多书，<br>忽然又想找个地方写一下，<br>所以决定重装Hexo，<br>这便是踏坑的开始。</p>
-<a id="more"></a>
-
-<h3 id="第一个坑：node版本和hexo不兼容"><a href="#第一个坑：node版本和hexo不兼容" class="headerlink" title="第一个坑：node版本和hexo不兼容"></a>第一个坑：node版本和hexo不兼容</h3><p>我重新装了node和hexo，<br>满心欢喜在终端输入：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<p>结果给我来了一串的node警告，<br>只要不是错误，那我忍着，<br>继续输入：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-<p>这时候node坐不住了，<br>它报错了，错误如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">TypeError [ERR_INVALID_ARG_TYPE]: </span><br><span class="line"></span><br><span class="line">The &quot;mode&quot; argument must be integer. Received an instance of Object</span><br></pre></td></tr></table></figure>
-<p>然后下面是at什么什么，反正一堆错误。</p>
-<p>我用了一晚上的时间，<br>熬到凌晨四点多，<br>最后在搜索引擎，根本没有找到答案，<br>有人说是因为node版本问题，<br>我没当回事儿，<br>我想怎么可能是node版本问题呢？<br>我这node和hexo都是新装的，<br>结果，你越不认可的原因，<br>事实证明，就是那个原因，<br>在第二天上午又找了将近一上午的情况下，<br>我去了google，结果在github，看到了标准答案。<br>就是因为node 14.0.0和hexo不兼容的问题。</p>
-<p>然后啥也别想了，<br>直接打开命令行，开始装nvm</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew install nvm</span><br></pre></td></tr></table></figure>
-<p>接下来，用nvm安装离node 14.0.0比较近的版本，<br>那就选node 13.13.0吧，<br>开装，</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nvm install v13.13.0</span><br></pre></td></tr></table></figure>
-<p>安装完毕，<br>接下来将v13.13.0用nvm设置成默认的node版本</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nvm use v13.13.0</span><br></pre></td></tr></table></figure>
-<p>以上只是单次有用，<br>要想每次默认的node都是13.13.0，<br>必须设置别名：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">node alias default v13.13.0</span><br></pre></td></tr></table></figure>
-<p>接下来在终端输入查看下目前默认node版本是否是v13.13.0：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nvm current</span><br></pre></td></tr></table></figure>
-<p>终端显示更改默认node版本成功。</p>
-<p>至此用nvm管理node版本步骤完毕。</p>
-<p>来不及顾及其他，<br>直接在终端输入：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<p>成功！！！<br>恼人的node警告终于消停了，<br>世界终于清净了，<br>继续输入：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-<p>提交成功，堪称完美。</p>
-<p>至此完美解决打开本地服务器和提交到github时，<br>node警告和报错的问题。<br>至此，第一个坑，算是填完了。</p>
-<h3 id="第二个坑：网站名称和主页导航栏中文乱码"><a href="#第二个坑：网站名称和主页导航栏中文乱码" class="headerlink" title="第二个坑：网站名称和主页导航栏中文乱码"></a>第二个坑：网站名称和主页导航栏中文乱码</h3><p>先声明这个坑，我到现在也没跳出来。<br>根本找不到原因。</p>
-<p>发现网站名称和导航栏中文乱码后，<br>展开一波搜索大法，<br>效果并不好，<br>在翻山越岭爬山涉水般的，各种尝试之后，<br>决定退而求其次，<br>我用原来hexo文件夹里的_config.yml和themes文件夹的_config.yml，<br>直接覆盖当前站点的这两个配置文件。<br>结果再也没乱码。</p>
-<p>网上好多人说中文乱码是因为用了文本编辑器编辑_config.yml，<br>是编码错误，改成utf8云云。</p>
-<p>可是并没有卵用，<br>如果是因为编码问题，<br>我文章直接就是用文本编辑器写的，一点儿也不乱。</p>
-<p>所以说，网上搜索答案的时候，<br>人云亦云的人是真多，<br>不但解决不了问题，<br>还浪费想找到答案的人的时间和精力。<br>有的人真的可恶至极，直接复制粘贴。<br>连问题都没写清楚，<br>还能期望他会有靠谱的答案吗？</p>
-<p>至此，算是勉强跳出两个大坑。</p>
-<p>最近决定集中研究下，hexo博客的装修问题。</p>
-<p>什么主题啦，修改ejs啦，等等，一定很好玩儿。</p>
-<p>再次使用hexo，有了第一次的基础，</p>
-<p>这次对hexo的文件结构和功能明了多了。</p>
-<p>慢慢来，<br>世界上一切事情都是这样的，<br>慢就是快，<br>快就是慢<br>有一句话说的很好，与诸君共勉：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">### Slow is smooth, and smooth is fast.</span><br><span class="line">    慢是光滑的，而光滑是快的。</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>Hexo</category>
       </categories>
   </entry>
   <entry>
@@ -916,33 +875,74 @@
       </categories>
   </entry>
   <entry>
-    <title>今人谁识侠客行</title>
-    <url>/2016/03/17/%E4%BB%8A%E4%BA%BA%E8%B0%81%E8%AF%86%E4%BE%A0%E5%AE%A2%E8%A1%8C/</url>
-    <content><![CDATA[<p>这部著作是武侠迷最不称道的金庸的作品；</p>
-<p>百度词条如是转述网友对《侠客行》的评价；</p>
-<p>我却有完全相反的看法；<br>以上是摘要<a id="more"></a><br>如果让我将金庸的：“飞雪连天射白鹿，笑书神侠倚碧鸳”仅留一部；</p>
-<p>必是《侠客行》，无他；仅一句：“眼花耳热后，意气素霓生” ；</p>
-<p>便让人拍案叫绝，反复吟诵；李白短短120字的《侠客行》；</p>
-<p>被夏梦看不上的那个香港四大才子之一，硬是诠释成了45万字的煌煌巨著；</p>
-<p>我也只有在默诵《侠客行》诗时 ，默默佩服的五体投地；</p>
-<p>更有在诠释中加入的，那些让人醍醐灌顶的点；</p>
-<p>第三十集中狗杂种在白自在怒后说道：</p>
-<p>“晚辈好像只知道，武功臻入化境之人，就没有脾气了，</p>
-<p>什么东西越大呀，就越没脾气”真个和大音希声，大象无形完美契合； 妙不可言！</p>
-<p>整部剧中除了一个终极的哲学命题：“我是谁”之外?</p>
-<p>还有两点是令我暗叹连连的；</p>
-<p>第一点就是狗杂种那种无为以至于无不为的经历；不识字，得以破解侠客行；</p>
-<p>无父无母得以流浪中拾到玄铁令；而后才有了长乐帮、碧螺岛、凌霄城之行；</p>
-<p>尤其是结识赏罚二使那晚；正契合了：“眼花耳热后，意气素霓生”看到此处，不得不道妙妙妙。</p>
-<p>第二点则是好为人徒；这点和射雕里的郭靖非常相像；遇人敬三分，打躬作揖乐呵呵；发自心底的佩服；心底纯然，绝无虚妄之言；皆因对一切全无概念；反倒契合了道法自然之理。 </p>
-<p>无怪乎后来与贝海石之战中被问及什么功夫时；能有：“我什么都不懂，全凭随心所欲”精妙之对答；</p>
-<p>倒与说王熙凤的那两句：“机关算尽太聪明 反误了卿卿性命”形成鲜明对比。</p>
-<p>看如今，均知生死无来去，仍自角逐行；</p>
-<p>想起：“事了拂衣去，深藏身于名”；</p>
-<p>暗叹：“脱剑膝前横，谁识侠客行”？​</p>
+    <title>重装Hexo遇到的坑</title>
+    <url>/2020/04/28/%E9%87%8D%E8%A3%85Hexo%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/</url>
+    <content><![CDATA[<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">我的前言只有三段话</span><br></pre></td></tr></table></figure>
+
+<h4 id="第一段"><a href="#第一段" class="headerlink" title="第一段"></a>第一段</h4><p>以前曾经用两天一夜的时间，<br>成功的以一个小白的身份，<br>用Mac+Hexo+Github,<br>搭建了自己的独立博客，<br>并且还简单学习了js和markdown，<br>当然还有python的简单用法，<br>可以说是收获颇丰。</p>
+<h4 id="第二段"><a href="#第二段" class="headerlink" title="第二段"></a>第二段</h4><p>随着生活日益繁忙，<br>便兴趣缺缺了。<br>所以，一度曾尝试彻底卸载Hexo,<br>最后当然没有成功，<br>只是在本地卸载了hexo和node，<br>但是hexo本地文件夹始终保存着，<br>幸好保存了，<br>不然今天就没这篇文章了。</p>
+<h4 id="第三段"><a href="#第三段" class="headerlink" title="第三段"></a>第三段</h4><p>最近生活有了些闲暇，<br>也读了很多书，<br>忽然又想找个地方写一下，<br>所以决定重装Hexo，<br>这便是踏坑的开始。</p>
+<a id="more"></a>
+
+<h3 id="第一个坑：node版本和hexo不兼容"><a href="#第一个坑：node版本和hexo不兼容" class="headerlink" title="第一个坑：node版本和hexo不兼容"></a>第一个坑：node版本和hexo不兼容</h3><p>我重新装了node和hexo，<br>满心欢喜在终端输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>结果给我来了一串的node警告，<br>只要不是错误，那我忍着，<br>继续输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+<p>这时候node坐不住了，<br>它报错了，错误如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">TypeError [ERR_INVALID_ARG_TYPE]: </span><br><span class="line"></span><br><span class="line">The &quot;mode&quot; argument must be integer. Received an instance of Object</span><br></pre></td></tr></table></figure>
+<p>然后下面是at什么什么，反正一堆错误。</p>
+<p>我用了一晚上的时间，<br>熬到凌晨四点多，<br>最后在搜索引擎，根本没有找到答案，<br>有人说是因为node版本问题，<br>我没当回事儿，<br>我想怎么可能是node版本问题呢？<br>我这node和hexo都是新装的，<br>结果，你越不认可的原因，<br>事实证明，就是那个原因，<br>在第二天上午又找了将近一上午的情况下，<br>我去了google，结果在github，看到了标准答案。<br>就是因为node 14.0.0和hexo不兼容的问题。</p>
+<p>然后啥也别想了，<br>直接打开命令行，开始装nvm</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew install nvm</span><br></pre></td></tr></table></figure>
+<p>接下来，用nvm安装离node 14.0.0比较近的版本，<br>那就选node 13.13.0吧，<br>开装，</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nvm install v13.13.0</span><br></pre></td></tr></table></figure>
+<p>安装完毕，<br>接下来将v13.13.0用nvm设置成默认的node版本</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nvm use v13.13.0</span><br></pre></td></tr></table></figure>
+<p>以上只是单次有用，<br>要想每次默认的node都是13.13.0，<br>必须设置别名：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">node alias default v13.13.0</span><br></pre></td></tr></table></figure>
+<p>接下来在终端输入查看下目前默认node版本是否是v13.13.0：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nvm current</span><br></pre></td></tr></table></figure>
+<p>终端显示更改默认node版本成功。</p>
+<p>至此用nvm管理node版本步骤完毕。</p>
+<p>来不及顾及其他，<br>直接在终端输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>成功！！！<br>恼人的node警告终于消停了，<br>世界终于清净了，<br>继续输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+<p>提交成功，堪称完美。</p>
+<p>至此完美解决打开本地服务器和提交到github时，<br>node警告和报错的问题。<br>至此，第一个坑，算是填完了。</p>
+<h3 id="第二个坑：网站名称和主页导航栏中文乱码"><a href="#第二个坑：网站名称和主页导航栏中文乱码" class="headerlink" title="第二个坑：网站名称和主页导航栏中文乱码"></a>第二个坑：网站名称和主页导航栏中文乱码</h3><p>先声明这个坑，我到现在也没跳出来。<br>根本找不到原因。</p>
+<p>发现网站名称和导航栏中文乱码后，<br>展开一波搜索大法，<br>效果并不好，<br>在翻山越岭爬山涉水般的，各种尝试之后，<br>决定退而求其次，<br>我用原来hexo文件夹里的_config.yml和themes文件夹的_config.yml，<br>直接覆盖当前站点的这两个配置文件。<br>结果再也没乱码。</p>
+<p>网上好多人说中文乱码是因为用了文本编辑器编辑_config.yml，<br>是编码错误，改成utf8云云。</p>
+<p>可是并没有卵用，<br>如果是因为编码问题，<br>我文章直接就是用文本编辑器写的，一点儿也不乱。</p>
+<p>所以说，网上搜索答案的时候，<br>人云亦云的人是真多，<br>不但解决不了问题，<br>还浪费想找到答案的人的时间和精力。<br>有的人真的可恶至极，直接复制粘贴。<br>连问题都没写清楚，<br>还能期望他会有靠谱的答案吗？</p>
+<p>至此，算是勉强跳出两个大坑。</p>
+<p>最近决定集中研究下，hexo博客的装修问题。</p>
+<p>什么主题啦，修改ejs啦，等等，一定很好玩儿。</p>
+<p>再次使用hexo，有了第一次的基础，</p>
+<p>这次对hexo的文件结构和功能明了多了。</p>
+<p>慢慢来，<br>世界上一切事情都是这样的，<br>慢就是快，<br>快就是慢<br>有一句话说的很好，与诸君共勉：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">### Slow is smooth, and smooth is fast.</span><br><span class="line">    慢是光滑的，而光滑是快的。</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
 ]]></content>
       <categories>
-        <category>笑傲江湖</category>
+        <category>Hexo</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>UIviewcontroller与UIview</title>
+    <url>/2016/03/17/UIviewcontroller%E4%B8%8EUIview/</url>
+    <content><![CDATA[<p>UIviewcontroller名字叫做视图控制器，是一个类，UIview也是一个类；<br>UIviewcontroller控制放在它上面的所有UIview的事件；<br>UIview只负责加载数据与图片；<br>UIviewcontroller顾名思义，就是控制；<br>比如飞机大战中，加载子弹和飞机的图片需要UIview实现；<br>而发射子弹则需要UIviewcontroller来实现。<br>目前就理解到这个程度。</p>
+]]></content>
+      <categories>
+        <category>IOS</category>
       </categories>
   </entry>
 </search>
