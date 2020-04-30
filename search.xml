@@ -1,33 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hexo安装百度统计流程</title>
-    <url>/2016/03/22/Hexo%E5%AE%89%E8%A3%85%E7%99%BE%E5%BA%A6%E7%BB%9F%E8%AE%A1%E6%B5%81%E7%A8%8B/</url>
-    <content><![CDATA[<p>用了两天时间将Hexo博客搭建好了，<br>之后便开始一点一点儿增加一些小插件，<br>很顺利的安装了RSS和评论插件后，<br>决定安装统计插件，<br>最后经过对比决定安装百度统计，<br>虽然不如谷歌，但还凑合吧。<br>闲言少叙，正文开始</p>
-<a id="more"></a>
-<p>1、在themes／—_config.yml中配置一行统计信息；</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">baidu_tongji: true</span><br></pre></td></tr></table></figure>
-<p>2、在themes/landscape/layout/_partial路径下直接复制google－analytics.ejs，并将文件名改为:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">baidu_tongji.ejs</span><br></pre></td></tr></table></figure>
-<p>3、去百度统计注册获取统计代码，格式如下：</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">var _hmt = _hmt || [];</span><br><span class="line">(function() &#123;</span><br><span class="line">var hm = document.createElement(<span class="string">"script"</span>);</span><br><span class="line">hm.src = <span class="string">"//hm.baidu.com/hm.js?cf20d66409118a4390e3147d0f31366d"</span>;</span><br><span class="line">var s = document.getElementsByTagName(<span class="string">"script"</span>)[<span class="number">0</span>];</span><br><span class="line">s.parentNode.insertBefore(hm, s);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>粘贴到baidu_tongji.ejs文件中，粘贴后格式如下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (theme.baidu_tongji)&#123; %&gt;</span><br><span class="line">&lt;!-- baidu_tongji --&gt;</span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">var _hmt = _hmt || [];</span><br><span class="line">(function() &#123;</span><br><span class="line">var hm = document.createElement(<span class="string">"script"</span>);</span><br><span class="line">hm.src = <span class="string">"//hm.baidu.com/hm.js?cf20d66409118a4390e3147d0f31366d"</span>;</span><br><span class="line">var s = document.getElementsByTagName(<span class="string">"script"</span>)[<span class="number">0</span>];</span><br><span class="line">s.parentNode.insertBefore(hm, s);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;!-- End baidu_tongji --&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
-<p>4、打开themes/landscape/layout/_partial/head.ejs，添加如下代码：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&lt;%- partial(<span class="string">'baidu_tongji'</span>) %&gt;</span><br></pre></td></tr></table></figure>
-<p>5、重新部署</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo d -</span><br></pre></td></tr></table></figure>
-<p>6、在百度统计检查部署是否成功<br>先检查首页，成功后界面是这样：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">页面代码安装状态：代码安装正确</span><br></pre></td></tr></table></figure>
-<p>如果你想检查其它页面，复制一个其它页面的网址粘贴过去，点开始检查，成功界面如下：</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">代码安装详情</span><br><span class="line">已安装账户<span class="string">"username"</span>的站点<span class="string">"franktianyirenjian.github.io"</span>对应的代码：</span><br><span class="line">&lt;script&gt;</span><br><span class="line">var _hmt = _hmt || [];</span><br><span class="line">(function() &#123;</span><br><span class="line">  var hm = document.createElement(<span class="string">"script"</span>);</span><br><span class="line">  hm.src = <span class="string">"//hm.baidu.com/hm.js?cf20d66409118a4390e3147d0f31366d"</span>;</span><br><span class="line">  var s = document.getElementsByTagName(<span class="string">"script"</span>)[<span class="number">0</span>]; </span><br><span class="line">  s.parentNode.insertBefore(hm, s);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>等候二十分钟你就可以去查看网页统计报告了，打完收功。<br>另外还有人说会出现恶心的百度logo，我也不知道是人云亦云还是怎样，反正我的没有。</p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Hexo添加Rss和评论插件</title>
     <url>/2016/03/20/Hexo%E6%B7%BB%E5%8A%A0Rss%E5%92%8C%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/</url>
     <content><![CDATA[<p>一、添加RSS<br>我的主题配置文件已含有rss：  /atom.xml<br>因此我就直接安装部署了。<br>根目录下的配置信息：在# Extensions中添加，已经有的就免了。</p>
@@ -45,51 +18,6 @@
 <p>这里需要注意的是data-thread-key等三个参数，对小白来说并不知道如何设置：<br>我的设置如下：大多数网上的也都设的这个。</p>
 <figure class="highlight js"><table><tr><td class="code"><pre><span class="line">data-thread-key：&lt;%= page.path %&gt;</span><br><span class="line">data-title：&lt;%= page.title %&gt;</span><br><span class="line">data-url（稳定版没有这个，开发版有这个参数）：&lt;%= page.permalink %&gt;</span><br></pre></td></tr></table></figure>
 <p>4、重新部署<br>hexo clean<br>hexo d －<br>搞定。</p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Mac端通过Hexo搭建独立博客</title>
-    <url>/2016/03/17/Mac%E7%AB%AF%E9%80%9A%E8%BF%87Hexo%E6%90%AD%E5%BB%BA%E7%8B%AC%E7%AB%8B%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h4 id="一、为什么选择Hexo"><a href="#一、为什么选择Hexo" class="headerlink" title="一、为什么选择Hexo"></a>一、为什么选择Hexo</h4><p>我对搭建自己的独立博客兴致盎然，<br>独立的才真正是自己的，<br>马克思说研究需要充分占有材料，<br>我因此大量阅读了关于搭建独立博客的文章和资料，<br>知道了有Octopress，jekyll等独立博客搭建系统，<br>但看到好多程序员童鞋都说：Octopress和jekyll很难搞定，<br>所以对于我这种小白来说，就更不用考虑了，<br>听说Hexo是hacker必备的博客搭建系统，因此果断选它。<br>以上是摘要<a id="more"></a></p>
-<h4 id="二、艰难的开始"><a href="#二、艰难的开始" class="headerlink" title="二、艰难的开始"></a>二、艰难的开始</h4><p>在我安装好git和node.js后，感觉万事俱备，只欠安装Hexo；</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">然后在终端果断输入：npm install -g hero-cli</span><br></pre></td></tr></table></figure>
-<p>回车后等待奇迹发生，然并卵；<br>出现的是几个警告和一系列的Err字样；<br>然后艰难翻坑开始了，各种试验，各种搜索，<br>最后理出来一点儿思路；<br>总算见到雏形了，<br>接下来就很顺利的过关斩将了；</p>
-<h4 id="三、安装Hexo步骤"><a href="#三、安装Hexo步骤" class="headerlink" title="三、安装Hexo步骤"></a>三、安装Hexo步骤</h4><p>系统环境：OS X EI Captian 版本 10.11.3 64bit<br>1、安装Node.js（必须）<br>作用：生成静态页面。<br>Node.js下载地址：<a href="http://nodejs.cn" target="_blank" rel="noopener">http://nodejs.cn</a><br>2、安装git（必须）<br>作用：把本地的静态页面提交到Github上去；<br>安装git前保证你已经安装了Xcode，不然会影响编译；<br>我现在还不明白是否安装了Xcode就不用另外安装git，<br>由于当初百度看到一个方法就试试，所以最后也没确定这个问题，<br>我是既安装了Xcode又用上面的方法安装了git的。<br>有心的朋友可以试试只安装Xcode，不另外安装git，<br>看是否会初始化Hexo成功。</p>
-<h6 id="git安装方法："><a href="#git安装方法：" class="headerlink" title="git安装方法："></a>git安装方法：</h6><p>1）、先安装Homebrew，把下面的代码拷贝到终端回车即可；</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">/usr/bin/ruby -e <span class="string">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span></span><br></pre></td></tr></table></figure>
-<p>2）、安装git<br>等Homebrew安装完毕后，在终端输入：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">brew install git回车即可。</span><br></pre></td></tr></table></figure>
-<h6 id="3、安装hexo"><a href="#3、安装hexo" class="headerlink" title="3、安装hexo"></a>3、安装hexo</h6><p>万事俱备，只欠hexo了，</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">官方文档提供的方法是：npm install －g hexo－cli</span><br></pre></td></tr></table></figure>
-<p>我试了N次，最后磁盘报警也没成功，大概是因为权限问题，<br>可是我电脑账户设置的是管理员啊，最后也没明白咋回事；<br>最后找到了适合我的两种方法<br>1）、第一种方法：（注意：使用sudo需要输入电脑登录密码）</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sudo npm install hexo - -no-optional</span><br></pre></td></tr></table></figure>
-<p>创建成功后的提示界面：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Password:</span><br><span class="line">hexo-site@<span class="number">0.0</span><span class="number">.0</span> /Users/chenbaichuan</span><br><span class="line">└──server@<span class="number">0.0</span><span class="number">.3</span> extraneous</span><br></pre></td></tr></table></figure>
-<p>第二种方法：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sudo npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<p>创建成功后的提示界面：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Password:</span><br><span class="line">/usr/local/bin/hexo -&gt; /usr/local/lib/node_modules/hexo-cli/bin/hexo</span><br><span class="line">/usr/local/lib</span><br><span class="line">└──hexo-cli@<span class="number">1.0</span><span class="number">.1</span></span><br></pre></td></tr></table></figure>
-<p>2）、初始化Hexo并且创建博客目录：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo init blog</span><br></pre></td></tr></table></figure>
-<p>初始化成功后的界面是这样的：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">INFO  Start blogging <span class="keyword">with</span> Hexo!：快用Hexo开始你的博客吧！</span><br></pre></td></tr></table></figure>
-<p>这时候在本地磁盘会有一个以blog命名的文件夹,官方文档列出的结构大致如下：<br>不一定完全相同，我的在source就只有一个posts文件。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">_config.yml</span><br><span class="line">scanffolds</span><br><span class="line">source</span><br><span class="line">themes</span><br><span class="line">public</span><br></pre></td></tr></table></figure>
-<p>3)、新建文章<br>为了保证新添加文章都在blog文件夹下，<br>首先进入初始化文件夹。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cd \blog</span><br></pre></td></tr></table></figure>
-<p>新建一篇文章</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hero new 文章名</span><br></pre></td></tr></table></figure>
-<p>至此Hexo的安装全部搞定。</p>
-<h4 id="四、启动本地服务"><a href="#四、启动本地服务" class="headerlink" title="四、启动本地服务"></a>四、启动本地服务</h4><p>生成本地服务器，这个不是必须；</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">npm install hexo-server —save</span><br></pre></td></tr></table></figure>
-<p>启动本地服务器</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-<p>启动成功界面</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">网址：http://localhost:<span class="number">4000</span>/.</span><br></pre></td></tr></table></figure>
-<p>赶紧打开看一下属于自己的领地吧。<br>到此为止本地的服务已经设置好了，<br>接下来就是部署Github了，<br>请看下回分解！<br>如果有的命令运行后不成，先在最前面加sudo，<br>实在不行就去百度吧。</p>
 ]]></content>
       <categories>
         <category>Hexo</category>
@@ -124,6 +52,15 @@
       </categories>
   </entry>
   <entry>
+    <title>UIviewcontroller与UIview</title>
+    <url>/2016/03/17/UIviewcontroller%E4%B8%8EUIview/</url>
+    <content><![CDATA[<p>UIviewcontroller名字叫做视图控制器，是一个类，UIview也是一个类；<br>UIviewcontroller控制放在它上面的所有UIview的事件；<br>UIview只负责加载数据与图片；<br>UIviewcontroller顾名思义，就是控制；<br>比如飞机大战中，加载子弹和飞机的图片需要UIview实现；<br>而发射子弹则需要UIviewcontroller来实现。<br>目前就理解到这个程度。</p>
+]]></content>
+      <categories>
+        <category>IOS</category>
+      </categories>
+  </entry>
+  <entry>
     <title>oc中的类和对象</title>
     <url>/2016/03/17/oc%E4%B8%AD%E7%9A%84%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/</url>
     <content><![CDATA[<p>一、类是什么</p>
@@ -140,15 +77,6 @@
 <p>比如‘人’是一个类，‘张三’则是人的一个对象；</p>
 <p>张三的姓名、性别与年龄则构成了‘人’这个类的成员变量；</p>
 <p>而姓名、性别与年龄则要靠方法去实现。​</p>
-]]></content>
-      <categories>
-        <category>IOS</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>UIviewcontroller与UIview</title>
-    <url>/2016/03/17/UIviewcontroller%E4%B8%8EUIview/</url>
-    <content><![CDATA[<p>UIviewcontroller名字叫做视图控制器，是一个类，UIview也是一个类；<br>UIviewcontroller控制放在它上面的所有UIview的事件；<br>UIview只负责加载数据与图片；<br>UIviewcontroller顾名思义，就是控制；<br>比如飞机大战中，加载子弹和飞机的图片需要UIview实现；<br>而发射子弹则需要UIviewcontroller来实现。<br>目前就理解到这个程度。</p>
 ]]></content>
       <categories>
         <category>IOS</category>
@@ -179,36 +107,6 @@
       </categories>
   </entry>
   <entry>
-    <title>今人谁识侠客行</title>
-    <url>/2016/03/17/%E4%BB%8A%E4%BA%BA%E8%B0%81%E8%AF%86%E4%BE%A0%E5%AE%A2%E8%A1%8C/</url>
-    <content><![CDATA[<p>这部著作是武侠迷最不称道的金庸的作品；</p>
-<p>百度词条如是转述网友对《侠客行》的评价；</p>
-<p>我却有完全相反的看法；<br>以上是摘要<a id="more"></a><br>如果让我将金庸的：“飞雪连天射白鹿，笑书神侠倚碧鸳”仅留一部；</p>
-<p>必是《侠客行》，无他；仅一句：“眼花耳热后，意气素霓生” ；</p>
-<p>便让人拍案叫绝，反复吟诵；李白短短120字的《侠客行》；</p>
-<p>被夏梦看不上的那个香港四大才子之一，硬是诠释成了45万字的煌煌巨著；</p>
-<p>我也只有在默诵《侠客行》诗时 ，默默佩服的五体投地；</p>
-<p>更有在诠释中加入的，那些让人醍醐灌顶的点；</p>
-<p>第三十集中狗杂种在白自在怒后说道：</p>
-<p>“晚辈好像只知道，武功臻入化境之人，就没有脾气了，</p>
-<p>什么东西越大呀，就越没脾气”真个和大音希声，大象无形完美契合； 妙不可言！</p>
-<p>整部剧中除了一个终极的哲学命题：“我是谁”之外?</p>
-<p>还有两点是令我暗叹连连的；</p>
-<p>第一点就是狗杂种那种无为以至于无不为的经历；不识字，得以破解侠客行；</p>
-<p>无父无母得以流浪中拾到玄铁令；而后才有了长乐帮、碧螺岛、凌霄城之行；</p>
-<p>尤其是结识赏罚二使那晚；正契合了：“眼花耳热后，意气素霓生”看到此处，不得不道妙妙妙。</p>
-<p>第二点则是好为人徒；这点和射雕里的郭靖非常相像；遇人敬三分，打躬作揖乐呵呵；发自心底的佩服；心底纯然，绝无虚妄之言；皆因对一切全无概念；反倒契合了道法自然之理。 </p>
-<p>无怪乎后来与贝海石之战中被问及什么功夫时；能有：“我什么都不懂，全凭随心所欲”精妙之对答；</p>
-<p>倒与说王熙凤的那两句：“机关算尽太聪明 反误了卿卿性命”形成鲜明对比。</p>
-<p>看如今，均知生死无来去，仍自角逐行；</p>
-<p>想起：“事了拂衣去，深藏身于名”；</p>
-<p>暗叹：“脱剑膝前横，谁识侠客行”？​</p>
-]]></content>
-      <categories>
-        <category>笑傲江湖</category>
-      </categories>
-  </entry>
-  <entry>
     <title>可还记得《甘十九妹》</title>
     <url>/2016/03/17/%E5%8F%AF%E8%BF%98%E8%AE%B0%E5%BE%97%E3%80%8A%E7%94%98%E5%8D%81%E4%B9%9D%E5%A6%B9%E3%80%8B/</url>
     <content><![CDATA[<p>一、《甘十九妹》是谁？<br>《甘十九妹》是我小时候看的一部武侠剧，<br>原著是萧逸先生。<br>故事是说一个男人对一个女人始乱终弃后，<br>女人从沮丧、堕落到后来复仇的故事。</p>
@@ -219,36 +117,6 @@
 ]]></content>
       <categories>
         <category>笑傲江湖</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>吐槽互联网上关于hexo添加本地搜索的文章</title>
-    <url>/2020/05/01/%E5%90%90%E6%A7%BD%E4%BA%92%E8%81%94%E7%BD%91%E4%B8%8A%E5%85%B3%E4%BA%8Ehexo%E6%B7%BB%E5%8A%A0%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2%E7%9A%84%E6%96%87%E7%AB%A0/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>1、填坑的开始</p>
-<p>重装hexo时，解决了node版本错误和中文乱码之后，<br>满心欢喜，<br>本以为可以愉快的重复以下过程了</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo new article</span><br><span class="line">hexo clean</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-<p>结果真是图样图森破，<br>填坑才刚刚开始。</p>
-<p>眼看着博客文章越来越多，<br>重装之后，就想先添加本地搜索。</p>
-<p>&lt;!—more&gt;</p>
-<p>2、重要声明</p>
-<p>先声明下，之所以标题这么长，<br>是因为我受够了自己利用搜索引擎，<br>解决问题过程中，<br>一些纯傻逼的行为，<br>它们不但人云亦云。<br>而且还不知所云。<br>根本不说自己是在什么系统，<br>什么主题下，去修改hexo的配置，<br>这让我吃够了苦头。</p>
-<p>人云亦云和不知所云，<br>我在下文，会举例说明。</p>
-<p>所以，我要声明下，我的配置参数是这样的</p>
-<p>硬件: MacBook Air<br>系统: macOS Catalina 10.15.4<br>hexo版本：4.2.0<br>node版本：13.13.0<br>hexo主题：landscape</p>
-<p>这里最重要的配置参数是硬件和hexo主题。<br>其它应该问题不大，<br>之所以说应该，<br>因为我没有把每一个hexo和node可用版本，<br>都尝试一遍。</p>
-<h3 id="landscape自带搜索是摆设"><a href="#landscape自带搜索是摆设" class="headerlink" title="landscape自带搜索是摆设"></a>landscape自带搜索是摆设</h3><p>因为hexo默认主题landscape下自带的搜索框，<br>就是一个纯粹的摆设。<br>因为它默认搜索的是你被谷歌搜索引擎收录的网页，<br>你才刚开始写博客，<br>或者你还没做SEO，<br>怎么可能在谷歌搜索引擎被收录呢？</p>
-<h3 id="什么是本地搜索和谷歌站内搜索"><a href="#什么是本地搜索和谷歌站内搜索" class="headerlink" title="什么是本地搜索和谷歌站内搜索"></a>什么是本地搜索和谷歌站内搜索</h3><p>基于以上原因，决定寻找landscape主题下，<br>添加本地搜索和谷歌站内搜索的方法。<br>先解释一下本地搜索和谷歌站内搜索两个概念，<br>看文章的你，不要嫌我烦。<br>我真是被网上某些傻逼给害苦了。<br>所以我写文章的时候，尽量详细，<br>因为你可能一句话写不到。<br>别人就会走很多弯路。<br>甚至本来看了你的文章，<br>可以解决的问题，<br>结果因为你少了一句话的缘故，<br>别人的问题，最后没有得到解决。</p>
-<p>本地搜索：在你的博客内，对所有文章的搜索，<br>当你输入关键词，不用按回车，<br>会自动显示有搜索关键词的文章列表。</p>
-<p>谷歌站内搜索：也是在你的博客内完成搜索的输入，<br>就是landscape主题自带的那个搜索框，<br>但是当你按下回车或者点击放大镜，<br>它的搜索结果会在谷歌搜索引擎里呈现。<br>简单来说就是两种搜索方式，<br>都可以搜索你所有的文章，<br>但是展现的地方不同，<br>一种在博客里展示，就是本地搜索，<br>另一种在谷歌浏览器展示，就是谷歌站内搜索。<br>而lanscape主题自带的搜索框，<br>搜索的是你的博客被谷歌引擎收录的文章网页。<br>这个确实不是一般的坑爹。</p>
-<h3 id="hexo有用的资料真少"><a href="#hexo有用的资料真少" class="headerlink" title="hexo有用的资料真少"></a>hexo有用的资料真少</h3><p>hexo的确很火，它免费，好用，既不用买域名也不用租服务器。<br>因此，是很多愿意折腾的人的最佳选择。<br>所以，互联网上也就有了很多关于hexo的网页。</p>
-<p>但是这些网页存在着三个严重的问题：<br>第一条最严重，其它依次递减。<br><code>多数人写文章的目的是炫耀加展现自己的成果，并没有想要帮助别人，而后者才是写文章分享的本质目的。
-许多人只说正常的流程。
-很多人只是道听途说，甚至直接复制粘贴。
-更多人是人云亦云。</code><br>基于以上原因，你以hexo为关键词一搜索网页一大把，<br>但是真正有用的，能帮助你解决问题的少之又少。<br>而且往往这种真正能帮你解决问题的文章，话不多，简洁明了。<br>这种现象正印证了那句话：<br><code>高手从来不拔刀，高僧只说家常话。</code><br>这里回应下开头人云亦云和不知所云，<br>人云亦云还分两种类型，<br>第一种直接粘贴复制别人的文章，<br>第二种比照别人的文章自己写一遍。<br>反正自己就是不看文章。<br>这种人最可恶，<br>浪费互联网资源不说，<br>自己既没解决问题，<br>还不能帮助别人有效解决问题，<br>甚至还浪费别人的时间和精力。</p>
-<p>不知所云的是这种人，<br>他们不写具体问题，<br>只是按照官方或者正常流程叙述一遍。<br>以为自己特具分享精神，<br>其实特可恶，浪费别人的时间和精力。<br>更有甚者，直接粘贴自己的站点配置文件，<br>连一句中文注释都没有。<br>以上两种人真是可恶至极，<br>特招人恨。<br>唉，不说了，说起来能写一本书。<br>《完》</p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
       </categories>
   </entry>
   <entry>
@@ -329,6 +197,36 @@
       </categories>
   </entry>
   <entry>
+    <title>今人谁识侠客行</title>
+    <url>/2016/03/17/%E4%BB%8A%E4%BA%BA%E8%B0%81%E8%AF%86%E4%BE%A0%E5%AE%A2%E8%A1%8C/</url>
+    <content><![CDATA[<p>这部著作是武侠迷最不称道的金庸的作品；</p>
+<p>百度词条如是转述网友对《侠客行》的评价；</p>
+<p>我却有完全相反的看法；<br>以上是摘要<a id="more"></a><br>如果让我将金庸的：“飞雪连天射白鹿，笑书神侠倚碧鸳”仅留一部；</p>
+<p>必是《侠客行》，无他；仅一句：“眼花耳热后，意气素霓生” ；</p>
+<p>便让人拍案叫绝，反复吟诵；李白短短120字的《侠客行》；</p>
+<p>被夏梦看不上的那个香港四大才子之一，硬是诠释成了45万字的煌煌巨著；</p>
+<p>我也只有在默诵《侠客行》诗时 ，默默佩服的五体投地；</p>
+<p>更有在诠释中加入的，那些让人醍醐灌顶的点；</p>
+<p>第三十集中狗杂种在白自在怒后说道：</p>
+<p>“晚辈好像只知道，武功臻入化境之人，就没有脾气了，</p>
+<p>什么东西越大呀，就越没脾气”真个和大音希声，大象无形完美契合； 妙不可言！</p>
+<p>整部剧中除了一个终极的哲学命题：“我是谁”之外?</p>
+<p>还有两点是令我暗叹连连的；</p>
+<p>第一点就是狗杂种那种无为以至于无不为的经历；不识字，得以破解侠客行；</p>
+<p>无父无母得以流浪中拾到玄铁令；而后才有了长乐帮、碧螺岛、凌霄城之行；</p>
+<p>尤其是结识赏罚二使那晚；正契合了：“眼花耳热后，意气素霓生”看到此处，不得不道妙妙妙。</p>
+<p>第二点则是好为人徒；这点和射雕里的郭靖非常相像；遇人敬三分，打躬作揖乐呵呵；发自心底的佩服；心底纯然，绝无虚妄之言；皆因对一切全无概念；反倒契合了道法自然之理。 </p>
+<p>无怪乎后来与贝海石之战中被问及什么功夫时；能有：“我什么都不懂，全凭随心所欲”精妙之对答；</p>
+<p>倒与说王熙凤的那两句：“机关算尽太聪明 反误了卿卿性命”形成鲜明对比。</p>
+<p>看如今，均知生死无来去，仍自角逐行；</p>
+<p>想起：“事了拂衣去，深藏身于名”；</p>
+<p>暗叹：“脱剑膝前横，谁识侠客行”？​</p>
+]]></content>
+      <categories>
+        <category>笑傲江湖</category>
+      </categories>
+  </entry>
+  <entry>
     <title>开始学习python了</title>
     <url>/2016/12/27/%E5%BC%80%E5%A7%8B%E5%AD%A6%E4%B9%A0python%E4%BA%86/</url>
     <content><![CDATA[<p>从接触编程到现在已经三年多了，多数是浅尝辄止，因为我的主要工作是运营；<br>也没有必要把编程学的这么深入，从刚开始的html，到后来的php以及去年学的OC；<br>终于要学python了，为什么要学习python呢？<br>更深的我也不懂，我只知道两点。</p>
@@ -353,6 +251,80 @@
 ]]></content>
       <categories>
         <category>Python</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Mac端通过Hexo搭建独立博客</title>
+    <url>/2016/03/17/Mac%E7%AB%AF%E9%80%9A%E8%BF%87Hexo%E6%90%AD%E5%BB%BA%E7%8B%AC%E7%AB%8B%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h4 id="一、为什么选择Hexo"><a href="#一、为什么选择Hexo" class="headerlink" title="一、为什么选择Hexo"></a>一、为什么选择Hexo</h4><p>我对搭建自己的独立博客兴致盎然，<br>独立的才真正是自己的，<br>马克思说研究需要充分占有材料，<br>我因此大量阅读了关于搭建独立博客的文章和资料，<br>知道了有Octopress，jekyll等独立博客搭建系统，<br>但看到好多程序员童鞋都说：Octopress和jekyll很难搞定，<br>所以对于我这种小白来说，就更不用考虑了，<br>听说Hexo是hacker必备的博客搭建系统，因此果断选它。<br>以上是摘要<a id="more"></a></p>
+<h4 id="二、艰难的开始"><a href="#二、艰难的开始" class="headerlink" title="二、艰难的开始"></a>二、艰难的开始</h4><p>在我安装好git和node.js后，感觉万事俱备，只欠安装Hexo；</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">然后在终端果断输入：npm install -g hero-cli</span><br></pre></td></tr></table></figure>
+<p>回车后等待奇迹发生，然并卵；<br>出现的是几个警告和一系列的Err字样；<br>然后艰难翻坑开始了，各种试验，各种搜索，<br>最后理出来一点儿思路；<br>总算见到雏形了，<br>接下来就很顺利的过关斩将了；</p>
+<h4 id="三、安装Hexo步骤"><a href="#三、安装Hexo步骤" class="headerlink" title="三、安装Hexo步骤"></a>三、安装Hexo步骤</h4><p>系统环境：OS X EI Captian 版本 10.11.3 64bit<br>1、安装Node.js（必须）<br>作用：生成静态页面。<br>Node.js下载地址：<a href="http://nodejs.cn" target="_blank" rel="noopener">http://nodejs.cn</a><br>2、安装git（必须）<br>作用：把本地的静态页面提交到Github上去；<br>安装git前保证你已经安装了Xcode，不然会影响编译；<br>我现在还不明白是否安装了Xcode就不用另外安装git，<br>由于当初百度看到一个方法就试试，所以最后也没确定这个问题，<br>我是既安装了Xcode又用上面的方法安装了git的。<br>有心的朋友可以试试只安装Xcode，不另外安装git，<br>看是否会初始化Hexo成功。</p>
+<h6 id="git安装方法："><a href="#git安装方法：" class="headerlink" title="git安装方法："></a>git安装方法：</h6><p>1）、先安装Homebrew，把下面的代码拷贝到终端回车即可；</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">/usr/bin/ruby -e <span class="string">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span></span><br></pre></td></tr></table></figure>
+<p>2）、安装git<br>等Homebrew安装完毕后，在终端输入：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">brew install git回车即可。</span><br></pre></td></tr></table></figure>
+<h6 id="3、安装hexo"><a href="#3、安装hexo" class="headerlink" title="3、安装hexo"></a>3、安装hexo</h6><p>万事俱备，只欠hexo了，</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">官方文档提供的方法是：npm install －g hexo－cli</span><br></pre></td></tr></table></figure>
+<p>我试了N次，最后磁盘报警也没成功，大概是因为权限问题，<br>可是我电脑账户设置的是管理员啊，最后也没明白咋回事；<br>最后找到了适合我的两种方法<br>1）、第一种方法：（注意：使用sudo需要输入电脑登录密码）</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sudo npm install hexo - -no-optional</span><br></pre></td></tr></table></figure>
+<p>创建成功后的提示界面：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Password:</span><br><span class="line">hexo-site@<span class="number">0.0</span><span class="number">.0</span> /Users/chenbaichuan</span><br><span class="line">└──server@<span class="number">0.0</span><span class="number">.3</span> extraneous</span><br></pre></td></tr></table></figure>
+<p>第二种方法：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sudo npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p>创建成功后的提示界面：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Password:</span><br><span class="line">/usr/local/bin/hexo -&gt; /usr/local/lib/node_modules/hexo-cli/bin/hexo</span><br><span class="line">/usr/local/lib</span><br><span class="line">└──hexo-cli@<span class="number">1.0</span><span class="number">.1</span></span><br></pre></td></tr></table></figure>
+<p>2）、初始化Hexo并且创建博客目录：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo init blog</span><br></pre></td></tr></table></figure>
+<p>初始化成功后的界面是这样的：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">INFO  Start blogging <span class="keyword">with</span> Hexo!：快用Hexo开始你的博客吧！</span><br></pre></td></tr></table></figure>
+<p>这时候在本地磁盘会有一个以blog命名的文件夹,官方文档列出的结构大致如下：<br>不一定完全相同，我的在source就只有一个posts文件。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">_config.yml</span><br><span class="line">scanffolds</span><br><span class="line">source</span><br><span class="line">themes</span><br><span class="line">public</span><br></pre></td></tr></table></figure>
+<p>3)、新建文章<br>为了保证新添加文章都在blog文件夹下，<br>首先进入初始化文件夹。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cd \blog</span><br></pre></td></tr></table></figure>
+<p>新建一篇文章</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hero new 文章名</span><br></pre></td></tr></table></figure>
+<p>至此Hexo的安装全部搞定。</p>
+<h4 id="四、启动本地服务"><a href="#四、启动本地服务" class="headerlink" title="四、启动本地服务"></a>四、启动本地服务</h4><p>生成本地服务器，这个不是必须；</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">npm install hexo-server —save</span><br></pre></td></tr></table></figure>
+<p>启动本地服务器</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<p>启动成功界面</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">网址：http://localhost:<span class="number">4000</span>/.</span><br></pre></td></tr></table></figure>
+<p>赶紧打开看一下属于自己的领地吧。<br>到此为止本地的服务已经设置好了，<br>接下来就是部署Github了，<br>请看下回分解！<br>如果有的命令运行后不成，先在最前面加sudo，<br>实在不行就去百度吧。</p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>吐槽互联网上关于hexo添加本地搜索的文章</title>
+    <url>/2020/05/01/%E5%90%90%E6%A7%BD%E4%BA%92%E8%81%94%E7%BD%91%E4%B8%8A%E5%85%B3%E4%BA%8Ehexo%E6%B7%BB%E5%8A%A0%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2%E7%9A%84%E6%96%87%E7%AB%A0/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><code>1、填坑的开始</code><br>重装hexo时，解决了node版本错误和中文乱码之后，<br>满心欢喜，<br>本以为可以愉快的重复以下过程了</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo new article</span><br><span class="line">hexo clean</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+<p>结果真是图样图森破，<br>填坑才刚刚开始。</p>
+<p>眼看着博客文章越来越多，<br>重装之后，就想先添加本地搜索。</p>
+<a id="more"></a>
+<p><code>2、重要声明</code><br>先声明下，之所以标题这么长，<br>是因为我受够了自己利用搜索引擎，<br>解决问题过程中，<br>一些纯傻逼的行为，<br>它们不但人云亦云。<br>而且还不知所云。<br>根本不说自己是在什么系统，<br>什么主题下，去修改hexo的配置，<br>这让我吃够了苦头。</p>
+<p>人云亦云和不知所云，<br>我在下文，会举例说明。</p>
+<p>所以，我要声明下，我的配置参数是这样的</p>
+<p>硬件: MacBook Air<br>系统: macOS Catalina 10.15.4<br>hexo版本：4.2.0<br>node版本：13.13.0<br>hexo主题：landscape</p>
+<p>这里最重要的配置参数是硬件和hexo主题。<br>其它应该问题不大，<br>之所以说应该，<br>因为我没有把每一个hexo和node可用版本，<br>都尝试一遍。</p>
+<h3 id="landscape自带搜索是摆设"><a href="#landscape自带搜索是摆设" class="headerlink" title="landscape自带搜索是摆设"></a>landscape自带搜索是摆设</h3><p>因为hexo默认主题landscape下自带的搜索框，<br>就是一个纯粹的摆设。<br>因为它默认搜索的是你被谷歌搜索引擎收录的网页，<br>你才刚开始写博客，<br>或者你还没做SEO，<br>怎么可能在谷歌搜索引擎被收录呢？</p>
+<h3 id="什么是本地搜索和谷歌站内搜索"><a href="#什么是本地搜索和谷歌站内搜索" class="headerlink" title="什么是本地搜索和谷歌站内搜索"></a>什么是本地搜索和谷歌站内搜索</h3><p>基于以上原因，决定寻找landscape主题下，<br>添加本地搜索和谷歌站内搜索的方法。<br>先解释一下本地搜索和谷歌站内搜索两个概念，<br>看文章的你，不要嫌我烦。<br>我真是被网上某些傻逼给害苦了。<br>所以我写文章的时候，尽量详细，<br>因为你可能一句话写不到。<br>别人就会走很多弯路。<br>甚至本来看了你的文章，<br>可以解决的问题，<br>结果因为你少了一句话的缘故，<br>别人的问题，最后没有得到解决。</p>
+<p>本地搜索：在你的博客内，对所有文章的搜索，<br>当你输入关键词，不用按回车，<br>会自动显示有搜索关键词的文章列表。</p>
+<p>谷歌站内搜索：也是在你的博客内完成搜索的输入，<br>就是landscape主题自带的那个搜索框，<br>但是当你按下回车或者点击放大镜，<br>它的搜索结果会在谷歌搜索引擎里呈现。<br>简单来说就是两种搜索方式，<br>都可以搜索你所有的文章，<br>但是展现的地方不同，<br>一种在博客里展示，就是本地搜索，<br>另一种在谷歌浏览器展示，就是谷歌站内搜索。<br>而lanscape主题自带的搜索框，<br>搜索的是你的博客被谷歌引擎收录的文章网页。<br>这个确实不是一般的坑爹。</p>
+<h3 id="hexo有用的资料真少"><a href="#hexo有用的资料真少" class="headerlink" title="hexo有用的资料真少"></a>hexo有用的资料真少</h3><p>hexo的确很火，它免费，好用，既不用买域名也不用租服务器。<br>因此，是很多愿意折腾的人的最佳选择。<br>所以，互联网上也就有了很多关于hexo的网页。</p>
+<p>但是这些网页存在着三个严重的问题：<br>第一条最严重，其它依次递减。</p>
+<p>多数人写文章的目的是炫耀加展现自己的成果，并没有想要帮助别人，而后者才是写文章分享的本质目的。<br>许多人只说正常的流程。<br>很多人只是道听途说，甚至直接复制粘贴。<br>更多人是人云亦云。</p>
+<p>基于以上原因，你以hexo为关键词一搜索网页一大把，<br>但是真正有用的，能帮助你解决问题的少之又少。<br>而且往往这种真正能帮你解决问题的文章，话不多，简洁明了。<br>这种现象正印证了那句话：</p>
+<p>高手从来不拔刀，高僧只说家常话。</p>
+<p>这里回应下开头人云亦云和不知所云，<br>人云亦云还分两种类型，<br>第一种直接粘贴复制别人的文章，<br>第二种比照别人的文章自己写一遍。<br>反正自己就是不看文章。<br>这种人最可恶，<br>浪费互联网资源不说，<br>自己既没解决问题，<br>还不能帮助别人有效解决问题，<br>甚至还浪费别人的时间和精力。</p>
+<p>不知所云的是这种人，<br>他们不写具体问题，<br>只是按照官方或者正常流程叙述一遍。<br>以为自己特具分享精神，<br>其实特可恶，浪费别人的时间和精力。<br>更有甚者，直接粘贴自己的站点配置文件，<br>连一句中文注释都没有。<br>以上两种人真是可恶至极，<br>特招人恨。<br>唉，不说了，说起来能写一本书。<br>《完》</p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
       </categories>
   </entry>
   <entry>
@@ -424,6 +396,33 @@
 ]]></content>
       <categories>
         <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Hexo安装百度统计流程</title>
+    <url>/2016/03/22/Hexo%E5%AE%89%E8%A3%85%E7%99%BE%E5%BA%A6%E7%BB%9F%E8%AE%A1%E6%B5%81%E7%A8%8B/</url>
+    <content><![CDATA[<p>用了两天时间将Hexo博客搭建好了，<br>之后便开始一点一点儿增加一些小插件，<br>很顺利的安装了RSS和评论插件后，<br>决定安装统计插件，<br>最后经过对比决定安装百度统计，<br>虽然不如谷歌，但还凑合吧。<br>闲言少叙，正文开始</p>
+<a id="more"></a>
+<p>1、在themes／—_config.yml中配置一行统计信息；</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">baidu_tongji: true</span><br></pre></td></tr></table></figure>
+<p>2、在themes/landscape/layout/_partial路径下直接复制google－analytics.ejs，并将文件名改为:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">baidu_tongji.ejs</span><br></pre></td></tr></table></figure>
+<p>3、去百度统计注册获取统计代码，格式如下：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">var _hmt = _hmt || [];</span><br><span class="line">(function() &#123;</span><br><span class="line">var hm = document.createElement(<span class="string">"script"</span>);</span><br><span class="line">hm.src = <span class="string">"//hm.baidu.com/hm.js?cf20d66409118a4390e3147d0f31366d"</span>;</span><br><span class="line">var s = document.getElementsByTagName(<span class="string">"script"</span>)[<span class="number">0</span>];</span><br><span class="line">s.parentNode.insertBefore(hm, s);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>粘贴到baidu_tongji.ejs文件中，粘贴后格式如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (theme.baidu_tongji)&#123; %&gt;</span><br><span class="line">&lt;!-- baidu_tongji --&gt;</span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">var _hmt = _hmt || [];</span><br><span class="line">(function() &#123;</span><br><span class="line">var hm = document.createElement(<span class="string">"script"</span>);</span><br><span class="line">hm.src = <span class="string">"//hm.baidu.com/hm.js?cf20d66409118a4390e3147d0f31366d"</span>;</span><br><span class="line">var s = document.getElementsByTagName(<span class="string">"script"</span>)[<span class="number">0</span>];</span><br><span class="line">s.parentNode.insertBefore(hm, s);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;!-- End baidu_tongji --&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+<p>4、打开themes/landscape/layout/_partial/head.ejs，添加如下代码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&lt;%- partial(<span class="string">'baidu_tongji'</span>) %&gt;</span><br></pre></td></tr></table></figure>
+<p>5、重新部署</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo d -</span><br></pre></td></tr></table></figure>
+<p>6、在百度统计检查部署是否成功<br>先检查首页，成功后界面是这样：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">页面代码安装状态：代码安装正确</span><br></pre></td></tr></table></figure>
+<p>如果你想检查其它页面，复制一个其它页面的网址粘贴过去，点开始检查，成功界面如下：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">代码安装详情</span><br><span class="line">已安装账户<span class="string">"username"</span>的站点<span class="string">"franktianyirenjian.github.io"</span>对应的代码：</span><br><span class="line">&lt;script&gt;</span><br><span class="line">var _hmt = _hmt || [];</span><br><span class="line">(function() &#123;</span><br><span class="line">  var hm = document.createElement(<span class="string">"script"</span>);</span><br><span class="line">  hm.src = <span class="string">"//hm.baidu.com/hm.js?cf20d66409118a4390e3147d0f31366d"</span>;</span><br><span class="line">  var s = document.getElementsByTagName(<span class="string">"script"</span>)[<span class="number">0</span>]; </span><br><span class="line">  s.parentNode.insertBefore(hm, s);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>等候二十分钟你就可以去查看网页统计报告了，打完收功。<br>另外还有人说会出现恶心的百度logo，我也不知道是人云亦云还是怎样，反正我的没有。</p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
       </categories>
   </entry>
   <entry>
@@ -668,16 +667,6 @@
       </categories>
   </entry>
   <entry>
-    <title>苏阿芒—自学外语怎能不知道他</title>
-    <url>/2016/03/17/%E8%8B%8F%E9%98%BF%E8%8A%92%E2%80%94%E8%87%AA%E5%AD%A6%E5%A4%96%E8%AF%AD%E6%80%8E%E8%83%BD%E4%B8%8D%E7%9F%A5%E9%81%93%E4%BB%96/</url>
-    <content><![CDATA[<p>原籍安徽省太平县（今黄山区）广阳乡（今属安徽石台）人，本名苏承宗，因发表作品多以苏阿芒为名，故以苏阿芒一名蜚声海内外。<br>中学毕业后曾任天津机床厂夜校英文教师，1957年加入世界语协会，历任国际世界语博物馆馆员，<br>国际世界语《世界文学》特约撰稿人，国际世界读者青年联合会中央委员，“文革”中1968年蒙冤入狱，1979年平反后任百花出版社编辑。<br>1951年开始发表作品。1979年加入中国作家协会。<br>以上借用一段百科文字，<br>我知道苏阿芒其人其事，<br>是在父亲书箱里翻到的一本叫做《成才之路》的书上。<br>以上是摘要<a id="more"></a><br>当时看到就热血沸腾，<br>最近在学习日语和英语，<br>又想起这个名字。<br>由苏阿芒的故事，<br>我觉得无论学习外语还是学习其他东西，<br>就是不疯魔不成活。<br>想想你我诸位，<br>谁在地铁或者在商务活动中，<br>没有遇到过这样的场景：<br>你原本很以为难的一门外语，<br>在地铁中你身旁的一位美女或者老兄，<br>正在和外国人侃侃而谈，<br>不时发出爽朗的笑声。<br>又或者在商务活动中，<br>你的同事与谈判对手，<br>正在用一门你觉得很难的外语，<br>唇枪舌剑，你来我往。<br>当时你除了发蒙，<br>第二个感觉就是，<br>真TMD的太牛逼了。<br>我要是外语也这么牛逼，<br>那该多好啊！<br>可你就是无法做到……<br>这么牛逼！<br>是的你无法做到。</p>
-<p>因为等你下了地铁或者在结束那次谈判后，<br>你就又想着今天回去吃什么，<br>或者想着购物车里那件好看的鞋子或者衣服，<br>是不是又降价了。<br>事实就是如此，<br>我从遇到这种情况之后，<br>发奋学英语，<br>到如今也已有五六年时间，<br>到如今英语的水平，<br>也只能令自己呵呵了。<br>自己看了下掌握多门外语的牛逼人物，<br>远者如辜鸿铭，近者如苏阿芒。<br>他们有神马了不得方法吗？<br>还是天赋异禀。<br>非也！<br>唯苦练勤学尔。<br>我自己的猜测啊！<br>学第一门外语的难度，<br>和第二门第三门外语的难度肯定成几何级降低的。<br>因为你在学第一门外语的时候，<br>已经有了一套成熟的方法论；<br>区别只是在学其他外语的时候，<br>对方法论体系中的某个细节进行改动，<br>并且随着学的外语门数增多；<br>这个方法论的体系一定会不断完善，不断得到补充；<br>那么等到你学第二十门的时候，<br>肯定已经是手到擒来，如探囊取物般容易了。<br>所以根结在神马地方，<br>第一个是恒心，第二个是勤奋；<br>第三是保证你自己必须先学会一门外语。<br>如果你想学更多门外语，肯定会越来越容易的。<br>因此，无论你学英语还是韩语，无论意大利语还是西班牙语。<br>如果你真的想学多门外语，保证你先精通一门外语。<br>其他外语定然是可以得其门而入的。<br>那么你一定要知道苏阿芒的故事，<br>也就是题中应有之意了。</p>
-]]></content>
-      <categories>
-        <category>外语学习</category>
-      </categories>
-  </entry>
-  <entry>
     <title>要赚钱先提升思维</title>
     <url>/2020/04/29/%E8%A6%81%E8%B5%9A%E9%92%B1%E5%85%88%E6%8F%90%E5%8D%87%E6%80%9D%E7%BB%B4/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>以前听到有谁说，<br>思维提升这个词，<br>那我基本上会判定他是个骗子。<br>并且认为思维提升是个伪命题，<br>对这个概念本身也是排斥的。</p>
@@ -716,6 +705,16 @@
 ]]></content>
       <categories>
         <category>思维提升</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>苏阿芒—自学外语怎能不知道他</title>
+    <url>/2016/03/17/%E8%8B%8F%E9%98%BF%E8%8A%92%E2%80%94%E8%87%AA%E5%AD%A6%E5%A4%96%E8%AF%AD%E6%80%8E%E8%83%BD%E4%B8%8D%E7%9F%A5%E9%81%93%E4%BB%96/</url>
+    <content><![CDATA[<p>原籍安徽省太平县（今黄山区）广阳乡（今属安徽石台）人，本名苏承宗，因发表作品多以苏阿芒为名，故以苏阿芒一名蜚声海内外。<br>中学毕业后曾任天津机床厂夜校英文教师，1957年加入世界语协会，历任国际世界语博物馆馆员，<br>国际世界语《世界文学》特约撰稿人，国际世界读者青年联合会中央委员，“文革”中1968年蒙冤入狱，1979年平反后任百花出版社编辑。<br>1951年开始发表作品。1979年加入中国作家协会。<br>以上借用一段百科文字，<br>我知道苏阿芒其人其事，<br>是在父亲书箱里翻到的一本叫做《成才之路》的书上。<br>以上是摘要<a id="more"></a><br>当时看到就热血沸腾，<br>最近在学习日语和英语，<br>又想起这个名字。<br>由苏阿芒的故事，<br>我觉得无论学习外语还是学习其他东西，<br>就是不疯魔不成活。<br>想想你我诸位，<br>谁在地铁或者在商务活动中，<br>没有遇到过这样的场景：<br>你原本很以为难的一门外语，<br>在地铁中你身旁的一位美女或者老兄，<br>正在和外国人侃侃而谈，<br>不时发出爽朗的笑声。<br>又或者在商务活动中，<br>你的同事与谈判对手，<br>正在用一门你觉得很难的外语，<br>唇枪舌剑，你来我往。<br>当时你除了发蒙，<br>第二个感觉就是，<br>真TMD的太牛逼了。<br>我要是外语也这么牛逼，<br>那该多好啊！<br>可你就是无法做到……<br>这么牛逼！<br>是的你无法做到。</p>
+<p>因为等你下了地铁或者在结束那次谈判后，<br>你就又想着今天回去吃什么，<br>或者想着购物车里那件好看的鞋子或者衣服，<br>是不是又降价了。<br>事实就是如此，<br>我从遇到这种情况之后，<br>发奋学英语，<br>到如今也已有五六年时间，<br>到如今英语的水平，<br>也只能令自己呵呵了。<br>自己看了下掌握多门外语的牛逼人物，<br>远者如辜鸿铭，近者如苏阿芒。<br>他们有神马了不得方法吗？<br>还是天赋异禀。<br>非也！<br>唯苦练勤学尔。<br>我自己的猜测啊！<br>学第一门外语的难度，<br>和第二门第三门外语的难度肯定成几何级降低的。<br>因为你在学第一门外语的时候，<br>已经有了一套成熟的方法论；<br>区别只是在学其他外语的时候，<br>对方法论体系中的某个细节进行改动，<br>并且随着学的外语门数增多；<br>这个方法论的体系一定会不断完善，不断得到补充；<br>那么等到你学第二十门的时候，<br>肯定已经是手到擒来，如探囊取物般容易了。<br>所以根结在神马地方，<br>第一个是恒心，第二个是勤奋；<br>第三是保证你自己必须先学会一门外语。<br>如果你想学更多门外语，肯定会越来越容易的。<br>因此，无论你学英语还是韩语，无论意大利语还是西班牙语。<br>如果你真的想学多门外语，保证你先精通一门外语。<br>其他外语定然是可以得其门而入的。<br>那么你一定要知道苏阿芒的故事，<br>也就是题中应有之意了。</p>
+]]></content>
+      <categories>
+        <category>外语学习</category>
       </categories>
   </entry>
   <entry>
