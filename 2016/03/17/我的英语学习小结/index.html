@@ -111,7 +111,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://franktianyirenjian.github.io/2016/03/17/%E6%88%91%E7%9A%84%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93/" data-id="ck9mvf76f0015dwnu6if27wez" class="article-share-link">分享</a>
+      <a data-url="https://franktianyirenjian.github.io/2016/03/17/%E6%88%91%E7%9A%84%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93/" data-id="ck9mvl2qk0013fynu8g58bde5" class="article-share-link">分享</a>
       
       
     </footer>
@@ -212,11 +212,19 @@
     </div>
   </div>
   
-  <span class="local-search local-search-google local-search-plugin" style="right: 50px;top: 30px;;position:absolute;z-index:2;">
-      <input type="search" placeholder="站内搜索" id="local-search-input" class="local-search-input-cls" style="">
-      <div id="local-search-result" class="local-search-result-cls"></div>
-  </span>
 
+{% if theme.scheme %}
+  <form class="site-search-form">
+    <input type="text" id="local-search-input" class="st-search-input" />
+  </form>
+  <div id="local-search-result" class="local-search-result-cls"></div>
+{% endif %}
+
+<script type="text/javascript" id="local.search.active">
+var inputArea       = document.querySelector("#local-search-input");
+inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script>
   
 <script src="/js/load.js"></script>
 
