@@ -1,16 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>IOS Xcode7.1新建纯代码工程</title>
-    <url>/2016/03/17/IOS-Xcode7-1%E6%96%B0%E5%BB%BA%E7%BA%AF%E4%BB%A3%E7%A0%81%E5%B7%A5%E7%A8%8B/</url>
-    <content><![CDATA[<p>今天准备纯代码做下计算器；<br>xcode已升级到version 7.1；<br>创建singleview后改造空工程；<br>删除main.storyboard，<br>创建windows并设置背景色为黑色；<br>满怀期待的command+R；<br>结果提示我:<br>以上是摘要<a id="more"></a><br>2015-10-30 18:15:29.933 计算器[1696:127982] <strong>* Assertion failure in -[UIApplication _runWithMainScene:transitionContext:completion:], /BuildRoot/Library/Caches/com.apple.xbs/Sources/UIKit_Sim/UIKit-3512.29.5/UIApplication.m:3299<br>2015-10-30 18:15:29.939 计算器[1696:127982] *</strong> Terminating app due to uncaught exception ‘NSInternalInconsistencyException’, reason: ‘Application windows are expected to have a root view controller at the end of application launch’<br>*** First throw call stack:<br>(<br>0   CoreFoundation                      0x02524a84 <strong>exceptionPreprocess + 180<br>1   libobjc.A.dylib                     0x00550e02 objc_exception_throw + 50<br>2   CoreFoundation                      0x0252491a +[NSException raise:format:arguments:] + 138<br>3   Foundation                          0x001cfe86 -[NSAssertionHandler handleFailureInMethod:object:file:lineNumber:description:] + 118<br>4   UIKit                               0x00957a9b -[UIApplication _runWithMainScene:transitionContext:completion:] + 3975<br>5   UIKit                               0x0097be4d __84-[UIApplication _handleApplicationActivationWithScene:transitionContext:completion:]_block_invoke3208 + 68<br>6   UIKit                               0x00953fb4 -[UIApplication workspaceDidEndTransaction:] + 163<br>7   FrontBoardServices                  0x036fdca4 __37-[FBSWorkspace clientEndTransaction:]_block_invoke_2 + 71<br>8   FrontBoardServices                  0x036fd77b __40-[FBSWorkspace _performDelegateCallOut:]_block_invoke + 54<br>9   FrontBoardServices                  0x0371b1a3 -[FBSSerialQueue _performNext] + 184<br>10  FrontBoardServices                  0x0371b5da -[FBSSerialQueue _performNextFromRunLoopSource] + 52<br>11  FrontBoardServices                  0x0371a8d6 FBSSerialQueueRunLoopSourceHandler + 33<br>12  CoreFoundation                      0x0243ed1f __CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE0_PERFORM_FUNCTION</strong> + 15<br>13  CoreFoundation                      0x024349ab __CFRunLoopDoSources0 + 523<br>14  CoreFoundation                      0x02433dc8 __CFRunLoopRun + 1032<br>15  CoreFoundation                      0x02433706 CFRunLoopRunSpecific + 470<br>16  CoreFoundation                      0x0243351b CFRunLoopRunInMode + 123<br>17  UIKit                               0x00953854 -[UIApplication _run] + 540<br>18  UIKit                               0x009591eb UIApplicationMain + 160<br>19  ËÆ°ÁÆóÂô®                           0x00082baa main + 138<br>20  libdyld.dylib                       0x030eba21 start + 1<br>)<br>libc++abi.dylib: terminating with uncaught exception of type NSException<br>(lldb)<br>然后就开始了艰辛的解决历程；<br>自己英语很渣，只有慢慢度娘；<br>百度出来的百分之九十九是xcode6.1改造空工程的方法；<br>没用啊，我现在用的就是它这个方法；<br>只有不断换关键字；<br>结果当我输入：“xcode7如何创建空工程”keywords后；<br>第四个答案正是我想要的；<br>東東同学的新浪博客：<a href="http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html</a><br>原来提示的意思是：“必须给windows创建一个rootviewcontroller；<br>这一句话足够了；果断添加rootview，再次command+R；果断通过；<br>它是否意味着windows创建好后不能直接显示了，必须添加rootviewcontroller才可以运行呢？<br>已经给東東留言等回复。<br>总之任何一个细小的问题，通过自己的努力或者得到别人指点得到解决后，那种欣喜都是情不自禁的。<br>完毕！</p>
-]]></content>
-      <categories>
-        <category>编程</category>
-        <category>IOS</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Hexo添加Rss和评论插件</title>
     <url>/2016/03/20/Hexo%E6%B7%BB%E5%8A%A0Rss%E5%92%8C%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/</url>
     <content><![CDATA[<p>一、添加RSS<br>我的主题配置文件已含有rss：  /atom.xml<br>因此我就直接安装部署了。<br>根目录下的配置信息：在# Extensions中添加，已经有的就免了。</p>
@@ -62,34 +52,9 @@
       </categories>
   </entry>
   <entry>
-    <title>hexo在landscape主题下添加本地搜索</title>
-    <url>/2020/05/01/hexo%E5%9C%A8landscape%E4%B8%BB%E9%A2%98%E4%B8%8B%E6%B7%BB%E5%8A%A0%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>基于能搜到这篇文章的人，<br>肯定是急于解决这个问题的人，<br>因此，我直接展现解决方案</p>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>这篇文章里的方法，<br>针对的配置环境是这样的：</p>
-<p>硬件: MacBook Air<br>系统: macOS Catalina 10.15.4<br>hexo版本：4.2.0<br>node版本：13.13.0<br>hexo主题：landscape</p>
-<p><code>那咱们就开始吧!</code></p>
-<a id="more"></a>
-
-<p>参考的两篇博客地址分别是：<br>第一篇帮我解决了添加js和css的问题，<br>第二篇帮我解决了search.xml解析的问题。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;gitee.com&#x2F;sjclub&#x2F;hexo-search-plugin&#x2F;tree&#x2F;master</span><br><span class="line">https:&#x2F;&#x2F;liam.page&#x2F;2017&#x2F;09&#x2F;21&#x2F;local-search-engine-in-Hexo-site&#x2F;</span><br></pre></td></tr></table></figure>
-<h3 id="具体步骤："><a href="#具体步骤：" class="headerlink" title="具体步骤："></a>具体步骤：</h3><p>首先，按照第一个博客里的流程一步不少的走完。<br>其次，用第二个博客里的search.js文件替换第一篇博客里的search.js文件。<br>最后，将第二篇博客里search.swig文件里的以下内容，添加到第一篇博客里的search.ejs文件里去。</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> id=<span class="string">"local.search.active"</span>&gt;</span><br><span class="line">var inputArea = document.querySelector(<span class="string">"#local-search-input"</span>);</span><br><span class="line">inputArea.onclick = function()&#123; getSearchFile(); this.onclick = null &#125;</span><br><span class="line">inputArea.onkeydown = function()&#123; <span class="keyword">if</span>(event.keyCode == <span class="number">13</span>) <span class="keyword">return</span> false &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="重点说明"><a href="#重点说明" class="headerlink" title="重点说明"></a>重点说明</h3><p>第一，第一篇博客的博主对引入文件，说的不是很详细。<br>其实你把load.js和search.js两个文件,<br>直接在footer.ejs里引入即可。<br>引入代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;%- partial(&#39;_partial&#x2F;search&#39;) %&gt; # 引入search.ejs,这个文件的作用是生成搜索框并启用搜索输入</span><br><span class="line">&lt;%- js(&#39;js&#x2F;load&#39;) %&gt; # 引入load.js，这个文件的作用是加载search.xml</span><br><span class="line">&lt;%- js(&#39;js&#x2F;search&#39;) %&gt; # 引入search.js，这个文件的作用是解析search.xml</span><br></pre></td></tr></table></figure>
-<p>第二，博主有些语焉不详，<br>他下面说的是search.styl,<br>其实在plugin目录里的是search.stylus<br>实际操作时，你只需要把search.stylus里的代码复制粘贴到search.styl文件里就行。</p>
-<p>第三，最后一步，是最重要的一步，<br>否则即便解析正确，也没法搜索，<br>因为根本没给搜索框调用搜索解析函数。</p>
-<p>然后重新提交一下就可以了。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>为了防止看到这篇的人迷惑。<br>其实可以这么说，<br>两篇博客重点展示了两个文件，<br>即search.js和search.ejs文件。<br>这两个文件里的作用前面已经注释了。<br>但是第一篇里的search.js全部没法用，<br>所以我们将第二篇博客的search.js全部复制到第一篇博客。</p>
-<p>而第一篇博客里的search.ejs，现有的代码是有用的，<br>只不过仅能生成搜索框，却不能实现搜索功能<br>所以我们将第二篇博客里的script脚本添加到第一篇博客的search.ejs里面。</p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>UIviewcontroller与UIview</title>
-    <url>/2016/03/17/UIviewcontroller%E4%B8%8EUIview/</url>
-    <content><![CDATA[<p>UIviewcontroller名字叫做视图控制器，是一个类，UIview也是一个类；<br>UIviewcontroller控制放在它上面的所有UIview的事件；<br>UIview只负责加载数据与图片；<br>UIviewcontroller顾名思义，就是控制；<br>比如飞机大战中，加载子弹和飞机的图片需要UIview实现；<br>而发射子弹则需要UIviewcontroller来实现。<br>目前就理解到这个程度。</p>
+    <title>IOS Xcode7.1新建纯代码工程</title>
+    <url>/2016/03/17/IOS-Xcode7-1%E6%96%B0%E5%BB%BA%E7%BA%AF%E4%BB%A3%E7%A0%81%E5%B7%A5%E7%A8%8B/</url>
+    <content><![CDATA[<p>今天准备纯代码做下计算器；<br>xcode已升级到version 7.1；<br>创建singleview后改造空工程；<br>删除main.storyboard，<br>创建windows并设置背景色为黑色；<br>满怀期待的command+R；<br>结果提示我:<br>以上是摘要<a id="more"></a><br>2015-10-30 18:15:29.933 计算器[1696:127982] <strong>* Assertion failure in -[UIApplication _runWithMainScene:transitionContext:completion:], /BuildRoot/Library/Caches/com.apple.xbs/Sources/UIKit_Sim/UIKit-3512.29.5/UIApplication.m:3299<br>2015-10-30 18:15:29.939 计算器[1696:127982] *</strong> Terminating app due to uncaught exception ‘NSInternalInconsistencyException’, reason: ‘Application windows are expected to have a root view controller at the end of application launch’<br>*** First throw call stack:<br>(<br>0   CoreFoundation                      0x02524a84 <strong>exceptionPreprocess + 180<br>1   libobjc.A.dylib                     0x00550e02 objc_exception_throw + 50<br>2   CoreFoundation                      0x0252491a +[NSException raise:format:arguments:] + 138<br>3   Foundation                          0x001cfe86 -[NSAssertionHandler handleFailureInMethod:object:file:lineNumber:description:] + 118<br>4   UIKit                               0x00957a9b -[UIApplication _runWithMainScene:transitionContext:completion:] + 3975<br>5   UIKit                               0x0097be4d __84-[UIApplication _handleApplicationActivationWithScene:transitionContext:completion:]_block_invoke3208 + 68<br>6   UIKit                               0x00953fb4 -[UIApplication workspaceDidEndTransaction:] + 163<br>7   FrontBoardServices                  0x036fdca4 __37-[FBSWorkspace clientEndTransaction:]_block_invoke_2 + 71<br>8   FrontBoardServices                  0x036fd77b __40-[FBSWorkspace _performDelegateCallOut:]_block_invoke + 54<br>9   FrontBoardServices                  0x0371b1a3 -[FBSSerialQueue _performNext] + 184<br>10  FrontBoardServices                  0x0371b5da -[FBSSerialQueue _performNextFromRunLoopSource] + 52<br>11  FrontBoardServices                  0x0371a8d6 FBSSerialQueueRunLoopSourceHandler + 33<br>12  CoreFoundation                      0x0243ed1f __CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE0_PERFORM_FUNCTION</strong> + 15<br>13  CoreFoundation                      0x024349ab __CFRunLoopDoSources0 + 523<br>14  CoreFoundation                      0x02433dc8 __CFRunLoopRun + 1032<br>15  CoreFoundation                      0x02433706 CFRunLoopRunSpecific + 470<br>16  CoreFoundation                      0x0243351b CFRunLoopRunInMode + 123<br>17  UIKit                               0x00953854 -[UIApplication _run] + 540<br>18  UIKit                               0x009591eb UIApplicationMain + 160<br>19  ËÆ°ÁÆóÂô®                           0x00082baa main + 138<br>20  libdyld.dylib                       0x030eba21 start + 1<br>)<br>libc++abi.dylib: terminating with uncaught exception of type NSException<br>(lldb)<br>然后就开始了艰辛的解决历程；<br>自己英语很渣，只有慢慢度娘；<br>百度出来的百分之九十九是xcode6.1改造空工程的方法；<br>没用啊，我现在用的就是它这个方法；<br>只有不断换关键字；<br>结果当我输入：“xcode7如何创建空工程”keywords后；<br>第四个答案正是我想要的；<br>東東同学的新浪博客：<a href="http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html</a><br>原来提示的意思是：“必须给windows创建一个rootviewcontroller；<br>这一句话足够了；果断添加rootview，再次command+R；果断通过；<br>它是否意味着windows创建好后不能直接显示了，必须添加rootviewcontroller才可以运行呢？<br>已经给東東留言等回复。<br>总之任何一个细小的问题，通过自己的努力或者得到别人指点得到解决后，那种欣喜都是情不自禁的。<br>完毕！</p>
 ]]></content>
       <categories>
         <category>编程</category>
@@ -117,6 +82,87 @@
       </categories>
   </entry>
   <entry>
+    <title>Mac端通过Hexo搭建独立博客</title>
+    <url>/2016/03/17/Mac%E7%AB%AF%E9%80%9A%E8%BF%87Hexo%E6%90%AD%E5%BB%BA%E7%8B%AC%E7%AB%8B%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h4 id="一、为什么选择Hexo"><a href="#一、为什么选择Hexo" class="headerlink" title="一、为什么选择Hexo"></a>一、为什么选择Hexo</h4><p>我对搭建自己的独立博客兴致盎然，<br>独立的才真正是自己的，<br>马克思说研究需要充分占有材料，<br>我因此大量阅读了关于搭建独立博客的文章和资料，<br>知道了有Octopress，jekyll等独立博客搭建系统，<br>但看到好多程序员童鞋都说：Octopress和jekyll很难搞定，<br>所以对于我这种小白来说，就更不用考虑了，<br>听说Hexo是hacker必备的博客搭建系统，因此果断选它。</p>
+<a id="more"></a>
+<h4 id="二、艰难的开始"><a href="#二、艰难的开始" class="headerlink" title="二、艰难的开始"></a>二、艰难的开始</h4><p>在我安装好git和node.js后，感觉万事俱备，只欠安装Hexo；</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">然后在终端果断输入：npm install -g hero-cli</span><br></pre></td></tr></table></figure>
+<p>回车后等待奇迹发生，然并卵；<br>出现的是几个警告和一系列的Err字样；<br>然后艰难翻坑开始了，各种试验，各种搜索，<br>最后理出来一点儿思路；<br>总算见到雏形了，<br>接下来就很顺利的过关斩将了；</p>
+<h4 id="三、安装Hexo步骤"><a href="#三、安装Hexo步骤" class="headerlink" title="三、安装Hexo步骤"></a>三、安装Hexo步骤</h4><p>系统环境：OS X EI Captian 版本 10.11.3 64bit<br>1、安装Node.js（必须）<br>作用：生成静态页面。<br>Node.js下载地址：<a href="http://nodejs.cn" target="_blank" rel="noopener">http://nodejs.cn</a><br>2、安装git（必须）<br>作用：把本地的静态页面提交到Github上去；<br>安装git前保证你已经安装了Xcode，不然会影响编译；<br>我现在还不明白是否安装了Xcode就不用另外安装git，<br>由于当初百度看到一个方法就试试，所以最后也没确定这个问题，<br>我是既安装了Xcode又用上面的方法安装了git的。<br>有心的朋友可以试试只安装Xcode，不另外安装git，<br>看是否会初始化Hexo成功。</p>
+<h6 id="git安装方法："><a href="#git安装方法：" class="headerlink" title="git安装方法："></a>git安装方法：</h6><p>1）、先安装Homebrew，把下面的代码拷贝到终端回车即可；</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">/usr/bin/ruby -e <span class="string">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span></span><br></pre></td></tr></table></figure>
+<p>2）、安装git<br>等Homebrew安装完毕后，在终端输入：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">brew install git回车即可。</span><br></pre></td></tr></table></figure>
+<h6 id="3、安装hexo"><a href="#3、安装hexo" class="headerlink" title="3、安装hexo"></a>3、安装hexo</h6><p>万事俱备，只欠hexo了，</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">官方文档提供的方法是：npm install －g hexo－cli</span><br></pre></td></tr></table></figure>
+<p>我试了N次，最后磁盘报警也没成功，大概是因为权限问题，<br>可是我电脑账户设置的是管理员啊，最后也没明白咋回事；<br>最后找到了适合我的两种方法<br>1）、第一种方法：（注意：使用sudo需要输入电脑登录密码）</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sudo npm install hexo - -no-optional</span><br></pre></td></tr></table></figure>
+<p>创建成功后的提示界面：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Password:</span><br><span class="line">hexo-site@<span class="number">0.0</span><span class="number">.0</span> /Users/chenbaichuan</span><br><span class="line">└──server@<span class="number">0.0</span><span class="number">.3</span> extraneous</span><br></pre></td></tr></table></figure>
+<p>第二种方法：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sudo npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p>创建成功后的提示界面：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Password:</span><br><span class="line">/usr/local/bin/hexo -&gt; /usr/local/lib/node_modules/hexo-cli/bin/hexo</span><br><span class="line">/usr/local/lib</span><br><span class="line">└──hexo-cli@<span class="number">1.0</span><span class="number">.1</span></span><br></pre></td></tr></table></figure>
+<p>2）、初始化Hexo并且创建博客目录：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo init blog</span><br></pre></td></tr></table></figure>
+<p>初始化成功后的界面是这样的：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">INFO  Start blogging <span class="keyword">with</span> Hexo!：快用Hexo开始你的博客吧！</span><br></pre></td></tr></table></figure>
+<p>这时候在本地磁盘会有一个以blog命名的文件夹,官方文档列出的结构大致如下：<br>不一定完全相同，我的在source就只有一个posts文件。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">_config.yml</span><br><span class="line">scanffolds</span><br><span class="line">source</span><br><span class="line">themes</span><br><span class="line">public</span><br></pre></td></tr></table></figure>
+<p>3)、新建文章<br>为了保证新添加文章都在blog文件夹下，<br>首先进入初始化文件夹。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cd \blog</span><br></pre></td></tr></table></figure>
+<p>新建一篇文章</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hero new 文章名</span><br></pre></td></tr></table></figure>
+<p>至此Hexo的安装全部搞定。</p>
+<h4 id="四、启动本地服务"><a href="#四、启动本地服务" class="headerlink" title="四、启动本地服务"></a>四、启动本地服务</h4><p>生成本地服务器，这个不是必须；</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">npm install hexo-server —save</span><br></pre></td></tr></table></figure>
+<p>启动本地服务器</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<p>启动成功界面</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">网址：http://localhost:<span class="number">4000</span>/.</span><br></pre></td></tr></table></figure>
+<p>赶紧打开看一下属于自己的领地吧。<br>到此为止本地的服务已经设置好了，<br>接下来就是部署Github了，<br>请看下回分解！<br>如果有的命令运行后不成，先在最前面加sudo，<br>实在不行就去百度吧。</p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>UIviewcontroller与UIview</title>
+    <url>/2016/03/17/UIviewcontroller%E4%B8%8EUIview/</url>
+    <content><![CDATA[<p>UIviewcontroller名字叫做视图控制器，是一个类，UIview也是一个类；<br>UIviewcontroller控制放在它上面的所有UIview的事件；<br>UIview只负责加载数据与图片；<br>UIviewcontroller顾名思义，就是控制；<br>比如飞机大战中，加载子弹和飞机的图片需要UIview实现；<br>而发射子弹则需要UIviewcontroller来实现。<br>目前就理解到这个程度。</p>
+]]></content>
+      <categories>
+        <category>编程</category>
+        <category>IOS</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>hexo在landscape主题下添加本地搜索</title>
+    <url>/2020/05/01/hexo%E5%9C%A8landscape%E4%B8%BB%E9%A2%98%E4%B8%8B%E6%B7%BB%E5%8A%A0%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>基于能搜到这篇文章的人，<br>肯定是急于解决这个问题的人，<br>因此，我直接展现解决方案</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>这篇文章里的方法，<br>针对的配置环境是这样的：</p>
+<p>硬件: MacBook Air<br>系统: macOS Catalina 10.15.4<br>hexo版本：4.2.0<br>node版本：13.13.0<br>hexo主题：landscape</p>
+<p><code>那咱们就开始吧!</code></p>
+<a id="more"></a>
+
+<p>参考的两篇博客地址分别是：<br>第一篇帮我解决了添加js和css的问题，<br>第二篇帮我解决了search.xml解析的问题。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;gitee.com&#x2F;sjclub&#x2F;hexo-search-plugin&#x2F;tree&#x2F;master</span><br><span class="line">https:&#x2F;&#x2F;liam.page&#x2F;2017&#x2F;09&#x2F;21&#x2F;local-search-engine-in-Hexo-site&#x2F;</span><br></pre></td></tr></table></figure>
+<h3 id="具体步骤："><a href="#具体步骤：" class="headerlink" title="具体步骤："></a>具体步骤：</h3><p>首先，按照第一个博客里的流程一步不少的走完。<br>其次，用第二个博客里的search.js文件替换第一篇博客里的search.js文件。<br>最后，将第二篇博客里search.swig文件里的以下内容，添加到第一篇博客里的search.ejs文件里去。</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> id=<span class="string">"local.search.active"</span>&gt;</span><br><span class="line">var inputArea = document.querySelector(<span class="string">"#local-search-input"</span>);</span><br><span class="line">inputArea.onclick = function()&#123; getSearchFile(); this.onclick = null &#125;</span><br><span class="line">inputArea.onkeydown = function()&#123; <span class="keyword">if</span>(event.keyCode == <span class="number">13</span>) <span class="keyword">return</span> false &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="重点说明"><a href="#重点说明" class="headerlink" title="重点说明"></a>重点说明</h3><p>第一，第一篇博客的博主对引入文件，说的不是很详细。<br>其实你把load.js和search.js两个文件,<br>直接在footer.ejs里引入即可。<br>引入代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;%- partial(&#39;_partial&#x2F;search&#39;) %&gt; # 引入search.ejs,这个文件的作用是生成搜索框并启用搜索输入</span><br><span class="line">&lt;%- js(&#39;js&#x2F;load&#39;) %&gt; # 引入load.js，这个文件的作用是加载search.xml</span><br><span class="line">&lt;%- js(&#39;js&#x2F;search&#39;) %&gt; # 引入search.js，这个文件的作用是解析search.xml</span><br></pre></td></tr></table></figure>
+<p>第二，博主有些语焉不详，<br>他下面说的是search.styl,<br>其实在plugin目录里的是search.stylus<br>实际操作时，你只需要把search.stylus里的代码复制粘贴到search.styl文件里就行。</p>
+<p>第三，最后一步，是最重要的一步，<br>否则即便解析正确，也没法搜索，<br>因为根本没给搜索框调用搜索解析函数。</p>
+<p>然后重新提交一下就可以了。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>为了防止看到这篇的人迷惑。<br>其实可以这么说，<br>两篇博客重点展示了两个文件，<br>即search.js和search.ejs文件。<br>这两个文件里的作用前面已经注释了。<br>但是第一篇里的search.js全部没法用，<br>所以我们将第二篇博客的search.js全部复制到第一篇博客。</p>
+<p>而第一篇博客里的search.ejs，现有的代码是有用的，<br>只不过仅能生成搜索框，却不能实现搜索功能<br>所以我们将第二篇博客里的script脚本添加到第一篇博客的search.ejs里面。</p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+  </entry>
+  <entry>
     <title>oc中的类和对象</title>
     <url>/2016/03/17/oc%E4%B8%AD%E7%9A%84%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/</url>
     <content><![CDATA[<p>一、类是什么</p>
@@ -140,6 +186,18 @@
       </categories>
   </entry>
   <entry>
+    <title>《王阳明大传》读后感</title>
+    <url>/2016/03/17/%E3%80%8A%E7%8E%8B%E9%98%B3%E6%98%8E%E5%A4%A7%E4%BC%A0%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/</url>
+    <content><![CDATA[<p>最近读了《王阳明大传》<br>模模糊糊理解了一些<br>王阳明心学要解决的问题是什么?<br>记录在此，以备后用。<br>心学在阳明后来讲学时，<br>为使学生容易理解，<br>便表述为良知学，<br>而实现的方法则是致良知。</p>
+<p>心学要解决的问题就是：找到“人生的意义”，<br>在百千万年的人类史中，<br>人类肯定形成了同一的人性内容，<br>也就是阳明心学中讲的“心体”，<br>也就是本元，最初的那种状态，<br>在阳明以前人们为了找到‘意义’，<br>都会去求助于外物，<br>从外物求理，以期望最终找到‘意义’。<br>以上是摘要<a id="more"></a><br>但是阳明‘龙场悟道’后，告诉大家，意义不在外界万物上，<br>而在每个人心上；<br>但是人们搞不懂，<br>既然在每个人心上，<br>那我们都有心，<br>为什么没有找到‘意义’所在呢？<br>这时王先生告诉他们：<br>不是没有，而是已经被遮蔽了。<br>是被外界鸡零狗碎的私心杂念蒙蔽了。<br>王先生不但告诉他们为什么你们现在从自己心上找不到意义，<br>而且还说我有方法能让你们找到，<br>那就是：“知行合一”；<br>只要坚持知行合一肯定会有人，<br>能将那些鸡零狗碎的私心杂念的遮蔽去掉，<br>看到自己的心的本体，<br>找到意义所在。</p>
+<p>注意他说的是有人会，<br>有人会找到，肯定就有人不会找到<br>所以心学本身对于每个个人来说<br>是一个悲喜参半的对意义的答案，<br>喜的是终于有方法能找到那个终极的问题的答案了。<br>而悲的则是，即使你真去知行合一了，<br>临死之前也不一定能找到。</p>
+<p>从王先生自己的经历来说，<br>他笃信每个人原本都是圣人，<br>只要坚持知行合一，<br>找到意义，最后每个人都会成为真正的圣人。<br>但是这里就有个时间的死结，<br>每个人的时间都不是无限，</p>
+]]></content>
+      <categories>
+        <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
     <title>为什么读完就谈</title>
     <url>/2016/03/17/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AF%BB%E5%AE%8C%E5%B0%B1%E8%B0%88/</url>
     <content><![CDATA[<p>一、教学相长的好处<br>教学相长，绝对是一个人进步的最快方法；<br>这个经验是我从自己写微信公众号体会到的。<br>并且由此公众号的写作，<br>逐渐理清了自己以后的知识架构；<br>一直以来我都想为自己建立一个知识系统；<br>这个系统是完全属于自己的，<br>并且系统里面的每个元素我都能达到专业水平。</p>
@@ -150,18 +208,6 @@
       <categories>
         <category>读书明道</category>
         <category>小说</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>《王阳明大传》读后感</title>
-    <url>/2016/03/17/%E3%80%8A%E7%8E%8B%E9%98%B3%E6%98%8E%E5%A4%A7%E4%BC%A0%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/</url>
-    <content><![CDATA[<p>最近读了《王阳明大传》<br>模模糊糊理解了一些<br>王阳明心学要解决的问题是什么?<br>记录在此，以备后用。<br>心学在阳明后来讲学时，<br>为使学生容易理解，<br>便表述为良知学，<br>而实现的方法则是致良知。</p>
-<p>心学要解决的问题就是：找到“人生的意义”，<br>在百千万年的人类史中，<br>人类肯定形成了同一的人性内容，<br>也就是阳明心学中讲的“心体”，<br>也就是本元，最初的那种状态，<br>在阳明以前人们为了找到‘意义’，<br>都会去求助于外物，<br>从外物求理，以期望最终找到‘意义’。<br>以上是摘要<a id="more"></a><br>但是阳明‘龙场悟道’后，告诉大家，意义不在外界万物上，<br>而在每个人心上；<br>但是人们搞不懂，<br>既然在每个人心上，<br>那我们都有心，<br>为什么没有找到‘意义’所在呢？<br>这时王先生告诉他们：<br>不是没有，而是已经被遮蔽了。<br>是被外界鸡零狗碎的私心杂念蒙蔽了。<br>王先生不但告诉他们为什么你们现在从自己心上找不到意义，<br>而且还说我有方法能让你们找到，<br>那就是：“知行合一”；<br>只要坚持知行合一肯定会有人，<br>能将那些鸡零狗碎的私心杂念的遮蔽去掉，<br>看到自己的心的本体，<br>找到意义所在。</p>
-<p>注意他说的是有人会，<br>有人会找到，肯定就有人不会找到<br>所以心学本身对于每个个人来说<br>是一个悲喜参半的对意义的答案，<br>喜的是终于有方法能找到那个终极的问题的答案了。<br>而悲的则是，即使你真去知行合一了，<br>临死之前也不一定能找到。</p>
-<p>从王先生自己的经历来说，<br>他笃信每个人原本都是圣人，<br>只要坚持知行合一，<br>找到意义，最后每个人都会成为真正的圣人。<br>但是这里就有个时间的死结，<br>每个人的时间都不是无限，</p>
-]]></content>
-      <categories>
-        <category>阳明心学</category>
       </categories>
   </entry>
   <entry>
@@ -281,35 +327,6 @@
       </categories>
   </entry>
   <entry>
-    <title>当你说知行合一的时候你在说什么</title>
-    <url>/2016/03/17/%E5%BD%93%E4%BD%A0%E8%AF%B4%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E7%9A%84%E6%97%B6%E5%80%99%E4%BD%A0%E5%9C%A8%E8%AF%B4%E4%BB%80%E4%B9%88/</url>
-    <content><![CDATA[<p>一、前面的话<br>知行合一是心学的支柱和核心，<br>心学没了知行合一也就不是心学，<br>因此我要反复讲，时时刻刻讲，<br>这篇也不例外，还是要讲知行合一。</p>
-<p>前几篇虽然也讲了知行合一，<br>可能对你来说还是只是理论而已，<br>它让你搞明白了知行合一和格物，至善以及工夫的关系，<br>但然并卵，你可能还是不得要领，<br>这篇就是专门讲述，<br>当你说你知行合一的时候，<br>你指的到底具体是什么事？<br>以上是摘要<a id="more"></a><br>二、知行合一与爱好音乐<br>咱们就从：『爱好』音乐说起吧，<br>你觉得当你说爱好音乐的时候，<br>你具体是什么意思？</p>
-<p>你说你爱好是音乐，<br>可是支撑它的是什么东西呢?<br>支撑你理直气壮说出爱好音乐的是什么呢?</p>
-<p>如果你真的知行合一，<br>当你说你爱好音乐的时候，<br>你起码要知道音乐的三种唱法：美声，民族和通俗；<br>三个声部是：高音，中音和低音。<br>并且知道它们之间的区别；<br>唱《滚滚长江东逝水》的杨洪基是标准的男中音，<br>目前世界三大男高音分别是：帕瓦罗蒂，多明戈和卡雷拉斯。<br>没错，多明戈就是和宋祖英在08奥运会合唱《爱的火焰》的那个西班牙老头。<br>中国被称为：『人声低音炮』的赵鹏是典型的男低音歌手。</p>
-<p>当你说你爱好音乐的时候，<br>你起码要知道这三种唱法里排名前三的歌手，<br>并且知道每位歌手的代表作。<br>而且真的理解每首代表作创作的背景和要表达的意境是什么。</p>
-<p>当你说你爱好音乐的时候，<br>你起码要知道意大利盛产男高音，<br>男中音和男低音在歌唱界是稀有动物，<br>而且音乐的起源是数学。</p>
-<p>三、知行合一与爱好电影<br>当你说你爱好电影的时候，<br>你实际的意思应该是这样的，<br>你起码看过世界十大禁片，<br>那样你会知道为什么会被禁？</p>
-<p>当你说爱好电影的时候，<br>你起码要知道各国著名导演和其代表作，<br>而且你都是看过的，<br>别问我哪里有种子，<br>我真的不知道。</p>
-<p>当你说你爱好电影的时候，<br>你起码要知道电影分两大类故事片和非故事片；<br>故事片又分为：西部片，强盗片，科幻片，恐怖片，喜剧片，灾难片以及战争片，当然还有我们大中华独有的武侠片。<br>非故事片又分为：广告片，新闻片，纪录片，科学片，教学片以及风景片。</p>
-<p>当你说你爱好电影的时候你起码要知道电影的基本构成要素是影像和声音，<br>影像又分为：景别，运动，光线和色彩，<br>声音又分为：人声，音响，音乐，声画关系，长镜头以及蒙太奇。</p>
-<p>可是你说，靠，我就是爱好，没必要这样吧，<br>可是爱好真实的面貌就是这样，你起码能说出个一二三来，<br>这些全部是支撑你理直气壮说出你爱好某件事情或者某样东西的基础。<br>不然呢，你说你爱好音乐可是音乐几种唱法，你说不知道，<br>男高音，男中音和男低音的代表歌手是谁，你说不知道？<br>那你算哪门子爱好音乐呢？</p>
-<p>如果你真的爱好，应该是这样的，<br>当你看过某部电影之后，你会这样说：<br>哇喔，这部喜剧片拍的蛮不错，长镜头运用的非常到位，<br>蒙太奇运用的也恰到好处，<br>某个地方的光线如果再足一点就更完美了。</p>
-<p>没错，你说你爱好某样东西，<br>它的实际意思是即便你不靠这件事情谋生，<br>你在这件事情上面也是绝对的行家，<br>而不是那种看完后只对故事本身吐槽。<br>再明白一点儿就是，<br>这部电影好，好在哪里？<br>这首曲子不好，不好在哪里？<br>景别，长镜头，蒙太奇，副歌，旋律，节奏，歌词以及唱法，<br>你得说出个一二三来。</p>
-<p>四、爱好音乐与电影的背后</p>
-<p>机灵的同学，可能已经发现了，<br>如果爱好是这样，它是要花费大量时间的，<br>所以，肯定可以这样说，<br>你的爱好在哪里？<br>你的时间就应该在哪里。<br>如果你说你爱好音乐，<br>而你的大部分时间却用来打羽毛球或者dota，<br>不好意思，你只能说你的爱好是羽毛球或游戏。</p>
-<p>因此，下回如果遇到某人再说自己爱好音乐或者电影，<br>你基本三步就可以试出来，他到底是真爱，还是叶公好龙。<br>第一，音乐的三种唱法是什么？<br>第二，三个声部是什么？<br>第三，三个声部的代表人物分别是谁？</p>
-<p>同样，你想验证自己在某件事情上是否真正知行合一，<br>除了要和格物（纠正在心上的事情，使其符合天理）相结合之外。<br>一个简单的方法就是你统计下，<br>你平时的时间是否大部分花在了这件事情上。</p>
-<p>五、总结</p>
-<p>爱好实际需要你花费大量时间，<br>不然就不是真的知行合一去爱了，<br>时间是你惟一的财富，<br>你的时间花在了哪里，<br>那很有可能你的爱好就在哪里？<br>当然并不绝对，<br>比如你说你就爱好发呆或者睡觉，<br>那我就只能借用王大锤的话了：『你说得好有道理，我竟无言以对』。<br>你平时时间花在哪里？<br>是验证你在某件事上是否真正知行合一，<br>一个简单但非常有用的方法。</p>
-<p>本期推荐电影：<br>一、《龙虾》<br>推荐语：如果不结婚就变动物，是不是匪夷所思，《龙虾》就是这样的电影。<br>二、《房间》<br>推荐语：想不想知道一个被伤害的母亲是怎样为自己孩子在一间狭小且上了锁的房间里，打造出一个小小天堂的？<br>三、《你是好孩子》<br>推荐语：我们小时候受过的伤害，在长大后都会以自己被伤害的方式再现。</p>
-<p>本期推荐书籍：<br>一、《蔡澜谈吃》作者：蔡澜<br>推荐语：蔡澜包括，倪匡、黄霑和金庸，都是我非常钦佩的人，钦佩程度根据名字排序；<br>蔡澜爱好吃，所以就有了这本书以及《蔡澜品味》等节目。<br>看看这本书，你会知道《想说爱好真的不容易》。<br>二、《今生今世，民国名媛情事》作者：萧萧<br>推荐语：名媛难再有，但可以学学这些名媛处人生低谷的人生态度。名媛不唯能享富贵，更可处贫贱而仍优雅如初。<br>三、《一个人的村庄》作者：刘亮程<br>推荐语：观察生活的角度比较独特，散文里比较出奇的。</p>
-]]></content>
-      <categories>
-        <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
     <title>工夫与境界（一）</title>
     <url>/2016/03/17/%E5%B7%A5%E5%A4%AB%E4%B8%8E%E5%A2%83%E7%95%8C%EF%BC%88%E4%B8%80%EF%BC%89/</url>
     <content><![CDATA[<p>工夫与境界古人常论之；<br>这里工夫是指心力，境界是指胸襟。<br>心力与胸襟外在综合显现为气质。</p>
@@ -371,12 +388,59 @@
       </categories>
   </entry>
   <entry>
+    <title>当你说知行合一的时候你在说什么</title>
+    <url>/2016/03/17/%E5%BD%93%E4%BD%A0%E8%AF%B4%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E7%9A%84%E6%97%B6%E5%80%99%E4%BD%A0%E5%9C%A8%E8%AF%B4%E4%BB%80%E4%B9%88/</url>
+    <content><![CDATA[<p>一、前面的话<br>知行合一是心学的支柱和核心，<br>心学没了知行合一也就不是心学，<br>因此我要反复讲，时时刻刻讲，<br>这篇也不例外，还是要讲知行合一。</p>
+<p>前几篇虽然也讲了知行合一，<br>可能对你来说还是只是理论而已，<br>它让你搞明白了知行合一和格物，至善以及工夫的关系，<br>但然并卵，你可能还是不得要领，<br>这篇就是专门讲述，<br>当你说你知行合一的时候，<br>你指的到底具体是什么事？<br>以上是摘要<a id="more"></a><br>二、知行合一与爱好音乐<br>咱们就从：『爱好』音乐说起吧，<br>你觉得当你说爱好音乐的时候，<br>你具体是什么意思？</p>
+<p>你说你爱好是音乐，<br>可是支撑它的是什么东西呢?<br>支撑你理直气壮说出爱好音乐的是什么呢?</p>
+<p>如果你真的知行合一，<br>当你说你爱好音乐的时候，<br>你起码要知道音乐的三种唱法：美声，民族和通俗；<br>三个声部是：高音，中音和低音。<br>并且知道它们之间的区别；<br>唱《滚滚长江东逝水》的杨洪基是标准的男中音，<br>目前世界三大男高音分别是：帕瓦罗蒂，多明戈和卡雷拉斯。<br>没错，多明戈就是和宋祖英在08奥运会合唱《爱的火焰》的那个西班牙老头。<br>中国被称为：『人声低音炮』的赵鹏是典型的男低音歌手。</p>
+<p>当你说你爱好音乐的时候，<br>你起码要知道这三种唱法里排名前三的歌手，<br>并且知道每位歌手的代表作。<br>而且真的理解每首代表作创作的背景和要表达的意境是什么。</p>
+<p>当你说你爱好音乐的时候，<br>你起码要知道意大利盛产男高音，<br>男中音和男低音在歌唱界是稀有动物，<br>而且音乐的起源是数学。</p>
+<p>三、知行合一与爱好电影<br>当你说你爱好电影的时候，<br>你实际的意思应该是这样的，<br>你起码看过世界十大禁片，<br>那样你会知道为什么会被禁？</p>
+<p>当你说爱好电影的时候，<br>你起码要知道各国著名导演和其代表作，<br>而且你都是看过的，<br>别问我哪里有种子，<br>我真的不知道。</p>
+<p>当你说你爱好电影的时候，<br>你起码要知道电影分两大类故事片和非故事片；<br>故事片又分为：西部片，强盗片，科幻片，恐怖片，喜剧片，灾难片以及战争片，当然还有我们大中华独有的武侠片。<br>非故事片又分为：广告片，新闻片，纪录片，科学片，教学片以及风景片。</p>
+<p>当你说你爱好电影的时候你起码要知道电影的基本构成要素是影像和声音，<br>影像又分为：景别，运动，光线和色彩，<br>声音又分为：人声，音响，音乐，声画关系，长镜头以及蒙太奇。</p>
+<p>可是你说，靠，我就是爱好，没必要这样吧，<br>可是爱好真实的面貌就是这样，你起码能说出个一二三来，<br>这些全部是支撑你理直气壮说出你爱好某件事情或者某样东西的基础。<br>不然呢，你说你爱好音乐可是音乐几种唱法，你说不知道，<br>男高音，男中音和男低音的代表歌手是谁，你说不知道？<br>那你算哪门子爱好音乐呢？</p>
+<p>如果你真的爱好，应该是这样的，<br>当你看过某部电影之后，你会这样说：<br>哇喔，这部喜剧片拍的蛮不错，长镜头运用的非常到位，<br>蒙太奇运用的也恰到好处，<br>某个地方的光线如果再足一点就更完美了。</p>
+<p>没错，你说你爱好某样东西，<br>它的实际意思是即便你不靠这件事情谋生，<br>你在这件事情上面也是绝对的行家，<br>而不是那种看完后只对故事本身吐槽。<br>再明白一点儿就是，<br>这部电影好，好在哪里？<br>这首曲子不好，不好在哪里？<br>景别，长镜头，蒙太奇，副歌，旋律，节奏，歌词以及唱法，<br>你得说出个一二三来。</p>
+<p>四、爱好音乐与电影的背后</p>
+<p>机灵的同学，可能已经发现了，<br>如果爱好是这样，它是要花费大量时间的，<br>所以，肯定可以这样说，<br>你的爱好在哪里？<br>你的时间就应该在哪里。<br>如果你说你爱好音乐，<br>而你的大部分时间却用来打羽毛球或者dota，<br>不好意思，你只能说你的爱好是羽毛球或游戏。</p>
+<p>因此，下回如果遇到某人再说自己爱好音乐或者电影，<br>你基本三步就可以试出来，他到底是真爱，还是叶公好龙。<br>第一，音乐的三种唱法是什么？<br>第二，三个声部是什么？<br>第三，三个声部的代表人物分别是谁？</p>
+<p>同样，你想验证自己在某件事情上是否真正知行合一，<br>除了要和格物（纠正在心上的事情，使其符合天理）相结合之外。<br>一个简单的方法就是你统计下，<br>你平时的时间是否大部分花在了这件事情上。</p>
+<p>五、总结</p>
+<p>爱好实际需要你花费大量时间，<br>不然就不是真的知行合一去爱了，<br>时间是你惟一的财富，<br>你的时间花在了哪里，<br>那很有可能你的爱好就在哪里？<br>当然并不绝对，<br>比如你说你就爱好发呆或者睡觉，<br>那我就只能借用王大锤的话了：『你说得好有道理，我竟无言以对』。<br>你平时时间花在哪里？<br>是验证你在某件事上是否真正知行合一，<br>一个简单但非常有用的方法。</p>
+<p>本期推荐电影：<br>一、《龙虾》<br>推荐语：如果不结婚就变动物，是不是匪夷所思，《龙虾》就是这样的电影。<br>二、《房间》<br>推荐语：想不想知道一个被伤害的母亲是怎样为自己孩子在一间狭小且上了锁的房间里，打造出一个小小天堂的？<br>三、《你是好孩子》<br>推荐语：我们小时候受过的伤害，在长大后都会以自己被伤害的方式再现。</p>
+<p>本期推荐书籍：<br>一、《蔡澜谈吃》作者：蔡澜<br>推荐语：蔡澜包括，倪匡、黄霑和金庸，都是我非常钦佩的人，钦佩程度根据名字排序；<br>蔡澜爱好吃，所以就有了这本书以及《蔡澜品味》等节目。<br>看看这本书，你会知道《想说爱好真的不容易》。<br>二、《今生今世，民国名媛情事》作者：萧萧<br>推荐语：名媛难再有，但可以学学这些名媛处人生低谷的人生态度。名媛不唯能享富贵，更可处贫贱而仍优雅如初。<br>三、《一个人的村庄》作者：刘亮程<br>推荐语：观察生活的角度比较独特，散文里比较出奇的。</p>
+]]></content>
+      <categories>
+        <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
     <title>我与音乐的初缘</title>
     <url>/2016/03/17/%E6%88%91%E4%B8%8E%E9%9F%B3%E4%B9%90%E7%9A%84%E5%88%9D%E7%BC%98/</url>
     <content><![CDATA[<p>我高中学过一年半音乐，<br>上过高中的都知道：『小三门』；<br>不知现在还这么叫吗？<br>我学音乐的原因有三：<br>一、小时候我爸买过一支笛子，我爸捣鼓好长时间，没吹响，<br>我后来不但吹响了，而且还能看简谱吹奏《没有共产党就没有新中国》和《中学时代》等歌曲，<br>我觉得我自己真是tmd太有才了，所以老师一说报名『小三门』，我立即就积极响应了。<br>至于我到底有没有音乐天赋，我到今天也没搞清楚。<br>二、文化课要求分数低，只要音乐过就能上个还不错的本科学校，一本也不是没可能；<br>三、我感觉学音乐是一件很酷的事情；<br>事实证明一年半的成果还可以，<br>可是经济基础，决定上层建筑，<br>最后考上了新乡一个叫做：『平原大学』的音乐系，<br>我估计是二本吧，<br>学费太昂贵，最后只好选择去学机械制造。<br>然后就与音乐绝缘了。<br>以上是摘要<a id="more"></a><br>但还是会买支笛子，<br>有空吹奏一番，<br>曲子当然不会再是初学的那些了，<br>好歹也有了些乐理知识，<br>可以识谱演奏了。<br>然后机械制造毕业，去做工人，<br>再然后到北京做电子商务，<br>始终还是放不下音乐，<br>梦想着有一天自己也能开一场自己的演唱会，<br>现在经济自立了，<br>也会买把吉他，学弹吉他，<br>有时间还会读《中国音乐简史》之类的书，<br>加深音乐素养，<br>权当一爱好，<br>但谁说爱好就不能学的专业一点儿，<br>因此，开辟这个专栏，<br>记录我平常累积的音乐知识<br>以及学习音乐过程中的欢乐。</p>
 ]]></content>
       <categories>
         <category>影视歌</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>我为什么三十岁还要学习IOS</title>
+    <url>/2016/03/17/%E6%88%91%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%89%E5%8D%81%E5%B2%81%E8%BF%98%E8%A6%81%E5%AD%A6%E4%B9%A0IOS/</url>
+    <content><![CDATA[<p>一、前面的话</p>
+<p>终于要开始写IOS学习笔记了，<br>我从15年8月份开始学习IOS；<br>完全自学；<br>中间学学停停，<br>就到了今天，<br>但是比较自豪的一点儿就是，<br>从来没想过放弃学习。</p>
+<p>以上是摘要<a id="more"></a></p>
+<p>二、为什么要学习IOS</p>
+<p>首先，最简单的理由，我就是喜欢，<br>通过敲入代码，然后看着自己的想法，<br>变成触手可及的实物。<br>我对这个过程非常着迷；<br>其次，我自己觉得，<br>未来编程就像今天每个人考驾照一样，<br>会成为大部分人的日常。<br>第三，我想从事相关方面的工作；<br>三、最大的挑战</p>
+<p>最大的挑战就是坚持，<br>因为我永远相信，<br>一件事只要肯坚持，总能干成，<br>当然前提是方向要对。</p>
+<p>没钱买mac，没钱报培训班，<br>没时间学习，都不是最大的挑战。<br>关键是你永远要相信，<br>你绝对可以学成。<br>四、目前的学习状况</p>
+<p>虽然中间有时间不等的停顿，<br>但是还是坚持到了现在，<br>目前正在学数据库和网络，<br>但是发觉oc和ui还有一些不牢固的东西，<br>还会不断返回去复习这两块儿。<br>五、心得</p>
+<p>只要你想干成一件事，<br>任何困难都是纸老虎，<br>因为你没时间管困难，<br>只会看着前面的目标，一直前进。<br>以后，我会不定期的发布自己的学习笔记，<br>作为自己学习的一个过程记录。</p>
+]]></content>
+      <categories>
+        <category>编程</category>
+        <category>IOS</category>
       </categories>
   </entry>
   <entry>
@@ -410,66 +474,6 @@
 ]]></content>
       <categories>
         <category>外语学习</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>我为什么三十岁还要学习IOS</title>
-    <url>/2016/03/17/%E6%88%91%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%89%E5%8D%81%E5%B2%81%E8%BF%98%E8%A6%81%E5%AD%A6%E4%B9%A0IOS/</url>
-    <content><![CDATA[<p>一、前面的话</p>
-<p>终于要开始写IOS学习笔记了，<br>我从15年8月份开始学习IOS；<br>完全自学；<br>中间学学停停，<br>就到了今天，<br>但是比较自豪的一点儿就是，<br>从来没想过放弃学习。</p>
-<p>以上是摘要<a id="more"></a></p>
-<p>二、为什么要学习IOS</p>
-<p>首先，最简单的理由，我就是喜欢，<br>通过敲入代码，然后看着自己的想法，<br>变成触手可及的实物。<br>我对这个过程非常着迷；<br>其次，我自己觉得，<br>未来编程就像今天每个人考驾照一样，<br>会成为大部分人的日常。<br>第三，我想从事相关方面的工作；<br>三、最大的挑战</p>
-<p>最大的挑战就是坚持，<br>因为我永远相信，<br>一件事只要肯坚持，总能干成，<br>当然前提是方向要对。</p>
-<p>没钱买mac，没钱报培训班，<br>没时间学习，都不是最大的挑战。<br>关键是你永远要相信，<br>你绝对可以学成。<br>四、目前的学习状况</p>
-<p>虽然中间有时间不等的停顿，<br>但是还是坚持到了现在，<br>目前正在学数据库和网络，<br>但是发觉oc和ui还有一些不牢固的东西，<br>还会不断返回去复习这两块儿。<br>五、心得</p>
-<p>只要你想干成一件事，<br>任何困难都是纸老虎，<br>因为你没时间管困难，<br>只会看着前面的目标，一直前进。<br>以后，我会不定期的发布自己的学习笔记，<br>作为自己学习的一个过程记录。</p>
-]]></content>
-      <categories>
-        <category>编程</category>
-        <category>IOS</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>智慧与思想之花因何而开</title>
-    <url>/2016/03/17/%E6%99%BA%E6%85%A7%E4%B8%8E%E6%80%9D%E6%83%B3%E4%B9%8B%E8%8A%B1%E5%9B%A0%E4%BD%95%E8%80%8C%E5%BC%80/</url>
-    <content><![CDATA[<p>圣人之所以为圣人，<br>就是因为在百死千难中，<br>不断努力的思考自己的思维的过程；<br>而这个过程就是思想和智慧了。</p>
-<p>上次撰文说到致良知，<br>那么，致良知与智慧和思想是什么关系呢？<br>答案是没一毛钱关系。</p>
-<p>那么问题来了，<br>既然智慧和思想，和致良知没一毛钱关系。<br>那阳明先生为什么整个致良知之学呢？<br>莫急，听咱家慢慢道来；<br>以上是摘要<a id="more"></a><br>雾满拦江说，<br>人类所有学科的基础是哲学、数学与逻辑形式；<br>所有人类的学科莫不是建立在此三个要素上；<br>而阳明先生龙场悟道的“道”，却不在此列。<br>因为无论这三者再精密，<br>他还是属于人类已有的语言和思维范畴，<br>显然终极智慧和思想，是比此三者更高境界的东西。</p>
-<p>所以说圣人可以自己悟道，<br>但是他是无法用语言和你清晰描述的，<br>不然阳明也不会有：“吾性自足”一说了；</p>
-<p>打个比方说，<br>世上未通终极智慧之人，<br>都像是背对着一副栅栏和栅栏外的一堆篝火；<br>栅栏就是遮蔽良知也就是本心的欲望，<br>而篝火正是道家说的道，<br>儒家的一以及佛家的无无明。</p>
-<p>所有人是不知道自己后面的栅栏和篝火的，<br>一旦像阳明先生这样的人，<br>告诉他们你们身后有栅栏和篝火；<br>他们是不会信的，<br>这就像你和盲者谈论颜色，<br>你说得再惟妙惟肖，<br>他也是没有认识颜色的工具的，<br>或者聋哑人谈论音律，<br>即使你说的再声情并茂，<br>他也是没有认识音律的工具的。</p>
-<p>因此圣人先贤悟道终极智慧之后，<br>也是没有描述终极智慧的工具的。</p>
-<p>尽管终极智慧和致良知之间，<br>没有一毛钱的关系，<br>但如果你追求善良，苦求于良知；<br>那么你对这个世界的认知角度，<br>就会从外界转向对自己内心的审视。</p>
-<p>如此你会减少与外界的摩擦，<br>不会再苛求别人按你的想法行事，<br>而会反求诸己。</p>
-<p>反之如果你不追求善良，<br>不从内心审视自己，<br>就会将关注焦点放在外界，<br>而这种关注，必然会让你远离思想和智慧。</p>
-<p>思想与智慧无法复制也无法传承；<br>甚至连对身边人熏陶的功能都不存在，<br>比如苏格拉底与其妻子，<br>比如阳明先生身后的妻离子散。</p>
-<p>这是因为智慧和思想完全是个人化的思维运作过程，<br>是单独一个人不断采用探究式的思维模式，<br>对自己的大脑进行个人化开发，<br>这种开发的过程就是智慧与思想本身，</p>
-<p>而圣贤所能表达的不过是智慧和思想的结果，<br>但这个结果既不是思想也不是智慧，<br>最多不过是思想与智慧的行进方向而已。</p>
-<p>所以阳明先生说：“致良知”，<br>良知不是智慧，<br>致良知更不是思想，<br>思想与智慧，<br>是指你不断地努力，<br>让自己达到致良知境界的思维过程。<br>换句话说，<br>你可以把致良知理解为这个思维过程（也即思想和智慧过程）的一个显性结果以及方向。</p>
-]]></content>
-      <categories>
-        <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>王阳明之所以为王阳明</title>
-    <url>/2016/03/17/%E7%8E%8B%E9%98%B3%E6%98%8E%E4%B9%8B%E6%89%80%E4%BB%A5%E4%B8%BA%E7%8E%8B%E9%98%B3%E6%98%8E/</url>
-    <content><![CDATA[<p>上篇文说到，<br>圣人都是在百死千难中，<br>对自己的思维进行苦苦思索；<br>方才悟得圣人之道。<br>那我等芸芸众生欲窥得圣人一二门径，<br>应该如何做呢？</p>
-<p>一、让擅长成为精通<br>道理人人会讲，成者寥寥无几？<br>何也？<br>知其然，不知其所以然也！<br>首先要做的就是做回你自己，<br>所谓做回你自己，<br>意思就是想清楚你能干神马，<br>无论你想干神马，你喜欢干神马，<br>你首先要想清楚，你能干神马。<br>先从你最擅长的地方入手，<br>把你擅长的事情精通了。<br>以上是摘要<a id="more"></a><br>你如果喜欢喝酒，<br>那就成为品酒专家，<br>你如果喜欢旅游，<br>那就让你的水平，<br>可以去做旅游杂志主编，<br>如果你喜欢食物，<br>那就让自己可以做到像蔡澜那样，<br>可以以此出书做节目。</p>
-<p>二、找到适合你自己的路<br>都云小米成于饥饿营销，<br>但凡客陈年和雷军是好基友；<br>不可谓不倾囊相授，<br>不可谓不耳提面命；<br>现在也在亦庄苦苦学习小米的一套，<br>怎么不见泛起什么浪花呢？</p>
-<p>凡客自一万之众，<br>搬往亦庄后的三百余人，<br>也是痛下决心，<br>要从白衬衫单点突破；</p>
-<p>结果如何？<br>去年8月份江苏省质量技术监督局抽查中，<br>其99元衬衫六项参数不合格。<br>去年11月份国家质检总局抽检中，<br>又有<br>凡客在休闲服装、皮鞋、旅游鞋、背提包4种产品中被发现有不合格现象。<br>何也？立定脚跟做事，<br>也没咬紧牙关做人。</p>
-<p>三、掌握规律<br>每个人的人生是不同的，<br>每个人的人生路径是不同的，<br>因此每个人都会有一条最适合自己的路径；<br>所以，即使雷军操盘凡客，<br>照着小米的玩法全部来一遍，<br>也不见得会有起死回生之效。<br>但是事情成败有其自身规律，<br>这是毋庸置疑的。</p>
-<p>正如上篇所讲，<br>圣人自己成为了圣人，<br>他成圣的方法与路径，<br>是无法对你言说的，<br>即使他是圣人。</p>
-<p>因此，不要妄想有一套放之四海而皆准的方法，<br>可以使你一夜暴富，或者是一夜成名成圣。</p>
-<p>你必须在精通一件事情之后，<br>回过头去总结归纳规律性的东西，<br>使之成为自己的东西之后，<br>再将其应用到其他同类事情中，<br>才可以说你掌握了规律。</p>
-<p>这种规律性的知识累积到一定程度，<br>你才能在一件事情开头，<br>就能看到其发展的趋势，<br>你内心才会安定，<br>内心安定，你才能对局势更明晰。<br>才有利于你的杀伐决断。<br>此所谓：『定而后能静，静而后能安，安而后能虑』。<br>如果你因同事一句嘲讽的话，就怏怏不乐半天，<br>因老友一句玩笑式的调侃就郁闷半天，<br>如何能明晰局势，杀伐决断呢？</p>
-<p>阳明之所以为阳明，<br>除了天性聪慧，<br>勤于思索之外，<br>更在于其利用自身优势，<br>广泛出入佛老，溺于辞章之后，<br>有了对规律的全面认识，<br>方有龙场悟道之圆满。</p>
-<p>无论是现世的成功企业，<br>以及古往今来成功的个人，<br>都一定是把握了规律之后，<br>对规律的详加运用。<br>才成就一番功业。</p>
-]]></content>
-      <categories>
-        <category>阳明心学</category>
       </categories>
   </entry>
   <entry>
@@ -556,6 +560,48 @@
       </categories>
   </entry>
   <entry>
+    <title>智慧与思想之花因何而开</title>
+    <url>/2016/03/17/%E6%99%BA%E6%85%A7%E4%B8%8E%E6%80%9D%E6%83%B3%E4%B9%8B%E8%8A%B1%E5%9B%A0%E4%BD%95%E8%80%8C%E5%BC%80/</url>
+    <content><![CDATA[<p>圣人之所以为圣人，<br>就是因为在百死千难中，<br>不断努力的思考自己的思维的过程；<br>而这个过程就是思想和智慧了。</p>
+<p>上次撰文说到致良知，<br>那么，致良知与智慧和思想是什么关系呢？<br>答案是没一毛钱关系。</p>
+<p>那么问题来了，<br>既然智慧和思想，和致良知没一毛钱关系。<br>那阳明先生为什么整个致良知之学呢？<br>莫急，听咱家慢慢道来；<br>以上是摘要<a id="more"></a><br>雾满拦江说，<br>人类所有学科的基础是哲学、数学与逻辑形式；<br>所有人类的学科莫不是建立在此三个要素上；<br>而阳明先生龙场悟道的“道”，却不在此列。<br>因为无论这三者再精密，<br>他还是属于人类已有的语言和思维范畴，<br>显然终极智慧和思想，是比此三者更高境界的东西。</p>
+<p>所以说圣人可以自己悟道，<br>但是他是无法用语言和你清晰描述的，<br>不然阳明也不会有：“吾性自足”一说了；</p>
+<p>打个比方说，<br>世上未通终极智慧之人，<br>都像是背对着一副栅栏和栅栏外的一堆篝火；<br>栅栏就是遮蔽良知也就是本心的欲望，<br>而篝火正是道家说的道，<br>儒家的一以及佛家的无无明。</p>
+<p>所有人是不知道自己后面的栅栏和篝火的，<br>一旦像阳明先生这样的人，<br>告诉他们你们身后有栅栏和篝火；<br>他们是不会信的，<br>这就像你和盲者谈论颜色，<br>你说得再惟妙惟肖，<br>他也是没有认识颜色的工具的，<br>或者聋哑人谈论音律，<br>即使你说的再声情并茂，<br>他也是没有认识音律的工具的。</p>
+<p>因此圣人先贤悟道终极智慧之后，<br>也是没有描述终极智慧的工具的。</p>
+<p>尽管终极智慧和致良知之间，<br>没有一毛钱的关系，<br>但如果你追求善良，苦求于良知；<br>那么你对这个世界的认知角度，<br>就会从外界转向对自己内心的审视。</p>
+<p>如此你会减少与外界的摩擦，<br>不会再苛求别人按你的想法行事，<br>而会反求诸己。</p>
+<p>反之如果你不追求善良，<br>不从内心审视自己，<br>就会将关注焦点放在外界，<br>而这种关注，必然会让你远离思想和智慧。</p>
+<p>思想与智慧无法复制也无法传承；<br>甚至连对身边人熏陶的功能都不存在，<br>比如苏格拉底与其妻子，<br>比如阳明先生身后的妻离子散。</p>
+<p>这是因为智慧和思想完全是个人化的思维运作过程，<br>是单独一个人不断采用探究式的思维模式，<br>对自己的大脑进行个人化开发，<br>这种开发的过程就是智慧与思想本身，</p>
+<p>而圣贤所能表达的不过是智慧和思想的结果，<br>但这个结果既不是思想也不是智慧，<br>最多不过是思想与智慧的行进方向而已。</p>
+<p>所以阳明先生说：“致良知”，<br>良知不是智慧，<br>致良知更不是思想，<br>思想与智慧，<br>是指你不断地努力，<br>让自己达到致良知境界的思维过程。<br>换句话说，<br>你可以把致良知理解为这个思维过程（也即思想和智慧过程）的一个显性结果以及方向。</p>
+]]></content>
+      <categories>
+        <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>王阳明之所以为王阳明</title>
+    <url>/2016/03/17/%E7%8E%8B%E9%98%B3%E6%98%8E%E4%B9%8B%E6%89%80%E4%BB%A5%E4%B8%BA%E7%8E%8B%E9%98%B3%E6%98%8E/</url>
+    <content><![CDATA[<p>上篇文说到，<br>圣人都是在百死千难中，<br>对自己的思维进行苦苦思索；<br>方才悟得圣人之道。<br>那我等芸芸众生欲窥得圣人一二门径，<br>应该如何做呢？</p>
+<p>一、让擅长成为精通<br>道理人人会讲，成者寥寥无几？<br>何也？<br>知其然，不知其所以然也！<br>首先要做的就是做回你自己，<br>所谓做回你自己，<br>意思就是想清楚你能干神马，<br>无论你想干神马，你喜欢干神马，<br>你首先要想清楚，你能干神马。<br>先从你最擅长的地方入手，<br>把你擅长的事情精通了。<br>以上是摘要<a id="more"></a><br>你如果喜欢喝酒，<br>那就成为品酒专家，<br>你如果喜欢旅游，<br>那就让你的水平，<br>可以去做旅游杂志主编，<br>如果你喜欢食物，<br>那就让自己可以做到像蔡澜那样，<br>可以以此出书做节目。</p>
+<p>二、找到适合你自己的路<br>都云小米成于饥饿营销，<br>但凡客陈年和雷军是好基友；<br>不可谓不倾囊相授，<br>不可谓不耳提面命；<br>现在也在亦庄苦苦学习小米的一套，<br>怎么不见泛起什么浪花呢？</p>
+<p>凡客自一万之众，<br>搬往亦庄后的三百余人，<br>也是痛下决心，<br>要从白衬衫单点突破；</p>
+<p>结果如何？<br>去年8月份江苏省质量技术监督局抽查中，<br>其99元衬衫六项参数不合格。<br>去年11月份国家质检总局抽检中，<br>又有<br>凡客在休闲服装、皮鞋、旅游鞋、背提包4种产品中被发现有不合格现象。<br>何也？立定脚跟做事，<br>也没咬紧牙关做人。</p>
+<p>三、掌握规律<br>每个人的人生是不同的，<br>每个人的人生路径是不同的，<br>因此每个人都会有一条最适合自己的路径；<br>所以，即使雷军操盘凡客，<br>照着小米的玩法全部来一遍，<br>也不见得会有起死回生之效。<br>但是事情成败有其自身规律，<br>这是毋庸置疑的。</p>
+<p>正如上篇所讲，<br>圣人自己成为了圣人，<br>他成圣的方法与路径，<br>是无法对你言说的，<br>即使他是圣人。</p>
+<p>因此，不要妄想有一套放之四海而皆准的方法，<br>可以使你一夜暴富，或者是一夜成名成圣。</p>
+<p>你必须在精通一件事情之后，<br>回过头去总结归纳规律性的东西，<br>使之成为自己的东西之后，<br>再将其应用到其他同类事情中，<br>才可以说你掌握了规律。</p>
+<p>这种规律性的知识累积到一定程度，<br>你才能在一件事情开头，<br>就能看到其发展的趋势，<br>你内心才会安定，<br>内心安定，你才能对局势更明晰。<br>才有利于你的杀伐决断。<br>此所谓：『定而后能静，静而后能安，安而后能虑』。<br>如果你因同事一句嘲讽的话，就怏怏不乐半天，<br>因老友一句玩笑式的调侃就郁闷半天，<br>如何能明晰局势，杀伐决断呢？</p>
+<p>阳明之所以为阳明，<br>除了天性聪慧，<br>勤于思索之外，<br>更在于其利用自身优势，<br>广泛出入佛老，溺于辞章之后，<br>有了对规律的全面认识，<br>方有龙场悟道之圆满。</p>
+<p>无论是现世的成功企业，<br>以及古往今来成功的个人，<br>都一定是把握了规律之后，<br>对规律的详加运用。<br>才成就一番功业。</p>
+]]></content>
+      <categories>
+        <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
     <title>知行合一与工夫</title>
     <url>/2016/03/17/%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E4%B8%8E%E5%B7%A5%E5%A4%AB/</url>
     <content><![CDATA[<p>一、写在前面<br>你真的自私？<br>这里‘自私’是指：<br>一件事，<br>不会对你有害，<br>只会对你有益。</p>
@@ -576,24 +622,6 @@
 ]]></content>
       <categories>
         <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>编程学习心得</title>
-    <url>/2016/03/17/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/</url>
-    <content><![CDATA[<p>似乎每个人对一件从未接触过的事物着迷时；<br>都恨不得一下子就对其融会贯通；<br>这种急切心理，极有可能导致稍遇挫折，便丧失兴趣。</p>
-<p>比如我对编程的学习；<br>在刚开始时的确一腔热情；<br>但是稍微接触到不容易理解的地方；<br>就会不由自主地怀疑自己！<br>自己真的适合学编程吗?<br>我怎么这么笨？<br>我这个年龄学编程还成吗？</p>
-<p>其实，这都是由于刚开始热情太盛；<br>努力一段时间后，<br>得不到自己期望的效果，<br>便兴趣缺缺了。<br>以上是摘要<a id="more"></a><br>学习始终遵循循序渐进的原则；<br>而不是像玩游戏一样，<br>能得到及时的满足和成就感。<br>所以很多颇有成就的人，<br>都是最善于推迟自己满足感的人。</p>
-<p>其实我最该问的问题不应该是以上那些；<br>而只应该问一个问题？<br>我怎么才能学好编程?<br>那些已经有了些许成就的程序员，<br>是如何取得今天的成就的？</p>
-<p>在学习中还发现一个问题；<br>就是学习一个知识点，<br>一定不要紧追着一个人的讲解不放；<br>同是一个知识点，<br>这个人讲解的既轻松又清晰，<br>而你紧抱着不放的那个则是既繁琐又模糊。</p>
-<p>所以在学习中必须灵活，<br>灵活不是投机取巧；<br>而是在网络信息如此发达的今日；<br>不应该紧抱着某一个信息源不放；<br>某个信息源的讲解听不明白，<br>则必须及时寻找能让你更容易明白的信息源；<br>相信我，一定可以找得到。</p>
-<p>比如在学习oc的三大特性封装、继承与多态时；<br>我花钱买的课程讲解时既模糊又乏味；<br>这时我就对自己产生怀疑了；<br>难道我真的笨蛋如此；<br>可是后来偶然间看到一篇博客；<br>瞬间让我豁然开朗。<br>就是那种梦里千百度，蓦然回首处的感觉。</p>
-<p>总之学习一定不是揪着某个问题不放；<br>当然不是真的放下不管；<br>而是先放到潜意识里；<br>往往会出现这种情况；</p>
-<p>某日你对A问题产生疑惑；<br>又一日，你对B问题更是纠结不已；<br>但是，还一日，你去查找C问题的答案，<br>发现竟然找到了A的答案。<br>这往往是持续学习中，<br>最令人痛快之时。</p>
-]]></content>
-      <categories>
-        <category>编程</category>
-        <category>IOS</category>
       </categories>
   </entry>
   <entry>
@@ -655,6 +683,24 @@
 ]]></content>
       <categories>
         <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>编程学习心得</title>
+    <url>/2016/03/17/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/</url>
+    <content><![CDATA[<p>似乎每个人对一件从未接触过的事物着迷时；<br>都恨不得一下子就对其融会贯通；<br>这种急切心理，极有可能导致稍遇挫折，便丧失兴趣。</p>
+<p>比如我对编程的学习；<br>在刚开始时的确一腔热情；<br>但是稍微接触到不容易理解的地方；<br>就会不由自主地怀疑自己！<br>自己真的适合学编程吗?<br>我怎么这么笨？<br>我这个年龄学编程还成吗？</p>
+<p>其实，这都是由于刚开始热情太盛；<br>努力一段时间后，<br>得不到自己期望的效果，<br>便兴趣缺缺了。<br>以上是摘要<a id="more"></a><br>学习始终遵循循序渐进的原则；<br>而不是像玩游戏一样，<br>能得到及时的满足和成就感。<br>所以很多颇有成就的人，<br>都是最善于推迟自己满足感的人。</p>
+<p>其实我最该问的问题不应该是以上那些；<br>而只应该问一个问题？<br>我怎么才能学好编程?<br>那些已经有了些许成就的程序员，<br>是如何取得今天的成就的？</p>
+<p>在学习中还发现一个问题；<br>就是学习一个知识点，<br>一定不要紧追着一个人的讲解不放；<br>同是一个知识点，<br>这个人讲解的既轻松又清晰，<br>而你紧抱着不放的那个则是既繁琐又模糊。</p>
+<p>所以在学习中必须灵活，<br>灵活不是投机取巧；<br>而是在网络信息如此发达的今日；<br>不应该紧抱着某一个信息源不放；<br>某个信息源的讲解听不明白，<br>则必须及时寻找能让你更容易明白的信息源；<br>相信我，一定可以找得到。</p>
+<p>比如在学习oc的三大特性封装、继承与多态时；<br>我花钱买的课程讲解时既模糊又乏味；<br>这时我就对自己产生怀疑了；<br>难道我真的笨蛋如此；<br>可是后来偶然间看到一篇博客；<br>瞬间让我豁然开朗。<br>就是那种梦里千百度，蓦然回首处的感觉。</p>
+<p>总之学习一定不是揪着某个问题不放；<br>当然不是真的放下不管；<br>而是先放到潜意识里；<br>往往会出现这种情况；</p>
+<p>某日你对A问题产生疑惑；<br>又一日，你对B问题更是纠结不已；<br>但是，还一日，你去查找C问题的答案，<br>发现竟然找到了A的答案。<br>这往往是持续学习中，<br>最令人痛快之时。</p>
+]]></content>
+      <categories>
+        <category>编程</category>
+        <category>IOS</category>
       </categories>
   </entry>
   <entry>
@@ -731,21 +777,6 @@
       </categories>
   </entry>
   <entry>
-    <title>读《一个人的村庄》</title>
-    <url>/2016/03/17/%E8%AF%BB%E3%80%8A%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E6%9D%91%E5%BA%84%E3%80%8B/</url>
-    <content><![CDATA[<p>一、书和作者<br>《一个人的村庄》作者：刘亮程<br>刘亮程，作家，1962年出生在新疆古尔班通古特沙漠边缘的一个小村庄。<br>著有诗集《晒晒黄沙梁的太阳》，<br>散文集《虚土》《一个人的村庄》《在新疆》等。<br>被誉为“20世纪中国最后一位散文家”和“乡村哲学家”。</p>
-<p>二、我的家乡<br>读到这本书中的文字，<br>情不自禁想到我的家乡，<br>和儿时在家乡的我，<br>那时每到夏天，<br>暑假可以去河里摸鱼抓虾，<br>一顿美美的野餐是少不了的，<br>晚饭后可以去树林摸蝉换钱，<br>第二天的冰棍就有了保证，<br>傍晚可以去家附近的池塘洗个痛快的凉水澡，<br>一下子从一个小泥人儿，变成了一个滑皮溜。<br>以上是摘要<a id="more"></a><br>那时每到麦收，<br>镰刀总会割到手，<br>但简单止血后，不用包扎还可以愉快的割麦子，<br>买不起口香糖，<br>麦子去皮后直接放到口中咀嚼，<br>瞬间唇齿留香，麦香四溢，<br>比口香糖还有嚼头，<br>麦秸垛落成后，<br>那里是每个孩子的天堂。</p>
-<p>那时每到瓜熟季节<br>各种瓜果是当饭吃的，<br>西红柿是在衣服上抹一下就吃的，<br>西瓜汁是被当作最佳冷饮的。</p>
-<p>可是我有时会孤独，<br>为了不被理解的忧伤，<br>为了小小的愿望被流放，<br>为了不知何时走出这片累弯腰的黄土。<br>我有时会绝望，<br>为了好像永远割不完的麦行，<br>为了不知道自己的未来会怎样，<br>为了不知道如何改变现在的孤独和绝望。</p>
-<p>后来我终于远离那片黄土，<br>再也没有割不完的麦行，<br>再也没有不被理解的忧伤，<br>再也没有被流放的小愿望，<br>可是儿时家乡的那种快乐，<br>不知何时远离了我的心房。</p>
-<p>三、故乡情结<br>每个人都有故乡情结，<br>或许是儿时与玩伴的戏耍，<br>或者是捉拿河里鱼虾，<br>甚至是故乡的一片树林、土岗，<br>午夜梦回哭湿了枕套，<br>你可回到了哪个儿时的故乡，<br>你的故乡情结是什么呢？</p>
-]]></content>
-      <categories>
-        <category>读书明道</category>
-        <category>小说</category>
-      </categories>
-  </entry>
-  <entry>
     <title>读《中国文脉》</title>
     <url>/2016/03/17/%E8%AF%BB%E3%80%8A%E4%B8%AD%E5%9B%BD%E6%96%87%E8%84%89%E3%80%8B/</url>
     <content><![CDATA[<p>一、前面的话：关于官员与辅导员</p>
@@ -774,10 +805,14 @@
       </categories>
   </entry>
   <entry>
-    <title>读《所有的男人都是消耗品》</title>
-    <url>/2016/03/17/%E8%AF%BB%E3%80%8A%E6%89%80%E6%9C%89%E7%9A%84%E7%94%B7%E4%BA%BA%E9%83%BD%E6%98%AF%E6%B6%88%E8%80%97%E5%93%81%E3%80%8B/</url>
-    <content><![CDATA[<p>一、书和作者<br>《所有的男人都是消耗品》作者村上龙，<br>和村上春树合称：W村上；<br>这本书是其最有代表性的随笔；<br>从男女，恋爱，性出发，<br>对日本经济社会的功能不全进行猛烈抨击。<br>我是全盘读完的，<br>追求速度的同学建议只读和书同名的文章即可，<br>和书同名的只有三篇，速度会很快，<br>但是收获绝对不会少。<br>其他篇章要么只适用于日本国内，<br>要么就是其它碎碎念。</p>
-<p>由于全书都是格言式的话语，<br>没有论证等要素，<br>因此，照录我比较认同的话在下。<br>以上是摘要<a id="more"></a><br>二、女人与和平<br>女大学生气焰嚣张这是不言而喻的，<br>和平持续的时间越长，女人就越是飞扬跋扈。<br>我最认同的一句话，<br>有句话也说得不错，<br>忘记在哪儿看到的了，<br>它说：和平年代的主题是体育和女人，战争年代的主题是武器和男人。<br>谁说不是呢，真是太tmd精辟啦。<br>三、快乐和才能<br>如果想要得到快乐，就必须冒风险站到体制外面去，<br>郑渊洁自己在家教育郑亚旗，效果还可以吧，<br>倪匡当年从内蒙古偷渡到香港，今天的日子是相当逍遥啊。<br>才能是没有理由的，没有才能的家伙才希望找到理由。<br>靠努力是不能孕育才能的。<br>四、关于女人<br>女人总是在发情，<br>女人有希望被强暴的愿望，<br>娘们儿正垂涎三尺的等待被勾引，<br>如果成为强悍的男人，女人要多少都可以弄到手。<br>这出自一位自称玩笑的女权主义者之口，<br>真的是玩笑吗？<br>这是一个值得你我深思的问题。</p>
+    <title>读《一个人的村庄》</title>
+    <url>/2016/03/17/%E8%AF%BB%E3%80%8A%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E6%9D%91%E5%BA%84%E3%80%8B/</url>
+    <content><![CDATA[<p>一、书和作者<br>《一个人的村庄》作者：刘亮程<br>刘亮程，作家，1962年出生在新疆古尔班通古特沙漠边缘的一个小村庄。<br>著有诗集《晒晒黄沙梁的太阳》，<br>散文集《虚土》《一个人的村庄》《在新疆》等。<br>被誉为“20世纪中国最后一位散文家”和“乡村哲学家”。</p>
+<p>二、我的家乡<br>读到这本书中的文字，<br>情不自禁想到我的家乡，<br>和儿时在家乡的我，<br>那时每到夏天，<br>暑假可以去河里摸鱼抓虾，<br>一顿美美的野餐是少不了的，<br>晚饭后可以去树林摸蝉换钱，<br>第二天的冰棍就有了保证，<br>傍晚可以去家附近的池塘洗个痛快的凉水澡，<br>一下子从一个小泥人儿，变成了一个滑皮溜。<br>以上是摘要<a id="more"></a><br>那时每到麦收，<br>镰刀总会割到手，<br>但简单止血后，不用包扎还可以愉快的割麦子，<br>买不起口香糖，<br>麦子去皮后直接放到口中咀嚼，<br>瞬间唇齿留香，麦香四溢，<br>比口香糖还有嚼头，<br>麦秸垛落成后，<br>那里是每个孩子的天堂。</p>
+<p>那时每到瓜熟季节<br>各种瓜果是当饭吃的，<br>西红柿是在衣服上抹一下就吃的，<br>西瓜汁是被当作最佳冷饮的。</p>
+<p>可是我有时会孤独，<br>为了不被理解的忧伤，<br>为了小小的愿望被流放，<br>为了不知何时走出这片累弯腰的黄土。<br>我有时会绝望，<br>为了好像永远割不完的麦行，<br>为了不知道自己的未来会怎样，<br>为了不知道如何改变现在的孤独和绝望。</p>
+<p>后来我终于远离那片黄土，<br>再也没有割不完的麦行，<br>再也没有不被理解的忧伤，<br>再也没有被流放的小愿望，<br>可是儿时家乡的那种快乐，<br>不知何时远离了我的心房。</p>
+<p>三、故乡情结<br>每个人都有故乡情结，<br>或许是儿时与玩伴的戏耍，<br>或者是捉拿河里鱼虾，<br>甚至是故乡的一片树林、土岗，<br>午夜梦回哭湿了枕套，<br>你可回到了哪个儿时的故乡，<br>你的故乡情结是什么呢？</p>
 ]]></content>
       <categories>
         <category>读书明道</category>
@@ -844,6 +879,17 @@
 ]]></content>
       <categories>
         <category>Hexo</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>读《所有的男人都是消耗品》</title>
+    <url>/2016/03/17/%E8%AF%BB%E3%80%8A%E6%89%80%E6%9C%89%E7%9A%84%E7%94%B7%E4%BA%BA%E9%83%BD%E6%98%AF%E6%B6%88%E8%80%97%E5%93%81%E3%80%8B/</url>
+    <content><![CDATA[<p>一、书和作者<br>《所有的男人都是消耗品》作者村上龙，<br>和村上春树合称：W村上；<br>这本书是其最有代表性的随笔；<br>从男女，恋爱，性出发，<br>对日本经济社会的功能不全进行猛烈抨击。<br>我是全盘读完的，<br>追求速度的同学建议只读和书同名的文章即可，<br>和书同名的只有三篇，速度会很快，<br>但是收获绝对不会少。<br>其他篇章要么只适用于日本国内，<br>要么就是其它碎碎念。</p>
+<p>由于全书都是格言式的话语，<br>没有论证等要素，<br>因此，照录我比较认同的话在下。<br>以上是摘要<a id="more"></a><br>二、女人与和平<br>女大学生气焰嚣张这是不言而喻的，<br>和平持续的时间越长，女人就越是飞扬跋扈。<br>我最认同的一句话，<br>有句话也说得不错，<br>忘记在哪儿看到的了，<br>它说：和平年代的主题是体育和女人，战争年代的主题是武器和男人。<br>谁说不是呢，真是太tmd精辟啦。<br>三、快乐和才能<br>如果想要得到快乐，就必须冒风险站到体制外面去，<br>郑渊洁自己在家教育郑亚旗，效果还可以吧，<br>倪匡当年从内蒙古偷渡到香港，今天的日子是相当逍遥啊。<br>才能是没有理由的，没有才能的家伙才希望找到理由。<br>靠努力是不能孕育才能的。<br>四、关于女人<br>女人总是在发情，<br>女人有希望被强暴的愿望，<br>娘们儿正垂涎三尺的等待被勾引，<br>如果成为强悍的男人，女人要多少都可以弄到手。<br>这出自一位自称玩笑的女权主义者之口，<br>真的是玩笑吗？<br>这是一个值得你我深思的问题。</p>
+]]></content>
+      <categories>
+        <category>读书明道</category>
+        <category>小说</category>
       </categories>
   </entry>
   <entry>
@@ -966,52 +1012,6 @@
 ]]></content>
       <categories>
         <category>影视歌</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>Mac端通过Hexo搭建独立博客</title>
-    <url>/2016/03/17/Mac%E7%AB%AF%E9%80%9A%E8%BF%87Hexo%E6%90%AD%E5%BB%BA%E7%8B%AC%E7%AB%8B%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h4 id="一、为什么选择Hexo"><a href="#一、为什么选择Hexo" class="headerlink" title="一、为什么选择Hexo"></a>一、为什么选择Hexo</h4><p>我对搭建自己的独立博客兴致盎然，<br>独立的才真正是自己的，<br>马克思说研究需要充分占有材料，<br>我因此大量阅读了关于搭建独立博客的文章和资料，<br>知道了有Octopress，jekyll等独立博客搭建系统，<br>但看到好多程序员童鞋都说：Octopress和jekyll很难搞定，<br>所以对于我这种小白来说，就更不用考虑了，<br>听说Hexo是hacker必备的博客搭建系统，因此果断选它。</p>
-<a id="more"></a>
-<h4 id="二、艰难的开始"><a href="#二、艰难的开始" class="headerlink" title="二、艰难的开始"></a>二、艰难的开始</h4><p>在我安装好git和node.js后，感觉万事俱备，只欠安装Hexo；</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">然后在终端果断输入：npm install -g hero-cli</span><br></pre></td></tr></table></figure>
-<p>回车后等待奇迹发生，然并卵；<br>出现的是几个警告和一系列的Err字样；<br>然后艰难翻坑开始了，各种试验，各种搜索，<br>最后理出来一点儿思路；<br>总算见到雏形了，<br>接下来就很顺利的过关斩将了；</p>
-<h4 id="三、安装Hexo步骤"><a href="#三、安装Hexo步骤" class="headerlink" title="三、安装Hexo步骤"></a>三、安装Hexo步骤</h4><p>系统环境：OS X EI Captian 版本 10.11.3 64bit<br>1、安装Node.js（必须）<br>作用：生成静态页面。<br>Node.js下载地址：<a href="http://nodejs.cn" target="_blank" rel="noopener">http://nodejs.cn</a><br>2、安装git（必须）<br>作用：把本地的静态页面提交到Github上去；<br>安装git前保证你已经安装了Xcode，不然会影响编译；<br>我现在还不明白是否安装了Xcode就不用另外安装git，<br>由于当初百度看到一个方法就试试，所以最后也没确定这个问题，<br>我是既安装了Xcode又用上面的方法安装了git的。<br>有心的朋友可以试试只安装Xcode，不另外安装git，<br>看是否会初始化Hexo成功。</p>
-<h6 id="git安装方法："><a href="#git安装方法：" class="headerlink" title="git安装方法："></a>git安装方法：</h6><p>1）、先安装Homebrew，把下面的代码拷贝到终端回车即可；</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">/usr/bin/ruby -e <span class="string">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span></span><br></pre></td></tr></table></figure>
-<p>2）、安装git<br>等Homebrew安装完毕后，在终端输入：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">brew install git回车即可。</span><br></pre></td></tr></table></figure>
-<h6 id="3、安装hexo"><a href="#3、安装hexo" class="headerlink" title="3、安装hexo"></a>3、安装hexo</h6><p>万事俱备，只欠hexo了，</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">官方文档提供的方法是：npm install －g hexo－cli</span><br></pre></td></tr></table></figure>
-<p>我试了N次，最后磁盘报警也没成功，大概是因为权限问题，<br>可是我电脑账户设置的是管理员啊，最后也没明白咋回事；<br>最后找到了适合我的两种方法<br>1）、第一种方法：（注意：使用sudo需要输入电脑登录密码）</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sudo npm install hexo - -no-optional</span><br></pre></td></tr></table></figure>
-<p>创建成功后的提示界面：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Password:</span><br><span class="line">hexo-site@<span class="number">0.0</span><span class="number">.0</span> /Users/chenbaichuan</span><br><span class="line">└──server@<span class="number">0.0</span><span class="number">.3</span> extraneous</span><br></pre></td></tr></table></figure>
-<p>第二种方法：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sudo npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<p>创建成功后的提示界面：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Password:</span><br><span class="line">/usr/local/bin/hexo -&gt; /usr/local/lib/node_modules/hexo-cli/bin/hexo</span><br><span class="line">/usr/local/lib</span><br><span class="line">└──hexo-cli@<span class="number">1.0</span><span class="number">.1</span></span><br></pre></td></tr></table></figure>
-<p>2）、初始化Hexo并且创建博客目录：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo init blog</span><br></pre></td></tr></table></figure>
-<p>初始化成功后的界面是这样的：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">INFO  Start blogging <span class="keyword">with</span> Hexo!：快用Hexo开始你的博客吧！</span><br></pre></td></tr></table></figure>
-<p>这时候在本地磁盘会有一个以blog命名的文件夹,官方文档列出的结构大致如下：<br>不一定完全相同，我的在source就只有一个posts文件。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">_config.yml</span><br><span class="line">scanffolds</span><br><span class="line">source</span><br><span class="line">themes</span><br><span class="line">public</span><br></pre></td></tr></table></figure>
-<p>3)、新建文章<br>为了保证新添加文章都在blog文件夹下，<br>首先进入初始化文件夹。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cd \blog</span><br></pre></td></tr></table></figure>
-<p>新建一篇文章</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hero new 文章名</span><br></pre></td></tr></table></figure>
-<p>至此Hexo的安装全部搞定。</p>
-<h4 id="四、启动本地服务"><a href="#四、启动本地服务" class="headerlink" title="四、启动本地服务"></a>四、启动本地服务</h4><p>生成本地服务器，这个不是必须；</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">npm install hexo-server —save</span><br></pre></td></tr></table></figure>
-<p>启动本地服务器</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-<p>启动成功界面</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">网址：http://localhost:<span class="number">4000</span>/.</span><br></pre></td></tr></table></figure>
-<p>赶紧打开看一下属于自己的领地吧。<br>到此为止本地的服务已经设置好了，<br>接下来就是部署Github了，<br>请看下回分解！<br>如果有的命令运行后不成，先在最前面加sudo，<br>实在不行就去百度吧。</p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
       </categories>
   </entry>
 </search>
