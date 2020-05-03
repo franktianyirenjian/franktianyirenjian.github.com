@@ -5,17 +5,17 @@
   
 
   
-  <title>Hexo添加本地搜索，全网最全终极解决之道：mac+landscape主题 | 清风明月</title>
+  <title>终极解决之道：Hexo添加本地搜索:mac+landscape主题 | 清风明月</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="前言基于能搜到这篇文章的人，肯定是急于解决这个问题的人，因此，我直接展现解决方案 解决方案这篇文章里的方法，针对的配置环境是这样的： 硬件: MacBook Air系统: macOS Catalina 10.15.4hexo版本：4.2.0node版本：13.13.0hexo主题：landscape 那咱们就开始吧! &lt;!—more&gt; 参考的两篇博客地址分别是：第一篇帮我解决了添加js">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Hexo添加本地搜索，全网最全终极解决之道：mac+landscape主题">
+<meta property="og:title" content="终极解决之道：Hexo添加本地搜索:mac+landscape主题">
 <meta property="og:url" content="https://franktianyirenjian.github.io/2020/05/01/Hexo%E6%B7%BB%E5%8A%A0%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2%EF%BC%8C%E5%85%A8%E7%BD%91%E6%9C%80%E5%85%A8%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E4%B9%8B%E9%81%93%EF%BC%9Amac+landscape%E4%B8%BB%E9%A2%98/index.html">
 <meta property="og:site_name" content="清风明月">
 <meta property="og:description" content="前言基于能搜到这篇文章的人，肯定是急于解决这个问题的人，因此，我直接展现解决方案 解决方案这篇文章里的方法，针对的配置环境是这样的： 硬件: MacBook Air系统: macOS Catalina 10.15.4hexo版本：4.2.0node版本：13.13.0hexo主题：landscape 那咱们就开始吧! &lt;!—more&gt; 参考的两篇博客地址分别是：第一篇帮我解决了添加js">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-04-30T16:59:41.000Z">
-<meta property="article:modified_time" content="2020-05-03T05:55:14.890Z">
+<meta property="article:modified_time" content="2020-05-03T05:56:44.180Z">
 <meta property="article:author" content="成百川">
 <meta name="twitter:card" content="summary">
   
@@ -90,7 +90,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      Hexo添加本地搜索，全网最全终极解决之道：mac+landscape主题
+      终极解决之道：Hexo添加本地搜索:mac+landscape主题
     </h1>
   
 
@@ -106,34 +106,16 @@
 <p>参考的两篇博客地址分别是：<br>第一篇帮我解决了添加js和css的问题，<br>第二篇帮我解决了search.xml解析的问题。</p>
 <p><a href="https://gitee.com/sjclub/hexo-search-plugin/tree/master" target="_blank" rel="noopener">https://gitee.com/sjclub/hexo-search-plugin/tree/master</a><br><a href="https://liam.page/2017/09/21/local-search-engine-in-Hexo-site/" target="_blank" rel="noopener">https://liam.page/2017/09/21/local-search-engine-in-Hexo-site/</a></p>
 <h3 id="具体步骤："><a href="#具体步骤：" class="headerlink" title="具体步骤："></a>具体步骤：</h3><p>首先，按照第一个博客里的流程一步不少的走完。<br>其次，用第二个博客里的search.js文件替换第一篇博客里的search.js文件。<br>最后，将第二篇博客里search.swig文件里的以下内容，添加到第一篇博客里的search.js文件里去。</p>
-<h3 id="重点说明"><a href="#重点说明" class="headerlink" title="重点说明"></a>重点说明</h3><p>第一，第一篇博客的博主对引入文件，说的不是很详细。<br>其实你把load.js和search.js两个文件直接在footer.ejs里引入就可以。<br>引入代码：<br> js(‘js/search’) %&gt; 引入search.js # 这个文件的作用是解析search.xml</p>
-<pre><code>第二，博主有些语焉不详，
-他下面说的是search.styl,
-其实在plugin目录里的是search.stylus
-实际操作时，你只需要把search.stylus里的代码复制，然后粘贴到search.styl文件里就行。
+<h3 id="重点说明"><a href="#重点说明" class="headerlink" title="重点说明"></a>重点说明</h3><p>第一，第一篇博客的博主对引入文件，说的不是很详细。<br>其实你把load.js和search.js两个文件直接在footer.ejs里引入就可以。<br>引入代码：<br>第二，博主有些语焉不详，<br>他下面说的是search.styl,<br>其实在plugin目录里的是search.stylus<br>实际操作时，你只需要把search.stylus里的代码复制，然后粘贴到search.styl文件里就行。</p>
+<p>第三，最后一步，是最重要的一步，<br>否则即便解析正确，也没法搜索，<br>因为根本没给搜索框调用搜索解析函数。</p>
+<p>然后重新提交一下就可以了。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>为了防止看到这篇的人迷惑。<br>其实可以这么说，<br>两篇博客重点展示了两个文件，<br>即search.js和search.ejs文件。<br>这两个文件里的作用前面已经注释了。<br>但是第一篇里的search.js全部没法用，<br>所以我们将第二篇博客的search.js全部复制到第一篇博客。</p>
+<p>而第一篇博客里的search.ejs，现有的代码是有用的，<br>只不过仅能生成搜索框，却不能实现搜索功能<br>所以我们将第二篇博客里的script脚本添加到第一篇博客的search.ejs里面。</p>
 
-第三，最后一步，是最重要的一步，
-否则即便解析正确，也没法搜索，
-因为根本没给搜索框调用搜索解析函数。
-
-然后重新提交一下就可以了。
-
-### 总结
-为了防止看到这篇的人迷惑。
-其实可以这么说，
-两篇博客重点展示了两个文件，
-即search.js和search.ejs文件。
-这两个文件里的作用前面已经注释了。
-但是第一篇里的search.js全部没法用，
-所以我们将第二篇博客的search.js全部复制到第一篇博客。
-
-而第一篇博客里的search.ejs，现有的代码是有用的，
-只不过仅能生成搜索框，却不能实现搜索功能
-所以我们将第二篇博客里的script脚本添加到第一篇博客的search.ejs里面。</code></pre>
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://franktianyirenjian.github.io/2020/05/01/Hexo%E6%B7%BB%E5%8A%A0%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2%EF%BC%8C%E5%85%A8%E7%BD%91%E6%9C%80%E5%85%A8%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E4%B9%8B%E9%81%93%EF%BC%9Amac+landscape%E4%B8%BB%E9%A2%98/" data-id="ck9qn5fd40004k7nu7pmwbgjy" class="article-share-link">分享</a>
+      <a data-url="https://franktianyirenjian.github.io/2020/05/01/Hexo%E6%B7%BB%E5%8A%A0%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2%EF%BC%8C%E5%85%A8%E7%BD%91%E6%9C%80%E5%85%A8%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E4%B9%8B%E9%81%93%EF%BC%9Amac+landscape%E4%B8%BB%E9%A2%98/" data-id="ck9qn7ct10006lynu604s96ch" class="article-share-link">分享</a>
       
       
     </footer>
@@ -202,7 +184,7 @@
           </li>
         
           <li>
-            <a href="/2020/05/01/Hexo%E6%B7%BB%E5%8A%A0%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2%EF%BC%8C%E5%85%A8%E7%BD%91%E6%9C%80%E5%85%A8%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E4%B9%8B%E9%81%93%EF%BC%9Amac+landscape%E4%B8%BB%E9%A2%98/">Hexo添加本地搜索，全网最全终极解决之道：mac+landscape主题</a>
+            <a href="/2020/05/01/Hexo%E6%B7%BB%E5%8A%A0%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2%EF%BC%8C%E5%85%A8%E7%BD%91%E6%9C%80%E5%85%A8%E7%BB%88%E6%9E%81%E8%A7%A3%E5%86%B3%E4%B9%8B%E9%81%93%EF%BC%9Amac+landscape%E4%B8%BB%E9%A2%98/">终极解决之道：Hexo添加本地搜索:mac+landscape主题</a>
           </li>
         
           <li>
