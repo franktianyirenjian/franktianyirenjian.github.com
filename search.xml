@@ -1,30 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hexo安装百度统计流程</title>
-    <url>/2016/03/22/Hexo%E5%AE%89%E8%A3%85%E7%99%BE%E5%BA%A6%E7%BB%9F%E8%AE%A1%E6%B5%81%E7%A8%8B/</url>
-    <content><![CDATA[<p>用了两天时间将Hexo博客搭建好了，<br>之后便开始一点一点儿增加一些小插件，<br>很顺利的安装了RSS和评论插件后，<br>决定安装统计插件，<br>最后经过对比决定安装百度统计，<br>虽然不如谷歌，但还凑合吧。<br>闲言少叙，正文开始</p>
-<a id="more"></a>
-<p>1、在themes／—_config.yml中配置一行统计信息；</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">baidu_tongji: true</span><br></pre></td></tr></table></figure>
-<p>2、在themes/landscape/layout/_partial路径下直接复制google－analytics.ejs，并将文件名改为:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">baidu_tongji.ejs</span><br></pre></td></tr></table></figure>
-<p>3、去百度统计注册获取统计代码，格式如下：</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">var _hmt = _hmt || [];</span><br><span class="line">(function() &#123;</span><br><span class="line">var hm = document.createElement(<span class="string">"script"</span>);</span><br><span class="line">hm.src = <span class="string">"//hm.baidu.com/hm.js?cf20d66409118a4390e3147d0f31366d"</span>;</span><br><span class="line">var s = document.getElementsByTagName(<span class="string">"script"</span>)[<span class="number">0</span>];</span><br><span class="line">s.parentNode.insertBefore(hm, s);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>粘贴到baidu_tongji.ejs文件中，粘贴后格式如下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (theme.baidu_tongji)&#123; %&gt;</span><br><span class="line">&lt;!-- baidu_tongji --&gt;</span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">var _hmt = _hmt || [];</span><br><span class="line">(function() &#123;</span><br><span class="line">var hm = document.createElement(<span class="string">"script"</span>);</span><br><span class="line">hm.src = <span class="string">"//hm.baidu.com/hm.js?cf20d66409118a4390e3147d0f31366d"</span>;</span><br><span class="line">var s = document.getElementsByTagName(<span class="string">"script"</span>)[<span class="number">0</span>];</span><br><span class="line">s.parentNode.insertBefore(hm, s);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;!-- End baidu_tongji --&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
-<p>4、打开themes/landscape/layout/_partial/head.ejs，添加如下代码：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&lt;%- partial(<span class="string">'baidu_tongji'</span>) %&gt;</span><br></pre></td></tr></table></figure>
-<p>5、重新部署</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo d -</span><br></pre></td></tr></table></figure>
-<p>6、在百度统计检查部署是否成功<br>先检查首页，成功后界面是这样：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">页面代码安装状态：代码安装正确</span><br></pre></td></tr></table></figure>
-<p>如果你想检查其它页面，复制一个其它页面的网址粘贴过去，点开始检查，成功界面如下：</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">代码安装详情</span><br><span class="line">已安装账户<span class="string">"username"</span>的站点<span class="string">"franktianyirenjian.github.io"</span>对应的代码：</span><br><span class="line">&lt;script&gt;</span><br><span class="line">var _hmt = _hmt || [];</span><br><span class="line">(function() &#123;</span><br><span class="line">  var hm = document.createElement(<span class="string">"script"</span>);</span><br><span class="line">  hm.src = <span class="string">"//hm.baidu.com/hm.js?cf20d66409118a4390e3147d0f31366d"</span>;</span><br><span class="line">  var s = document.getElementsByTagName(<span class="string">"script"</span>)[<span class="number">0</span>]; </span><br><span class="line">  s.parentNode.insertBefore(hm, s);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>等候二十分钟你就可以去查看网页统计报告了，打完收功。<br>另外还有人说会出现恶心的百度logo，我也不知道是人云亦云还是怎样，反正我的没有。</p>
+    <title>IOS Xcode7.1新建纯代码工程</title>
+    <url>/2016/03/17/IOS-Xcode7-1%E6%96%B0%E5%BB%BA%E7%BA%AF%E4%BB%A3%E7%A0%81%E5%B7%A5%E7%A8%8B/</url>
+    <content><![CDATA[<p>今天准备纯代码做下计算器；<br>xcode已升级到version 7.1；<br>创建singleview后改造空工程；<br>删除main.storyboard，<br>创建windows并设置背景色为黑色；<br>满怀期待的command+R；<br>结果提示我:<br>以上是摘要<a id="more"></a><br>2015-10-30 18:15:29.933 计算器[1696:127982] <strong>* Assertion failure in -[UIApplication _runWithMainScene:transitionContext:completion:], /BuildRoot/Library/Caches/com.apple.xbs/Sources/UIKit_Sim/UIKit-3512.29.5/UIApplication.m:3299<br>2015-10-30 18:15:29.939 计算器[1696:127982] *</strong> Terminating app due to uncaught exception ‘NSInternalInconsistencyException’, reason: ‘Application windows are expected to have a root view controller at the end of application launch’<br>*** First throw call stack:<br>(<br>0   CoreFoundation                      0x02524a84 <strong>exceptionPreprocess + 180<br>1   libobjc.A.dylib                     0x00550e02 objc_exception_throw + 50<br>2   CoreFoundation                      0x0252491a +[NSException raise:format:arguments:] + 138<br>3   Foundation                          0x001cfe86 -[NSAssertionHandler handleFailureInMethod:object:file:lineNumber:description:] + 118<br>4   UIKit                               0x00957a9b -[UIApplication _runWithMainScene:transitionContext:completion:] + 3975<br>5   UIKit                               0x0097be4d __84-[UIApplication _handleApplicationActivationWithScene:transitionContext:completion:]_block_invoke3208 + 68<br>6   UIKit                               0x00953fb4 -[UIApplication workspaceDidEndTransaction:] + 163<br>7   FrontBoardServices                  0x036fdca4 __37-[FBSWorkspace clientEndTransaction:]_block_invoke_2 + 71<br>8   FrontBoardServices                  0x036fd77b __40-[FBSWorkspace _performDelegateCallOut:]_block_invoke + 54<br>9   FrontBoardServices                  0x0371b1a3 -[FBSSerialQueue _performNext] + 184<br>10  FrontBoardServices                  0x0371b5da -[FBSSerialQueue _performNextFromRunLoopSource] + 52<br>11  FrontBoardServices                  0x0371a8d6 FBSSerialQueueRunLoopSourceHandler + 33<br>12  CoreFoundation                      0x0243ed1f __CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE0_PERFORM_FUNCTION</strong> + 15<br>13  CoreFoundation                      0x024349ab __CFRunLoopDoSources0 + 523<br>14  CoreFoundation                      0x02433dc8 __CFRunLoopRun + 1032<br>15  CoreFoundation                      0x02433706 CFRunLoopRunSpecific + 470<br>16  CoreFoundation                      0x0243351b CFRunLoopRunInMode + 123<br>17  UIKit                               0x00953854 -[UIApplication _run] + 540<br>18  UIKit                               0x009591eb UIApplicationMain + 160<br>19  ËÆ°ÁÆóÂô®                           0x00082baa main + 138<br>20  libdyld.dylib                       0x030eba21 start + 1<br>)<br>libc++abi.dylib: terminating with uncaught exception of type NSException<br>(lldb)<br>然后就开始了艰辛的解决历程；<br>自己英语很渣，只有慢慢度娘；<br>百度出来的百分之九十九是xcode6.1改造空工程的方法；<br>没用啊，我现在用的就是它这个方法；<br>只有不断换关键字；<br>结果当我输入：“xcode7如何创建空工程”keywords后；<br>第四个答案正是我想要的；<br>東東同学的新浪博客：<a href="http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html</a><br>原来提示的意思是：“必须给windows创建一个rootviewcontroller；<br>这一句话足够了；果断添加rootview，再次command+R；果断通过；<br>它是否意味着windows创建好后不能直接显示了，必须添加rootviewcontroller才可以运行呢？<br>已经给東東留言等回复。<br>总之任何一个细小的问题，通过自己的努力或者得到别人指点得到解决后，那种欣喜都是情不自禁的。<br>完毕！</p>
 ]]></content>
       <categories>
-        <category>Hexo</category>
+        <category>编程</category>
+        <category>IOS</category>
       </categories>
   </entry>
   <entry>
@@ -52,56 +35,52 @@
       </categories>
   </entry>
   <entry>
-    <title>IOS Xcode7.1新建纯代码工程</title>
-    <url>/2016/03/17/IOS-Xcode7-1%E6%96%B0%E5%BB%BA%E7%BA%AF%E4%BB%A3%E7%A0%81%E5%B7%A5%E7%A8%8B/</url>
-    <content><![CDATA[<p>今天准备纯代码做下计算器；<br>xcode已升级到version 7.1；<br>创建singleview后改造空工程；<br>删除main.storyboard，<br>创建windows并设置背景色为黑色；<br>满怀期待的command+R；<br>结果提示我:<br>以上是摘要<a id="more"></a><br>2015-10-30 18:15:29.933 计算器[1696:127982] <strong>* Assertion failure in -[UIApplication _runWithMainScene:transitionContext:completion:], /BuildRoot/Library/Caches/com.apple.xbs/Sources/UIKit_Sim/UIKit-3512.29.5/UIApplication.m:3299<br>2015-10-30 18:15:29.939 计算器[1696:127982] *</strong> Terminating app due to uncaught exception ‘NSInternalInconsistencyException’, reason: ‘Application windows are expected to have a root view controller at the end of application launch’<br>*** First throw call stack:<br>(<br>0   CoreFoundation                      0x02524a84 <strong>exceptionPreprocess + 180<br>1   libobjc.A.dylib                     0x00550e02 objc_exception_throw + 50<br>2   CoreFoundation                      0x0252491a +[NSException raise:format:arguments:] + 138<br>3   Foundation                          0x001cfe86 -[NSAssertionHandler handleFailureInMethod:object:file:lineNumber:description:] + 118<br>4   UIKit                               0x00957a9b -[UIApplication _runWithMainScene:transitionContext:completion:] + 3975<br>5   UIKit                               0x0097be4d __84-[UIApplication _handleApplicationActivationWithScene:transitionContext:completion:]_block_invoke3208 + 68<br>6   UIKit                               0x00953fb4 -[UIApplication workspaceDidEndTransaction:] + 163<br>7   FrontBoardServices                  0x036fdca4 __37-[FBSWorkspace clientEndTransaction:]_block_invoke_2 + 71<br>8   FrontBoardServices                  0x036fd77b __40-[FBSWorkspace _performDelegateCallOut:]_block_invoke + 54<br>9   FrontBoardServices                  0x0371b1a3 -[FBSSerialQueue _performNext] + 184<br>10  FrontBoardServices                  0x0371b5da -[FBSSerialQueue _performNextFromRunLoopSource] + 52<br>11  FrontBoardServices                  0x0371a8d6 FBSSerialQueueRunLoopSourceHandler + 33<br>12  CoreFoundation                      0x0243ed1f __CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE0_PERFORM_FUNCTION</strong> + 15<br>13  CoreFoundation                      0x024349ab __CFRunLoopDoSources0 + 523<br>14  CoreFoundation                      0x02433dc8 __CFRunLoopRun + 1032<br>15  CoreFoundation                      0x02433706 CFRunLoopRunSpecific + 470<br>16  CoreFoundation                      0x0243351b CFRunLoopRunInMode + 123<br>17  UIKit                               0x00953854 -[UIApplication _run] + 540<br>18  UIKit                               0x009591eb UIApplicationMain + 160<br>19  ËÆ°ÁÆóÂô®                           0x00082baa main + 138<br>20  libdyld.dylib                       0x030eba21 start + 1<br>)<br>libc++abi.dylib: terminating with uncaught exception of type NSException<br>(lldb)<br>然后就开始了艰辛的解决历程；<br>自己英语很渣，只有慢慢度娘；<br>百度出来的百分之九十九是xcode6.1改造空工程的方法；<br>没用啊，我现在用的就是它这个方法；<br>只有不断换关键字；<br>结果当我输入：“xcode7如何创建空工程”keywords后；<br>第四个答案正是我想要的；<br>東東同学的新浪博客：<a href="http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html</a><br>原来提示的意思是：“必须给windows创建一个rootviewcontroller；<br>这一句话足够了；果断添加rootview，再次command+R；果断通过；<br>它是否意味着windows创建好后不能直接显示了，必须添加rootviewcontroller才可以运行呢？<br>已经给東東留言等回复。<br>总之任何一个细小的问题，通过自己的努力或者得到别人指点得到解决后，那种欣喜都是情不自禁的。<br>完毕！</p>
+    <title>Hexo安装百度统计流程</title>
+    <url>/2016/03/22/Hexo%E5%AE%89%E8%A3%85%E7%99%BE%E5%BA%A6%E7%BB%9F%E8%AE%A1%E6%B5%81%E7%A8%8B/</url>
+    <content><![CDATA[<p>用了两天时间将Hexo博客搭建好了，<br>之后便开始一点一点儿增加一些小插件，<br>很顺利的安装了RSS和评论插件后，<br>决定安装统计插件，<br>最后经过对比决定安装百度统计，<br>虽然不如谷歌，但还凑合吧。<br>闲言少叙，正文开始</p>
+<a id="more"></a>
+<p>1、在themes／—_config.yml中配置一行统计信息；</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">baidu_tongji: true</span><br></pre></td></tr></table></figure>
+<p>2、在themes/landscape/layout/_partial路径下直接复制google－analytics.ejs，并将文件名改为:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">baidu_tongji.ejs</span><br></pre></td></tr></table></figure>
+<p>3、去百度统计注册获取统计代码，格式如下：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">var _hmt = _hmt || [];</span><br><span class="line">(function() &#123;</span><br><span class="line">var hm = document.createElement(<span class="string">"script"</span>);</span><br><span class="line">hm.src = <span class="string">"//hm.baidu.com/hm.js?cf20d66409118a4390e3147d0f31366d"</span>;</span><br><span class="line">var s = document.getElementsByTagName(<span class="string">"script"</span>)[<span class="number">0</span>];</span><br><span class="line">s.parentNode.insertBefore(hm, s);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>粘贴到baidu_tongji.ejs文件中，粘贴后格式如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (theme.baidu_tongji)&#123; %&gt;</span><br><span class="line">&lt;!-- baidu_tongji --&gt;</span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">var _hmt = _hmt || [];</span><br><span class="line">(function() &#123;</span><br><span class="line">var hm = document.createElement(<span class="string">"script"</span>);</span><br><span class="line">hm.src = <span class="string">"//hm.baidu.com/hm.js?cf20d66409118a4390e3147d0f31366d"</span>;</span><br><span class="line">var s = document.getElementsByTagName(<span class="string">"script"</span>)[<span class="number">0</span>];</span><br><span class="line">s.parentNode.insertBefore(hm, s);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;!-- End baidu_tongji --&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+<p>4、打开themes/landscape/layout/_partial/head.ejs，添加如下代码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&lt;%- partial(<span class="string">'baidu_tongji'</span>) %&gt;</span><br></pre></td></tr></table></figure>
+<p>5、重新部署</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo d -</span><br></pre></td></tr></table></figure>
+<p>6、在百度统计检查部署是否成功<br>先检查首页，成功后界面是这样：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">页面代码安装状态：代码安装正确</span><br></pre></td></tr></table></figure>
+<p>如果你想检查其它页面，复制一个其它页面的网址粘贴过去，点开始检查，成功界面如下：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">代码安装详情</span><br><span class="line">已安装账户<span class="string">"username"</span>的站点<span class="string">"franktianyirenjian.github.io"</span>对应的代码：</span><br><span class="line">&lt;script&gt;</span><br><span class="line">var _hmt = _hmt || [];</span><br><span class="line">(function() &#123;</span><br><span class="line">  var hm = document.createElement(<span class="string">"script"</span>);</span><br><span class="line">  hm.src = <span class="string">"//hm.baidu.com/hm.js?cf20d66409118a4390e3147d0f31366d"</span>;</span><br><span class="line">  var s = document.getElementsByTagName(<span class="string">"script"</span>)[<span class="number">0</span>]; </span><br><span class="line">  s.parentNode.insertBefore(hm, s);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>等候二十分钟你就可以去查看网页统计报告了，打完收功。<br>另外还有人说会出现恶心的百度logo，我也不知道是人云亦云还是怎样，反正我的没有。</p>
 ]]></content>
       <categories>
-        <category>编程</category>
-        <category>IOS</category>
+        <category>Hexo</category>
       </categories>
   </entry>
   <entry>
-    <title>Mac端通过Hexo搭建独立博客</title>
-    <url>/2016/03/17/Mac%E7%AB%AF%E9%80%9A%E8%BF%87Hexo%E6%90%AD%E5%BB%BA%E7%8B%AC%E7%AB%8B%E5%8D%9A%E5%AE%A2/</url>
-    <content><![CDATA[<h4 id="一、为什么选择Hexo"><a href="#一、为什么选择Hexo" class="headerlink" title="一、为什么选择Hexo"></a>一、为什么选择Hexo</h4><p>我对搭建自己的独立博客兴致盎然，<br>独立的才真正是自己的，<br>马克思说研究需要充分占有材料，<br>我因此大量阅读了关于搭建独立博客的文章和资料，<br>知道了有Octopress，jekyll等独立博客搭建系统，<br>但看到好多程序员童鞋都说：Octopress和jekyll很难搞定，<br>所以对于我这种小白来说，就更不用考虑了，<br>听说Hexo是hacker必备的博客搭建系统，因此果断选它。</p>
+    <title>hexo在landscape主题下添加本地搜索</title>
+    <url>/2020/05/01/hexo%E5%9C%A8landscape%E4%B8%BB%E9%A2%98%E4%B8%8B%E6%B7%BB%E5%8A%A0%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>基于能搜到这篇文章的人，<br>肯定是急于解决这个问题的人，<br>因此，我直接展现解决方案</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>这篇文章里的方法，<br>针对的配置环境是这样的：</p>
+<p>硬件: MacBook Air<br>系统: macOS Catalina 10.15.4<br>hexo版本：4.2.0<br>node版本：13.13.0<br>hexo主题：landscape</p>
+<p><code>那咱们就开始吧!</code></p>
 <a id="more"></a>
-<h4 id="二、艰难的开始"><a href="#二、艰难的开始" class="headerlink" title="二、艰难的开始"></a>二、艰难的开始</h4><p>在我安装好git和node.js后，感觉万事俱备，只欠安装Hexo；</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">然后在终端果断输入：npm install -g hero-cli</span><br></pre></td></tr></table></figure>
-<p>回车后等待奇迹发生，然并卵；<br>出现的是几个警告和一系列的Err字样；<br>然后艰难翻坑开始了，各种试验，各种搜索，<br>最后理出来一点儿思路；<br>总算见到雏形了，<br>接下来就很顺利的过关斩将了；</p>
-<h4 id="三、安装Hexo步骤"><a href="#三、安装Hexo步骤" class="headerlink" title="三、安装Hexo步骤"></a>三、安装Hexo步骤</h4><p>系统环境：OS X EI Captian 版本 10.11.3 64bit<br>1、安装Node.js（必须）<br>作用：生成静态页面。<br>Node.js下载地址：<a href="http://nodejs.cn" target="_blank" rel="noopener">http://nodejs.cn</a><br>2、安装git（必须）<br>作用：把本地的静态页面提交到Github上去；<br>安装git前保证你已经安装了Xcode，不然会影响编译；<br>我现在还不明白是否安装了Xcode就不用另外安装git，<br>由于当初百度看到一个方法就试试，所以最后也没确定这个问题，<br>我是既安装了Xcode又用上面的方法安装了git的。<br>有心的朋友可以试试只安装Xcode，不另外安装git，<br>看是否会初始化Hexo成功。</p>
-<h6 id="git安装方法："><a href="#git安装方法：" class="headerlink" title="git安装方法："></a>git安装方法：</h6><p>1）、先安装Homebrew，把下面的代码拷贝到终端回车即可；</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">/usr/bin/ruby -e <span class="string">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span></span><br></pre></td></tr></table></figure>
-<p>2）、安装git<br>等Homebrew安装完毕后，在终端输入：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">brew install git回车即可。</span><br></pre></td></tr></table></figure>
-<h6 id="3、安装hexo"><a href="#3、安装hexo" class="headerlink" title="3、安装hexo"></a>3、安装hexo</h6><p>万事俱备，只欠hexo了，</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">官方文档提供的方法是：npm install －g hexo－cli</span><br></pre></td></tr></table></figure>
-<p>我试了N次，最后磁盘报警也没成功，大概是因为权限问题，<br>可是我电脑账户设置的是管理员啊，最后也没明白咋回事；<br>最后找到了适合我的两种方法<br>1）、第一种方法：（注意：使用sudo需要输入电脑登录密码）</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sudo npm install hexo - -no-optional</span><br></pre></td></tr></table></figure>
-<p>创建成功后的提示界面：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Password:</span><br><span class="line">hexo-site@<span class="number">0.0</span><span class="number">.0</span> /Users/chenbaichuan</span><br><span class="line">└──server@<span class="number">0.0</span><span class="number">.3</span> extraneous</span><br></pre></td></tr></table></figure>
-<p>第二种方法：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sudo npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
-<p>创建成功后的提示界面：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Password:</span><br><span class="line">/usr/local/bin/hexo -&gt; /usr/local/lib/node_modules/hexo-cli/bin/hexo</span><br><span class="line">/usr/local/lib</span><br><span class="line">└──hexo-cli@<span class="number">1.0</span><span class="number">.1</span></span><br></pre></td></tr></table></figure>
-<p>2）、初始化Hexo并且创建博客目录：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo init blog</span><br></pre></td></tr></table></figure>
-<p>初始化成功后的界面是这样的：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">INFO  Start blogging <span class="keyword">with</span> Hexo!：快用Hexo开始你的博客吧！</span><br></pre></td></tr></table></figure>
-<p>这时候在本地磁盘会有一个以blog命名的文件夹,官方文档列出的结构大致如下：<br>不一定完全相同，我的在source就只有一个posts文件。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">_config.yml</span><br><span class="line">scanffolds</span><br><span class="line">source</span><br><span class="line">themes</span><br><span class="line">public</span><br></pre></td></tr></table></figure>
-<p>3)、新建文章<br>为了保证新添加文章都在blog文件夹下，<br>首先进入初始化文件夹。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cd \blog</span><br></pre></td></tr></table></figure>
-<p>新建一篇文章</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hero new 文章名</span><br></pre></td></tr></table></figure>
-<p>至此Hexo的安装全部搞定。</p>
-<h4 id="四、启动本地服务"><a href="#四、启动本地服务" class="headerlink" title="四、启动本地服务"></a>四、启动本地服务</h4><p>生成本地服务器，这个不是必须；</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">npm install hexo-server —save</span><br></pre></td></tr></table></figure>
-<p>启动本地服务器</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-<p>启动成功界面</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">网址：http://localhost:<span class="number">4000</span>/.</span><br></pre></td></tr></table></figure>
-<p>赶紧打开看一下属于自己的领地吧。<br>到此为止本地的服务已经设置好了，<br>接下来就是部署Github了，<br>请看下回分解！<br>如果有的命令运行后不成，先在最前面加sudo，<br>实在不行就去百度吧。</p>
+
+<p>参考的两篇博客地址分别是：<br>第一篇帮我解决了添加js和css的问题，<br>第二篇帮我解决了search.xml解析的问题。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;gitee.com&#x2F;sjclub&#x2F;hexo-search-plugin&#x2F;tree&#x2F;master</span><br><span class="line">https:&#x2F;&#x2F;liam.page&#x2F;2017&#x2F;09&#x2F;21&#x2F;local-search-engine-in-Hexo-site&#x2F;</span><br></pre></td></tr></table></figure>
+<h3 id="具体步骤："><a href="#具体步骤：" class="headerlink" title="具体步骤："></a>具体步骤：</h3><p>首先，按照第一个博客里的流程一步不少的走完。<br>其次，用第二个博客里的search.js文件替换第一篇博客里的search.js文件。<br>最后，将第二篇博客里search.swig文件里的以下内容，添加到第一篇博客里的search.ejs文件里去。</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> id=<span class="string">"local.search.active"</span>&gt;</span><br><span class="line">var inputArea = document.querySelector(<span class="string">"#local-search-input"</span>);</span><br><span class="line">inputArea.onclick = function()&#123; getSearchFile(); this.onclick = null &#125;</span><br><span class="line">inputArea.onkeydown = function()&#123; <span class="keyword">if</span>(event.keyCode == <span class="number">13</span>) <span class="keyword">return</span> false &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<h3 id="重点说明"><a href="#重点说明" class="headerlink" title="重点说明"></a>重点说明</h3><p>第一，第一篇博客的博主对引入文件，说的不是很详细。<br>其实你把load.js和search.js两个文件,<br>直接在footer.ejs里引入即可。<br>引入代码如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;%- partial(&#39;_partial&#x2F;search&#39;) %&gt; # 引入search.ejs,这个文件的作用是生成搜索框并启用搜索输入</span><br><span class="line">&lt;%- js(&#39;js&#x2F;load&#39;) %&gt; # 引入load.js，这个文件的作用是加载search.xml</span><br><span class="line">&lt;%- js(&#39;js&#x2F;search&#39;) %&gt; # 引入search.js，这个文件的作用是解析search.xml</span><br></pre></td></tr></table></figure>
+<p>第二，博主有些语焉不详，<br>他下面说的是search.styl,<br>其实在plugin目录里的是search.stylus<br>实际操作时，你只需要把search.stylus里的代码复制粘贴到search.styl文件里就行。</p>
+<p>第三，最后一步，是最重要的一步，<br>否则即便解析正确，也没法搜索，<br>因为根本没给搜索框调用搜索解析函数。</p>
+<p>然后重新提交一下就可以了。</p>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>为了防止看到这篇的人迷惑。<br>其实可以这么说，<br>两篇博客重点展示了两个文件，<br>即search.js和search.ejs文件。<br>这两个文件里的作用前面已经注释了。<br>但是第一篇里的search.js全部没法用，<br>所以我们将第二篇博客的search.js全部复制到第一篇博客。</p>
+<p>而第一篇博客里的search.ejs，现有的代码是有用的，<br>只不过仅能生成搜索框，却不能实现搜索功能<br>所以我们将第二篇博客里的script脚本添加到第一篇博客的search.ejs里面。</p>
 ]]></content>
       <categories>
         <category>Hexo</category>
@@ -161,43 +140,6 @@
       </categories>
   </entry>
   <entry>
-    <title>《王阳明大传》读后感</title>
-    <url>/2016/03/17/%E3%80%8A%E7%8E%8B%E9%98%B3%E6%98%8E%E5%A4%A7%E4%BC%A0%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/</url>
-    <content><![CDATA[<p>最近读了《王阳明大传》<br>模模糊糊理解了一些<br>王阳明心学要解决的问题是什么?<br>记录在此，以备后用。<br>心学在阳明后来讲学时，<br>为使学生容易理解，<br>便表述为良知学，<br>而实现的方法则是致良知。</p>
-<p>心学要解决的问题就是：找到“人生的意义”，<br>在百千万年的人类史中，<br>人类肯定形成了同一的人性内容，<br>也就是阳明心学中讲的“心体”，<br>也就是本元，最初的那种状态，<br>在阳明以前人们为了找到‘意义’，<br>都会去求助于外物，<br>从外物求理，以期望最终找到‘意义’。<br>以上是摘要<a id="more"></a><br>但是阳明‘龙场悟道’后，告诉大家，意义不在外界万物上，<br>而在每个人心上；<br>但是人们搞不懂，<br>既然在每个人心上，<br>那我们都有心，<br>为什么没有找到‘意义’所在呢？<br>这时王先生告诉他们：<br>不是没有，而是已经被遮蔽了。<br>是被外界鸡零狗碎的私心杂念蒙蔽了。<br>王先生不但告诉他们为什么你们现在从自己心上找不到意义，<br>而且还说我有方法能让你们找到，<br>那就是：“知行合一”；<br>只要坚持知行合一肯定会有人，<br>能将那些鸡零狗碎的私心杂念的遮蔽去掉，<br>看到自己的心的本体，<br>找到意义所在。</p>
-<p>注意他说的是有人会，<br>有人会找到，肯定就有人不会找到<br>所以心学本身对于每个个人来说<br>是一个悲喜参半的对意义的答案，<br>喜的是终于有方法能找到那个终极的问题的答案了。<br>而悲的则是，即使你真去知行合一了，<br>临死之前也不一定能找到。</p>
-<p>从王先生自己的经历来说，<br>他笃信每个人原本都是圣人，<br>只要坚持知行合一，<br>找到意义，最后每个人都会成为真正的圣人。<br>但是这里就有个时间的死结，<br>每个人的时间都不是无限，</p>
-]]></content>
-      <categories>
-        <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>hexo在landscape主题下添加本地搜索</title>
-    <url>/2020/05/01/hexo%E5%9C%A8landscape%E4%B8%BB%E9%A2%98%E4%B8%8B%E6%B7%BB%E5%8A%A0%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>基于能搜到这篇文章的人，<br>肯定是急于解决这个问题的人，<br>因此，我直接展现解决方案</p>
-<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>这篇文章里的方法，<br>针对的配置环境是这样的：</p>
-<p>硬件: MacBook Air<br>系统: macOS Catalina 10.15.4<br>hexo版本：4.2.0<br>node版本：13.13.0<br>hexo主题：landscape</p>
-<p><code>那咱们就开始吧!</code></p>
-<a id="more"></a>
-
-<p>参考的两篇博客地址分别是：<br>第一篇帮我解决了添加js和css的问题，<br>第二篇帮我解决了search.xml解析的问题。</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https:&#x2F;&#x2F;gitee.com&#x2F;sjclub&#x2F;hexo-search-plugin&#x2F;tree&#x2F;master</span><br><span class="line">https:&#x2F;&#x2F;liam.page&#x2F;2017&#x2F;09&#x2F;21&#x2F;local-search-engine-in-Hexo-site&#x2F;</span><br></pre></td></tr></table></figure>
-<h3 id="具体步骤："><a href="#具体步骤：" class="headerlink" title="具体步骤："></a>具体步骤：</h3><p>首先，按照第一个博客里的流程一步不少的走完。<br>其次，用第二个博客里的search.js文件替换第一篇博客里的search.js文件。<br>最后，将第二篇博客里search.swig文件里的以下内容，添加到第一篇博客里的search.ejs文件里去。</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span> id=<span class="string">"local.search.active"</span>&gt;</span><br><span class="line">var inputArea = document.querySelector(<span class="string">"#local-search-input"</span>);</span><br><span class="line">inputArea.onclick = function()&#123; getSearchFile(); this.onclick = null &#125;</span><br><span class="line">inputArea.onkeydown = function()&#123; <span class="keyword">if</span>(event.keyCode == <span class="number">13</span>) <span class="keyword">return</span> false &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="重点说明"><a href="#重点说明" class="headerlink" title="重点说明"></a>重点说明</h3><p>第一，第一篇博客的博主对引入文件，说的不是很详细。<br>其实你把load.js和search.js两个文件,<br>直接在footer.ejs里引入即可。<br>引入代码如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&lt;%- partial(&#39;_partial&#x2F;search&#39;) %&gt; # 引入search.ejs,这个文件的作用是生成搜索框并启用搜索输入</span><br><span class="line">&lt;%- js(&#39;js&#x2F;load&#39;) %&gt; # 引入load.js，这个文件的作用是加载search.xml</span><br><span class="line">&lt;%- js(&#39;js&#x2F;search&#39;) %&gt; # 引入search.js，这个文件的作用是解析search.xml</span><br></pre></td></tr></table></figure>
-<p>第二，博主有些语焉不详，<br>他下面说的是search.styl,<br>其实在plugin目录里的是search.stylus<br>实际操作时，你只需要把search.stylus里的代码复制粘贴到search.styl文件里就行。</p>
-<p>第三，最后一步，是最重要的一步，<br>否则即便解析正确，也没法搜索，<br>因为根本没给搜索框调用搜索解析函数。</p>
-<p>然后重新提交一下就可以了。</p>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>为了防止看到这篇的人迷惑。<br>其实可以这么说，<br>两篇博客重点展示了两个文件，<br>即search.js和search.ejs文件。<br>这两个文件里的作用前面已经注释了。<br>但是第一篇里的search.js全部没法用，<br>所以我们将第二篇博客的search.js全部复制到第一篇博客。</p>
-<p>而第一篇博客里的search.ejs，现有的代码是有用的，<br>只不过仅能生成搜索框，却不能实现搜索功能<br>所以我们将第二篇博客里的script脚本添加到第一篇博客的search.ejs里面。</p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-  </entry>
-  <entry>
     <title>为什么读完就谈</title>
     <url>/2016/03/17/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AF%BB%E5%AE%8C%E5%B0%B1%E8%B0%88/</url>
     <content><![CDATA[<p>一、教学相长的好处<br>教学相长，绝对是一个人进步的最快方法；<br>这个经验是我从自己写微信公众号体会到的。<br>并且由此公众号的写作，<br>逐渐理清了自己以后的知识架构；<br>一直以来我都想为自己建立一个知识系统；<br>这个系统是完全属于自己的，<br>并且系统里面的每个元素我都能达到专业水平。</p>
@@ -208,6 +150,18 @@
       <categories>
         <category>读书明道</category>
         <category>小说</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>《王阳明大传》读后感</title>
+    <url>/2016/03/17/%E3%80%8A%E7%8E%8B%E9%98%B3%E6%98%8E%E5%A4%A7%E4%BC%A0%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/</url>
+    <content><![CDATA[<p>最近读了《王阳明大传》<br>模模糊糊理解了一些<br>王阳明心学要解决的问题是什么?<br>记录在此，以备后用。<br>心学在阳明后来讲学时，<br>为使学生容易理解，<br>便表述为良知学，<br>而实现的方法则是致良知。</p>
+<p>心学要解决的问题就是：找到“人生的意义”，<br>在百千万年的人类史中，<br>人类肯定形成了同一的人性内容，<br>也就是阳明心学中讲的“心体”，<br>也就是本元，最初的那种状态，<br>在阳明以前人们为了找到‘意义’，<br>都会去求助于外物，<br>从外物求理，以期望最终找到‘意义’。<br>以上是摘要<a id="more"></a><br>但是阳明‘龙场悟道’后，告诉大家，意义不在外界万物上，<br>而在每个人心上；<br>但是人们搞不懂，<br>既然在每个人心上，<br>那我们都有心，<br>为什么没有找到‘意义’所在呢？<br>这时王先生告诉他们：<br>不是没有，而是已经被遮蔽了。<br>是被外界鸡零狗碎的私心杂念蒙蔽了。<br>王先生不但告诉他们为什么你们现在从自己心上找不到意义，<br>而且还说我有方法能让你们找到，<br>那就是：“知行合一”；<br>只要坚持知行合一肯定会有人，<br>能将那些鸡零狗碎的私心杂念的遮蔽去掉，<br>看到自己的心的本体，<br>找到意义所在。</p>
+<p>注意他说的是有人会，<br>有人会找到，肯定就有人不会找到<br>所以心学本身对于每个个人来说<br>是一个悲喜参半的对意义的答案，<br>喜的是终于有方法能找到那个终极的问题的答案了。<br>而悲的则是，即使你真去知行合一了，<br>临死之前也不一定能找到。</p>
+<p>从王先生自己的经历来说，<br>他笃信每个人原本都是圣人，<br>只要坚持知行合一，<br>找到意义，最后每个人都会成为真正的圣人。<br>但是这里就有个时间的死结，<br>每个人的时间都不是无限，</p>
+]]></content>
+      <categories>
+        <category>阳明心学</category>
       </categories>
   </entry>
   <entry>
@@ -254,6 +208,27 @@
       </categories>
   </entry>
   <entry>
+    <title>如何利用知行合一提升学习效率</title>
+    <url>/2016/03/20/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E6%8F%90%E5%8D%87%E5%AD%A6%E4%B9%A0%E6%95%88%E7%8E%87/</url>
+    <content><![CDATA[<p>一、心学里的三类人<br>阳明将人分三类：生知安行，学知力行，困知勉行。<br>生知安行就是我们现在所说的天才，<br>如果按二八法则，全人类中，<br>似乎会有百分之二十的天才存在，<br>可是去掉那些后来伤仲永的，<br>最多会留下百分之十，就不错了。<br>困知勉行，就是脑袋死不开窍的，<br>最多也就百分之十，<br>剩下的就是百分之八十的普通人了。</p>
+<p>所以如果你自认为是天才，<br>那这篇文章就不用看了。<br>这篇文章的方法主要是针对，<br>和我一样那百分之八十中的普通人。<br>以上是摘要<a id="more"></a><br>二、万物有源<br>世间所有的事物，<br>都有一个本源，<br>每家家谱的存在，<br>便是一个很好的例证，<br>我们家家谱开头的第一句话便是：<br>饮水思源，慎终追远，以知其本也。</p>
+<p>你今天看媒体上的马云风光无限，<br>公众眼里的刘强东风头尽出，<br>可是源头在哪里？<br>他们是横空出世吗？<br>非也！<br>马云今天指点江山的魄力<br>离不开当年推荐中国黄页时，<br>被人拒之门外的尴尬做注脚；<br>刘强东今日的意气风发，<br>少不了当年因为做生意和前妻离婚的神伤做铺垫。<br>所以，学习也是有源头的。</p>
+<p>三、知行合一与学习效率<br>学习有源，源头在哪里？<br>上次讲过<br>格物更偏向于思考层面，<br>知行合一更偏向于行动层面。<br>若想利用知行合一提高学习效率，<br>首先必须得格学习这件事。<br>学习就是学和习，<br>绝不是废话。<br>所以学习的源头就是：<br>不但学理论还要以最快的速度去验证理论。<br>而不是仅仅让理论在脑子里呆一辈子。<br>这就是用知行合一提高学习效率的唯一方法。</p>
+<p>比如，你听人说Hexo＋Github搭建独立博客，快速，简便，强大。<br>那么怎么个快速，简便，强大法呢？<br>如果你不去搭建一个自己的独立博客，<br>你知道的也仅限于几个名词和三个形容词。</p>
+<p>那么心学的做法是什么呢？<br>首先查资料啊，通过查资料了解到，<br>Hexo不但很多程序员在用，<br>而且好多人还说是hacker必备的博客搭建框架，<br>基于多数人对带有神秘色彩的黑客的向往，<br>这时候会更有动力去行动。</p>
+<p>那么好了，基本的概念有了，<br>接下来还是和学习IOS开发如出一辙，<br>要了解路线图啊，<br>首先需要安装Node.js和Git程序，<br>然后安装并初始化Hexo框架，<br>最后启动本地服务器，<br>本地的Hexo框架就搭建完成了，<br>这时候打开服务器给的地址，<br>你已经可以看到完全属于你自己的独立博客的雏形了，<br>这样就更进一步加深你对这件事的热衷度，<br>也就是你的自信进一步提高了。</p>
+<p>到这里为止你通过最初的诚意，<br>下决心做用Hexo搭建独立博客这件事，<br>然后通过格这件事，<br>你了解了整个的路线图，<br>并且通过知行合一，你已经搭建出了本地的博客雏形。<br>你对这件事的兴趣以及对完成它的自信心，<br>已经不要不要的了。<br>因为你看到阶段性成果了。</p>
+<p>那接下来，配置博客信息，<br>安装SSH密钥，并且关联GIthub的库，<br>最终把你的本地独立博客部署到互联网上，<br>就是顺理成章的事了。</p>
+<p>等到你输入自己的博客网址，<br>在任何联网的电脑或手机都能看到自己的精神家园，<br>这时候你才真正体会到开头那三个形容词的含义，<br>快速是因为编程小白，也能按流程一步一步搭建它，<br>简便是因为搭建好后，只需两条命令就可以把自己的博客更新到互联网，<br>强大是因为，它几乎支持你以前的博客框架，<br>包括Jekyll，Octopress和Wordpress所有的功能。<br>但基本要求就是只需要一台联网的电脑和你按照步骤去搭建。</p>
+<p>四、关于理由<br>即便看到这里，<br>我相信很多人还是能找到，<br>拒绝做自己应该做的事情的理由。<br>我相信还是有很多人会说：<br>你不知道我有多忙，<br>你说得倒轻巧，<br>我都看不懂你说的这些什么Hexo和Github，<br>怎么去搭建？<br>balabalabala……<br>好吧，我承认大家都很忙，<br>这里稍微跟大家玩个文字游戏，<br>大家比较下‘忙’和‘忘’两个字，<br>没错，聪明的已经看出来了，<br>你的心躺下自己就什么都忘了，<br>你的心立起来，自然一直都很忙。<br>so，如果你到现在还找各种理由，<br>不去做自己应该做的事情，<br>那我只能说你决心还不够，<br>而你老说自己忙，<br>则是需要重新修炼心学的静坐工夫，<br>还是建议参考曾剃头的方法。</p>
+<p>最后，借用陌陌的广告词<br>送给那些迟迟不下决心做自己向往事情的人们：<br>别和陌生人说话，别做新鲜事，<br>继续过平常的生活，胆小一点儿，<br>别好奇，就玩你会的，离冒险远远的，<br>有些事想想就好，没必要改变，<br>待在熟悉的地方，最好待在家里，<br>听一样的音乐，见一样的人，重复同样的话题，<br>心思别太活，梦想要实际，<br>不要什么都尝试，就这样活着吧。</p>
+<p>本期推荐电影：<br>一、《沙漠之花》导演：雪瑞·霍尔曼<br>推荐语：如果你曾对沙漠里是否真的能开出花产生过疑问，这部片子很肯定的告诉你：能。<br>二、《白日火焰》导演：刁亦男<br>推荐语：对豆瓣什么的一些影评，我没太多感觉，本片亮点在于开始五分钟在你认为不可能发生的时候，两个警察被干掉了。<br>三、《爱在战火蔓延时》导演：戴维·塞尔策<br>推荐语：片子不算超精彩的那种，但是里面有一个场景令我很触动，当男女主角在国境线外呼救的时候，边防兵无动于衷，但当他们跨进国境线那一刻，边防兵毫不客气的还击。<br>本期推荐书籍：<br>一、《一阵风，留下了千古绝唱》作者：章诒和<br>推荐语：书里讲马连良对精致生活的享受部分，很是引人入胜。<br>二、《王阳明大传》作者：周月亮<br>推荐语：用通俗的话语较有深度的讲述了王阳明的一生，看完这个，就没必要看其学生吕峥写的《明朝一哥王阳明》了，基本照抄，没太多新意。<br>三、《历史深处的民国》作者：江城<br>推荐语：框架比《民国就是这么生猛》搭的好，细节则没后者全，但里面用数据分析了一个很有意思的现象，袁世凯家里的牛人没有活过58岁的。</p>
+]]></content>
+      <categories>
+        <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
     <title>吐槽互联网上关于hexo添加本地搜索的文章</title>
     <url>/2020/05/01/%E5%90%90%E6%A7%BD%E4%BA%92%E8%81%94%E7%BD%91%E4%B8%8A%E5%85%B3%E4%BA%8Ehexo%E6%B7%BB%E5%8A%A0%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2%E7%9A%84%E6%96%87%E7%AB%A0/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><code>1、填坑的开始</code><br>重装hexo时，解决了node版本错误和中文乱码之后，<br>满心欢喜，<br>本以为可以愉快的重复以下过程了</p>
@@ -280,60 +255,6 @@
 ]]></content>
       <categories>
         <category>Hexo</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>如何利用知行合一提升学习效率</title>
-    <url>/2016/03/20/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E6%8F%90%E5%8D%87%E5%AD%A6%E4%B9%A0%E6%95%88%E7%8E%87/</url>
-    <content><![CDATA[<p>一、心学里的三类人<br>阳明将人分三类：生知安行，学知力行，困知勉行。<br>生知安行就是我们现在所说的天才，<br>如果按二八法则，全人类中，<br>似乎会有百分之二十的天才存在，<br>可是去掉那些后来伤仲永的，<br>最多会留下百分之十，就不错了。<br>困知勉行，就是脑袋死不开窍的，<br>最多也就百分之十，<br>剩下的就是百分之八十的普通人了。</p>
-<p>所以如果你自认为是天才，<br>那这篇文章就不用看了。<br>这篇文章的方法主要是针对，<br>和我一样那百分之八十中的普通人。<br>以上是摘要<a id="more"></a><br>二、万物有源<br>世间所有的事物，<br>都有一个本源，<br>每家家谱的存在，<br>便是一个很好的例证，<br>我们家家谱开头的第一句话便是：<br>饮水思源，慎终追远，以知其本也。</p>
-<p>你今天看媒体上的马云风光无限，<br>公众眼里的刘强东风头尽出，<br>可是源头在哪里？<br>他们是横空出世吗？<br>非也！<br>马云今天指点江山的魄力<br>离不开当年推荐中国黄页时，<br>被人拒之门外的尴尬做注脚；<br>刘强东今日的意气风发，<br>少不了当年因为做生意和前妻离婚的神伤做铺垫。<br>所以，学习也是有源头的。</p>
-<p>三、知行合一与学习效率<br>学习有源，源头在哪里？<br>上次讲过<br>格物更偏向于思考层面，<br>知行合一更偏向于行动层面。<br>若想利用知行合一提高学习效率，<br>首先必须得格学习这件事。<br>学习就是学和习，<br>绝不是废话。<br>所以学习的源头就是：<br>不但学理论还要以最快的速度去验证理论。<br>而不是仅仅让理论在脑子里呆一辈子。<br>这就是用知行合一提高学习效率的唯一方法。</p>
-<p>比如，你听人说Hexo＋Github搭建独立博客，快速，简便，强大。<br>那么怎么个快速，简便，强大法呢？<br>如果你不去搭建一个自己的独立博客，<br>你知道的也仅限于几个名词和三个形容词。</p>
-<p>那么心学的做法是什么呢？<br>首先查资料啊，通过查资料了解到，<br>Hexo不但很多程序员在用，<br>而且好多人还说是hacker必备的博客搭建框架，<br>基于多数人对带有神秘色彩的黑客的向往，<br>这时候会更有动力去行动。</p>
-<p>那么好了，基本的概念有了，<br>接下来还是和学习IOS开发如出一辙，<br>要了解路线图啊，<br>首先需要安装Node.js和Git程序，<br>然后安装并初始化Hexo框架，<br>最后启动本地服务器，<br>本地的Hexo框架就搭建完成了，<br>这时候打开服务器给的地址，<br>你已经可以看到完全属于你自己的独立博客的雏形了，<br>这样就更进一步加深你对这件事的热衷度，<br>也就是你的自信进一步提高了。</p>
-<p>到这里为止你通过最初的诚意，<br>下决心做用Hexo搭建独立博客这件事，<br>然后通过格这件事，<br>你了解了整个的路线图，<br>并且通过知行合一，你已经搭建出了本地的博客雏形。<br>你对这件事的兴趣以及对完成它的自信心，<br>已经不要不要的了。<br>因为你看到阶段性成果了。</p>
-<p>那接下来，配置博客信息，<br>安装SSH密钥，并且关联GIthub的库，<br>最终把你的本地独立博客部署到互联网上，<br>就是顺理成章的事了。</p>
-<p>等到你输入自己的博客网址，<br>在任何联网的电脑或手机都能看到自己的精神家园，<br>这时候你才真正体会到开头那三个形容词的含义，<br>快速是因为编程小白，也能按流程一步一步搭建它，<br>简便是因为搭建好后，只需两条命令就可以把自己的博客更新到互联网，<br>强大是因为，它几乎支持你以前的博客框架，<br>包括Jekyll，Octopress和Wordpress所有的功能。<br>但基本要求就是只需要一台联网的电脑和你按照步骤去搭建。</p>
-<p>四、关于理由<br>即便看到这里，<br>我相信很多人还是能找到，<br>拒绝做自己应该做的事情的理由。<br>我相信还是有很多人会说：<br>你不知道我有多忙，<br>你说得倒轻巧，<br>我都看不懂你说的这些什么Hexo和Github，<br>怎么去搭建？<br>balabalabala……<br>好吧，我承认大家都很忙，<br>这里稍微跟大家玩个文字游戏，<br>大家比较下‘忙’和‘忘’两个字，<br>没错，聪明的已经看出来了，<br>你的心躺下自己就什么都忘了，<br>你的心立起来，自然一直都很忙。<br>so，如果你到现在还找各种理由，<br>不去做自己应该做的事情，<br>那我只能说你决心还不够，<br>而你老说自己忙，<br>则是需要重新修炼心学的静坐工夫，<br>还是建议参考曾剃头的方法。</p>
-<p>最后，借用陌陌的广告词<br>送给那些迟迟不下决心做自己向往事情的人们：<br>别和陌生人说话，别做新鲜事，<br>继续过平常的生活，胆小一点儿，<br>别好奇，就玩你会的，离冒险远远的，<br>有些事想想就好，没必要改变，<br>待在熟悉的地方，最好待在家里，<br>听一样的音乐，见一样的人，重复同样的话题，<br>心思别太活，梦想要实际，<br>不要什么都尝试，就这样活着吧。</p>
-<p>本期推荐电影：<br>一、《沙漠之花》导演：雪瑞·霍尔曼<br>推荐语：如果你曾对沙漠里是否真的能开出花产生过疑问，这部片子很肯定的告诉你：能。<br>二、《白日火焰》导演：刁亦男<br>推荐语：对豆瓣什么的一些影评，我没太多感觉，本片亮点在于开始五分钟在你认为不可能发生的时候，两个警察被干掉了。<br>三、《爱在战火蔓延时》导演：戴维·塞尔策<br>推荐语：片子不算超精彩的那种，但是里面有一个场景令我很触动，当男女主角在国境线外呼救的时候，边防兵无动于衷，但当他们跨进国境线那一刻，边防兵毫不客气的还击。<br>本期推荐书籍：<br>一、《一阵风，留下了千古绝唱》作者：章诒和<br>推荐语：书里讲马连良对精致生活的享受部分，很是引人入胜。<br>二、《王阳明大传》作者：周月亮<br>推荐语：用通俗的话语较有深度的讲述了王阳明的一生，看完这个，就没必要看其学生吕峥写的《明朝一哥王阳明》了，基本照抄，没太多新意。<br>三、《历史深处的民国》作者：江城<br>推荐语：框架比《民国就是这么生猛》搭的好，细节则没后者全，但里面用数据分析了一个很有意思的现象，袁世凯家里的牛人没有活过58岁的。</p>
-]]></content>
-      <categories>
-        <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>工夫与境界（一）</title>
-    <url>/2016/03/17/%E5%B7%A5%E5%A4%AB%E4%B8%8E%E5%A2%83%E7%95%8C%EF%BC%88%E4%B8%80%EF%BC%89/</url>
-    <content><![CDATA[<p>工夫与境界古人常论之；<br>这里工夫是指心力，境界是指胸襟。<br>心力与胸襟外在综合显现为气质。</p>
-<p>在陈来所著《有无之境》中，<br>专门有一章论及工夫，<br>陈来阐释说：”阳明的工夫论就是通过适当的实践和精神修养的方法或形式，来达到理想的境界”。<br>在下深以为然。<br>说白了工夫既要具体的去进行体力锻炼，又要独立的思考进行精神修养。</p>
-<p>我的意思是除去以‘心学’装点门面者外，<br>我们所有人接触并学习心学，<br>都是为了用其指导我们自己的生活，<br>让自己的生活慢慢的圆满起来。<br>以上是摘要<a id="more"></a><br>那么怎么做才可以具体的将心学应用在我们生活中呢？<br>这个事情，在于我自己也并没有融会贯通。<br>因此以下所说，只是适用于我自己的方法，供大家借鉴。<br>原因前面文章已有述及：“任是阳明自己已成圣，也只能用其心学为我们指出一门径而已。”</p>
-<p>我运用心学的经验源于两方面：就是开头所说：工夫与境界；<br>也即心力与胸襟。</p>
-<p>阳明说：“知之真切笃实便是行，行之明觉精察便是知”。<br>意思是生命有限，虽说知行合一要求多实践，<br>但以有限之生命，对无限之实践是不现实的。<br>那么可以有个替代方法，即：‘知之真切笃实便是行’。<br>这同时给了我们不直接实践也可以获得实践效果的一个门径。</p>
-<p>实践工夫我是这样做的，<br>有时间我会抽出一个小时，<br>这一个小时保证不会有人打扰你。</p>
-<p>思考以下三个方面的事情：</p>
-<p>一、未发生之事；<br>未发生之事，往往更多的引起我们的恐惧，<br>用阳明的话说，这时恐惧遮蔽了我们的本心，<br>正如罗斯福夫人所说：“恐惧源于恐惧本身”，<br>在你心中去演绎未发生的事情，比如你对明天的恐惧，<br>如果这样说有点儿抽象，那么我么可以说具体一点儿；<br>想一下，如果明天你突然没工作了，不要问我为什么，<br>或者是做的不开心自己辞职的，或者是公司倒闭被动离职，鬼知道为什么？<br>就想象你已经没工作了。<br>你身上的钱还够你生活半年，<br>接着想下去，这时候你会怎么办？<br>就按着这条线想下去；</p>
-<p>我是这么演绎的：</p>
-<p>1、首先我要统计我生活的所有开支在什么事情上，减少不必要的开支；<br>比如原来抽烟，这时候正是戒烟的好机会；<br>比如你原来冲动之下，会买一些没有用的物品，可以提高你购物的实用性。<br>比如你原来经常爱学文青，去电影院或者为了附庸风雅甚至去看歌剧舞剧。<br>这些都可以按暂停键了。</p>
-<p>2、我将如何利用待业期间的宝贵时间；<br>这里有两个关键点，<br>第一，往往你会因刚失业而忽略掉待业期间的这宝贵时间。<br>因为失业了，你会手足无措，你会很没有安全感，你并没有意识到，这段时间，恰恰是你枕戈待旦，好整以暇的修炼时间。<br>一边因失业而无精打采，一边又因不能马上找到满意的工作而患得患失。<br>而待业的时间就会在这种等待招聘电话与患得患失中流失。<br>等到投入到新的工作之后，又后悔没有在待业期间的那不短时间内学习到新的东西。<br>第二，你如果好好利用这段时间，你会获得惊喜；<br>这段时间弥足珍贵的地方在于，<br>你只要冷静下来就会想清楚：“即便我再患得患失，我再沮丧，再无精打采”；现在就是失业了，就是没工作了，钱就是还够用半年。<br>与其患得患失，不如好好利用；<br>如果你一旦树立这个意识，<br>相信我，下次再失业也好，遇到其他突发事件也好你会淡定的多得多。<br>这无疑会实实在在的增进你的心力，<br>换句话说，会提高你面对不确定性的能力。</p>
-<p>用这段时间可以做好多事情，除了把简历改好，每天投递外，<br>余下的时间全部是你自己的。<br>你可以用余下的时间做你喜欢的事情。</p>
-<p>思考如何增加你的收入来源，<br>是不是可以开个淘宝店，<br>别人都说在行这个app不错，<br>可不可以用你独特的技能在上面赚点儿零花钱。<br>假如你对写作情有独钟，这时候可以提高下你的写作水平。<br>每天写一篇文章练手应该不是难事，等等很多。<br>既符合你的兴趣，又可以借此增加这方面的素质，<br>还可以顺便赚些零花钱。</p>
-<p>看你工作时没时间看的书籍；<br>这个不多说，甭管是否跟你的职业技能直接相关，<br>你可以随便按照你的兴趣来，<br>如果以前老是看德鲁克等方面的商业书籍；<br>这时你不妨重读你最爱的金庸，古龙武侠小说；<br>可以分析下，他们写作的笔法，架构，以及整个小说的布局。<br>对你自己写文章也是不无进益的。</p>
-<p>学习你工作时没时间学的技能<br>比如编程，音乐，甚至做饭。<br>你说我爱编程，喜欢键盘噼里啪啦若干时间，就可以看到很流畅的网页被我写出来。<br>你说我喜欢音乐，我想自己写自己的歌，<br>你说我爱吃红烧排骨或者狮子头。<br>好了，这正是最好的机会，你都可以去尝试了。</p>
-<p>工作时你没时间去的地方<br>当然远的地方就不要去了，<br>毕竟钱包里还有几个子儿，你最清楚了。<br>工作时周边好玩的地方，你都没时间去。<br>这时候可以好好畅玩一番了。<br>对了有单反，还可以拍些很好的照片回来。<br>还可以借此提高你的摄影技能。</p>
-<p>3、职业转换<br>我是不是一辈子做这个工作，<br>有没有可能转换职业，如果转换需要哪些技能，<br>我现在是不是就可以给他学起来。<br>如果转换职业机会成本怎么样等等。<br>这些你都可以好好思考下。</p>
-<p>二、已发生之事；<br>已发生之事不会引起你的恐惧，<br>它会给你带来经验以及教训，当然还有后悔。<br>总结一下自己这几年的人生经历，工作得失。<br>思考一下自己的亲情，爱情以及友情，<br>这些年在经营这些事上，有什么不好的地方，<br>有哪些需要改正的地方。<br>这里你需要想明白一件事情，不要后悔。<br>过去的事，是无须后悔也是后悔无用的。<br>所以在这里真正的目的就是勿恋旧事。<br>旧事带给我们的是经验，是教训，是回忆也是经历。<br>而就是不能是后悔或者哀怨。<br>三、正在行之事；<br>过去的事情，你不再有后悔后者留恋，<br>对于未发生但是使你恐惧的事情也已经思考好了对策，<br>现在你是好整以暇，再不会瞻前顾后了。<br>自然而然的就会专注于正在行的事上了。</p>
-<p>举例子也好，分类别也罢，以上所有的文字都是为了说明一件事，<br>未来不迎，过往不恋，当下不杂。<br>哀莫大于心死，如果你不断的这样练习，<br>你的心力就会越来越强，不自觉的就会增加自信。<br>那到时候你的气质自然就来了。</p>
-<p>说白了气质还是在于你对于未来不确定的事情不再恐惧，<br>对于已过去的事情不再留恋和哀怨。<br>对于现在的事情，能够专心致志。<br>做到这些之后，自信而且淡定的外在表现就是你的气质了。<br>只有不恐惧于未来不确定的事情，不留恋于过去的事，你才能更专心的做你现在的事情。<br>那样你才足够淡定，足够自信，足够有气质。</p>
-<p>我还是要说语言文字的局限性，决定了它并不能表达所有的事情。<br>气质就是其中最好的例子，什么是气质，可以有很多定义。<br>但绝不会如这是一只猫，那是一只狗清晰。<br>因此，以上说的再详尽，也还是需要自己去实践。</p>
-<p>关于境界的文字，<br>由于此篇“工夫”文章已经很长，<br>为了让读到的人不花费太长时间。<br>下一期发出来。<br>敬请期待。</p>
-<p>本期推荐书籍：<br>一、《民国就是这么生猛》<br>推荐理由；<br>1、虽然本书讲的不是关于工夫的事，但是里面讲到的人可以教给你很多关于：“工夫”的事儿。<br>2、文字幽默诙谐，通俗易懂，可以作为茶余饭后的休闲阅读。<br>3、民国入门读物。<br>二、《红太阳是怎样升起的》<br>1、此书可以学习一些推广方面的经验；你如果没看到那就仔细看；<br>2、可以看到为什么会发生文革？<br>3、验证了一句话，在政治面前，从来没有永远的朋友和敌人。<br>4、也可以看到领袖的缔造，绝对需要大大的：“工夫”。<br>三、《最后的文化贵族》<br>学习下这些在文化上有气质的人，是怎样修炼：“工夫”的。</p>
-<p>本期推荐电影：</p>
-<p>1、《杀手没有假期》<br>我常常讲，我以前是个道德感很重的人，非要把善恶很分明的人，<br>但是我越来越感到，人性复杂性大于两分性，偶然性大于必然性。<br>杀手的人生会带给你怎样的启示呢？看了就知道。<br>2、《返老还童》又叫《本杰明巴顿奇事》<br>豆瓣评分8.6，以男女爱情为线索探讨生老病死价值体系的一部电影。<br>3、《杏花三月天》<br>我看这部主要看蒋雯丽和张国立年轻时的表演的。里面和《菊豆》异曲同工，都表现了旧社会妇女从属地位的悲哀和无奈。</p>
-]]></content>
-      <categories>
-        <category>阳明心学</category>
       </categories>
   </entry>
   <entry>
@@ -383,6 +304,39 @@
 <p>爱好实际需要你花费大量时间，<br>不然就不是真的知行合一去爱了，<br>时间是你惟一的财富，<br>你的时间花在了哪里，<br>那很有可能你的爱好就在哪里？<br>当然并不绝对，<br>比如你说你就爱好发呆或者睡觉，<br>那我就只能借用王大锤的话了：『你说得好有道理，我竟无言以对』。<br>你平时时间花在哪里？<br>是验证你在某件事上是否真正知行合一，<br>一个简单但非常有用的方法。</p>
 <p>本期推荐电影：<br>一、《龙虾》<br>推荐语：如果不结婚就变动物，是不是匪夷所思，《龙虾》就是这样的电影。<br>二、《房间》<br>推荐语：想不想知道一个被伤害的母亲是怎样为自己孩子在一间狭小且上了锁的房间里，打造出一个小小天堂的？<br>三、《你是好孩子》<br>推荐语：我们小时候受过的伤害，在长大后都会以自己被伤害的方式再现。</p>
 <p>本期推荐书籍：<br>一、《蔡澜谈吃》作者：蔡澜<br>推荐语：蔡澜包括，倪匡、黄霑和金庸，都是我非常钦佩的人，钦佩程度根据名字排序；<br>蔡澜爱好吃，所以就有了这本书以及《蔡澜品味》等节目。<br>看看这本书，你会知道《想说爱好真的不容易》。<br>二、《今生今世，民国名媛情事》作者：萧萧<br>推荐语：名媛难再有，但可以学学这些名媛处人生低谷的人生态度。名媛不唯能享富贵，更可处贫贱而仍优雅如初。<br>三、《一个人的村庄》作者：刘亮程<br>推荐语：观察生活的角度比较独特，散文里比较出奇的。</p>
+]]></content>
+      <categories>
+        <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>工夫与境界（一）</title>
+    <url>/2016/03/17/%E5%B7%A5%E5%A4%AB%E4%B8%8E%E5%A2%83%E7%95%8C%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<p>工夫与境界古人常论之；<br>这里工夫是指心力，境界是指胸襟。<br>心力与胸襟外在综合显现为气质。</p>
+<p>在陈来所著《有无之境》中，<br>专门有一章论及工夫，<br>陈来阐释说：”阳明的工夫论就是通过适当的实践和精神修养的方法或形式，来达到理想的境界”。<br>在下深以为然。<br>说白了工夫既要具体的去进行体力锻炼，又要独立的思考进行精神修养。</p>
+<p>我的意思是除去以‘心学’装点门面者外，<br>我们所有人接触并学习心学，<br>都是为了用其指导我们自己的生活，<br>让自己的生活慢慢的圆满起来。<br>以上是摘要<a id="more"></a><br>那么怎么做才可以具体的将心学应用在我们生活中呢？<br>这个事情，在于我自己也并没有融会贯通。<br>因此以下所说，只是适用于我自己的方法，供大家借鉴。<br>原因前面文章已有述及：“任是阳明自己已成圣，也只能用其心学为我们指出一门径而已。”</p>
+<p>我运用心学的经验源于两方面：就是开头所说：工夫与境界；<br>也即心力与胸襟。</p>
+<p>阳明说：“知之真切笃实便是行，行之明觉精察便是知”。<br>意思是生命有限，虽说知行合一要求多实践，<br>但以有限之生命，对无限之实践是不现实的。<br>那么可以有个替代方法，即：‘知之真切笃实便是行’。<br>这同时给了我们不直接实践也可以获得实践效果的一个门径。</p>
+<p>实践工夫我是这样做的，<br>有时间我会抽出一个小时，<br>这一个小时保证不会有人打扰你。</p>
+<p>思考以下三个方面的事情：</p>
+<p>一、未发生之事；<br>未发生之事，往往更多的引起我们的恐惧，<br>用阳明的话说，这时恐惧遮蔽了我们的本心，<br>正如罗斯福夫人所说：“恐惧源于恐惧本身”，<br>在你心中去演绎未发生的事情，比如你对明天的恐惧，<br>如果这样说有点儿抽象，那么我么可以说具体一点儿；<br>想一下，如果明天你突然没工作了，不要问我为什么，<br>或者是做的不开心自己辞职的，或者是公司倒闭被动离职，鬼知道为什么？<br>就想象你已经没工作了。<br>你身上的钱还够你生活半年，<br>接着想下去，这时候你会怎么办？<br>就按着这条线想下去；</p>
+<p>我是这么演绎的：</p>
+<p>1、首先我要统计我生活的所有开支在什么事情上，减少不必要的开支；<br>比如原来抽烟，这时候正是戒烟的好机会；<br>比如你原来冲动之下，会买一些没有用的物品，可以提高你购物的实用性。<br>比如你原来经常爱学文青，去电影院或者为了附庸风雅甚至去看歌剧舞剧。<br>这些都可以按暂停键了。</p>
+<p>2、我将如何利用待业期间的宝贵时间；<br>这里有两个关键点，<br>第一，往往你会因刚失业而忽略掉待业期间的这宝贵时间。<br>因为失业了，你会手足无措，你会很没有安全感，你并没有意识到，这段时间，恰恰是你枕戈待旦，好整以暇的修炼时间。<br>一边因失业而无精打采，一边又因不能马上找到满意的工作而患得患失。<br>而待业的时间就会在这种等待招聘电话与患得患失中流失。<br>等到投入到新的工作之后，又后悔没有在待业期间的那不短时间内学习到新的东西。<br>第二，你如果好好利用这段时间，你会获得惊喜；<br>这段时间弥足珍贵的地方在于，<br>你只要冷静下来就会想清楚：“即便我再患得患失，我再沮丧，再无精打采”；现在就是失业了，就是没工作了，钱就是还够用半年。<br>与其患得患失，不如好好利用；<br>如果你一旦树立这个意识，<br>相信我，下次再失业也好，遇到其他突发事件也好你会淡定的多得多。<br>这无疑会实实在在的增进你的心力，<br>换句话说，会提高你面对不确定性的能力。</p>
+<p>用这段时间可以做好多事情，除了把简历改好，每天投递外，<br>余下的时间全部是你自己的。<br>你可以用余下的时间做你喜欢的事情。</p>
+<p>思考如何增加你的收入来源，<br>是不是可以开个淘宝店，<br>别人都说在行这个app不错，<br>可不可以用你独特的技能在上面赚点儿零花钱。<br>假如你对写作情有独钟，这时候可以提高下你的写作水平。<br>每天写一篇文章练手应该不是难事，等等很多。<br>既符合你的兴趣，又可以借此增加这方面的素质，<br>还可以顺便赚些零花钱。</p>
+<p>看你工作时没时间看的书籍；<br>这个不多说，甭管是否跟你的职业技能直接相关，<br>你可以随便按照你的兴趣来，<br>如果以前老是看德鲁克等方面的商业书籍；<br>这时你不妨重读你最爱的金庸，古龙武侠小说；<br>可以分析下，他们写作的笔法，架构，以及整个小说的布局。<br>对你自己写文章也是不无进益的。</p>
+<p>学习你工作时没时间学的技能<br>比如编程，音乐，甚至做饭。<br>你说我爱编程，喜欢键盘噼里啪啦若干时间，就可以看到很流畅的网页被我写出来。<br>你说我喜欢音乐，我想自己写自己的歌，<br>你说我爱吃红烧排骨或者狮子头。<br>好了，这正是最好的机会，你都可以去尝试了。</p>
+<p>工作时你没时间去的地方<br>当然远的地方就不要去了，<br>毕竟钱包里还有几个子儿，你最清楚了。<br>工作时周边好玩的地方，你都没时间去。<br>这时候可以好好畅玩一番了。<br>对了有单反，还可以拍些很好的照片回来。<br>还可以借此提高你的摄影技能。</p>
+<p>3、职业转换<br>我是不是一辈子做这个工作，<br>有没有可能转换职业，如果转换需要哪些技能，<br>我现在是不是就可以给他学起来。<br>如果转换职业机会成本怎么样等等。<br>这些你都可以好好思考下。</p>
+<p>二、已发生之事；<br>已发生之事不会引起你的恐惧，<br>它会给你带来经验以及教训，当然还有后悔。<br>总结一下自己这几年的人生经历，工作得失。<br>思考一下自己的亲情，爱情以及友情，<br>这些年在经营这些事上，有什么不好的地方，<br>有哪些需要改正的地方。<br>这里你需要想明白一件事情，不要后悔。<br>过去的事，是无须后悔也是后悔无用的。<br>所以在这里真正的目的就是勿恋旧事。<br>旧事带给我们的是经验，是教训，是回忆也是经历。<br>而就是不能是后悔或者哀怨。<br>三、正在行之事；<br>过去的事情，你不再有后悔后者留恋，<br>对于未发生但是使你恐惧的事情也已经思考好了对策，<br>现在你是好整以暇，再不会瞻前顾后了。<br>自然而然的就会专注于正在行的事上了。</p>
+<p>举例子也好，分类别也罢，以上所有的文字都是为了说明一件事，<br>未来不迎，过往不恋，当下不杂。<br>哀莫大于心死，如果你不断的这样练习，<br>你的心力就会越来越强，不自觉的就会增加自信。<br>那到时候你的气质自然就来了。</p>
+<p>说白了气质还是在于你对于未来不确定的事情不再恐惧，<br>对于已过去的事情不再留恋和哀怨。<br>对于现在的事情，能够专心致志。<br>做到这些之后，自信而且淡定的外在表现就是你的气质了。<br>只有不恐惧于未来不确定的事情，不留恋于过去的事，你才能更专心的做你现在的事情。<br>那样你才足够淡定，足够自信，足够有气质。</p>
+<p>我还是要说语言文字的局限性，决定了它并不能表达所有的事情。<br>气质就是其中最好的例子，什么是气质，可以有很多定义。<br>但绝不会如这是一只猫，那是一只狗清晰。<br>因此，以上说的再详尽，也还是需要自己去实践。</p>
+<p>关于境界的文字，<br>由于此篇“工夫”文章已经很长，<br>为了让读到的人不花费太长时间。<br>下一期发出来。<br>敬请期待。</p>
+<p>本期推荐书籍：<br>一、《民国就是这么生猛》<br>推荐理由；<br>1、虽然本书讲的不是关于工夫的事，但是里面讲到的人可以教给你很多关于：“工夫”的事儿。<br>2、文字幽默诙谐，通俗易懂，可以作为茶余饭后的休闲阅读。<br>3、民国入门读物。<br>二、《红太阳是怎样升起的》<br>1、此书可以学习一些推广方面的经验；你如果没看到那就仔细看；<br>2、可以看到为什么会发生文革？<br>3、验证了一句话，在政治面前，从来没有永远的朋友和敌人。<br>4、也可以看到领袖的缔造，绝对需要大大的：“工夫”。<br>三、《最后的文化贵族》<br>学习下这些在文化上有气质的人，是怎样修炼：“工夫”的。</p>
+<p>本期推荐电影：</p>
+<p>1、《杀手没有假期》<br>我常常讲，我以前是个道德感很重的人，非要把善恶很分明的人，<br>但是我越来越感到，人性复杂性大于两分性，偶然性大于必然性。<br>杀手的人生会带给你怎样的启示呢？看了就知道。<br>2、《返老还童》又叫《本杰明巴顿奇事》<br>豆瓣评分8.6，以男女爱情为线索探讨生老病死价值体系的一部电影。<br>3、《杏花三月天》<br>我看这部主要看蒋雯丽和张国立年轻时的表演的。里面和《菊豆》异曲同工，都表现了旧社会妇女从属地位的悲哀和无奈。</p>
 ]]></content>
       <categories>
         <category>阳明心学</category>
@@ -442,6 +396,23 @@
       </categories>
   </entry>
   <entry>
+    <title>我的英语学习小结</title>
+    <url>/2016/03/17/%E6%88%91%E7%9A%84%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93/</url>
+    <content><![CDATA[<p>之所以有这篇文章；<br>是因为最近正在学习ios开发，<br>需要看很多英语文档及英文网站 ；<br>并且成考那边也需要加强英语学习；<br>无论从开阔眼界或和人用英语聊天（装逼）而言；<br>都到了不得不学，逼上梁山的地步；</p>
+<p>学了这么多年英语，<br>才发现自己的两个问题 ；<br>也真是笨的可以；<br>第一原来在学校学习英语完全是为了应付考试；<br>根本没想到将来它会如何有用；</p>
+<p>第二是原来学校老师的水平确实有限；<br>最重要的是老师没教给我们正确的语音；<br>以上是摘要<a id="more"></a><br>我去年听赖世雄的英语教学录音；<br>才真正掌握了正确练习英语读音的方法；<br>印象最深刻的是关于：“good、book以及look”的读法；<br>问了身边几个英语还不错的人；<br>他们都读：“古德，不渴以及鲁克”；<br>可是正确的读音应该是：“格奥德，博哦可以及乐额科”；</p>
+<p>这才发现不但读音不对；<br>最重要的是发现自己断断续续学了这么多年英语；<br>竟然连正确的拼读方法都不会；<br>因为老师直接上去就教你念一个单词；<br>而不会一个一个去教你怎么拼读；<br>只要你最后读出来的效果听起来和老师差不多；<br>就觉得自己学得差不多了；<br>但是，你根本不知道它是怎么拼读出来的；</p>
+<p>就我个人目前的英语水平来说；<br>读一篇英语文章，障碍可能不大；<br>但听录音之后才发觉；<br>我靠，我每个单词都认识；<br>自己把一篇文章顺下来也没问题；<br>可就是录音一句都TMD听不懂；<br>就这样陆陆续续又看了些网上的文章；<br>渐渐有了些学英语的心得；<br>最后终于寻寻觅觅，积攒了一些小心得；<br>在此记录下来，以备后查；</p>
+<p>首先，时间是必须投入的资源；<br>少于一万小时是不靠谱的；<br>其次，必须掌握单词的拼写方法及句子的拼读方法，才算入门而已；<br>单独的单词你会读了，不一定能将句子读的连贯顺畅；<br>这两种读法是完全不同的；<br>最后，一定要坚持练习。</p>
+<p>在积攒这些心得过程中发现；<br>根本没有放之四海皆准的方法论；<br>无论谁以三寸不烂之舌，<br>说某个方法多么管用；<br>都完全是扯淡；<br>即便真的对他自己很有用；<br>但是如果每个人不是自己去摸索一套适合自己的方法；<br>其他人再经典的方法；<br>也基本无用；</p>
+<p>很简单的一个例子，雷军用：“专注、极致、口碑、快”七字诀打造出了小米；<br>你觉得还有谁可以在国内用这个方法复制一个小米吗?<br>所以说方法永远都是对别人有用的东西；<br>你真正要学的其实是别人思考的路径，<br>以及别人看事情的角度；<br>而不仅仅是人云亦云的方法论。<br>所以说所有将某个牛人的方法论拿来学习的人或者公司，基本结局都会很惨；</p>
+<p>硬功夫是省不得的；<br>所以必须用自己的时间，加上自己摸索出来的一套方法；<br>才可以让你离目标更近一些。</p>
+]]></content>
+      <categories>
+        <category>外语学习</category>
+      </categories>
+  </entry>
+  <entry>
     <title>我为什么三十岁还要学习IOS</title>
     <url>/2016/03/17/%E6%88%91%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%89%E5%8D%81%E5%B2%81%E8%BF%98%E8%A6%81%E5%AD%A6%E4%B9%A0IOS/</url>
     <content><![CDATA[<p>一、前面的话</p>
@@ -460,20 +431,45 @@
       </categories>
   </entry>
   <entry>
-    <title>我的英语学习小结</title>
-    <url>/2016/03/17/%E6%88%91%E7%9A%84%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93/</url>
-    <content><![CDATA[<p>之所以有这篇文章；<br>是因为最近正在学习ios开发，<br>需要看很多英语文档及英文网站 ；<br>并且成考那边也需要加强英语学习；<br>无论从开阔眼界或和人用英语聊天（装逼）而言；<br>都到了不得不学，逼上梁山的地步；</p>
-<p>学了这么多年英语，<br>才发现自己的两个问题 ；<br>也真是笨的可以；<br>第一原来在学校学习英语完全是为了应付考试；<br>根本没想到将来它会如何有用；</p>
-<p>第二是原来学校老师的水平确实有限；<br>最重要的是老师没教给我们正确的语音；<br>以上是摘要<a id="more"></a><br>我去年听赖世雄的英语教学录音；<br>才真正掌握了正确练习英语读音的方法；<br>印象最深刻的是关于：“good、book以及look”的读法；<br>问了身边几个英语还不错的人；<br>他们都读：“古德，不渴以及鲁克”；<br>可是正确的读音应该是：“格奥德，博哦可以及乐额科”；</p>
-<p>这才发现不但读音不对；<br>最重要的是发现自己断断续续学了这么多年英语；<br>竟然连正确的拼读方法都不会；<br>因为老师直接上去就教你念一个单词；<br>而不会一个一个去教你怎么拼读；<br>只要你最后读出来的效果听起来和老师差不多；<br>就觉得自己学得差不多了；<br>但是，你根本不知道它是怎么拼读出来的；</p>
-<p>就我个人目前的英语水平来说；<br>读一篇英语文章，障碍可能不大；<br>但听录音之后才发觉；<br>我靠，我每个单词都认识；<br>自己把一篇文章顺下来也没问题；<br>可就是录音一句都TMD听不懂；<br>就这样陆陆续续又看了些网上的文章；<br>渐渐有了些学英语的心得；<br>最后终于寻寻觅觅，积攒了一些小心得；<br>在此记录下来，以备后查；</p>
-<p>首先，时间是必须投入的资源；<br>少于一万小时是不靠谱的；<br>其次，必须掌握单词的拼写方法及句子的拼读方法，才算入门而已；<br>单独的单词你会读了，不一定能将句子读的连贯顺畅；<br>这两种读法是完全不同的；<br>最后，一定要坚持练习。</p>
-<p>在积攒这些心得过程中发现；<br>根本没有放之四海皆准的方法论；<br>无论谁以三寸不烂之舌，<br>说某个方法多么管用；<br>都完全是扯淡；<br>即便真的对他自己很有用；<br>但是如果每个人不是自己去摸索一套适合自己的方法；<br>其他人再经典的方法；<br>也基本无用；</p>
-<p>很简单的一个例子，雷军用：“专注、极致、口碑、快”七字诀打造出了小米；<br>你觉得还有谁可以在国内用这个方法复制一个小米吗?<br>所以说方法永远都是对别人有用的东西；<br>你真正要学的其实是别人思考的路径，<br>以及别人看事情的角度；<br>而不仅仅是人云亦云的方法论。<br>所以说所有将某个牛人的方法论拿来学习的人或者公司，基本结局都会很惨；</p>
-<p>硬功夫是省不得的；<br>所以必须用自己的时间，加上自己摸索出来的一套方法；<br>才可以让你离目标更近一些。</p>
+    <title>智慧与思想之花因何而开</title>
+    <url>/2016/03/17/%E6%99%BA%E6%85%A7%E4%B8%8E%E6%80%9D%E6%83%B3%E4%B9%8B%E8%8A%B1%E5%9B%A0%E4%BD%95%E8%80%8C%E5%BC%80/</url>
+    <content><![CDATA[<p>圣人之所以为圣人，<br>就是因为在百死千难中，<br>不断努力的思考自己的思维的过程；<br>而这个过程就是思想和智慧了。</p>
+<p>上次撰文说到致良知，<br>那么，致良知与智慧和思想是什么关系呢？<br>答案是没一毛钱关系。</p>
+<p>那么问题来了，<br>既然智慧和思想，和致良知没一毛钱关系。<br>那阳明先生为什么整个致良知之学呢？<br>莫急，听咱家慢慢道来；<br>以上是摘要<a id="more"></a><br>雾满拦江说，<br>人类所有学科的基础是哲学、数学与逻辑形式；<br>所有人类的学科莫不是建立在此三个要素上；<br>而阳明先生龙场悟道的“道”，却不在此列。<br>因为无论这三者再精密，<br>他还是属于人类已有的语言和思维范畴，<br>显然终极智慧和思想，是比此三者更高境界的东西。</p>
+<p>所以说圣人可以自己悟道，<br>但是他是无法用语言和你清晰描述的，<br>不然阳明也不会有：“吾性自足”一说了；</p>
+<p>打个比方说，<br>世上未通终极智慧之人，<br>都像是背对着一副栅栏和栅栏外的一堆篝火；<br>栅栏就是遮蔽良知也就是本心的欲望，<br>而篝火正是道家说的道，<br>儒家的一以及佛家的无无明。</p>
+<p>所有人是不知道自己后面的栅栏和篝火的，<br>一旦像阳明先生这样的人，<br>告诉他们你们身后有栅栏和篝火；<br>他们是不会信的，<br>这就像你和盲者谈论颜色，<br>你说得再惟妙惟肖，<br>他也是没有认识颜色的工具的，<br>或者聋哑人谈论音律，<br>即使你说的再声情并茂，<br>他也是没有认识音律的工具的。</p>
+<p>因此圣人先贤悟道终极智慧之后，<br>也是没有描述终极智慧的工具的。</p>
+<p>尽管终极智慧和致良知之间，<br>没有一毛钱的关系，<br>但如果你追求善良，苦求于良知；<br>那么你对这个世界的认知角度，<br>就会从外界转向对自己内心的审视。</p>
+<p>如此你会减少与外界的摩擦，<br>不会再苛求别人按你的想法行事，<br>而会反求诸己。</p>
+<p>反之如果你不追求善良，<br>不从内心审视自己，<br>就会将关注焦点放在外界，<br>而这种关注，必然会让你远离思想和智慧。</p>
+<p>思想与智慧无法复制也无法传承；<br>甚至连对身边人熏陶的功能都不存在，<br>比如苏格拉底与其妻子，<br>比如阳明先生身后的妻离子散。</p>
+<p>这是因为智慧和思想完全是个人化的思维运作过程，<br>是单独一个人不断采用探究式的思维模式，<br>对自己的大脑进行个人化开发，<br>这种开发的过程就是智慧与思想本身，</p>
+<p>而圣贤所能表达的不过是智慧和思想的结果，<br>但这个结果既不是思想也不是智慧，<br>最多不过是思想与智慧的行进方向而已。</p>
+<p>所以阳明先生说：“致良知”，<br>良知不是智慧，<br>致良知更不是思想，<br>思想与智慧，<br>是指你不断地努力，<br>让自己达到致良知境界的思维过程。<br>换句话说，<br>你可以把致良知理解为这个思维过程（也即思想和智慧过程）的一个显性结果以及方向。</p>
 ]]></content>
       <categories>
-        <category>外语学习</category>
+        <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>王阳明之所以为王阳明</title>
+    <url>/2016/03/17/%E7%8E%8B%E9%98%B3%E6%98%8E%E4%B9%8B%E6%89%80%E4%BB%A5%E4%B8%BA%E7%8E%8B%E9%98%B3%E6%98%8E/</url>
+    <content><![CDATA[<p>上篇文说到，<br>圣人都是在百死千难中，<br>对自己的思维进行苦苦思索；<br>方才悟得圣人之道。<br>那我等芸芸众生欲窥得圣人一二门径，<br>应该如何做呢？</p>
+<p>一、让擅长成为精通<br>道理人人会讲，成者寥寥无几？<br>何也？<br>知其然，不知其所以然也！<br>首先要做的就是做回你自己，<br>所谓做回你自己，<br>意思就是想清楚你能干神马，<br>无论你想干神马，你喜欢干神马，<br>你首先要想清楚，你能干神马。<br>先从你最擅长的地方入手，<br>把你擅长的事情精通了。<br>以上是摘要<a id="more"></a><br>你如果喜欢喝酒，<br>那就成为品酒专家，<br>你如果喜欢旅游，<br>那就让你的水平，<br>可以去做旅游杂志主编，<br>如果你喜欢食物，<br>那就让自己可以做到像蔡澜那样，<br>可以以此出书做节目。</p>
+<p>二、找到适合你自己的路<br>都云小米成于饥饿营销，<br>但凡客陈年和雷军是好基友；<br>不可谓不倾囊相授，<br>不可谓不耳提面命；<br>现在也在亦庄苦苦学习小米的一套，<br>怎么不见泛起什么浪花呢？</p>
+<p>凡客自一万之众，<br>搬往亦庄后的三百余人，<br>也是痛下决心，<br>要从白衬衫单点突破；</p>
+<p>结果如何？<br>去年8月份江苏省质量技术监督局抽查中，<br>其99元衬衫六项参数不合格。<br>去年11月份国家质检总局抽检中，<br>又有<br>凡客在休闲服装、皮鞋、旅游鞋、背提包4种产品中被发现有不合格现象。<br>何也？立定脚跟做事，<br>也没咬紧牙关做人。</p>
+<p>三、掌握规律<br>每个人的人生是不同的，<br>每个人的人生路径是不同的，<br>因此每个人都会有一条最适合自己的路径；<br>所以，即使雷军操盘凡客，<br>照着小米的玩法全部来一遍，<br>也不见得会有起死回生之效。<br>但是事情成败有其自身规律，<br>这是毋庸置疑的。</p>
+<p>正如上篇所讲，<br>圣人自己成为了圣人，<br>他成圣的方法与路径，<br>是无法对你言说的，<br>即使他是圣人。</p>
+<p>因此，不要妄想有一套放之四海而皆准的方法，<br>可以使你一夜暴富，或者是一夜成名成圣。</p>
+<p>你必须在精通一件事情之后，<br>回过头去总结归纳规律性的东西，<br>使之成为自己的东西之后，<br>再将其应用到其他同类事情中，<br>才可以说你掌握了规律。</p>
+<p>这种规律性的知识累积到一定程度，<br>你才能在一件事情开头，<br>就能看到其发展的趋势，<br>你内心才会安定，<br>内心安定，你才能对局势更明晰。<br>才有利于你的杀伐决断。<br>此所谓：『定而后能静，静而后能安，安而后能虑』。<br>如果你因同事一句嘲讽的话，就怏怏不乐半天，<br>因老友一句玩笑式的调侃就郁闷半天，<br>如何能明晰局势，杀伐决断呢？</p>
+<p>阳明之所以为阳明，<br>除了天性聪慧，<br>勤于思索之外，<br>更在于其利用自身优势，<br>广泛出入佛老，溺于辞章之后，<br>有了对规律的全面认识，<br>方有龙场悟道之圆满。</p>
+<p>无论是现世的成功企业，<br>以及古往今来成功的个人，<br>都一定是把握了规律之后，<br>对规律的详加运用。<br>才成就一番功业。</p>
+]]></content>
+      <categories>
+        <category>阳明心学</category>
       </categories>
   </entry>
   <entry>
@@ -539,48 +535,6 @@
       </categories>
   </entry>
   <entry>
-    <title>王阳明之所以为王阳明</title>
-    <url>/2016/03/17/%E7%8E%8B%E9%98%B3%E6%98%8E%E4%B9%8B%E6%89%80%E4%BB%A5%E4%B8%BA%E7%8E%8B%E9%98%B3%E6%98%8E/</url>
-    <content><![CDATA[<p>上篇文说到，<br>圣人都是在百死千难中，<br>对自己的思维进行苦苦思索；<br>方才悟得圣人之道。<br>那我等芸芸众生欲窥得圣人一二门径，<br>应该如何做呢？</p>
-<p>一、让擅长成为精通<br>道理人人会讲，成者寥寥无几？<br>何也？<br>知其然，不知其所以然也！<br>首先要做的就是做回你自己，<br>所谓做回你自己，<br>意思就是想清楚你能干神马，<br>无论你想干神马，你喜欢干神马，<br>你首先要想清楚，你能干神马。<br>先从你最擅长的地方入手，<br>把你擅长的事情精通了。<br>以上是摘要<a id="more"></a><br>你如果喜欢喝酒，<br>那就成为品酒专家，<br>你如果喜欢旅游，<br>那就让你的水平，<br>可以去做旅游杂志主编，<br>如果你喜欢食物，<br>那就让自己可以做到像蔡澜那样，<br>可以以此出书做节目。</p>
-<p>二、找到适合你自己的路<br>都云小米成于饥饿营销，<br>但凡客陈年和雷军是好基友；<br>不可谓不倾囊相授，<br>不可谓不耳提面命；<br>现在也在亦庄苦苦学习小米的一套，<br>怎么不见泛起什么浪花呢？</p>
-<p>凡客自一万之众，<br>搬往亦庄后的三百余人，<br>也是痛下决心，<br>要从白衬衫单点突破；</p>
-<p>结果如何？<br>去年8月份江苏省质量技术监督局抽查中，<br>其99元衬衫六项参数不合格。<br>去年11月份国家质检总局抽检中，<br>又有<br>凡客在休闲服装、皮鞋、旅游鞋、背提包4种产品中被发现有不合格现象。<br>何也？立定脚跟做事，<br>也没咬紧牙关做人。</p>
-<p>三、掌握规律<br>每个人的人生是不同的，<br>每个人的人生路径是不同的，<br>因此每个人都会有一条最适合自己的路径；<br>所以，即使雷军操盘凡客，<br>照着小米的玩法全部来一遍，<br>也不见得会有起死回生之效。<br>但是事情成败有其自身规律，<br>这是毋庸置疑的。</p>
-<p>正如上篇所讲，<br>圣人自己成为了圣人，<br>他成圣的方法与路径，<br>是无法对你言说的，<br>即使他是圣人。</p>
-<p>因此，不要妄想有一套放之四海而皆准的方法，<br>可以使你一夜暴富，或者是一夜成名成圣。</p>
-<p>你必须在精通一件事情之后，<br>回过头去总结归纳规律性的东西，<br>使之成为自己的东西之后，<br>再将其应用到其他同类事情中，<br>才可以说你掌握了规律。</p>
-<p>这种规律性的知识累积到一定程度，<br>你才能在一件事情开头，<br>就能看到其发展的趋势，<br>你内心才会安定，<br>内心安定，你才能对局势更明晰。<br>才有利于你的杀伐决断。<br>此所谓：『定而后能静，静而后能安，安而后能虑』。<br>如果你因同事一句嘲讽的话，就怏怏不乐半天，<br>因老友一句玩笑式的调侃就郁闷半天，<br>如何能明晰局势，杀伐决断呢？</p>
-<p>阳明之所以为阳明，<br>除了天性聪慧，<br>勤于思索之外，<br>更在于其利用自身优势，<br>广泛出入佛老，溺于辞章之后，<br>有了对规律的全面认识，<br>方有龙场悟道之圆满。</p>
-<p>无论是现世的成功企业，<br>以及古往今来成功的个人，<br>都一定是把握了规律之后，<br>对规律的详加运用。<br>才成就一番功业。</p>
-]]></content>
-      <categories>
-        <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>智慧与思想之花因何而开</title>
-    <url>/2016/03/17/%E6%99%BA%E6%85%A7%E4%B8%8E%E6%80%9D%E6%83%B3%E4%B9%8B%E8%8A%B1%E5%9B%A0%E4%BD%95%E8%80%8C%E5%BC%80/</url>
-    <content><![CDATA[<p>圣人之所以为圣人，<br>就是因为在百死千难中，<br>不断努力的思考自己的思维的过程；<br>而这个过程就是思想和智慧了。</p>
-<p>上次撰文说到致良知，<br>那么，致良知与智慧和思想是什么关系呢？<br>答案是没一毛钱关系。</p>
-<p>那么问题来了，<br>既然智慧和思想，和致良知没一毛钱关系。<br>那阳明先生为什么整个致良知之学呢？<br>莫急，听咱家慢慢道来；<br>以上是摘要<a id="more"></a><br>雾满拦江说，<br>人类所有学科的基础是哲学、数学与逻辑形式；<br>所有人类的学科莫不是建立在此三个要素上；<br>而阳明先生龙场悟道的“道”，却不在此列。<br>因为无论这三者再精密，<br>他还是属于人类已有的语言和思维范畴，<br>显然终极智慧和思想，是比此三者更高境界的东西。</p>
-<p>所以说圣人可以自己悟道，<br>但是他是无法用语言和你清晰描述的，<br>不然阳明也不会有：“吾性自足”一说了；</p>
-<p>打个比方说，<br>世上未通终极智慧之人，<br>都像是背对着一副栅栏和栅栏外的一堆篝火；<br>栅栏就是遮蔽良知也就是本心的欲望，<br>而篝火正是道家说的道，<br>儒家的一以及佛家的无无明。</p>
-<p>所有人是不知道自己后面的栅栏和篝火的，<br>一旦像阳明先生这样的人，<br>告诉他们你们身后有栅栏和篝火；<br>他们是不会信的，<br>这就像你和盲者谈论颜色，<br>你说得再惟妙惟肖，<br>他也是没有认识颜色的工具的，<br>或者聋哑人谈论音律，<br>即使你说的再声情并茂，<br>他也是没有认识音律的工具的。</p>
-<p>因此圣人先贤悟道终极智慧之后，<br>也是没有描述终极智慧的工具的。</p>
-<p>尽管终极智慧和致良知之间，<br>没有一毛钱的关系，<br>但如果你追求善良，苦求于良知；<br>那么你对这个世界的认知角度，<br>就会从外界转向对自己内心的审视。</p>
-<p>如此你会减少与外界的摩擦，<br>不会再苛求别人按你的想法行事，<br>而会反求诸己。</p>
-<p>反之如果你不追求善良，<br>不从内心审视自己，<br>就会将关注焦点放在外界，<br>而这种关注，必然会让你远离思想和智慧。</p>
-<p>思想与智慧无法复制也无法传承；<br>甚至连对身边人熏陶的功能都不存在，<br>比如苏格拉底与其妻子，<br>比如阳明先生身后的妻离子散。</p>
-<p>这是因为智慧和思想完全是个人化的思维运作过程，<br>是单独一个人不断采用探究式的思维模式，<br>对自己的大脑进行个人化开发，<br>这种开发的过程就是智慧与思想本身，</p>
-<p>而圣贤所能表达的不过是智慧和思想的结果，<br>但这个结果既不是思想也不是智慧，<br>最多不过是思想与智慧的行进方向而已。</p>
-<p>所以阳明先生说：“致良知”，<br>良知不是智慧，<br>致良知更不是思想，<br>思想与智慧，<br>是指你不断地努力，<br>让自己达到致良知境界的思维过程。<br>换句话说，<br>你可以把致良知理解为这个思维过程（也即思想和智慧过程）的一个显性结果以及方向。</p>
-]]></content>
-      <categories>
-        <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
     <title>知行合一与坚持</title>
     <url>/2016/03/17/%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E4%B8%8E%E5%9D%9A%E6%8C%81/</url>
     <content><![CDATA[<p>你确定你真的在坚持？</p>
@@ -599,6 +553,47 @@
 ]]></content>
       <categories>
         <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>知行合一与工夫</title>
+    <url>/2016/03/17/%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E4%B8%8E%E5%B7%A5%E5%A4%AB/</url>
+    <content><![CDATA[<p>一、写在前面<br>你真的自私？<br>这里‘自私’是指：<br>一件事，<br>不会对你有害，<br>只会对你有益。</p>
+<p>你一定有过这番经历，<br>跑步有益健康，嫌累懒得跑，<br>读书使人明智，枯燥懒得读，<br>学习使人进步，嫌烦懒得学，</p>
+<p>所有悔不当初的事，<br>都会让人变得更好。<br>如果你真的‘自私’，<br>为什么你不做呢？<br>原因就是你并非真的‘自私’。<br>以上是摘要<a id="more"></a><br>二、诚意为何物？<br>诚意就是真的下决心<br>也是心学的第一要义，<br>不是嘴上说说的那种下决心，<br>而是你铁定了就是要做成这件事，<br>在这件事做成之前半途而废或者打退堂鼓，<br>都是意不诚的表现，也就是决心不够。</p>
+<p>三、知行合一与工夫<br>工夫的难点是格物致知<br>读过《大学》的，对就是『四书』里面的那个《大学》，<br>应该都知道：意诚，心正，身修，家齐，国治，天下平；<br>少了两个词儿，这都被你看到了，<br>没错就是格物致知。<br>物格而后知至。<br>《大学》这一段提到的几个专有名词统称：“三纲八目”。<br>格物，致知，正心，修身，齐家，治国，平天下就是八目。</p>
+<p>你说我知道呀，早就背的滚瓜烂熟了，可是也没从里面学到什么啊！<br>没错，学习心学以前我也有你同样的困惑，<br>心里经常会念叨，我靠不是正心，修身，齐家，治国，平天下吗？<br>现在哪里还需要你去平天下啊？<br>再看看现在的自己，当个县长什么的估计也没盼头；<br>还谈什么平天下？<br>所有考试不及格的学生大概都曲解了考题本身的意思，<br>我这么说大概没人反对吧？</p>
+<p>我先说说我以前是怎么理解《大学》里面这几句话的？<br>格物不就是掌握世上每件事情的规律吗？<br>致知不就是知道真理吗？<br>别笑，我以前就是这么理解的，<br>那么正心，修身不就是道德品质好，身体健康，做社会主义四有新人吗？<br>如果你也有和此相似的理解，我会说错错错，大错特错。</p>
+<p>1、格物<br>这里格物两字要分开讲，掰开了揉碎了讲，<br>“格”字在阳明理解就是正，<br>正的是什么？正的就是物；<br>物是什么呢？<br>‘物’既不是大家理解的物质，也不是事情的意思，<br>意之所在便是物，<br>那意又是什么呢？<br>心之所发便是意。<br>还有好奇的同学问？<br>心又是什么呢？<br>身之主宰便是心，这里的心绝对不是那团血肉，<br>而是天理之心，良知之心。</p>
+<p>格物的意思就是是纠正在你心上的事情，<br>使其符合良知之心，符合天理。<br>也就是不在你心上的事情，你是无法去格的，<br>此即谓：“心外无物”。</p>
+<p>你若问我天理是什么？<br>详细解释一篇论文的篇幅不够，<br>这里简单说下所谓天理，它已经存在于你的内心，<br>只不过被私欲所遮蔽，你去去一分私欲，便存一分天理。<br>好了现在意也诚了，物也格了，下面就该致知了，<br>大白话意思就是决心已下，在心上的事情也纠正的符合天理了。<br>这其实就是致知了。</p>
+<p>简单总结下：<br>要做到知行合一需要先做工夫（工夫包含很多，此篇只讲格物致知）<br>工夫的难点是格物致知，<br>诚意是格物致知的前提，格物致知是诚意的工夫；<br>诚意是格物致知的阶段性目的，格物致知是八目的起点。<br>而意越诚，也就是决心越大，则格物致知成效也就越大。<br>所以阳明才说，格物致知实际就是诚意的事情。<br>两者是相互促进的，格物致知增加决心，决心越大，格物致知成效也愈大，形成良性循环，但是切记要循序渐进。<br>格物告一段落，妈呀，解释清楚这俩字真的好难，喝口水，继续。</p>
+<p>2、致知<br>致知就是致良知，<br>说白了良知和天理是一个东西，都是不需学而可得。<br>这里良知和天理千万不要理解成道德层面的东西。<br>在心中的良知没有任何阻碍得以自然流行的时候，就是‘致知’。<br>只不过多数人良知被私欲遮蔽，因此需要致良知。</p>
+<p>你可能会好奇格物和致知的关系，<br>我也很好奇，一起来探索下吧。<br>我们格的是什么？<br>是物啊？<br>物是什么呢？<br>意之所在便是物啊？<br>那么好！意又是什么呢？<br>意的本体是知啊！<br>意的本体就是良知啊。<br>明白了吗？<br>我格的那个物是意之所在的物，它的本质是良知。<br>我格物的过程就是致良知的过程啊。<br>所以说格物致知本就是一件事情。<br>格物是致知的过程，致知是格物的最终目的。</p>
+<p>文行至此你会说，<br>上面就看格物致知了，<br>与“知行合一”有什么关系？<br>问得好，破天荒我引用一段原文：<br>知者，良知也，天然自有，即至善也。<br>物者，良知所知之事也。<br>格者，格其不正以归于正也。<br>格之斯实致之矣。<br>–《遗言录-明-王守仁》<br>引用完美解答了知行合一与格物致知的关系，<br>《知行合一与至善》一文提到，知行合一的最终目的就是“至善”。<br>而至善即是良知，致知即是致至善，<br>也就是知行合一的最终目的。<br>换句话说格物和知行合一的最终目的都是致良知，也都是至善，<br>因为良知和至善本来就是一回事的两种说法。<br>你问我知行合一和格物什么关系呀？且听下回分解。</p>
+<p>本期推荐电影：<br>一、《天堂的孩子》<br>推荐语：一对兄妹和一双鞋子的故事，很温暖。<br>二、《欺诈计划》<br>推荐语：这是部不露肉的伦理片，家庭靠感情还是靠血缘维系？<br>三《双旗镇刀客》<br>推荐语：喜欢武侠的这部绝对看了不下十遍吧，不解释。</p>
+<p>本期推荐书籍：<br>一、《岩中花树》作者：赵柏田<br>推荐语：以第一人称写王阳明的一生。<br>二、《华尔街日报是如何讲故事的》作者：威廉 布隆代尔<br>推荐语：对文案情有独钟的同学一定要精读。<br>三、《宫女谈往录》金易 沈义玲<br>推荐语：慈禧的起居与宫闱里的往事，细节独到，是谁道人生无常？</p>
+]]></content>
+      <categories>
+        <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>编程学习心得</title>
+    <url>/2016/03/17/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/</url>
+    <content><![CDATA[<p>似乎每个人对一件从未接触过的事物着迷时；<br>都恨不得一下子就对其融会贯通；<br>这种急切心理，极有可能导致稍遇挫折，便丧失兴趣。</p>
+<p>比如我对编程的学习；<br>在刚开始时的确一腔热情；<br>但是稍微接触到不容易理解的地方；<br>就会不由自主地怀疑自己！<br>自己真的适合学编程吗?<br>我怎么这么笨？<br>我这个年龄学编程还成吗？</p>
+<p>其实，这都是由于刚开始热情太盛；<br>努力一段时间后，<br>得不到自己期望的效果，<br>便兴趣缺缺了。<br>以上是摘要<a id="more"></a><br>学习始终遵循循序渐进的原则；<br>而不是像玩游戏一样，<br>能得到及时的满足和成就感。<br>所以很多颇有成就的人，<br>都是最善于推迟自己满足感的人。</p>
+<p>其实我最该问的问题不应该是以上那些；<br>而只应该问一个问题？<br>我怎么才能学好编程?<br>那些已经有了些许成就的程序员，<br>是如何取得今天的成就的？</p>
+<p>在学习中还发现一个问题；<br>就是学习一个知识点，<br>一定不要紧追着一个人的讲解不放；<br>同是一个知识点，<br>这个人讲解的既轻松又清晰，<br>而你紧抱着不放的那个则是既繁琐又模糊。</p>
+<p>所以在学习中必须灵活，<br>灵活不是投机取巧；<br>而是在网络信息如此发达的今日；<br>不应该紧抱着某一个信息源不放；<br>某个信息源的讲解听不明白，<br>则必须及时寻找能让你更容易明白的信息源；<br>相信我，一定可以找得到。</p>
+<p>比如在学习oc的三大特性封装、继承与多态时；<br>我花钱买的课程讲解时既模糊又乏味；<br>这时我就对自己产生怀疑了；<br>难道我真的笨蛋如此；<br>可是后来偶然间看到一篇博客；<br>瞬间让我豁然开朗。<br>就是那种梦里千百度，蓦然回首处的感觉。</p>
+<p>总之学习一定不是揪着某个问题不放；<br>当然不是真的放下不管；<br>而是先放到潜意识里；<br>往往会出现这种情况；</p>
+<p>某日你对A问题产生疑惑；<br>又一日，你对B问题更是纠结不已；<br>但是，还一日，你去查找C问题的答案，<br>发现竟然找到了A的答案。<br>这往往是持续学习中，<br>最令人痛快之时。</p>
+]]></content>
+      <categories>
+        <category>编程</category>
+        <category>IOS</category>
       </categories>
   </entry>
   <entry>
@@ -633,29 +628,6 @@
       </categories>
   </entry>
   <entry>
-    <title>知行合一与工夫</title>
-    <url>/2016/03/17/%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E4%B8%8E%E5%B7%A5%E5%A4%AB/</url>
-    <content><![CDATA[<p>一、写在前面<br>你真的自私？<br>这里‘自私’是指：<br>一件事，<br>不会对你有害，<br>只会对你有益。</p>
-<p>你一定有过这番经历，<br>跑步有益健康，嫌累懒得跑，<br>读书使人明智，枯燥懒得读，<br>学习使人进步，嫌烦懒得学，</p>
-<p>所有悔不当初的事，<br>都会让人变得更好。<br>如果你真的‘自私’，<br>为什么你不做呢？<br>原因就是你并非真的‘自私’。<br>以上是摘要<a id="more"></a><br>二、诚意为何物？<br>诚意就是真的下决心<br>也是心学的第一要义，<br>不是嘴上说说的那种下决心，<br>而是你铁定了就是要做成这件事，<br>在这件事做成之前半途而废或者打退堂鼓，<br>都是意不诚的表现，也就是决心不够。</p>
-<p>三、知行合一与工夫<br>工夫的难点是格物致知<br>读过《大学》的，对就是『四书』里面的那个《大学》，<br>应该都知道：意诚，心正，身修，家齐，国治，天下平；<br>少了两个词儿，这都被你看到了，<br>没错就是格物致知。<br>物格而后知至。<br>《大学》这一段提到的几个专有名词统称：“三纲八目”。<br>格物，致知，正心，修身，齐家，治国，平天下就是八目。</p>
-<p>你说我知道呀，早就背的滚瓜烂熟了，可是也没从里面学到什么啊！<br>没错，学习心学以前我也有你同样的困惑，<br>心里经常会念叨，我靠不是正心，修身，齐家，治国，平天下吗？<br>现在哪里还需要你去平天下啊？<br>再看看现在的自己，当个县长什么的估计也没盼头；<br>还谈什么平天下？<br>所有考试不及格的学生大概都曲解了考题本身的意思，<br>我这么说大概没人反对吧？</p>
-<p>我先说说我以前是怎么理解《大学》里面这几句话的？<br>格物不就是掌握世上每件事情的规律吗？<br>致知不就是知道真理吗？<br>别笑，我以前就是这么理解的，<br>那么正心，修身不就是道德品质好，身体健康，做社会主义四有新人吗？<br>如果你也有和此相似的理解，我会说错错错，大错特错。</p>
-<p>1、格物<br>这里格物两字要分开讲，掰开了揉碎了讲，<br>“格”字在阳明理解就是正，<br>正的是什么？正的就是物；<br>物是什么呢？<br>‘物’既不是大家理解的物质，也不是事情的意思，<br>意之所在便是物，<br>那意又是什么呢？<br>心之所发便是意。<br>还有好奇的同学问？<br>心又是什么呢？<br>身之主宰便是心，这里的心绝对不是那团血肉，<br>而是天理之心，良知之心。</p>
-<p>格物的意思就是是纠正在你心上的事情，<br>使其符合良知之心，符合天理。<br>也就是不在你心上的事情，你是无法去格的，<br>此即谓：“心外无物”。</p>
-<p>你若问我天理是什么？<br>详细解释一篇论文的篇幅不够，<br>这里简单说下所谓天理，它已经存在于你的内心，<br>只不过被私欲所遮蔽，你去去一分私欲，便存一分天理。<br>好了现在意也诚了，物也格了，下面就该致知了，<br>大白话意思就是决心已下，在心上的事情也纠正的符合天理了。<br>这其实就是致知了。</p>
-<p>简单总结下：<br>要做到知行合一需要先做工夫（工夫包含很多，此篇只讲格物致知）<br>工夫的难点是格物致知，<br>诚意是格物致知的前提，格物致知是诚意的工夫；<br>诚意是格物致知的阶段性目的，格物致知是八目的起点。<br>而意越诚，也就是决心越大，则格物致知成效也就越大。<br>所以阳明才说，格物致知实际就是诚意的事情。<br>两者是相互促进的，格物致知增加决心，决心越大，格物致知成效也愈大，形成良性循环，但是切记要循序渐进。<br>格物告一段落，妈呀，解释清楚这俩字真的好难，喝口水，继续。</p>
-<p>2、致知<br>致知就是致良知，<br>说白了良知和天理是一个东西，都是不需学而可得。<br>这里良知和天理千万不要理解成道德层面的东西。<br>在心中的良知没有任何阻碍得以自然流行的时候，就是‘致知’。<br>只不过多数人良知被私欲遮蔽，因此需要致良知。</p>
-<p>你可能会好奇格物和致知的关系，<br>我也很好奇，一起来探索下吧。<br>我们格的是什么？<br>是物啊？<br>物是什么呢？<br>意之所在便是物啊？<br>那么好！意又是什么呢？<br>意的本体是知啊！<br>意的本体就是良知啊。<br>明白了吗？<br>我格的那个物是意之所在的物，它的本质是良知。<br>我格物的过程就是致良知的过程啊。<br>所以说格物致知本就是一件事情。<br>格物是致知的过程，致知是格物的最终目的。</p>
-<p>文行至此你会说，<br>上面就看格物致知了，<br>与“知行合一”有什么关系？<br>问得好，破天荒我引用一段原文：<br>知者，良知也，天然自有，即至善也。<br>物者，良知所知之事也。<br>格者，格其不正以归于正也。<br>格之斯实致之矣。<br>–《遗言录-明-王守仁》<br>引用完美解答了知行合一与格物致知的关系，<br>《知行合一与至善》一文提到，知行合一的最终目的就是“至善”。<br>而至善即是良知，致知即是致至善，<br>也就是知行合一的最终目的。<br>换句话说格物和知行合一的最终目的都是致良知，也都是至善，<br>因为良知和至善本来就是一回事的两种说法。<br>你问我知行合一和格物什么关系呀？且听下回分解。</p>
-<p>本期推荐电影：<br>一、《天堂的孩子》<br>推荐语：一对兄妹和一双鞋子的故事，很温暖。<br>二、《欺诈计划》<br>推荐语：这是部不露肉的伦理片，家庭靠感情还是靠血缘维系？<br>三《双旗镇刀客》<br>推荐语：喜欢武侠的这部绝对看了不下十遍吧，不解释。</p>
-<p>本期推荐书籍：<br>一、《岩中花树》作者：赵柏田<br>推荐语：以第一人称写王阳明的一生。<br>二、《华尔街日报是如何讲故事的》作者：威廉 布隆代尔<br>推荐语：对文案情有独钟的同学一定要精读。<br>三、《宫女谈往录》金易 沈义玲<br>推荐语：慈禧的起居与宫闱里的往事，细节独到，是谁道人生无常？</p>
-]]></content>
-      <categories>
-        <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
     <title>知行合一与至善</title>
     <url>/2016/03/17/%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E4%B8%8E%E8%87%B3%E5%96%84/</url>
     <content><![CDATA[<p>一、前面的话</p>
@@ -683,24 +655,6 @@
 ]]></content>
       <categories>
         <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>编程学习心得</title>
-    <url>/2016/03/17/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/</url>
-    <content><![CDATA[<p>似乎每个人对一件从未接触过的事物着迷时；<br>都恨不得一下子就对其融会贯通；<br>这种急切心理，极有可能导致稍遇挫折，便丧失兴趣。</p>
-<p>比如我对编程的学习；<br>在刚开始时的确一腔热情；<br>但是稍微接触到不容易理解的地方；<br>就会不由自主地怀疑自己！<br>自己真的适合学编程吗?<br>我怎么这么笨？<br>我这个年龄学编程还成吗？</p>
-<p>其实，这都是由于刚开始热情太盛；<br>努力一段时间后，<br>得不到自己期望的效果，<br>便兴趣缺缺了。<br>以上是摘要<a id="more"></a><br>学习始终遵循循序渐进的原则；<br>而不是像玩游戏一样，<br>能得到及时的满足和成就感。<br>所以很多颇有成就的人，<br>都是最善于推迟自己满足感的人。</p>
-<p>其实我最该问的问题不应该是以上那些；<br>而只应该问一个问题？<br>我怎么才能学好编程?<br>那些已经有了些许成就的程序员，<br>是如何取得今天的成就的？</p>
-<p>在学习中还发现一个问题；<br>就是学习一个知识点，<br>一定不要紧追着一个人的讲解不放；<br>同是一个知识点，<br>这个人讲解的既轻松又清晰，<br>而你紧抱着不放的那个则是既繁琐又模糊。</p>
-<p>所以在学习中必须灵活，<br>灵活不是投机取巧；<br>而是在网络信息如此发达的今日；<br>不应该紧抱着某一个信息源不放；<br>某个信息源的讲解听不明白，<br>则必须及时寻找能让你更容易明白的信息源；<br>相信我，一定可以找得到。</p>
-<p>比如在学习oc的三大特性封装、继承与多态时；<br>我花钱买的课程讲解时既模糊又乏味；<br>这时我就对自己产生怀疑了；<br>难道我真的笨蛋如此；<br>可是后来偶然间看到一篇博客；<br>瞬间让我豁然开朗。<br>就是那种梦里千百度，蓦然回首处的感觉。</p>
-<p>总之学习一定不是揪着某个问题不放；<br>当然不是真的放下不管；<br>而是先放到潜意识里；<br>往往会出现这种情况；</p>
-<p>某日你对A问题产生疑惑；<br>又一日，你对B问题更是纠结不已；<br>但是，还一日，你去查找C问题的答案，<br>发现竟然找到了A的答案。<br>这往往是持续学习中，<br>最令人痛快之时。</p>
-]]></content>
-      <categories>
-        <category>编程</category>
-        <category>IOS</category>
       </categories>
   </entry>
   <entry>
@@ -831,6 +785,68 @@
       </categories>
   </entry>
   <entry>
+    <title>重装Hexo遇到的坑</title>
+    <url>/2020/04/28/%E9%87%8D%E8%A3%85Hexo%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/</url>
+    <content><![CDATA[<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">我的前言只有三段话</span><br></pre></td></tr></table></figure>
+
+<h4 id="第一段"><a href="#第一段" class="headerlink" title="第一段"></a>第一段</h4><p>以前曾经用两天一夜的时间，<br>成功的以一个小白的身份，<br>用Mac+Hexo+Github,<br>搭建了自己的独立博客，<br>并且还简单学习了js和markdown，<br>当然还有python的简单用法，<br>可以说是收获颇丰。</p>
+<h4 id="第二段"><a href="#第二段" class="headerlink" title="第二段"></a>第二段</h4><p>随着生活日益繁忙，<br>便兴趣缺缺了。<br>所以，一度曾尝试彻底卸载Hexo,<br>最后当然没有成功，<br>只是在本地卸载了hexo和node，<br>但是hexo本地文件夹始终保存着，<br>幸好保存了，<br>不然今天就没这篇文章了。</p>
+<h4 id="第三段"><a href="#第三段" class="headerlink" title="第三段"></a>第三段</h4><p>最近生活有了些闲暇，<br>也读了很多书，<br>忽然又想找个地方写一下，<br>所以决定重装Hexo，<br>这便是踏坑的开始。</p>
+<a id="more"></a>
+
+<h3 id="第一个坑：node版本和hexo不兼容"><a href="#第一个坑：node版本和hexo不兼容" class="headerlink" title="第一个坑：node版本和hexo不兼容"></a>第一个坑：node版本和hexo不兼容</h3><p>我重新装了node和hexo，<br>满心欢喜在终端输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>结果给我来了一串的node警告，<br>只要不是错误，那我忍着，<br>继续输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+<p>这时候node坐不住了，<br>它报错了，错误如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">TypeError [ERR_INVALID_ARG_TYPE]: </span><br><span class="line"></span><br><span class="line">The &quot;mode&quot; argument must be integer. Received an instance of Object</span><br></pre></td></tr></table></figure>
+<p>然后下面是at什么什么，反正一堆错误。</p>
+<p>我用了一晚上的时间，<br>熬到凌晨四点多，<br>最后在搜索引擎，根本没有找到答案，<br>有人说是因为node版本问题，<br>我没当回事儿，<br>我想怎么可能是node版本问题呢？<br>我这node和hexo都是新装的，<br>结果，你越不认可的原因，<br>事实证明，就是那个原因，<br>在第二天上午又找了将近一上午的情况下，<br>我去了google，结果在github，看到了标准答案。<br>就是因为node 14.0.0和hexo不兼容的问题。</p>
+<p>然后啥也别想了，<br>直接打开命令行，开始装nvm</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew install nvm</span><br></pre></td></tr></table></figure>
+<p>接下来，用nvm安装离node 14.0.0比较近的版本，<br>那就选node 13.13.0吧，<br>开装，</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nvm install v13.13.0</span><br></pre></td></tr></table></figure>
+<p>安装完毕，<br>接下来将v13.13.0用nvm设置成默认的node版本</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nvm use v13.13.0</span><br></pre></td></tr></table></figure>
+<p>以上只是单次有用，<br>要想每次默认的node都是13.13.0，<br>必须设置别名：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">node alias default v13.13.0</span><br></pre></td></tr></table></figure>
+<p>接下来在终端输入查看下目前默认node版本是否是v13.13.0：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nvm current</span><br></pre></td></tr></table></figure>
+<p>终端显示更改默认node版本成功。</p>
+<p>至此用nvm管理node版本步骤完毕。</p>
+<p>来不及顾及其他，<br>直接在终端输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>成功！！！<br>恼人的node警告终于消停了，<br>世界终于清净了，<br>继续输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+<p>提交成功，堪称完美。</p>
+<p>至此完美解决打开本地服务器和提交到github时，<br>node警告和报错的问题。<br>至此，第一个坑，算是填完了。</p>
+<h3 id="第二个坑：网站名称和主页导航栏中文乱码"><a href="#第二个坑：网站名称和主页导航栏中文乱码" class="headerlink" title="第二个坑：网站名称和主页导航栏中文乱码"></a>第二个坑：网站名称和主页导航栏中文乱码</h3><p>先声明这个坑，我到现在也没跳出来。<br>根本找不到原因。</p>
+<p>发现网站名称和导航栏中文乱码后，<br>展开一波搜索大法，<br>效果并不好，<br>在翻山越岭爬山涉水般的，各种尝试之后，<br>决定退而求其次，<br>我用原来hexo文件夹里的_config.yml和themes文件夹的_config.yml，<br>直接覆盖当前站点的这两个配置文件。<br>结果再也没乱码。</p>
+<p>网上好多人说中文乱码是因为用了文本编辑器编辑_config.yml，<br>是编码错误，改成utf8云云。</p>
+<p>可是并没有卵用，<br>如果是因为编码问题，<br>我文章直接就是用文本编辑器写的，一点儿也不乱。</p>
+<p>所以说，网上搜索答案的时候，<br>人云亦云的人是真多，<br>不但解决不了问题，<br>还浪费想找到答案的人的时间和精力。<br>有的人真的可恶至极，直接复制粘贴。<br>连问题都没写清楚，<br>还能期望他会有靠谱的答案吗？</p>
+<p>至此，算是勉强跳出两个大坑。</p>
+<p>最近决定集中研究下，hexo博客的装修问题。</p>
+<p>什么主题啦，修改ejs啦，等等，一定很好玩儿。</p>
+<p>再次使用hexo，有了第一次的基础，</p>
+<p>这次对hexo的文件结构和功能明了多了。</p>
+<p>慢慢来，<br>世界上一切事情都是这样的，<br>慢就是快，<br>快就是慢<br>有一句话说的很好，与诸君共勉：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">### Slow is smooth, and smooth is fast.</span><br><span class="line">    慢是光滑的，而光滑是快的。</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+  </entry>
+  <entry>
     <title>那些年我听的歌</title>
     <url>/2016/03/27/%E9%82%A3%E4%BA%9B%E5%B9%B4%E6%88%91%E5%90%AC%E7%9A%84%E6%AD%8C/</url>
     <content><![CDATA[<h4 id="前面的话"><a href="#前面的话" class="headerlink" title="前面的话"></a>前面的话</h4><p>有比较才有判断，</p>
@@ -953,62 +969,46 @@
       </categories>
   </entry>
   <entry>
-    <title>重装Hexo遇到的坑</title>
-    <url>/2020/04/28/%E9%87%8D%E8%A3%85Hexo%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/</url>
-    <content><![CDATA[<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">我的前言只有三段话</span><br></pre></td></tr></table></figure>
-
-<h4 id="第一段"><a href="#第一段" class="headerlink" title="第一段"></a>第一段</h4><p>以前曾经用两天一夜的时间，<br>成功的以一个小白的身份，<br>用Mac+Hexo+Github,<br>搭建了自己的独立博客，<br>并且还简单学习了js和markdown，<br>当然还有python的简单用法，<br>可以说是收获颇丰。</p>
-<h4 id="第二段"><a href="#第二段" class="headerlink" title="第二段"></a>第二段</h4><p>随着生活日益繁忙，<br>便兴趣缺缺了。<br>所以，一度曾尝试彻底卸载Hexo,<br>最后当然没有成功，<br>只是在本地卸载了hexo和node，<br>但是hexo本地文件夹始终保存着，<br>幸好保存了，<br>不然今天就没这篇文章了。</p>
-<h4 id="第三段"><a href="#第三段" class="headerlink" title="第三段"></a>第三段</h4><p>最近生活有了些闲暇，<br>也读了很多书，<br>忽然又想找个地方写一下，<br>所以决定重装Hexo，<br>这便是踏坑的开始。</p>
+    <title>Mac端通过Hexo搭建独立博客</title>
+    <url>/2016/03/17/Mac%E7%AB%AF%E9%80%9A%E8%BF%87Hexo%E6%90%AD%E5%BB%BA%E7%8B%AC%E7%AB%8B%E5%8D%9A%E5%AE%A2/</url>
+    <content><![CDATA[<h4 id="一、为什么选择Hexo"><a href="#一、为什么选择Hexo" class="headerlink" title="一、为什么选择Hexo"></a>一、为什么选择Hexo</h4><p>我对搭建自己的独立博客兴致盎然，<br>独立的才真正是自己的，<br>马克思说研究需要充分占有材料，<br>我因此大量阅读了关于搭建独立博客的文章和资料，<br>知道了有Octopress，jekyll等独立博客搭建系统，<br>但看到好多程序员童鞋都说：Octopress和jekyll很难搞定，<br>所以对于我这种小白来说，就更不用考虑了，<br>听说Hexo是hacker必备的博客搭建系统，因此果断选它。</p>
 <a id="more"></a>
-
-<h3 id="第一个坑：node版本和hexo不兼容"><a href="#第一个坑：node版本和hexo不兼容" class="headerlink" title="第一个坑：node版本和hexo不兼容"></a>第一个坑：node版本和hexo不兼容</h3><p>我重新装了node和hexo，<br>满心欢喜在终端输入：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<p>结果给我来了一串的node警告，<br>只要不是错误，那我忍着，<br>继续输入：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-<p>这时候node坐不住了，<br>它报错了，错误如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">TypeError [ERR_INVALID_ARG_TYPE]: </span><br><span class="line"></span><br><span class="line">The &quot;mode&quot; argument must be integer. Received an instance of Object</span><br></pre></td></tr></table></figure>
-<p>然后下面是at什么什么，反正一堆错误。</p>
-<p>我用了一晚上的时间，<br>熬到凌晨四点多，<br>最后在搜索引擎，根本没有找到答案，<br>有人说是因为node版本问题，<br>我没当回事儿，<br>我想怎么可能是node版本问题呢？<br>我这node和hexo都是新装的，<br>结果，你越不认可的原因，<br>事实证明，就是那个原因，<br>在第二天上午又找了将近一上午的情况下，<br>我去了google，结果在github，看到了标准答案。<br>就是因为node 14.0.0和hexo不兼容的问题。</p>
-<p>然后啥也别想了，<br>直接打开命令行，开始装nvm</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew install nvm</span><br></pre></td></tr></table></figure>
-<p>接下来，用nvm安装离node 14.0.0比较近的版本，<br>那就选node 13.13.0吧，<br>开装，</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nvm install v13.13.0</span><br></pre></td></tr></table></figure>
-<p>安装完毕，<br>接下来将v13.13.0用nvm设置成默认的node版本</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nvm use v13.13.0</span><br></pre></td></tr></table></figure>
-<p>以上只是单次有用，<br>要想每次默认的node都是13.13.0，<br>必须设置别名：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">node alias default v13.13.0</span><br></pre></td></tr></table></figure>
-<p>接下来在终端输入查看下目前默认node版本是否是v13.13.0：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nvm current</span><br></pre></td></tr></table></figure>
-<p>终端显示更改默认node版本成功。</p>
-<p>至此用nvm管理node版本步骤完毕。</p>
-<p>来不及顾及其他，<br>直接在终端输入：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<p>成功！！！<br>恼人的node警告终于消停了，<br>世界终于清净了，<br>继续输入：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-<p>提交成功，堪称完美。</p>
-<p>至此完美解决打开本地服务器和提交到github时，<br>node警告和报错的问题。<br>至此，第一个坑，算是填完了。</p>
-<h3 id="第二个坑：网站名称和主页导航栏中文乱码"><a href="#第二个坑：网站名称和主页导航栏中文乱码" class="headerlink" title="第二个坑：网站名称和主页导航栏中文乱码"></a>第二个坑：网站名称和主页导航栏中文乱码</h3><p>先声明这个坑，我到现在也没跳出来。<br>根本找不到原因。</p>
-<p>发现网站名称和导航栏中文乱码后，<br>展开一波搜索大法，<br>效果并不好，<br>在翻山越岭爬山涉水般的，各种尝试之后，<br>决定退而求其次，<br>我用原来hexo文件夹里的_config.yml和themes文件夹的_config.yml，<br>直接覆盖当前站点的这两个配置文件。<br>结果再也没乱码。</p>
-<p>网上好多人说中文乱码是因为用了文本编辑器编辑_config.yml，<br>是编码错误，改成utf8云云。</p>
-<p>可是并没有卵用，<br>如果是因为编码问题，<br>我文章直接就是用文本编辑器写的，一点儿也不乱。</p>
-<p>所以说，网上搜索答案的时候，<br>人云亦云的人是真多，<br>不但解决不了问题，<br>还浪费想找到答案的人的时间和精力。<br>有的人真的可恶至极，直接复制粘贴。<br>连问题都没写清楚，<br>还能期望他会有靠谱的答案吗？</p>
-<p>至此，算是勉强跳出两个大坑。</p>
-<p>最近决定集中研究下，hexo博客的装修问题。</p>
-<p>什么主题啦，修改ejs啦，等等，一定很好玩儿。</p>
-<p>再次使用hexo，有了第一次的基础，</p>
-<p>这次对hexo的文件结构和功能明了多了。</p>
-<p>慢慢来，<br>世界上一切事情都是这样的，<br>慢就是快，<br>快就是慢<br>有一句话说的很好，与诸君共勉：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">### Slow is smooth, and smooth is fast.</span><br><span class="line">    慢是光滑的，而光滑是快的。</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
+<h4 id="二、艰难的开始"><a href="#二、艰难的开始" class="headerlink" title="二、艰难的开始"></a>二、艰难的开始</h4><p>在我安装好git和node.js后，感觉万事俱备，只欠安装Hexo；</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">然后在终端果断输入：npm install -g hero-cli</span><br></pre></td></tr></table></figure>
+<p>回车后等待奇迹发生，然并卵；<br>出现的是几个警告和一系列的Err字样；<br>然后艰难翻坑开始了，各种试验，各种搜索，<br>最后理出来一点儿思路；<br>总算见到雏形了，<br>接下来就很顺利的过关斩将了；</p>
+<h4 id="三、安装Hexo步骤"><a href="#三、安装Hexo步骤" class="headerlink" title="三、安装Hexo步骤"></a>三、安装Hexo步骤</h4><p>系统环境：OS X EI Captian 版本 10.11.3 64bit<br>1、安装Node.js（必须）<br>作用：生成静态页面。<br>Node.js下载地址：<a href="http://nodejs.cn" target="_blank" rel="noopener">http://nodejs.cn</a><br>2、安装git（必须）<br>作用：把本地的静态页面提交到Github上去；<br>安装git前保证你已经安装了Xcode，不然会影响编译；<br>我现在还不明白是否安装了Xcode就不用另外安装git，<br>由于当初百度看到一个方法就试试，所以最后也没确定这个问题，<br>我是既安装了Xcode又用上面的方法安装了git的。<br>有心的朋友可以试试只安装Xcode，不另外安装git，<br>看是否会初始化Hexo成功。</p>
+<h6 id="git安装方法："><a href="#git安装方法：" class="headerlink" title="git安装方法："></a>git安装方法：</h6><p>1）、先安装Homebrew，把下面的代码拷贝到终端回车即可；</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">/usr/bin/ruby -e <span class="string">"$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"</span></span><br></pre></td></tr></table></figure>
+<p>2）、安装git<br>等Homebrew安装完毕后，在终端输入：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">brew install git回车即可。</span><br></pre></td></tr></table></figure>
+<h6 id="3、安装hexo"><a href="#3、安装hexo" class="headerlink" title="3、安装hexo"></a>3、安装hexo</h6><p>万事俱备，只欠hexo了，</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">官方文档提供的方法是：npm install －g hexo－cli</span><br></pre></td></tr></table></figure>
+<p>我试了N次，最后磁盘报警也没成功，大概是因为权限问题，<br>可是我电脑账户设置的是管理员啊，最后也没明白咋回事；<br>最后找到了适合我的两种方法<br>1）、第一种方法：（注意：使用sudo需要输入电脑登录密码）</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sudo npm install hexo - -no-optional</span><br></pre></td></tr></table></figure>
+<p>创建成功后的提示界面：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Password:</span><br><span class="line">hexo-site@<span class="number">0.0</span><span class="number">.0</span> /Users/chenbaichuan</span><br><span class="line">└──server@<span class="number">0.0</span><span class="number">.3</span> extraneous</span><br></pre></td></tr></table></figure>
+<p>第二种方法：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">sudo npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<p>创建成功后的提示界面：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">Password:</span><br><span class="line">/usr/local/bin/hexo -&gt; /usr/local/lib/node_modules/hexo-cli/bin/hexo</span><br><span class="line">/usr/local/lib</span><br><span class="line">└──hexo-cli@<span class="number">1.0</span><span class="number">.1</span></span><br></pre></td></tr></table></figure>
+<p>2）、初始化Hexo并且创建博客目录：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo init blog</span><br></pre></td></tr></table></figure>
+<p>初始化成功后的界面是这样的：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">INFO  Start blogging <span class="keyword">with</span> Hexo!：快用Hexo开始你的博客吧！</span><br></pre></td></tr></table></figure>
+<p>这时候在本地磁盘会有一个以blog命名的文件夹,官方文档列出的结构大致如下：<br>不一定完全相同，我的在source就只有一个posts文件。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">_config.yml</span><br><span class="line">scanffolds</span><br><span class="line">source</span><br><span class="line">themes</span><br><span class="line">public</span><br></pre></td></tr></table></figure>
+<p>3)、新建文章<br>为了保证新添加文章都在blog文件夹下，<br>首先进入初始化文件夹。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">cd \blog</span><br></pre></td></tr></table></figure>
+<p>新建一篇文章</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hero new 文章名</span><br></pre></td></tr></table></figure>
+<p>至此Hexo的安装全部搞定。</p>
+<h4 id="四、启动本地服务"><a href="#四、启动本地服务" class="headerlink" title="四、启动本地服务"></a>四、启动本地服务</h4><p>生成本地服务器，这个不是必须；</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">npm install hexo-server —save</span><br></pre></td></tr></table></figure>
+<p>启动本地服务器</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+<p>启动成功界面</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">网址：http://localhost:<span class="number">4000</span>/.</span><br></pre></td></tr></table></figure>
+<p>赶紧打开看一下属于自己的领地吧。<br>到此为止本地的服务已经设置好了，<br>接下来就是部署Github了，<br>请看下回分解！<br>如果有的命令运行后不成，先在最前面加sudo，<br>实在不行就去百度吧。</p>
 ]]></content>
       <categories>
         <category>Hexo</category>
