@@ -1,6 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Hexo安装百度统计流程</title>
+    <url>/2016/03/22/Hexo%E5%AE%89%E8%A3%85%E7%99%BE%E5%BA%A6%E7%BB%9F%E8%AE%A1%E6%B5%81%E7%A8%8B/</url>
+    <content><![CDATA[<p>用了两天时间将Hexo博客搭建好了，<br>之后便开始一点一点儿增加一些小插件，<br>很顺利的安装了RSS和评论插件后，<br>决定安装统计插件，<br>最后经过对比决定安装百度统计，<br>虽然不如谷歌，但还凑合吧。<br>闲言少叙，正文开始</p>
+<a id="more"></a>
+<p>1、在themes／—_config.yml中配置一行统计信息；</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">baidu_tongji: true</span><br></pre></td></tr></table></figure>
+<p>2、在themes/landscape/layout/_partial路径下直接复制google－analytics.ejs，并将文件名改为:</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">baidu_tongji.ejs</span><br></pre></td></tr></table></figure>
+<p>3、去百度统计注册获取统计代码，格式如下：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">var _hmt = _hmt || [];</span><br><span class="line">(function() &#123;</span><br><span class="line">var hm = document.createElement(<span class="string">"script"</span>);</span><br><span class="line">hm.src = <span class="string">"//hm.baidu.com/hm.js?cf20d66409118a4390e3147d0f31366d"</span>;</span><br><span class="line">var s = document.getElementsByTagName(<span class="string">"script"</span>)[<span class="number">0</span>];</span><br><span class="line">s.parentNode.insertBefore(hm, s);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>粘贴到baidu_tongji.ejs文件中，粘贴后格式如下：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (theme.baidu_tongji)&#123; %&gt;</span><br><span class="line">&lt;!-- baidu_tongji --&gt;</span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">var _hmt = _hmt || [];</span><br><span class="line">(function() &#123;</span><br><span class="line">var hm = document.createElement(<span class="string">"script"</span>);</span><br><span class="line">hm.src = <span class="string">"//hm.baidu.com/hm.js?cf20d66409118a4390e3147d0f31366d"</span>;</span><br><span class="line">var s = document.getElementsByTagName(<span class="string">"script"</span>)[<span class="number">0</span>];</span><br><span class="line">s.parentNode.insertBefore(hm, s);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;!-- End baidu_tongji --&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+<p>4、打开themes/landscape/layout/_partial/head.ejs，添加如下代码：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&lt;%- partial(<span class="string">'baidu_tongji'</span>) %&gt;</span><br></pre></td></tr></table></figure>
+<p>5、重新部署</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo d -</span><br></pre></td></tr></table></figure>
+<p>6、在百度统计检查部署是否成功<br>先检查首页，成功后界面是这样：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">页面代码安装状态：代码安装正确</span><br></pre></td></tr></table></figure>
+<p>如果你想检查其它页面，复制一个其它页面的网址粘贴过去，点开始检查，成功界面如下：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">代码安装详情</span><br><span class="line">已安装账户<span class="string">"username"</span>的站点<span class="string">"franktianyirenjian.github.io"</span>对应的代码：</span><br><span class="line">&lt;script&gt;</span><br><span class="line">var _hmt = _hmt || [];</span><br><span class="line">(function() &#123;</span><br><span class="line">  var hm = document.createElement(<span class="string">"script"</span>);</span><br><span class="line">  hm.src = <span class="string">"//hm.baidu.com/hm.js?cf20d66409118a4390e3147d0f31366d"</span>;</span><br><span class="line">  var s = document.getElementsByTagName(<span class="string">"script"</span>)[<span class="number">0</span>]; </span><br><span class="line">  s.parentNode.insertBefore(hm, s);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>等候二十分钟你就可以去查看网页统计报告了，打完收功。<br>另外还有人说会出现恶心的百度logo，我也不知道是人云亦云还是怎样，反正我的没有。</p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+  </entry>
+  <entry>
     <title>IOS Xcode7.1新建纯代码工程</title>
     <url>/2016/03/17/IOS-Xcode7-1%E6%96%B0%E5%BB%BA%E7%BA%AF%E4%BB%A3%E7%A0%81%E5%B7%A5%E7%A8%8B/</url>
     <content><![CDATA[<p>今天准备纯代码做下计算器；<br>xcode已升级到version 7.1；<br>创建singleview后改造空工程；<br>删除main.storyboard，<br>创建windows并设置背景色为黑色；<br>满怀期待的command+R；<br>结果提示我:<br>以上是摘要<a id="more"></a><br>2015-10-30 18:15:29.933 计算器[1696:127982] <strong>* Assertion failure in -[UIApplication _runWithMainScene:transitionContext:completion:], /BuildRoot/Library/Caches/com.apple.xbs/Sources/UIKit_Sim/UIKit-3512.29.5/UIApplication.m:3299<br>2015-10-30 18:15:29.939 计算器[1696:127982] *</strong> Terminating app due to uncaught exception ‘NSInternalInconsistencyException’, reason: ‘Application windows are expected to have a root view controller at the end of application launch’<br>*** First throw call stack:<br>(<br>0   CoreFoundation                      0x02524a84 <strong>exceptionPreprocess + 180<br>1   libobjc.A.dylib                     0x00550e02 objc_exception_throw + 50<br>2   CoreFoundation                      0x0252491a +[NSException raise:format:arguments:] + 138<br>3   Foundation                          0x001cfe86 -[NSAssertionHandler handleFailureInMethod:object:file:lineNumber:description:] + 118<br>4   UIKit                               0x00957a9b -[UIApplication _runWithMainScene:transitionContext:completion:] + 3975<br>5   UIKit                               0x0097be4d __84-[UIApplication _handleApplicationActivationWithScene:transitionContext:completion:]_block_invoke3208 + 68<br>6   UIKit                               0x00953fb4 -[UIApplication workspaceDidEndTransaction:] + 163<br>7   FrontBoardServices                  0x036fdca4 __37-[FBSWorkspace clientEndTransaction:]_block_invoke_2 + 71<br>8   FrontBoardServices                  0x036fd77b __40-[FBSWorkspace _performDelegateCallOut:]_block_invoke + 54<br>9   FrontBoardServices                  0x0371b1a3 -[FBSSerialQueue _performNext] + 184<br>10  FrontBoardServices                  0x0371b5da -[FBSSerialQueue _performNextFromRunLoopSource] + 52<br>11  FrontBoardServices                  0x0371a8d6 FBSSerialQueueRunLoopSourceHandler + 33<br>12  CoreFoundation                      0x0243ed1f __CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE0_PERFORM_FUNCTION</strong> + 15<br>13  CoreFoundation                      0x024349ab __CFRunLoopDoSources0 + 523<br>14  CoreFoundation                      0x02433dc8 __CFRunLoopRun + 1032<br>15  CoreFoundation                      0x02433706 CFRunLoopRunSpecific + 470<br>16  CoreFoundation                      0x0243351b CFRunLoopRunInMode + 123<br>17  UIKit                               0x00953854 -[UIApplication _run] + 540<br>18  UIKit                               0x009591eb UIApplicationMain + 160<br>19  ËÆ°ÁÆóÂô®                           0x00082baa main + 138<br>20  libdyld.dylib                       0x030eba21 start + 1<br>)<br>libc++abi.dylib: terminating with uncaught exception of type NSException<br>(lldb)<br>然后就开始了艰辛的解决历程；<br>自己英语很渣，只有慢慢度娘；<br>百度出来的百分之九十九是xcode6.1改造空工程的方法；<br>没用啊，我现在用的就是它这个方法；<br>只有不断换关键字；<br>结果当我输入：“xcode7如何创建空工程”keywords后；<br>第四个答案正是我想要的；<br>東東同学的新浪博客：<a href="http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html</a><br>原来提示的意思是：“必须给windows创建一个rootviewcontroller；<br>这一句话足够了；果断添加rootview，再次command+R；果断通过；<br>它是否意味着windows创建好后不能直接显示了，必须添加rootviewcontroller才可以运行呢？<br>已经给東東留言等回复。<br>总之任何一个细小的问题，通过自己的努力或者得到别人指点得到解决后，那种欣喜都是情不自禁的。<br>完毕！</p>
@@ -57,33 +84,6 @@
       </categories>
   </entry>
   <entry>
-    <title>Hexo安装百度统计流程</title>
-    <url>/2016/03/22/Hexo%E5%AE%89%E8%A3%85%E7%99%BE%E5%BA%A6%E7%BB%9F%E8%AE%A1%E6%B5%81%E7%A8%8B/</url>
-    <content><![CDATA[<p>用了两天时间将Hexo博客搭建好了，<br>之后便开始一点一点儿增加一些小插件，<br>很顺利的安装了RSS和评论插件后，<br>决定安装统计插件，<br>最后经过对比决定安装百度统计，<br>虽然不如谷歌，但还凑合吧。<br>闲言少叙，正文开始</p>
-<a id="more"></a>
-<p>1、在themes／—_config.yml中配置一行统计信息；</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">baidu_tongji: true</span><br></pre></td></tr></table></figure>
-<p>2、在themes/landscape/layout/_partial路径下直接复制google－analytics.ejs，并将文件名改为:</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">baidu_tongji.ejs</span><br></pre></td></tr></table></figure>
-<p>3、去百度统计注册获取统计代码，格式如下：</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">var _hmt = _hmt || [];</span><br><span class="line">(function() &#123;</span><br><span class="line">var hm = document.createElement(<span class="string">"script"</span>);</span><br><span class="line">hm.src = <span class="string">"//hm.baidu.com/hm.js?cf20d66409118a4390e3147d0f31366d"</span>;</span><br><span class="line">var s = document.getElementsByTagName(<span class="string">"script"</span>)[<span class="number">0</span>];</span><br><span class="line">s.parentNode.insertBefore(hm, s);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>粘贴到baidu_tongji.ejs文件中，粘贴后格式如下：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (theme.baidu_tongji)&#123; %&gt;</span><br><span class="line">&lt;!-- baidu_tongji --&gt;</span><br><span class="line">&lt;script type=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">var _hmt = _hmt || [];</span><br><span class="line">(function() &#123;</span><br><span class="line">var hm = document.createElement(<span class="string">"script"</span>);</span><br><span class="line">hm.src = <span class="string">"//hm.baidu.com/hm.js?cf20d66409118a4390e3147d0f31366d"</span>;</span><br><span class="line">var s = document.getElementsByTagName(<span class="string">"script"</span>)[<span class="number">0</span>];</span><br><span class="line">s.parentNode.insertBefore(hm, s);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;/script&gt;</span><br><span class="line">&lt;!-- End baidu_tongji --&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
-<p>4、打开themes/landscape/layout/_partial/head.ejs，添加如下代码：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">&lt;%- partial(<span class="string">'baidu_tongji'</span>) %&gt;</span><br></pre></td></tr></table></figure>
-<p>5、重新部署</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo d -</span><br></pre></td></tr></table></figure>
-<p>6、在百度统计检查部署是否成功<br>先检查首页，成功后界面是这样：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">页面代码安装状态：代码安装正确</span><br></pre></td></tr></table></figure>
-<p>如果你想检查其它页面，复制一个其它页面的网址粘贴过去，点开始检查，成功界面如下：</p>
-<figure class="highlight"><table><tr><td class="code"><pre><span class="line">代码安装详情</span><br><span class="line">已安装账户<span class="string">"username"</span>的站点<span class="string">"franktianyirenjian.github.io"</span>对应的代码：</span><br><span class="line">&lt;script&gt;</span><br><span class="line">var _hmt = _hmt || [];</span><br><span class="line">(function() &#123;</span><br><span class="line">  var hm = document.createElement(<span class="string">"script"</span>);</span><br><span class="line">  hm.src = <span class="string">"//hm.baidu.com/hm.js?cf20d66409118a4390e3147d0f31366d"</span>;</span><br><span class="line">  var s = document.getElementsByTagName(<span class="string">"script"</span>)[<span class="number">0</span>]; </span><br><span class="line">  s.parentNode.insertBefore(hm, s);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>等候二十分钟你就可以去查看网页统计报告了，打完收功。<br>另外还有人说会出现恶心的百度logo，我也不知道是人云亦云还是怎样，反正我的没有。</p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-  </entry>
-  <entry>
     <title>OC中委托和协议</title>
     <url>/2016/03/17/OC%E4%B8%AD%E5%A7%94%E6%89%98%E5%92%8C%E5%8D%8F%E8%AE%AE/</url>
     <content><![CDATA[<p>一、为什么写这篇文章</p>
@@ -97,16 +97,6 @@
 <p>总结：<br>1、委托行为借助协议得以完成；这里王五通过FindworkDelegat协议委托马六找工作；协议要求钱多事儿少离家近；<br>2、并且规定必须遵守这个协议的要求找工作才可以付钱：@property(nonatomic,weak)id <FindworkDelegate>delegate;<br>3、委托找两份工作因此每反馈回来一次，需要判断是哪份工作的内容介绍：使用respondsToSelector:@selector(moneyMax:)方法进行判断。<br>Wangwu*WW1=[[Wangwu alloc]init];第一份工作</p>
 <p>Wangwu*WW2=[[Wangwu alloc]init];第二份工作</p>
 <p>if ([_delegate respondsToSelector:@selector(moneyMax:)]||[_delegate respondsToSelector:@selector(treatMent:)]){<br>[_delegate moneyMax:self];self是指具体是哪份工作？<br>[_delegate treatMent:self];<br>}<br>over！</p>
-]]></content>
-      <categories>
-        <category>编程</category>
-        <category>IOS</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>UIviewcontroller与UIview</title>
-    <url>/2016/03/17/UIviewcontroller%E4%B8%8EUIview/</url>
-    <content><![CDATA[<p>UIviewcontroller名字叫做视图控制器，是一个类，UIview也是一个类；<br>UIviewcontroller控制放在它上面的所有UIview的事件；<br>UIview只负责加载数据与图片；<br>UIviewcontroller顾名思义，就是控制；<br>比如飞机大战中，加载子弹和飞机的图片需要UIview实现；<br>而发射子弹则需要UIviewcontroller来实现。<br>目前就理解到这个程度。</p>
 ]]></content>
       <categories>
         <category>编程</category>
@@ -135,6 +125,16 @@
 ]]></content>
       <categories>
         <category>Hexo</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>UIviewcontroller与UIview</title>
+    <url>/2016/03/17/UIviewcontroller%E4%B8%8EUIview/</url>
+    <content><![CDATA[<p>UIviewcontroller名字叫做视图控制器，是一个类，UIview也是一个类；<br>UIviewcontroller控制放在它上面的所有UIview的事件；<br>UIview只负责加载数据与图片；<br>UIviewcontroller顾名思义，就是控制；<br>比如飞机大战中，加载子弹和飞机的图片需要UIview实现；<br>而发射子弹则需要UIviewcontroller来实现。<br>目前就理解到这个程度。</p>
+]]></content>
+      <categories>
+        <category>编程</category>
+        <category>IOS</category>
       </categories>
   </entry>
   <entry>
@@ -254,6 +254,35 @@
       </categories>
   </entry>
   <entry>
+    <title>吐槽互联网上关于hexo添加本地搜索的文章</title>
+    <url>/2020/05/01/%E5%90%90%E6%A7%BD%E4%BA%92%E8%81%94%E7%BD%91%E4%B8%8A%E5%85%B3%E4%BA%8Ehexo%E6%B7%BB%E5%8A%A0%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2%E7%9A%84%E6%96%87%E7%AB%A0/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><code>1、填坑的开始</code><br>重装hexo时，解决了node版本错误和中文乱码之后，<br>满心欢喜，<br>本以为可以愉快的重复以下过程了</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo new article</span><br><span class="line">hexo clean</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+<p>结果真是图样图森破，<br>填坑才刚刚开始。</p>
+<p>眼看着博客文章越来越多，<br>重装之后，就想先添加本地搜索。</p>
+<a id="more"></a>
+<p><code>2、重要声明</code><br>先声明下，之所以标题这么长，<br>是因为我受够了自己利用搜索引擎，<br>解决问题过程中，<br>一些纯傻逼的行为，<br>它们不但人云亦云。<br>而且还不知所云。<br>根本不说自己是在什么系统，<br>什么主题下，去修改hexo的配置，<br>这让我吃够了苦头。</p>
+<p>人云亦云和不知所云，<br>我在下文，会举例说明。</p>
+<p>所以，我要声明下，我的配置参数是这样的</p>
+<p>硬件: MacBook Air<br>系统: macOS Catalina 10.15.4<br>hexo版本：4.2.0<br>node版本：13.13.0<br>hexo主题：landscape</p>
+<p>这里最重要的配置参数是硬件和hexo主题。<br>其它应该问题不大，<br>之所以说应该，<br>因为我没有把每一个hexo和node可用版本，<br>都尝试一遍。</p>
+<h3 id="landscape自带搜索是摆设"><a href="#landscape自带搜索是摆设" class="headerlink" title="landscape自带搜索是摆设"></a>landscape自带搜索是摆设</h3><p>因为hexo默认主题landscape下自带的搜索框，<br>就是一个纯粹的摆设。<br>因为它默认搜索的是你被谷歌搜索引擎收录的网页，<br>你才刚开始写博客，<br>或者你还没做SEO，<br>怎么可能在谷歌搜索引擎被收录呢？</p>
+<h3 id="什么是本地搜索和谷歌站内搜索"><a href="#什么是本地搜索和谷歌站内搜索" class="headerlink" title="什么是本地搜索和谷歌站内搜索"></a>什么是本地搜索和谷歌站内搜索</h3><p>基于以上原因，决定寻找landscape主题下，<br>添加本地搜索和谷歌站内搜索的方法。<br>先解释一下本地搜索和谷歌站内搜索两个概念，<br>看文章的你，不要嫌我烦。<br>我真是被网上某些傻逼给害苦了。<br>所以我写文章的时候，尽量详细，<br>因为你可能一句话写不到。<br>别人就会走很多弯路。<br>甚至本来看了你的文章，<br>可以解决的问题，<br>结果因为你少了一句话的缘故，<br>别人的问题，最后没有得到解决。</p>
+<p>本地搜索：在你的博客内，对所有文章的搜索，<br>当你输入关键词，不用按回车，<br>会自动显示有搜索关键词的文章列表。</p>
+<p>谷歌站内搜索：也是在你的博客内完成搜索的输入，<br>就是landscape主题自带的那个搜索框，<br>但是当你按下回车或者点击放大镜，<br>它的搜索结果会在谷歌搜索引擎里呈现。<br>简单来说就是两种搜索方式，<br>都可以搜索你所有的文章，<br>但是展现的地方不同，<br>一种在博客里展示，就是本地搜索，<br>另一种在谷歌浏览器展示，就是谷歌站内搜索。<br>而lanscape主题自带的搜索框，<br>搜索的是你的博客被谷歌引擎收录的文章网页。<br>这个确实不是一般的坑爹。</p>
+<h3 id="hexo有用的资料真少"><a href="#hexo有用的资料真少" class="headerlink" title="hexo有用的资料真少"></a>hexo有用的资料真少</h3><p>hexo的确很火，它免费，好用，既不用买域名也不用租服务器。<br>因此，是很多愿意折腾的人的最佳选择。<br>所以，互联网上也就有了很多关于hexo的网页。</p>
+<p>但是这些网页存在着三个严重的问题：<br>第一条最严重，其它依次递减。</p>
+<p>多数人写文章的目的是炫耀加展现自己的成果，并没有想要帮助别人，而后者才是写文章分享的本质目的。<br>许多人只说正常的流程。<br>很多人只是道听途说，甚至直接复制粘贴。<br>更多人是人云亦云。</p>
+<p>基于以上原因，你以hexo为关键词一搜索网页一大把，<br>但是真正有用的，能帮助你解决问题的少之又少。<br>而且往往这种真正能帮你解决问题的文章，话不多，简洁明了。<br>这种现象正印证了那句话：</p>
+<p>高手从来不拔刀，高僧只说家常话。</p>
+<p>这里回应下开头人云亦云和不知所云，<br>人云亦云还分两种类型，<br>第一种直接粘贴复制别人的文章，<br>第二种比照别人的文章自己写一遍。<br>反正自己就是不看文章。<br>这种人最可恶，<br>浪费互联网资源不说，<br>自己既没解决问题，<br>还不能帮助别人有效解决问题，<br>甚至还浪费别人的时间和精力。</p>
+<p>不知所云的是这种人，<br>他们不写具体问题，<br>只是按照官方或者正常流程叙述一遍。<br>以为自己特具分享精神，<br>其实特可恶，浪费别人的时间和精力。<br>更有甚者，直接粘贴自己的站点配置文件，<br>连一句中文注释都没有。<br>以上两种人真是可恶至极，<br>特招人恨。<br>唉，不说了，说起来能写一本书。<br>《完》</p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+  </entry>
+  <entry>
     <title>如何利用知行合一提升学习效率</title>
     <url>/2016/03/20/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E6%8F%90%E5%8D%87%E5%AD%A6%E4%B9%A0%E6%95%88%E7%8E%87/</url>
     <content><![CDATA[<p>一、心学里的三类人<br>阳明将人分三类：生知安行，学知力行，困知勉行。<br>生知安行就是我们现在所说的天才，<br>如果按二八法则，全人类中，<br>似乎会有百分之二十的天才存在，<br>可是去掉那些后来伤仲永的，<br>最多会留下百分之十，就不错了。<br>困知勉行，就是脑袋死不开窍的，<br>最多也就百分之十，<br>剩下的就是百分之八十的普通人了。</p>
@@ -269,6 +298,29 @@
 <p>四、关于理由<br>即便看到这里，<br>我相信很多人还是能找到，<br>拒绝做自己应该做的事情的理由。<br>我相信还是有很多人会说：<br>你不知道我有多忙，<br>你说得倒轻巧，<br>我都看不懂你说的这些什么Hexo和Github，<br>怎么去搭建？<br>balabalabala……<br>好吧，我承认大家都很忙，<br>这里稍微跟大家玩个文字游戏，<br>大家比较下‘忙’和‘忘’两个字，<br>没错，聪明的已经看出来了，<br>你的心躺下自己就什么都忘了，<br>你的心立起来，自然一直都很忙。<br>so，如果你到现在还找各种理由，<br>不去做自己应该做的事情，<br>那我只能说你决心还不够，<br>而你老说自己忙，<br>则是需要重新修炼心学的静坐工夫，<br>还是建议参考曾剃头的方法。</p>
 <p>最后，借用陌陌的广告词<br>送给那些迟迟不下决心做自己向往事情的人们：<br>别和陌生人说话，别做新鲜事，<br>继续过平常的生活，胆小一点儿，<br>别好奇，就玩你会的，离冒险远远的，<br>有些事想想就好，没必要改变，<br>待在熟悉的地方，最好待在家里，<br>听一样的音乐，见一样的人，重复同样的话题，<br>心思别太活，梦想要实际，<br>不要什么都尝试，就这样活着吧。</p>
 <p>本期推荐电影：<br>一、《沙漠之花》导演：雪瑞·霍尔曼<br>推荐语：如果你曾对沙漠里是否真的能开出花产生过疑问，这部片子很肯定的告诉你：能。<br>二、《白日火焰》导演：刁亦男<br>推荐语：对豆瓣什么的一些影评，我没太多感觉，本片亮点在于开始五分钟在你认为不可能发生的时候，两个警察被干掉了。<br>三、《爱在战火蔓延时》导演：戴维·塞尔策<br>推荐语：片子不算超精彩的那种，但是里面有一个场景令我很触动，当男女主角在国境线外呼救的时候，边防兵无动于衷，但当他们跨进国境线那一刻，边防兵毫不客气的还击。<br>本期推荐书籍：<br>一、《一阵风，留下了千古绝唱》作者：章诒和<br>推荐语：书里讲马连良对精致生活的享受部分，很是引人入胜。<br>二、《王阳明大传》作者：周月亮<br>推荐语：用通俗的话语较有深度的讲述了王阳明的一生，看完这个，就没必要看其学生吕峥写的《明朝一哥王阳明》了，基本照抄，没太多新意。<br>三、《历史深处的民国》作者：江城<br>推荐语：框架比《民国就是这么生猛》搭的好，细节则没后者全，但里面用数据分析了一个很有意思的现象，袁世凯家里的牛人没有活过58岁的。</p>
+]]></content>
+      <categories>
+        <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>工夫与境界（二）</title>
+    <url>/2016/03/17/%E5%B7%A5%E5%A4%AB%E4%B8%8E%E5%A2%83%E7%95%8C%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+    <content><![CDATA[<p>一、境界为何？<br>境界字面理解，<br>境乃环境，界乃界限；<br>突破界限到达新环境就叫做境界。<br>境界不是自己标榜的，<br>真正到达新境界的人，<br>行事言语都会有所体现。</p>
+<p>二、境</p>
+<p>1、客观环境<br>首先从环境说起，<br>环境又分为外在与内在；<br>外在叫客观环境，<br>内在叫做心境。</p>
+<p>客观环境没什么好说的，<br>无论你生于贫苦之家，<br>还是钟鸣鼎食之家，<br>这都不是你能定的，<br>那是所有人的起点，<br>你只有接受，没有选择。<br>以上是摘要<a id="more"></a><br>2、心境<br>至于心境，则要好好说一下；<br>《心经》开篇第一句话：<br>观自在菩萨，<br>行深般若波罗蜜多，<br>照见五蕴皆空，<br>度一切苦厄。<br>这说的就是心境。<br>展开说比较复杂，<br>简单从几个概念说起。</p>
+<p>三毒：贪嗔痴，<br>三法印：诸行无常，诸法无我，寂静涅槃；<br>五蕴：受想行色识<br>般若波罗密多：到达彼岸的智慧。</p>
+<p>为什么要说心经呢？<br>你可能会纳闷？<br>我们讲的不是心学吗？<br>对了正因为我们讲的是心学。<br>而客观环境，多数情况下我们无能为力。<br>多数情况下，我能改变的只有心境。<br>《心经》为我们提供了一种改变心境的伟大方法。<br>你没看错，就是伟大的方法。<br>因为它解决的是根本问题，直指人心，<br>心经讲的就是为什么我们会感到人生皆苦。</p>
+<p>我们之所以感到人生皆苦，<br>是因为有：‘我执’。<br>我执的意思是我们以为世间万物都是恒定不变的。<br>这是所有苦的根源。<br>苦又分为：求不得，爱别离，怨憎会。</p>
+<p>事实是，世间万物每时每刻都在变化，<br>因为有：‘我执’，因此我们都中了三毒。<br>我们贪婪是因为：<br>我们以为拥有了某些东西，它就会永远属于我们，<br>并且因为得不到而纠结不已。<br>我们愤怒是因为：<br>我们以为所有的糟糕事情都会一直糟糕下去，<br>并且为此生出恐惧来吓唬自己。<br>明天要交报表了，做不出来怎么办？<br>明天要考试了，考不过怎么办？<br>明天又要考核绩效了，达不到怎么办？<br>我们总是夸大事情本身的后果。<br>我们痴傻是因为，我们以为一瞬即永恒，<br>并且相信自己对永恒的判断。</p>
+<p>事实是，也许你刚买到梦寐以求的保时捷，<br>第二天就出车祸撞死了。<br>也许你刚刚与他吵过架的室友或朋友，<br>是因为最近家里老人得了病，心情不好。<br>也许你内心许诺一生只爱她一人的女友，<br>正在和新认识的帅哥微信聊天。</p>
+<p>那么，我们有必要知道三法印的存在，<br>诸行无常，诸法无我，寂静涅槃，<br>万事万物都在变化，你以为你面前的桌子和电脑是静止的？<br>非也，电脑里面每时每刻二进制数据都在变化，<br>桌子的基本组成粒子，无时无刻不在老化。<br>你以为你就是你吗？<br>这句话可能有点儿绕，<br>我的意思是：<br>你以为今天的你还是昨天的你吗？<br>你以为此刻的你还是上一刻的你吗？<br>你以为现在的你还是六岁时候的你吗？<br>抛开外形的变化不说。</p>
+<p>为了便于理解我们举个例子，<br>比如你的名字叫张三<br>基于你的名字来说，<br>你觉得张三的对象是谁？<br>是六岁时候的你？<br>还是现在的你？<br>你说当然是现在的你？<br>你这不是搞笑吗？<br>那好，我再问，是上一刻的你，<br>还是这一刻的你？<br>到底哪个‘你’是张三？<br>到底是在吃饭的你是张三？<br>还是在撒尿的你是张三？<br>你又说：“当然两个都是张三”，<br>但是这一刻的你已经不是上一刻的你了，<br>你的血液在不断更新，你的细胞在不断更新。<br>你的思维意识瞬间万变。<br>到底哪一个才是作为张三的你？<br>因此张三这个名字只是个假名。<br>没有真的张三存在。<br>只是你自己太过于执着你是张三这件事。<br>而你并不知道并没有真的张三存在？<br>此为诸行无常，诸法无我。</p>
+<p>当你悟了诸行无常，诸法无我，自然会寂静涅槃。<br>虽然有点儿抽象，但我绝不是顺口胡诌。<br>我自己是真正体验过这种思考的。</p>
+<p>这段实在太抽象，<br>因为梁文道这等厉害人物在《一千零一夜》，<br>用了六集才讲清楚《心经》的前两句话。<br>个中奥义，不花一番功夫实难领会。<br>另外小结中有些概念实在无法展开叙述，<br>有心人可以自行搜索资料进行学习。<br>做下小结吧：“我执”是三毒：“贪、嗔、痴”的根源；<br>陷入三毒世人皆苦，苦分为：“求不得、爱别离、怨憎会”<br>三法印：诸行无常、诸法无我、寂静涅槃会让我们理解空不异色，色不异空，空即是色，色即是空，从而获得到达彼岸的大智慧。<br>只有运用般若波罗蜜多：到达彼岸的大智慧才能照见五蕴皆空，度一切苦厄。</p>
+<p>3、界<br>关于界限我要说的不多，<br>大家应该都知道有个舒适区，学习区与恐慌区的划分。<br>那么我只有一个建议，经常挑战下你的恐慌区。<br>怕和女孩搭讪，偏偏要在餐馆吃午饭时和邻桌的漂亮妹妹搭个讪，<br>怕在群众面前演讲，偏偏要在公园等人扎堆的地方，让自己来上一段，<br>怕在高处眺望，偏偏周末要去体验一下蹦极时血脉贲张的酸爽。<br>你说：“臣妾真的做不到啊！”。<br>我只说一件事：<br>最近重看了一遍86版的《西游记》，<br>至于演员演得好，导演拍的好，不赘述。<br>只一点，第一集就让我明白了以前看不可能明白的道理。<br>孙悟空和众猴打赌，自己能从水帘洞进去且出来。<br>你想一想，<br>有的猴子已经在这片区域生活了很多年，<br>却没勇气进去看一看，<br>那一刻我知道，人生所有的艰难困苦都是纸老虎。<br>再有，进去后欢宴期间一猴子突然死亡，<br>那一刻我知道，人生无常，达人自玉。<br>最后，孙悟空决定远行学艺。<br>在市集间被俗人们当作异类而嘲笑<br>那一刻我知道，哪怕任何人的嘲笑，<br>都比不过你自己的一个决心。</p>
+<p>本期推荐书籍：<br>1、《增长黑客》豆瓣评分8.1 作者：范冰<br>细节非常独到，我还试了下里面通过curl －o命令抓取唱吧图片。<br>最重要的一点树立T型知识结构的意识。<br>归纳略显不足，只描述案例，不归纳本质的东西，做互联网的同学可以作为手边书翻一翻。<br>2、《黑客与画家》作者：保罗格雷厄姆<br>任何一门知识，做到极致都是艺术，编程亦然。<br>3、《物演通论》作者：王东岳<br>我只记住了一个：“递弱代偿法则”，其他看不懂，你若有高见，欢迎和我讨论。<br>本期推荐电影：<br>1、《三傻大闹宝莱坞》<br>我已经看过三遍了，不多说了，和梦想有关和现实无联。<br>2、《无法触碰》<br>这个看了两遍，马上看第三遍，和生命有关和人生无联。<br>3、《野草莓》<br>英格玛·伯格曼代表作，和生命无关和心灵有联。</p>
 ]]></content>
       <categories>
         <category>阳明心学</category>
@@ -302,58 +354,6 @@
 <p>本期推荐书籍：<br>一、《民国就是这么生猛》<br>推荐理由；<br>1、虽然本书讲的不是关于工夫的事，但是里面讲到的人可以教给你很多关于：“工夫”的事儿。<br>2、文字幽默诙谐，通俗易懂，可以作为茶余饭后的休闲阅读。<br>3、民国入门读物。<br>二、《红太阳是怎样升起的》<br>1、此书可以学习一些推广方面的经验；你如果没看到那就仔细看；<br>2、可以看到为什么会发生文革？<br>3、验证了一句话，在政治面前，从来没有永远的朋友和敌人。<br>4、也可以看到领袖的缔造，绝对需要大大的：“工夫”。<br>三、《最后的文化贵族》<br>学习下这些在文化上有气质的人，是怎样修炼：“工夫”的。</p>
 <p>本期推荐电影：</p>
 <p>1、《杀手没有假期》<br>我常常讲，我以前是个道德感很重的人，非要把善恶很分明的人，<br>但是我越来越感到，人性复杂性大于两分性，偶然性大于必然性。<br>杀手的人生会带给你怎样的启示呢？看了就知道。<br>2、《返老还童》又叫《本杰明巴顿奇事》<br>豆瓣评分8.6，以男女爱情为线索探讨生老病死价值体系的一部电影。<br>3、《杏花三月天》<br>我看这部主要看蒋雯丽和张国立年轻时的表演的。里面和《菊豆》异曲同工，都表现了旧社会妇女从属地位的悲哀和无奈。</p>
-]]></content>
-      <categories>
-        <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>吐槽互联网上关于hexo添加本地搜索的文章</title>
-    <url>/2020/05/01/%E5%90%90%E6%A7%BD%E4%BA%92%E8%81%94%E7%BD%91%E4%B8%8A%E5%85%B3%E4%BA%8Ehexo%E6%B7%BB%E5%8A%A0%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2%E7%9A%84%E6%96%87%E7%AB%A0/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><code>1、填坑的开始</code><br>重装hexo时，解决了node版本错误和中文乱码之后，<br>满心欢喜，<br>本以为可以愉快的重复以下过程了</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo new article</span><br><span class="line">hexo clean</span><br><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-<p>结果真是图样图森破，<br>填坑才刚刚开始。</p>
-<p>眼看着博客文章越来越多，<br>重装之后，就想先添加本地搜索。</p>
-<a id="more"></a>
-<p><code>2、重要声明</code><br>先声明下，之所以标题这么长，<br>是因为我受够了自己利用搜索引擎，<br>解决问题过程中，<br>一些纯傻逼的行为，<br>它们不但人云亦云。<br>而且还不知所云。<br>根本不说自己是在什么系统，<br>什么主题下，去修改hexo的配置，<br>这让我吃够了苦头。</p>
-<p>人云亦云和不知所云，<br>我在下文，会举例说明。</p>
-<p>所以，我要声明下，我的配置参数是这样的</p>
-<p>硬件: MacBook Air<br>系统: macOS Catalina 10.15.4<br>hexo版本：4.2.0<br>node版本：13.13.0<br>hexo主题：landscape</p>
-<p>这里最重要的配置参数是硬件和hexo主题。<br>其它应该问题不大，<br>之所以说应该，<br>因为我没有把每一个hexo和node可用版本，<br>都尝试一遍。</p>
-<h3 id="landscape自带搜索是摆设"><a href="#landscape自带搜索是摆设" class="headerlink" title="landscape自带搜索是摆设"></a>landscape自带搜索是摆设</h3><p>因为hexo默认主题landscape下自带的搜索框，<br>就是一个纯粹的摆设。<br>因为它默认搜索的是你被谷歌搜索引擎收录的网页，<br>你才刚开始写博客，<br>或者你还没做SEO，<br>怎么可能在谷歌搜索引擎被收录呢？</p>
-<h3 id="什么是本地搜索和谷歌站内搜索"><a href="#什么是本地搜索和谷歌站内搜索" class="headerlink" title="什么是本地搜索和谷歌站内搜索"></a>什么是本地搜索和谷歌站内搜索</h3><p>基于以上原因，决定寻找landscape主题下，<br>添加本地搜索和谷歌站内搜索的方法。<br>先解释一下本地搜索和谷歌站内搜索两个概念，<br>看文章的你，不要嫌我烦。<br>我真是被网上某些傻逼给害苦了。<br>所以我写文章的时候，尽量详细，<br>因为你可能一句话写不到。<br>别人就会走很多弯路。<br>甚至本来看了你的文章，<br>可以解决的问题，<br>结果因为你少了一句话的缘故，<br>别人的问题，最后没有得到解决。</p>
-<p>本地搜索：在你的博客内，对所有文章的搜索，<br>当你输入关键词，不用按回车，<br>会自动显示有搜索关键词的文章列表。</p>
-<p>谷歌站内搜索：也是在你的博客内完成搜索的输入，<br>就是landscape主题自带的那个搜索框，<br>但是当你按下回车或者点击放大镜，<br>它的搜索结果会在谷歌搜索引擎里呈现。<br>简单来说就是两种搜索方式，<br>都可以搜索你所有的文章，<br>但是展现的地方不同，<br>一种在博客里展示，就是本地搜索，<br>另一种在谷歌浏览器展示，就是谷歌站内搜索。<br>而lanscape主题自带的搜索框，<br>搜索的是你的博客被谷歌引擎收录的文章网页。<br>这个确实不是一般的坑爹。</p>
-<h3 id="hexo有用的资料真少"><a href="#hexo有用的资料真少" class="headerlink" title="hexo有用的资料真少"></a>hexo有用的资料真少</h3><p>hexo的确很火，它免费，好用，既不用买域名也不用租服务器。<br>因此，是很多愿意折腾的人的最佳选择。<br>所以，互联网上也就有了很多关于hexo的网页。</p>
-<p>但是这些网页存在着三个严重的问题：<br>第一条最严重，其它依次递减。</p>
-<p>多数人写文章的目的是炫耀加展现自己的成果，并没有想要帮助别人，而后者才是写文章分享的本质目的。<br>许多人只说正常的流程。<br>很多人只是道听途说，甚至直接复制粘贴。<br>更多人是人云亦云。</p>
-<p>基于以上原因，你以hexo为关键词一搜索网页一大把，<br>但是真正有用的，能帮助你解决问题的少之又少。<br>而且往往这种真正能帮你解决问题的文章，话不多，简洁明了。<br>这种现象正印证了那句话：</p>
-<p>高手从来不拔刀，高僧只说家常话。</p>
-<p>这里回应下开头人云亦云和不知所云，<br>人云亦云还分两种类型，<br>第一种直接粘贴复制别人的文章，<br>第二种比照别人的文章自己写一遍。<br>反正自己就是不看文章。<br>这种人最可恶，<br>浪费互联网资源不说，<br>自己既没解决问题，<br>还不能帮助别人有效解决问题，<br>甚至还浪费别人的时间和精力。</p>
-<p>不知所云的是这种人，<br>他们不写具体问题，<br>只是按照官方或者正常流程叙述一遍。<br>以为自己特具分享精神，<br>其实特可恶，浪费别人的时间和精力。<br>更有甚者，直接粘贴自己的站点配置文件，<br>连一句中文注释都没有。<br>以上两种人真是可恶至极，<br>特招人恨。<br>唉，不说了，说起来能写一本书。<br>《完》</p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>工夫与境界（二）</title>
-    <url>/2016/03/17/%E5%B7%A5%E5%A4%AB%E4%B8%8E%E5%A2%83%E7%95%8C%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
-    <content><![CDATA[<p>一、境界为何？<br>境界字面理解，<br>境乃环境，界乃界限；<br>突破界限到达新环境就叫做境界。<br>境界不是自己标榜的，<br>真正到达新境界的人，<br>行事言语都会有所体现。</p>
-<p>二、境</p>
-<p>1、客观环境<br>首先从环境说起，<br>环境又分为外在与内在；<br>外在叫客观环境，<br>内在叫做心境。</p>
-<p>客观环境没什么好说的，<br>无论你生于贫苦之家，<br>还是钟鸣鼎食之家，<br>这都不是你能定的，<br>那是所有人的起点，<br>你只有接受，没有选择。<br>以上是摘要<a id="more"></a><br>2、心境<br>至于心境，则要好好说一下；<br>《心经》开篇第一句话：<br>观自在菩萨，<br>行深般若波罗蜜多，<br>照见五蕴皆空，<br>度一切苦厄。<br>这说的就是心境。<br>展开说比较复杂，<br>简单从几个概念说起。</p>
-<p>三毒：贪嗔痴，<br>三法印：诸行无常，诸法无我，寂静涅槃；<br>五蕴：受想行色识<br>般若波罗密多：到达彼岸的智慧。</p>
-<p>为什么要说心经呢？<br>你可能会纳闷？<br>我们讲的不是心学吗？<br>对了正因为我们讲的是心学。<br>而客观环境，多数情况下我们无能为力。<br>多数情况下，我能改变的只有心境。<br>《心经》为我们提供了一种改变心境的伟大方法。<br>你没看错，就是伟大的方法。<br>因为它解决的是根本问题，直指人心，<br>心经讲的就是为什么我们会感到人生皆苦。</p>
-<p>我们之所以感到人生皆苦，<br>是因为有：‘我执’。<br>我执的意思是我们以为世间万物都是恒定不变的。<br>这是所有苦的根源。<br>苦又分为：求不得，爱别离，怨憎会。</p>
-<p>事实是，世间万物每时每刻都在变化，<br>因为有：‘我执’，因此我们都中了三毒。<br>我们贪婪是因为：<br>我们以为拥有了某些东西，它就会永远属于我们，<br>并且因为得不到而纠结不已。<br>我们愤怒是因为：<br>我们以为所有的糟糕事情都会一直糟糕下去，<br>并且为此生出恐惧来吓唬自己。<br>明天要交报表了，做不出来怎么办？<br>明天要考试了，考不过怎么办？<br>明天又要考核绩效了，达不到怎么办？<br>我们总是夸大事情本身的后果。<br>我们痴傻是因为，我们以为一瞬即永恒，<br>并且相信自己对永恒的判断。</p>
-<p>事实是，也许你刚买到梦寐以求的保时捷，<br>第二天就出车祸撞死了。<br>也许你刚刚与他吵过架的室友或朋友，<br>是因为最近家里老人得了病，心情不好。<br>也许你内心许诺一生只爱她一人的女友，<br>正在和新认识的帅哥微信聊天。</p>
-<p>那么，我们有必要知道三法印的存在，<br>诸行无常，诸法无我，寂静涅槃，<br>万事万物都在变化，你以为你面前的桌子和电脑是静止的？<br>非也，电脑里面每时每刻二进制数据都在变化，<br>桌子的基本组成粒子，无时无刻不在老化。<br>你以为你就是你吗？<br>这句话可能有点儿绕，<br>我的意思是：<br>你以为今天的你还是昨天的你吗？<br>你以为此刻的你还是上一刻的你吗？<br>你以为现在的你还是六岁时候的你吗？<br>抛开外形的变化不说。</p>
-<p>为了便于理解我们举个例子，<br>比如你的名字叫张三<br>基于你的名字来说，<br>你觉得张三的对象是谁？<br>是六岁时候的你？<br>还是现在的你？<br>你说当然是现在的你？<br>你这不是搞笑吗？<br>那好，我再问，是上一刻的你，<br>还是这一刻的你？<br>到底哪个‘你’是张三？<br>到底是在吃饭的你是张三？<br>还是在撒尿的你是张三？<br>你又说：“当然两个都是张三”，<br>但是这一刻的你已经不是上一刻的你了，<br>你的血液在不断更新，你的细胞在不断更新。<br>你的思维意识瞬间万变。<br>到底哪一个才是作为张三的你？<br>因此张三这个名字只是个假名。<br>没有真的张三存在。<br>只是你自己太过于执着你是张三这件事。<br>而你并不知道并没有真的张三存在？<br>此为诸行无常，诸法无我。</p>
-<p>当你悟了诸行无常，诸法无我，自然会寂静涅槃。<br>虽然有点儿抽象，但我绝不是顺口胡诌。<br>我自己是真正体验过这种思考的。</p>
-<p>这段实在太抽象，<br>因为梁文道这等厉害人物在《一千零一夜》，<br>用了六集才讲清楚《心经》的前两句话。<br>个中奥义，不花一番功夫实难领会。<br>另外小结中有些概念实在无法展开叙述，<br>有心人可以自行搜索资料进行学习。<br>做下小结吧：“我执”是三毒：“贪、嗔、痴”的根源；<br>陷入三毒世人皆苦，苦分为：“求不得、爱别离、怨憎会”<br>三法印：诸行无常、诸法无我、寂静涅槃会让我们理解空不异色，色不异空，空即是色，色即是空，从而获得到达彼岸的大智慧。<br>只有运用般若波罗蜜多：到达彼岸的大智慧才能照见五蕴皆空，度一切苦厄。</p>
-<p>3、界<br>关于界限我要说的不多，<br>大家应该都知道有个舒适区，学习区与恐慌区的划分。<br>那么我只有一个建议，经常挑战下你的恐慌区。<br>怕和女孩搭讪，偏偏要在餐馆吃午饭时和邻桌的漂亮妹妹搭个讪，<br>怕在群众面前演讲，偏偏要在公园等人扎堆的地方，让自己来上一段，<br>怕在高处眺望，偏偏周末要去体验一下蹦极时血脉贲张的酸爽。<br>你说：“臣妾真的做不到啊！”。<br>我只说一件事：<br>最近重看了一遍86版的《西游记》，<br>至于演员演得好，导演拍的好，不赘述。<br>只一点，第一集就让我明白了以前看不可能明白的道理。<br>孙悟空和众猴打赌，自己能从水帘洞进去且出来。<br>你想一想，<br>有的猴子已经在这片区域生活了很多年，<br>却没勇气进去看一看，<br>那一刻我知道，人生所有的艰难困苦都是纸老虎。<br>再有，进去后欢宴期间一猴子突然死亡，<br>那一刻我知道，人生无常，达人自玉。<br>最后，孙悟空决定远行学艺。<br>在市集间被俗人们当作异类而嘲笑<br>那一刻我知道，哪怕任何人的嘲笑，<br>都比不过你自己的一个决心。</p>
-<p>本期推荐书籍：<br>1、《增长黑客》豆瓣评分8.1 作者：范冰<br>细节非常独到，我还试了下里面通过curl －o命令抓取唱吧图片。<br>最重要的一点树立T型知识结构的意识。<br>归纳略显不足，只描述案例，不归纳本质的东西，做互联网的同学可以作为手边书翻一翻。<br>2、《黑客与画家》作者：保罗格雷厄姆<br>任何一门知识，做到极致都是艺术，编程亦然。<br>3、《物演通论》作者：王东岳<br>我只记住了一个：“递弱代偿法则”，其他看不懂，你若有高见，欢迎和我讨论。<br>本期推荐电影：<br>1、《三傻大闹宝莱坞》<br>我已经看过三遍了，不多说了，和梦想有关和现实无联。<br>2、《无法触碰》<br>这个看了两遍，马上看第三遍，和生命有关和人生无联。<br>3、《野草莓》<br>英格玛·伯格曼代表作，和生命无关和心灵有联。</p>
 ]]></content>
       <categories>
         <category>阳明心学</category>
@@ -477,6 +477,51 @@
       </categories>
   </entry>
   <entry>
+    <title>智慧与思想之花因何而开</title>
+    <url>/2016/03/17/%E6%99%BA%E6%85%A7%E4%B8%8E%E6%80%9D%E6%83%B3%E4%B9%8B%E8%8A%B1%E5%9B%A0%E4%BD%95%E8%80%8C%E5%BC%80/</url>
+    <content><![CDATA[<p>圣人之所以为圣人，<br>就是因为在百死千难中，<br>不断努力的思考自己的思维的过程；<br>而这个过程就是思想和智慧了。</p>
+<p>上次撰文说到致良知，<br>那么，致良知与智慧和思想是什么关系呢？<br>答案是没一毛钱关系。</p>
+<p>那么问题来了，<br>既然智慧和思想，和致良知没一毛钱关系。<br>那阳明先生为什么整个致良知之学呢？<br>莫急，听咱家慢慢道来；<br>以上是摘要<a id="more"></a><br>雾满拦江说，<br>人类所有学科的基础是哲学、数学与逻辑形式；<br>所有人类的学科莫不是建立在此三个要素上；<br>而阳明先生龙场悟道的“道”，却不在此列。<br>因为无论这三者再精密，<br>他还是属于人类已有的语言和思维范畴，<br>显然终极智慧和思想，是比此三者更高境界的东西。</p>
+<p>所以说圣人可以自己悟道，<br>但是他是无法用语言和你清晰描述的，<br>不然阳明也不会有：“吾性自足”一说了；</p>
+<p>打个比方说，<br>世上未通终极智慧之人，<br>都像是背对着一副栅栏和栅栏外的一堆篝火；<br>栅栏就是遮蔽良知也就是本心的欲望，<br>而篝火正是道家说的道，<br>儒家的一以及佛家的无无明。</p>
+<p>所有人是不知道自己后面的栅栏和篝火的，<br>一旦像阳明先生这样的人，<br>告诉他们你们身后有栅栏和篝火；<br>他们是不会信的，<br>这就像你和盲者谈论颜色，<br>你说得再惟妙惟肖，<br>他也是没有认识颜色的工具的，<br>或者聋哑人谈论音律，<br>即使你说的再声情并茂，<br>他也是没有认识音律的工具的。</p>
+<p>因此圣人先贤悟道终极智慧之后，<br>也是没有描述终极智慧的工具的。</p>
+<p>尽管终极智慧和致良知之间，<br>没有一毛钱的关系，<br>但如果你追求善良，苦求于良知；<br>那么你对这个世界的认知角度，<br>就会从外界转向对自己内心的审视。</p>
+<p>如此你会减少与外界的摩擦，<br>不会再苛求别人按你的想法行事，<br>而会反求诸己。</p>
+<p>反之如果你不追求善良，<br>不从内心审视自己，<br>就会将关注焦点放在外界，<br>而这种关注，必然会让你远离思想和智慧。</p>
+<p>思想与智慧无法复制也无法传承；<br>甚至连对身边人熏陶的功能都不存在，<br>比如苏格拉底与其妻子，<br>比如阳明先生身后的妻离子散。</p>
+<p>这是因为智慧和思想完全是个人化的思维运作过程，<br>是单独一个人不断采用探究式的思维模式，<br>对自己的大脑进行个人化开发，<br>这种开发的过程就是智慧与思想本身，</p>
+<p>而圣贤所能表达的不过是智慧和思想的结果，<br>但这个结果既不是思想也不是智慧，<br>最多不过是思想与智慧的行进方向而已。</p>
+<p>所以阳明先生说：“致良知”，<br>良知不是智慧，<br>致良知更不是思想，<br>思想与智慧，<br>是指你不断地努力，<br>让自己达到致良知境界的思维过程。<br>换句话说，<br>你可以把致良知理解为这个思维过程（也即思想和智慧过程）的一个显性结果以及方向。</p>
+]]></content>
+      <categories>
+        <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>知行合一与工夫</title>
+    <url>/2016/03/17/%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E4%B8%8E%E5%B7%A5%E5%A4%AB/</url>
+    <content><![CDATA[<p>一、写在前面<br>你真的自私？<br>这里‘自私’是指：<br>一件事，<br>不会对你有害，<br>只会对你有益。</p>
+<p>你一定有过这番经历，<br>跑步有益健康，嫌累懒得跑，<br>读书使人明智，枯燥懒得读，<br>学习使人进步，嫌烦懒得学，</p>
+<p>所有悔不当初的事，<br>都会让人变得更好。<br>如果你真的‘自私’，<br>为什么你不做呢？<br>原因就是你并非真的‘自私’。<br>以上是摘要<a id="more"></a><br>二、诚意为何物？<br>诚意就是真的下决心<br>也是心学的第一要义，<br>不是嘴上说说的那种下决心，<br>而是你铁定了就是要做成这件事，<br>在这件事做成之前半途而废或者打退堂鼓，<br>都是意不诚的表现，也就是决心不够。</p>
+<p>三、知行合一与工夫<br>工夫的难点是格物致知<br>读过《大学》的，对就是『四书』里面的那个《大学》，<br>应该都知道：意诚，心正，身修，家齐，国治，天下平；<br>少了两个词儿，这都被你看到了，<br>没错就是格物致知。<br>物格而后知至。<br>《大学》这一段提到的几个专有名词统称：“三纲八目”。<br>格物，致知，正心，修身，齐家，治国，平天下就是八目。</p>
+<p>你说我知道呀，早就背的滚瓜烂熟了，可是也没从里面学到什么啊！<br>没错，学习心学以前我也有你同样的困惑，<br>心里经常会念叨，我靠不是正心，修身，齐家，治国，平天下吗？<br>现在哪里还需要你去平天下啊？<br>再看看现在的自己，当个县长什么的估计也没盼头；<br>还谈什么平天下？<br>所有考试不及格的学生大概都曲解了考题本身的意思，<br>我这么说大概没人反对吧？</p>
+<p>我先说说我以前是怎么理解《大学》里面这几句话的？<br>格物不就是掌握世上每件事情的规律吗？<br>致知不就是知道真理吗？<br>别笑，我以前就是这么理解的，<br>那么正心，修身不就是道德品质好，身体健康，做社会主义四有新人吗？<br>如果你也有和此相似的理解，我会说错错错，大错特错。</p>
+<p>1、格物<br>这里格物两字要分开讲，掰开了揉碎了讲，<br>“格”字在阳明理解就是正，<br>正的是什么？正的就是物；<br>物是什么呢？<br>‘物’既不是大家理解的物质，也不是事情的意思，<br>意之所在便是物，<br>那意又是什么呢？<br>心之所发便是意。<br>还有好奇的同学问？<br>心又是什么呢？<br>身之主宰便是心，这里的心绝对不是那团血肉，<br>而是天理之心，良知之心。</p>
+<p>格物的意思就是是纠正在你心上的事情，<br>使其符合良知之心，符合天理。<br>也就是不在你心上的事情，你是无法去格的，<br>此即谓：“心外无物”。</p>
+<p>你若问我天理是什么？<br>详细解释一篇论文的篇幅不够，<br>这里简单说下所谓天理，它已经存在于你的内心，<br>只不过被私欲所遮蔽，你去去一分私欲，便存一分天理。<br>好了现在意也诚了，物也格了，下面就该致知了，<br>大白话意思就是决心已下，在心上的事情也纠正的符合天理了。<br>这其实就是致知了。</p>
+<p>简单总结下：<br>要做到知行合一需要先做工夫（工夫包含很多，此篇只讲格物致知）<br>工夫的难点是格物致知，<br>诚意是格物致知的前提，格物致知是诚意的工夫；<br>诚意是格物致知的阶段性目的，格物致知是八目的起点。<br>而意越诚，也就是决心越大，则格物致知成效也就越大。<br>所以阳明才说，格物致知实际就是诚意的事情。<br>两者是相互促进的，格物致知增加决心，决心越大，格物致知成效也愈大，形成良性循环，但是切记要循序渐进。<br>格物告一段落，妈呀，解释清楚这俩字真的好难，喝口水，继续。</p>
+<p>2、致知<br>致知就是致良知，<br>说白了良知和天理是一个东西，都是不需学而可得。<br>这里良知和天理千万不要理解成道德层面的东西。<br>在心中的良知没有任何阻碍得以自然流行的时候，就是‘致知’。<br>只不过多数人良知被私欲遮蔽，因此需要致良知。</p>
+<p>你可能会好奇格物和致知的关系，<br>我也很好奇，一起来探索下吧。<br>我们格的是什么？<br>是物啊？<br>物是什么呢？<br>意之所在便是物啊？<br>那么好！意又是什么呢？<br>意的本体是知啊！<br>意的本体就是良知啊。<br>明白了吗？<br>我格的那个物是意之所在的物，它的本质是良知。<br>我格物的过程就是致良知的过程啊。<br>所以说格物致知本就是一件事情。<br>格物是致知的过程，致知是格物的最终目的。</p>
+<p>文行至此你会说，<br>上面就看格物致知了，<br>与“知行合一”有什么关系？<br>问得好，破天荒我引用一段原文：<br>知者，良知也，天然自有，即至善也。<br>物者，良知所知之事也。<br>格者，格其不正以归于正也。<br>格之斯实致之矣。<br>–《遗言录-明-王守仁》<br>引用完美解答了知行合一与格物致知的关系，<br>《知行合一与至善》一文提到，知行合一的最终目的就是“至善”。<br>而至善即是良知，致知即是致至善，<br>也就是知行合一的最终目的。<br>换句话说格物和知行合一的最终目的都是致良知，也都是至善，<br>因为良知和至善本来就是一回事的两种说法。<br>你问我知行合一和格物什么关系呀？且听下回分解。</p>
+<p>本期推荐电影：<br>一、《天堂的孩子》<br>推荐语：一对兄妹和一双鞋子的故事，很温暖。<br>二、《欺诈计划》<br>推荐语：这是部不露肉的伦理片，家庭靠感情还是靠血缘维系？<br>三《双旗镇刀客》<br>推荐语：喜欢武侠的这部绝对看了不下十遍吧，不解释。</p>
+<p>本期推荐书籍：<br>一、《岩中花树》作者：赵柏田<br>推荐语：以第一人称写王阳明的一生。<br>二、《华尔街日报是如何讲故事的》作者：威廉 布隆代尔<br>推荐语：对文案情有独钟的同学一定要精读。<br>三、《宫女谈往录》金易 沈义玲<br>推荐语：慈禧的起居与宫闱里的往事，细节独到，是谁道人生无常？</p>
+]]></content>
+      <categories>
+        <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
     <title>把Hexo部署到Github上</title>
     <url>/2016/03/20/%E6%8A%8AHexo%E9%83%A8%E7%BD%B2%E5%88%B0Github%E4%B8%8A/</url>
     <content><![CDATA[<p>一、添加SSH<br>添加ssh的目的，<br>是为了在以后历次提交中，<br>不用输入密码。</p>
@@ -539,28 +584,6 @@
       </categories>
   </entry>
   <entry>
-    <title>智慧与思想之花因何而开</title>
-    <url>/2016/03/17/%E6%99%BA%E6%85%A7%E4%B8%8E%E6%80%9D%E6%83%B3%E4%B9%8B%E8%8A%B1%E5%9B%A0%E4%BD%95%E8%80%8C%E5%BC%80/</url>
-    <content><![CDATA[<p>圣人之所以为圣人，<br>就是因为在百死千难中，<br>不断努力的思考自己的思维的过程；<br>而这个过程就是思想和智慧了。</p>
-<p>上次撰文说到致良知，<br>那么，致良知与智慧和思想是什么关系呢？<br>答案是没一毛钱关系。</p>
-<p>那么问题来了，<br>既然智慧和思想，和致良知没一毛钱关系。<br>那阳明先生为什么整个致良知之学呢？<br>莫急，听咱家慢慢道来；<br>以上是摘要<a id="more"></a><br>雾满拦江说，<br>人类所有学科的基础是哲学、数学与逻辑形式；<br>所有人类的学科莫不是建立在此三个要素上；<br>而阳明先生龙场悟道的“道”，却不在此列。<br>因为无论这三者再精密，<br>他还是属于人类已有的语言和思维范畴，<br>显然终极智慧和思想，是比此三者更高境界的东西。</p>
-<p>所以说圣人可以自己悟道，<br>但是他是无法用语言和你清晰描述的，<br>不然阳明也不会有：“吾性自足”一说了；</p>
-<p>打个比方说，<br>世上未通终极智慧之人，<br>都像是背对着一副栅栏和栅栏外的一堆篝火；<br>栅栏就是遮蔽良知也就是本心的欲望，<br>而篝火正是道家说的道，<br>儒家的一以及佛家的无无明。</p>
-<p>所有人是不知道自己后面的栅栏和篝火的，<br>一旦像阳明先生这样的人，<br>告诉他们你们身后有栅栏和篝火；<br>他们是不会信的，<br>这就像你和盲者谈论颜色，<br>你说得再惟妙惟肖，<br>他也是没有认识颜色的工具的，<br>或者聋哑人谈论音律，<br>即使你说的再声情并茂，<br>他也是没有认识音律的工具的。</p>
-<p>因此圣人先贤悟道终极智慧之后，<br>也是没有描述终极智慧的工具的。</p>
-<p>尽管终极智慧和致良知之间，<br>没有一毛钱的关系，<br>但如果你追求善良，苦求于良知；<br>那么你对这个世界的认知角度，<br>就会从外界转向对自己内心的审视。</p>
-<p>如此你会减少与外界的摩擦，<br>不会再苛求别人按你的想法行事，<br>而会反求诸己。</p>
-<p>反之如果你不追求善良，<br>不从内心审视自己，<br>就会将关注焦点放在外界，<br>而这种关注，必然会让你远离思想和智慧。</p>
-<p>思想与智慧无法复制也无法传承；<br>甚至连对身边人熏陶的功能都不存在，<br>比如苏格拉底与其妻子，<br>比如阳明先生身后的妻离子散。</p>
-<p>这是因为智慧和思想完全是个人化的思维运作过程，<br>是单独一个人不断采用探究式的思维模式，<br>对自己的大脑进行个人化开发，<br>这种开发的过程就是智慧与思想本身，</p>
-<p>而圣贤所能表达的不过是智慧和思想的结果，<br>但这个结果既不是思想也不是智慧，<br>最多不过是思想与智慧的行进方向而已。</p>
-<p>所以阳明先生说：“致良知”，<br>良知不是智慧，<br>致良知更不是思想，<br>思想与智慧，<br>是指你不断地努力，<br>让自己达到致良知境界的思维过程。<br>换句话说，<br>你可以把致良知理解为这个思维过程（也即思想和智慧过程）的一个显性结果以及方向。</p>
-]]></content>
-      <categories>
-        <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
     <title>知行合一与坚持</title>
     <url>/2016/03/17/%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E4%B8%8E%E5%9D%9A%E6%8C%81/</url>
     <content><![CDATA[<p>你确定你真的在坚持？</p>
@@ -596,29 +619,6 @@
 <p>这种规律性的知识累积到一定程度，<br>你才能在一件事情开头，<br>就能看到其发展的趋势，<br>你内心才会安定，<br>内心安定，你才能对局势更明晰。<br>才有利于你的杀伐决断。<br>此所谓：『定而后能静，静而后能安，安而后能虑』。<br>如果你因同事一句嘲讽的话，就怏怏不乐半天，<br>因老友一句玩笑式的调侃就郁闷半天，<br>如何能明晰局势，杀伐决断呢？</p>
 <p>阳明之所以为阳明，<br>除了天性聪慧，<br>勤于思索之外，<br>更在于其利用自身优势，<br>广泛出入佛老，溺于辞章之后，<br>有了对规律的全面认识，<br>方有龙场悟道之圆满。</p>
 <p>无论是现世的成功企业，<br>以及古往今来成功的个人，<br>都一定是把握了规律之后，<br>对规律的详加运用。<br>才成就一番功业。</p>
-]]></content>
-      <categories>
-        <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>知行合一与工夫</title>
-    <url>/2016/03/17/%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E4%B8%8E%E5%B7%A5%E5%A4%AB/</url>
-    <content><![CDATA[<p>一、写在前面<br>你真的自私？<br>这里‘自私’是指：<br>一件事，<br>不会对你有害，<br>只会对你有益。</p>
-<p>你一定有过这番经历，<br>跑步有益健康，嫌累懒得跑，<br>读书使人明智，枯燥懒得读，<br>学习使人进步，嫌烦懒得学，</p>
-<p>所有悔不当初的事，<br>都会让人变得更好。<br>如果你真的‘自私’，<br>为什么你不做呢？<br>原因就是你并非真的‘自私’。<br>以上是摘要<a id="more"></a><br>二、诚意为何物？<br>诚意就是真的下决心<br>也是心学的第一要义，<br>不是嘴上说说的那种下决心，<br>而是你铁定了就是要做成这件事，<br>在这件事做成之前半途而废或者打退堂鼓，<br>都是意不诚的表现，也就是决心不够。</p>
-<p>三、知行合一与工夫<br>工夫的难点是格物致知<br>读过《大学》的，对就是『四书』里面的那个《大学》，<br>应该都知道：意诚，心正，身修，家齐，国治，天下平；<br>少了两个词儿，这都被你看到了，<br>没错就是格物致知。<br>物格而后知至。<br>《大学》这一段提到的几个专有名词统称：“三纲八目”。<br>格物，致知，正心，修身，齐家，治国，平天下就是八目。</p>
-<p>你说我知道呀，早就背的滚瓜烂熟了，可是也没从里面学到什么啊！<br>没错，学习心学以前我也有你同样的困惑，<br>心里经常会念叨，我靠不是正心，修身，齐家，治国，平天下吗？<br>现在哪里还需要你去平天下啊？<br>再看看现在的自己，当个县长什么的估计也没盼头；<br>还谈什么平天下？<br>所有考试不及格的学生大概都曲解了考题本身的意思，<br>我这么说大概没人反对吧？</p>
-<p>我先说说我以前是怎么理解《大学》里面这几句话的？<br>格物不就是掌握世上每件事情的规律吗？<br>致知不就是知道真理吗？<br>别笑，我以前就是这么理解的，<br>那么正心，修身不就是道德品质好，身体健康，做社会主义四有新人吗？<br>如果你也有和此相似的理解，我会说错错错，大错特错。</p>
-<p>1、格物<br>这里格物两字要分开讲，掰开了揉碎了讲，<br>“格”字在阳明理解就是正，<br>正的是什么？正的就是物；<br>物是什么呢？<br>‘物’既不是大家理解的物质，也不是事情的意思，<br>意之所在便是物，<br>那意又是什么呢？<br>心之所发便是意。<br>还有好奇的同学问？<br>心又是什么呢？<br>身之主宰便是心，这里的心绝对不是那团血肉，<br>而是天理之心，良知之心。</p>
-<p>格物的意思就是是纠正在你心上的事情，<br>使其符合良知之心，符合天理。<br>也就是不在你心上的事情，你是无法去格的，<br>此即谓：“心外无物”。</p>
-<p>你若问我天理是什么？<br>详细解释一篇论文的篇幅不够，<br>这里简单说下所谓天理，它已经存在于你的内心，<br>只不过被私欲所遮蔽，你去去一分私欲，便存一分天理。<br>好了现在意也诚了，物也格了，下面就该致知了，<br>大白话意思就是决心已下，在心上的事情也纠正的符合天理了。<br>这其实就是致知了。</p>
-<p>简单总结下：<br>要做到知行合一需要先做工夫（工夫包含很多，此篇只讲格物致知）<br>工夫的难点是格物致知，<br>诚意是格物致知的前提，格物致知是诚意的工夫；<br>诚意是格物致知的阶段性目的，格物致知是八目的起点。<br>而意越诚，也就是决心越大，则格物致知成效也就越大。<br>所以阳明才说，格物致知实际就是诚意的事情。<br>两者是相互促进的，格物致知增加决心，决心越大，格物致知成效也愈大，形成良性循环，但是切记要循序渐进。<br>格物告一段落，妈呀，解释清楚这俩字真的好难，喝口水，继续。</p>
-<p>2、致知<br>致知就是致良知，<br>说白了良知和天理是一个东西，都是不需学而可得。<br>这里良知和天理千万不要理解成道德层面的东西。<br>在心中的良知没有任何阻碍得以自然流行的时候，就是‘致知’。<br>只不过多数人良知被私欲遮蔽，因此需要致良知。</p>
-<p>你可能会好奇格物和致知的关系，<br>我也很好奇，一起来探索下吧。<br>我们格的是什么？<br>是物啊？<br>物是什么呢？<br>意之所在便是物啊？<br>那么好！意又是什么呢？<br>意的本体是知啊！<br>意的本体就是良知啊。<br>明白了吗？<br>我格的那个物是意之所在的物，它的本质是良知。<br>我格物的过程就是致良知的过程啊。<br>所以说格物致知本就是一件事情。<br>格物是致知的过程，致知是格物的最终目的。</p>
-<p>文行至此你会说，<br>上面就看格物致知了，<br>与“知行合一”有什么关系？<br>问得好，破天荒我引用一段原文：<br>知者，良知也，天然自有，即至善也。<br>物者，良知所知之事也。<br>格者，格其不正以归于正也。<br>格之斯实致之矣。<br>–《遗言录-明-王守仁》<br>引用完美解答了知行合一与格物致知的关系，<br>《知行合一与至善》一文提到，知行合一的最终目的就是“至善”。<br>而至善即是良知，致知即是致至善，<br>也就是知行合一的最终目的。<br>换句话说格物和知行合一的最终目的都是致良知，也都是至善，<br>因为良知和至善本来就是一回事的两种说法。<br>你问我知行合一和格物什么关系呀？且听下回分解。</p>
-<p>本期推荐电影：<br>一、《天堂的孩子》<br>推荐语：一对兄妹和一双鞋子的故事，很温暖。<br>二、《欺诈计划》<br>推荐语：这是部不露肉的伦理片，家庭靠感情还是靠血缘维系？<br>三《双旗镇刀客》<br>推荐语：喜欢武侠的这部绝对看了不下十遍吧，不解释。</p>
-<p>本期推荐书籍：<br>一、《岩中花树》作者：赵柏田<br>推荐语：以第一人称写王阳明的一生。<br>二、《华尔街日报是如何讲故事的》作者：威廉 布隆代尔<br>推荐语：对文案情有独钟的同学一定要精读。<br>三、《宫女谈往录》金易 沈义玲<br>推荐语：慈禧的起居与宫闱里的往事，细节独到，是谁道人生无常？</p>
 ]]></content>
       <categories>
         <category>阳明心学</category>
@@ -714,6 +714,21 @@
       </categories>
   </entry>
   <entry>
+    <title>读《一个人的村庄》</title>
+    <url>/2016/03/17/%E8%AF%BB%E3%80%8A%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E6%9D%91%E5%BA%84%E3%80%8B/</url>
+    <content><![CDATA[<p>一、书和作者<br>《一个人的村庄》作者：刘亮程<br>刘亮程，作家，1962年出生在新疆古尔班通古特沙漠边缘的一个小村庄。<br>著有诗集《晒晒黄沙梁的太阳》，<br>散文集《虚土》《一个人的村庄》《在新疆》等。<br>被誉为“20世纪中国最后一位散文家”和“乡村哲学家”。</p>
+<p>二、我的家乡<br>读到这本书中的文字，<br>情不自禁想到我的家乡，<br>和儿时在家乡的我，<br>那时每到夏天，<br>暑假可以去河里摸鱼抓虾，<br>一顿美美的野餐是少不了的，<br>晚饭后可以去树林摸蝉换钱，<br>第二天的冰棍就有了保证，<br>傍晚可以去家附近的池塘洗个痛快的凉水澡，<br>一下子从一个小泥人儿，变成了一个滑皮溜。<br>以上是摘要<a id="more"></a><br>那时每到麦收，<br>镰刀总会割到手，<br>但简单止血后，不用包扎还可以愉快的割麦子，<br>买不起口香糖，<br>麦子去皮后直接放到口中咀嚼，<br>瞬间唇齿留香，麦香四溢，<br>比口香糖还有嚼头，<br>麦秸垛落成后，<br>那里是每个孩子的天堂。</p>
+<p>那时每到瓜熟季节<br>各种瓜果是当饭吃的，<br>西红柿是在衣服上抹一下就吃的，<br>西瓜汁是被当作最佳冷饮的。</p>
+<p>可是我有时会孤独，<br>为了不被理解的忧伤，<br>为了小小的愿望被流放，<br>为了不知何时走出这片累弯腰的黄土。<br>我有时会绝望，<br>为了好像永远割不完的麦行，<br>为了不知道自己的未来会怎样，<br>为了不知道如何改变现在的孤独和绝望。</p>
+<p>后来我终于远离那片黄土，<br>再也没有割不完的麦行，<br>再也没有不被理解的忧伤，<br>再也没有被流放的小愿望，<br>可是儿时家乡的那种快乐，<br>不知何时远离了我的心房。</p>
+<p>三、故乡情结<br>每个人都有故乡情结，<br>或许是儿时与玩伴的戏耍，<br>或者是捉拿河里鱼虾，<br>甚至是故乡的一片树林、土岗，<br>午夜梦回哭湿了枕套，<br>你可回到了哪个儿时的故乡，<br>你的故乡情结是什么呢？</p>
+]]></content>
+      <categories>
+        <category>读书明道</category>
+        <category>小说</category>
+      </categories>
+  </entry>
+  <entry>
     <title>诚意与格物</title>
     <url>/2016/03/17/%E8%AF%9A%E6%84%8F%E4%B8%8E%E6%A0%BC%E7%89%A9/</url>
     <content><![CDATA[<p>一、前面的话</p>
@@ -777,6 +792,17 @@
       </categories>
   </entry>
   <entry>
+    <title>读《所有的男人都是消耗品》</title>
+    <url>/2016/03/17/%E8%AF%BB%E3%80%8A%E6%89%80%E6%9C%89%E7%9A%84%E7%94%B7%E4%BA%BA%E9%83%BD%E6%98%AF%E6%B6%88%E8%80%97%E5%93%81%E3%80%8B/</url>
+    <content><![CDATA[<p>一、书和作者<br>《所有的男人都是消耗品》作者村上龙，<br>和村上春树合称：W村上；<br>这本书是其最有代表性的随笔；<br>从男女，恋爱，性出发，<br>对日本经济社会的功能不全进行猛烈抨击。<br>我是全盘读完的，<br>追求速度的同学建议只读和书同名的文章即可，<br>和书同名的只有三篇，速度会很快，<br>但是收获绝对不会少。<br>其他篇章要么只适用于日本国内，<br>要么就是其它碎碎念。</p>
+<p>由于全书都是格言式的话语，<br>没有论证等要素，<br>因此，照录我比较认同的话在下。<br>以上是摘要<a id="more"></a><br>二、女人与和平<br>女大学生气焰嚣张这是不言而喻的，<br>和平持续的时间越长，女人就越是飞扬跋扈。<br>我最认同的一句话，<br>有句话也说得不错，<br>忘记在哪儿看到的了，<br>它说：和平年代的主题是体育和女人，战争年代的主题是武器和男人。<br>谁说不是呢，真是太tmd精辟啦。<br>三、快乐和才能<br>如果想要得到快乐，就必须冒风险站到体制外面去，<br>郑渊洁自己在家教育郑亚旗，效果还可以吧，<br>倪匡当年从内蒙古偷渡到香港，今天的日子是相当逍遥啊。<br>才能是没有理由的，没有才能的家伙才希望找到理由。<br>靠努力是不能孕育才能的。<br>四、关于女人<br>女人总是在发情，<br>女人有希望被强暴的愿望，<br>娘们儿正垂涎三尺的等待被勾引，<br>如果成为强悍的男人，女人要多少都可以弄到手。<br>这出自一位自称玩笑的女权主义者之口，<br>真的是玩笑吗？<br>这是一个值得你我深思的问题。</p>
+]]></content>
+      <categories>
+        <category>读书明道</category>
+        <category>小说</category>
+      </categories>
+  </entry>
+  <entry>
     <title>读《中国文脉》</title>
     <url>/2016/03/17/%E8%AF%BB%E3%80%8A%E4%B8%AD%E5%9B%BD%E6%96%87%E8%84%89%E3%80%8B/</url>
     <content><![CDATA[<p>一、前面的话：关于官员与辅导员</p>
@@ -798,32 +824,6 @@
 <p>四、组织好</p>
 <p>佛教的弘法团队，统一服饰，统一言行，统一作息。<br>这要是军队，你说战斗力强不强。<br>而且团队内部又有一系列和谐原则，使组织内部内耗最小。</p>
 <p>这就是佛教的四大魅力了，看了之后，你想不想成佛呢？</p>
-]]></content>
-      <categories>
-        <category>读书明道</category>
-        <category>小说</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>读《一个人的村庄》</title>
-    <url>/2016/03/17/%E8%AF%BB%E3%80%8A%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E6%9D%91%E5%BA%84%E3%80%8B/</url>
-    <content><![CDATA[<p>一、书和作者<br>《一个人的村庄》作者：刘亮程<br>刘亮程，作家，1962年出生在新疆古尔班通古特沙漠边缘的一个小村庄。<br>著有诗集《晒晒黄沙梁的太阳》，<br>散文集《虚土》《一个人的村庄》《在新疆》等。<br>被誉为“20世纪中国最后一位散文家”和“乡村哲学家”。</p>
-<p>二、我的家乡<br>读到这本书中的文字，<br>情不自禁想到我的家乡，<br>和儿时在家乡的我，<br>那时每到夏天，<br>暑假可以去河里摸鱼抓虾，<br>一顿美美的野餐是少不了的，<br>晚饭后可以去树林摸蝉换钱，<br>第二天的冰棍就有了保证，<br>傍晚可以去家附近的池塘洗个痛快的凉水澡，<br>一下子从一个小泥人儿，变成了一个滑皮溜。<br>以上是摘要<a id="more"></a><br>那时每到麦收，<br>镰刀总会割到手，<br>但简单止血后，不用包扎还可以愉快的割麦子，<br>买不起口香糖，<br>麦子去皮后直接放到口中咀嚼，<br>瞬间唇齿留香，麦香四溢，<br>比口香糖还有嚼头，<br>麦秸垛落成后，<br>那里是每个孩子的天堂。</p>
-<p>那时每到瓜熟季节<br>各种瓜果是当饭吃的，<br>西红柿是在衣服上抹一下就吃的，<br>西瓜汁是被当作最佳冷饮的。</p>
-<p>可是我有时会孤独，<br>为了不被理解的忧伤，<br>为了小小的愿望被流放，<br>为了不知何时走出这片累弯腰的黄土。<br>我有时会绝望，<br>为了好像永远割不完的麦行，<br>为了不知道自己的未来会怎样，<br>为了不知道如何改变现在的孤独和绝望。</p>
-<p>后来我终于远离那片黄土，<br>再也没有割不完的麦行，<br>再也没有不被理解的忧伤，<br>再也没有被流放的小愿望，<br>可是儿时家乡的那种快乐，<br>不知何时远离了我的心房。</p>
-<p>三、故乡情结<br>每个人都有故乡情结，<br>或许是儿时与玩伴的戏耍，<br>或者是捉拿河里鱼虾，<br>甚至是故乡的一片树林、土岗，<br>午夜梦回哭湿了枕套，<br>你可回到了哪个儿时的故乡，<br>你的故乡情结是什么呢？</p>
-]]></content>
-      <categories>
-        <category>读书明道</category>
-        <category>小说</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>读《所有的男人都是消耗品》</title>
-    <url>/2016/03/17/%E8%AF%BB%E3%80%8A%E6%89%80%E6%9C%89%E7%9A%84%E7%94%B7%E4%BA%BA%E9%83%BD%E6%98%AF%E6%B6%88%E8%80%97%E5%93%81%E3%80%8B/</url>
-    <content><![CDATA[<p>一、书和作者<br>《所有的男人都是消耗品》作者村上龙，<br>和村上春树合称：W村上；<br>这本书是其最有代表性的随笔；<br>从男女，恋爱，性出发，<br>对日本经济社会的功能不全进行猛烈抨击。<br>我是全盘读完的，<br>追求速度的同学建议只读和书同名的文章即可，<br>和书同名的只有三篇，速度会很快，<br>但是收获绝对不会少。<br>其他篇章要么只适用于日本国内，<br>要么就是其它碎碎念。</p>
-<p>由于全书都是格言式的话语，<br>没有论证等要素，<br>因此，照录我比较认同的话在下。<br>以上是摘要<a id="more"></a><br>二、女人与和平<br>女大学生气焰嚣张这是不言而喻的，<br>和平持续的时间越长，女人就越是飞扬跋扈。<br>我最认同的一句话，<br>有句话也说得不错，<br>忘记在哪儿看到的了，<br>它说：和平年代的主题是体育和女人，战争年代的主题是武器和男人。<br>谁说不是呢，真是太tmd精辟啦。<br>三、快乐和才能<br>如果想要得到快乐，就必须冒风险站到体制外面去，<br>郑渊洁自己在家教育郑亚旗，效果还可以吧，<br>倪匡当年从内蒙古偷渡到香港，今天的日子是相当逍遥啊。<br>才能是没有理由的，没有才能的家伙才希望找到理由。<br>靠努力是不能孕育才能的。<br>四、关于女人<br>女人总是在发情，<br>女人有希望被强暴的愿望，<br>娘们儿正垂涎三尺的等待被勾引，<br>如果成为强悍的男人，女人要多少都可以弄到手。<br>这出自一位自称玩笑的女权主义者之口，<br>真的是玩笑吗？<br>这是一个值得你我深思的问题。</p>
 ]]></content>
       <categories>
         <category>读书明道</category>
