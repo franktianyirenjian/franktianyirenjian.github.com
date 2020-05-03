@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+
+  
+  <title>把Hexo部署到Github上 | 清风明月</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="一、添加SSH添加ssh的目的，是为了在以后历次提交中，不用输入密码。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="把Hexo部署到Github上">
+<meta property="og:url" content="https://franktianyirenjian.github.io/2016/03/20/%E6%8A%8AHexo%E9%83%A8%E7%BD%B2%E5%88%B0Github%E4%B8%8A/index.html">
+<meta property="og:site_name" content="清风明月">
+<meta property="og:description" content="一、添加SSH添加ssh的目的，是为了在以后历次提交中，不用输入密码。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-03-20T13:33:53.000Z">
+<meta property="article:modified_time" content="2020-05-03T05:22:02.797Z">
+<meta property="article:author" content="成百川">
+<meta name="twitter:card" content="summary">
+  
+    <link rel="alternate" href="/atom.xml" title="清风明月" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  
+<link rel="stylesheet" href="/css/style.css">
+
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">清风明月</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">笑看红尘享清风，千古明月照此生</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">主页</a>
+        
+          <a class="main-nav-link" href="/archives">归档</a>
+        
+          <a class="main-nav-link" href="/%E6%88%91%E6%98%AF%E8%B0%81">简介</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="搜索"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://franktianyirenjian.github.io"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-把Hexo部署到Github上" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/03/20/%E6%8A%8AHexo%E9%83%A8%E7%BD%B2%E5%88%B0Github%E4%B8%8A/" class="article-date">
+  <time datetime="2016-03-20T13:33:53.000Z" itemprop="datePublished">2016-03-20</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Hexo/">Hexo</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      把Hexo部署到Github上
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一、添加SSH<br>添加ssh的目的，<br>是为了在以后历次提交中，<br>不用输入密码。</p>
+<a id="more"></a>
+<p>1、添加SSH<br>1）、检测是否已有SSH</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~/.ssh</span><br><span class="line">ls</span><br></pre></td></tr></table></figure>
+<p>ls- - -&gt;这里第一个字母是L小写字母。<br>2)、创建一个SSH key<br>两种创建方式：默认文件名和指定文件名<br>①、使用默认文件名</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：ssh-keygen -t rss -C “your_email@<span class="number">163.</span>com”</span><br></pre></td></tr></table></figure>
+<p>代码参数含义：<br>-t 指定密钥类型，默认是rsa，可省略。<br>－C设置注释文字，比如邮箱。这里c是大写。<br>－f指定密钥文件存储文件名。<br>此处省略了－f，因此，上面的命令运行后，会让你输入一个文件名，用于保存刚生成的SSH key代码，如：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Generating public／private rss key pair.</span><br><span class="line"><span class="comment"># Enter file in which to save the key (/c/User/you/.ssh/id_rsa):[Press enter]</span></span><br></pre></td></tr></table></figure>
+<p>你可以不输入文件名，使用默认文件名（推荐），会生成id_rsa和id_rsa.pub两个密钥文件，<br>查找存储这两个密钥文件快速方法是：在finder里按下cmd+shift+G，然后输入~/.ssh。<br>紧接着还会要求你两次输入密码，（这里的密码不是你的管理者密码，是你push文件时需要输入的密码）。<br>你可以不输直接按回车，那么当你push时就不用输密码，直接提交到github了，界面如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase):</span><br><span class="line"><span class="comment"># Enter same passphrase again:</span></span><br></pre></td></tr></table></figure>
+<p>②、使用指定文件名</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">命令：ssh-keygen -t rss -C “邮箱地址” -f ~/.ssh/github_“文件名”</span><br></pre></td></tr></table></figure>
+<p>这样生成的两个文件名会是你自己指定的名字。<br>界面如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Your identification has been saved <span class="keyword">in</span> /c/User/you/.ssh/id_rsa.</span><br><span class="line"><span class="comment"># Your public key has been saved in /c/User/you/.ssh/id_rsa.pub.</span></span><br><span class="line"><span class="comment"># The key fingerprint is:</span></span><br><span class="line"><span class="comment"># 01:0f:f4:3b:ca:85:d6:17:a1:7d:f0:68:9d:f0:a2:db your_email@163.com</span></span><br></pre></td></tr></table></figure>
+<p>当你看到界面显示这句话时，说明SSH key已创建成功，你只需添加SSH key即可。</p>
+<p>3)、添加SSH key到Github上去<br>①、找到id_rsa.pub文件，打开复制所有内容。<br>②、登录github账号，按以下路径找到setting：Your profile- -&gt;Repository- - &gt;setting，<br>左侧点击Deploy key点击添加，<br>将刚才复制粘贴到key，标<br>题可省略或者随意设一个，<br>省略则默认邮箱名，可修改数据打钩，保存，搞定。<br>4）、测试SSH key<br>①、在终端输入ssh -T <a href="mailto:git@github.com">git@github.com</a><br>随后会有一个警告，直接yes，回车；</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">The authenticity of host <span class="string">'github.com (207.97.227.239)'</span> can<span class="string">'t be established.</span></span><br><span class="line"><span class="string"># RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.</span></span><br><span class="line"><span class="string"># Are you sure you want to continue connecting (yes/no)?</span></span><br></pre></td></tr></table></figure>
+<p>②、接下来你若设置了push密码会提示你输入push密码，若没有则忽略，直接显示以下界面；</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Hi username! Yo<span class="string">u've successfully authenticated, but GitHub does not</span></span><br><span class="line"><span class="string"># provide shell access.</span></span><br></pre></td></tr></table></figure>
+<p>看到successful这个词儿，你就大功告成了，<br>若是“access denied”，表示拒绝访问，<br>那么你就只能在配置信息里部署非SSH访问了。<br><code>到此SSH key添加成功。</code><br>二、部署Hexo到Github<br>1）、配置部署信息</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">deploy:</span><br><span class="line">type: git</span><br><span class="line">repository: https://github.com/franktianyirenjian/franktianyirenjian.github.io.git</span><br><span class="line">branch: master</span><br></pre></td></tr></table></figure>
+<p>这里有个大坑，因为在Github中新建repository时，<br>系统自动填充的库名的域名后缀是.com，<br>当我将配置信息的后缀设为.io，<br>然后hexo deploy，<br>怎么都找不到respository。</p>
+<p>最后才明白，直接将新建库名的域名后缀改为.io，<br>再次运行hexo deploy，successful！</p>
+<p>最可气的是我再次将库名后缀改回.com，<br>并且配置信息仍设置为.io后缀时，<br>仍然可以hexo deploy成功，<br>而且当库名后缀为.io，配置信息后缀是.com时，<br>hexo deploy照样成功。<br>也就是排列组合后有四种方式可以hexo deploy,</p>
+<table>
+<thead>
+<tr>
+<th align="center">respository</th>
+<th align="center">_config.yml</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">.com</td>
+<td align="center">.com</td>
+</tr>
+<tr>
+<td align="center">.io</td>
+<td align="center">.io</td>
+</tr>
+<tr>
+<td align="center">.io</td>
+<td align="center">.com</td>
+</tr>
+<tr>
+<td align="center">.com</td>
+<td align="center">.io</td>
+</tr>
+</tbody></table>
+<p>百思不得姐，还请高人指点。</p>
+<p>2)、在终端输入：hero clean<br>清除原来的缓存和临时文件<br>3）、hexo g -d或hexo d -g<br>生成静态文件并提交到github<br>成功界面如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">To https://github.com/franktianyirenjian/franktianyirenjian.github.io.git</span><br><span class="line">4387fc0..7c35d7a  HEAD -&gt; master</span><br><span class="line">Branch master set up to track remote branch master <span class="keyword">from</span> https://github.com/franktianyirenjian/franktianyirenjian.github.io.git.</span><br><span class="line">INFO  Deploy done: git</span><br></pre></td></tr></table></figure>
+<p>到此，你已经可以在互联网访问你的博客了。<br>输入相应网址，<br>一般是：<a href="https://username/username.github.io" target="_blank" rel="noopener">https://username/username.github.io</a><br>就可以在网络搜索你的博客了，<br>至此博客搭建全部完毕！！</p>
+<p>5）、写文章<br>如果你想发布新文章，并同步更新到网上，只需要以下四步，<br>cd \blog:进入博客根目录；<br>hexo new Myfirstblog:新建文章；<br>写完后执行以下命令：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean:清楚缓存和temp文件；</span><br><span class="line">hexo g -d:生成静态文件并提交到github。</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://franktianyirenjian.github.io/2016/03/20/%E6%8A%8AHexo%E9%83%A8%E7%BD%B2%E5%88%B0Github%E4%B8%8A/" data-id="ck9r7sgw9001aa0nu3radeqbe" class="article-share-link">分享</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/03/20/Hexo%E6%B7%BB%E5%8A%A0Rss%E5%92%8C%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">
+        
+          Hexo添加Rss和评论插件
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/03/20/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E6%8F%90%E5%8D%87%E5%AD%A6%E4%B9%A0%E6%95%88%E7%8E%87/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">如何利用知行合一提升学习效率</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Hexo/">Hexo</a><span class="category-list-count">7</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%A4%96%E8%AF%AD%E5%AD%A6%E4%B9%A0/">外语学习</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E5%BD%B1%E8%A7%86%E6%AD%8C/">影视歌</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/">编程</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/IOS/">IOS</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E7%BC%96%E7%A8%8B/Python/">Python</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BB%E4%B9%A6%E6%98%8E%E9%81%93/">读书明道</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/%E8%AF%BB%E4%B9%A6%E6%98%8E%E9%81%93/%E5%B0%8F%E8%AF%B4/">小说</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/%E9%98%B3%E6%98%8E%E5%BF%83%E5%AD%A6/">阳明心学</a><span class="category-list-count">14</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">五月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">四月 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/12/">十二月 2016</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">三月 2016</a><span class="archive-list-count">33</span></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/05/01/%E5%90%90%E6%A7%BD%E4%BA%92%E8%81%94%E7%BD%91%E4%B8%8A%E5%85%B3%E4%BA%8Ehexo%E6%B7%BB%E5%8A%A0%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2%E7%9A%84%E6%96%87%E7%AB%A0/">吐槽互联网上关于hexo添加本地搜索的文章</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/01/hexo%E5%9C%A8landscape%E4%B8%BB%E9%A2%98%E4%B8%8B%E6%B7%BB%E5%8A%A0%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2/">hexo在landscape主题下添加本地搜索</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/29/%E8%A6%81%E8%B5%9A%E9%92%B1%E5%85%88%E6%8F%90%E5%8D%87%E6%80%9D%E7%BB%B4/">要赚钱先提升思维</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/28/%E9%87%8D%E8%A3%85Hexo%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/">重装Hexo遇到的坑</a>
+          </li>
+        
+          <li>
+            <a href="/2016/12/27/%E5%BC%80%E5%A7%8B%E5%AD%A6%E4%B9%A0python%E4%BA%86/">开始学习python了</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+
+  
+    
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 成百川<br>
+      友情链接 <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+  
+  <span class="local-search local-search-google local-search-plugin" style="right: 50px;top: 30px;;position:absolute;z-index:2;">
+      <input type="search" placeholder="站内搜索" id="local-search-input" class="local-search-input-cls" style="">
+      <div id="local-search-result" class="local-search-result-cls"></div>
+  </span>
+
+<script type="text/javascript" id="local.search.active">
+var inputArea       = document.querySelector("#local-search-input");
+inputArea.onclick   = function(){ getSearchFile(); this.onclick = null }
+inputArea.onkeydown = function(){ if(event.keyCode == 13) return false }
+</script>
+  
+<script src="/js/load.js"></script>
+
+  
+<script src="/js/search.js"></script>
+
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">主页</a>
+  
+    <a href="/archives" class="mobile-nav-link">归档</a>
+  
+    <a href="/%E6%88%91%E6%98%AF%E8%B0%81" class="mobile-nav-link">简介</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+  
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+
+<script src="/js/script.js"></script>
+
+
+
+
+  </div>
+</body>
+</html>
