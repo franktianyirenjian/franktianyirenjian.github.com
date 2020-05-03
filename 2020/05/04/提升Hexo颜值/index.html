@@ -7,15 +7,15 @@
   
   <title>提升Hexo颜值 | 清风明月</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="去掉翻页乱码当我打开我的hexo博客，在上一页下一页后面总是跟着以下乱码： 1&amp;raquto 找到以下路径里的archive.ejs文件，&#x2F;themes&#x2F;landscape&#x2F;layout&#x2F;_partial将最后一段中的以上乱码去除，提交之后，显示修改成功。终于不再觉得自己的博客像个山寨版的了。 让Read More更好看一些找到以下路径里的arctile.styl文件，&#x2F;themes&#x2F;la">
+  <meta name="description" content="去掉翻页乱码当我打开我的hexo博客，在上一页下一页后面总是跟着以下乱码： 1&amp;raquto 找到以下路径里的archive.ejs文件，&#x2F;themes&#x2F;landscape&#x2F;layout&#x2F;_partial将最后一段中的以上乱码去除，提交之后，显示修改成功。终于不再觉得自己的博客像个山寨版的了。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="提升Hexo颜值">
 <meta property="og:url" content="https://franktianyirenjian.github.io/2020/05/04/%E6%8F%90%E5%8D%87Hexo%E9%A2%9C%E5%80%BC/index.html">
 <meta property="og:site_name" content="清风明月">
-<meta property="og:description" content="去掉翻页乱码当我打开我的hexo博客，在上一页下一页后面总是跟着以下乱码： 1&amp;raquto 找到以下路径里的archive.ejs文件，&#x2F;themes&#x2F;landscape&#x2F;layout&#x2F;_partial将最后一段中的以上乱码去除，提交之后，显示修改成功。终于不再觉得自己的博客像个山寨版的了。 让Read More更好看一些找到以下路径里的arctile.styl文件，&#x2F;themes&#x2F;la">
+<meta property="og:description" content="去掉翻页乱码当我打开我的hexo博客，在上一页下一页后面总是跟着以下乱码： 1&amp;raquto 找到以下路径里的archive.ejs文件，&#x2F;themes&#x2F;landscape&#x2F;layout&#x2F;_partial将最后一段中的以上乱码去除，提交之后，显示修改成功。终于不再觉得自己的博客像个山寨版的了。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2020-05-03T18:40:23.000Z">
-<meta property="article:modified_time" content="2020-05-03T19:20:08.425Z">
+<meta property="article:modified_time" content="2020-05-03T19:26:00.698Z">
 <meta property="article:author" content="成百川">
 <meta name="twitter:card" content="summary">
   
@@ -97,6 +97,8 @@
         <h3 id="去掉翻页乱码"><a href="#去掉翻页乱码" class="headerlink" title="去掉翻页乱码"></a>去掉翻页乱码</h3><p>当我打开我的hexo博客，<br>在上一页下一页后面总是跟着以下乱码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp;raquto</span><br></pre></td></tr></table></figure>
 <p>找到以下路径里的archive.ejs文件，<br><code>/themes/landscape/layout/_partial</code><br>将最后一段中的以上乱码去除，<br>提交之后，显示修改成功。<br>终于不再觉得自己的博客像个山寨版的了。</p>
+<a id="more"></a>
+
 <h3 id="让Read-More更好看一些"><a href="#让Read-More更好看一些" class="headerlink" title="让Read More更好看一些"></a>让Read More更好看一些</h3><p>找到以下路径里的arctile.styl文件，<br><code>/themes/landscape/source/css/_partial</code><br>用ctrl+F搜索：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">article-more-link a</span><br></pre></td></tr></table></figure>
 <p>并修改此选项color值</p>
@@ -108,7 +110,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp;copy;</span><br></pre></td></tr></table></figure>
 <p>改成自己想要的字，<br>比如我的是：<br><code>网站信息：后面跟着的是年份和作者</code></p>
 <p>将&amp;copy下一行的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%&#x3D;_(&#39;power_by&#39;) %&gt;注释或删除</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">&lt;%&#x3D;_(&#39;power_by&#39;) %&gt;注释或删除</span><br></pre></td></tr></table></figure>
 <p>然后在a标签前面加上自己想要的，比如我加的是：<br><code>友情链接：</code><br>并且还可以将a标签里href改成自己想要的链接。</p>
 <p>打完收工。<br>搞完以上自己的博客好看多了。</p>
 <h3 id="接下来的计划"><a href="#接下来的计划" class="headerlink" title="接下来的计划"></a>接下来的计划</h3><p>下次把提交搜索引擎和百度统计搞定。</p>
@@ -119,7 +121,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://franktianyirenjian.github.io/2020/05/04/%E6%8F%90%E5%8D%87Hexo%E9%A2%9C%E5%80%BC/" data-id="ck9rfwmlx00188vnudipvdgsx" class="article-share-link">分享</a>
+      <a data-url="https://franktianyirenjian.github.io/2020/05/04/%E6%8F%90%E5%8D%87Hexo%E9%A2%9C%E5%80%BC/" data-id="ck9rg4eds001cisnua9moevg3" class="article-share-link">分享</a>
       
       
     </footer>

@@ -97,29 +97,15 @@
         <h3 id="去掉翻页乱码"><a href="#去掉翻页乱码" class="headerlink" title="去掉翻页乱码"></a>去掉翻页乱码</h3><p>当我打开我的hexo博客，<br>在上一页下一页后面总是跟着以下乱码：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp;raquto</span><br></pre></td></tr></table></figure>
 <p>找到以下路径里的archive.ejs文件，<br><code>/themes/landscape/layout/_partial</code><br>将最后一段中的以上乱码去除，<br>提交之后，显示修改成功。<br>终于不再觉得自己的博客像个山寨版的了。</p>
-<h3 id="让Read-More更好看一些"><a href="#让Read-More更好看一些" class="headerlink" title="让Read More更好看一些"></a>让Read More更好看一些</h3><p>找到以下路径里的arctile.styl文件，<br><code>/themes/landscape/source/css/_partial</code><br>用ctrl+F搜索：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">article-more-link a</span><br></pre></td></tr></table></figure>
-<p>并修改此选项color值</p>
-<p><code>hover是指鼠标放到Read More上时的背景颜色和字体颜色。</code><br><code>前面的background和color分别设置鼠标未点击时的背景色和字体颜色。</code></p>
-<h3 id="让单篇文章底部的翻页更靓仔一些"><a href="#让单篇文章底部的翻页更靓仔一些" class="headerlink" title="让单篇文章底部的翻页更靓仔一些"></a>让单篇文章底部的翻页更靓仔一些</h3><p>还是刚才的arctile.styl文件<br>搜索以下两个关键词：<br>并修改对应选项color值，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">article-nav-caption:修改翻页字体颜色</span><br><span class="line">article-nav-title：修改文章标题字体颜色</span><br></pre></td></tr></table></figure>
-
-<h3 id="让博客左下角按个性显示信息"><a href="#让博客左下角按个性显示信息" class="headerlink" title="让博客左下角按个性显示信息"></a>让博客左下角按个性显示信息</h3><p>在以下路径找到footer.ejs文件<br><code>/themes/landscape/layout/_partial</code><br>将</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&amp;copy;</span><br></pre></td></tr></table></figure>
-<p>改成自己想要的字，<br>比如我的是：<br><code>网站信息：后面跟着的是年份和作者</code></p>
-<p>将&amp;copy下一行的</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;%&#x3D;_(&#39;power_by&#39;) %&gt;注释或删除</span><br></pre></td></tr></table></figure>
-<p>然后在a标签前面加上自己想要的，比如我加的是：<br><code>友情链接：</code><br>并且还可以将a标签里href改成自己想要的链接。</p>
-<p>打完收工。<br>搞完以上自己的博客好看多了。</p>
-<h3 id="接下来的计划"><a href="#接下来的计划" class="headerlink" title="接下来的计划"></a>接下来的计划</h3><p>下次把提交搜索引擎和百度统计搞定。</p>
-<p>然后就一心写文章。<br>什么RSS，评论和分享都不弄了，<br>弄了也没用，<br>RSS已经过时了，推送的还看不完，谁还订阅？<br>不可能天天盯着博客看，所以不弄评论了，<br>分享就更不用弄了，<br>还不如直接放上自己qq：1668088439，<br>或者自己微信，联系方便。</p>
-<p>就酱，以后如果不是必须，<br>就不在博客的功能和界面上下功夫了。</p>
-<p>一心写文章。</p>
-
+        
+          <p class="article-more-link">
+            <a href="/2020/05/04/%E6%8F%90%E5%8D%87Hexo%E9%A2%9C%E5%80%BC/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://franktianyirenjian.github.io/2020/05/04/%E6%8F%90%E5%8D%87Hexo%E9%A2%9C%E5%80%BC/" data-id="ck9rfwmlx00188vnudipvdgsx" class="article-share-link">分享</a>
+      <a data-url="https://franktianyirenjian.github.io/2020/05/04/%E6%8F%90%E5%8D%87Hexo%E9%A2%9C%E5%80%BC/" data-id="ck9rg4eds001cisnua9moevg3" class="article-share-link">分享</a>
       
       
     </footer>
@@ -167,7 +153,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://franktianyirenjian.github.io/2020/05/01/%E5%90%90%E6%A7%BD%E4%BA%92%E8%81%94%E7%BD%91%E4%B8%8A%E5%85%B3%E4%BA%8Ehexo%E6%B7%BB%E5%8A%A0%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2%E7%9A%84%E6%96%87%E7%AB%A0/" data-id="ck9rfwmkq000l8vnu0len7aw0" class="article-share-link">分享</a>
+      <a data-url="https://franktianyirenjian.github.io/2020/05/01/%E5%90%90%E6%A7%BD%E4%BA%92%E8%81%94%E7%BD%91%E4%B8%8A%E5%85%B3%E4%BA%8Ehexo%E6%B7%BB%E5%8A%A0%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2%E7%9A%84%E6%96%87%E7%AB%A0/" data-id="ck9rg4ecp000kisnu5q28b0g8" class="article-share-link">分享</a>
       
       
     </footer>
@@ -215,7 +201,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://franktianyirenjian.github.io/2020/05/01/hexo%E5%9C%A8landscape%E4%B8%BB%E9%A2%98%E4%B8%8B%E6%B7%BB%E5%8A%A0%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2/" data-id="ck9rfwmk7000d8vnu9qli2dqy" class="article-share-link">分享</a>
+      <a data-url="https://franktianyirenjian.github.io/2020/05/01/hexo%E5%9C%A8landscape%E4%B8%BB%E9%A2%98%E4%B8%8B%E6%B7%BB%E5%8A%A0%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2/" data-id="ck9rg4ec80008isnu4gkr1x8r" class="article-share-link">分享</a>
       
       
     </footer>
@@ -261,7 +247,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://franktianyirenjian.github.io/2020/04/29/%E8%A6%81%E8%B5%9A%E9%92%B1%E5%85%88%E6%8F%90%E5%8D%87%E6%80%9D%E7%BB%B4/" data-id="ck9rfwmms001z8vnu9g17g94h" class="article-share-link">分享</a>
+      <a data-url="https://franktianyirenjian.github.io/2020/04/29/%E8%A6%81%E8%B5%9A%E9%92%B1%E5%85%88%E6%8F%90%E5%8D%87%E6%80%9D%E7%BB%B4/" data-id="ck9rg4eeh001zisnugg8gemjx" class="article-share-link">分享</a>
       
       
     </footer>
