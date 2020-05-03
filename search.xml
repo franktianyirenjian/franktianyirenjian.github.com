@@ -138,6 +138,29 @@
       </categories>
   </entry>
   <entry>
+    <title>oc中的类和对象</title>
+    <url>/2016/03/17/oc%E4%B8%AD%E7%9A%84%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/</url>
+    <content><![CDATA[<p>一、类是什么</p>
+<p>首先类是一个抽象的概念，</p>
+<p>其次类只有实例化才有意义。</p>
+<p>比如手机就是一个类；</p>
+<p>汽车也是一个类。​，</p>
+<p>电脑、自行车、丝袜都是一个类。​<br>以上是摘要<a id="more"></a><br>二、类和对象的关系</p>
+<p>好比先有鸡还是先有蛋；</p>
+<p>现实中肯定是先有了好多具体的对象，</p>
+<p>人们才会对其进行分门别类；</p>
+<p>而网络编程中则需要先建立一个类；</p>
+<p>然后再去设置这个类的对象；</p>
+<p>比如‘人’是一个类，‘张三’则是人的一个对象；</p>
+<p>张三的姓名、性别与年龄则构成了‘人’这个类的成员变量；</p>
+<p>而姓名、性别与年龄则要靠方法去实现。​</p>
+]]></content>
+      <categories>
+        <category>编程</category>
+        <category>IOS</category>
+      </categories>
+  </entry>
+  <entry>
     <title>hexo在landscape主题下添加本地搜索</title>
     <url>/2020/05/01/hexo%E5%9C%A8landscape%E4%B8%BB%E9%A2%98%E4%B8%8B%E6%B7%BB%E5%8A%A0%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>基于能搜到这篇文章的人，<br>肯定是急于解决这个问题的人，<br>因此，我直接展现解决方案</p>
@@ -163,29 +186,6 @@
       </categories>
   </entry>
   <entry>
-    <title>oc中的类和对象</title>
-    <url>/2016/03/17/oc%E4%B8%AD%E7%9A%84%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/</url>
-    <content><![CDATA[<p>一、类是什么</p>
-<p>首先类是一个抽象的概念，</p>
-<p>其次类只有实例化才有意义。</p>
-<p>比如手机就是一个类；</p>
-<p>汽车也是一个类。​，</p>
-<p>电脑、自行车、丝袜都是一个类。​<br>以上是摘要<a id="more"></a><br>二、类和对象的关系</p>
-<p>好比先有鸡还是先有蛋；</p>
-<p>现实中肯定是先有了好多具体的对象，</p>
-<p>人们才会对其进行分门别类；</p>
-<p>而网络编程中则需要先建立一个类；</p>
-<p>然后再去设置这个类的对象；</p>
-<p>比如‘人’是一个类，‘张三’则是人的一个对象；</p>
-<p>张三的姓名、性别与年龄则构成了‘人’这个类的成员变量；</p>
-<p>而姓名、性别与年龄则要靠方法去实现。​</p>
-]]></content>
-      <categories>
-        <category>编程</category>
-        <category>IOS</category>
-      </categories>
-  </entry>
-  <entry>
     <title>《王阳明大传》读后感</title>
     <url>/2016/03/17/%E3%80%8A%E7%8E%8B%E9%98%B3%E6%98%8E%E5%A4%A7%E4%BC%A0%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/</url>
     <content><![CDATA[<p>最近读了《王阳明大传》<br>模模糊糊理解了一些<br>王阳明心学要解决的问题是什么?<br>记录在此，以备后用。<br>心学在阳明后来讲学时，<br>为使学生容易理解，<br>便表述为良知学，<br>而实现的方法则是致良知。</p>
@@ -195,19 +195,6 @@
 ]]></content>
       <categories>
         <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>为什么读完就谈</title>
-    <url>/2016/03/17/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AF%BB%E5%AE%8C%E5%B0%B1%E8%B0%88/</url>
-    <content><![CDATA[<p>一、教学相长的好处<br>教学相长，绝对是一个人进步的最快方法；<br>这个经验是我从自己写微信公众号体会到的。<br>并且由此公众号的写作，<br>逐渐理清了自己以后的知识架构；<br>一直以来我都想为自己建立一个知识系统；<br>这个系统是完全属于自己的，<br>并且系统里面的每个元素我都能达到专业水平。</p>
-<p>直到我开了微信公众号，<br>开了51技术博客，开了新浪博客，<br>每天在笔记本上写日记。<br>我才发现，我把时间用在什么地方。<br>我的知识结构已经自然形成了。<br>所以不要一开始就想着建立一个完备的框架，<br>只要你注意总结自己平时时间的去向，<br>一个大概的框架就会出来了。<br>因此，无论我开公众号，我写博客，我写日记，<br>除了偶尔能帮到某些人，最大的受益者肯定是我自己。<br>那么如果按照心学的理念，<br>为了自己的事情，为什么不好好做，多多去做呢？<br>以上是摘要<a id="more"></a><br>二、我的知识框架<br>我的框架是这样的。<br>首先，心学可以提升心力，执行力和思考力；<br>其次，编程这是我最爱的一门技术，它可以让你的想法，<br>通过敲入代码，变成具体可见的实体。<br>绝对是一种妙不可言的体验。<br>再次，外语，目前在学的有英语，日语和韩语，<br>真的妙不可言，因为你每学一门外语，<br>都会多打开一扇面向世界的窗户，<br>多为自己头脑里增加一种思维模式。<br>最后是音乐，音乐来源于数学，不但可以怡情，<br>而且哪个女孩不喜欢玩音乐的男孩呢？<br>还可以借此泡妞儿，有木有。</p>
-<p>因此，心学可以增强我学习编程，音乐和外语的执行力和思考力，<br>更能增加我用世的心力，<br>编程到一定境界也是艺术，艺术都是美丽的，<br>我tmd就爱美丽的东西，美女，美酒，<br>一切美的东西我都至死不渝的爱。<br>并且也可以顺便赚钱。<br>外语可以扩展我对编程和音乐的视野，顺便可以赚钱<br>音乐则可以慰藉自己的灵魂。<br>既可以赚钱又可以升华灵魂，<br>这样的事儿，我为什么不做呢？<br>三、读完就谈的好处<br>基于我开公众号，开博客以及学外语和音乐<br>给了我很大受益的体验，<br>我决定每读完一本书，<br>也及时的将自己从书中所获记录下来，<br>一为复习，二为记录备用，<br>当然如果有幸帮了某些人，<br>那也是我所希望的。</p>
-<p>四、人不为己天诛地灭<br>没错，就是这句话，<br>一直以来我们对这句话的理解都是贬义的，<br>它实际的意思是：<br>每个不极力修养自己，提高自己的人，天地都会来诛灭他。<br>因此，你看到没，<br>如果你自己不努力，老天爷和土地爷都看不顺眼，<br>你还有活路吗？<br>因此，无论学点儿什么，<br>现在就开始吧，好吗？<br>不然你还要一辈子漂浮在半空，<br>不着天不着地吗？<br>永远记住一句话：过往不恋，未来不迎，当下不杂。</p>
-]]></content>
-      <categories>
-        <category>读书明道</category>
-        <category>小说</category>
       </categories>
   </entry>
   <entry>
@@ -238,6 +225,19 @@
 ]]></content>
       <categories>
         <category>影视歌</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>为什么读完就谈</title>
+    <url>/2016/03/17/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AF%BB%E5%AE%8C%E5%B0%B1%E8%B0%88/</url>
+    <content><![CDATA[<p>一、教学相长的好处<br>教学相长，绝对是一个人进步的最快方法；<br>这个经验是我从自己写微信公众号体会到的。<br>并且由此公众号的写作，<br>逐渐理清了自己以后的知识架构；<br>一直以来我都想为自己建立一个知识系统；<br>这个系统是完全属于自己的，<br>并且系统里面的每个元素我都能达到专业水平。</p>
+<p>直到我开了微信公众号，<br>开了51技术博客，开了新浪博客，<br>每天在笔记本上写日记。<br>我才发现，我把时间用在什么地方。<br>我的知识结构已经自然形成了。<br>所以不要一开始就想着建立一个完备的框架，<br>只要你注意总结自己平时时间的去向，<br>一个大概的框架就会出来了。<br>因此，无论我开公众号，我写博客，我写日记，<br>除了偶尔能帮到某些人，最大的受益者肯定是我自己。<br>那么如果按照心学的理念，<br>为了自己的事情，为什么不好好做，多多去做呢？<br>以上是摘要<a id="more"></a><br>二、我的知识框架<br>我的框架是这样的。<br>首先，心学可以提升心力，执行力和思考力；<br>其次，编程这是我最爱的一门技术，它可以让你的想法，<br>通过敲入代码，变成具体可见的实体。<br>绝对是一种妙不可言的体验。<br>再次，外语，目前在学的有英语，日语和韩语，<br>真的妙不可言，因为你每学一门外语，<br>都会多打开一扇面向世界的窗户，<br>多为自己头脑里增加一种思维模式。<br>最后是音乐，音乐来源于数学，不但可以怡情，<br>而且哪个女孩不喜欢玩音乐的男孩呢？<br>还可以借此泡妞儿，有木有。</p>
+<p>因此，心学可以增强我学习编程，音乐和外语的执行力和思考力，<br>更能增加我用世的心力，<br>编程到一定境界也是艺术，艺术都是美丽的，<br>我tmd就爱美丽的东西，美女，美酒，<br>一切美的东西我都至死不渝的爱。<br>并且也可以顺便赚钱。<br>外语可以扩展我对编程和音乐的视野，顺便可以赚钱<br>音乐则可以慰藉自己的灵魂。<br>既可以赚钱又可以升华灵魂，<br>这样的事儿，我为什么不做呢？<br>三、读完就谈的好处<br>基于我开公众号，开博客以及学外语和音乐<br>给了我很大受益的体验，<br>我决定每读完一本书，<br>也及时的将自己从书中所获记录下来，<br>一为复习，二为记录备用，<br>当然如果有幸帮了某些人，<br>那也是我所希望的。</p>
+<p>四、人不为己天诛地灭<br>没错，就是这句话，<br>一直以来我们对这句话的理解都是贬义的，<br>它实际的意思是：<br>每个不极力修养自己，提高自己的人，天地都会来诛灭他。<br>因此，你看到没，<br>如果你自己不努力，老天爷和土地爷都看不顺眼，<br>你还有活路吗？<br>因此，无论学点儿什么，<br>现在就开始吧，好吗？<br>不然你还要一辈子漂浮在半空，<br>不着天不着地吗？<br>永远记住一句话：过往不恋，未来不迎，当下不杂。</p>
+]]></content>
+      <categories>
+        <category>读书明道</category>
+        <category>小说</category>
       </categories>
   </entry>
   <entry>
@@ -304,6 +304,34 @@
       </categories>
   </entry>
   <entry>
+    <title>开始学习python了</title>
+    <url>/2016/12/27/%E5%BC%80%E5%A7%8B%E5%AD%A6%E4%B9%A0python%E4%BA%86/</url>
+    <content><![CDATA[<p>从接触编程到现在已经三年多了，多数是浅尝辄止，因为我的主要工作是运营；<br>也没有必要把编程学的这么深入，从刚开始的html，到后来的php以及去年学的OC；<br>终于要学python了，为什么要学习python呢？<br>更深的我也不懂，我只知道两点。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">第一，python能做大数据方面的东西；</span><br><span class="line">第二，python还能做Machine Learning方面的东西。</span><br></pre></td></tr></table></figure>
+<p>重要的是我对这两方面都非常感兴趣，所以我就要学习python了。</p>
+<a id="more"></a>
+<p>马克思说，研究首先要充分的占有资料，所以就非常投入的查了很多资料。<br>而学习一门语言首先要搭建IDE啊，<br>我没听说python有像开发IOS的Xcode一样的IDE，<br>最初的想法就是赶紧搭建出来一个IDE，开始学习敲代码，<br>于是苦逼的填坑就开始了，什么pycharm、sublime txt，脑袋整个一浆糊。<br>最后终于搞清楚了，他娘的Mac自带python2.7和Vim。<br>只需要简单配置vim的配置文件vimrc，就可以开始简单的自学python了。</p>
+<p>但是，坑，才刚刚开始，因为用Xcode习惯了，所以一上来肯定想着python也可以一键执行啊。<br>于是找到一个老兄回答的配置一键执行的答案，就是在这里我遇到了初学python的一个大坑。</p>
+<p>我想既然一键执行，那就开启vim的配置文件vimrc开始配置吧。<br>一查才知道，/usr/share/vim/vimrc是系统级的文件，不可妄动。<br>那好，那就用Teriminal在用户下新建一个唄！</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">vi ~/.vimrc</span><br></pre></td></tr></table></figure>
+<p>建好了就开始写唄，于是就把java和c以及python在vim中的一键执行配置全部添加上。<br>呶！就是下面这堆!</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">map &lt;F5&gt; :call CompileRunGcc()&lt;CR&gt;</span><br><span class="line">func! CompileRunGcc()</span><br><span class="line"><span class="keyword">exec</span> <span class="string">"w"</span></span><br><span class="line"><span class="keyword">if</span> &amp;filetype == <span class="string">'c'</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!g++ % -o %&lt;"</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!time ./%&lt;"</span></span><br><span class="line">elseif &amp;filetype == <span class="string">'cpp'</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!g++ % -o %&lt;"</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!time ./%&lt;"</span></span><br><span class="line">elseif &amp;filetype == <span class="string">'java'</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!javac %"</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!time java %&lt;"</span></span><br><span class="line">elseif &amp;filetype == <span class="string">'sh'</span></span><br><span class="line">:!time bash %</span><br><span class="line">elseif &amp;filetype == <span class="string">'python'</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!time python2.7 %"</span></span><br><span class="line">elseif &amp;filetype == <span class="string">'html'</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!firefox % &amp;"</span></span><br><span class="line">elseif &amp;filetype == <span class="string">'go'</span></span><br><span class="line"><span class="string">"        exec "</span>!go build %&lt;<span class="string">"</span></span><br><span class="line"><span class="string">exec "</span>!time go run %<span class="string">"</span></span><br><span class="line"><span class="string">elseif &amp;filetype == 'mkd'</span></span><br><span class="line"><span class="string">exec "</span>!~/.vim/markdown.pl % &gt; %.html &amp;<span class="string">"</span></span><br><span class="line"><span class="string">exec "</span>!firefox %.html &amp;<span class="string">"</span></span><br><span class="line"><span class="string">endif</span></span><br><span class="line"><span class="string">endfunc</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">上面的意思是在vim中写c、java和python的时候在命令模式下，可以按F5，或者Fn+F5一键执行，查看编译效果。</span><br></pre></td></tr></table></figure>
+<p>可坑爹的是，我在vim中写完python的代码后，在命令模式下，无论怎么敲F5，都没反应。<br>而且由于vim的命令还不熟悉，在从Teriminal进入vimrc时，老是出现错误，<br>因为不懂啊，于是就感觉出了很大的错误，后来才知道，原来写vim时会生成两个文件，一个临时的一个存储在磁盘上，<br>如果写完vim忘记保存，那么那个叫做XX,swp的临时文件，会搞得你欲生欲死。</p>
+<p>没办法啊，身边也没有python大牛，只能继续翻网页。</p>
+<p>直到无意中把下面一行代码加入vi~/.vimrc(用户目录下的vim配置文件，它的优先级是高于vim的系统级配置文件的)中，然后奇迹的事情发生了，<br>我靠我的.py文件不但高亮显示了，最重要的是，当我在命令模式下，按下Fn+F5，竟然可以一键执行了，<br>这时候，我知道，终于跳出了我初学python的第一个坑。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">syntax on</span><br></pre></td></tr></table></figure>
+<p>没错就这两个单词，意思是：语法高亮。</p>
+<p>反思：我为什么会在这个在行家看来是弱智问题的坑上徘徊这么久呢？<br>有四点：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">第一，通过Teriminal用vi ~/.vimrc命令在用户目录下创建的vim配置文件是隐藏的；</span><br><span class="line">我没看到，就以为没有，然后就复制了系统下的vimrc文件来进行修改，肯定无效。</span><br><span class="line">第二，由于不知道在用户目录下新建的vimrc配置文件是隐藏的，而在Teriminal中试图进入vimrc时，又频频出错，于是就束手无策了。</span><br><span class="line">第三、由于不知道用户目录下新建的vimrc文件是隐藏的，而在用Teriminal进入时，又频频出错；</span><br><span class="line">于是我就试图自己在vim里新建一个名为vimrc的文件，绝壁无效。</span><br><span class="line">第四、由于，我是抱着，我对vim和python都懂得不多，所有跟配置一键执行无关的网页都是一扫而过；</span><br><span class="line">导致错过了提前解决问题的可能。</span><br><span class="line">就酱！</span><br></pre></td></tr></table></figure>
+<p>下面就要开始正式学习vim的命令和python语法了，我会一直更新滴！</p>
+]]></content>
+      <categories>
+        <category>编程</category>
+        <category>Python</category>
+      </categories>
+  </entry>
+  <entry>
     <title>工夫与境界（一）</title>
     <url>/2016/03/17/%E5%B7%A5%E5%A4%AB%E4%B8%8E%E5%A2%83%E7%95%8C%EF%BC%88%E4%B8%80%EF%BC%89/</url>
     <content><![CDATA[<p>工夫与境界古人常论之；<br>这里工夫是指心力，境界是指胸襟。<br>心力与胸襟外在综合显现为气质。</p>
@@ -357,34 +385,6 @@
 ]]></content>
       <categories>
         <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>开始学习python了</title>
-    <url>/2016/12/27/%E5%BC%80%E5%A7%8B%E5%AD%A6%E4%B9%A0python%E4%BA%86/</url>
-    <content><![CDATA[<p>从接触编程到现在已经三年多了，多数是浅尝辄止，因为我的主要工作是运营；<br>也没有必要把编程学的这么深入，从刚开始的html，到后来的php以及去年学的OC；<br>终于要学python了，为什么要学习python呢？<br>更深的我也不懂，我只知道两点。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">第一，python能做大数据方面的东西；</span><br><span class="line">第二，python还能做Machine Learning方面的东西。</span><br></pre></td></tr></table></figure>
-<p>重要的是我对这两方面都非常感兴趣，所以我就要学习python了。</p>
-<a id="more"></a>
-<p>马克思说，研究首先要充分的占有资料，所以就非常投入的查了很多资料。<br>而学习一门语言首先要搭建IDE啊，<br>我没听说python有像开发IOS的Xcode一样的IDE，<br>最初的想法就是赶紧搭建出来一个IDE，开始学习敲代码，<br>于是苦逼的填坑就开始了，什么pycharm、sublime txt，脑袋整个一浆糊。<br>最后终于搞清楚了，他娘的Mac自带python2.7和Vim。<br>只需要简单配置vim的配置文件vimrc，就可以开始简单的自学python了。</p>
-<p>但是，坑，才刚刚开始，因为用Xcode习惯了，所以一上来肯定想着python也可以一键执行啊。<br>于是找到一个老兄回答的配置一键执行的答案，就是在这里我遇到了初学python的一个大坑。</p>
-<p>我想既然一键执行，那就开启vim的配置文件vimrc开始配置吧。<br>一查才知道，/usr/share/vim/vimrc是系统级的文件，不可妄动。<br>那好，那就用Teriminal在用户下新建一个唄！</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">vi ~/.vimrc</span><br></pre></td></tr></table></figure>
-<p>建好了就开始写唄，于是就把java和c以及python在vim中的一键执行配置全部添加上。<br>呶！就是下面这堆!</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">map &lt;F5&gt; :call CompileRunGcc()&lt;CR&gt;</span><br><span class="line">func! CompileRunGcc()</span><br><span class="line"><span class="keyword">exec</span> <span class="string">"w"</span></span><br><span class="line"><span class="keyword">if</span> &amp;filetype == <span class="string">'c'</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!g++ % -o %&lt;"</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!time ./%&lt;"</span></span><br><span class="line">elseif &amp;filetype == <span class="string">'cpp'</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!g++ % -o %&lt;"</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!time ./%&lt;"</span></span><br><span class="line">elseif &amp;filetype == <span class="string">'java'</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!javac %"</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!time java %&lt;"</span></span><br><span class="line">elseif &amp;filetype == <span class="string">'sh'</span></span><br><span class="line">:!time bash %</span><br><span class="line">elseif &amp;filetype == <span class="string">'python'</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!time python2.7 %"</span></span><br><span class="line">elseif &amp;filetype == <span class="string">'html'</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!firefox % &amp;"</span></span><br><span class="line">elseif &amp;filetype == <span class="string">'go'</span></span><br><span class="line"><span class="string">"        exec "</span>!go build %&lt;<span class="string">"</span></span><br><span class="line"><span class="string">exec "</span>!time go run %<span class="string">"</span></span><br><span class="line"><span class="string">elseif &amp;filetype == 'mkd'</span></span><br><span class="line"><span class="string">exec "</span>!~/.vim/markdown.pl % &gt; %.html &amp;<span class="string">"</span></span><br><span class="line"><span class="string">exec "</span>!firefox %.html &amp;<span class="string">"</span></span><br><span class="line"><span class="string">endif</span></span><br><span class="line"><span class="string">endfunc</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">上面的意思是在vim中写c、java和python的时候在命令模式下，可以按F5，或者Fn+F5一键执行，查看编译效果。</span><br></pre></td></tr></table></figure>
-<p>可坑爹的是，我在vim中写完python的代码后，在命令模式下，无论怎么敲F5，都没反应。<br>而且由于vim的命令还不熟悉，在从Teriminal进入vimrc时，老是出现错误，<br>因为不懂啊，于是就感觉出了很大的错误，后来才知道，原来写vim时会生成两个文件，一个临时的一个存储在磁盘上，<br>如果写完vim忘记保存，那么那个叫做XX,swp的临时文件，会搞得你欲生欲死。</p>
-<p>没办法啊，身边也没有python大牛，只能继续翻网页。</p>
-<p>直到无意中把下面一行代码加入vi~/.vimrc(用户目录下的vim配置文件，它的优先级是高于vim的系统级配置文件的)中，然后奇迹的事情发生了，<br>我靠我的.py文件不但高亮显示了，最重要的是，当我在命令模式下，按下Fn+F5，竟然可以一键执行了，<br>这时候，我知道，终于跳出了我初学python的第一个坑。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">syntax on</span><br></pre></td></tr></table></figure>
-<p>没错就这两个单词，意思是：语法高亮。</p>
-<p>反思：我为什么会在这个在行家看来是弱智问题的坑上徘徊这么久呢？<br>有四点：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">第一，通过Teriminal用vi ~/.vimrc命令在用户目录下创建的vim配置文件是隐藏的；</span><br><span class="line">我没看到，就以为没有，然后就复制了系统下的vimrc文件来进行修改，肯定无效。</span><br><span class="line">第二，由于不知道在用户目录下新建的vimrc配置文件是隐藏的，而在Teriminal中试图进入vimrc时，又频频出错，于是就束手无策了。</span><br><span class="line">第三、由于不知道用户目录下新建的vimrc文件是隐藏的，而在用Teriminal进入时，又频频出错；</span><br><span class="line">于是我就试图自己在vim里新建一个名为vimrc的文件，绝壁无效。</span><br><span class="line">第四、由于，我是抱着，我对vim和python都懂得不多，所有跟配置一键执行无关的网页都是一扫而过；</span><br><span class="line">导致错过了提前解决问题的可能。</span><br><span class="line">就酱！</span><br></pre></td></tr></table></figure>
-<p>下面就要开始正式学习vim的命令和python语法了，我会一直更新滴！</p>
-]]></content>
-      <categories>
-        <category>编程</category>
-        <category>Python</category>
       </categories>
   </entry>
   <entry>
@@ -444,22 +444,6 @@
       </categories>
   </entry>
   <entry>
-    <title>我是这样认识王阳明的</title>
-    <url>/2016/03/17/%E6%88%91%E6%98%AF%E8%BF%99%E6%A0%B7%E8%AE%A4%E8%AF%86%E7%8E%8B%E9%98%B3%E6%98%8E%E7%9A%84/</url>
-    <content><![CDATA[<p>大多数喜欢王阳明的朋友，总是标榜“知行合一”，“致良知”；<br>我的微信关注了一个也标榜自己喜欢阳明思想的朋友；<br>做什么事都和：“心性”、“致良知”这些字眼联系起来；</p>
-<p>细看了下，要么就是参加了一个活动，说今天主讲人讲的真好；<br>是：“知行合一”；是“致良知”云云。<br>要么就是参加了个管理培训班，<br>完后就说：稻盛和夫的管理哲学和致良知完美契合。<br>  以上是文章摘要 <a id="more"></a> 以下是余下全文<br>我也真是醉了，哲学本来就和生活息息相关；<br>经常和生活联系起来倒也合情合理。<br>但是拉个屎撒个尿都要和知行合一与致良知联系起来，<br>要么就是没有真正理解阳明先生的思想。<br>要么就是中了“教条主义”的毒。</p>
-<p>在下不才，从听说王阳明这个人到最后逐渐对其思想了解一些；<br>也将近有十年的时间了。<br>遥想当年哥在高中学的是小三门儿—音乐；<br>上过高中的都知道，这个专业考试要提前考。<br>05年春节去郑州进行专业考试；<br>有天晚上和同去的同学到外面逛街，<br>逛到地下通道，有个书摊大家便驻足观看；<br>我一眼就看到了周月亮写的那本《王阳明大传》；<br>盗版的。</p>
-<p>封皮上的两句话把我给震住了。<br>“雅可上九天揽月，俗可下五洋捉鳖”；<br>当时连王阳明是谁都不知道，<br>更不会懂什么知行合一和致良知了。<br>但就觉得这两句话真牛逼；<br>说到我心里去了。</p>
-<p>之后，王阳明这个名字算是记住了。<br>当时对于买不买还是有些踌躇；<br>这时有个同学一句话让我下了买的决心；<br>他说：“你遇见了就一定要买，即使贵一点儿，免得以后后悔。<br>（当时的二十块一本盗版，对我等把县城当大城市的高中生来说的确算贵得。）</p>
-<p>随后这本周月亮的《王阳明大传》，<br>跟随我转战南北，东奔西跑；<br>南到浙杭，北到首都；<br>中间阅览无数遍，<br>每次看都有新感悟；<br>透明胶和尼龙绳修补多次；<br>最终，在最近一次搬家中遗失掉了。</p>
-<p>随着这本书打开我对王阳明的一扇门；<br>随后又在网上下载了好多关于王阳明的书；<br>什么《明朝一哥王阳明》，《王阳明的哲学精神》<br>乃至《有无之境》；<br>一路看下来，最后必须要看《传习录》啊！<br>就买了本叶圣陶解读的《传习录》来看；<br>虽然大师解读，但在下古文修养不高；<br>看着也是半懂不懂。</p>
-<p>最后就逛贴吧，逛论坛；<br>偶尔在天涯上发现了“沙滩孤雁”的帖子；<br>看了一页之后，惊为天人；<br>然后就开始了对这本《开谈传习录》的反复阅读。<br>以上大概就是我对王阳明的认识过程。<br>也许文字枯燥，也许词不达意；<br>也许行文不畅；<br>但作为自己对一个伟人的从认识到熟悉的回顾；<br>我想还是足够了。</p>
-]]></content>
-      <categories>
-        <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
     <title>我的英语学习小结</title>
     <url>/2016/03/17/%E6%88%91%E7%9A%84%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93/</url>
     <content><![CDATA[<p>之所以有这篇文章；<br>是因为最近正在学习ios开发，<br>需要看很多英语文档及英文网站 ；<br>并且成考那边也需要加强英语学习；<br>无论从开阔眼界或和人用英语聊天（装逼）而言；<br>都到了不得不学，逼上梁山的地步；</p>
@@ -474,28 +458,6 @@
 ]]></content>
       <categories>
         <category>外语学习</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>智慧与思想之花因何而开</title>
-    <url>/2016/03/17/%E6%99%BA%E6%85%A7%E4%B8%8E%E6%80%9D%E6%83%B3%E4%B9%8B%E8%8A%B1%E5%9B%A0%E4%BD%95%E8%80%8C%E5%BC%80/</url>
-    <content><![CDATA[<p>圣人之所以为圣人，<br>就是因为在百死千难中，<br>不断努力的思考自己的思维的过程；<br>而这个过程就是思想和智慧了。</p>
-<p>上次撰文说到致良知，<br>那么，致良知与智慧和思想是什么关系呢？<br>答案是没一毛钱关系。</p>
-<p>那么问题来了，<br>既然智慧和思想，和致良知没一毛钱关系。<br>那阳明先生为什么整个致良知之学呢？<br>莫急，听咱家慢慢道来；<br>以上是摘要<a id="more"></a><br>雾满拦江说，<br>人类所有学科的基础是哲学、数学与逻辑形式；<br>所有人类的学科莫不是建立在此三个要素上；<br>而阳明先生龙场悟道的“道”，却不在此列。<br>因为无论这三者再精密，<br>他还是属于人类已有的语言和思维范畴，<br>显然终极智慧和思想，是比此三者更高境界的东西。</p>
-<p>所以说圣人可以自己悟道，<br>但是他是无法用语言和你清晰描述的，<br>不然阳明也不会有：“吾性自足”一说了；</p>
-<p>打个比方说，<br>世上未通终极智慧之人，<br>都像是背对着一副栅栏和栅栏外的一堆篝火；<br>栅栏就是遮蔽良知也就是本心的欲望，<br>而篝火正是道家说的道，<br>儒家的一以及佛家的无无明。</p>
-<p>所有人是不知道自己后面的栅栏和篝火的，<br>一旦像阳明先生这样的人，<br>告诉他们你们身后有栅栏和篝火；<br>他们是不会信的，<br>这就像你和盲者谈论颜色，<br>你说得再惟妙惟肖，<br>他也是没有认识颜色的工具的，<br>或者聋哑人谈论音律，<br>即使你说的再声情并茂，<br>他也是没有认识音律的工具的。</p>
-<p>因此圣人先贤悟道终极智慧之后，<br>也是没有描述终极智慧的工具的。</p>
-<p>尽管终极智慧和致良知之间，<br>没有一毛钱的关系，<br>但如果你追求善良，苦求于良知；<br>那么你对这个世界的认知角度，<br>就会从外界转向对自己内心的审视。</p>
-<p>如此你会减少与外界的摩擦，<br>不会再苛求别人按你的想法行事，<br>而会反求诸己。</p>
-<p>反之如果你不追求善良，<br>不从内心审视自己，<br>就会将关注焦点放在外界，<br>而这种关注，必然会让你远离思想和智慧。</p>
-<p>思想与智慧无法复制也无法传承；<br>甚至连对身边人熏陶的功能都不存在，<br>比如苏格拉底与其妻子，<br>比如阳明先生身后的妻离子散。</p>
-<p>这是因为智慧和思想完全是个人化的思维运作过程，<br>是单独一个人不断采用探究式的思维模式，<br>对自己的大脑进行个人化开发，<br>这种开发的过程就是智慧与思想本身，</p>
-<p>而圣贤所能表达的不过是智慧和思想的结果，<br>但这个结果既不是思想也不是智慧，<br>最多不过是思想与智慧的行进方向而已。</p>
-<p>所以阳明先生说：“致良知”，<br>良知不是智慧，<br>致良知更不是思想，<br>思想与智慧，<br>是指你不断地努力，<br>让自己达到致良知境界的思维过程。<br>换句话说，<br>你可以把致良知理解为这个思维过程（也即思想和智慧过程）的一个显性结果以及方向。</p>
-]]></content>
-      <categories>
-        <category>阳明心学</category>
       </categories>
   </entry>
   <entry>
@@ -561,20 +523,38 @@
       </categories>
   </entry>
   <entry>
-    <title>王阳明之所以为王阳明</title>
-    <url>/2016/03/17/%E7%8E%8B%E9%98%B3%E6%98%8E%E4%B9%8B%E6%89%80%E4%BB%A5%E4%B8%BA%E7%8E%8B%E9%98%B3%E6%98%8E/</url>
-    <content><![CDATA[<p>上篇文说到，<br>圣人都是在百死千难中，<br>对自己的思维进行苦苦思索；<br>方才悟得圣人之道。<br>那我等芸芸众生欲窥得圣人一二门径，<br>应该如何做呢？</p>
-<p>一、让擅长成为精通<br>道理人人会讲，成者寥寥无几？<br>何也？<br>知其然，不知其所以然也！<br>首先要做的就是做回你自己，<br>所谓做回你自己，<br>意思就是想清楚你能干神马，<br>无论你想干神马，你喜欢干神马，<br>你首先要想清楚，你能干神马。<br>先从你最擅长的地方入手，<br>把你擅长的事情精通了。<br>以上是摘要<a id="more"></a><br>你如果喜欢喝酒，<br>那就成为品酒专家，<br>你如果喜欢旅游，<br>那就让你的水平，<br>可以去做旅游杂志主编，<br>如果你喜欢食物，<br>那就让自己可以做到像蔡澜那样，<br>可以以此出书做节目。</p>
-<p>二、找到适合你自己的路<br>都云小米成于饥饿营销，<br>但凡客陈年和雷军是好基友；<br>不可谓不倾囊相授，<br>不可谓不耳提面命；<br>现在也在亦庄苦苦学习小米的一套，<br>怎么不见泛起什么浪花呢？</p>
-<p>凡客自一万之众，<br>搬往亦庄后的三百余人，<br>也是痛下决心，<br>要从白衬衫单点突破；</p>
-<p>结果如何？<br>去年8月份江苏省质量技术监督局抽查中，<br>其99元衬衫六项参数不合格。<br>去年11月份国家质检总局抽检中，<br>又有<br>凡客在休闲服装、皮鞋、旅游鞋、背提包4种产品中被发现有不合格现象。<br>何也？立定脚跟做事，<br>也没咬紧牙关做人。</p>
-<p>三、掌握规律<br>每个人的人生是不同的，<br>每个人的人生路径是不同的，<br>因此每个人都会有一条最适合自己的路径；<br>所以，即使雷军操盘凡客，<br>照着小米的玩法全部来一遍，<br>也不见得会有起死回生之效。<br>但是事情成败有其自身规律，<br>这是毋庸置疑的。</p>
-<p>正如上篇所讲，<br>圣人自己成为了圣人，<br>他成圣的方法与路径，<br>是无法对你言说的，<br>即使他是圣人。</p>
-<p>因此，不要妄想有一套放之四海而皆准的方法，<br>可以使你一夜暴富，或者是一夜成名成圣。</p>
-<p>你必须在精通一件事情之后，<br>回过头去总结归纳规律性的东西，<br>使之成为自己的东西之后，<br>再将其应用到其他同类事情中，<br>才可以说你掌握了规律。</p>
-<p>这种规律性的知识累积到一定程度，<br>你才能在一件事情开头，<br>就能看到其发展的趋势，<br>你内心才会安定，<br>内心安定，你才能对局势更明晰。<br>才有利于你的杀伐决断。<br>此所谓：『定而后能静，静而后能安，安而后能虑』。<br>如果你因同事一句嘲讽的话，就怏怏不乐半天，<br>因老友一句玩笑式的调侃就郁闷半天，<br>如何能明晰局势，杀伐决断呢？</p>
-<p>阳明之所以为阳明，<br>除了天性聪慧，<br>勤于思索之外，<br>更在于其利用自身优势，<br>广泛出入佛老，溺于辞章之后，<br>有了对规律的全面认识，<br>方有龙场悟道之圆满。</p>
-<p>无论是现世的成功企业，<br>以及古往今来成功的个人，<br>都一定是把握了规律之后，<br>对规律的详加运用。<br>才成就一番功业。</p>
+    <title>我是这样认识王阳明的</title>
+    <url>/2016/03/17/%E6%88%91%E6%98%AF%E8%BF%99%E6%A0%B7%E8%AE%A4%E8%AF%86%E7%8E%8B%E9%98%B3%E6%98%8E%E7%9A%84/</url>
+    <content><![CDATA[<p>大多数喜欢王阳明的朋友，总是标榜“知行合一”，“致良知”；<br>我的微信关注了一个也标榜自己喜欢阳明思想的朋友；<br>做什么事都和：“心性”、“致良知”这些字眼联系起来；</p>
+<p>细看了下，要么就是参加了一个活动，说今天主讲人讲的真好；<br>是：“知行合一”；是“致良知”云云。<br>要么就是参加了个管理培训班，<br>完后就说：稻盛和夫的管理哲学和致良知完美契合。<br>  以上是文章摘要 <a id="more"></a> 以下是余下全文<br>我也真是醉了，哲学本来就和生活息息相关；<br>经常和生活联系起来倒也合情合理。<br>但是拉个屎撒个尿都要和知行合一与致良知联系起来，<br>要么就是没有真正理解阳明先生的思想。<br>要么就是中了“教条主义”的毒。</p>
+<p>在下不才，从听说王阳明这个人到最后逐渐对其思想了解一些；<br>也将近有十年的时间了。<br>遥想当年哥在高中学的是小三门儿—音乐；<br>上过高中的都知道，这个专业考试要提前考。<br>05年春节去郑州进行专业考试；<br>有天晚上和同去的同学到外面逛街，<br>逛到地下通道，有个书摊大家便驻足观看；<br>我一眼就看到了周月亮写的那本《王阳明大传》；<br>盗版的。</p>
+<p>封皮上的两句话把我给震住了。<br>“雅可上九天揽月，俗可下五洋捉鳖”；<br>当时连王阳明是谁都不知道，<br>更不会懂什么知行合一和致良知了。<br>但就觉得这两句话真牛逼；<br>说到我心里去了。</p>
+<p>之后，王阳明这个名字算是记住了。<br>当时对于买不买还是有些踌躇；<br>这时有个同学一句话让我下了买的决心；<br>他说：“你遇见了就一定要买，即使贵一点儿，免得以后后悔。<br>（当时的二十块一本盗版，对我等把县城当大城市的高中生来说的确算贵得。）</p>
+<p>随后这本周月亮的《王阳明大传》，<br>跟随我转战南北，东奔西跑；<br>南到浙杭，北到首都；<br>中间阅览无数遍，<br>每次看都有新感悟；<br>透明胶和尼龙绳修补多次；<br>最终，在最近一次搬家中遗失掉了。</p>
+<p>随着这本书打开我对王阳明的一扇门；<br>随后又在网上下载了好多关于王阳明的书；<br>什么《明朝一哥王阳明》，《王阳明的哲学精神》<br>乃至《有无之境》；<br>一路看下来，最后必须要看《传习录》啊！<br>就买了本叶圣陶解读的《传习录》来看；<br>虽然大师解读，但在下古文修养不高；<br>看着也是半懂不懂。</p>
+<p>最后就逛贴吧，逛论坛；<br>偶尔在天涯上发现了“沙滩孤雁”的帖子；<br>看了一页之后，惊为天人；<br>然后就开始了对这本《开谈传习录》的反复阅读。<br>以上大概就是我对王阳明的认识过程。<br>也许文字枯燥，也许词不达意；<br>也许行文不畅；<br>但作为自己对一个伟人的从认识到熟悉的回顾；<br>我想还是足够了。</p>
+]]></content>
+      <categories>
+        <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>智慧与思想之花因何而开</title>
+    <url>/2016/03/17/%E6%99%BA%E6%85%A7%E4%B8%8E%E6%80%9D%E6%83%B3%E4%B9%8B%E8%8A%B1%E5%9B%A0%E4%BD%95%E8%80%8C%E5%BC%80/</url>
+    <content><![CDATA[<p>圣人之所以为圣人，<br>就是因为在百死千难中，<br>不断努力的思考自己的思维的过程；<br>而这个过程就是思想和智慧了。</p>
+<p>上次撰文说到致良知，<br>那么，致良知与智慧和思想是什么关系呢？<br>答案是没一毛钱关系。</p>
+<p>那么问题来了，<br>既然智慧和思想，和致良知没一毛钱关系。<br>那阳明先生为什么整个致良知之学呢？<br>莫急，听咱家慢慢道来；<br>以上是摘要<a id="more"></a><br>雾满拦江说，<br>人类所有学科的基础是哲学、数学与逻辑形式；<br>所有人类的学科莫不是建立在此三个要素上；<br>而阳明先生龙场悟道的“道”，却不在此列。<br>因为无论这三者再精密，<br>他还是属于人类已有的语言和思维范畴，<br>显然终极智慧和思想，是比此三者更高境界的东西。</p>
+<p>所以说圣人可以自己悟道，<br>但是他是无法用语言和你清晰描述的，<br>不然阳明也不会有：“吾性自足”一说了；</p>
+<p>打个比方说，<br>世上未通终极智慧之人，<br>都像是背对着一副栅栏和栅栏外的一堆篝火；<br>栅栏就是遮蔽良知也就是本心的欲望，<br>而篝火正是道家说的道，<br>儒家的一以及佛家的无无明。</p>
+<p>所有人是不知道自己后面的栅栏和篝火的，<br>一旦像阳明先生这样的人，<br>告诉他们你们身后有栅栏和篝火；<br>他们是不会信的，<br>这就像你和盲者谈论颜色，<br>你说得再惟妙惟肖，<br>他也是没有认识颜色的工具的，<br>或者聋哑人谈论音律，<br>即使你说的再声情并茂，<br>他也是没有认识音律的工具的。</p>
+<p>因此圣人先贤悟道终极智慧之后，<br>也是没有描述终极智慧的工具的。</p>
+<p>尽管终极智慧和致良知之间，<br>没有一毛钱的关系，<br>但如果你追求善良，苦求于良知；<br>那么你对这个世界的认知角度，<br>就会从外界转向对自己内心的审视。</p>
+<p>如此你会减少与外界的摩擦，<br>不会再苛求别人按你的想法行事，<br>而会反求诸己。</p>
+<p>反之如果你不追求善良，<br>不从内心审视自己，<br>就会将关注焦点放在外界，<br>而这种关注，必然会让你远离思想和智慧。</p>
+<p>思想与智慧无法复制也无法传承；<br>甚至连对身边人熏陶的功能都不存在，<br>比如苏格拉底与其妻子，<br>比如阳明先生身后的妻离子散。</p>
+<p>这是因为智慧和思想完全是个人化的思维运作过程，<br>是单独一个人不断采用探究式的思维模式，<br>对自己的大脑进行个人化开发，<br>这种开发的过程就是智慧与思想本身，</p>
+<p>而圣贤所能表达的不过是智慧和思想的结果，<br>但这个结果既不是思想也不是智慧，<br>最多不过是思想与智慧的行进方向而已。</p>
+<p>所以阳明先生说：“致良知”，<br>良知不是智慧，<br>致良知更不是思想，<br>思想与智慧，<br>是指你不断地努力，<br>让自己达到致良知境界的思维过程。<br>换句话说，<br>你可以把致良知理解为这个思维过程（也即思想和智慧过程）的一个显性结果以及方向。</p>
 ]]></content>
       <categories>
         <category>阳明心学</category>
@@ -656,6 +636,26 @@
       </categories>
   </entry>
   <entry>
+    <title>王阳明之所以为王阳明</title>
+    <url>/2016/03/17/%E7%8E%8B%E9%98%B3%E6%98%8E%E4%B9%8B%E6%89%80%E4%BB%A5%E4%B8%BA%E7%8E%8B%E9%98%B3%E6%98%8E/</url>
+    <content><![CDATA[<p>上篇文说到，<br>圣人都是在百死千难中，<br>对自己的思维进行苦苦思索；<br>方才悟得圣人之道。<br>那我等芸芸众生欲窥得圣人一二门径，<br>应该如何做呢？</p>
+<p>一、让擅长成为精通<br>道理人人会讲，成者寥寥无几？<br>何也？<br>知其然，不知其所以然也！<br>首先要做的就是做回你自己，<br>所谓做回你自己，<br>意思就是想清楚你能干神马，<br>无论你想干神马，你喜欢干神马，<br>你首先要想清楚，你能干神马。<br>先从你最擅长的地方入手，<br>把你擅长的事情精通了。<br>以上是摘要<a id="more"></a><br>你如果喜欢喝酒，<br>那就成为品酒专家，<br>你如果喜欢旅游，<br>那就让你的水平，<br>可以去做旅游杂志主编，<br>如果你喜欢食物，<br>那就让自己可以做到像蔡澜那样，<br>可以以此出书做节目。</p>
+<p>二、找到适合你自己的路<br>都云小米成于饥饿营销，<br>但凡客陈年和雷军是好基友；<br>不可谓不倾囊相授，<br>不可谓不耳提面命；<br>现在也在亦庄苦苦学习小米的一套，<br>怎么不见泛起什么浪花呢？</p>
+<p>凡客自一万之众，<br>搬往亦庄后的三百余人，<br>也是痛下决心，<br>要从白衬衫单点突破；</p>
+<p>结果如何？<br>去年8月份江苏省质量技术监督局抽查中，<br>其99元衬衫六项参数不合格。<br>去年11月份国家质检总局抽检中，<br>又有<br>凡客在休闲服装、皮鞋、旅游鞋、背提包4种产品中被发现有不合格现象。<br>何也？立定脚跟做事，<br>也没咬紧牙关做人。</p>
+<p>三、掌握规律<br>每个人的人生是不同的，<br>每个人的人生路径是不同的，<br>因此每个人都会有一条最适合自己的路径；<br>所以，即使雷军操盘凡客，<br>照着小米的玩法全部来一遍，<br>也不见得会有起死回生之效。<br>但是事情成败有其自身规律，<br>这是毋庸置疑的。</p>
+<p>正如上篇所讲，<br>圣人自己成为了圣人，<br>他成圣的方法与路径，<br>是无法对你言说的，<br>即使他是圣人。</p>
+<p>因此，不要妄想有一套放之四海而皆准的方法，<br>可以使你一夜暴富，或者是一夜成名成圣。</p>
+<p>你必须在精通一件事情之后，<br>回过头去总结归纳规律性的东西，<br>使之成为自己的东西之后，<br>再将其应用到其他同类事情中，<br>才可以说你掌握了规律。</p>
+<p>这种规律性的知识累积到一定程度，<br>你才能在一件事情开头，<br>就能看到其发展的趋势，<br>你内心才会安定，<br>内心安定，你才能对局势更明晰。<br>才有利于你的杀伐决断。<br>此所谓：『定而后能静，静而后能安，安而后能虑』。<br>如果你因同事一句嘲讽的话，就怏怏不乐半天，<br>因老友一句玩笑式的调侃就郁闷半天，<br>如何能明晰局势，杀伐决断呢？</p>
+<p>阳明之所以为阳明，<br>除了天性聪慧，<br>勤于思索之外，<br>更在于其利用自身优势，<br>广泛出入佛老，溺于辞章之后，<br>有了对规律的全面认识，<br>方有龙场悟道之圆满。</p>
+<p>无论是现世的成功企业，<br>以及古往今来成功的个人，<br>都一定是把握了规律之后，<br>对规律的详加运用。<br>才成就一番功业。</p>
+]]></content>
+      <categories>
+        <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
     <title>知行合一与至善</title>
     <url>/2016/03/17/%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E4%B8%8E%E8%87%B3%E5%96%84/</url>
     <content><![CDATA[<p>一、前面的话</p>
@@ -683,24 +683,6 @@
 ]]></content>
       <categories>
         <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>编程学习心得</title>
-    <url>/2016/03/17/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/</url>
-    <content><![CDATA[<p>似乎每个人对一件从未接触过的事物着迷时；<br>都恨不得一下子就对其融会贯通；<br>这种急切心理，极有可能导致稍遇挫折，便丧失兴趣。</p>
-<p>比如我对编程的学习；<br>在刚开始时的确一腔热情；<br>但是稍微接触到不容易理解的地方；<br>就会不由自主地怀疑自己！<br>自己真的适合学编程吗?<br>我怎么这么笨？<br>我这个年龄学编程还成吗？</p>
-<p>其实，这都是由于刚开始热情太盛；<br>努力一段时间后，<br>得不到自己期望的效果，<br>便兴趣缺缺了。<br>以上是摘要<a id="more"></a><br>学习始终遵循循序渐进的原则；<br>而不是像玩游戏一样，<br>能得到及时的满足和成就感。<br>所以很多颇有成就的人，<br>都是最善于推迟自己满足感的人。</p>
-<p>其实我最该问的问题不应该是以上那些；<br>而只应该问一个问题？<br>我怎么才能学好编程?<br>那些已经有了些许成就的程序员，<br>是如何取得今天的成就的？</p>
-<p>在学习中还发现一个问题；<br>就是学习一个知识点，<br>一定不要紧追着一个人的讲解不放；<br>同是一个知识点，<br>这个人讲解的既轻松又清晰，<br>而你紧抱着不放的那个则是既繁琐又模糊。</p>
-<p>所以在学习中必须灵活，<br>灵活不是投机取巧；<br>而是在网络信息如此发达的今日；<br>不应该紧抱着某一个信息源不放；<br>某个信息源的讲解听不明白，<br>则必须及时寻找能让你更容易明白的信息源；<br>相信我，一定可以找得到。</p>
-<p>比如在学习oc的三大特性封装、继承与多态时；<br>我花钱买的课程讲解时既模糊又乏味；<br>这时我就对自己产生怀疑了；<br>难道我真的笨蛋如此；<br>可是后来偶然间看到一篇博客；<br>瞬间让我豁然开朗。<br>就是那种梦里千百度，蓦然回首处的感觉。</p>
-<p>总之学习一定不是揪着某个问题不放；<br>当然不是真的放下不管；<br>而是先放到潜意识里；<br>往往会出现这种情况；</p>
-<p>某日你对A问题产生疑惑；<br>又一日，你对B问题更是纠结不已；<br>但是，还一日，你去查找C问题的答案，<br>发现竟然找到了A的答案。<br>这往往是持续学习中，<br>最令人痛快之时。</p>
-]]></content>
-      <categories>
-        <category>编程</category>
-        <category>IOS</category>
       </categories>
   </entry>
   <entry>
@@ -733,6 +715,24 @@
 ]]></content>
       <categories>
         <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>编程学习心得</title>
+    <url>/2016/03/17/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/</url>
+    <content><![CDATA[<p>似乎每个人对一件从未接触过的事物着迷时；<br>都恨不得一下子就对其融会贯通；<br>这种急切心理，极有可能导致稍遇挫折，便丧失兴趣。</p>
+<p>比如我对编程的学习；<br>在刚开始时的确一腔热情；<br>但是稍微接触到不容易理解的地方；<br>就会不由自主地怀疑自己！<br>自己真的适合学编程吗?<br>我怎么这么笨？<br>我这个年龄学编程还成吗？</p>
+<p>其实，这都是由于刚开始热情太盛；<br>努力一段时间后，<br>得不到自己期望的效果，<br>便兴趣缺缺了。<br>以上是摘要<a id="more"></a><br>学习始终遵循循序渐进的原则；<br>而不是像玩游戏一样，<br>能得到及时的满足和成就感。<br>所以很多颇有成就的人，<br>都是最善于推迟自己满足感的人。</p>
+<p>其实我最该问的问题不应该是以上那些；<br>而只应该问一个问题？<br>我怎么才能学好编程?<br>那些已经有了些许成就的程序员，<br>是如何取得今天的成就的？</p>
+<p>在学习中还发现一个问题；<br>就是学习一个知识点，<br>一定不要紧追着一个人的讲解不放；<br>同是一个知识点，<br>这个人讲解的既轻松又清晰，<br>而你紧抱着不放的那个则是既繁琐又模糊。</p>
+<p>所以在学习中必须灵活，<br>灵活不是投机取巧；<br>而是在网络信息如此发达的今日；<br>不应该紧抱着某一个信息源不放；<br>某个信息源的讲解听不明白，<br>则必须及时寻找能让你更容易明白的信息源；<br>相信我，一定可以找得到。</p>
+<p>比如在学习oc的三大特性封装、继承与多态时；<br>我花钱买的课程讲解时既模糊又乏味；<br>这时我就对自己产生怀疑了；<br>难道我真的笨蛋如此；<br>可是后来偶然间看到一篇博客；<br>瞬间让我豁然开朗。<br>就是那种梦里千百度，蓦然回首处的感觉。</p>
+<p>总之学习一定不是揪着某个问题不放；<br>当然不是真的放下不管；<br>而是先放到潜意识里；<br>往往会出现这种情况；</p>
+<p>某日你对A问题产生疑惑；<br>又一日，你对B问题更是纠结不已；<br>但是，还一日，你去查找C问题的答案，<br>发现竟然找到了A的答案。<br>这往往是持续学习中，<br>最令人痛快之时。</p>
+]]></content>
+      <categories>
+        <category>编程</category>
+        <category>IOS</category>
       </categories>
   </entry>
   <entry>
