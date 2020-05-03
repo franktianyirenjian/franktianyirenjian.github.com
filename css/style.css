@@ -804,7 +804,7 @@ a.article-title:hover {
 .article-nav-caption {
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #3ff;
+  color: #e63f00;
   line-height: 1em;
   font-weight: bold;
 }
@@ -815,7 +815,7 @@ a.article-title:hover {
   font-size: 0.85em;
   line-height: 1.6em;
   margin-top: 0.5em;
-  color: #0bf;
+  color: #06f;
 }
 .article-share-box {
   position: absolute;
