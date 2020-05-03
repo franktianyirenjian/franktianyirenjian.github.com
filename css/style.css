@@ -792,7 +792,6 @@ a.article-title:hover {
     float: left;
     text-align: right;
     padding-right: 20px;
-    color: #f33;
   }
 }
 @media screen and (min-width: 768px) {
@@ -805,7 +804,7 @@ a.article-title:hover {
 .article-nav-caption {
   text-transform: uppercase;
   letter-spacing: 2px;
-  color: #ddd;
+  color: #f33;
   line-height: 1em;
   font-weight: bold;
 }
