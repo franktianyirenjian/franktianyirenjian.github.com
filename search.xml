@@ -1,30 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hexo添加Rss和评论插件</title>
-    <url>/2016/03/20/Hexo%E6%B7%BB%E5%8A%A0Rss%E5%92%8C%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/</url>
-    <content><![CDATA[<p>一、添加RSS<br>我的主题配置文件已含有rss：  /atom.xml<br>因此我就直接安装部署了。<br>根目录下的配置信息：在# Extensions中添加，已经有的就免了。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plugins: hexo-generator-feed</span><br></pre></td></tr></table></figure>
-<p>打开Terminal（终端）输入：运行</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">npm install hero-generator-feed</span><br></pre></td></tr></table></figure>
-<p>重新部署：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo d -</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>二、开启评论<br>1、首先，注册多说，并在根目录下的配置文件添加shot_name,这里是duoshuo_shortname<br>short name指你在注册多说时二级域名里你自己输入的那部分，不包括htpp://和.duoshuo.com。<br>这里有人说在主题配置信息里配置duoshuo_shortname，但是我的始终搞不定，<br>我曾怀疑是不是data－thread－key等三个参数的问题，然后将page.path改为post.path,<br>仍然不行，只能慢慢试验了。<br>2、若使用默认主题landscape，则进入themes\landscape\layout_partial\articles.ejs中，<br>将这段div中的disqus_shortname统统改为duoshuo_shortname，有的人没有这段，按实际情况来。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;footer class="article-footer"&gt;</span></span><br><span class="line"><span class="regexp">&lt;a data-url="&lt;%- post.permalink %&gt;" data-id="&lt;%= post._id %&gt;" class="article-share-link"&gt;</span></span><br><span class="line"><span class="regexp">&lt;%= __('share') %&gt;&lt;/</span>a&gt;</span><br><span class="line">&lt;% <span class="keyword">if</span> (post.comments &amp;&amp; config.duoshuo_shortname)&#123; %&gt;</span><br><span class="line">&lt;a href=<span class="string">"&lt;%- post.permalink %&gt;#duoshuo_thread"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"article-comment-link"</span>&gt;&lt;%= __(<span class="string">'comment'</span>) %&gt;&lt;<span class="regexp">/a&gt;</span></span><br><span class="line"><span class="regexp">&lt;% &#125; %&gt;</span></span><br><span class="line"><span class="regexp">&lt;%- partial('post/</span>tag<span class="string">') %&gt;</span></span><br><span class="line"><span class="string">&lt;/footer&gt;</span></span><br><span class="line"><span class="string">&lt;/div&gt;</span></span><br></pre></td></tr></table></figure>
-<p>3、网上大多数的都是说的这段代码替换：<br>替换&lt;% section %&gt;到&lt;／section&gt;之间的部分。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments &amp;&amp; config.disqus_shortname)&#123; %&gt;</span><br><span class="line">&lt;section id=<span class="string">"comments"</span>&gt;</span><br><span class="line">&lt;div id=<span class="string">"disqus_thread"</span>&gt;</span><br><span class="line">&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=<span class="string">"//disqus.com/?ref_noscript"</span>&gt;comments </span><br><span class="line">powered by Disqus.&lt;<span class="regexp">/a&gt;&lt;/</span>noscript&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>section&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
-<p>替换为：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments &amp;&amp; config.duoshuo_shortname)&#123; %&gt;</span><br><span class="line">&lt;section id=<span class="string">"comments"</span>&gt;</span><br><span class="line">&lt;!-- 多说评论框 start --&gt;</span><br><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"ds-thread"</span> data-thread-key=<span class="string">"&lt;%= post.path %&gt;"</span> data-title=<span class="string">"&lt;%= page.title %&gt;"</span> </span><br><span class="line">data-url=<span class="string">"&lt;%= page.permalink %&gt;"</span>&gt;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;!-- 多说评论框 end --&gt;</span></span><br><span class="line"><span class="regexp">&lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;</span></span><br><span class="line"><span class="regexp">&lt;script type="text/</span>javascript<span class="string">"&gt;</span></span><br><span class="line"><span class="string">var duoshuoQuery = &#123;short_name:'&lt;%= config.duoshuo_shortname %&gt;'&#125;;</span></span><br><span class="line"><span class="string">(function() &#123;</span></span><br><span class="line"><span class="string">var ds = document.createElement('script');</span></span><br><span class="line"><span class="string">ds.type = 'text/javascript';ds.async = true;</span></span><br><span class="line"><span class="string">ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') </span></span><br><span class="line"><span class="string">+ '//static.duoshuo.com/embed.js';</span></span><br><span class="line"><span class="string">ds.charset = 'UTF-8';</span></span><br><span class="line"><span class="string">(document.getElementsByTagName('head')[0] </span></span><br><span class="line"><span class="string">|| document.getElementsByTagName('body')[0]).appendChild(ds);</span></span><br><span class="line"><span class="string">&#125;)();</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;!-- 多说公共JS代码 end --&gt;</span></span><br><span class="line"><span class="string">&lt;/section&gt;</span></span><br><span class="line"><span class="string">&lt;% &#125; %&gt;</span></span><br></pre></td></tr></table></figure>
-<p>这里需要注意的是data-thread-key等三个参数，对小白来说并不知道如何设置：<br>我的设置如下：大多数网上的也都设的这个。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">data-thread-key：&lt;%= page.path %&gt;</span><br><span class="line">data-title：&lt;%= page.title %&gt;</span><br><span class="line">data-url（稳定版没有这个，开发版有这个参数）：&lt;%= page.permalink %&gt;</span><br></pre></td></tr></table></figure>
-<p>4、重新部署<br>hexo clean<br>hexo d －<br>搞定。</p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Hexo安装百度统计流程</title>
     <url>/2016/03/22/Hexo%E5%AE%89%E8%A3%85%E7%99%BE%E5%BA%A6%E7%BB%9F%E8%AE%A1%E6%B5%81%E7%A8%8B/</url>
     <content><![CDATA[<p>用了两天时间将Hexo博客搭建好了，<br>之后便开始一点一点儿增加一些小插件，<br>很顺利的安装了RSS和评论插件后，<br>决定安装统计插件，<br>最后经过对比决定安装百度统计，<br>虽然不如谷歌，但还凑合吧。<br>闲言少叙，正文开始</p>
@@ -49,6 +25,40 @@
 ]]></content>
       <categories>
         <category>Hexo</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Hexo添加Rss和评论插件</title>
+    <url>/2016/03/20/Hexo%E6%B7%BB%E5%8A%A0Rss%E5%92%8C%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/</url>
+    <content><![CDATA[<p>一、添加RSS<br>我的主题配置文件已含有rss：  /atom.xml<br>因此我就直接安装部署了。<br>根目录下的配置信息：在# Extensions中添加，已经有的就免了。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plugins: hexo-generator-feed</span><br></pre></td></tr></table></figure>
+<p>打开Terminal（终端）输入：运行</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">npm install hero-generator-feed</span><br></pre></td></tr></table></figure>
+<p>重新部署：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo d -</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>二、开启评论<br>1、首先，注册多说，并在根目录下的配置文件添加shot_name,这里是duoshuo_shortname<br>short name指你在注册多说时二级域名里你自己输入的那部分，不包括htpp://和.duoshuo.com。<br>这里有人说在主题配置信息里配置duoshuo_shortname，但是我的始终搞不定，<br>我曾怀疑是不是data－thread－key等三个参数的问题，然后将page.path改为post.path,<br>仍然不行，只能慢慢试验了。<br>2、若使用默认主题landscape，则进入themes\landscape\layout_partial\articles.ejs中，<br>将这段div中的disqus_shortname统统改为duoshuo_shortname，有的人没有这段，按实际情况来。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;footer class="article-footer"&gt;</span></span><br><span class="line"><span class="regexp">&lt;a data-url="&lt;%- post.permalink %&gt;" data-id="&lt;%= post._id %&gt;" class="article-share-link"&gt;</span></span><br><span class="line"><span class="regexp">&lt;%= __('share') %&gt;&lt;/</span>a&gt;</span><br><span class="line">&lt;% <span class="keyword">if</span> (post.comments &amp;&amp; config.duoshuo_shortname)&#123; %&gt;</span><br><span class="line">&lt;a href=<span class="string">"&lt;%- post.permalink %&gt;#duoshuo_thread"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"article-comment-link"</span>&gt;&lt;%= __(<span class="string">'comment'</span>) %&gt;&lt;<span class="regexp">/a&gt;</span></span><br><span class="line"><span class="regexp">&lt;% &#125; %&gt;</span></span><br><span class="line"><span class="regexp">&lt;%- partial('post/</span>tag<span class="string">') %&gt;</span></span><br><span class="line"><span class="string">&lt;/footer&gt;</span></span><br><span class="line"><span class="string">&lt;/div&gt;</span></span><br></pre></td></tr></table></figure>
+<p>3、网上大多数的都是说的这段代码替换：<br>替换&lt;% section %&gt;到&lt;／section&gt;之间的部分。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments &amp;&amp; config.disqus_shortname)&#123; %&gt;</span><br><span class="line">&lt;section id=<span class="string">"comments"</span>&gt;</span><br><span class="line">&lt;div id=<span class="string">"disqus_thread"</span>&gt;</span><br><span class="line">&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=<span class="string">"//disqus.com/?ref_noscript"</span>&gt;comments </span><br><span class="line">powered by Disqus.&lt;<span class="regexp">/a&gt;&lt;/</span>noscript&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>section&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+<p>替换为：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments &amp;&amp; config.duoshuo_shortname)&#123; %&gt;</span><br><span class="line">&lt;section id=<span class="string">"comments"</span>&gt;</span><br><span class="line">&lt;!-- 多说评论框 start --&gt;</span><br><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"ds-thread"</span> data-thread-key=<span class="string">"&lt;%= post.path %&gt;"</span> data-title=<span class="string">"&lt;%= page.title %&gt;"</span> </span><br><span class="line">data-url=<span class="string">"&lt;%= page.permalink %&gt;"</span>&gt;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;!-- 多说评论框 end --&gt;</span></span><br><span class="line"><span class="regexp">&lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;</span></span><br><span class="line"><span class="regexp">&lt;script type="text/</span>javascript<span class="string">"&gt;</span></span><br><span class="line"><span class="string">var duoshuoQuery = &#123;short_name:'&lt;%= config.duoshuo_shortname %&gt;'&#125;;</span></span><br><span class="line"><span class="string">(function() &#123;</span></span><br><span class="line"><span class="string">var ds = document.createElement('script');</span></span><br><span class="line"><span class="string">ds.type = 'text/javascript';ds.async = true;</span></span><br><span class="line"><span class="string">ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') </span></span><br><span class="line"><span class="string">+ '//static.duoshuo.com/embed.js';</span></span><br><span class="line"><span class="string">ds.charset = 'UTF-8';</span></span><br><span class="line"><span class="string">(document.getElementsByTagName('head')[0] </span></span><br><span class="line"><span class="string">|| document.getElementsByTagName('body')[0]).appendChild(ds);</span></span><br><span class="line"><span class="string">&#125;)();</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;!-- 多说公共JS代码 end --&gt;</span></span><br><span class="line"><span class="string">&lt;/section&gt;</span></span><br><span class="line"><span class="string">&lt;% &#125; %&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这里需要注意的是data-thread-key等三个参数，对小白来说并不知道如何设置：<br>我的设置如下：大多数网上的也都设的这个。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">data-thread-key：&lt;%= page.path %&gt;</span><br><span class="line">data-title：&lt;%= page.title %&gt;</span><br><span class="line">data-url（稳定版没有这个，开发版有这个参数）：&lt;%= page.permalink %&gt;</span><br></pre></td></tr></table></figure>
+<p>4、重新部署<br>hexo clean<br>hexo d －<br>搞定。</p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>IOS Xcode7.1新建纯代码工程</title>
+    <url>/2016/03/17/IOS-Xcode7-1%E6%96%B0%E5%BB%BA%E7%BA%AF%E4%BB%A3%E7%A0%81%E5%B7%A5%E7%A8%8B/</url>
+    <content><![CDATA[<p>今天准备纯代码做下计算器；<br>xcode已升级到version 7.1；<br>创建singleview后改造空工程；<br>删除main.storyboard，<br>创建windows并设置背景色为黑色；<br>满怀期待的command+R；<br>结果提示我:<br>以上是摘要<a id="more"></a><br>2015-10-30 18:15:29.933 计算器[1696:127982] <strong>* Assertion failure in -[UIApplication _runWithMainScene:transitionContext:completion:], /BuildRoot/Library/Caches/com.apple.xbs/Sources/UIKit_Sim/UIKit-3512.29.5/UIApplication.m:3299<br>2015-10-30 18:15:29.939 计算器[1696:127982] *</strong> Terminating app due to uncaught exception ‘NSInternalInconsistencyException’, reason: ‘Application windows are expected to have a root view controller at the end of application launch’<br>*** First throw call stack:<br>(<br>0   CoreFoundation                      0x02524a84 <strong>exceptionPreprocess + 180<br>1   libobjc.A.dylib                     0x00550e02 objc_exception_throw + 50<br>2   CoreFoundation                      0x0252491a +[NSException raise:format:arguments:] + 138<br>3   Foundation                          0x001cfe86 -[NSAssertionHandler handleFailureInMethod:object:file:lineNumber:description:] + 118<br>4   UIKit                               0x00957a9b -[UIApplication _runWithMainScene:transitionContext:completion:] + 3975<br>5   UIKit                               0x0097be4d __84-[UIApplication _handleApplicationActivationWithScene:transitionContext:completion:]_block_invoke3208 + 68<br>6   UIKit                               0x00953fb4 -[UIApplication workspaceDidEndTransaction:] + 163<br>7   FrontBoardServices                  0x036fdca4 __37-[FBSWorkspace clientEndTransaction:]_block_invoke_2 + 71<br>8   FrontBoardServices                  0x036fd77b __40-[FBSWorkspace _performDelegateCallOut:]_block_invoke + 54<br>9   FrontBoardServices                  0x0371b1a3 -[FBSSerialQueue _performNext] + 184<br>10  FrontBoardServices                  0x0371b5da -[FBSSerialQueue _performNextFromRunLoopSource] + 52<br>11  FrontBoardServices                  0x0371a8d6 FBSSerialQueueRunLoopSourceHandler + 33<br>12  CoreFoundation                      0x0243ed1f __CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE0_PERFORM_FUNCTION</strong> + 15<br>13  CoreFoundation                      0x024349ab __CFRunLoopDoSources0 + 523<br>14  CoreFoundation                      0x02433dc8 __CFRunLoopRun + 1032<br>15  CoreFoundation                      0x02433706 CFRunLoopRunSpecific + 470<br>16  CoreFoundation                      0x0243351b CFRunLoopRunInMode + 123<br>17  UIKit                               0x00953854 -[UIApplication _run] + 540<br>18  UIKit                               0x009591eb UIApplicationMain + 160<br>19  ËÆ°ÁÆóÂô®                           0x00082baa main + 138<br>20  libdyld.dylib                       0x030eba21 start + 1<br>)<br>libc++abi.dylib: terminating with uncaught exception of type NSException<br>(lldb)<br>然后就开始了艰辛的解决历程；<br>自己英语很渣，只有慢慢度娘；<br>百度出来的百分之九十九是xcode6.1改造空工程的方法；<br>没用啊，我现在用的就是它这个方法；<br>只有不断换关键字；<br>结果当我输入：“xcode7如何创建空工程”keywords后；<br>第四个答案正是我想要的；<br>東東同学的新浪博客：<a href="http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html</a><br>原来提示的意思是：“必须给windows创建一个rootviewcontroller；<br>这一句话足够了；果断添加rootview，再次command+R；果断通过；<br>它是否意味着windows创建好后不能直接显示了，必须添加rootviewcontroller才可以运行呢？<br>已经给東東留言等回复。<br>总之任何一个细小的问题，通过自己的努力或者得到别人指点得到解决后，那种欣喜都是情不自禁的。<br>完毕！</p>
+]]></content>
+      <categories>
+        <category>编程</category>
+        <category>IOS</category>
       </categories>
   </entry>
   <entry>
@@ -95,16 +105,6 @@
 ]]></content>
       <categories>
         <category>Hexo</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>IOS Xcode7.1新建纯代码工程</title>
-    <url>/2016/03/17/IOS-Xcode7-1%E6%96%B0%E5%BB%BA%E7%BA%AF%E4%BB%A3%E7%A0%81%E5%B7%A5%E7%A8%8B/</url>
-    <content><![CDATA[<p>今天准备纯代码做下计算器；<br>xcode已升级到version 7.1；<br>创建singleview后改造空工程；<br>删除main.storyboard，<br>创建windows并设置背景色为黑色；<br>满怀期待的command+R；<br>结果提示我:<br>以上是摘要<a id="more"></a><br>2015-10-30 18:15:29.933 计算器[1696:127982] <strong>* Assertion failure in -[UIApplication _runWithMainScene:transitionContext:completion:], /BuildRoot/Library/Caches/com.apple.xbs/Sources/UIKit_Sim/UIKit-3512.29.5/UIApplication.m:3299<br>2015-10-30 18:15:29.939 计算器[1696:127982] *</strong> Terminating app due to uncaught exception ‘NSInternalInconsistencyException’, reason: ‘Application windows are expected to have a root view controller at the end of application launch’<br>*** First throw call stack:<br>(<br>0   CoreFoundation                      0x02524a84 <strong>exceptionPreprocess + 180<br>1   libobjc.A.dylib                     0x00550e02 objc_exception_throw + 50<br>2   CoreFoundation                      0x0252491a +[NSException raise:format:arguments:] + 138<br>3   Foundation                          0x001cfe86 -[NSAssertionHandler handleFailureInMethod:object:file:lineNumber:description:] + 118<br>4   UIKit                               0x00957a9b -[UIApplication _runWithMainScene:transitionContext:completion:] + 3975<br>5   UIKit                               0x0097be4d __84-[UIApplication _handleApplicationActivationWithScene:transitionContext:completion:]_block_invoke3208 + 68<br>6   UIKit                               0x00953fb4 -[UIApplication workspaceDidEndTransaction:] + 163<br>7   FrontBoardServices                  0x036fdca4 __37-[FBSWorkspace clientEndTransaction:]_block_invoke_2 + 71<br>8   FrontBoardServices                  0x036fd77b __40-[FBSWorkspace _performDelegateCallOut:]_block_invoke + 54<br>9   FrontBoardServices                  0x0371b1a3 -[FBSSerialQueue _performNext] + 184<br>10  FrontBoardServices                  0x0371b5da -[FBSSerialQueue _performNextFromRunLoopSource] + 52<br>11  FrontBoardServices                  0x0371a8d6 FBSSerialQueueRunLoopSourceHandler + 33<br>12  CoreFoundation                      0x0243ed1f __CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE0_PERFORM_FUNCTION</strong> + 15<br>13  CoreFoundation                      0x024349ab __CFRunLoopDoSources0 + 523<br>14  CoreFoundation                      0x02433dc8 __CFRunLoopRun + 1032<br>15  CoreFoundation                      0x02433706 CFRunLoopRunSpecific + 470<br>16  CoreFoundation                      0x0243351b CFRunLoopRunInMode + 123<br>17  UIKit                               0x00953854 -[UIApplication _run] + 540<br>18  UIKit                               0x009591eb UIApplicationMain + 160<br>19  ËÆ°ÁÆóÂô®                           0x00082baa main + 138<br>20  libdyld.dylib                       0x030eba21 start + 1<br>)<br>libc++abi.dylib: terminating with uncaught exception of type NSException<br>(lldb)<br>然后就开始了艰辛的解决历程；<br>自己英语很渣，只有慢慢度娘；<br>百度出来的百分之九十九是xcode6.1改造空工程的方法；<br>没用啊，我现在用的就是它这个方法；<br>只有不断换关键字；<br>结果当我输入：“xcode7如何创建空工程”keywords后；<br>第四个答案正是我想要的；<br>東東同学的新浪博客：<a href="http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html</a><br>原来提示的意思是：“必须给windows创建一个rootviewcontroller；<br>这一句话足够了；果断添加rootview，再次command+R；果断通过；<br>它是否意味着windows创建好后不能直接显示了，必须添加rootviewcontroller才可以运行呢？<br>已经给東東留言等回复。<br>总之任何一个细小的问题，通过自己的努力或者得到别人指点得到解决后，那种欣喜都是情不自禁的。<br>完毕！</p>
-]]></content>
-      <categories>
-        <category>编程</category>
-        <category>IOS</category>
       </categories>
   </entry>
   <entry>
@@ -163,6 +163,18 @@
       </categories>
   </entry>
   <entry>
+    <title>《王阳明大传》读后感</title>
+    <url>/2016/03/17/%E3%80%8A%E7%8E%8B%E9%98%B3%E6%98%8E%E5%A4%A7%E4%BC%A0%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/</url>
+    <content><![CDATA[<p>最近读了《王阳明大传》<br>模模糊糊理解了一些<br>王阳明心学要解决的问题是什么?<br>记录在此，以备后用。<br>心学在阳明后来讲学时，<br>为使学生容易理解，<br>便表述为良知学，<br>而实现的方法则是致良知。</p>
+<p>心学要解决的问题就是：找到“人生的意义”，<br>在百千万年的人类史中，<br>人类肯定形成了同一的人性内容，<br>也就是阳明心学中讲的“心体”，<br>也就是本元，最初的那种状态，<br>在阳明以前人们为了找到‘意义’，<br>都会去求助于外物，<br>从外物求理，以期望最终找到‘意义’。<br>以上是摘要<a id="more"></a><br>但是阳明‘龙场悟道’后，告诉大家，意义不在外界万物上，<br>而在每个人心上；<br>但是人们搞不懂，<br>既然在每个人心上，<br>那我们都有心，<br>为什么没有找到‘意义’所在呢？<br>这时王先生告诉他们：<br>不是没有，而是已经被遮蔽了。<br>是被外界鸡零狗碎的私心杂念蒙蔽了。<br>王先生不但告诉他们为什么你们现在从自己心上找不到意义，<br>而且还说我有方法能让你们找到，<br>那就是：“知行合一”；<br>只要坚持知行合一肯定会有人，<br>能将那些鸡零狗碎的私心杂念的遮蔽去掉，<br>看到自己的心的本体，<br>找到意义所在。</p>
+<p>注意他说的是有人会，<br>有人会找到，肯定就有人不会找到<br>所以心学本身对于每个个人来说<br>是一个悲喜参半的对意义的答案，<br>喜的是终于有方法能找到那个终极的问题的答案了。<br>而悲的则是，即使你真去知行合一了，<br>临死之前也不一定能找到。</p>
+<p>从王先生自己的经历来说，<br>他笃信每个人原本都是圣人，<br>只要坚持知行合一，<br>找到意义，最后每个人都会成为真正的圣人。<br>但是这里就有个时间的死结，<br>每个人的时间都不是无限，</p>
+]]></content>
+      <categories>
+        <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
     <title>oc中的类和对象</title>
     <url>/2016/03/17/oc%E4%B8%AD%E7%9A%84%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/</url>
     <content><![CDATA[<p>一、类是什么</p>
@@ -183,18 +195,6 @@
       <categories>
         <category>编程</category>
         <category>IOS</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>《王阳明大传》读后感</title>
-    <url>/2016/03/17/%E3%80%8A%E7%8E%8B%E9%98%B3%E6%98%8E%E5%A4%A7%E4%BC%A0%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/</url>
-    <content><![CDATA[<p>最近读了《王阳明大传》<br>模模糊糊理解了一些<br>王阳明心学要解决的问题是什么?<br>记录在此，以备后用。<br>心学在阳明后来讲学时，<br>为使学生容易理解，<br>便表述为良知学，<br>而实现的方法则是致良知。</p>
-<p>心学要解决的问题就是：找到“人生的意义”，<br>在百千万年的人类史中，<br>人类肯定形成了同一的人性内容，<br>也就是阳明心学中讲的“心体”，<br>也就是本元，最初的那种状态，<br>在阳明以前人们为了找到‘意义’，<br>都会去求助于外物，<br>从外物求理，以期望最终找到‘意义’。<br>以上是摘要<a id="more"></a><br>但是阳明‘龙场悟道’后，告诉大家，意义不在外界万物上，<br>而在每个人心上；<br>但是人们搞不懂，<br>既然在每个人心上，<br>那我们都有心，<br>为什么没有找到‘意义’所在呢？<br>这时王先生告诉他们：<br>不是没有，而是已经被遮蔽了。<br>是被外界鸡零狗碎的私心杂念蒙蔽了。<br>王先生不但告诉他们为什么你们现在从自己心上找不到意义，<br>而且还说我有方法能让你们找到，<br>那就是：“知行合一”；<br>只要坚持知行合一肯定会有人，<br>能将那些鸡零狗碎的私心杂念的遮蔽去掉，<br>看到自己的心的本体，<br>找到意义所在。</p>
-<p>注意他说的是有人会，<br>有人会找到，肯定就有人不会找到<br>所以心学本身对于每个个人来说<br>是一个悲喜参半的对意义的答案，<br>喜的是终于有方法能找到那个终极的问题的答案了。<br>而悲的则是，即使你真去知行合一了，<br>临死之前也不一定能找到。</p>
-<p>从王先生自己的经历来说，<br>他笃信每个人原本都是圣人，<br>只要坚持知行合一，<br>找到意义，最后每个人都会成为真正的圣人。<br>但是这里就有个时间的死结，<br>每个人的时间都不是无限，</p>
-]]></content>
-      <categories>
-        <category>阳明心学</category>
       </categories>
   </entry>
   <entry>
@@ -365,6 +365,38 @@
       </categories>
   </entry>
   <entry>
+    <title>工夫与境界（二）</title>
+    <url>/2016/03/17/%E5%B7%A5%E5%A4%AB%E4%B8%8E%E5%A2%83%E7%95%8C%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
+    <content><![CDATA[<p>一、境界为何？<br>境界字面理解，<br>境乃环境，界乃界限；<br>突破界限到达新环境就叫做境界。<br>境界不是自己标榜的，<br>真正到达新境界的人，<br>行事言语都会有所体现。</p>
+<p>二、境</p>
+<p>1、客观环境<br>首先从环境说起，<br>环境又分为外在与内在；<br>外在叫客观环境，<br>内在叫做心境。</p>
+<p>客观环境没什么好说的，<br>无论你生于贫苦之家，<br>还是钟鸣鼎食之家，<br>这都不是你能定的，<br>那是所有人的起点，<br>你只有接受，没有选择。<br>以上是摘要<a id="more"></a><br>2、心境<br>至于心境，则要好好说一下；<br>《心经》开篇第一句话：<br>观自在菩萨，<br>行深般若波罗蜜多，<br>照见五蕴皆空，<br>度一切苦厄。<br>这说的就是心境。<br>展开说比较复杂，<br>简单从几个概念说起。</p>
+<p>三毒：贪嗔痴，<br>三法印：诸行无常，诸法无我，寂静涅槃；<br>五蕴：受想行色识<br>般若波罗密多：到达彼岸的智慧。</p>
+<p>为什么要说心经呢？<br>你可能会纳闷？<br>我们讲的不是心学吗？<br>对了正因为我们讲的是心学。<br>而客观环境，多数情况下我们无能为力。<br>多数情况下，我能改变的只有心境。<br>《心经》为我们提供了一种改变心境的伟大方法。<br>你没看错，就是伟大的方法。<br>因为它解决的是根本问题，直指人心，<br>心经讲的就是为什么我们会感到人生皆苦。</p>
+<p>我们之所以感到人生皆苦，<br>是因为有：‘我执’。<br>我执的意思是我们以为世间万物都是恒定不变的。<br>这是所有苦的根源。<br>苦又分为：求不得，爱别离，怨憎会。</p>
+<p>事实是，世间万物每时每刻都在变化，<br>因为有：‘我执’，因此我们都中了三毒。<br>我们贪婪是因为：<br>我们以为拥有了某些东西，它就会永远属于我们，<br>并且因为得不到而纠结不已。<br>我们愤怒是因为：<br>我们以为所有的糟糕事情都会一直糟糕下去，<br>并且为此生出恐惧来吓唬自己。<br>明天要交报表了，做不出来怎么办？<br>明天要考试了，考不过怎么办？<br>明天又要考核绩效了，达不到怎么办？<br>我们总是夸大事情本身的后果。<br>我们痴傻是因为，我们以为一瞬即永恒，<br>并且相信自己对永恒的判断。</p>
+<p>事实是，也许你刚买到梦寐以求的保时捷，<br>第二天就出车祸撞死了。<br>也许你刚刚与他吵过架的室友或朋友，<br>是因为最近家里老人得了病，心情不好。<br>也许你内心许诺一生只爱她一人的女友，<br>正在和新认识的帅哥微信聊天。</p>
+<p>那么，我们有必要知道三法印的存在，<br>诸行无常，诸法无我，寂静涅槃，<br>万事万物都在变化，你以为你面前的桌子和电脑是静止的？<br>非也，电脑里面每时每刻二进制数据都在变化，<br>桌子的基本组成粒子，无时无刻不在老化。<br>你以为你就是你吗？<br>这句话可能有点儿绕，<br>我的意思是：<br>你以为今天的你还是昨天的你吗？<br>你以为此刻的你还是上一刻的你吗？<br>你以为现在的你还是六岁时候的你吗？<br>抛开外形的变化不说。</p>
+<p>为了便于理解我们举个例子，<br>比如你的名字叫张三<br>基于你的名字来说，<br>你觉得张三的对象是谁？<br>是六岁时候的你？<br>还是现在的你？<br>你说当然是现在的你？<br>你这不是搞笑吗？<br>那好，我再问，是上一刻的你，<br>还是这一刻的你？<br>到底哪个‘你’是张三？<br>到底是在吃饭的你是张三？<br>还是在撒尿的你是张三？<br>你又说：“当然两个都是张三”，<br>但是这一刻的你已经不是上一刻的你了，<br>你的血液在不断更新，你的细胞在不断更新。<br>你的思维意识瞬间万变。<br>到底哪一个才是作为张三的你？<br>因此张三这个名字只是个假名。<br>没有真的张三存在。<br>只是你自己太过于执着你是张三这件事。<br>而你并不知道并没有真的张三存在？<br>此为诸行无常，诸法无我。</p>
+<p>当你悟了诸行无常，诸法无我，自然会寂静涅槃。<br>虽然有点儿抽象，但我绝不是顺口胡诌。<br>我自己是真正体验过这种思考的。</p>
+<p>这段实在太抽象，<br>因为梁文道这等厉害人物在《一千零一夜》，<br>用了六集才讲清楚《心经》的前两句话。<br>个中奥义，不花一番功夫实难领会。<br>另外小结中有些概念实在无法展开叙述，<br>有心人可以自行搜索资料进行学习。<br>做下小结吧：“我执”是三毒：“贪、嗔、痴”的根源；<br>陷入三毒世人皆苦，苦分为：“求不得、爱别离、怨憎会”<br>三法印：诸行无常、诸法无我、寂静涅槃会让我们理解空不异色，色不异空，空即是色，色即是空，从而获得到达彼岸的大智慧。<br>只有运用般若波罗蜜多：到达彼岸的大智慧才能照见五蕴皆空，度一切苦厄。</p>
+<p>3、界<br>关于界限我要说的不多，<br>大家应该都知道有个舒适区，学习区与恐慌区的划分。<br>那么我只有一个建议，经常挑战下你的恐慌区。<br>怕和女孩搭讪，偏偏要在餐馆吃午饭时和邻桌的漂亮妹妹搭个讪，<br>怕在群众面前演讲，偏偏要在公园等人扎堆的地方，让自己来上一段，<br>怕在高处眺望，偏偏周末要去体验一下蹦极时血脉贲张的酸爽。<br>你说：“臣妾真的做不到啊！”。<br>我只说一件事：<br>最近重看了一遍86版的《西游记》，<br>至于演员演得好，导演拍的好，不赘述。<br>只一点，第一集就让我明白了以前看不可能明白的道理。<br>孙悟空和众猴打赌，自己能从水帘洞进去且出来。<br>你想一想，<br>有的猴子已经在这片区域生活了很多年，<br>却没勇气进去看一看，<br>那一刻我知道，人生所有的艰难困苦都是纸老虎。<br>再有，进去后欢宴期间一猴子突然死亡，<br>那一刻我知道，人生无常，达人自玉。<br>最后，孙悟空决定远行学艺。<br>在市集间被俗人们当作异类而嘲笑<br>那一刻我知道，哪怕任何人的嘲笑，<br>都比不过你自己的一个决心。</p>
+<p>本期推荐书籍：<br>1、《增长黑客》豆瓣评分8.1 作者：范冰<br>细节非常独到，我还试了下里面通过curl －o命令抓取唱吧图片。<br>最重要的一点树立T型知识结构的意识。<br>归纳略显不足，只描述案例，不归纳本质的东西，做互联网的同学可以作为手边书翻一翻。<br>2、《黑客与画家》作者：保罗格雷厄姆<br>任何一门知识，做到极致都是艺术，编程亦然。<br>3、《物演通论》作者：王东岳<br>我只记住了一个：“递弱代偿法则”，其他看不懂，你若有高见，欢迎和我讨论。<br>本期推荐电影：<br>1、《三傻大闹宝莱坞》<br>我已经看过三遍了，不多说了，和梦想有关和现实无联。<br>2、《无法触碰》<br>这个看了两遍，马上看第三遍，和生命有关和人生无联。<br>3、《野草莓》<br>英格玛·伯格曼代表作，和生命无关和心灵有联。</p>
+]]></content>
+      <categories>
+        <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>我与音乐的初缘</title>
+    <url>/2016/03/17/%E6%88%91%E4%B8%8E%E9%9F%B3%E4%B9%90%E7%9A%84%E5%88%9D%E7%BC%98/</url>
+    <content><![CDATA[<p>我高中学过一年半音乐，<br>上过高中的都知道：『小三门』；<br>不知现在还这么叫吗？<br>我学音乐的原因有三：<br>一、小时候我爸买过一支笛子，我爸捣鼓好长时间，没吹响，<br>我后来不但吹响了，而且还能看简谱吹奏《没有共产党就没有新中国》和《中学时代》等歌曲，<br>我觉得我自己真是tmd太有才了，所以老师一说报名『小三门』，我立即就积极响应了。<br>至于我到底有没有音乐天赋，我到今天也没搞清楚。<br>二、文化课要求分数低，只要音乐过就能上个还不错的本科学校，一本也不是没可能；<br>三、我感觉学音乐是一件很酷的事情；<br>事实证明一年半的成果还可以，<br>可是经济基础，决定上层建筑，<br>最后考上了新乡一个叫做：『平原大学』的音乐系，<br>我估计是二本吧，<br>学费太昂贵，最后只好选择去学机械制造。<br>然后就与音乐绝缘了。<br>以上是摘要<a id="more"></a><br>但还是会买支笛子，<br>有空吹奏一番，<br>曲子当然不会再是初学的那些了，<br>好歹也有了些乐理知识，<br>可以识谱演奏了。<br>然后机械制造毕业，去做工人，<br>再然后到北京做电子商务，<br>始终还是放不下音乐，<br>梦想着有一天自己也能开一场自己的演唱会，<br>现在经济自立了，<br>也会买把吉他，学弹吉他，<br>有时间还会读《中国音乐简史》之类的书，<br>加深音乐素养，<br>权当一爱好，<br>但谁说爱好就不能学的专业一点儿，<br>因此，开辟这个专栏，<br>记录我平常累积的音乐知识<br>以及学习音乐过程中的欢乐。</p>
+]]></content>
+      <categories>
+        <category>影视歌</category>
+      </categories>
+  </entry>
+  <entry>
     <title>当你说知行合一的时候你在说什么</title>
     <url>/2016/03/17/%E5%BD%93%E4%BD%A0%E8%AF%B4%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E7%9A%84%E6%97%B6%E5%80%99%E4%BD%A0%E5%9C%A8%E8%AF%B4%E4%BB%80%E4%B9%88/</url>
     <content><![CDATA[<p>一、前面的话<br>知行合一是心学的支柱和核心，<br>心学没了知行合一也就不是心学，<br>因此我要反复讲，时时刻刻讲，<br>这篇也不例外，还是要讲知行合一。</p>
@@ -394,12 +426,21 @@
       </categories>
   </entry>
   <entry>
-    <title>我与音乐的初缘</title>
-    <url>/2016/03/17/%E6%88%91%E4%B8%8E%E9%9F%B3%E4%B9%90%E7%9A%84%E5%88%9D%E7%BC%98/</url>
-    <content><![CDATA[<p>我高中学过一年半音乐，<br>上过高中的都知道：『小三门』；<br>不知现在还这么叫吗？<br>我学音乐的原因有三：<br>一、小时候我爸买过一支笛子，我爸捣鼓好长时间，没吹响，<br>我后来不但吹响了，而且还能看简谱吹奏《没有共产党就没有新中国》和《中学时代》等歌曲，<br>我觉得我自己真是tmd太有才了，所以老师一说报名『小三门』，我立即就积极响应了。<br>至于我到底有没有音乐天赋，我到今天也没搞清楚。<br>二、文化课要求分数低，只要音乐过就能上个还不错的本科学校，一本也不是没可能；<br>三、我感觉学音乐是一件很酷的事情；<br>事实证明一年半的成果还可以，<br>可是经济基础，决定上层建筑，<br>最后考上了新乡一个叫做：『平原大学』的音乐系，<br>我估计是二本吧，<br>学费太昂贵，最后只好选择去学机械制造。<br>然后就与音乐绝缘了。<br>以上是摘要<a id="more"></a><br>但还是会买支笛子，<br>有空吹奏一番，<br>曲子当然不会再是初学的那些了，<br>好歹也有了些乐理知识，<br>可以识谱演奏了。<br>然后机械制造毕业，去做工人，<br>再然后到北京做电子商务，<br>始终还是放不下音乐，<br>梦想着有一天自己也能开一场自己的演唱会，<br>现在经济自立了，<br>也会买把吉他，学弹吉他，<br>有时间还会读《中国音乐简史》之类的书，<br>加深音乐素养，<br>权当一爱好，<br>但谁说爱好就不能学的专业一点儿，<br>因此，开辟这个专栏，<br>记录我平常累积的音乐知识<br>以及学习音乐过程中的欢乐。</p>
+    <title>我为什么三十岁还要学习IOS</title>
+    <url>/2016/03/17/%E6%88%91%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%89%E5%8D%81%E5%B2%81%E8%BF%98%E8%A6%81%E5%AD%A6%E4%B9%A0IOS/</url>
+    <content><![CDATA[<p>一、前面的话</p>
+<p>终于要开始写IOS学习笔记了，<br>我从15年8月份开始学习IOS；<br>完全自学；<br>中间学学停停，<br>就到了今天，<br>但是比较自豪的一点儿就是，<br>从来没想过放弃学习。</p>
+<p>以上是摘要<a id="more"></a></p>
+<p>二、为什么要学习IOS</p>
+<p>首先，最简单的理由，我就是喜欢，<br>通过敲入代码，然后看着自己的想法，<br>变成触手可及的实物。<br>我对这个过程非常着迷；<br>其次，我自己觉得，<br>未来编程就像今天每个人考驾照一样，<br>会成为大部分人的日常。<br>第三，我想从事相关方面的工作；<br>三、最大的挑战</p>
+<p>最大的挑战就是坚持，<br>因为我永远相信，<br>一件事只要肯坚持，总能干成，<br>当然前提是方向要对。</p>
+<p>没钱买mac，没钱报培训班，<br>没时间学习，都不是最大的挑战。<br>关键是你永远要相信，<br>你绝对可以学成。<br>四、目前的学习状况</p>
+<p>虽然中间有时间不等的停顿，<br>但是还是坚持到了现在，<br>目前正在学数据库和网络，<br>但是发觉oc和ui还有一些不牢固的东西，<br>还会不断返回去复习这两块儿。<br>五、心得</p>
+<p>只要你想干成一件事，<br>任何困难都是纸老虎，<br>因为你没时间管困难，<br>只会看着前面的目标，一直前进。<br>以后，我会不定期的发布自己的学习笔记，<br>作为自己学习的一个过程记录。</p>
 ]]></content>
       <categories>
-        <category>影视歌</category>
+        <category>编程</category>
+        <category>IOS</category>
       </categories>
   </entry>
   <entry>
@@ -416,24 +457,6 @@
 ]]></content>
       <categories>
         <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>我为什么三十岁还要学习IOS</title>
-    <url>/2016/03/17/%E6%88%91%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%89%E5%8D%81%E5%B2%81%E8%BF%98%E8%A6%81%E5%AD%A6%E4%B9%A0IOS/</url>
-    <content><![CDATA[<p>一、前面的话</p>
-<p>终于要开始写IOS学习笔记了，<br>我从15年8月份开始学习IOS；<br>完全自学；<br>中间学学停停，<br>就到了今天，<br>但是比较自豪的一点儿就是，<br>从来没想过放弃学习。</p>
-<p>以上是摘要<a id="more"></a></p>
-<p>二、为什么要学习IOS</p>
-<p>首先，最简单的理由，我就是喜欢，<br>通过敲入代码，然后看着自己的想法，<br>变成触手可及的实物。<br>我对这个过程非常着迷；<br>其次，我自己觉得，<br>未来编程就像今天每个人考驾照一样，<br>会成为大部分人的日常。<br>第三，我想从事相关方面的工作；<br>三、最大的挑战</p>
-<p>最大的挑战就是坚持，<br>因为我永远相信，<br>一件事只要肯坚持，总能干成，<br>当然前提是方向要对。</p>
-<p>没钱买mac，没钱报培训班，<br>没时间学习，都不是最大的挑战。<br>关键是你永远要相信，<br>你绝对可以学成。<br>四、目前的学习状况</p>
-<p>虽然中间有时间不等的停顿，<br>但是还是坚持到了现在，<br>目前正在学数据库和网络，<br>但是发觉oc和ui还有一些不牢固的东西，<br>还会不断返回去复习这两块儿。<br>五、心得</p>
-<p>只要你想干成一件事，<br>任何困难都是纸老虎，<br>因为你没时间管困难，<br>只会看着前面的目标，一直前进。<br>以后，我会不定期的发布自己的学习笔记，<br>作为自己学习的一个过程记录。</p>
-]]></content>
-      <categories>
-        <category>编程</category>
-        <category>IOS</category>
       </categories>
   </entry>
   <entry>
@@ -516,6 +539,37 @@
       </categories>
   </entry>
   <entry>
+    <title>提升Hexo颜值</title>
+    <url>/2020/05/04/%E6%8F%90%E5%8D%87Hexo%E9%A2%9C%E5%80%BC/</url>
+    <content><![CDATA[<h3 id="去掉翻页乱码"><a href="#去掉翻页乱码" class="headerlink" title="去掉翻页乱码"></a>去掉翻页乱码</h3><p>当我打开我的hexo博客，<br>在上一页下一页后面总是跟着以下乱码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&amp;raquto</span><br></pre></td></tr></table></figure>
+<p>找到以下路径里的archive.ejs文件，<br><code>/themes/landscape/layout/_partial</code><br>将最后一段中的以上乱码去除，<br>提交之后，显示修改成功。<br>终于不再觉得自己的博客像个山寨版的了。</p>
+<a id="more"></a>
+
+<h3 id="让Read-More更好看一些"><a href="#让Read-More更好看一些" class="headerlink" title="让Read More更好看一些"></a>让Read More更好看一些</h3><p>找到以下路径里的arctile.styl文件，<br><code>/themes/landscape/source/css/_partial</code><br>用ctrl+F搜索：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">article-more-link a</span><br></pre></td></tr></table></figure>
+<p>并修改此选项color值</p>
+<p><code>hover是指鼠标放到Read More上时的背景颜色和字体颜色。</code><br><code>前面的background和color分别设置鼠标未点击时的背景色和字体颜色。</code></p>
+<h3 id="让单篇文章底部的翻页更靓仔一些"><a href="#让单篇文章底部的翻页更靓仔一些" class="headerlink" title="让单篇文章底部的翻页更靓仔一些"></a>让单篇文章底部的翻页更靓仔一些</h3><p>还是刚才的arctile.styl文件<br>搜索以下两个关键词：<br>并修改对应选项color值，</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">article-nav-caption:修改翻页字体颜色</span><br><span class="line">article-nav-title：修改文章标题字体颜色</span><br></pre></td></tr></table></figure>
+
+<h3 id="让博客左下角按个性显示信息"><a href="#让博客左下角按个性显示信息" class="headerlink" title="让博客左下角按个性显示信息"></a>让博客左下角按个性显示信息</h3><p>在以下路径找到footer.ejs文件<br><code>/themes/landscape/layout/_partial</code><br>将</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&amp;copy;</span><br></pre></td></tr></table></figure>
+<p>改成自己想要的字，<br>比如我的是：<br><code>网站信息：后面跟着的是年份和作者</code></p>
+<p>将&amp;copy下一行的</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&lt;%&#x3D;_(&#39;power_by&#39;) %&gt;注释或删除</span><br></pre></td></tr></table></figure>
+<p>然后在a标签前面加上自己想要的，比如我加的是：<br><code>友情链接：</code><br>并且还可以将a标签里href改成自己想要的链接。</p>
+<p>打完收工。<br>搞完以上自己的博客好看多了。</p>
+<h3 id="接下来的计划"><a href="#接下来的计划" class="headerlink" title="接下来的计划"></a>接下来的计划</h3><p>下次把提交搜索引擎和百度统计搞定。</p>
+<p>然后就一心写文章。<br>什么RSS，评论和分享都不弄了，<br>弄了也没用，<br>RSS已经过时了，推送的还看不完，谁还订阅？<br>不可能天天盯着博客看，所以不弄评论了，<br>分享就更不用弄了，<br>还不如直接放上自己qq：1668088439，<br>或者自己微信，联系方便。</p>
+<p>就酱，以后如果不是必须，<br>就不在博客的功能和界面上下功夫了。</p>
+<p>一心写文章。</p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+  </entry>
+  <entry>
     <title>智慧与思想之花因何而开</title>
     <url>/2016/03/17/%E6%99%BA%E6%85%A7%E4%B8%8E%E6%80%9D%E6%83%B3%E4%B9%8B%E8%8A%B1%E5%9B%A0%E4%BD%95%E8%80%8C%E5%BC%80/</url>
     <content><![CDATA[<p>圣人之所以为圣人，<br>就是因为在百死千难中，<br>不断努力的思考自己的思维的过程；<br>而这个过程就是思想和智慧了。</p>
@@ -555,37 +609,6 @@
 ]]></content>
       <categories>
         <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>提升Hexo颜值</title>
-    <url>/2020/05/04/%E6%8F%90%E5%8D%87Hexo%E9%A2%9C%E5%80%BC/</url>
-    <content><![CDATA[<h3 id="去掉翻页乱码"><a href="#去掉翻页乱码" class="headerlink" title="去掉翻页乱码"></a>去掉翻页乱码</h3><p>当我打开我的hexo博客，<br>在上一页下一页后面总是跟着以下乱码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&amp;raquto</span><br></pre></td></tr></table></figure>
-<p>找到以下路径里的archive.ejs文件，<br><code>/themes/landscape/layout/_partial</code><br>将最后一段中的以上乱码去除，<br>提交之后，显示修改成功。<br>终于不再觉得自己的博客像个山寨版的了。</p>
-<a id="more"></a>
-
-<h3 id="让Read-More更好看一些"><a href="#让Read-More更好看一些" class="headerlink" title="让Read More更好看一些"></a>让Read More更好看一些</h3><p>找到以下路径里的arctile.styl文件，<br><code>/themes/landscape/source/css/_partial</code><br>用ctrl+F搜索：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">article-more-link a</span><br></pre></td></tr></table></figure>
-<p>并修改此选项color值</p>
-<p><code>hover是指鼠标放到Read More上时的背景颜色和字体颜色。</code><br><code>前面的background和color分别设置鼠标未点击时的背景色和字体颜色。</code></p>
-<h3 id="让单篇文章底部的翻页更靓仔一些"><a href="#让单篇文章底部的翻页更靓仔一些" class="headerlink" title="让单篇文章底部的翻页更靓仔一些"></a>让单篇文章底部的翻页更靓仔一些</h3><p>还是刚才的arctile.styl文件<br>搜索以下两个关键词：<br>并修改对应选项color值，</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">article-nav-caption:修改翻页字体颜色</span><br><span class="line">article-nav-title：修改文章标题字体颜色</span><br></pre></td></tr></table></figure>
-
-<h3 id="让博客左下角按个性显示信息"><a href="#让博客左下角按个性显示信息" class="headerlink" title="让博客左下角按个性显示信息"></a>让博客左下角按个性显示信息</h3><p>在以下路径找到footer.ejs文件<br><code>/themes/landscape/layout/_partial</code><br>将</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&amp;copy;</span><br></pre></td></tr></table></figure>
-<p>改成自己想要的字，<br>比如我的是：<br><code>网站信息：后面跟着的是年份和作者</code></p>
-<p>将&amp;copy下一行的</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&lt;%&#x3D;_(&#39;power_by&#39;) %&gt;注释或删除</span><br></pre></td></tr></table></figure>
-<p>然后在a标签前面加上自己想要的，比如我加的是：<br><code>友情链接：</code><br>并且还可以将a标签里href改成自己想要的链接。</p>
-<p>打完收工。<br>搞完以上自己的博客好看多了。</p>
-<h3 id="接下来的计划"><a href="#接下来的计划" class="headerlink" title="接下来的计划"></a>接下来的计划</h3><p>下次把提交搜索引擎和百度统计搞定。</p>
-<p>然后就一心写文章。<br>什么RSS，评论和分享都不弄了，<br>弄了也没用，<br>RSS已经过时了，推送的还看不完，谁还订阅？<br>不可能天天盯着博客看，所以不弄评论了，<br>分享就更不用弄了，<br>还不如直接放上自己qq：1668088439，<br>或者自己微信，联系方便。</p>
-<p>就酱，以后如果不是必须，<br>就不在博客的功能和界面上下功夫了。</p>
-<p>一心写文章。</p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
       </categories>
   </entry>
   <entry>
@@ -694,16 +717,6 @@
       </categories>
   </entry>
   <entry>
-    <title>苏阿芒—自学外语怎能不知道他</title>
-    <url>/2016/03/17/%E8%8B%8F%E9%98%BF%E8%8A%92%E2%80%94%E8%87%AA%E5%AD%A6%E5%A4%96%E8%AF%AD%E6%80%8E%E8%83%BD%E4%B8%8D%E7%9F%A5%E9%81%93%E4%BB%96/</url>
-    <content><![CDATA[<p>原籍安徽省太平县（今黄山区）广阳乡（今属安徽石台）人，本名苏承宗，因发表作品多以苏阿芒为名，故以苏阿芒一名蜚声海内外。<br>中学毕业后曾任天津机床厂夜校英文教师，1957年加入世界语协会，历任国际世界语博物馆馆员，<br>国际世界语《世界文学》特约撰稿人，国际世界读者青年联合会中央委员，“文革”中1968年蒙冤入狱，1979年平反后任百花出版社编辑。<br>1951年开始发表作品。1979年加入中国作家协会。<br>以上借用一段百科文字，<br>我知道苏阿芒其人其事，<br>是在父亲书箱里翻到的一本叫做《成才之路》的书上。<br>以上是摘要<a id="more"></a><br>当时看到就热血沸腾，<br>最近在学习日语和英语，<br>又想起这个名字。<br>由苏阿芒的故事，<br>我觉得无论学习外语还是学习其他东西，<br>就是不疯魔不成活。<br>想想你我诸位，<br>谁在地铁或者在商务活动中，<br>没有遇到过这样的场景：<br>你原本很以为难的一门外语，<br>在地铁中你身旁的一位美女或者老兄，<br>正在和外国人侃侃而谈，<br>不时发出爽朗的笑声。<br>又或者在商务活动中，<br>你的同事与谈判对手，<br>正在用一门你觉得很难的外语，<br>唇枪舌剑，你来我往。<br>当时你除了发蒙，<br>第二个感觉就是，<br>真TMD的太牛逼了。<br>我要是外语也这么牛逼，<br>那该多好啊！<br>可你就是无法做到……<br>这么牛逼！<br>是的你无法做到。</p>
-<p>因为等你下了地铁或者在结束那次谈判后，<br>你就又想着今天回去吃什么，<br>或者想着购物车里那件好看的鞋子或者衣服，<br>是不是又降价了。<br>事实就是如此，<br>我从遇到这种情况之后，<br>发奋学英语，<br>到如今也已有五六年时间，<br>到如今英语的水平，<br>也只能令自己呵呵了。<br>自己看了下掌握多门外语的牛逼人物，<br>远者如辜鸿铭，近者如苏阿芒。<br>他们有神马了不得方法吗？<br>还是天赋异禀。<br>非也！<br>唯苦练勤学尔。<br>我自己的猜测啊！<br>学第一门外语的难度，<br>和第二门第三门外语的难度肯定成几何级降低的。<br>因为你在学第一门外语的时候，<br>已经有了一套成熟的方法论；<br>区别只是在学其他外语的时候，<br>对方法论体系中的某个细节进行改动，<br>并且随着学的外语门数增多；<br>这个方法论的体系一定会不断完善，不断得到补充；<br>那么等到你学第二十门的时候，<br>肯定已经是手到擒来，如探囊取物般容易了。<br>所以根结在神马地方，<br>第一个是恒心，第二个是勤奋；<br>第三是保证你自己必须先学会一门外语。<br>如果你想学更多门外语，肯定会越来越容易的。<br>因此，无论你学英语还是韩语，无论意大利语还是西班牙语。<br>如果你真的想学多门外语，保证你先精通一门外语。<br>其他外语定然是可以得其门而入的。<br>那么你一定要知道苏阿芒的故事，<br>也就是题中应有之意了。</p>
-]]></content>
-      <categories>
-        <category>外语学习</category>
-      </categories>
-  </entry>
-  <entry>
     <title>编程学习心得</title>
     <url>/2016/03/17/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/</url>
     <content><![CDATA[<p>似乎每个人对一件从未接触过的事物着迷时；<br>都恨不得一下子就对其融会贯通；<br>这种急切心理，极有可能导致稍遇挫折，便丧失兴趣。</p>
@@ -722,25 +735,13 @@
       </categories>
   </entry>
   <entry>
-    <title>诚意与格物</title>
-    <url>/2016/03/17/%E8%AF%9A%E6%84%8F%E4%B8%8E%E6%A0%BC%E7%89%A9/</url>
-    <content><![CDATA[<p>一、前面的话</p>
-<p>阳明心学的概念和结构跟《大学》关系密切，<br>诚意作为三纲八目的起点，至关重要，<br>格物又是致良知和诚意的核心工夫，<br>因此，很有必要单独聊聊诚意和格物。</p>
-<p>二、诚意<br>诚意就是下决心，真的下决心<br>但不是下一次就可以，<br>因为决心需要格物和知行合一的支撑。<br>前文有述及，<br>决心与格物和知行合一是一个循序渐进，<br>相互促进的过程。<br>以上是摘要<a id="more"></a><br>多说无用，举例说明。<br>假如你要学习IOS编程，<br>从对IOS编程一无所知，<br>到完成自己的app，<br>对你来说肯定是一件很苦逼的事，<br>你觉得这时候决心对你有用吗 ？<br>答案是屁用没有，</p>
-<p>没错，决心对这时候的你来说，<br>绝对屁用没有，<br>那你就问了，<br>我靠，屁用没有，<br>那我学诚意有毛用，<br>别急，诚意不是一个孤立的单品，<br>是一个需要配合格物和知行合一一起使用的产品。<br>正如电和灯泡的关系，<br>有了电，屁用没有，<br>每天晚上还是无尽的黑暗，<br>但是伟大的爱迪生发明了灯泡，<br>我们夜晚的世界就变成了五彩缤纷的天堂。</p>
-<p>所以说下了学习编程的决心，<br>立马就要去格学习IOS编程这件事。<br>这就是诚意的作用，<br>诚意是电，有了它格物和知行合一这两个灯泡，<br>才能照亮你人生之夜的天空。</p>
-<p>二、格物<br>格物是诚意的手段，<br>诚意是格物的目的。<br>现在下了学习IOS编程的决心了，<br>那要怎么学呢？</p>
-<p>接着诚意的例子讲，<br>格学习编程这件事，<br>首先，你得知道IOS编程分几部分吧，<br>开始先得学C和OC的语法，<br>其次要学UI，要学数据库，网络和多线程等。</p>
-<p>刚开始肯定是茫无头绪的，<br>但是有勿忘勿助啊，<br>不要急着去精通，<br>但是也不要一曝十寒，<br>也就是既不要急吼吼的，<br>也不要三天打鱼两天晒网。<br>当你从一无所知，<br>学会了C里面的运算符，数据类型，循环体和选择语法，<br>这时候诚意就有作用了，<br>你的决心肯定加大了。<br>学了C,OC就很容易了，</p>
-<p>接下来该学习UI了，<br>当你学完UI，<br>并且第一次自己写出了一个简单的加法计算器或者QQ登录界面，<br>这时候的成就感肯定是你无法想象的。<br>那这时候的决心简直不要不要的了。</p>
-<p>就这样一步步前进，<br>每学完一个部分，<br>决心会随之增加，<br>最后当你做出自己的一个app，<br>并且在APPStore上架，<br>这就是一个完整的格物和知行合一的过程，<br>也是一个完整的诚意过程。</p>
-<p>在《知行合一与格物》里讲过，<br>格物偏向思考层面，<br>知行合一偏向行动层面，<br>因此学编程这件事里，<br>格物是让你弄清楚学习编程的整个路线图，<br>而知行合一确保你能自己亲自动手去练习写代码，<br>而不只是听视频里的课程，却并不动手。<br>诚意则是让你能够坚持学下去。</p>
-<p>三、诚意与格物的抽象表述</p>
-<p>当你第一次下决心后，<br>如果真正去格物和知行合一了，<br>这样便会增加你的决心，<br>又促成了你再次的格物和知行合一，<br>这样又使你的决心更进一步，<br>从而形成良性循环，<br>直到最后要格的物符合了天理。<br>从而完成一个完整的格物致知的过程。</p>
-<p>本期推荐电影电视剧：<br>一、《趟过女人河的男人》<br>推荐语：演员是一份工作，明星是一个标签，厌烦了如今电视剧中明星狗血表演的你，来重温下演员们的表演吧。<br>二、《低俗小说》<br>推荐语：<br>逼片届的一座高峰，要不就永远不要看，看了就得夸它赞，否则会被凶猛的影迷怒吼“LZ大傻逼，看你的《无极》去吧！”<br>三、《大卫戈尔的一生》<br>推荐语：你确定你有信仰，确定是吧？那就看看戈尔们是怎样维护自己的信仰的？<br>本期推荐书籍：<br>一、《读书毁了我》作者：王强<br>推荐语：读书是一件很花费时间的事情，既成就人，也毁人的时间，看看书是怎么毁去新东方三驾马车之一的王强的时间的吧。<br>二、《尼采：在世纪的转折点上》作者：周国平<br>推荐语：虽然我恨他现在大量生产鸡汤，但是这人早期的这本书写的还是很有见地的。<br>三、《旁观者》作者：德鲁克<br>推荐语：作者本人的回忆录，但是故事讲得很好，每个故事都有些独特的人在演绎，如果你也喜欢听真实的故事，不妨一阅。</p>
+    <title>苏阿芒—自学外语怎能不知道他</title>
+    <url>/2016/03/17/%E8%8B%8F%E9%98%BF%E8%8A%92%E2%80%94%E8%87%AA%E5%AD%A6%E5%A4%96%E8%AF%AD%E6%80%8E%E8%83%BD%E4%B8%8D%E7%9F%A5%E9%81%93%E4%BB%96/</url>
+    <content><![CDATA[<p>原籍安徽省太平县（今黄山区）广阳乡（今属安徽石台）人，本名苏承宗，因发表作品多以苏阿芒为名，故以苏阿芒一名蜚声海内外。<br>中学毕业后曾任天津机床厂夜校英文教师，1957年加入世界语协会，历任国际世界语博物馆馆员，<br>国际世界语《世界文学》特约撰稿人，国际世界读者青年联合会中央委员，“文革”中1968年蒙冤入狱，1979年平反后任百花出版社编辑。<br>1951年开始发表作品。1979年加入中国作家协会。<br>以上借用一段百科文字，<br>我知道苏阿芒其人其事，<br>是在父亲书箱里翻到的一本叫做《成才之路》的书上。<br>以上是摘要<a id="more"></a><br>当时看到就热血沸腾，<br>最近在学习日语和英语，<br>又想起这个名字。<br>由苏阿芒的故事，<br>我觉得无论学习外语还是学习其他东西，<br>就是不疯魔不成活。<br>想想你我诸位，<br>谁在地铁或者在商务活动中，<br>没有遇到过这样的场景：<br>你原本很以为难的一门外语，<br>在地铁中你身旁的一位美女或者老兄，<br>正在和外国人侃侃而谈，<br>不时发出爽朗的笑声。<br>又或者在商务活动中，<br>你的同事与谈判对手，<br>正在用一门你觉得很难的外语，<br>唇枪舌剑，你来我往。<br>当时你除了发蒙，<br>第二个感觉就是，<br>真TMD的太牛逼了。<br>我要是外语也这么牛逼，<br>那该多好啊！<br>可你就是无法做到……<br>这么牛逼！<br>是的你无法做到。</p>
+<p>因为等你下了地铁或者在结束那次谈判后，<br>你就又想着今天回去吃什么，<br>或者想着购物车里那件好看的鞋子或者衣服，<br>是不是又降价了。<br>事实就是如此，<br>我从遇到这种情况之后，<br>发奋学英语，<br>到如今也已有五六年时间，<br>到如今英语的水平，<br>也只能令自己呵呵了。<br>自己看了下掌握多门外语的牛逼人物，<br>远者如辜鸿铭，近者如苏阿芒。<br>他们有神马了不得方法吗？<br>还是天赋异禀。<br>非也！<br>唯苦练勤学尔。<br>我自己的猜测啊！<br>学第一门外语的难度，<br>和第二门第三门外语的难度肯定成几何级降低的。<br>因为你在学第一门外语的时候，<br>已经有了一套成熟的方法论；<br>区别只是在学其他外语的时候，<br>对方法论体系中的某个细节进行改动，<br>并且随着学的外语门数增多；<br>这个方法论的体系一定会不断完善，不断得到补充；<br>那么等到你学第二十门的时候，<br>肯定已经是手到擒来，如探囊取物般容易了。<br>所以根结在神马地方，<br>第一个是恒心，第二个是勤奋；<br>第三是保证你自己必须先学会一门外语。<br>如果你想学更多门外语，肯定会越来越容易的。<br>因此，无论你学英语还是韩语，无论意大利语还是西班牙语。<br>如果你真的想学多门外语，保证你先精通一门外语。<br>其他外语定然是可以得其门而入的。<br>那么你一定要知道苏阿芒的故事，<br>也就是题中应有之意了。</p>
 ]]></content>
       <categories>
-        <category>阳明心学</category>
+        <category>外语学习</category>
       </categories>
   </entry>
   <entry>
@@ -785,18 +786,25 @@
       </categories>
   </entry>
   <entry>
-    <title>读《一个人的村庄》</title>
-    <url>/2016/03/17/%E8%AF%BB%E3%80%8A%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E6%9D%91%E5%BA%84%E3%80%8B/</url>
-    <content><![CDATA[<p>一、书和作者<br>《一个人的村庄》作者：刘亮程<br>刘亮程，作家，1962年出生在新疆古尔班通古特沙漠边缘的一个小村庄。<br>著有诗集《晒晒黄沙梁的太阳》，<br>散文集《虚土》《一个人的村庄》《在新疆》等。<br>被誉为“20世纪中国最后一位散文家”和“乡村哲学家”。</p>
-<p>二、我的家乡<br>读到这本书中的文字，<br>情不自禁想到我的家乡，<br>和儿时在家乡的我，<br>那时每到夏天，<br>暑假可以去河里摸鱼抓虾，<br>一顿美美的野餐是少不了的，<br>晚饭后可以去树林摸蝉换钱，<br>第二天的冰棍就有了保证，<br>傍晚可以去家附近的池塘洗个痛快的凉水澡，<br>一下子从一个小泥人儿，变成了一个滑皮溜。<br>以上是摘要<a id="more"></a><br>那时每到麦收，<br>镰刀总会割到手，<br>但简单止血后，不用包扎还可以愉快的割麦子，<br>买不起口香糖，<br>麦子去皮后直接放到口中咀嚼，<br>瞬间唇齿留香，麦香四溢，<br>比口香糖还有嚼头，<br>麦秸垛落成后，<br>那里是每个孩子的天堂。</p>
-<p>那时每到瓜熟季节<br>各种瓜果是当饭吃的，<br>西红柿是在衣服上抹一下就吃的，<br>西瓜汁是被当作最佳冷饮的。</p>
-<p>可是我有时会孤独，<br>为了不被理解的忧伤，<br>为了小小的愿望被流放，<br>为了不知何时走出这片累弯腰的黄土。<br>我有时会绝望，<br>为了好像永远割不完的麦行，<br>为了不知道自己的未来会怎样，<br>为了不知道如何改变现在的孤独和绝望。</p>
-<p>后来我终于远离那片黄土，<br>再也没有割不完的麦行，<br>再也没有不被理解的忧伤，<br>再也没有被流放的小愿望，<br>可是儿时家乡的那种快乐，<br>不知何时远离了我的心房。</p>
-<p>三、故乡情结<br>每个人都有故乡情结，<br>或许是儿时与玩伴的戏耍，<br>或者是捉拿河里鱼虾，<br>甚至是故乡的一片树林、土岗，<br>午夜梦回哭湿了枕套，<br>你可回到了哪个儿时的故乡，<br>你的故乡情结是什么呢？</p>
+    <title>诚意与格物</title>
+    <url>/2016/03/17/%E8%AF%9A%E6%84%8F%E4%B8%8E%E6%A0%BC%E7%89%A9/</url>
+    <content><![CDATA[<p>一、前面的话</p>
+<p>阳明心学的概念和结构跟《大学》关系密切，<br>诚意作为三纲八目的起点，至关重要，<br>格物又是致良知和诚意的核心工夫，<br>因此，很有必要单独聊聊诚意和格物。</p>
+<p>二、诚意<br>诚意就是下决心，真的下决心<br>但不是下一次就可以，<br>因为决心需要格物和知行合一的支撑。<br>前文有述及，<br>决心与格物和知行合一是一个循序渐进，<br>相互促进的过程。<br>以上是摘要<a id="more"></a><br>多说无用，举例说明。<br>假如你要学习IOS编程，<br>从对IOS编程一无所知，<br>到完成自己的app，<br>对你来说肯定是一件很苦逼的事，<br>你觉得这时候决心对你有用吗 ？<br>答案是屁用没有，</p>
+<p>没错，决心对这时候的你来说，<br>绝对屁用没有，<br>那你就问了，<br>我靠，屁用没有，<br>那我学诚意有毛用，<br>别急，诚意不是一个孤立的单品，<br>是一个需要配合格物和知行合一一起使用的产品。<br>正如电和灯泡的关系，<br>有了电，屁用没有，<br>每天晚上还是无尽的黑暗，<br>但是伟大的爱迪生发明了灯泡，<br>我们夜晚的世界就变成了五彩缤纷的天堂。</p>
+<p>所以说下了学习编程的决心，<br>立马就要去格学习IOS编程这件事。<br>这就是诚意的作用，<br>诚意是电，有了它格物和知行合一这两个灯泡，<br>才能照亮你人生之夜的天空。</p>
+<p>二、格物<br>格物是诚意的手段，<br>诚意是格物的目的。<br>现在下了学习IOS编程的决心了，<br>那要怎么学呢？</p>
+<p>接着诚意的例子讲，<br>格学习编程这件事，<br>首先，你得知道IOS编程分几部分吧，<br>开始先得学C和OC的语法，<br>其次要学UI，要学数据库，网络和多线程等。</p>
+<p>刚开始肯定是茫无头绪的，<br>但是有勿忘勿助啊，<br>不要急着去精通，<br>但是也不要一曝十寒，<br>也就是既不要急吼吼的，<br>也不要三天打鱼两天晒网。<br>当你从一无所知，<br>学会了C里面的运算符，数据类型，循环体和选择语法，<br>这时候诚意就有作用了，<br>你的决心肯定加大了。<br>学了C,OC就很容易了，</p>
+<p>接下来该学习UI了，<br>当你学完UI，<br>并且第一次自己写出了一个简单的加法计算器或者QQ登录界面，<br>这时候的成就感肯定是你无法想象的。<br>那这时候的决心简直不要不要的了。</p>
+<p>就这样一步步前进，<br>每学完一个部分，<br>决心会随之增加，<br>最后当你做出自己的一个app，<br>并且在APPStore上架，<br>这就是一个完整的格物和知行合一的过程，<br>也是一个完整的诚意过程。</p>
+<p>在《知行合一与格物》里讲过，<br>格物偏向思考层面，<br>知行合一偏向行动层面，<br>因此学编程这件事里，<br>格物是让你弄清楚学习编程的整个路线图，<br>而知行合一确保你能自己亲自动手去练习写代码，<br>而不只是听视频里的课程，却并不动手。<br>诚意则是让你能够坚持学下去。</p>
+<p>三、诚意与格物的抽象表述</p>
+<p>当你第一次下决心后，<br>如果真正去格物和知行合一了，<br>这样便会增加你的决心，<br>又促成了你再次的格物和知行合一，<br>这样又使你的决心更进一步，<br>从而形成良性循环，<br>直到最后要格的物符合了天理。<br>从而完成一个完整的格物致知的过程。</p>
+<p>本期推荐电影电视剧：<br>一、《趟过女人河的男人》<br>推荐语：演员是一份工作，明星是一个标签，厌烦了如今电视剧中明星狗血表演的你，来重温下演员们的表演吧。<br>二、《低俗小说》<br>推荐语：<br>逼片届的一座高峰，要不就永远不要看，看了就得夸它赞，否则会被凶猛的影迷怒吼“LZ大傻逼，看你的《无极》去吧！”<br>三、《大卫戈尔的一生》<br>推荐语：你确定你有信仰，确定是吧？那就看看戈尔们是怎样维护自己的信仰的？<br>本期推荐书籍：<br>一、《读书毁了我》作者：王强<br>推荐语：读书是一件很花费时间的事情，既成就人，也毁人的时间，看看书是怎么毁去新东方三驾马车之一的王强的时间的吧。<br>二、《尼采：在世纪的转折点上》作者：周国平<br>推荐语：虽然我恨他现在大量生产鸡汤，但是这人早期的这本书写的还是很有见地的。<br>三、《旁观者》作者：德鲁克<br>推荐语：作者本人的回忆录，但是故事讲得很好，每个故事都有些独特的人在演绎，如果你也喜欢听真实的故事，不妨一阅。</p>
 ]]></content>
       <categories>
-        <category>读书明道</category>
-        <category>小说</category>
+        <category>阳明心学</category>
       </categories>
   </entry>
   <entry>
@@ -828,26 +836,18 @@
       </categories>
   </entry>
   <entry>
-    <title>那时那你—杨潞是最完美的甘十九妹</title>
-    <url>/2020/05/04/%E9%82%A3%E6%97%B6%E9%82%A3%E4%BD%A0%E2%80%94%E6%9D%A8%E6%BD%9E%E6%98%AF%E6%9C%80%E5%AE%8C%E7%BE%8E%E7%9A%84%E7%94%98%E5%8D%81%E4%B9%9D%E5%A6%B9/</url>
-    <content><![CDATA[<p>具体已经记不清是九岁还是十岁看的这个片子了。</p>
-<p>但是杨潞那绝世的容颜，<br>干净利落的武打动作，<br>以及会说话的眼神，让人久久不能忘怀。<br>真的从此之后，除了电影《双旗镇刀客》<br>再没有任何一部武侠电视剧能打动我，<br>就算曾经最喜欢的金庸武侠《连城诀》都不行。</p>
-<a id="more"></a>
-
-<p>暂且不说尹剑平那个**了，<br>意思就是不说感情线了。</p>
-<p>单单就只看杨潞拔剑和收剑的姿势，<br>就已经是飒爽英姿<br>再加上飘逸的身影，<br>得体的服装和配饰。</p>
-<p>我想没有几个甘粉或者叫甘露吧，<br>不把他视为天仙下凡。</p>
-<p>即便女孩也肯定一样的感觉。</p>
-<p>就感觉这种姿色，这种气质，<br>是多少人的梦想里都不曾出现的女人形象。</p>
-<p>甘明珠这样的女人，<br>要刚有刚，要柔有柔。<br>刚的时候，刚到霸气侧漏，<br>比如灭尹剑平师门的时候。</p>
-<p>柔的时候，百炼钢也抵挡不住。<br>比如在和尹剑平坠落悬崖之后，<br>那期间的一颦一笑。<br>不吹不捧。<br>杨潞的演技一些后来之辈，<br>一辈子也撵不上。</p>
-<p>我自打有独立思考能力之后，（<br>某些人现在还不曾有过这种能力。<br>）</p>
-<p>从来没见过任何一位女性能超过杨潞对甘十九妹的武侠形象的诠释。<br>对于我个人来说，<br>杨潞就是甘十九妹，<br>甘十九妹就是杨潞。</p>
-<p>毫不夸张的说，杨潞饰演的甘十九妹，<br>是我有生以来观看过的最完美的武侠女主形象，<br>没有之一。</p>
-<p>甚至当我不知道干什么的时候，<br>都会默默打开重新看一遍。<br>我对自己说，<br>每看一遍，就是对完美的一次体验。</p>
+    <title>读《一个人的村庄》</title>
+    <url>/2016/03/17/%E8%AF%BB%E3%80%8A%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E6%9D%91%E5%BA%84%E3%80%8B/</url>
+    <content><![CDATA[<p>一、书和作者<br>《一个人的村庄》作者：刘亮程<br>刘亮程，作家，1962年出生在新疆古尔班通古特沙漠边缘的一个小村庄。<br>著有诗集《晒晒黄沙梁的太阳》，<br>散文集《虚土》《一个人的村庄》《在新疆》等。<br>被誉为“20世纪中国最后一位散文家”和“乡村哲学家”。</p>
+<p>二、我的家乡<br>读到这本书中的文字，<br>情不自禁想到我的家乡，<br>和儿时在家乡的我，<br>那时每到夏天，<br>暑假可以去河里摸鱼抓虾，<br>一顿美美的野餐是少不了的，<br>晚饭后可以去树林摸蝉换钱，<br>第二天的冰棍就有了保证，<br>傍晚可以去家附近的池塘洗个痛快的凉水澡，<br>一下子从一个小泥人儿，变成了一个滑皮溜。<br>以上是摘要<a id="more"></a><br>那时每到麦收，<br>镰刀总会割到手，<br>但简单止血后，不用包扎还可以愉快的割麦子，<br>买不起口香糖，<br>麦子去皮后直接放到口中咀嚼，<br>瞬间唇齿留香，麦香四溢，<br>比口香糖还有嚼头，<br>麦秸垛落成后，<br>那里是每个孩子的天堂。</p>
+<p>那时每到瓜熟季节<br>各种瓜果是当饭吃的，<br>西红柿是在衣服上抹一下就吃的，<br>西瓜汁是被当作最佳冷饮的。</p>
+<p>可是我有时会孤独，<br>为了不被理解的忧伤，<br>为了小小的愿望被流放，<br>为了不知何时走出这片累弯腰的黄土。<br>我有时会绝望，<br>为了好像永远割不完的麦行，<br>为了不知道自己的未来会怎样，<br>为了不知道如何改变现在的孤独和绝望。</p>
+<p>后来我终于远离那片黄土，<br>再也没有割不完的麦行，<br>再也没有不被理解的忧伤，<br>再也没有被流放的小愿望，<br>可是儿时家乡的那种快乐，<br>不知何时远离了我的心房。</p>
+<p>三、故乡情结<br>每个人都有故乡情结，<br>或许是儿时与玩伴的戏耍，<br>或者是捉拿河里鱼虾，<br>甚至是故乡的一片树林、土岗，<br>午夜梦回哭湿了枕套，<br>你可回到了哪个儿时的故乡，<br>你的故乡情结是什么呢？</p>
 ]]></content>
       <categories>
-        <category>影视歌</category>
+        <category>读书明道</category>
+        <category>小说</category>
       </categories>
   </entry>
   <entry>
@@ -859,68 +859,6 @@
       <categories>
         <category>读书明道</category>
         <category>小说</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>重装Hexo遇到的坑</title>
-    <url>/2020/04/28/%E9%87%8D%E8%A3%85Hexo%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/</url>
-    <content><![CDATA[<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">我的前言只有三段话</span><br></pre></td></tr></table></figure>
-
-<h4 id="第一段"><a href="#第一段" class="headerlink" title="第一段"></a>第一段</h4><p>以前曾经用两天一夜的时间，<br>成功的以一个小白的身份，<br>用Mac+Hexo+Github,<br>搭建了自己的独立博客，<br>并且还简单学习了js和markdown，<br>当然还有python的简单用法，<br>可以说是收获颇丰。</p>
-<h4 id="第二段"><a href="#第二段" class="headerlink" title="第二段"></a>第二段</h4><p>随着生活日益繁忙，<br>便兴趣缺缺了。<br>所以，一度曾尝试彻底卸载Hexo,<br>最后当然没有成功，<br>只是在本地卸载了hexo和node，<br>但是hexo本地文件夹始终保存着，<br>幸好保存了，<br>不然今天就没这篇文章了。</p>
-<h4 id="第三段"><a href="#第三段" class="headerlink" title="第三段"></a>第三段</h4><p>最近生活有了些闲暇，<br>也读了很多书，<br>忽然又想找个地方写一下，<br>所以决定重装Hexo，<br>这便是踏坑的开始。</p>
-<a id="more"></a>
-
-<h3 id="第一个坑：node版本和hexo不兼容"><a href="#第一个坑：node版本和hexo不兼容" class="headerlink" title="第一个坑：node版本和hexo不兼容"></a>第一个坑：node版本和hexo不兼容</h3><p>我重新装了node和hexo，<br>满心欢喜在终端输入：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<p>结果给我来了一串的node警告，<br>只要不是错误，那我忍着，<br>继续输入：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-<p>这时候node坐不住了，<br>它报错了，错误如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">TypeError [ERR_INVALID_ARG_TYPE]: </span><br><span class="line"></span><br><span class="line">The &quot;mode&quot; argument must be integer. Received an instance of Object</span><br></pre></td></tr></table></figure>
-<p>然后下面是at什么什么，反正一堆错误。</p>
-<p>我用了一晚上的时间，<br>熬到凌晨四点多，<br>最后在搜索引擎，根本没有找到答案，<br>有人说是因为node版本问题，<br>我没当回事儿，<br>我想怎么可能是node版本问题呢？<br>我这node和hexo都是新装的，<br>结果，你越不认可的原因，<br>事实证明，就是那个原因，<br>在第二天上午又找了将近一上午的情况下，<br>我去了google，结果在github，看到了标准答案。<br>就是因为node 14.0.0和hexo不兼容的问题。</p>
-<p>然后啥也别想了，<br>直接打开命令行，开始装nvm</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew install nvm</span><br></pre></td></tr></table></figure>
-<p>接下来，用nvm安装离node 14.0.0比较近的版本，<br>那就选node 13.13.0吧，<br>开装，</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nvm install v13.13.0</span><br></pre></td></tr></table></figure>
-<p>安装完毕，<br>接下来将v13.13.0用nvm设置成默认的node版本</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nvm use v13.13.0</span><br></pre></td></tr></table></figure>
-<p>以上只是单次有用，<br>要想每次默认的node都是13.13.0，<br>必须设置别名：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">node alias default v13.13.0</span><br></pre></td></tr></table></figure>
-<p>接下来在终端输入查看下目前默认node版本是否是v13.13.0：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nvm current</span><br></pre></td></tr></table></figure>
-<p>终端显示更改默认node版本成功。</p>
-<p>至此用nvm管理node版本步骤完毕。</p>
-<p>来不及顾及其他，<br>直接在终端输入：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<p>成功！！！<br>恼人的node警告终于消停了，<br>世界终于清净了，<br>继续输入：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-<p>提交成功，堪称完美。</p>
-<p>至此完美解决打开本地服务器和提交到github时，<br>node警告和报错的问题。<br>至此，第一个坑，算是填完了。</p>
-<h3 id="第二个坑：网站名称和主页导航栏中文乱码"><a href="#第二个坑：网站名称和主页导航栏中文乱码" class="headerlink" title="第二个坑：网站名称和主页导航栏中文乱码"></a>第二个坑：网站名称和主页导航栏中文乱码</h3><p>先声明这个坑，我到现在也没跳出来。<br>根本找不到原因。</p>
-<p>发现网站名称和导航栏中文乱码后，<br>展开一波搜索大法，<br>效果并不好，<br>在翻山越岭爬山涉水般的，各种尝试之后，<br>决定退而求其次，<br>我用原来hexo文件夹里的_config.yml和themes文件夹的_config.yml，<br>直接覆盖当前站点的这两个配置文件。<br>结果再也没乱码。</p>
-<p>网上好多人说中文乱码是因为用了文本编辑器编辑_config.yml，<br>是编码错误，改成utf8云云。</p>
-<p>可是并没有卵用，<br>如果是因为编码问题，<br>我文章直接就是用文本编辑器写的，一点儿也不乱。</p>
-<p>所以说，网上搜索答案的时候，<br>人云亦云的人是真多，<br>不但解决不了问题，<br>还浪费想找到答案的人的时间和精力。<br>有的人真的可恶至极，直接复制粘贴。<br>连问题都没写清楚，<br>还能期望他会有靠谱的答案吗？</p>
-<p>至此，算是勉强跳出两个大坑。</p>
-<p>最近决定集中研究下，hexo博客的装修问题。</p>
-<p>什么主题啦，修改ejs啦，等等，一定很好玩儿。</p>
-<p>再次使用hexo，有了第一次的基础，</p>
-<p>这次对hexo的文件结构和功能明了多了。</p>
-<p>慢慢来，<br>世界上一切事情都是这样的，<br>慢就是快，<br>快就是慢<br>有一句话说的很好，与诸君共勉：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">### Slow is smooth, and smooth is fast.</span><br><span class="line">    慢是光滑的，而光滑是快的。</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>Hexo</category>
       </categories>
   </entry>
   <entry>
@@ -1046,26 +984,88 @@
       </categories>
   </entry>
   <entry>
-    <title>工夫与境界（二）</title>
-    <url>/2016/03/17/%E5%B7%A5%E5%A4%AB%E4%B8%8E%E5%A2%83%E7%95%8C%EF%BC%88%E4%BA%8C%EF%BC%89/</url>
-    <content><![CDATA[<p>一、境界为何？<br>境界字面理解，<br>境乃环境，界乃界限；<br>突破界限到达新环境就叫做境界。<br>境界不是自己标榜的，<br>真正到达新境界的人，<br>行事言语都会有所体现。</p>
-<p>二、境</p>
-<p>1、客观环境<br>首先从环境说起，<br>环境又分为外在与内在；<br>外在叫客观环境，<br>内在叫做心境。</p>
-<p>客观环境没什么好说的，<br>无论你生于贫苦之家，<br>还是钟鸣鼎食之家，<br>这都不是你能定的，<br>那是所有人的起点，<br>你只有接受，没有选择。<br>以上是摘要<a id="more"></a><br>2、心境<br>至于心境，则要好好说一下；<br>《心经》开篇第一句话：<br>观自在菩萨，<br>行深般若波罗蜜多，<br>照见五蕴皆空，<br>度一切苦厄。<br>这说的就是心境。<br>展开说比较复杂，<br>简单从几个概念说起。</p>
-<p>三毒：贪嗔痴，<br>三法印：诸行无常，诸法无我，寂静涅槃；<br>五蕴：受想行色识<br>般若波罗密多：到达彼岸的智慧。</p>
-<p>为什么要说心经呢？<br>你可能会纳闷？<br>我们讲的不是心学吗？<br>对了正因为我们讲的是心学。<br>而客观环境，多数情况下我们无能为力。<br>多数情况下，我能改变的只有心境。<br>《心经》为我们提供了一种改变心境的伟大方法。<br>你没看错，就是伟大的方法。<br>因为它解决的是根本问题，直指人心，<br>心经讲的就是为什么我们会感到人生皆苦。</p>
-<p>我们之所以感到人生皆苦，<br>是因为有：‘我执’。<br>我执的意思是我们以为世间万物都是恒定不变的。<br>这是所有苦的根源。<br>苦又分为：求不得，爱别离，怨憎会。</p>
-<p>事实是，世间万物每时每刻都在变化，<br>因为有：‘我执’，因此我们都中了三毒。<br>我们贪婪是因为：<br>我们以为拥有了某些东西，它就会永远属于我们，<br>并且因为得不到而纠结不已。<br>我们愤怒是因为：<br>我们以为所有的糟糕事情都会一直糟糕下去，<br>并且为此生出恐惧来吓唬自己。<br>明天要交报表了，做不出来怎么办？<br>明天要考试了，考不过怎么办？<br>明天又要考核绩效了，达不到怎么办？<br>我们总是夸大事情本身的后果。<br>我们痴傻是因为，我们以为一瞬即永恒，<br>并且相信自己对永恒的判断。</p>
-<p>事实是，也许你刚买到梦寐以求的保时捷，<br>第二天就出车祸撞死了。<br>也许你刚刚与他吵过架的室友或朋友，<br>是因为最近家里老人得了病，心情不好。<br>也许你内心许诺一生只爱她一人的女友，<br>正在和新认识的帅哥微信聊天。</p>
-<p>那么，我们有必要知道三法印的存在，<br>诸行无常，诸法无我，寂静涅槃，<br>万事万物都在变化，你以为你面前的桌子和电脑是静止的？<br>非也，电脑里面每时每刻二进制数据都在变化，<br>桌子的基本组成粒子，无时无刻不在老化。<br>你以为你就是你吗？<br>这句话可能有点儿绕，<br>我的意思是：<br>你以为今天的你还是昨天的你吗？<br>你以为此刻的你还是上一刻的你吗？<br>你以为现在的你还是六岁时候的你吗？<br>抛开外形的变化不说。</p>
-<p>为了便于理解我们举个例子，<br>比如你的名字叫张三<br>基于你的名字来说，<br>你觉得张三的对象是谁？<br>是六岁时候的你？<br>还是现在的你？<br>你说当然是现在的你？<br>你这不是搞笑吗？<br>那好，我再问，是上一刻的你，<br>还是这一刻的你？<br>到底哪个‘你’是张三？<br>到底是在吃饭的你是张三？<br>还是在撒尿的你是张三？<br>你又说：“当然两个都是张三”，<br>但是这一刻的你已经不是上一刻的你了，<br>你的血液在不断更新，你的细胞在不断更新。<br>你的思维意识瞬间万变。<br>到底哪一个才是作为张三的你？<br>因此张三这个名字只是个假名。<br>没有真的张三存在。<br>只是你自己太过于执着你是张三这件事。<br>而你并不知道并没有真的张三存在？<br>此为诸行无常，诸法无我。</p>
-<p>当你悟了诸行无常，诸法无我，自然会寂静涅槃。<br>虽然有点儿抽象，但我绝不是顺口胡诌。<br>我自己是真正体验过这种思考的。</p>
-<p>这段实在太抽象，<br>因为梁文道这等厉害人物在《一千零一夜》，<br>用了六集才讲清楚《心经》的前两句话。<br>个中奥义，不花一番功夫实难领会。<br>另外小结中有些概念实在无法展开叙述，<br>有心人可以自行搜索资料进行学习。<br>做下小结吧：“我执”是三毒：“贪、嗔、痴”的根源；<br>陷入三毒世人皆苦，苦分为：“求不得、爱别离、怨憎会”<br>三法印：诸行无常、诸法无我、寂静涅槃会让我们理解空不异色，色不异空，空即是色，色即是空，从而获得到达彼岸的大智慧。<br>只有运用般若波罗蜜多：到达彼岸的大智慧才能照见五蕴皆空，度一切苦厄。</p>
-<p>3、界<br>关于界限我要说的不多，<br>大家应该都知道有个舒适区，学习区与恐慌区的划分。<br>那么我只有一个建议，经常挑战下你的恐慌区。<br>怕和女孩搭讪，偏偏要在餐馆吃午饭时和邻桌的漂亮妹妹搭个讪，<br>怕在群众面前演讲，偏偏要在公园等人扎堆的地方，让自己来上一段，<br>怕在高处眺望，偏偏周末要去体验一下蹦极时血脉贲张的酸爽。<br>你说：“臣妾真的做不到啊！”。<br>我只说一件事：<br>最近重看了一遍86版的《西游记》，<br>至于演员演得好，导演拍的好，不赘述。<br>只一点，第一集就让我明白了以前看不可能明白的道理。<br>孙悟空和众猴打赌，自己能从水帘洞进去且出来。<br>你想一想，<br>有的猴子已经在这片区域生活了很多年，<br>却没勇气进去看一看，<br>那一刻我知道，人生所有的艰难困苦都是纸老虎。<br>再有，进去后欢宴期间一猴子突然死亡，<br>那一刻我知道，人生无常，达人自玉。<br>最后，孙悟空决定远行学艺。<br>在市集间被俗人们当作异类而嘲笑<br>那一刻我知道，哪怕任何人的嘲笑，<br>都比不过你自己的一个决心。</p>
-<p>本期推荐书籍：<br>1、《增长黑客》豆瓣评分8.1 作者：范冰<br>细节非常独到，我还试了下里面通过curl －o命令抓取唱吧图片。<br>最重要的一点树立T型知识结构的意识。<br>归纳略显不足，只描述案例，不归纳本质的东西，做互联网的同学可以作为手边书翻一翻。<br>2、《黑客与画家》作者：保罗格雷厄姆<br>任何一门知识，做到极致都是艺术，编程亦然。<br>3、《物演通论》作者：王东岳<br>我只记住了一个：“递弱代偿法则”，其他看不懂，你若有高见，欢迎和我讨论。<br>本期推荐电影：<br>1、《三傻大闹宝莱坞》<br>我已经看过三遍了，不多说了，和梦想有关和现实无联。<br>2、《无法触碰》<br>这个看了两遍，马上看第三遍，和生命有关和人生无联。<br>3、《野草莓》<br>英格玛·伯格曼代表作，和生命无关和心灵有联。</p>
+    <title>那时那你—杨潞是最完美的甘十九妹</title>
+    <url>/2020/05/04/%E9%82%A3%E6%97%B6%E9%82%A3%E4%BD%A0%E2%80%94%E6%9D%A8%E6%BD%9E%E6%98%AF%E6%9C%80%E5%AE%8C%E7%BE%8E%E7%9A%84%E7%94%98%E5%8D%81%E4%B9%9D%E5%A6%B9/</url>
+    <content><![CDATA[<p>具体已经记不清是九岁还是十岁看的这个片子了。</p>
+<p>但是杨潞那绝世的容颜，<br>干净利落的武打动作，<br>以及会说话的眼神，让人久久不能忘怀。<br>真的从此之后，除了电影《双旗镇刀客》<br>再没有任何一部武侠电视剧能打动我，<br>就算曾经最喜欢的金庸武侠《连城诀》都不行。</p>
+<a id="more"></a>
+
+<p>暂且不说尹剑平那个**了，<br>意思就是不说感情线了。</p>
+<p>单单就只看杨潞拔剑和收剑的姿势，<br>就已经是飒爽英姿<br>再加上飘逸的身影，<br>得体的服装和配饰。</p>
+<p>我想没有几个甘粉或者叫甘露吧，<br>不把他视为天仙下凡。</p>
+<p>即便女孩也肯定一样的感觉。</p>
+<p>就感觉这种姿色，这种气质，<br>是多少人的梦想里都不曾出现的女人形象。</p>
+<p>甘明珠这样的女人，<br>要刚有刚，要柔有柔。<br>刚的时候，刚到霸气侧漏，<br>比如灭尹剑平师门的时候。</p>
+<p>柔的时候，百炼钢也抵挡不住。<br>比如在和尹剑平坠落悬崖之后，<br>那期间的一颦一笑。<br>不吹不捧。<br>杨潞的演技一些后来之辈，<br>一辈子也撵不上。</p>
+<p>我自打有独立思考能力之后，（<br>某些人现在还不曾有过这种能力。<br>）</p>
+<p>从来没见过任何一位女性能超过杨潞对甘十九妹的武侠形象的诠释。<br>对于我个人来说，<br>杨潞就是甘十九妹，<br>甘十九妹就是杨潞。</p>
+<p>毫不夸张的说，杨潞饰演的甘十九妹，<br>是我有生以来观看过的最完美的武侠女主形象，<br>没有之一。</p>
+<p>甚至当我不知道干什么的时候，<br>都会默默打开重新看一遍。<br>我对自己说，<br>每看一遍，就是对完美的一次体验。</p>
 ]]></content>
       <categories>
-        <category>阳明心学</category>
+        <category>影视歌</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>重装Hexo遇到的坑</title>
+    <url>/2020/04/28/%E9%87%8D%E8%A3%85Hexo%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/</url>
+    <content><![CDATA[<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">我的前言只有三段话</span><br></pre></td></tr></table></figure>
+
+<h4 id="第一段"><a href="#第一段" class="headerlink" title="第一段"></a>第一段</h4><p>以前曾经用两天一夜的时间，<br>成功的以一个小白的身份，<br>用Mac+Hexo+Github,<br>搭建了自己的独立博客，<br>并且还简单学习了js和markdown，<br>当然还有python的简单用法，<br>可以说是收获颇丰。</p>
+<h4 id="第二段"><a href="#第二段" class="headerlink" title="第二段"></a>第二段</h4><p>随着生活日益繁忙，<br>便兴趣缺缺了。<br>所以，一度曾尝试彻底卸载Hexo,<br>最后当然没有成功，<br>只是在本地卸载了hexo和node，<br>但是hexo本地文件夹始终保存着，<br>幸好保存了，<br>不然今天就没这篇文章了。</p>
+<h4 id="第三段"><a href="#第三段" class="headerlink" title="第三段"></a>第三段</h4><p>最近生活有了些闲暇，<br>也读了很多书，<br>忽然又想找个地方写一下，<br>所以决定重装Hexo，<br>这便是踏坑的开始。</p>
+<a id="more"></a>
+
+<h3 id="第一个坑：node版本和hexo不兼容"><a href="#第一个坑：node版本和hexo不兼容" class="headerlink" title="第一个坑：node版本和hexo不兼容"></a>第一个坑：node版本和hexo不兼容</h3><p>我重新装了node和hexo，<br>满心欢喜在终端输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>结果给我来了一串的node警告，<br>只要不是错误，那我忍着，<br>继续输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+<p>这时候node坐不住了，<br>它报错了，错误如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">TypeError [ERR_INVALID_ARG_TYPE]: </span><br><span class="line"></span><br><span class="line">The &quot;mode&quot; argument must be integer. Received an instance of Object</span><br></pre></td></tr></table></figure>
+<p>然后下面是at什么什么，反正一堆错误。</p>
+<p>我用了一晚上的时间，<br>熬到凌晨四点多，<br>最后在搜索引擎，根本没有找到答案，<br>有人说是因为node版本问题，<br>我没当回事儿，<br>我想怎么可能是node版本问题呢？<br>我这node和hexo都是新装的，<br>结果，你越不认可的原因，<br>事实证明，就是那个原因，<br>在第二天上午又找了将近一上午的情况下，<br>我去了google，结果在github，看到了标准答案。<br>就是因为node 14.0.0和hexo不兼容的问题。</p>
+<p>然后啥也别想了，<br>直接打开命令行，开始装nvm</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew install nvm</span><br></pre></td></tr></table></figure>
+<p>接下来，用nvm安装离node 14.0.0比较近的版本，<br>那就选node 13.13.0吧，<br>开装，</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nvm install v13.13.0</span><br></pre></td></tr></table></figure>
+<p>安装完毕，<br>接下来将v13.13.0用nvm设置成默认的node版本</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nvm use v13.13.0</span><br></pre></td></tr></table></figure>
+<p>以上只是单次有用，<br>要想每次默认的node都是13.13.0，<br>必须设置别名：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">node alias default v13.13.0</span><br></pre></td></tr></table></figure>
+<p>接下来在终端输入查看下目前默认node版本是否是v13.13.0：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nvm current</span><br></pre></td></tr></table></figure>
+<p>终端显示更改默认node版本成功。</p>
+<p>至此用nvm管理node版本步骤完毕。</p>
+<p>来不及顾及其他，<br>直接在终端输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>成功！！！<br>恼人的node警告终于消停了，<br>世界终于清净了，<br>继续输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+<p>提交成功，堪称完美。</p>
+<p>至此完美解决打开本地服务器和提交到github时，<br>node警告和报错的问题。<br>至此，第一个坑，算是填完了。</p>
+<h3 id="第二个坑：网站名称和主页导航栏中文乱码"><a href="#第二个坑：网站名称和主页导航栏中文乱码" class="headerlink" title="第二个坑：网站名称和主页导航栏中文乱码"></a>第二个坑：网站名称和主页导航栏中文乱码</h3><p>先声明这个坑，我到现在也没跳出来。<br>根本找不到原因。</p>
+<p>发现网站名称和导航栏中文乱码后，<br>展开一波搜索大法，<br>效果并不好，<br>在翻山越岭爬山涉水般的，各种尝试之后，<br>决定退而求其次，<br>我用原来hexo文件夹里的_config.yml和themes文件夹的_config.yml，<br>直接覆盖当前站点的这两个配置文件。<br>结果再也没乱码。</p>
+<p>网上好多人说中文乱码是因为用了文本编辑器编辑_config.yml，<br>是编码错误，改成utf8云云。</p>
+<p>可是并没有卵用，<br>如果是因为编码问题，<br>我文章直接就是用文本编辑器写的，一点儿也不乱。</p>
+<p>所以说，网上搜索答案的时候，<br>人云亦云的人是真多，<br>不但解决不了问题，<br>还浪费想找到答案的人的时间和精力。<br>有的人真的可恶至极，直接复制粘贴。<br>连问题都没写清楚，<br>还能期望他会有靠谱的答案吗？</p>
+<p>至此，算是勉强跳出两个大坑。</p>
+<p>最近决定集中研究下，hexo博客的装修问题。</p>
+<p>什么主题啦，修改ejs啦，等等，一定很好玩儿。</p>
+<p>再次使用hexo，有了第一次的基础，</p>
+<p>这次对hexo的文件结构和功能明了多了。</p>
+<p>慢慢来，<br>世界上一切事情都是这样的，<br>慢就是快，<br>快就是慢<br>有一句话说的很好，与诸君共勉：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">### Slow is smooth, and smooth is fast.</span><br><span class="line">    慢是光滑的，而光滑是快的。</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>Hexo</category>
       </categories>
   </entry>
 </search>
