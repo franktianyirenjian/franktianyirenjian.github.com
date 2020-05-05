@@ -530,7 +530,8 @@ body {
   margin-left: 8px;
 }
 .article-category:before {
-  content: "\2020";
+  content: "\2023";
+  color: #ff7;
 }
 .article-category-link {
   margin: 0 12px 1em;
