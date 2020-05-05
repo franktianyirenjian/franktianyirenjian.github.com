@@ -1031,7 +1031,7 @@ a.article-title:hover {
   border: 1px solid #ddd;
   border-radius: 3px;
   text-align: center;
-  color: #999;
+  color: #800;
   overflow: hidden;
 }
 #page-nav:before,
@@ -1058,26 +1058,20 @@ a.article-title:hover {
 }
 #page-nav .prev {
   float: left;
-  color: #800;
 }
-#page-nav .next {
+.next {
   float: right;
-  color: #800;
 }
-#page-nav .page-number {
+.page-number {
   display: inline-block;
-  color: #800;
 }
 @media screen and (max-width: 479px) {
-  #page-nav {
-    display: none;
-  }
 }
-#page-nav .current {
+.current {
   font-weight: bold;
   color: #0f0;
 }
-#page-nav .space {
+.space {
   color: #000;
 }
 #footer {
