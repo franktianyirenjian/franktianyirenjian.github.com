@@ -532,7 +532,7 @@ body {
 .article-category:before {
   content: "\25BA";
   color: #008000;
-  font-size: 1px;
+  font-size: 20px;
 }
 .article-category-link {
   margin: 0 12px 1em;
@@ -1505,7 +1505,7 @@ pre .javascript .function {
 .tag-list-count,
 .archive-list-count {
   padding-left: 5px;
-  color: #999;
+  color: #00f;
   font-size: 0.85em;
 }
 .category-list-count:before,
