@@ -531,8 +531,17 @@ body {
 }
 .article-category:before {
   content: "\2023";
-  color: #0f0;
-  padding: 20px;
+  font-size: 20px;
+  font-family: FontAwesome;
+  width: 20px;
+  height: 20px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -10px;
+  margin-left: -10px;
+  text-align: center;
+  color: #ff7;
 }
 .article-category-link {
   margin: 0 12px 1em;
