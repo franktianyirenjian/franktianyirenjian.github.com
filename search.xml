@@ -1,27 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hexo添加Rss和评论插件</title>
-    <url>/2016/03/20/Hexo%E6%B7%BB%E5%8A%A0Rss%E5%92%8C%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/</url>
-    <content><![CDATA[<p>一、添加RSS<br>我的主题配置文件已含有rss：  /atom.xml<br>因此我就直接安装部署了。<br>根目录下的配置信息：在# Extensions中添加，已经有的就免了。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plugins: hexo-generator-feed</span><br></pre></td></tr></table></figure>
-<p>打开Terminal（终端）输入：运行</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">npm install hero-generator-feed</span><br></pre></td></tr></table></figure>
-<p>重新部署：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo d -</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>二、开启评论<br>1、首先，注册多说，并在根目录下的配置文件添加shot_name,这里是duoshuo_shortname<br>short name指你在注册多说时二级域名里你自己输入的那部分，不包括htpp://和.duoshuo.com。<br>这里有人说在主题配置信息里配置duoshuo_shortname，但是我的始终搞不定，<br>我曾怀疑是不是data－thread－key等三个参数的问题，然后将page.path改为post.path,<br>仍然不行，只能慢慢试验了。<br>2、若使用默认主题landscape，则进入themes\landscape\layout_partial\articles.ejs中，<br>将这段div中的disqus_shortname统统改为duoshuo_shortname，有的人没有这段，按实际情况来。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;footer class="article-footer"&gt;</span></span><br><span class="line"><span class="regexp">&lt;a data-url="&lt;%- post.permalink %&gt;" data-id="&lt;%= post._id %&gt;" class="article-share-link"&gt;</span></span><br><span class="line"><span class="regexp">&lt;%= __('share') %&gt;&lt;/</span>a&gt;</span><br><span class="line">&lt;% <span class="keyword">if</span> (post.comments &amp;&amp; config.duoshuo_shortname)&#123; %&gt;</span><br><span class="line">&lt;a href=<span class="string">"&lt;%- post.permalink %&gt;#duoshuo_thread"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"article-comment-link"</span>&gt;&lt;%= __(<span class="string">'comment'</span>) %&gt;&lt;<span class="regexp">/a&gt;</span></span><br><span class="line"><span class="regexp">&lt;% &#125; %&gt;</span></span><br><span class="line"><span class="regexp">&lt;%- partial('post/</span>tag<span class="string">') %&gt;</span></span><br><span class="line"><span class="string">&lt;/footer&gt;</span></span><br><span class="line"><span class="string">&lt;/div&gt;</span></span><br></pre></td></tr></table></figure>
-<p>3、网上大多数的都是说的这段代码替换：<br>替换&lt;% section %&gt;到&lt;／section&gt;之间的部分。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments &amp;&amp; config.disqus_shortname)&#123; %&gt;</span><br><span class="line">&lt;section id=<span class="string">"comments"</span>&gt;</span><br><span class="line">&lt;div id=<span class="string">"disqus_thread"</span>&gt;</span><br><span class="line">&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=<span class="string">"//disqus.com/?ref_noscript"</span>&gt;comments </span><br><span class="line">powered by Disqus.&lt;<span class="regexp">/a&gt;&lt;/</span>noscript&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>section&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
-<p>替换为：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments &amp;&amp; config.duoshuo_shortname)&#123; %&gt;</span><br><span class="line">&lt;section id=<span class="string">"comments"</span>&gt;</span><br><span class="line">&lt;!-- 多说评论框 start --&gt;</span><br><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"ds-thread"</span> data-thread-key=<span class="string">"&lt;%= post.path %&gt;"</span> data-title=<span class="string">"&lt;%= page.title %&gt;"</span> </span><br><span class="line">data-url=<span class="string">"&lt;%= page.permalink %&gt;"</span>&gt;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;!-- 多说评论框 end --&gt;</span></span><br><span class="line"><span class="regexp">&lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;</span></span><br><span class="line"><span class="regexp">&lt;script type="text/</span>javascript<span class="string">"&gt;</span></span><br><span class="line"><span class="string">var duoshuoQuery = &#123;short_name:'&lt;%= config.duoshuo_shortname %&gt;'&#125;;</span></span><br><span class="line"><span class="string">(function() &#123;</span></span><br><span class="line"><span class="string">var ds = document.createElement('script');</span></span><br><span class="line"><span class="string">ds.type = 'text/javascript';ds.async = true;</span></span><br><span class="line"><span class="string">ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') </span></span><br><span class="line"><span class="string">+ '//static.duoshuo.com/embed.js';</span></span><br><span class="line"><span class="string">ds.charset = 'UTF-8';</span></span><br><span class="line"><span class="string">(document.getElementsByTagName('head')[0] </span></span><br><span class="line"><span class="string">|| document.getElementsByTagName('body')[0]).appendChild(ds);</span></span><br><span class="line"><span class="string">&#125;)();</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;!-- 多说公共JS代码 end --&gt;</span></span><br><span class="line"><span class="string">&lt;/section&gt;</span></span><br><span class="line"><span class="string">&lt;% &#125; %&gt;</span></span><br></pre></td></tr></table></figure>
-<p>这里需要注意的是data-thread-key等三个参数，对小白来说并不知道如何设置：<br>我的设置如下：大多数网上的也都设的这个。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">data-thread-key：&lt;%= page.path %&gt;</span><br><span class="line">data-title：&lt;%= page.title %&gt;</span><br><span class="line">data-url（稳定版没有这个，开发版有这个参数）：&lt;%= page.permalink %&gt;</span><br></pre></td></tr></table></figure>
-<p>4、重新部署<br>hexo clean<br>hexo d －<br>搞定。</p>
+    <title>IOS Xcode7.1新建纯代码工程</title>
+    <url>/2016/03/17/IOS-Xcode7-1%E6%96%B0%E5%BB%BA%E7%BA%AF%E4%BB%A3%E7%A0%81%E5%B7%A5%E7%A8%8B/</url>
+    <content><![CDATA[<p>今天准备纯代码做下计算器；<br>xcode已升级到version 7.1；<br>创建singleview后改造空工程；<br>删除main.storyboard，<br>创建windows并设置背景色为黑色；<br>满怀期待的command+R；<br>结果提示我:<br>以上是摘要<a id="more"></a><br>2015-10-30 18:15:29.933 计算器[1696:127982] <strong>* Assertion failure in -[UIApplication _runWithMainScene:transitionContext:completion:], /BuildRoot/Library/Caches/com.apple.xbs/Sources/UIKit_Sim/UIKit-3512.29.5/UIApplication.m:3299<br>2015-10-30 18:15:29.939 计算器[1696:127982] *</strong> Terminating app due to uncaught exception ‘NSInternalInconsistencyException’, reason: ‘Application windows are expected to have a root view controller at the end of application launch’<br>*** First throw call stack:<br>(<br>0   CoreFoundation                      0x02524a84 <strong>exceptionPreprocess + 180<br>1   libobjc.A.dylib                     0x00550e02 objc_exception_throw + 50<br>2   CoreFoundation                      0x0252491a +[NSException raise:format:arguments:] + 138<br>3   Foundation                          0x001cfe86 -[NSAssertionHandler handleFailureInMethod:object:file:lineNumber:description:] + 118<br>4   UIKit                               0x00957a9b -[UIApplication _runWithMainScene:transitionContext:completion:] + 3975<br>5   UIKit                               0x0097be4d __84-[UIApplication _handleApplicationActivationWithScene:transitionContext:completion:]_block_invoke3208 + 68<br>6   UIKit                               0x00953fb4 -[UIApplication workspaceDidEndTransaction:] + 163<br>7   FrontBoardServices                  0x036fdca4 __37-[FBSWorkspace clientEndTransaction:]_block_invoke_2 + 71<br>8   FrontBoardServices                  0x036fd77b __40-[FBSWorkspace _performDelegateCallOut:]_block_invoke + 54<br>9   FrontBoardServices                  0x0371b1a3 -[FBSSerialQueue _performNext] + 184<br>10  FrontBoardServices                  0x0371b5da -[FBSSerialQueue _performNextFromRunLoopSource] + 52<br>11  FrontBoardServices                  0x0371a8d6 FBSSerialQueueRunLoopSourceHandler + 33<br>12  CoreFoundation                      0x0243ed1f __CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE0_PERFORM_FUNCTION</strong> + 15<br>13  CoreFoundation                      0x024349ab __CFRunLoopDoSources0 + 523<br>14  CoreFoundation                      0x02433dc8 __CFRunLoopRun + 1032<br>15  CoreFoundation                      0x02433706 CFRunLoopRunSpecific + 470<br>16  CoreFoundation                      0x0243351b CFRunLoopRunInMode + 123<br>17  UIKit                               0x00953854 -[UIApplication _run] + 540<br>18  UIKit                               0x009591eb UIApplicationMain + 160<br>19  ËÆ°ÁÆóÂô®                           0x00082baa main + 138<br>20  libdyld.dylib                       0x030eba21 start + 1<br>)<br>libc++abi.dylib: terminating with uncaught exception of type NSException<br>(lldb)<br>然后就开始了艰辛的解决历程；<br>自己英语很渣，只有慢慢度娘；<br>百度出来的百分之九十九是xcode6.1改造空工程的方法；<br>没用啊，我现在用的就是它这个方法；<br>只有不断换关键字；<br>结果当我输入：“xcode7如何创建空工程”keywords后；<br>第四个答案正是我想要的；<br>東東同学的新浪博客：<a href="http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html</a><br>原来提示的意思是：“必须给windows创建一个rootviewcontroller；<br>这一句话足够了；果断添加rootview，再次command+R；果断通过；<br>它是否意味着windows创建好后不能直接显示了，必须添加rootviewcontroller才可以运行呢？<br>已经给東東留言等回复。<br>总之任何一个细小的问题，通过自己的努力或者得到别人指点得到解决后，那种欣喜都是情不自禁的。<br>完毕！</p>
 ]]></content>
       <categories>
-        <category>Hexo</category>
+        <category>编程</category>
+        <category>IOS</category>
       </categories>
   </entry>
   <entry>
@@ -52,13 +38,27 @@
       </categories>
   </entry>
   <entry>
-    <title>IOS Xcode7.1新建纯代码工程</title>
-    <url>/2016/03/17/IOS-Xcode7-1%E6%96%B0%E5%BB%BA%E7%BA%AF%E4%BB%A3%E7%A0%81%E5%B7%A5%E7%A8%8B/</url>
-    <content><![CDATA[<p>今天准备纯代码做下计算器；<br>xcode已升级到version 7.1；<br>创建singleview后改造空工程；<br>删除main.storyboard，<br>创建windows并设置背景色为黑色；<br>满怀期待的command+R；<br>结果提示我:<br>以上是摘要<a id="more"></a><br>2015-10-30 18:15:29.933 计算器[1696:127982] <strong>* Assertion failure in -[UIApplication _runWithMainScene:transitionContext:completion:], /BuildRoot/Library/Caches/com.apple.xbs/Sources/UIKit_Sim/UIKit-3512.29.5/UIApplication.m:3299<br>2015-10-30 18:15:29.939 计算器[1696:127982] *</strong> Terminating app due to uncaught exception ‘NSInternalInconsistencyException’, reason: ‘Application windows are expected to have a root view controller at the end of application launch’<br>*** First throw call stack:<br>(<br>0   CoreFoundation                      0x02524a84 <strong>exceptionPreprocess + 180<br>1   libobjc.A.dylib                     0x00550e02 objc_exception_throw + 50<br>2   CoreFoundation                      0x0252491a +[NSException raise:format:arguments:] + 138<br>3   Foundation                          0x001cfe86 -[NSAssertionHandler handleFailureInMethod:object:file:lineNumber:description:] + 118<br>4   UIKit                               0x00957a9b -[UIApplication _runWithMainScene:transitionContext:completion:] + 3975<br>5   UIKit                               0x0097be4d __84-[UIApplication _handleApplicationActivationWithScene:transitionContext:completion:]_block_invoke3208 + 68<br>6   UIKit                               0x00953fb4 -[UIApplication workspaceDidEndTransaction:] + 163<br>7   FrontBoardServices                  0x036fdca4 __37-[FBSWorkspace clientEndTransaction:]_block_invoke_2 + 71<br>8   FrontBoardServices                  0x036fd77b __40-[FBSWorkspace _performDelegateCallOut:]_block_invoke + 54<br>9   FrontBoardServices                  0x0371b1a3 -[FBSSerialQueue _performNext] + 184<br>10  FrontBoardServices                  0x0371b5da -[FBSSerialQueue _performNextFromRunLoopSource] + 52<br>11  FrontBoardServices                  0x0371a8d6 FBSSerialQueueRunLoopSourceHandler + 33<br>12  CoreFoundation                      0x0243ed1f __CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE0_PERFORM_FUNCTION</strong> + 15<br>13  CoreFoundation                      0x024349ab __CFRunLoopDoSources0 + 523<br>14  CoreFoundation                      0x02433dc8 __CFRunLoopRun + 1032<br>15  CoreFoundation                      0x02433706 CFRunLoopRunSpecific + 470<br>16  CoreFoundation                      0x0243351b CFRunLoopRunInMode + 123<br>17  UIKit                               0x00953854 -[UIApplication _run] + 540<br>18  UIKit                               0x009591eb UIApplicationMain + 160<br>19  ËÆ°ÁÆóÂô®                           0x00082baa main + 138<br>20  libdyld.dylib                       0x030eba21 start + 1<br>)<br>libc++abi.dylib: terminating with uncaught exception of type NSException<br>(lldb)<br>然后就开始了艰辛的解决历程；<br>自己英语很渣，只有慢慢度娘；<br>百度出来的百分之九十九是xcode6.1改造空工程的方法；<br>没用啊，我现在用的就是它这个方法；<br>只有不断换关键字；<br>结果当我输入：“xcode7如何创建空工程”keywords后；<br>第四个答案正是我想要的；<br>東東同学的新浪博客：<a href="http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html</a><br>原来提示的意思是：“必须给windows创建一个rootviewcontroller；<br>这一句话足够了；果断添加rootview，再次command+R；果断通过；<br>它是否意味着windows创建好后不能直接显示了，必须添加rootviewcontroller才可以运行呢？<br>已经给東東留言等回复。<br>总之任何一个细小的问题，通过自己的努力或者得到别人指点得到解决后，那种欣喜都是情不自禁的。<br>完毕！</p>
+    <title>Hexo添加Rss和评论插件</title>
+    <url>/2016/03/20/Hexo%E6%B7%BB%E5%8A%A0Rss%E5%92%8C%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/</url>
+    <content><![CDATA[<p>一、添加RSS<br>我的主题配置文件已含有rss：  /atom.xml<br>因此我就直接安装部署了。<br>根目录下的配置信息：在# Extensions中添加，已经有的就免了。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plugins: hexo-generator-feed</span><br></pre></td></tr></table></figure>
+<p>打开Terminal（终端）输入：运行</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">npm install hero-generator-feed</span><br></pre></td></tr></table></figure>
+<p>重新部署：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo d -</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>二、开启评论<br>1、首先，注册多说，并在根目录下的配置文件添加shot_name,这里是duoshuo_shortname<br>short name指你在注册多说时二级域名里你自己输入的那部分，不包括htpp://和.duoshuo.com。<br>这里有人说在主题配置信息里配置duoshuo_shortname，但是我的始终搞不定，<br>我曾怀疑是不是data－thread－key等三个参数的问题，然后将page.path改为post.path,<br>仍然不行，只能慢慢试验了。<br>2、若使用默认主题landscape，则进入themes\landscape\layout_partial\articles.ejs中，<br>将这段div中的disqus_shortname统统改为duoshuo_shortname，有的人没有这段，按实际情况来。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;footer class="article-footer"&gt;</span></span><br><span class="line"><span class="regexp">&lt;a data-url="&lt;%- post.permalink %&gt;" data-id="&lt;%= post._id %&gt;" class="article-share-link"&gt;</span></span><br><span class="line"><span class="regexp">&lt;%= __('share') %&gt;&lt;/</span>a&gt;</span><br><span class="line">&lt;% <span class="keyword">if</span> (post.comments &amp;&amp; config.duoshuo_shortname)&#123; %&gt;</span><br><span class="line">&lt;a href=<span class="string">"&lt;%- post.permalink %&gt;#duoshuo_thread"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"article-comment-link"</span>&gt;&lt;%= __(<span class="string">'comment'</span>) %&gt;&lt;<span class="regexp">/a&gt;</span></span><br><span class="line"><span class="regexp">&lt;% &#125; %&gt;</span></span><br><span class="line"><span class="regexp">&lt;%- partial('post/</span>tag<span class="string">') %&gt;</span></span><br><span class="line"><span class="string">&lt;/footer&gt;</span></span><br><span class="line"><span class="string">&lt;/div&gt;</span></span><br></pre></td></tr></table></figure>
+<p>3、网上大多数的都是说的这段代码替换：<br>替换&lt;% section %&gt;到&lt;／section&gt;之间的部分。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments &amp;&amp; config.disqus_shortname)&#123; %&gt;</span><br><span class="line">&lt;section id=<span class="string">"comments"</span>&gt;</span><br><span class="line">&lt;div id=<span class="string">"disqus_thread"</span>&gt;</span><br><span class="line">&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=<span class="string">"//disqus.com/?ref_noscript"</span>&gt;comments </span><br><span class="line">powered by Disqus.&lt;<span class="regexp">/a&gt;&lt;/</span>noscript&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>section&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+<p>替换为：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments &amp;&amp; config.duoshuo_shortname)&#123; %&gt;</span><br><span class="line">&lt;section id=<span class="string">"comments"</span>&gt;</span><br><span class="line">&lt;!-- 多说评论框 start --&gt;</span><br><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"ds-thread"</span> data-thread-key=<span class="string">"&lt;%= post.path %&gt;"</span> data-title=<span class="string">"&lt;%= page.title %&gt;"</span> </span><br><span class="line">data-url=<span class="string">"&lt;%= page.permalink %&gt;"</span>&gt;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;!-- 多说评论框 end --&gt;</span></span><br><span class="line"><span class="regexp">&lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;</span></span><br><span class="line"><span class="regexp">&lt;script type="text/</span>javascript<span class="string">"&gt;</span></span><br><span class="line"><span class="string">var duoshuoQuery = &#123;short_name:'&lt;%= config.duoshuo_shortname %&gt;'&#125;;</span></span><br><span class="line"><span class="string">(function() &#123;</span></span><br><span class="line"><span class="string">var ds = document.createElement('script');</span></span><br><span class="line"><span class="string">ds.type = 'text/javascript';ds.async = true;</span></span><br><span class="line"><span class="string">ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') </span></span><br><span class="line"><span class="string">+ '//static.duoshuo.com/embed.js';</span></span><br><span class="line"><span class="string">ds.charset = 'UTF-8';</span></span><br><span class="line"><span class="string">(document.getElementsByTagName('head')[0] </span></span><br><span class="line"><span class="string">|| document.getElementsByTagName('body')[0]).appendChild(ds);</span></span><br><span class="line"><span class="string">&#125;)();</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;!-- 多说公共JS代码 end --&gt;</span></span><br><span class="line"><span class="string">&lt;/section&gt;</span></span><br><span class="line"><span class="string">&lt;% &#125; %&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这里需要注意的是data-thread-key等三个参数，对小白来说并不知道如何设置：<br>我的设置如下：大多数网上的也都设的这个。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">data-thread-key：&lt;%= page.path %&gt;</span><br><span class="line">data-title：&lt;%= page.title %&gt;</span><br><span class="line">data-url（稳定版没有这个，开发版有这个参数）：&lt;%= page.permalink %&gt;</span><br></pre></td></tr></table></figure>
+<p>4、重新部署<br>hexo clean<br>hexo d －<br>搞定。</p>
 ]]></content>
       <categories>
-        <category>编程</category>
-        <category>IOS</category>
+        <category>Hexo</category>
       </categories>
   </entry>
   <entry>
@@ -186,6 +186,18 @@
       </categories>
   </entry>
   <entry>
+    <title>《王阳明大传》读后感</title>
+    <url>/2016/03/17/%E3%80%8A%E7%8E%8B%E9%98%B3%E6%98%8E%E5%A4%A7%E4%BC%A0%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/</url>
+    <content><![CDATA[<p>最近读了《王阳明大传》<br>模模糊糊理解了一些<br>王阳明心学要解决的问题是什么?<br>记录在此，以备后用。<br>心学在阳明后来讲学时，<br>为使学生容易理解，<br>便表述为良知学，<br>而实现的方法则是致良知。</p>
+<p>心学要解决的问题就是：找到“人生的意义”，<br>在百千万年的人类史中，<br>人类肯定形成了同一的人性内容，<br>也就是阳明心学中讲的“心体”，<br>也就是本元，最初的那种状态，<br>在阳明以前人们为了找到‘意义’，<br>都会去求助于外物，<br>从外物求理，以期望最终找到‘意义’。<br>以上是摘要<a id="more"></a><br>但是阳明‘龙场悟道’后，告诉大家，意义不在外界万物上，<br>而在每个人心上；<br>但是人们搞不懂，<br>既然在每个人心上，<br>那我们都有心，<br>为什么没有找到‘意义’所在呢？<br>这时王先生告诉他们：<br>不是没有，而是已经被遮蔽了。<br>是被外界鸡零狗碎的私心杂念蒙蔽了。<br>王先生不但告诉他们为什么你们现在从自己心上找不到意义，<br>而且还说我有方法能让你们找到，<br>那就是：“知行合一”；<br>只要坚持知行合一肯定会有人，<br>能将那些鸡零狗碎的私心杂念的遮蔽去掉，<br>看到自己的心的本体，<br>找到意义所在。</p>
+<p>注意他说的是有人会，<br>有人会找到，肯定就有人不会找到<br>所以心学本身对于每个个人来说<br>是一个悲喜参半的对意义的答案，<br>喜的是终于有方法能找到那个终极的问题的答案了。<br>而悲的则是，即使你真去知行合一了，<br>临死之前也不一定能找到。</p>
+<p>从王先生自己的经历来说，<br>他笃信每个人原本都是圣人，<br>只要坚持知行合一，<br>找到意义，最后每个人都会成为真正的圣人。<br>但是这里就有个时间的死结，<br>每个人的时间都不是无限，</p>
+]]></content>
+      <categories>
+        <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
     <title>为什么读完就谈</title>
     <url>/2016/03/17/%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AF%BB%E5%AE%8C%E5%B0%B1%E8%B0%88/</url>
     <content><![CDATA[<p>一、教学相长的好处<br>教学相长，绝对是一个人进步的最快方法；<br>这个经验是我从自己写微信公众号体会到的。<br>并且由此公众号的写作，<br>逐渐理清了自己以后的知识架构；<br>一直以来我都想为自己建立一个知识系统；<br>这个系统是完全属于自己的，<br>并且系统里面的每个元素我都能达到专业水平。</p>
@@ -196,18 +208,6 @@
       <categories>
         <category>读书明道</category>
         <category>小说</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>《王阳明大传》读后感</title>
-    <url>/2016/03/17/%E3%80%8A%E7%8E%8B%E9%98%B3%E6%98%8E%E5%A4%A7%E4%BC%A0%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/</url>
-    <content><![CDATA[<p>最近读了《王阳明大传》<br>模模糊糊理解了一些<br>王阳明心学要解决的问题是什么?<br>记录在此，以备后用。<br>心学在阳明后来讲学时，<br>为使学生容易理解，<br>便表述为良知学，<br>而实现的方法则是致良知。</p>
-<p>心学要解决的问题就是：找到“人生的意义”，<br>在百千万年的人类史中，<br>人类肯定形成了同一的人性内容，<br>也就是阳明心学中讲的“心体”，<br>也就是本元，最初的那种状态，<br>在阳明以前人们为了找到‘意义’，<br>都会去求助于外物，<br>从外物求理，以期望最终找到‘意义’。<br>以上是摘要<a id="more"></a><br>但是阳明‘龙场悟道’后，告诉大家，意义不在外界万物上，<br>而在每个人心上；<br>但是人们搞不懂，<br>既然在每个人心上，<br>那我们都有心，<br>为什么没有找到‘意义’所在呢？<br>这时王先生告诉他们：<br>不是没有，而是已经被遮蔽了。<br>是被外界鸡零狗碎的私心杂念蒙蔽了。<br>王先生不但告诉他们为什么你们现在从自己心上找不到意义，<br>而且还说我有方法能让你们找到，<br>那就是：“知行合一”；<br>只要坚持知行合一肯定会有人，<br>能将那些鸡零狗碎的私心杂念的遮蔽去掉，<br>看到自己的心的本体，<br>找到意义所在。</p>
-<p>注意他说的是有人会，<br>有人会找到，肯定就有人不会找到<br>所以心学本身对于每个个人来说<br>是一个悲喜参半的对意义的答案，<br>喜的是终于有方法能找到那个终极的问题的答案了。<br>而悲的则是，即使你真去知行合一了，<br>临死之前也不一定能找到。</p>
-<p>从王先生自己的经历来说，<br>他笃信每个人原本都是圣人，<br>只要坚持知行合一，<br>找到意义，最后每个人都会成为真正的圣人。<br>但是这里就有个时间的死结，<br>每个人的时间都不是无限，</p>
-]]></content>
-      <categories>
-        <category>阳明心学</category>
       </categories>
   </entry>
   <entry>
@@ -251,6 +251,27 @@
 ]]></content>
       <categories>
         <category>影视歌</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>如何利用知行合一提升学习效率</title>
+    <url>/2016/03/20/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E6%8F%90%E5%8D%87%E5%AD%A6%E4%B9%A0%E6%95%88%E7%8E%87/</url>
+    <content><![CDATA[<p>一、心学里的三类人<br>阳明将人分三类：生知安行，学知力行，困知勉行。<br>生知安行就是我们现在所说的天才，<br>如果按二八法则，全人类中，<br>似乎会有百分之二十的天才存在，<br>可是去掉那些后来伤仲永的，<br>最多会留下百分之十，就不错了。<br>困知勉行，就是脑袋死不开窍的，<br>最多也就百分之十，<br>剩下的就是百分之八十的普通人了。</p>
+<p>所以如果你自认为是天才，<br>那这篇文章就不用看了。<br>这篇文章的方法主要是针对，<br>和我一样那百分之八十中的普通人。<br>以上是摘要<a id="more"></a><br>二、万物有源<br>世间所有的事物，<br>都有一个本源，<br>每家家谱的存在，<br>便是一个很好的例证，<br>我们家家谱开头的第一句话便是：<br>饮水思源，慎终追远，以知其本也。</p>
+<p>你今天看媒体上的马云风光无限，<br>公众眼里的刘强东风头尽出，<br>可是源头在哪里？<br>他们是横空出世吗？<br>非也！<br>马云今天指点江山的魄力<br>离不开当年推荐中国黄页时，<br>被人拒之门外的尴尬做注脚；<br>刘强东今日的意气风发，<br>少不了当年因为做生意和前妻离婚的神伤做铺垫。<br>所以，学习也是有源头的。</p>
+<p>三、知行合一与学习效率<br>学习有源，源头在哪里？<br>上次讲过<br>格物更偏向于思考层面，<br>知行合一更偏向于行动层面。<br>若想利用知行合一提高学习效率，<br>首先必须得格学习这件事。<br>学习就是学和习，<br>绝不是废话。<br>所以学习的源头就是：<br>不但学理论还要以最快的速度去验证理论。<br>而不是仅仅让理论在脑子里呆一辈子。<br>这就是用知行合一提高学习效率的唯一方法。</p>
+<p>比如，你听人说Hexo＋Github搭建独立博客，快速，简便，强大。<br>那么怎么个快速，简便，强大法呢？<br>如果你不去搭建一个自己的独立博客，<br>你知道的也仅限于几个名词和三个形容词。</p>
+<p>那么心学的做法是什么呢？<br>首先查资料啊，通过查资料了解到，<br>Hexo不但很多程序员在用，<br>而且好多人还说是hacker必备的博客搭建框架，<br>基于多数人对带有神秘色彩的黑客的向往，<br>这时候会更有动力去行动。</p>
+<p>那么好了，基本的概念有了，<br>接下来还是和学习IOS开发如出一辙，<br>要了解路线图啊，<br>首先需要安装Node.js和Git程序，<br>然后安装并初始化Hexo框架，<br>最后启动本地服务器，<br>本地的Hexo框架就搭建完成了，<br>这时候打开服务器给的地址，<br>你已经可以看到完全属于你自己的独立博客的雏形了，<br>这样就更进一步加深你对这件事的热衷度，<br>也就是你的自信进一步提高了。</p>
+<p>到这里为止你通过最初的诚意，<br>下决心做用Hexo搭建独立博客这件事，<br>然后通过格这件事，<br>你了解了整个的路线图，<br>并且通过知行合一，你已经搭建出了本地的博客雏形。<br>你对这件事的兴趣以及对完成它的自信心，<br>已经不要不要的了。<br>因为你看到阶段性成果了。</p>
+<p>那接下来，配置博客信息，<br>安装SSH密钥，并且关联GIthub的库，<br>最终把你的本地独立博客部署到互联网上，<br>就是顺理成章的事了。</p>
+<p>等到你输入自己的博客网址，<br>在任何联网的电脑或手机都能看到自己的精神家园，<br>这时候你才真正体会到开头那三个形容词的含义，<br>快速是因为编程小白，也能按流程一步一步搭建它，<br>简便是因为搭建好后，只需两条命令就可以把自己的博客更新到互联网，<br>强大是因为，它几乎支持你以前的博客框架，<br>包括Jekyll，Octopress和Wordpress所有的功能。<br>但基本要求就是只需要一台联网的电脑和你按照步骤去搭建。</p>
+<p>四、关于理由<br>即便看到这里，<br>我相信很多人还是能找到，<br>拒绝做自己应该做的事情的理由。<br>我相信还是有很多人会说：<br>你不知道我有多忙，<br>你说得倒轻巧，<br>我都看不懂你说的这些什么Hexo和Github，<br>怎么去搭建？<br>balabalabala……<br>好吧，我承认大家都很忙，<br>这里稍微跟大家玩个文字游戏，<br>大家比较下‘忙’和‘忘’两个字，<br>没错，聪明的已经看出来了，<br>你的心躺下自己就什么都忘了，<br>你的心立起来，自然一直都很忙。<br>so，如果你到现在还找各种理由，<br>不去做自己应该做的事情，<br>那我只能说你决心还不够，<br>而你老说自己忙，<br>则是需要重新修炼心学的静坐工夫，<br>还是建议参考曾剃头的方法。</p>
+<p>最后，借用陌陌的广告词<br>送给那些迟迟不下决心做自己向往事情的人们：<br>别和陌生人说话，别做新鲜事，<br>继续过平常的生活，胆小一点儿，<br>别好奇，就玩你会的，离冒险远远的，<br>有些事想想就好，没必要改变，<br>待在熟悉的地方，最好待在家里，<br>听一样的音乐，见一样的人，重复同样的话题，<br>心思别太活，梦想要实际，<br>不要什么都尝试，就这样活着吧。</p>
+<p>本期推荐电影：<br>一、《沙漠之花》导演：雪瑞·霍尔曼<br>推荐语：如果你曾对沙漠里是否真的能开出花产生过疑问，这部片子很肯定的告诉你：能。<br>二、《白日火焰》导演：刁亦男<br>推荐语：对豆瓣什么的一些影评，我没太多感觉，本片亮点在于开始五分钟在你认为不可能发生的时候，两个警察被干掉了。<br>三、《爱在战火蔓延时》导演：戴维·塞尔策<br>推荐语：片子不算超精彩的那种，但是里面有一个场景令我很触动，当男女主角在国境线外呼救的时候，边防兵无动于衷，但当他们跨进国境线那一刻，边防兵毫不客气的还击。<br>本期推荐书籍：<br>一、《一阵风，留下了千古绝唱》作者：章诒和<br>推荐语：书里讲马连良对精致生活的享受部分，很是引人入胜。<br>二、《王阳明大传》作者：周月亮<br>推荐语：用通俗的话语较有深度的讲述了王阳明的一生，看完这个，就没必要看其学生吕峥写的《明朝一哥王阳明》了，基本照抄，没太多新意。<br>三、《历史深处的民国》作者：江城<br>推荐语：框架比《民国就是这么生猛》搭的好，细节则没后者全，但里面用数据分析了一个很有意思的现象，袁世凯家里的牛人没有活过58岁的。</p>
+]]></content>
+      <categories>
+        <category>阳明心学</category>
       </categories>
   </entry>
   <entry>
@@ -339,24 +360,31 @@
       </categories>
   </entry>
   <entry>
-    <title>如何利用知行合一提升学习效率</title>
-    <url>/2016/03/20/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E6%8F%90%E5%8D%87%E5%AD%A6%E4%B9%A0%E6%95%88%E7%8E%87/</url>
-    <content><![CDATA[<p>一、心学里的三类人<br>阳明将人分三类：生知安行，学知力行，困知勉行。<br>生知安行就是我们现在所说的天才，<br>如果按二八法则，全人类中，<br>似乎会有百分之二十的天才存在，<br>可是去掉那些后来伤仲永的，<br>最多会留下百分之十，就不错了。<br>困知勉行，就是脑袋死不开窍的，<br>最多也就百分之十，<br>剩下的就是百分之八十的普通人了。</p>
-<p>所以如果你自认为是天才，<br>那这篇文章就不用看了。<br>这篇文章的方法主要是针对，<br>和我一样那百分之八十中的普通人。<br>以上是摘要<a id="more"></a><br>二、万物有源<br>世间所有的事物，<br>都有一个本源，<br>每家家谱的存在，<br>便是一个很好的例证，<br>我们家家谱开头的第一句话便是：<br>饮水思源，慎终追远，以知其本也。</p>
-<p>你今天看媒体上的马云风光无限，<br>公众眼里的刘强东风头尽出，<br>可是源头在哪里？<br>他们是横空出世吗？<br>非也！<br>马云今天指点江山的魄力<br>离不开当年推荐中国黄页时，<br>被人拒之门外的尴尬做注脚；<br>刘强东今日的意气风发，<br>少不了当年因为做生意和前妻离婚的神伤做铺垫。<br>所以，学习也是有源头的。</p>
-<p>三、知行合一与学习效率<br>学习有源，源头在哪里？<br>上次讲过<br>格物更偏向于思考层面，<br>知行合一更偏向于行动层面。<br>若想利用知行合一提高学习效率，<br>首先必须得格学习这件事。<br>学习就是学和习，<br>绝不是废话。<br>所以学习的源头就是：<br>不但学理论还要以最快的速度去验证理论。<br>而不是仅仅让理论在脑子里呆一辈子。<br>这就是用知行合一提高学习效率的唯一方法。</p>
-<p>比如，你听人说Hexo＋Github搭建独立博客，快速，简便，强大。<br>那么怎么个快速，简便，强大法呢？<br>如果你不去搭建一个自己的独立博客，<br>你知道的也仅限于几个名词和三个形容词。</p>
-<p>那么心学的做法是什么呢？<br>首先查资料啊，通过查资料了解到，<br>Hexo不但很多程序员在用，<br>而且好多人还说是hacker必备的博客搭建框架，<br>基于多数人对带有神秘色彩的黑客的向往，<br>这时候会更有动力去行动。</p>
-<p>那么好了，基本的概念有了，<br>接下来还是和学习IOS开发如出一辙，<br>要了解路线图啊，<br>首先需要安装Node.js和Git程序，<br>然后安装并初始化Hexo框架，<br>最后启动本地服务器，<br>本地的Hexo框架就搭建完成了，<br>这时候打开服务器给的地址，<br>你已经可以看到完全属于你自己的独立博客的雏形了，<br>这样就更进一步加深你对这件事的热衷度，<br>也就是你的自信进一步提高了。</p>
-<p>到这里为止你通过最初的诚意，<br>下决心做用Hexo搭建独立博客这件事，<br>然后通过格这件事，<br>你了解了整个的路线图，<br>并且通过知行合一，你已经搭建出了本地的博客雏形。<br>你对这件事的兴趣以及对完成它的自信心，<br>已经不要不要的了。<br>因为你看到阶段性成果了。</p>
-<p>那接下来，配置博客信息，<br>安装SSH密钥，并且关联GIthub的库，<br>最终把你的本地独立博客部署到互联网上，<br>就是顺理成章的事了。</p>
-<p>等到你输入自己的博客网址，<br>在任何联网的电脑或手机都能看到自己的精神家园，<br>这时候你才真正体会到开头那三个形容词的含义，<br>快速是因为编程小白，也能按流程一步一步搭建它，<br>简便是因为搭建好后，只需两条命令就可以把自己的博客更新到互联网，<br>强大是因为，它几乎支持你以前的博客框架，<br>包括Jekyll，Octopress和Wordpress所有的功能。<br>但基本要求就是只需要一台联网的电脑和你按照步骤去搭建。</p>
-<p>四、关于理由<br>即便看到这里，<br>我相信很多人还是能找到，<br>拒绝做自己应该做的事情的理由。<br>我相信还是有很多人会说：<br>你不知道我有多忙，<br>你说得倒轻巧，<br>我都看不懂你说的这些什么Hexo和Github，<br>怎么去搭建？<br>balabalabala……<br>好吧，我承认大家都很忙，<br>这里稍微跟大家玩个文字游戏，<br>大家比较下‘忙’和‘忘’两个字，<br>没错，聪明的已经看出来了，<br>你的心躺下自己就什么都忘了，<br>你的心立起来，自然一直都很忙。<br>so，如果你到现在还找各种理由，<br>不去做自己应该做的事情，<br>那我只能说你决心还不够，<br>而你老说自己忙，<br>则是需要重新修炼心学的静坐工夫，<br>还是建议参考曾剃头的方法。</p>
-<p>最后，借用陌陌的广告词<br>送给那些迟迟不下决心做自己向往事情的人们：<br>别和陌生人说话，别做新鲜事，<br>继续过平常的生活，胆小一点儿，<br>别好奇，就玩你会的，离冒险远远的，<br>有些事想想就好，没必要改变，<br>待在熟悉的地方，最好待在家里，<br>听一样的音乐，见一样的人，重复同样的话题，<br>心思别太活，梦想要实际，<br>不要什么都尝试，就这样活着吧。</p>
-<p>本期推荐电影：<br>一、《沙漠之花》导演：雪瑞·霍尔曼<br>推荐语：如果你曾对沙漠里是否真的能开出花产生过疑问，这部片子很肯定的告诉你：能。<br>二、《白日火焰》导演：刁亦男<br>推荐语：对豆瓣什么的一些影评，我没太多感觉，本片亮点在于开始五分钟在你认为不可能发生的时候，两个警察被干掉了。<br>三、《爱在战火蔓延时》导演：戴维·塞尔策<br>推荐语：片子不算超精彩的那种，但是里面有一个场景令我很触动，当男女主角在国境线外呼救的时候，边防兵无动于衷，但当他们跨进国境线那一刻，边防兵毫不客气的还击。<br>本期推荐书籍：<br>一、《一阵风，留下了千古绝唱》作者：章诒和<br>推荐语：书里讲马连良对精致生活的享受部分，很是引人入胜。<br>二、《王阳明大传》作者：周月亮<br>推荐语：用通俗的话语较有深度的讲述了王阳明的一生，看完这个，就没必要看其学生吕峥写的《明朝一哥王阳明》了，基本照抄，没太多新意。<br>三、《历史深处的民国》作者：江城<br>推荐语：框架比《民国就是这么生猛》搭的好，细节则没后者全，但里面用数据分析了一个很有意思的现象，袁世凯家里的牛人没有活过58岁的。</p>
+    <title>开始学习python了</title>
+    <url>/2016/12/27/%E5%BC%80%E5%A7%8B%E5%AD%A6%E4%B9%A0python%E4%BA%86/</url>
+    <content><![CDATA[<p>从接触编程到现在已经三年多了，多数是浅尝辄止，因为我的主要工作是运营；<br>也没有必要把编程学的这么深入，从刚开始的html，到后来的php以及去年学的OC；<br>终于要学python了，为什么要学习python呢？<br>更深的我也不懂，我只知道两点。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">第一，python能做大数据方面的东西；</span><br><span class="line">第二，python还能做Machine Learning方面的东西。</span><br></pre></td></tr></table></figure>
+<p>重要的是我对这两方面都非常感兴趣，所以我就要学习python了。</p>
+<a id="more"></a>
+<p>马克思说，研究首先要充分的占有资料，所以就非常投入的查了很多资料。<br>而学习一门语言首先要搭建IDE啊，<br>我没听说python有像开发IOS的Xcode一样的IDE，<br>最初的想法就是赶紧搭建出来一个IDE，开始学习敲代码，<br>于是苦逼的填坑就开始了，什么pycharm、sublime txt，脑袋整个一浆糊。<br>最后终于搞清楚了，他娘的Mac自带python2.7和Vim。<br>只需要简单配置vim的配置文件vimrc，就可以开始简单的自学python了。</p>
+<p>但是，坑，才刚刚开始，因为用Xcode习惯了，所以一上来肯定想着python也可以一键执行啊。<br>于是找到一个老兄回答的配置一键执行的答案，就是在这里我遇到了初学python的一个大坑。</p>
+<p>我想既然一键执行，那就开启vim的配置文件vimrc开始配置吧。<br>一查才知道，/usr/share/vim/vimrc是系统级的文件，不可妄动。<br>那好，那就用Teriminal在用户下新建一个唄！</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">vi ~/.vimrc</span><br></pre></td></tr></table></figure>
+<p>建好了就开始写唄，于是就把java和c以及python在vim中的一键执行配置全部添加上。<br>呶！就是下面这堆!</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">map &lt;F5&gt; :call CompileRunGcc()&lt;CR&gt;</span><br><span class="line">func! CompileRunGcc()</span><br><span class="line"><span class="keyword">exec</span> <span class="string">"w"</span></span><br><span class="line"><span class="keyword">if</span> &amp;filetype == <span class="string">'c'</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!g++ % -o %&lt;"</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!time ./%&lt;"</span></span><br><span class="line">elseif &amp;filetype == <span class="string">'cpp'</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!g++ % -o %&lt;"</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!time ./%&lt;"</span></span><br><span class="line">elseif &amp;filetype == <span class="string">'java'</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!javac %"</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!time java %&lt;"</span></span><br><span class="line">elseif &amp;filetype == <span class="string">'sh'</span></span><br><span class="line">:!time bash %</span><br><span class="line">elseif &amp;filetype == <span class="string">'python'</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!time python2.7 %"</span></span><br><span class="line">elseif &amp;filetype == <span class="string">'html'</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!firefox % &amp;"</span></span><br><span class="line">elseif &amp;filetype == <span class="string">'go'</span></span><br><span class="line"><span class="string">"        exec "</span>!go build %&lt;<span class="string">"</span></span><br><span class="line"><span class="string">exec "</span>!time go run %<span class="string">"</span></span><br><span class="line"><span class="string">elseif &amp;filetype == 'mkd'</span></span><br><span class="line"><span class="string">exec "</span>!~/.vim/markdown.pl % &gt; %.html &amp;<span class="string">"</span></span><br><span class="line"><span class="string">exec "</span>!firefox %.html &amp;<span class="string">"</span></span><br><span class="line"><span class="string">endif</span></span><br><span class="line"><span class="string">endfunc</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">上面的意思是在vim中写c、java和python的时候在命令模式下，可以按F5，或者Fn+F5一键执行，查看编译效果。</span><br></pre></td></tr></table></figure>
+<p>可坑爹的是，我在vim中写完python的代码后，在命令模式下，无论怎么敲F5，都没反应。<br>而且由于vim的命令还不熟悉，在从Teriminal进入vimrc时，老是出现错误，<br>因为不懂啊，于是就感觉出了很大的错误，后来才知道，原来写vim时会生成两个文件，一个临时的一个存储在磁盘上，<br>如果写完vim忘记保存，那么那个叫做XX,swp的临时文件，会搞得你欲生欲死。</p>
+<p>没办法啊，身边也没有python大牛，只能继续翻网页。</p>
+<p>直到无意中把下面一行代码加入vi~/.vimrc(用户目录下的vim配置文件，它的优先级是高于vim的系统级配置文件的)中，然后奇迹的事情发生了，<br>我靠我的.py文件不但高亮显示了，最重要的是，当我在命令模式下，按下Fn+F5，竟然可以一键执行了，<br>这时候，我知道，终于跳出了我初学python的第一个坑。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">syntax on</span><br></pre></td></tr></table></figure>
+<p>没错就这两个单词，意思是：语法高亮。</p>
+<p>反思：我为什么会在这个在行家看来是弱智问题的坑上徘徊这么久呢？<br>有四点：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">第一，通过Teriminal用vi ~/.vimrc命令在用户目录下创建的vim配置文件是隐藏的；</span><br><span class="line">我没看到，就以为没有，然后就复制了系统下的vimrc文件来进行修改，肯定无效。</span><br><span class="line">第二，由于不知道在用户目录下新建的vimrc配置文件是隐藏的，而在Teriminal中试图进入vimrc时，又频频出错，于是就束手无策了。</span><br><span class="line">第三、由于不知道用户目录下新建的vimrc文件是隐藏的，而在用Teriminal进入时，又频频出错；</span><br><span class="line">于是我就试图自己在vim里新建一个名为vimrc的文件，绝壁无效。</span><br><span class="line">第四、由于，我是抱着，我对vim和python都懂得不多，所有跟配置一键执行无关的网页都是一扫而过；</span><br><span class="line">导致错过了提前解决问题的可能。</span><br><span class="line">就酱！</span><br></pre></td></tr></table></figure>
+<p>下面就要开始正式学习vim的命令和python语法了，我会一直更新滴！</p>
 ]]></content>
       <categories>
-        <category>阳明心学</category>
+        <category>编程</category>
+        <category>Python</category>
       </categories>
   </entry>
   <entry>
@@ -389,31 +417,21 @@
       </categories>
   </entry>
   <entry>
-    <title>开始学习python了</title>
-    <url>/2016/12/27/%E5%BC%80%E5%A7%8B%E5%AD%A6%E4%B9%A0python%E4%BA%86/</url>
-    <content><![CDATA[<p>从接触编程到现在已经三年多了，多数是浅尝辄止，因为我的主要工作是运营；<br>也没有必要把编程学的这么深入，从刚开始的html，到后来的php以及去年学的OC；<br>终于要学python了，为什么要学习python呢？<br>更深的我也不懂，我只知道两点。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">第一，python能做大数据方面的东西；</span><br><span class="line">第二，python还能做Machine Learning方面的东西。</span><br></pre></td></tr></table></figure>
-<p>重要的是我对这两方面都非常感兴趣，所以我就要学习python了。</p>
-<a id="more"></a>
-<p>马克思说，研究首先要充分的占有资料，所以就非常投入的查了很多资料。<br>而学习一门语言首先要搭建IDE啊，<br>我没听说python有像开发IOS的Xcode一样的IDE，<br>最初的想法就是赶紧搭建出来一个IDE，开始学习敲代码，<br>于是苦逼的填坑就开始了，什么pycharm、sublime txt，脑袋整个一浆糊。<br>最后终于搞清楚了，他娘的Mac自带python2.7和Vim。<br>只需要简单配置vim的配置文件vimrc，就可以开始简单的自学python了。</p>
-<p>但是，坑，才刚刚开始，因为用Xcode习惯了，所以一上来肯定想着python也可以一键执行啊。<br>于是找到一个老兄回答的配置一键执行的答案，就是在这里我遇到了初学python的一个大坑。</p>
-<p>我想既然一键执行，那就开启vim的配置文件vimrc开始配置吧。<br>一查才知道，/usr/share/vim/vimrc是系统级的文件，不可妄动。<br>那好，那就用Teriminal在用户下新建一个唄！</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">vi ~/.vimrc</span><br></pre></td></tr></table></figure>
-<p>建好了就开始写唄，于是就把java和c以及python在vim中的一键执行配置全部添加上。<br>呶！就是下面这堆!</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">map &lt;F5&gt; :call CompileRunGcc()&lt;CR&gt;</span><br><span class="line">func! CompileRunGcc()</span><br><span class="line"><span class="keyword">exec</span> <span class="string">"w"</span></span><br><span class="line"><span class="keyword">if</span> &amp;filetype == <span class="string">'c'</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!g++ % -o %&lt;"</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!time ./%&lt;"</span></span><br><span class="line">elseif &amp;filetype == <span class="string">'cpp'</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!g++ % -o %&lt;"</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!time ./%&lt;"</span></span><br><span class="line">elseif &amp;filetype == <span class="string">'java'</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!javac %"</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!time java %&lt;"</span></span><br><span class="line">elseif &amp;filetype == <span class="string">'sh'</span></span><br><span class="line">:!time bash %</span><br><span class="line">elseif &amp;filetype == <span class="string">'python'</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!time python2.7 %"</span></span><br><span class="line">elseif &amp;filetype == <span class="string">'html'</span></span><br><span class="line"><span class="keyword">exec</span> <span class="string">"!firefox % &amp;"</span></span><br><span class="line">elseif &amp;filetype == <span class="string">'go'</span></span><br><span class="line"><span class="string">"        exec "</span>!go build %&lt;<span class="string">"</span></span><br><span class="line"><span class="string">exec "</span>!time go run %<span class="string">"</span></span><br><span class="line"><span class="string">elseif &amp;filetype == 'mkd'</span></span><br><span class="line"><span class="string">exec "</span>!~/.vim/markdown.pl % &gt; %.html &amp;<span class="string">"</span></span><br><span class="line"><span class="string">exec "</span>!firefox %.html &amp;<span class="string">"</span></span><br><span class="line"><span class="string">endif</span></span><br><span class="line"><span class="string">endfunc</span></span><br></pre></td></tr></table></figure>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">上面的意思是在vim中写c、java和python的时候在命令模式下，可以按F5，或者Fn+F5一键执行，查看编译效果。</span><br></pre></td></tr></table></figure>
-<p>可坑爹的是，我在vim中写完python的代码后，在命令模式下，无论怎么敲F5，都没反应。<br>而且由于vim的命令还不熟悉，在从Teriminal进入vimrc时，老是出现错误，<br>因为不懂啊，于是就感觉出了很大的错误，后来才知道，原来写vim时会生成两个文件，一个临时的一个存储在磁盘上，<br>如果写完vim忘记保存，那么那个叫做XX,swp的临时文件，会搞得你欲生欲死。</p>
-<p>没办法啊，身边也没有python大牛，只能继续翻网页。</p>
-<p>直到无意中把下面一行代码加入vi~/.vimrc(用户目录下的vim配置文件，它的优先级是高于vim的系统级配置文件的)中，然后奇迹的事情发生了，<br>我靠我的.py文件不但高亮显示了，最重要的是，当我在命令模式下，按下Fn+F5，竟然可以一键执行了，<br>这时候，我知道，终于跳出了我初学python的第一个坑。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">syntax on</span><br></pre></td></tr></table></figure>
-<p>没错就这两个单词，意思是：语法高亮。</p>
-<p>反思：我为什么会在这个在行家看来是弱智问题的坑上徘徊这么久呢？<br>有四点：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">第一，通过Teriminal用vi ~/.vimrc命令在用户目录下创建的vim配置文件是隐藏的；</span><br><span class="line">我没看到，就以为没有，然后就复制了系统下的vimrc文件来进行修改，肯定无效。</span><br><span class="line">第二，由于不知道在用户目录下新建的vimrc配置文件是隐藏的，而在Teriminal中试图进入vimrc时，又频频出错，于是就束手无策了。</span><br><span class="line">第三、由于不知道用户目录下新建的vimrc文件是隐藏的，而在用Teriminal进入时，又频频出错；</span><br><span class="line">于是我就试图自己在vim里新建一个名为vimrc的文件，绝壁无效。</span><br><span class="line">第四、由于，我是抱着，我对vim和python都懂得不多，所有跟配置一键执行无关的网页都是一扫而过；</span><br><span class="line">导致错过了提前解决问题的可能。</span><br><span class="line">就酱！</span><br></pre></td></tr></table></figure>
-<p>下面就要开始正式学习vim的命令和python语法了，我会一直更新滴！</p>
+    <title>我为什么三十岁还要学习IOS</title>
+    <url>/2016/03/17/%E6%88%91%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%89%E5%8D%81%E5%B2%81%E8%BF%98%E8%A6%81%E5%AD%A6%E4%B9%A0IOS/</url>
+    <content><![CDATA[<p>一、前面的话</p>
+<p>终于要开始写IOS学习笔记了，<br>我从15年8月份开始学习IOS；<br>完全自学；<br>中间学学停停，<br>就到了今天，<br>但是比较自豪的一点儿就是，<br>从来没想过放弃学习。</p>
+<p>以上是摘要<a id="more"></a></p>
+<p>二、为什么要学习IOS</p>
+<p>首先，最简单的理由，我就是喜欢，<br>通过敲入代码，然后看着自己的想法，<br>变成触手可及的实物。<br>我对这个过程非常着迷；<br>其次，我自己觉得，<br>未来编程就像今天每个人考驾照一样，<br>会成为大部分人的日常。<br>第三，我想从事相关方面的工作；<br>三、最大的挑战</p>
+<p>最大的挑战就是坚持，<br>因为我永远相信，<br>一件事只要肯坚持，总能干成，<br>当然前提是方向要对。</p>
+<p>没钱买mac，没钱报培训班，<br>没时间学习，都不是最大的挑战。<br>关键是你永远要相信，<br>你绝对可以学成。<br>四、目前的学习状况</p>
+<p>虽然中间有时间不等的停顿，<br>但是还是坚持到了现在，<br>目前正在学数据库和网络，<br>但是发觉oc和ui还有一些不牢固的东西，<br>还会不断返回去复习这两块儿。<br>五、心得</p>
+<p>只要你想干成一件事，<br>任何困难都是纸老虎，<br>因为你没时间管困难，<br>只会看着前面的目标，一直前进。<br>以后，我会不定期的发布自己的学习笔记，<br>作为自己学习的一个过程记录。</p>
 ]]></content>
       <categories>
         <category>编程</category>
-        <category>Python</category>
+        <category>IOS</category>
       </categories>
   </entry>
   <entry>
@@ -442,21 +460,20 @@
       </categories>
   </entry>
   <entry>
-    <title>我为什么三十岁还要学习IOS</title>
-    <url>/2016/03/17/%E6%88%91%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%89%E5%8D%81%E5%B2%81%E8%BF%98%E8%A6%81%E5%AD%A6%E4%B9%A0IOS/</url>
-    <content><![CDATA[<p>一、前面的话</p>
-<p>终于要开始写IOS学习笔记了，<br>我从15年8月份开始学习IOS；<br>完全自学；<br>中间学学停停，<br>就到了今天，<br>但是比较自豪的一点儿就是，<br>从来没想过放弃学习。</p>
-<p>以上是摘要<a id="more"></a></p>
-<p>二、为什么要学习IOS</p>
-<p>首先，最简单的理由，我就是喜欢，<br>通过敲入代码，然后看着自己的想法，<br>变成触手可及的实物。<br>我对这个过程非常着迷；<br>其次，我自己觉得，<br>未来编程就像今天每个人考驾照一样，<br>会成为大部分人的日常。<br>第三，我想从事相关方面的工作；<br>三、最大的挑战</p>
-<p>最大的挑战就是坚持，<br>因为我永远相信，<br>一件事只要肯坚持，总能干成，<br>当然前提是方向要对。</p>
-<p>没钱买mac，没钱报培训班，<br>没时间学习，都不是最大的挑战。<br>关键是你永远要相信，<br>你绝对可以学成。<br>四、目前的学习状况</p>
-<p>虽然中间有时间不等的停顿，<br>但是还是坚持到了现在，<br>目前正在学数据库和网络，<br>但是发觉oc和ui还有一些不牢固的东西，<br>还会不断返回去复习这两块儿。<br>五、心得</p>
-<p>只要你想干成一件事，<br>任何困难都是纸老虎，<br>因为你没时间管困难，<br>只会看着前面的目标，一直前进。<br>以后，我会不定期的发布自己的学习笔记，<br>作为自己学习的一个过程记录。</p>
+    <title>我的英语学习小结</title>
+    <url>/2016/03/17/%E6%88%91%E7%9A%84%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93/</url>
+    <content><![CDATA[<p>之所以有这篇文章；<br>是因为最近正在学习ios开发，<br>需要看很多英语文档及英文网站 ；<br>并且成考那边也需要加强英语学习；<br>无论从开阔眼界或和人用英语聊天（装逼）而言；<br>都到了不得不学，逼上梁山的地步；</p>
+<p>学了这么多年英语，<br>才发现自己的两个问题 ；<br>也真是笨的可以；<br>第一原来在学校学习英语完全是为了应付考试；<br>根本没想到将来它会如何有用；</p>
+<p>第二是原来学校老师的水平确实有限；<br>最重要的是老师没教给我们正确的语音；<br>以上是摘要<a id="more"></a><br>我去年听赖世雄的英语教学录音；<br>才真正掌握了正确练习英语读音的方法；<br>印象最深刻的是关于：“good、book以及look”的读法；<br>问了身边几个英语还不错的人；<br>他们都读：“古德，不渴以及鲁克”；<br>可是正确的读音应该是：“格奥德，博哦可以及乐额科”；</p>
+<p>这才发现不但读音不对；<br>最重要的是发现自己断断续续学了这么多年英语；<br>竟然连正确的拼读方法都不会；<br>因为老师直接上去就教你念一个单词；<br>而不会一个一个去教你怎么拼读；<br>只要你最后读出来的效果听起来和老师差不多；<br>就觉得自己学得差不多了；<br>但是，你根本不知道它是怎么拼读出来的；</p>
+<p>就我个人目前的英语水平来说；<br>读一篇英语文章，障碍可能不大；<br>但听录音之后才发觉；<br>我靠，我每个单词都认识；<br>自己把一篇文章顺下来也没问题；<br>可就是录音一句都TMD听不懂；<br>就这样陆陆续续又看了些网上的文章；<br>渐渐有了些学英语的心得；<br>最后终于寻寻觅觅，积攒了一些小心得；<br>在此记录下来，以备后查；</p>
+<p>首先，时间是必须投入的资源；<br>少于一万小时是不靠谱的；<br>其次，必须掌握单词的拼写方法及句子的拼读方法，才算入门而已；<br>单独的单词你会读了，不一定能将句子读的连贯顺畅；<br>这两种读法是完全不同的；<br>最后，一定要坚持练习。</p>
+<p>在积攒这些心得过程中发现；<br>根本没有放之四海皆准的方法论；<br>无论谁以三寸不烂之舌，<br>说某个方法多么管用；<br>都完全是扯淡；<br>即便真的对他自己很有用；<br>但是如果每个人不是自己去摸索一套适合自己的方法；<br>其他人再经典的方法；<br>也基本无用；</p>
+<p>很简单的一个例子，雷军用：“专注、极致、口碑、快”七字诀打造出了小米；<br>你觉得还有谁可以在国内用这个方法复制一个小米吗?<br>所以说方法永远都是对别人有用的东西；<br>你真正要学的其实是别人思考的路径，<br>以及别人看事情的角度；<br>而不仅仅是人云亦云的方法论。<br>所以说所有将某个牛人的方法论拿来学习的人或者公司，基本结局都会很惨；</p>
+<p>硬功夫是省不得的；<br>所以必须用自己的时间，加上自己摸索出来的一套方法；<br>才可以让你离目标更近一些。</p>
 ]]></content>
       <categories>
-        <category>编程</category>
-        <category>IOS</category>
+        <category>外语学习</category>
       </categories>
   </entry>
   <entry>
@@ -522,20 +539,34 @@
       </categories>
   </entry>
   <entry>
-    <title>我的英语学习小结</title>
-    <url>/2016/03/17/%E6%88%91%E7%9A%84%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93/</url>
-    <content><![CDATA[<p>之所以有这篇文章；<br>是因为最近正在学习ios开发，<br>需要看很多英语文档及英文网站 ；<br>并且成考那边也需要加强英语学习；<br>无论从开阔眼界或和人用英语聊天（装逼）而言；<br>都到了不得不学，逼上梁山的地步；</p>
-<p>学了这么多年英语，<br>才发现自己的两个问题 ；<br>也真是笨的可以；<br>第一原来在学校学习英语完全是为了应付考试；<br>根本没想到将来它会如何有用；</p>
-<p>第二是原来学校老师的水平确实有限；<br>最重要的是老师没教给我们正确的语音；<br>以上是摘要<a id="more"></a><br>我去年听赖世雄的英语教学录音；<br>才真正掌握了正确练习英语读音的方法；<br>印象最深刻的是关于：“good、book以及look”的读法；<br>问了身边几个英语还不错的人；<br>他们都读：“古德，不渴以及鲁克”；<br>可是正确的读音应该是：“格奥德，博哦可以及乐额科”；</p>
-<p>这才发现不但读音不对；<br>最重要的是发现自己断断续续学了这么多年英语；<br>竟然连正确的拼读方法都不会；<br>因为老师直接上去就教你念一个单词；<br>而不会一个一个去教你怎么拼读；<br>只要你最后读出来的效果听起来和老师差不多；<br>就觉得自己学得差不多了；<br>但是，你根本不知道它是怎么拼读出来的；</p>
-<p>就我个人目前的英语水平来说；<br>读一篇英语文章，障碍可能不大；<br>但听录音之后才发觉；<br>我靠，我每个单词都认识；<br>自己把一篇文章顺下来也没问题；<br>可就是录音一句都TMD听不懂；<br>就这样陆陆续续又看了些网上的文章；<br>渐渐有了些学英语的心得；<br>最后终于寻寻觅觅，积攒了一些小心得；<br>在此记录下来，以备后查；</p>
-<p>首先，时间是必须投入的资源；<br>少于一万小时是不靠谱的；<br>其次，必须掌握单词的拼写方法及句子的拼读方法，才算入门而已；<br>单独的单词你会读了，不一定能将句子读的连贯顺畅；<br>这两种读法是完全不同的；<br>最后，一定要坚持练习。</p>
-<p>在积攒这些心得过程中发现；<br>根本没有放之四海皆准的方法论；<br>无论谁以三寸不烂之舌，<br>说某个方法多么管用；<br>都完全是扯淡；<br>即便真的对他自己很有用；<br>但是如果每个人不是自己去摸索一套适合自己的方法；<br>其他人再经典的方法；<br>也基本无用；</p>
-<p>很简单的一个例子，雷军用：“专注、极致、口碑、快”七字诀打造出了小米；<br>你觉得还有谁可以在国内用这个方法复制一个小米吗?<br>所以说方法永远都是对别人有用的东西；<br>你真正要学的其实是别人思考的路径，<br>以及别人看事情的角度；<br>而不仅仅是人云亦云的方法论。<br>所以说所有将某个牛人的方法论拿来学习的人或者公司，基本结局都会很惨；</p>
-<p>硬功夫是省不得的；<br>所以必须用自己的时间，加上自己摸索出来的一套方法；<br>才可以让你离目标更近一些。</p>
+    <title>提升Hexo颜值</title>
+    <url>/2020/05/04/%E6%8F%90%E5%8D%87Hexo%E9%A2%9C%E5%80%BC/</url>
+    <content><![CDATA[<h3 id="去掉翻页乱码"><a href="#去掉翻页乱码" class="headerlink" title="去掉翻页乱码"></a>去掉翻页乱码</h3><p>当我打开我的hexo博客，<br>在上一页下一页后面总是跟着以下乱码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&amp;raquto</span><br></pre></td></tr></table></figure>
+<p>找到以下路径里的archive.ejs文件，<br><code>/themes/landscape/layout/_partial</code><br>将最后一段中的以上乱码去除，<br>提交之后，显示修改成功。<br>终于不再觉得自己的博客像个山寨版的了。</p>
+<a id="more"></a>
+
+<h3 id="让Read-More更好看一些"><a href="#让Read-More更好看一些" class="headerlink" title="让Read More更好看一些"></a>让Read More更好看一些</h3><p>找到以下路径里的arctile.styl文件，<br><code>/themes/landscape/source/css/_partial</code><br>用ctrl+F搜索：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">article-more-link a</span><br></pre></td></tr></table></figure>
+<p>并修改此选项color值</p>
+<p><code>hover是指鼠标放到Read More上时的背景颜色和字体颜色。</code><br><code>前面的background和color分别设置鼠标未点击时的背景色和字体颜色。</code></p>
+<h3 id="让单篇文章底部的翻页更靓仔一些"><a href="#让单篇文章底部的翻页更靓仔一些" class="headerlink" title="让单篇文章底部的翻页更靓仔一些"></a>让单篇文章底部的翻页更靓仔一些</h3><p>还是刚才的arctile.styl文件<br>搜索以下两个关键词：<br>并修改对应选项color值，</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">article-nav-caption:修改翻页字体颜色</span><br><span class="line">article-nav-title：修改文章标题字体颜色</span><br></pre></td></tr></table></figure>
+
+<h3 id="让博客左下角按个性显示信息"><a href="#让博客左下角按个性显示信息" class="headerlink" title="让博客左下角按个性显示信息"></a>让博客左下角按个性显示信息</h3><p>在以下路径找到footer.ejs文件<br><code>/themes/landscape/layout/_partial</code><br>将</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&amp;copy;</span><br></pre></td></tr></table></figure>
+<p>改成自己想要的字，<br>比如我的是：<br><code>网站信息：后面跟着的是年份和作者</code></p>
+<p>将&amp;copy下一行的</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&lt;%&#x3D;_(&#39;power_by&#39;) %&gt;注释或删除</span><br></pre></td></tr></table></figure>
+<p>然后在a标签前面加上自己想要的，比如我加的是：<br><code>友情链接：</code><br>并且还可以将a标签里href改成自己想要的链接。</p>
+<p>打完收工。<br>搞完以上自己的博客好看多了。</p>
+<h3 id="接下来的计划"><a href="#接下来的计划" class="headerlink" title="接下来的计划"></a>接下来的计划</h3><p>下次把提交搜索引擎和百度统计搞定。</p>
+<p>然后就一心写文章。<br>什么RSS，评论和分享都不弄了，<br>弄了也没用，<br>RSS已经过时了，推送的还看不完，谁还订阅？<br>不可能天天盯着博客看，所以不弄评论了，<br>分享就更不用弄了，<br>还不如直接放上自己qq：1668088439，<br>或者自己微信，联系方便。</p>
+<p>就酱，以后如果不是必须，<br>就不在博客的功能和界面上下功夫了。</p>
+<p>一心写文章。</p>
 ]]></content>
       <categories>
-        <category>外语学习</category>
+        <category>Hexo</category>
       </categories>
   </entry>
   <entry>
@@ -578,37 +609,6 @@
 ]]></content>
       <categories>
         <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>提升Hexo颜值</title>
-    <url>/2020/05/04/%E6%8F%90%E5%8D%87Hexo%E9%A2%9C%E5%80%BC/</url>
-    <content><![CDATA[<h3 id="去掉翻页乱码"><a href="#去掉翻页乱码" class="headerlink" title="去掉翻页乱码"></a>去掉翻页乱码</h3><p>当我打开我的hexo博客，<br>在上一页下一页后面总是跟着以下乱码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&amp;raquto</span><br></pre></td></tr></table></figure>
-<p>找到以下路径里的archive.ejs文件，<br><code>/themes/landscape/layout/_partial</code><br>将最后一段中的以上乱码去除，<br>提交之后，显示修改成功。<br>终于不再觉得自己的博客像个山寨版的了。</p>
-<a id="more"></a>
-
-<h3 id="让Read-More更好看一些"><a href="#让Read-More更好看一些" class="headerlink" title="让Read More更好看一些"></a>让Read More更好看一些</h3><p>找到以下路径里的arctile.styl文件，<br><code>/themes/landscape/source/css/_partial</code><br>用ctrl+F搜索：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">article-more-link a</span><br></pre></td></tr></table></figure>
-<p>并修改此选项color值</p>
-<p><code>hover是指鼠标放到Read More上时的背景颜色和字体颜色。</code><br><code>前面的background和color分别设置鼠标未点击时的背景色和字体颜色。</code></p>
-<h3 id="让单篇文章底部的翻页更靓仔一些"><a href="#让单篇文章底部的翻页更靓仔一些" class="headerlink" title="让单篇文章底部的翻页更靓仔一些"></a>让单篇文章底部的翻页更靓仔一些</h3><p>还是刚才的arctile.styl文件<br>搜索以下两个关键词：<br>并修改对应选项color值，</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">article-nav-caption:修改翻页字体颜色</span><br><span class="line">article-nav-title：修改文章标题字体颜色</span><br></pre></td></tr></table></figure>
-
-<h3 id="让博客左下角按个性显示信息"><a href="#让博客左下角按个性显示信息" class="headerlink" title="让博客左下角按个性显示信息"></a>让博客左下角按个性显示信息</h3><p>在以下路径找到footer.ejs文件<br><code>/themes/landscape/layout/_partial</code><br>将</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&amp;copy;</span><br></pre></td></tr></table></figure>
-<p>改成自己想要的字，<br>比如我的是：<br><code>网站信息：后面跟着的是年份和作者</code></p>
-<p>将&amp;copy下一行的</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&lt;%&#x3D;_(&#39;power_by&#39;) %&gt;注释或删除</span><br></pre></td></tr></table></figure>
-<p>然后在a标签前面加上自己想要的，比如我加的是：<br><code>友情链接：</code><br>并且还可以将a标签里href改成自己想要的链接。</p>
-<p>打完收工。<br>搞完以上自己的博客好看多了。</p>
-<h3 id="接下来的计划"><a href="#接下来的计划" class="headerlink" title="接下来的计划"></a>接下来的计划</h3><p>下次把提交搜索引擎和百度统计搞定。</p>
-<p>然后就一心写文章。<br>什么RSS，评论和分享都不弄了，<br>弄了也没用，<br>RSS已经过时了，推送的还看不完，谁还订阅？<br>不可能天天盯着博客看，所以不弄评论了，<br>分享就更不用弄了，<br>还不如直接放上自己qq：1668088439，<br>或者自己微信，联系方便。</p>
-<p>就酱，以后如果不是必须，<br>就不在博客的功能和界面上下功夫了。</p>
-<p>一心写文章。</p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
       </categories>
   </entry>
   <entry>
@@ -684,6 +684,24 @@
 ]]></content>
       <categories>
         <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>编程学习心得</title>
+    <url>/2016/03/17/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/</url>
+    <content><![CDATA[<p>似乎每个人对一件从未接触过的事物着迷时；<br>都恨不得一下子就对其融会贯通；<br>这种急切心理，极有可能导致稍遇挫折，便丧失兴趣。</p>
+<p>比如我对编程的学习；<br>在刚开始时的确一腔热情；<br>但是稍微接触到不容易理解的地方；<br>就会不由自主地怀疑自己！<br>自己真的适合学编程吗?<br>我怎么这么笨？<br>我这个年龄学编程还成吗？</p>
+<p>其实，这都是由于刚开始热情太盛；<br>努力一段时间后，<br>得不到自己期望的效果，<br>便兴趣缺缺了。<br>以上是摘要<a id="more"></a><br>学习始终遵循循序渐进的原则；<br>而不是像玩游戏一样，<br>能得到及时的满足和成就感。<br>所以很多颇有成就的人，<br>都是最善于推迟自己满足感的人。</p>
+<p>其实我最该问的问题不应该是以上那些；<br>而只应该问一个问题？<br>我怎么才能学好编程?<br>那些已经有了些许成就的程序员，<br>是如何取得今天的成就的？</p>
+<p>在学习中还发现一个问题；<br>就是学习一个知识点，<br>一定不要紧追着一个人的讲解不放；<br>同是一个知识点，<br>这个人讲解的既轻松又清晰，<br>而你紧抱着不放的那个则是既繁琐又模糊。</p>
+<p>所以在学习中必须灵活，<br>灵活不是投机取巧；<br>而是在网络信息如此发达的今日；<br>不应该紧抱着某一个信息源不放；<br>某个信息源的讲解听不明白，<br>则必须及时寻找能让你更容易明白的信息源；<br>相信我，一定可以找得到。</p>
+<p>比如在学习oc的三大特性封装、继承与多态时；<br>我花钱买的课程讲解时既模糊又乏味；<br>这时我就对自己产生怀疑了；<br>难道我真的笨蛋如此；<br>可是后来偶然间看到一篇博客；<br>瞬间让我豁然开朗。<br>就是那种梦里千百度，蓦然回首处的感觉。</p>
+<p>总之学习一定不是揪着某个问题不放；<br>当然不是真的放下不管；<br>而是先放到潜意识里；<br>往往会出现这种情况；</p>
+<p>某日你对A问题产生疑惑；<br>又一日，你对B问题更是纠结不已；<br>但是，还一日，你去查找C问题的答案，<br>发现竟然找到了A的答案。<br>这往往是持续学习中，<br>最令人痛快之时。</p>
+]]></content>
+      <categories>
+        <category>编程</category>
+        <category>IOS</category>
       </categories>
   </entry>
   <entry>
@@ -768,24 +786,6 @@
       </categories>
   </entry>
   <entry>
-    <title>编程学习心得</title>
-    <url>/2016/03/17/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/</url>
-    <content><![CDATA[<p>似乎每个人对一件从未接触过的事物着迷时；<br>都恨不得一下子就对其融会贯通；<br>这种急切心理，极有可能导致稍遇挫折，便丧失兴趣。</p>
-<p>比如我对编程的学习；<br>在刚开始时的确一腔热情；<br>但是稍微接触到不容易理解的地方；<br>就会不由自主地怀疑自己！<br>自己真的适合学编程吗?<br>我怎么这么笨？<br>我这个年龄学编程还成吗？</p>
-<p>其实，这都是由于刚开始热情太盛；<br>努力一段时间后，<br>得不到自己期望的效果，<br>便兴趣缺缺了。<br>以上是摘要<a id="more"></a><br>学习始终遵循循序渐进的原则；<br>而不是像玩游戏一样，<br>能得到及时的满足和成就感。<br>所以很多颇有成就的人，<br>都是最善于推迟自己满足感的人。</p>
-<p>其实我最该问的问题不应该是以上那些；<br>而只应该问一个问题？<br>我怎么才能学好编程?<br>那些已经有了些许成就的程序员，<br>是如何取得今天的成就的？</p>
-<p>在学习中还发现一个问题；<br>就是学习一个知识点，<br>一定不要紧追着一个人的讲解不放；<br>同是一个知识点，<br>这个人讲解的既轻松又清晰，<br>而你紧抱着不放的那个则是既繁琐又模糊。</p>
-<p>所以在学习中必须灵活，<br>灵活不是投机取巧；<br>而是在网络信息如此发达的今日；<br>不应该紧抱着某一个信息源不放；<br>某个信息源的讲解听不明白，<br>则必须及时寻找能让你更容易明白的信息源；<br>相信我，一定可以找得到。</p>
-<p>比如在学习oc的三大特性封装、继承与多态时；<br>我花钱买的课程讲解时既模糊又乏味；<br>这时我就对自己产生怀疑了；<br>难道我真的笨蛋如此；<br>可是后来偶然间看到一篇博客；<br>瞬间让我豁然开朗。<br>就是那种梦里千百度，蓦然回首处的感觉。</p>
-<p>总之学习一定不是揪着某个问题不放；<br>当然不是真的放下不管；<br>而是先放到潜意识里；<br>往往会出现这种情况；</p>
-<p>某日你对A问题产生疑惑；<br>又一日，你对B问题更是纠结不已；<br>但是，还一日，你去查找C问题的答案，<br>发现竟然找到了A的答案。<br>这往往是持续学习中，<br>最令人痛快之时。</p>
-]]></content>
-      <categories>
-        <category>编程</category>
-        <category>IOS</category>
-      </categories>
-  </entry>
-  <entry>
     <title>诚意与格物</title>
     <url>/2016/03/17/%E8%AF%9A%E6%84%8F%E4%B8%8E%E6%A0%BC%E7%89%A9/</url>
     <content><![CDATA[<p>一、前面的话</p>
@@ -823,17 +823,6 @@
       </categories>
   </entry>
   <entry>
-    <title>读《所有的男人都是消耗品》</title>
-    <url>/2016/03/17/%E8%AF%BB%E3%80%8A%E6%89%80%E6%9C%89%E7%9A%84%E7%94%B7%E4%BA%BA%E9%83%BD%E6%98%AF%E6%B6%88%E8%80%97%E5%93%81%E3%80%8B/</url>
-    <content><![CDATA[<p>一、书和作者<br>《所有的男人都是消耗品》作者村上龙，<br>和村上春树合称：W村上；<br>这本书是其最有代表性的随笔；<br>从男女，恋爱，性出发，<br>对日本经济社会的功能不全进行猛烈抨击。<br>我是全盘读完的，<br>追求速度的同学建议只读和书同名的文章即可，<br>和书同名的只有三篇，速度会很快，<br>但是收获绝对不会少。<br>其他篇章要么只适用于日本国内，<br>要么就是其它碎碎念。</p>
-<p>由于全书都是格言式的话语，<br>没有论证等要素，<br>因此，照录我比较认同的话在下。<br>以上是摘要<a id="more"></a><br>二、女人与和平<br>女大学生气焰嚣张这是不言而喻的，<br>和平持续的时间越长，女人就越是飞扬跋扈。<br>我最认同的一句话，<br>有句话也说得不错，<br>忘记在哪儿看到的了，<br>它说：和平年代的主题是体育和女人，战争年代的主题是武器和男人。<br>谁说不是呢，真是太tmd精辟啦。<br>三、快乐和才能<br>如果想要得到快乐，就必须冒风险站到体制外面去，<br>郑渊洁自己在家教育郑亚旗，效果还可以吧，<br>倪匡当年从内蒙古偷渡到香港，今天的日子是相当逍遥啊。<br>才能是没有理由的，没有才能的家伙才希望找到理由。<br>靠努力是不能孕育才能的。<br>四、关于女人<br>女人总是在发情，<br>女人有希望被强暴的愿望，<br>娘们儿正垂涎三尺的等待被勾引，<br>如果成为强悍的男人，女人要多少都可以弄到手。<br>这出自一位自称玩笑的女权主义者之口，<br>真的是玩笑吗？<br>这是一个值得你我深思的问题。</p>
-]]></content>
-      <categories>
-        <category>读书明道</category>
-        <category>小说</category>
-      </categories>
-  </entry>
-  <entry>
     <title>读《中国文脉》</title>
     <url>/2016/03/17/%E8%AF%BB%E3%80%8A%E4%B8%AD%E5%9B%BD%E6%96%87%E8%84%89%E3%80%8B/</url>
     <content><![CDATA[<p>一、前面的话：关于官员与辅导员</p>
@@ -855,6 +844,17 @@
 <p>四、组织好</p>
 <p>佛教的弘法团队，统一服饰，统一言行，统一作息。<br>这要是军队，你说战斗力强不强。<br>而且团队内部又有一系列和谐原则，使组织内部内耗最小。</p>
 <p>这就是佛教的四大魅力了，看了之后，你想不想成佛呢？</p>
+]]></content>
+      <categories>
+        <category>读书明道</category>
+        <category>小说</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>读《所有的男人都是消耗品》</title>
+    <url>/2016/03/17/%E8%AF%BB%E3%80%8A%E6%89%80%E6%9C%89%E7%9A%84%E7%94%B7%E4%BA%BA%E9%83%BD%E6%98%AF%E6%B6%88%E8%80%97%E5%93%81%E3%80%8B/</url>
+    <content><![CDATA[<p>一、书和作者<br>《所有的男人都是消耗品》作者村上龙，<br>和村上春树合称：W村上；<br>这本书是其最有代表性的随笔；<br>从男女，恋爱，性出发，<br>对日本经济社会的功能不全进行猛烈抨击。<br>我是全盘读完的，<br>追求速度的同学建议只读和书同名的文章即可，<br>和书同名的只有三篇，速度会很快，<br>但是收获绝对不会少。<br>其他篇章要么只适用于日本国内，<br>要么就是其它碎碎念。</p>
+<p>由于全书都是格言式的话语，<br>没有论证等要素，<br>因此，照录我比较认同的话在下。<br>以上是摘要<a id="more"></a><br>二、女人与和平<br>女大学生气焰嚣张这是不言而喻的，<br>和平持续的时间越长，女人就越是飞扬跋扈。<br>我最认同的一句话，<br>有句话也说得不错，<br>忘记在哪儿看到的了，<br>它说：和平年代的主题是体育和女人，战争年代的主题是武器和男人。<br>谁说不是呢，真是太tmd精辟啦。<br>三、快乐和才能<br>如果想要得到快乐，就必须冒风险站到体制外面去，<br>郑渊洁自己在家教育郑亚旗，效果还可以吧，<br>倪匡当年从内蒙古偷渡到香港，今天的日子是相当逍遥啊。<br>才能是没有理由的，没有才能的家伙才希望找到理由。<br>靠努力是不能孕育才能的。<br>四、关于女人<br>女人总是在发情，<br>女人有希望被强暴的愿望，<br>娘们儿正垂涎三尺的等待被勾引，<br>如果成为强悍的男人，女人要多少都可以弄到手。<br>这出自一位自称玩笑的女权主义者之口，<br>真的是玩笑吗？<br>这是一个值得你我深思的问题。</p>
 ]]></content>
       <categories>
         <category>读书明道</category>
