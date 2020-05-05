@@ -1066,6 +1066,8 @@ a.article-title:hover {
 }
 #page-nav .page-number {
   display: inline-block;
+  background: #ff7;
+  color: #800;
 }
 @media screen and (max-width: 479px) {
   #page-nav {
@@ -1074,6 +1076,7 @@ a.article-title:hover {
 }
 #page-nav .current {
   font-weight: bold;
+  color: #800;
 }
 #page-nav .space {
   color: #ddd;
