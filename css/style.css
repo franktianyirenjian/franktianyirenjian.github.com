@@ -1448,7 +1448,7 @@ pre .javascript .function {
   margin: 50px 0;
 }
 .widget-title {
-  color: #ffa500;
+  color: #777;
 }
 .widget {
   color: #777;
@@ -1458,10 +1458,10 @@ pre .javascript .function {
   box-shadow: 0 -1px 4px #ccc inset;
   border: 1px solid #ccc;
   padding: 15px;
-  border-radius: 50px;
+  border-radius: 3px;
 }
 .widget a {
-  color: #258fb8;
+  color: #777;
   text-decoration: none;
 }
 .widget a:hover {
