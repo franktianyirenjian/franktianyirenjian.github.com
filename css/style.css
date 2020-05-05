@@ -532,7 +532,7 @@ body {
 .article-category:before {
   content: "\2023";
   color: #0f0;
-  font-weight: 3;
+  font-weight: 6;
 }
 .article-category-link {
   margin: 0 12px 1em;
