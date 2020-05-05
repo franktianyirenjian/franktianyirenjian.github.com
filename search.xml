@@ -283,27 +283,6 @@
       </categories>
   </entry>
   <entry>
-    <title>如何利用知行合一提升学习效率</title>
-    <url>/2016/03/20/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E6%8F%90%E5%8D%87%E5%AD%A6%E4%B9%A0%E6%95%88%E7%8E%87/</url>
-    <content><![CDATA[<p>一、心学里的三类人<br>阳明将人分三类：生知安行，学知力行，困知勉行。<br>生知安行就是我们现在所说的天才，<br>如果按二八法则，全人类中，<br>似乎会有百分之二十的天才存在，<br>可是去掉那些后来伤仲永的，<br>最多会留下百分之十，就不错了。<br>困知勉行，就是脑袋死不开窍的，<br>最多也就百分之十，<br>剩下的就是百分之八十的普通人了。</p>
-<p>所以如果你自认为是天才，<br>那这篇文章就不用看了。<br>这篇文章的方法主要是针对，<br>和我一样那百分之八十中的普通人。<br>以上是摘要<a id="more"></a><br>二、万物有源<br>世间所有的事物，<br>都有一个本源，<br>每家家谱的存在，<br>便是一个很好的例证，<br>我们家家谱开头的第一句话便是：<br>饮水思源，慎终追远，以知其本也。</p>
-<p>你今天看媒体上的马云风光无限，<br>公众眼里的刘强东风头尽出，<br>可是源头在哪里？<br>他们是横空出世吗？<br>非也！<br>马云今天指点江山的魄力<br>离不开当年推荐中国黄页时，<br>被人拒之门外的尴尬做注脚；<br>刘强东今日的意气风发，<br>少不了当年因为做生意和前妻离婚的神伤做铺垫。<br>所以，学习也是有源头的。</p>
-<p>三、知行合一与学习效率<br>学习有源，源头在哪里？<br>上次讲过<br>格物更偏向于思考层面，<br>知行合一更偏向于行动层面。<br>若想利用知行合一提高学习效率，<br>首先必须得格学习这件事。<br>学习就是学和习，<br>绝不是废话。<br>所以学习的源头就是：<br>不但学理论还要以最快的速度去验证理论。<br>而不是仅仅让理论在脑子里呆一辈子。<br>这就是用知行合一提高学习效率的唯一方法。</p>
-<p>比如，你听人说Hexo＋Github搭建独立博客，快速，简便，强大。<br>那么怎么个快速，简便，强大法呢？<br>如果你不去搭建一个自己的独立博客，<br>你知道的也仅限于几个名词和三个形容词。</p>
-<p>那么心学的做法是什么呢？<br>首先查资料啊，通过查资料了解到，<br>Hexo不但很多程序员在用，<br>而且好多人还说是hacker必备的博客搭建框架，<br>基于多数人对带有神秘色彩的黑客的向往，<br>这时候会更有动力去行动。</p>
-<p>那么好了，基本的概念有了，<br>接下来还是和学习IOS开发如出一辙，<br>要了解路线图啊，<br>首先需要安装Node.js和Git程序，<br>然后安装并初始化Hexo框架，<br>最后启动本地服务器，<br>本地的Hexo框架就搭建完成了，<br>这时候打开服务器给的地址，<br>你已经可以看到完全属于你自己的独立博客的雏形了，<br>这样就更进一步加深你对这件事的热衷度，<br>也就是你的自信进一步提高了。</p>
-<p>到这里为止你通过最初的诚意，<br>下决心做用Hexo搭建独立博客这件事，<br>然后通过格这件事，<br>你了解了整个的路线图，<br>并且通过知行合一，你已经搭建出了本地的博客雏形。<br>你对这件事的兴趣以及对完成它的自信心，<br>已经不要不要的了。<br>因为你看到阶段性成果了。</p>
-<p>那接下来，配置博客信息，<br>安装SSH密钥，并且关联GIthub的库，<br>最终把你的本地独立博客部署到互联网上，<br>就是顺理成章的事了。</p>
-<p>等到你输入自己的博客网址，<br>在任何联网的电脑或手机都能看到自己的精神家园，<br>这时候你才真正体会到开头那三个形容词的含义，<br>快速是因为编程小白，也能按流程一步一步搭建它，<br>简便是因为搭建好后，只需两条命令就可以把自己的博客更新到互联网，<br>强大是因为，它几乎支持你以前的博客框架，<br>包括Jekyll，Octopress和Wordpress所有的功能。<br>但基本要求就是只需要一台联网的电脑和你按照步骤去搭建。</p>
-<p>四、关于理由<br>即便看到这里，<br>我相信很多人还是能找到，<br>拒绝做自己应该做的事情的理由。<br>我相信还是有很多人会说：<br>你不知道我有多忙，<br>你说得倒轻巧，<br>我都看不懂你说的这些什么Hexo和Github，<br>怎么去搭建？<br>balabalabala……<br>好吧，我承认大家都很忙，<br>这里稍微跟大家玩个文字游戏，<br>大家比较下‘忙’和‘忘’两个字，<br>没错，聪明的已经看出来了，<br>你的心躺下自己就什么都忘了，<br>你的心立起来，自然一直都很忙。<br>so，如果你到现在还找各种理由，<br>不去做自己应该做的事情，<br>那我只能说你决心还不够，<br>而你老说自己忙，<br>则是需要重新修炼心学的静坐工夫，<br>还是建议参考曾剃头的方法。</p>
-<p>最后，借用陌陌的广告词<br>送给那些迟迟不下决心做自己向往事情的人们：<br>别和陌生人说话，别做新鲜事，<br>继续过平常的生活，胆小一点儿，<br>别好奇，就玩你会的，离冒险远远的，<br>有些事想想就好，没必要改变，<br>待在熟悉的地方，最好待在家里，<br>听一样的音乐，见一样的人，重复同样的话题，<br>心思别太活，梦想要实际，<br>不要什么都尝试，就这样活着吧。</p>
-<p>本期推荐电影：<br>一、《沙漠之花》导演：雪瑞·霍尔曼<br>推荐语：如果你曾对沙漠里是否真的能开出花产生过疑问，这部片子很肯定的告诉你：能。<br>二、《白日火焰》导演：刁亦男<br>推荐语：对豆瓣什么的一些影评，我没太多感觉，本片亮点在于开始五分钟在你认为不可能发生的时候，两个警察被干掉了。<br>三、《爱在战火蔓延时》导演：戴维·塞尔策<br>推荐语：片子不算超精彩的那种，但是里面有一个场景令我很触动，当男女主角在国境线外呼救的时候，边防兵无动于衷，但当他们跨进国境线那一刻，边防兵毫不客气的还击。<br>本期推荐书籍：<br>一、《一阵风，留下了千古绝唱》作者：章诒和<br>推荐语：书里讲马连良对精致生活的享受部分，很是引人入胜。<br>二、《王阳明大传》作者：周月亮<br>推荐语：用通俗的话语较有深度的讲述了王阳明的一生，看完这个，就没必要看其学生吕峥写的《明朝一哥王阳明》了，基本照抄，没太多新意。<br>三、《历史深处的民国》作者：江城<br>推荐语：框架比《民国就是这么生猛》搭的好，细节则没后者全，但里面用数据分析了一个很有意思的现象，袁世凯家里的牛人没有活过58岁的。</p>
-]]></content>
-      <categories>
-        <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
     <title>工夫与境界（一）</title>
     <url>/2016/03/17/%E5%B7%A5%E5%A4%AB%E4%B8%8E%E5%A2%83%E7%95%8C%EF%BC%88%E4%B8%80%EF%BC%89/</url>
     <content><![CDATA[<p>工夫与境界古人常论之；<br>这里工夫是指心力，境界是指胸襟。<br>心力与胸襟外在综合显现为气质。</p>
@@ -331,6 +310,27 @@
 <p>本期推荐书籍：<br>一、《民国就是这么生猛》<br>推荐理由；<br>1、虽然本书讲的不是关于工夫的事，但是里面讲到的人可以教给你很多关于：“工夫”的事儿。<br>2、文字幽默诙谐，通俗易懂，可以作为茶余饭后的休闲阅读。<br>3、民国入门读物。<br>二、《红太阳是怎样升起的》<br>1、此书可以学习一些推广方面的经验；你如果没看到那就仔细看；<br>2、可以看到为什么会发生文革？<br>3、验证了一句话，在政治面前，从来没有永远的朋友和敌人。<br>4、也可以看到领袖的缔造，绝对需要大大的：“工夫”。<br>三、《最后的文化贵族》<br>学习下这些在文化上有气质的人，是怎样修炼：“工夫”的。</p>
 <p>本期推荐电影：</p>
 <p>1、《杀手没有假期》<br>我常常讲，我以前是个道德感很重的人，非要把善恶很分明的人，<br>但是我越来越感到，人性复杂性大于两分性，偶然性大于必然性。<br>杀手的人生会带给你怎样的启示呢？看了就知道。<br>2、《返老还童》又叫《本杰明巴顿奇事》<br>豆瓣评分8.6，以男女爱情为线索探讨生老病死价值体系的一部电影。<br>3、《杏花三月天》<br>我看这部主要看蒋雯丽和张国立年轻时的表演的。里面和《菊豆》异曲同工，都表现了旧社会妇女从属地位的悲哀和无奈。</p>
+]]></content>
+      <categories>
+        <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>如何利用知行合一提升学习效率</title>
+    <url>/2016/03/20/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E6%8F%90%E5%8D%87%E5%AD%A6%E4%B9%A0%E6%95%88%E7%8E%87/</url>
+    <content><![CDATA[<p>一、心学里的三类人<br>阳明将人分三类：生知安行，学知力行，困知勉行。<br>生知安行就是我们现在所说的天才，<br>如果按二八法则，全人类中，<br>似乎会有百分之二十的天才存在，<br>可是去掉那些后来伤仲永的，<br>最多会留下百分之十，就不错了。<br>困知勉行，就是脑袋死不开窍的，<br>最多也就百分之十，<br>剩下的就是百分之八十的普通人了。</p>
+<p>所以如果你自认为是天才，<br>那这篇文章就不用看了。<br>这篇文章的方法主要是针对，<br>和我一样那百分之八十中的普通人。<br>以上是摘要<a id="more"></a><br>二、万物有源<br>世间所有的事物，<br>都有一个本源，<br>每家家谱的存在，<br>便是一个很好的例证，<br>我们家家谱开头的第一句话便是：<br>饮水思源，慎终追远，以知其本也。</p>
+<p>你今天看媒体上的马云风光无限，<br>公众眼里的刘强东风头尽出，<br>可是源头在哪里？<br>他们是横空出世吗？<br>非也！<br>马云今天指点江山的魄力<br>离不开当年推荐中国黄页时，<br>被人拒之门外的尴尬做注脚；<br>刘强东今日的意气风发，<br>少不了当年因为做生意和前妻离婚的神伤做铺垫。<br>所以，学习也是有源头的。</p>
+<p>三、知行合一与学习效率<br>学习有源，源头在哪里？<br>上次讲过<br>格物更偏向于思考层面，<br>知行合一更偏向于行动层面。<br>若想利用知行合一提高学习效率，<br>首先必须得格学习这件事。<br>学习就是学和习，<br>绝不是废话。<br>所以学习的源头就是：<br>不但学理论还要以最快的速度去验证理论。<br>而不是仅仅让理论在脑子里呆一辈子。<br>这就是用知行合一提高学习效率的唯一方法。</p>
+<p>比如，你听人说Hexo＋Github搭建独立博客，快速，简便，强大。<br>那么怎么个快速，简便，强大法呢？<br>如果你不去搭建一个自己的独立博客，<br>你知道的也仅限于几个名词和三个形容词。</p>
+<p>那么心学的做法是什么呢？<br>首先查资料啊，通过查资料了解到，<br>Hexo不但很多程序员在用，<br>而且好多人还说是hacker必备的博客搭建框架，<br>基于多数人对带有神秘色彩的黑客的向往，<br>这时候会更有动力去行动。</p>
+<p>那么好了，基本的概念有了，<br>接下来还是和学习IOS开发如出一辙，<br>要了解路线图啊，<br>首先需要安装Node.js和Git程序，<br>然后安装并初始化Hexo框架，<br>最后启动本地服务器，<br>本地的Hexo框架就搭建完成了，<br>这时候打开服务器给的地址，<br>你已经可以看到完全属于你自己的独立博客的雏形了，<br>这样就更进一步加深你对这件事的热衷度，<br>也就是你的自信进一步提高了。</p>
+<p>到这里为止你通过最初的诚意，<br>下决心做用Hexo搭建独立博客这件事，<br>然后通过格这件事，<br>你了解了整个的路线图，<br>并且通过知行合一，你已经搭建出了本地的博客雏形。<br>你对这件事的兴趣以及对完成它的自信心，<br>已经不要不要的了。<br>因为你看到阶段性成果了。</p>
+<p>那接下来，配置博客信息，<br>安装SSH密钥，并且关联GIthub的库，<br>最终把你的本地独立博客部署到互联网上，<br>就是顺理成章的事了。</p>
+<p>等到你输入自己的博客网址，<br>在任何联网的电脑或手机都能看到自己的精神家园，<br>这时候你才真正体会到开头那三个形容词的含义，<br>快速是因为编程小白，也能按流程一步一步搭建它，<br>简便是因为搭建好后，只需两条命令就可以把自己的博客更新到互联网，<br>强大是因为，它几乎支持你以前的博客框架，<br>包括Jekyll，Octopress和Wordpress所有的功能。<br>但基本要求就是只需要一台联网的电脑和你按照步骤去搭建。</p>
+<p>四、关于理由<br>即便看到这里，<br>我相信很多人还是能找到，<br>拒绝做自己应该做的事情的理由。<br>我相信还是有很多人会说：<br>你不知道我有多忙，<br>你说得倒轻巧，<br>我都看不懂你说的这些什么Hexo和Github，<br>怎么去搭建？<br>balabalabala……<br>好吧，我承认大家都很忙，<br>这里稍微跟大家玩个文字游戏，<br>大家比较下‘忙’和‘忘’两个字，<br>没错，聪明的已经看出来了，<br>你的心躺下自己就什么都忘了，<br>你的心立起来，自然一直都很忙。<br>so，如果你到现在还找各种理由，<br>不去做自己应该做的事情，<br>那我只能说你决心还不够，<br>而你老说自己忙，<br>则是需要重新修炼心学的静坐工夫，<br>还是建议参考曾剃头的方法。</p>
+<p>最后，借用陌陌的广告词<br>送给那些迟迟不下决心做自己向往事情的人们：<br>别和陌生人说话，别做新鲜事，<br>继续过平常的生活，胆小一点儿，<br>别好奇，就玩你会的，离冒险远远的，<br>有些事想想就好，没必要改变，<br>待在熟悉的地方，最好待在家里，<br>听一样的音乐，见一样的人，重复同样的话题，<br>心思别太活，梦想要实际，<br>不要什么都尝试，就这样活着吧。</p>
+<p>本期推荐电影：<br>一、《沙漠之花》导演：雪瑞·霍尔曼<br>推荐语：如果你曾对沙漠里是否真的能开出花产生过疑问，这部片子很肯定的告诉你：能。<br>二、《白日火焰》导演：刁亦男<br>推荐语：对豆瓣什么的一些影评，我没太多感觉，本片亮点在于开始五分钟在你认为不可能发生的时候，两个警察被干掉了。<br>三、《爱在战火蔓延时》导演：戴维·塞尔策<br>推荐语：片子不算超精彩的那种，但是里面有一个场景令我很触动，当男女主角在国境线外呼救的时候，边防兵无动于衷，但当他们跨进国境线那一刻，边防兵毫不客气的还击。<br>本期推荐书籍：<br>一、《一阵风，留下了千古绝唱》作者：章诒和<br>推荐语：书里讲马连良对精致生活的享受部分，很是引人入胜。<br>二、《王阳明大传》作者：周月亮<br>推荐语：用通俗的话语较有深度的讲述了王阳明的一生，看完这个，就没必要看其学生吕峥写的《明朝一哥王阳明》了，基本照抄，没太多新意。<br>三、《历史深处的民国》作者：江城<br>推荐语：框架比《民国就是这么生猛》搭的好，细节则没后者全，但里面用数据分析了一个很有意思的现象，袁世凯家里的牛人没有活过58岁的。</p>
 ]]></content>
       <categories>
         <category>阳明心学</category>
@@ -786,6 +786,21 @@
       </categories>
   </entry>
   <entry>
+    <title>读《一个人的村庄》</title>
+    <url>/2016/03/17/%E8%AF%BB%E3%80%8A%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E6%9D%91%E5%BA%84%E3%80%8B/</url>
+    <content><![CDATA[<p>一、书和作者<br>《一个人的村庄》作者：刘亮程<br>刘亮程，作家，1962年出生在新疆古尔班通古特沙漠边缘的一个小村庄。<br>著有诗集《晒晒黄沙梁的太阳》，<br>散文集《虚土》《一个人的村庄》《在新疆》等。<br>被誉为“20世纪中国最后一位散文家”和“乡村哲学家”。</p>
+<p>二、我的家乡<br>读到这本书中的文字，<br>情不自禁想到我的家乡，<br>和儿时在家乡的我，<br>那时每到夏天，<br>暑假可以去河里摸鱼抓虾，<br>一顿美美的野餐是少不了的，<br>晚饭后可以去树林摸蝉换钱，<br>第二天的冰棍就有了保证，<br>傍晚可以去家附近的池塘洗个痛快的凉水澡，<br>一下子从一个小泥人儿，变成了一个滑皮溜。<br>以上是摘要<a id="more"></a><br>那时每到麦收，<br>镰刀总会割到手，<br>但简单止血后，不用包扎还可以愉快的割麦子，<br>买不起口香糖，<br>麦子去皮后直接放到口中咀嚼，<br>瞬间唇齿留香，麦香四溢，<br>比口香糖还有嚼头，<br>麦秸垛落成后，<br>那里是每个孩子的天堂。</p>
+<p>那时每到瓜熟季节<br>各种瓜果是当饭吃的，<br>西红柿是在衣服上抹一下就吃的，<br>西瓜汁是被当作最佳冷饮的。</p>
+<p>可是我有时会孤独，<br>为了不被理解的忧伤，<br>为了小小的愿望被流放，<br>为了不知何时走出这片累弯腰的黄土。<br>我有时会绝望，<br>为了好像永远割不完的麦行，<br>为了不知道自己的未来会怎样，<br>为了不知道如何改变现在的孤独和绝望。</p>
+<p>后来我终于远离那片黄土，<br>再也没有割不完的麦行，<br>再也没有不被理解的忧伤，<br>再也没有被流放的小愿望，<br>可是儿时家乡的那种快乐，<br>不知何时远离了我的心房。</p>
+<p>三、故乡情结<br>每个人都有故乡情结，<br>或许是儿时与玩伴的戏耍，<br>或者是捉拿河里鱼虾，<br>甚至是故乡的一片树林、土岗，<br>午夜梦回哭湿了枕套，<br>你可回到了哪个儿时的故乡，<br>你的故乡情结是什么呢？</p>
+]]></content>
+      <categories>
+        <category>读书明道</category>
+        <category>小说</category>
+      </categories>
+  </entry>
+  <entry>
     <title>诚意与格物</title>
     <url>/2016/03/17/%E8%AF%9A%E6%84%8F%E4%B8%8E%E6%A0%BC%E7%89%A9/</url>
     <content><![CDATA[<p>一、前面的话</p>
@@ -805,21 +820,6 @@
 ]]></content>
       <categories>
         <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>读《一个人的村庄》</title>
-    <url>/2016/03/17/%E8%AF%BB%E3%80%8A%E4%B8%80%E4%B8%AA%E4%BA%BA%E7%9A%84%E6%9D%91%E5%BA%84%E3%80%8B/</url>
-    <content><![CDATA[<p>一、书和作者<br>《一个人的村庄》作者：刘亮程<br>刘亮程，作家，1962年出生在新疆古尔班通古特沙漠边缘的一个小村庄。<br>著有诗集《晒晒黄沙梁的太阳》，<br>散文集《虚土》《一个人的村庄》《在新疆》等。<br>被誉为“20世纪中国最后一位散文家”和“乡村哲学家”。</p>
-<p>二、我的家乡<br>读到这本书中的文字，<br>情不自禁想到我的家乡，<br>和儿时在家乡的我，<br>那时每到夏天，<br>暑假可以去河里摸鱼抓虾，<br>一顿美美的野餐是少不了的，<br>晚饭后可以去树林摸蝉换钱，<br>第二天的冰棍就有了保证，<br>傍晚可以去家附近的池塘洗个痛快的凉水澡，<br>一下子从一个小泥人儿，变成了一个滑皮溜。<br>以上是摘要<a id="more"></a><br>那时每到麦收，<br>镰刀总会割到手，<br>但简单止血后，不用包扎还可以愉快的割麦子，<br>买不起口香糖，<br>麦子去皮后直接放到口中咀嚼，<br>瞬间唇齿留香，麦香四溢，<br>比口香糖还有嚼头，<br>麦秸垛落成后，<br>那里是每个孩子的天堂。</p>
-<p>那时每到瓜熟季节<br>各种瓜果是当饭吃的，<br>西红柿是在衣服上抹一下就吃的，<br>西瓜汁是被当作最佳冷饮的。</p>
-<p>可是我有时会孤独，<br>为了不被理解的忧伤，<br>为了小小的愿望被流放，<br>为了不知何时走出这片累弯腰的黄土。<br>我有时会绝望，<br>为了好像永远割不完的麦行，<br>为了不知道自己的未来会怎样，<br>为了不知道如何改变现在的孤独和绝望。</p>
-<p>后来我终于远离那片黄土，<br>再也没有割不完的麦行，<br>再也没有不被理解的忧伤，<br>再也没有被流放的小愿望，<br>可是儿时家乡的那种快乐，<br>不知何时远离了我的心房。</p>
-<p>三、故乡情结<br>每个人都有故乡情结，<br>或许是儿时与玩伴的戏耍，<br>或者是捉拿河里鱼虾，<br>甚至是故乡的一片树林、土岗，<br>午夜梦回哭湿了枕套，<br>你可回到了哪个儿时的故乡，<br>你的故乡情结是什么呢？</p>
-]]></content>
-      <categories>
-        <category>读书明道</category>
-        <category>小说</category>
       </categories>
   </entry>
   <entry>
@@ -882,68 +882,6 @@
 ]]></content>
       <categories>
         <category>影视歌</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>重装Hexo遇到的坑</title>
-    <url>/2020/04/28/%E9%87%8D%E8%A3%85Hexo%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/</url>
-    <content><![CDATA[<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">我的前言只有三段话</span><br></pre></td></tr></table></figure>
-
-<h4 id="第一段"><a href="#第一段" class="headerlink" title="第一段"></a>第一段</h4><p>以前曾经用两天一夜的时间，<br>成功的以一个小白的身份，<br>用Mac+Hexo+Github,<br>搭建了自己的独立博客，<br>并且还简单学习了js和markdown，<br>当然还有python的简单用法，<br>可以说是收获颇丰。</p>
-<h4 id="第二段"><a href="#第二段" class="headerlink" title="第二段"></a>第二段</h4><p>随着生活日益繁忙，<br>便兴趣缺缺了。<br>所以，一度曾尝试彻底卸载Hexo,<br>最后当然没有成功，<br>只是在本地卸载了hexo和node，<br>但是hexo本地文件夹始终保存着，<br>幸好保存了，<br>不然今天就没这篇文章了。</p>
-<h4 id="第三段"><a href="#第三段" class="headerlink" title="第三段"></a>第三段</h4><p>最近生活有了些闲暇，<br>也读了很多书，<br>忽然又想找个地方写一下，<br>所以决定重装Hexo，<br>这便是踏坑的开始。</p>
-<a id="more"></a>
-
-<h3 id="第一个坑：node版本和hexo不兼容"><a href="#第一个坑：node版本和hexo不兼容" class="headerlink" title="第一个坑：node版本和hexo不兼容"></a>第一个坑：node版本和hexo不兼容</h3><p>我重新装了node和hexo，<br>满心欢喜在终端输入：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<p>结果给我来了一串的node警告，<br>只要不是错误，那我忍着，<br>继续输入：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-<p>这时候node坐不住了，<br>它报错了，错误如下：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">TypeError [ERR_INVALID_ARG_TYPE]: </span><br><span class="line"></span><br><span class="line">The &quot;mode&quot; argument must be integer. Received an instance of Object</span><br></pre></td></tr></table></figure>
-<p>然后下面是at什么什么，反正一堆错误。</p>
-<p>我用了一晚上的时间，<br>熬到凌晨四点多，<br>最后在搜索引擎，根本没有找到答案，<br>有人说是因为node版本问题，<br>我没当回事儿，<br>我想怎么可能是node版本问题呢？<br>我这node和hexo都是新装的，<br>结果，你越不认可的原因，<br>事实证明，就是那个原因，<br>在第二天上午又找了将近一上午的情况下，<br>我去了google，结果在github，看到了标准答案。<br>就是因为node 14.0.0和hexo不兼容的问题。</p>
-<p>然后啥也别想了，<br>直接打开命令行，开始装nvm</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew install nvm</span><br></pre></td></tr></table></figure>
-<p>接下来，用nvm安装离node 14.0.0比较近的版本，<br>那就选node 13.13.0吧，<br>开装，</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nvm install v13.13.0</span><br></pre></td></tr></table></figure>
-<p>安装完毕，<br>接下来将v13.13.0用nvm设置成默认的node版本</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nvm use v13.13.0</span><br></pre></td></tr></table></figure>
-<p>以上只是单次有用，<br>要想每次默认的node都是13.13.0，<br>必须设置别名：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">node alias default v13.13.0</span><br></pre></td></tr></table></figure>
-<p>接下来在终端输入查看下目前默认node版本是否是v13.13.0：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nvm current</span><br></pre></td></tr></table></figure>
-<p>终端显示更改默认node版本成功。</p>
-<p>至此用nvm管理node版本步骤完毕。</p>
-<p>来不及顾及其他，<br>直接在终端输入：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
-<p>成功！！！<br>恼人的node警告终于消停了，<br>世界终于清净了，<br>继续输入：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
-<p>提交成功，堪称完美。</p>
-<p>至此完美解决打开本地服务器和提交到github时，<br>node警告和报错的问题。<br>至此，第一个坑，算是填完了。</p>
-<h3 id="第二个坑：网站名称和主页导航栏中文乱码"><a href="#第二个坑：网站名称和主页导航栏中文乱码" class="headerlink" title="第二个坑：网站名称和主页导航栏中文乱码"></a>第二个坑：网站名称和主页导航栏中文乱码</h3><p>先声明这个坑，我到现在也没跳出来。<br>根本找不到原因。</p>
-<p>发现网站名称和导航栏中文乱码后，<br>展开一波搜索大法，<br>效果并不好，<br>在翻山越岭爬山涉水般的，各种尝试之后，<br>决定退而求其次，<br>我用原来hexo文件夹里的_config.yml和themes文件夹的_config.yml，<br>直接覆盖当前站点的这两个配置文件。<br>结果再也没乱码。</p>
-<p>网上好多人说中文乱码是因为用了文本编辑器编辑_config.yml，<br>是编码错误，改成utf8云云。</p>
-<p>可是并没有卵用，<br>如果是因为编码问题，<br>我文章直接就是用文本编辑器写的，一点儿也不乱。</p>
-<p>所以说，网上搜索答案的时候，<br>人云亦云的人是真多，<br>不但解决不了问题，<br>还浪费想找到答案的人的时间和精力。<br>有的人真的可恶至极，直接复制粘贴。<br>连问题都没写清楚，<br>还能期望他会有靠谱的答案吗？</p>
-<p>至此，算是勉强跳出两个大坑。</p>
-<p>最近决定集中研究下，hexo博客的装修问题。</p>
-<p>什么主题啦，修改ejs啦，等等，一定很好玩儿。</p>
-<p>再次使用hexo，有了第一次的基础，</p>
-<p>这次对hexo的文件结构和功能明了多了。</p>
-<p>慢慢来，<br>世界上一切事情都是这样的，<br>慢就是快，<br>快就是慢<br>有一句话说的很好，与诸君共勉：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">### Slow is smooth, and smooth is fast.</span><br><span class="line">    慢是光滑的，而光滑是快的。</span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-]]></content>
-      <categories>
-        <category>Hexo</category>
       </categories>
   </entry>
   <entry>
@@ -1066,6 +1004,68 @@
 ]]></content>
       <categories>
         <category>影视歌</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>重装Hexo遇到的坑</title>
+    <url>/2020/04/28/%E9%87%8D%E8%A3%85Hexo%E9%81%87%E5%88%B0%E7%9A%84%E5%9D%91/</url>
+    <content><![CDATA[<h3 id="前言："><a href="#前言：" class="headerlink" title="前言："></a>前言：</h3><figure class="highlight python"><table><tr><td class="code"><pre><span class="line">我的前言只有三段话</span><br></pre></td></tr></table></figure>
+
+<h4 id="第一段"><a href="#第一段" class="headerlink" title="第一段"></a>第一段</h4><p>以前曾经用两天一夜的时间，<br>成功的以一个小白的身份，<br>用Mac+Hexo+Github,<br>搭建了自己的独立博客，<br>并且还简单学习了js和markdown，<br>当然还有python的简单用法，<br>可以说是收获颇丰。</p>
+<h4 id="第二段"><a href="#第二段" class="headerlink" title="第二段"></a>第二段</h4><p>随着生活日益繁忙，<br>便兴趣缺缺了。<br>所以，一度曾尝试彻底卸载Hexo,<br>最后当然没有成功，<br>只是在本地卸载了hexo和node，<br>但是hexo本地文件夹始终保存着，<br>幸好保存了，<br>不然今天就没这篇文章了。</p>
+<h4 id="第三段"><a href="#第三段" class="headerlink" title="第三段"></a>第三段</h4><p>最近生活有了些闲暇，<br>也读了很多书，<br>忽然又想找个地方写一下，<br>所以决定重装Hexo，<br>这便是踏坑的开始。</p>
+<a id="more"></a>
+
+<h3 id="第一个坑：node版本和hexo不兼容"><a href="#第一个坑：node版本和hexo不兼容" class="headerlink" title="第一个坑：node版本和hexo不兼容"></a>第一个坑：node版本和hexo不兼容</h3><p>我重新装了node和hexo，<br>满心欢喜在终端输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>结果给我来了一串的node警告，<br>只要不是错误，那我忍着，<br>继续输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+<p>这时候node坐不住了，<br>它报错了，错误如下：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">TypeError [ERR_INVALID_ARG_TYPE]: </span><br><span class="line"></span><br><span class="line">The &quot;mode&quot; argument must be integer. Received an instance of Object</span><br></pre></td></tr></table></figure>
+<p>然后下面是at什么什么，反正一堆错误。</p>
+<p>我用了一晚上的时间，<br>熬到凌晨四点多，<br>最后在搜索引擎，根本没有找到答案，<br>有人说是因为node版本问题，<br>我没当回事儿，<br>我想怎么可能是node版本问题呢？<br>我这node和hexo都是新装的，<br>结果，你越不认可的原因，<br>事实证明，就是那个原因，<br>在第二天上午又找了将近一上午的情况下，<br>我去了google，结果在github，看到了标准答案。<br>就是因为node 14.0.0和hexo不兼容的问题。</p>
+<p>然后啥也别想了，<br>直接打开命令行，开始装nvm</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">brew install nvm</span><br></pre></td></tr></table></figure>
+<p>接下来，用nvm安装离node 14.0.0比较近的版本，<br>那就选node 13.13.0吧，<br>开装，</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nvm install v13.13.0</span><br></pre></td></tr></table></figure>
+<p>安装完毕，<br>接下来将v13.13.0用nvm设置成默认的node版本</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nvm use v13.13.0</span><br></pre></td></tr></table></figure>
+<p>以上只是单次有用，<br>要想每次默认的node都是13.13.0，<br>必须设置别名：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">node alias default v13.13.0</span><br></pre></td></tr></table></figure>
+<p>接下来在终端输入查看下目前默认node版本是否是v13.13.0：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">nvm current</span><br></pre></td></tr></table></figure>
+<p>终端显示更改默认node版本成功。</p>
+<p>至此用nvm管理node版本步骤完毕。</p>
+<p>来不及顾及其他，<br>直接在终端输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo s</span><br></pre></td></tr></table></figure>
+<p>成功！！！<br>恼人的node警告终于消停了，<br>世界终于清净了，<br>继续输入：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo g -d</span><br></pre></td></tr></table></figure>
+<p>提交成功，堪称完美。</p>
+<p>至此完美解决打开本地服务器和提交到github时，<br>node警告和报错的问题。<br>至此，第一个坑，算是填完了。</p>
+<h3 id="第二个坑：网站名称和主页导航栏中文乱码"><a href="#第二个坑：网站名称和主页导航栏中文乱码" class="headerlink" title="第二个坑：网站名称和主页导航栏中文乱码"></a>第二个坑：网站名称和主页导航栏中文乱码</h3><p>先声明这个坑，我到现在也没跳出来。<br>根本找不到原因。</p>
+<p>发现网站名称和导航栏中文乱码后，<br>展开一波搜索大法，<br>效果并不好，<br>在翻山越岭爬山涉水般的，各种尝试之后，<br>决定退而求其次，<br>我用原来hexo文件夹里的_config.yml和themes文件夹的_config.yml，<br>直接覆盖当前站点的这两个配置文件。<br>结果再也没乱码。</p>
+<p>网上好多人说中文乱码是因为用了文本编辑器编辑_config.yml，<br>是编码错误，改成utf8云云。</p>
+<p>可是并没有卵用，<br>如果是因为编码问题，<br>我文章直接就是用文本编辑器写的，一点儿也不乱。</p>
+<p>所以说，网上搜索答案的时候，<br>人云亦云的人是真多，<br>不但解决不了问题，<br>还浪费想找到答案的人的时间和精力。<br>有的人真的可恶至极，直接复制粘贴。<br>连问题都没写清楚，<br>还能期望他会有靠谱的答案吗？</p>
+<p>至此，算是勉强跳出两个大坑。</p>
+<p>最近决定集中研究下，hexo博客的装修问题。</p>
+<p>什么主题啦，修改ejs啦，等等，一定很好玩儿。</p>
+<p>再次使用hexo，有了第一次的基础，</p>
+<p>这次对hexo的文件结构和功能明了多了。</p>
+<p>慢慢来，<br>世界上一切事情都是这样的，<br>慢就是快，<br>快就是慢<br>有一句话说的很好，与诸君共勉：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">### Slow is smooth, and smooth is fast.</span><br><span class="line">    慢是光滑的，而光滑是快的。</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+]]></content>
+      <categories>
+        <category>Hexo</category>
       </categories>
   </entry>
 </search>
