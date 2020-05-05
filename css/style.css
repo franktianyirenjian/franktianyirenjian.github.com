@@ -530,8 +530,8 @@ body {
   margin-left: 8px;
 }
 .article-category:before {
-  content: "\25B2";
-  color: #ff7;
+  content: "\25BA";
+  color: #008000;
 }
 .article-category-link {
   margin: 0 12px 1em;
