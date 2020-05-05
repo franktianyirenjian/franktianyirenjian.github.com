@@ -532,6 +532,7 @@ body {
 .article-category:before {
   content: "\25BA";
   color: #008000;
+  font-size: 2px;
 }
 .article-category-link {
   margin: 0 12px 1em;
