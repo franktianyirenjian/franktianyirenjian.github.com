@@ -52,6 +52,16 @@
       </categories>
   </entry>
   <entry>
+    <title>IOS Xcode7.1新建纯代码工程</title>
+    <url>/2016/03/17/IOS-Xcode7-1%E6%96%B0%E5%BB%BA%E7%BA%AF%E4%BB%A3%E7%A0%81%E5%B7%A5%E7%A8%8B/</url>
+    <content><![CDATA[<p>今天准备纯代码做下计算器；<br>xcode已升级到version 7.1；<br>创建singleview后改造空工程；<br>删除main.storyboard，<br>创建windows并设置背景色为黑色；<br>满怀期待的command+R；<br>结果提示我:<br>以上是摘要<a id="more"></a><br>2015-10-30 18:15:29.933 计算器[1696:127982] <strong>* Assertion failure in -[UIApplication _runWithMainScene:transitionContext:completion:], /BuildRoot/Library/Caches/com.apple.xbs/Sources/UIKit_Sim/UIKit-3512.29.5/UIApplication.m:3299<br>2015-10-30 18:15:29.939 计算器[1696:127982] *</strong> Terminating app due to uncaught exception ‘NSInternalInconsistencyException’, reason: ‘Application windows are expected to have a root view controller at the end of application launch’<br>*** First throw call stack:<br>(<br>0   CoreFoundation                      0x02524a84 <strong>exceptionPreprocess + 180<br>1   libobjc.A.dylib                     0x00550e02 objc_exception_throw + 50<br>2   CoreFoundation                      0x0252491a +[NSException raise:format:arguments:] + 138<br>3   Foundation                          0x001cfe86 -[NSAssertionHandler handleFailureInMethod:object:file:lineNumber:description:] + 118<br>4   UIKit                               0x00957a9b -[UIApplication _runWithMainScene:transitionContext:completion:] + 3975<br>5   UIKit                               0x0097be4d __84-[UIApplication _handleApplicationActivationWithScene:transitionContext:completion:]_block_invoke3208 + 68<br>6   UIKit                               0x00953fb4 -[UIApplication workspaceDidEndTransaction:] + 163<br>7   FrontBoardServices                  0x036fdca4 __37-[FBSWorkspace clientEndTransaction:]_block_invoke_2 + 71<br>8   FrontBoardServices                  0x036fd77b __40-[FBSWorkspace _performDelegateCallOut:]_block_invoke + 54<br>9   FrontBoardServices                  0x0371b1a3 -[FBSSerialQueue _performNext] + 184<br>10  FrontBoardServices                  0x0371b5da -[FBSSerialQueue _performNextFromRunLoopSource] + 52<br>11  FrontBoardServices                  0x0371a8d6 FBSSerialQueueRunLoopSourceHandler + 33<br>12  CoreFoundation                      0x0243ed1f __CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE0_PERFORM_FUNCTION</strong> + 15<br>13  CoreFoundation                      0x024349ab __CFRunLoopDoSources0 + 523<br>14  CoreFoundation                      0x02433dc8 __CFRunLoopRun + 1032<br>15  CoreFoundation                      0x02433706 CFRunLoopRunSpecific + 470<br>16  CoreFoundation                      0x0243351b CFRunLoopRunInMode + 123<br>17  UIKit                               0x00953854 -[UIApplication _run] + 540<br>18  UIKit                               0x009591eb UIApplicationMain + 160<br>19  ËÆ°ÁÆóÂô®                           0x00082baa main + 138<br>20  libdyld.dylib                       0x030eba21 start + 1<br>)<br>libc++abi.dylib: terminating with uncaught exception of type NSException<br>(lldb)<br>然后就开始了艰辛的解决历程；<br>自己英语很渣，只有慢慢度娘；<br>百度出来的百分之九十九是xcode6.1改造空工程的方法；<br>没用啊，我现在用的就是它这个方法；<br>只有不断换关键字；<br>结果当我输入：“xcode7如何创建空工程”keywords后；<br>第四个答案正是我想要的；<br>東東同学的新浪博客：<a href="http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html</a><br>原来提示的意思是：“必须给windows创建一个rootviewcontroller；<br>这一句话足够了；果断添加rootview，再次command+R；果断通过；<br>它是否意味着windows创建好后不能直接显示了，必须添加rootviewcontroller才可以运行呢？<br>已经给東東留言等回复。<br>总之任何一个细小的问题，通过自己的努力或者得到别人指点得到解决后，那种欣喜都是情不自禁的。<br>完毕！</p>
+]]></content>
+      <categories>
+        <category>编程</category>
+        <category>IOS</category>
+      </categories>
+  </entry>
+  <entry>
     <title>Mac端通过Hexo搭建独立博客</title>
     <url>/2016/03/17/Mac%E7%AB%AF%E9%80%9A%E8%BF%87Hexo%E6%90%AD%E5%BB%BA%E7%8B%AC%E7%AB%8B%E5%8D%9A%E5%AE%A2/</url>
     <content><![CDATA[<h4 id="一、为什么选择Hexo"><a href="#一、为什么选择Hexo" class="headerlink" title="一、为什么选择Hexo"></a>一、为什么选择Hexo</h4><p>我对搭建自己的独立博客兴致盎然，<br>独立的才真正是自己的，<br>马克思说研究需要充分占有材料，<br>我因此大量阅读了关于搭建独立博客的文章和资料，<br>知道了有Octopress，jekyll等独立博客搭建系统，<br>但看到好多程序员童鞋都说：Octopress和jekyll很难搞定，<br>所以对于我这种小白来说，就更不用考虑了，<br>听说Hexo是hacker必备的博客搭建系统，因此果断选它。</p>
@@ -98,26 +108,6 @@
       </categories>
   </entry>
   <entry>
-    <title>IOS Xcode7.1新建纯代码工程</title>
-    <url>/2016/03/17/IOS-Xcode7-1%E6%96%B0%E5%BB%BA%E7%BA%AF%E4%BB%A3%E7%A0%81%E5%B7%A5%E7%A8%8B/</url>
-    <content><![CDATA[<p>今天准备纯代码做下计算器；<br>xcode已升级到version 7.1；<br>创建singleview后改造空工程；<br>删除main.storyboard，<br>创建windows并设置背景色为黑色；<br>满怀期待的command+R；<br>结果提示我:<br>以上是摘要<a id="more"></a><br>2015-10-30 18:15:29.933 计算器[1696:127982] <strong>* Assertion failure in -[UIApplication _runWithMainScene:transitionContext:completion:], /BuildRoot/Library/Caches/com.apple.xbs/Sources/UIKit_Sim/UIKit-3512.29.5/UIApplication.m:3299<br>2015-10-30 18:15:29.939 计算器[1696:127982] *</strong> Terminating app due to uncaught exception ‘NSInternalInconsistencyException’, reason: ‘Application windows are expected to have a root view controller at the end of application launch’<br>*** First throw call stack:<br>(<br>0   CoreFoundation                      0x02524a84 <strong>exceptionPreprocess + 180<br>1   libobjc.A.dylib                     0x00550e02 objc_exception_throw + 50<br>2   CoreFoundation                      0x0252491a +[NSException raise:format:arguments:] + 138<br>3   Foundation                          0x001cfe86 -[NSAssertionHandler handleFailureInMethod:object:file:lineNumber:description:] + 118<br>4   UIKit                               0x00957a9b -[UIApplication _runWithMainScene:transitionContext:completion:] + 3975<br>5   UIKit                               0x0097be4d __84-[UIApplication _handleApplicationActivationWithScene:transitionContext:completion:]_block_invoke3208 + 68<br>6   UIKit                               0x00953fb4 -[UIApplication workspaceDidEndTransaction:] + 163<br>7   FrontBoardServices                  0x036fdca4 __37-[FBSWorkspace clientEndTransaction:]_block_invoke_2 + 71<br>8   FrontBoardServices                  0x036fd77b __40-[FBSWorkspace _performDelegateCallOut:]_block_invoke + 54<br>9   FrontBoardServices                  0x0371b1a3 -[FBSSerialQueue _performNext] + 184<br>10  FrontBoardServices                  0x0371b5da -[FBSSerialQueue _performNextFromRunLoopSource] + 52<br>11  FrontBoardServices                  0x0371a8d6 FBSSerialQueueRunLoopSourceHandler + 33<br>12  CoreFoundation                      0x0243ed1f __CFRUNLOOP_IS_CALLING_OUT_TO_A_SOURCE0_PERFORM_FUNCTION</strong> + 15<br>13  CoreFoundation                      0x024349ab __CFRunLoopDoSources0 + 523<br>14  CoreFoundation                      0x02433dc8 __CFRunLoopRun + 1032<br>15  CoreFoundation                      0x02433706 CFRunLoopRunSpecific + 470<br>16  CoreFoundation                      0x0243351b CFRunLoopRunInMode + 123<br>17  UIKit                               0x00953854 -[UIApplication _run] + 540<br>18  UIKit                               0x009591eb UIApplicationMain + 160<br>19  ËÆ°ÁÆóÂô®                           0x00082baa main + 138<br>20  libdyld.dylib                       0x030eba21 start + 1<br>)<br>libc++abi.dylib: terminating with uncaught exception of type NSException<br>(lldb)<br>然后就开始了艰辛的解决历程；<br>自己英语很渣，只有慢慢度娘；<br>百度出来的百分之九十九是xcode6.1改造空工程的方法；<br>没用啊，我现在用的就是它这个方法；<br>只有不断换关键字；<br>结果当我输入：“xcode7如何创建空工程”keywords后；<br>第四个答案正是我想要的；<br>東東同学的新浪博客：<a href="http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html" target="_blank" rel="noopener">http://blog.sina.com.cn/s/blog_916e0cff0102vym3.html</a><br>原来提示的意思是：“必须给windows创建一个rootviewcontroller；<br>这一句话足够了；果断添加rootview，再次command+R；果断通过；<br>它是否意味着windows创建好后不能直接显示了，必须添加rootviewcontroller才可以运行呢？<br>已经给東東留言等回复。<br>总之任何一个细小的问题，通过自己的努力或者得到别人指点得到解决后，那种欣喜都是情不自禁的。<br>完毕！</p>
-]]></content>
-      <categories>
-        <category>编程</category>
-        <category>IOS</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>UIviewcontroller与UIview</title>
-    <url>/2016/03/17/UIviewcontroller%E4%B8%8EUIview/</url>
-    <content><![CDATA[<p>UIviewcontroller名字叫做视图控制器，是一个类，UIview也是一个类；<br>UIviewcontroller控制放在它上面的所有UIview的事件；<br>UIview只负责加载数据与图片；<br>UIviewcontroller顾名思义，就是控制；<br>比如飞机大战中，加载子弹和飞机的图片需要UIview实现；<br>而发射子弹则需要UIviewcontroller来实现。<br>目前就理解到这个程度。</p>
-]]></content>
-      <categories>
-        <category>编程</category>
-        <category>IOS</category>
-      </categories>
-  </entry>
-  <entry>
     <title>OC中委托和协议</title>
     <url>/2016/03/17/OC%E4%B8%AD%E5%A7%94%E6%89%98%E5%92%8C%E5%8D%8F%E8%AE%AE/</url>
     <content><![CDATA[<p>一、为什么写这篇文章</p>
@@ -131,6 +121,16 @@
 <p>总结：<br>1、委托行为借助协议得以完成；这里王五通过FindworkDelegat协议委托马六找工作；协议要求钱多事儿少离家近；<br>2、并且规定必须遵守这个协议的要求找工作才可以付钱：@property(nonatomic,weak)id <FindworkDelegate>delegate;<br>3、委托找两份工作因此每反馈回来一次，需要判断是哪份工作的内容介绍：使用respondsToSelector:@selector(moneyMax:)方法进行判断。<br>Wangwu*WW1=[[Wangwu alloc]init];第一份工作</p>
 <p>Wangwu*WW2=[[Wangwu alloc]init];第二份工作</p>
 <p>if ([_delegate respondsToSelector:@selector(moneyMax:)]||[_delegate respondsToSelector:@selector(treatMent:)]){<br>[_delegate moneyMax:self];self是指具体是哪份工作？<br>[_delegate treatMent:self];<br>}<br>over！</p>
+]]></content>
+      <categories>
+        <category>编程</category>
+        <category>IOS</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>UIviewcontroller与UIview</title>
+    <url>/2016/03/17/UIviewcontroller%E4%B8%8EUIview/</url>
+    <content><![CDATA[<p>UIviewcontroller名字叫做视图控制器，是一个类，UIview也是一个类；<br>UIviewcontroller控制放在它上面的所有UIview的事件；<br>UIview只负责加载数据与图片；<br>UIviewcontroller顾名思义，就是控制；<br>比如飞机大战中，加载子弹和飞机的图片需要UIview实现；<br>而发射子弹则需要UIviewcontroller来实现。<br>目前就理解到这个程度。</p>
 ]]></content>
       <categories>
         <category>编程</category>
@@ -183,6 +183,18 @@
       <categories>
         <category>编程</category>
         <category>IOS</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>《王阳明大传》读后感</title>
+    <url>/2016/03/17/%E3%80%8A%E7%8E%8B%E9%98%B3%E6%98%8E%E5%A4%A7%E4%BC%A0%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/</url>
+    <content><![CDATA[<p>最近读了《王阳明大传》<br>模模糊糊理解了一些<br>王阳明心学要解决的问题是什么?<br>记录在此，以备后用。<br>心学在阳明后来讲学时，<br>为使学生容易理解，<br>便表述为良知学，<br>而实现的方法则是致良知。</p>
+<p>心学要解决的问题就是：找到“人生的意义”，<br>在百千万年的人类史中，<br>人类肯定形成了同一的人性内容，<br>也就是阳明心学中讲的“心体”，<br>也就是本元，最初的那种状态，<br>在阳明以前人们为了找到‘意义’，<br>都会去求助于外物，<br>从外物求理，以期望最终找到‘意义’。<br>以上是摘要<a id="more"></a><br>但是阳明‘龙场悟道’后，告诉大家，意义不在外界万物上，<br>而在每个人心上；<br>但是人们搞不懂，<br>既然在每个人心上，<br>那我们都有心，<br>为什么没有找到‘意义’所在呢？<br>这时王先生告诉他们：<br>不是没有，而是已经被遮蔽了。<br>是被外界鸡零狗碎的私心杂念蒙蔽了。<br>王先生不但告诉他们为什么你们现在从自己心上找不到意义，<br>而且还说我有方法能让你们找到，<br>那就是：“知行合一”；<br>只要坚持知行合一肯定会有人，<br>能将那些鸡零狗碎的私心杂念的遮蔽去掉，<br>看到自己的心的本体，<br>找到意义所在。</p>
+<p>注意他说的是有人会，<br>有人会找到，肯定就有人不会找到<br>所以心学本身对于每个个人来说<br>是一个悲喜参半的对意义的答案，<br>喜的是终于有方法能找到那个终极的问题的答案了。<br>而悲的则是，即使你真去知行合一了，<br>临死之前也不一定能找到。</p>
+<p>从王先生自己的经历来说，<br>他笃信每个人原本都是圣人，<br>只要坚持知行合一，<br>找到意义，最后每个人都会成为真正的圣人。<br>但是这里就有个时间的死结，<br>每个人的时间都不是无限，</p>
+]]></content>
+      <categories>
+        <category>阳明心学</category>
       </categories>
   </entry>
   <entry>
@@ -271,39 +283,6 @@
       </categories>
   </entry>
   <entry>
-    <title>工夫与境界（一）</title>
-    <url>/2016/03/17/%E5%B7%A5%E5%A4%AB%E4%B8%8E%E5%A2%83%E7%95%8C%EF%BC%88%E4%B8%80%EF%BC%89/</url>
-    <content><![CDATA[<p>工夫与境界古人常论之；<br>这里工夫是指心力，境界是指胸襟。<br>心力与胸襟外在综合显现为气质。</p>
-<p>在陈来所著《有无之境》中，<br>专门有一章论及工夫，<br>陈来阐释说：”阳明的工夫论就是通过适当的实践和精神修养的方法或形式，来达到理想的境界”。<br>在下深以为然。<br>说白了工夫既要具体的去进行体力锻炼，又要独立的思考进行精神修养。</p>
-<p>我的意思是除去以‘心学’装点门面者外，<br>我们所有人接触并学习心学，<br>都是为了用其指导我们自己的生活，<br>让自己的生活慢慢的圆满起来。<br>以上是摘要<a id="more"></a><br>那么怎么做才可以具体的将心学应用在我们生活中呢？<br>这个事情，在于我自己也并没有融会贯通。<br>因此以下所说，只是适用于我自己的方法，供大家借鉴。<br>原因前面文章已有述及：“任是阳明自己已成圣，也只能用其心学为我们指出一门径而已。”</p>
-<p>我运用心学的经验源于两方面：就是开头所说：工夫与境界；<br>也即心力与胸襟。</p>
-<p>阳明说：“知之真切笃实便是行，行之明觉精察便是知”。<br>意思是生命有限，虽说知行合一要求多实践，<br>但以有限之生命，对无限之实践是不现实的。<br>那么可以有个替代方法，即：‘知之真切笃实便是行’。<br>这同时给了我们不直接实践也可以获得实践效果的一个门径。</p>
-<p>实践工夫我是这样做的，<br>有时间我会抽出一个小时，<br>这一个小时保证不会有人打扰你。</p>
-<p>思考以下三个方面的事情：</p>
-<p>一、未发生之事；<br>未发生之事，往往更多的引起我们的恐惧，<br>用阳明的话说，这时恐惧遮蔽了我们的本心，<br>正如罗斯福夫人所说：“恐惧源于恐惧本身”，<br>在你心中去演绎未发生的事情，比如你对明天的恐惧，<br>如果这样说有点儿抽象，那么我么可以说具体一点儿；<br>想一下，如果明天你突然没工作了，不要问我为什么，<br>或者是做的不开心自己辞职的，或者是公司倒闭被动离职，鬼知道为什么？<br>就想象你已经没工作了。<br>你身上的钱还够你生活半年，<br>接着想下去，这时候你会怎么办？<br>就按着这条线想下去；</p>
-<p>我是这么演绎的：</p>
-<p>1、首先我要统计我生活的所有开支在什么事情上，减少不必要的开支；<br>比如原来抽烟，这时候正是戒烟的好机会；<br>比如你原来冲动之下，会买一些没有用的物品，可以提高你购物的实用性。<br>比如你原来经常爱学文青，去电影院或者为了附庸风雅甚至去看歌剧舞剧。<br>这些都可以按暂停键了。</p>
-<p>2、我将如何利用待业期间的宝贵时间；<br>这里有两个关键点，<br>第一，往往你会因刚失业而忽略掉待业期间的这宝贵时间。<br>因为失业了，你会手足无措，你会很没有安全感，你并没有意识到，这段时间，恰恰是你枕戈待旦，好整以暇的修炼时间。<br>一边因失业而无精打采，一边又因不能马上找到满意的工作而患得患失。<br>而待业的时间就会在这种等待招聘电话与患得患失中流失。<br>等到投入到新的工作之后，又后悔没有在待业期间的那不短时间内学习到新的东西。<br>第二，你如果好好利用这段时间，你会获得惊喜；<br>这段时间弥足珍贵的地方在于，<br>你只要冷静下来就会想清楚：“即便我再患得患失，我再沮丧，再无精打采”；现在就是失业了，就是没工作了，钱就是还够用半年。<br>与其患得患失，不如好好利用；<br>如果你一旦树立这个意识，<br>相信我，下次再失业也好，遇到其他突发事件也好你会淡定的多得多。<br>这无疑会实实在在的增进你的心力，<br>换句话说，会提高你面对不确定性的能力。</p>
-<p>用这段时间可以做好多事情，除了把简历改好，每天投递外，<br>余下的时间全部是你自己的。<br>你可以用余下的时间做你喜欢的事情。</p>
-<p>思考如何增加你的收入来源，<br>是不是可以开个淘宝店，<br>别人都说在行这个app不错，<br>可不可以用你独特的技能在上面赚点儿零花钱。<br>假如你对写作情有独钟，这时候可以提高下你的写作水平。<br>每天写一篇文章练手应该不是难事，等等很多。<br>既符合你的兴趣，又可以借此增加这方面的素质，<br>还可以顺便赚些零花钱。</p>
-<p>看你工作时没时间看的书籍；<br>这个不多说，甭管是否跟你的职业技能直接相关，<br>你可以随便按照你的兴趣来，<br>如果以前老是看德鲁克等方面的商业书籍；<br>这时你不妨重读你最爱的金庸，古龙武侠小说；<br>可以分析下，他们写作的笔法，架构，以及整个小说的布局。<br>对你自己写文章也是不无进益的。</p>
-<p>学习你工作时没时间学的技能<br>比如编程，音乐，甚至做饭。<br>你说我爱编程，喜欢键盘噼里啪啦若干时间，就可以看到很流畅的网页被我写出来。<br>你说我喜欢音乐，我想自己写自己的歌，<br>你说我爱吃红烧排骨或者狮子头。<br>好了，这正是最好的机会，你都可以去尝试了。</p>
-<p>工作时你没时间去的地方<br>当然远的地方就不要去了，<br>毕竟钱包里还有几个子儿，你最清楚了。<br>工作时周边好玩的地方，你都没时间去。<br>这时候可以好好畅玩一番了。<br>对了有单反，还可以拍些很好的照片回来。<br>还可以借此提高你的摄影技能。</p>
-<p>3、职业转换<br>我是不是一辈子做这个工作，<br>有没有可能转换职业，如果转换需要哪些技能，<br>我现在是不是就可以给他学起来。<br>如果转换职业机会成本怎么样等等。<br>这些你都可以好好思考下。</p>
-<p>二、已发生之事；<br>已发生之事不会引起你的恐惧，<br>它会给你带来经验以及教训，当然还有后悔。<br>总结一下自己这几年的人生经历，工作得失。<br>思考一下自己的亲情，爱情以及友情，<br>这些年在经营这些事上，有什么不好的地方，<br>有哪些需要改正的地方。<br>这里你需要想明白一件事情，不要后悔。<br>过去的事，是无须后悔也是后悔无用的。<br>所以在这里真正的目的就是勿恋旧事。<br>旧事带给我们的是经验，是教训，是回忆也是经历。<br>而就是不能是后悔或者哀怨。<br>三、正在行之事；<br>过去的事情，你不再有后悔后者留恋，<br>对于未发生但是使你恐惧的事情也已经思考好了对策，<br>现在你是好整以暇，再不会瞻前顾后了。<br>自然而然的就会专注于正在行的事上了。</p>
-<p>举例子也好，分类别也罢，以上所有的文字都是为了说明一件事，<br>未来不迎，过往不恋，当下不杂。<br>哀莫大于心死，如果你不断的这样练习，<br>你的心力就会越来越强，不自觉的就会增加自信。<br>那到时候你的气质自然就来了。</p>
-<p>说白了气质还是在于你对于未来不确定的事情不再恐惧，<br>对于已过去的事情不再留恋和哀怨。<br>对于现在的事情，能够专心致志。<br>做到这些之后，自信而且淡定的外在表现就是你的气质了。<br>只有不恐惧于未来不确定的事情，不留恋于过去的事，你才能更专心的做你现在的事情。<br>那样你才足够淡定，足够自信，足够有气质。</p>
-<p>我还是要说语言文字的局限性，决定了它并不能表达所有的事情。<br>气质就是其中最好的例子，什么是气质，可以有很多定义。<br>但绝不会如这是一只猫，那是一只狗清晰。<br>因此，以上说的再详尽，也还是需要自己去实践。</p>
-<p>关于境界的文字，<br>由于此篇“工夫”文章已经很长，<br>为了让读到的人不花费太长时间。<br>下一期发出来。<br>敬请期待。</p>
-<p>本期推荐书籍：<br>一、《民国就是这么生猛》<br>推荐理由；<br>1、虽然本书讲的不是关于工夫的事，但是里面讲到的人可以教给你很多关于：“工夫”的事儿。<br>2、文字幽默诙谐，通俗易懂，可以作为茶余饭后的休闲阅读。<br>3、民国入门读物。<br>二、《红太阳是怎样升起的》<br>1、此书可以学习一些推广方面的经验；你如果没看到那就仔细看；<br>2、可以看到为什么会发生文革？<br>3、验证了一句话，在政治面前，从来没有永远的朋友和敌人。<br>4、也可以看到领袖的缔造，绝对需要大大的：“工夫”。<br>三、《最后的文化贵族》<br>学习下这些在文化上有气质的人，是怎样修炼：“工夫”的。</p>
-<p>本期推荐电影：</p>
-<p>1、《杀手没有假期》<br>我常常讲，我以前是个道德感很重的人，非要把善恶很分明的人，<br>但是我越来越感到，人性复杂性大于两分性，偶然性大于必然性。<br>杀手的人生会带给你怎样的启示呢？看了就知道。<br>2、《返老还童》又叫《本杰明巴顿奇事》<br>豆瓣评分8.6，以男女爱情为线索探讨生老病死价值体系的一部电影。<br>3、《杏花三月天》<br>我看这部主要看蒋雯丽和张国立年轻时的表演的。里面和《菊豆》异曲同工，都表现了旧社会妇女从属地位的悲哀和无奈。</p>
-]]></content>
-      <categories>
-        <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
     <title>如何利用知行合一提升学习效率</title>
     <url>/2016/03/20/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E6%8F%90%E5%8D%87%E5%AD%A6%E4%B9%A0%E6%95%88%E7%8E%87/</url>
     <content><![CDATA[<p>一、心学里的三类人<br>阳明将人分三类：生知安行，学知力行，困知勉行。<br>生知安行就是我们现在所说的天才，<br>如果按二八法则，全人类中，<br>似乎会有百分之二十的天才存在，<br>可是去掉那些后来伤仲永的，<br>最多会留下百分之十，就不错了。<br>困知勉行，就是脑袋死不开窍的，<br>最多也就百分之十，<br>剩下的就是百分之八十的普通人了。</p>
@@ -342,6 +321,39 @@
 <p>这段实在太抽象，<br>因为梁文道这等厉害人物在《一千零一夜》，<br>用了六集才讲清楚《心经》的前两句话。<br>个中奥义，不花一番功夫实难领会。<br>另外小结中有些概念实在无法展开叙述，<br>有心人可以自行搜索资料进行学习。<br>做下小结吧：“我执”是三毒：“贪、嗔、痴”的根源；<br>陷入三毒世人皆苦，苦分为：“求不得、爱别离、怨憎会”<br>三法印：诸行无常、诸法无我、寂静涅槃会让我们理解空不异色，色不异空，空即是色，色即是空，从而获得到达彼岸的大智慧。<br>只有运用般若波罗蜜多：到达彼岸的大智慧才能照见五蕴皆空，度一切苦厄。</p>
 <p>3、界<br>关于界限我要说的不多，<br>大家应该都知道有个舒适区，学习区与恐慌区的划分。<br>那么我只有一个建议，经常挑战下你的恐慌区。<br>怕和女孩搭讪，偏偏要在餐馆吃午饭时和邻桌的漂亮妹妹搭个讪，<br>怕在群众面前演讲，偏偏要在公园等人扎堆的地方，让自己来上一段，<br>怕在高处眺望，偏偏周末要去体验一下蹦极时血脉贲张的酸爽。<br>你说：“臣妾真的做不到啊！”。<br>我只说一件事：<br>最近重看了一遍86版的《西游记》，<br>至于演员演得好，导演拍的好，不赘述。<br>只一点，第一集就让我明白了以前看不可能明白的道理。<br>孙悟空和众猴打赌，自己能从水帘洞进去且出来。<br>你想一想，<br>有的猴子已经在这片区域生活了很多年，<br>却没勇气进去看一看，<br>那一刻我知道，人生所有的艰难困苦都是纸老虎。<br>再有，进去后欢宴期间一猴子突然死亡，<br>那一刻我知道，人生无常，达人自玉。<br>最后，孙悟空决定远行学艺。<br>在市集间被俗人们当作异类而嘲笑<br>那一刻我知道，哪怕任何人的嘲笑，<br>都比不过你自己的一个决心。</p>
 <p>本期推荐书籍：<br>1、《增长黑客》豆瓣评分8.1 作者：范冰<br>细节非常独到，我还试了下里面通过curl －o命令抓取唱吧图片。<br>最重要的一点树立T型知识结构的意识。<br>归纳略显不足，只描述案例，不归纳本质的东西，做互联网的同学可以作为手边书翻一翻。<br>2、《黑客与画家》作者：保罗格雷厄姆<br>任何一门知识，做到极致都是艺术，编程亦然。<br>3、《物演通论》作者：王东岳<br>我只记住了一个：“递弱代偿法则”，其他看不懂，你若有高见，欢迎和我讨论。<br>本期推荐电影：<br>1、《三傻大闹宝莱坞》<br>我已经看过三遍了，不多说了，和梦想有关和现实无联。<br>2、《无法触碰》<br>这个看了两遍，马上看第三遍，和生命有关和人生无联。<br>3、《野草莓》<br>英格玛·伯格曼代表作，和生命无关和心灵有联。</p>
+]]></content>
+      <categories>
+        <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>工夫与境界（一）</title>
+    <url>/2016/03/17/%E5%B7%A5%E5%A4%AB%E4%B8%8E%E5%A2%83%E7%95%8C%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<p>工夫与境界古人常论之；<br>这里工夫是指心力，境界是指胸襟。<br>心力与胸襟外在综合显现为气质。</p>
+<p>在陈来所著《有无之境》中，<br>专门有一章论及工夫，<br>陈来阐释说：”阳明的工夫论就是通过适当的实践和精神修养的方法或形式，来达到理想的境界”。<br>在下深以为然。<br>说白了工夫既要具体的去进行体力锻炼，又要独立的思考进行精神修养。</p>
+<p>我的意思是除去以‘心学’装点门面者外，<br>我们所有人接触并学习心学，<br>都是为了用其指导我们自己的生活，<br>让自己的生活慢慢的圆满起来。<br>以上是摘要<a id="more"></a><br>那么怎么做才可以具体的将心学应用在我们生活中呢？<br>这个事情，在于我自己也并没有融会贯通。<br>因此以下所说，只是适用于我自己的方法，供大家借鉴。<br>原因前面文章已有述及：“任是阳明自己已成圣，也只能用其心学为我们指出一门径而已。”</p>
+<p>我运用心学的经验源于两方面：就是开头所说：工夫与境界；<br>也即心力与胸襟。</p>
+<p>阳明说：“知之真切笃实便是行，行之明觉精察便是知”。<br>意思是生命有限，虽说知行合一要求多实践，<br>但以有限之生命，对无限之实践是不现实的。<br>那么可以有个替代方法，即：‘知之真切笃实便是行’。<br>这同时给了我们不直接实践也可以获得实践效果的一个门径。</p>
+<p>实践工夫我是这样做的，<br>有时间我会抽出一个小时，<br>这一个小时保证不会有人打扰你。</p>
+<p>思考以下三个方面的事情：</p>
+<p>一、未发生之事；<br>未发生之事，往往更多的引起我们的恐惧，<br>用阳明的话说，这时恐惧遮蔽了我们的本心，<br>正如罗斯福夫人所说：“恐惧源于恐惧本身”，<br>在你心中去演绎未发生的事情，比如你对明天的恐惧，<br>如果这样说有点儿抽象，那么我么可以说具体一点儿；<br>想一下，如果明天你突然没工作了，不要问我为什么，<br>或者是做的不开心自己辞职的，或者是公司倒闭被动离职，鬼知道为什么？<br>就想象你已经没工作了。<br>你身上的钱还够你生活半年，<br>接着想下去，这时候你会怎么办？<br>就按着这条线想下去；</p>
+<p>我是这么演绎的：</p>
+<p>1、首先我要统计我生活的所有开支在什么事情上，减少不必要的开支；<br>比如原来抽烟，这时候正是戒烟的好机会；<br>比如你原来冲动之下，会买一些没有用的物品，可以提高你购物的实用性。<br>比如你原来经常爱学文青，去电影院或者为了附庸风雅甚至去看歌剧舞剧。<br>这些都可以按暂停键了。</p>
+<p>2、我将如何利用待业期间的宝贵时间；<br>这里有两个关键点，<br>第一，往往你会因刚失业而忽略掉待业期间的这宝贵时间。<br>因为失业了，你会手足无措，你会很没有安全感，你并没有意识到，这段时间，恰恰是你枕戈待旦，好整以暇的修炼时间。<br>一边因失业而无精打采，一边又因不能马上找到满意的工作而患得患失。<br>而待业的时间就会在这种等待招聘电话与患得患失中流失。<br>等到投入到新的工作之后，又后悔没有在待业期间的那不短时间内学习到新的东西。<br>第二，你如果好好利用这段时间，你会获得惊喜；<br>这段时间弥足珍贵的地方在于，<br>你只要冷静下来就会想清楚：“即便我再患得患失，我再沮丧，再无精打采”；现在就是失业了，就是没工作了，钱就是还够用半年。<br>与其患得患失，不如好好利用；<br>如果你一旦树立这个意识，<br>相信我，下次再失业也好，遇到其他突发事件也好你会淡定的多得多。<br>这无疑会实实在在的增进你的心力，<br>换句话说，会提高你面对不确定性的能力。</p>
+<p>用这段时间可以做好多事情，除了把简历改好，每天投递外，<br>余下的时间全部是你自己的。<br>你可以用余下的时间做你喜欢的事情。</p>
+<p>思考如何增加你的收入来源，<br>是不是可以开个淘宝店，<br>别人都说在行这个app不错，<br>可不可以用你独特的技能在上面赚点儿零花钱。<br>假如你对写作情有独钟，这时候可以提高下你的写作水平。<br>每天写一篇文章练手应该不是难事，等等很多。<br>既符合你的兴趣，又可以借此增加这方面的素质，<br>还可以顺便赚些零花钱。</p>
+<p>看你工作时没时间看的书籍；<br>这个不多说，甭管是否跟你的职业技能直接相关，<br>你可以随便按照你的兴趣来，<br>如果以前老是看德鲁克等方面的商业书籍；<br>这时你不妨重读你最爱的金庸，古龙武侠小说；<br>可以分析下，他们写作的笔法，架构，以及整个小说的布局。<br>对你自己写文章也是不无进益的。</p>
+<p>学习你工作时没时间学的技能<br>比如编程，音乐，甚至做饭。<br>你说我爱编程，喜欢键盘噼里啪啦若干时间，就可以看到很流畅的网页被我写出来。<br>你说我喜欢音乐，我想自己写自己的歌，<br>你说我爱吃红烧排骨或者狮子头。<br>好了，这正是最好的机会，你都可以去尝试了。</p>
+<p>工作时你没时间去的地方<br>当然远的地方就不要去了，<br>毕竟钱包里还有几个子儿，你最清楚了。<br>工作时周边好玩的地方，你都没时间去。<br>这时候可以好好畅玩一番了。<br>对了有单反，还可以拍些很好的照片回来。<br>还可以借此提高你的摄影技能。</p>
+<p>3、职业转换<br>我是不是一辈子做这个工作，<br>有没有可能转换职业，如果转换需要哪些技能，<br>我现在是不是就可以给他学起来。<br>如果转换职业机会成本怎么样等等。<br>这些你都可以好好思考下。</p>
+<p>二、已发生之事；<br>已发生之事不会引起你的恐惧，<br>它会给你带来经验以及教训，当然还有后悔。<br>总结一下自己这几年的人生经历，工作得失。<br>思考一下自己的亲情，爱情以及友情，<br>这些年在经营这些事上，有什么不好的地方，<br>有哪些需要改正的地方。<br>这里你需要想明白一件事情，不要后悔。<br>过去的事，是无须后悔也是后悔无用的。<br>所以在这里真正的目的就是勿恋旧事。<br>旧事带给我们的是经验，是教训，是回忆也是经历。<br>而就是不能是后悔或者哀怨。<br>三、正在行之事；<br>过去的事情，你不再有后悔后者留恋，<br>对于未发生但是使你恐惧的事情也已经思考好了对策，<br>现在你是好整以暇，再不会瞻前顾后了。<br>自然而然的就会专注于正在行的事上了。</p>
+<p>举例子也好，分类别也罢，以上所有的文字都是为了说明一件事，<br>未来不迎，过往不恋，当下不杂。<br>哀莫大于心死，如果你不断的这样练习，<br>你的心力就会越来越强，不自觉的就会增加自信。<br>那到时候你的气质自然就来了。</p>
+<p>说白了气质还是在于你对于未来不确定的事情不再恐惧，<br>对于已过去的事情不再留恋和哀怨。<br>对于现在的事情，能够专心致志。<br>做到这些之后，自信而且淡定的外在表现就是你的气质了。<br>只有不恐惧于未来不确定的事情，不留恋于过去的事，你才能更专心的做你现在的事情。<br>那样你才足够淡定，足够自信，足够有气质。</p>
+<p>我还是要说语言文字的局限性，决定了它并不能表达所有的事情。<br>气质就是其中最好的例子，什么是气质，可以有很多定义。<br>但绝不会如这是一只猫，那是一只狗清晰。<br>因此，以上说的再详尽，也还是需要自己去实践。</p>
+<p>关于境界的文字，<br>由于此篇“工夫”文章已经很长，<br>为了让读到的人不花费太长时间。<br>下一期发出来。<br>敬请期待。</p>
+<p>本期推荐书籍：<br>一、《民国就是这么生猛》<br>推荐理由；<br>1、虽然本书讲的不是关于工夫的事，但是里面讲到的人可以教给你很多关于：“工夫”的事儿。<br>2、文字幽默诙谐，通俗易懂，可以作为茶余饭后的休闲阅读。<br>3、民国入门读物。<br>二、《红太阳是怎样升起的》<br>1、此书可以学习一些推广方面的经验；你如果没看到那就仔细看；<br>2、可以看到为什么会发生文革？<br>3、验证了一句话，在政治面前，从来没有永远的朋友和敌人。<br>4、也可以看到领袖的缔造，绝对需要大大的：“工夫”。<br>三、《最后的文化贵族》<br>学习下这些在文化上有气质的人，是怎样修炼：“工夫”的。</p>
+<p>本期推荐电影：</p>
+<p>1、《杀手没有假期》<br>我常常讲，我以前是个道德感很重的人，非要把善恶很分明的人，<br>但是我越来越感到，人性复杂性大于两分性，偶然性大于必然性。<br>杀手的人生会带给你怎样的启示呢？看了就知道。<br>2、《返老还童》又叫《本杰明巴顿奇事》<br>豆瓣评分8.6，以男女爱情为线索探讨生老病死价值体系的一部电影。<br>3、《杏花三月天》<br>我看这部主要看蒋雯丽和张国立年轻时的表演的。里面和《菊豆》异曲同工，都表现了旧社会妇女从属地位的悲哀和无奈。</p>
 ]]></content>
       <categories>
         <category>阳明心学</category>
@@ -414,6 +426,22 @@
       </categories>
   </entry>
   <entry>
+    <title>我是这样认识王阳明的</title>
+    <url>/2016/03/17/%E6%88%91%E6%98%AF%E8%BF%99%E6%A0%B7%E8%AE%A4%E8%AF%86%E7%8E%8B%E9%98%B3%E6%98%8E%E7%9A%84/</url>
+    <content><![CDATA[<p>大多数喜欢王阳明的朋友，总是标榜“知行合一”，“致良知”；<br>我的微信关注了一个也标榜自己喜欢阳明思想的朋友；<br>做什么事都和：“心性”、“致良知”这些字眼联系起来；</p>
+<p>细看了下，要么就是参加了一个活动，说今天主讲人讲的真好；<br>是：“知行合一”；是“致良知”云云。<br>要么就是参加了个管理培训班，<br>完后就说：稻盛和夫的管理哲学和致良知完美契合。<br>  以上是文章摘要 <a id="more"></a> 以下是余下全文<br>我也真是醉了，哲学本来就和生活息息相关；<br>经常和生活联系起来倒也合情合理。<br>但是拉个屎撒个尿都要和知行合一与致良知联系起来，<br>要么就是没有真正理解阳明先生的思想。<br>要么就是中了“教条主义”的毒。</p>
+<p>在下不才，从听说王阳明这个人到最后逐渐对其思想了解一些；<br>也将近有十年的时间了。<br>遥想当年哥在高中学的是小三门儿—音乐；<br>上过高中的都知道，这个专业考试要提前考。<br>05年春节去郑州进行专业考试；<br>有天晚上和同去的同学到外面逛街，<br>逛到地下通道，有个书摊大家便驻足观看；<br>我一眼就看到了周月亮写的那本《王阳明大传》；<br>盗版的。</p>
+<p>封皮上的两句话把我给震住了。<br>“雅可上九天揽月，俗可下五洋捉鳖”；<br>当时连王阳明是谁都不知道，<br>更不会懂什么知行合一和致良知了。<br>但就觉得这两句话真牛逼；<br>说到我心里去了。</p>
+<p>之后，王阳明这个名字算是记住了。<br>当时对于买不买还是有些踌躇；<br>这时有个同学一句话让我下了买的决心；<br>他说：“你遇见了就一定要买，即使贵一点儿，免得以后后悔。<br>（当时的二十块一本盗版，对我等把县城当大城市的高中生来说的确算贵得。）</p>
+<p>随后这本周月亮的《王阳明大传》，<br>跟随我转战南北，东奔西跑；<br>南到浙杭，北到首都；<br>中间阅览无数遍，<br>每次看都有新感悟；<br>透明胶和尼龙绳修补多次；<br>最终，在最近一次搬家中遗失掉了。</p>
+<p>随着这本书打开我对王阳明的一扇门；<br>随后又在网上下载了好多关于王阳明的书；<br>什么《明朝一哥王阳明》，《王阳明的哲学精神》<br>乃至《有无之境》；<br>一路看下来，最后必须要看《传习录》啊！<br>就买了本叶圣陶解读的《传习录》来看；<br>虽然大师解读，但在下古文修养不高；<br>看着也是半懂不懂。</p>
+<p>最后就逛贴吧，逛论坛；<br>偶尔在天涯上发现了“沙滩孤雁”的帖子；<br>看了一页之后，惊为天人；<br>然后就开始了对这本《开谈传习录》的反复阅读。<br>以上大概就是我对王阳明的认识过程。<br>也许文字枯燥，也许词不达意；<br>也许行文不畅；<br>但作为自己对一个伟人的从认识到熟悉的回顾；<br>我想还是足够了。</p>
+]]></content>
+      <categories>
+        <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
     <title>我为什么三十岁还要学习IOS</title>
     <url>/2016/03/17/%E6%88%91%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%89%E5%8D%81%E5%B2%81%E8%BF%98%E8%A6%81%E5%AD%A6%E4%B9%A0IOS/</url>
     <content><![CDATA[<p>一、前面的话</p>
@@ -429,22 +457,6 @@
       <categories>
         <category>编程</category>
         <category>IOS</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>我是这样认识王阳明的</title>
-    <url>/2016/03/17/%E6%88%91%E6%98%AF%E8%BF%99%E6%A0%B7%E8%AE%A4%E8%AF%86%E7%8E%8B%E9%98%B3%E6%98%8E%E7%9A%84/</url>
-    <content><![CDATA[<p>大多数喜欢王阳明的朋友，总是标榜“知行合一”，“致良知”；<br>我的微信关注了一个也标榜自己喜欢阳明思想的朋友；<br>做什么事都和：“心性”、“致良知”这些字眼联系起来；</p>
-<p>细看了下，要么就是参加了一个活动，说今天主讲人讲的真好；<br>是：“知行合一”；是“致良知”云云。<br>要么就是参加了个管理培训班，<br>完后就说：稻盛和夫的管理哲学和致良知完美契合。<br>  以上是文章摘要 <a id="more"></a> 以下是余下全文<br>我也真是醉了，哲学本来就和生活息息相关；<br>经常和生活联系起来倒也合情合理。<br>但是拉个屎撒个尿都要和知行合一与致良知联系起来，<br>要么就是没有真正理解阳明先生的思想。<br>要么就是中了“教条主义”的毒。</p>
-<p>在下不才，从听说王阳明这个人到最后逐渐对其思想了解一些；<br>也将近有十年的时间了。<br>遥想当年哥在高中学的是小三门儿—音乐；<br>上过高中的都知道，这个专业考试要提前考。<br>05年春节去郑州进行专业考试；<br>有天晚上和同去的同学到外面逛街，<br>逛到地下通道，有个书摊大家便驻足观看；<br>我一眼就看到了周月亮写的那本《王阳明大传》；<br>盗版的。</p>
-<p>封皮上的两句话把我给震住了。<br>“雅可上九天揽月，俗可下五洋捉鳖”；<br>当时连王阳明是谁都不知道，<br>更不会懂什么知行合一和致良知了。<br>但就觉得这两句话真牛逼；<br>说到我心里去了。</p>
-<p>之后，王阳明这个名字算是记住了。<br>当时对于买不买还是有些踌躇；<br>这时有个同学一句话让我下了买的决心；<br>他说：“你遇见了就一定要买，即使贵一点儿，免得以后后悔。<br>（当时的二十块一本盗版，对我等把县城当大城市的高中生来说的确算贵得。）</p>
-<p>随后这本周月亮的《王阳明大传》，<br>跟随我转战南北，东奔西跑；<br>南到浙杭，北到首都；<br>中间阅览无数遍，<br>每次看都有新感悟；<br>透明胶和尼龙绳修补多次；<br>最终，在最近一次搬家中遗失掉了。</p>
-<p>随着这本书打开我对王阳明的一扇门；<br>随后又在网上下载了好多关于王阳明的书；<br>什么《明朝一哥王阳明》，《王阳明的哲学精神》<br>乃至《有无之境》；<br>一路看下来，最后必须要看《传习录》啊！<br>就买了本叶圣陶解读的《传习录》来看；<br>虽然大师解读，但在下古文修养不高；<br>看着也是半懂不懂。</p>
-<p>最后就逛贴吧，逛论坛；<br>偶尔在天涯上发现了“沙滩孤雁”的帖子；<br>看了一页之后，惊为天人；<br>然后就开始了对这本《开谈传习录》的反复阅读。<br>以上大概就是我对王阳明的认识过程。<br>也许文字枯燥，也许词不达意；<br>也许行文不畅；<br>但作为自己对一个伟人的从认识到熟悉的回顾；<br>我想还是足够了。</p>
-]]></content>
-      <categories>
-        <category>阳明心学</category>
       </categories>
   </entry>
   <entry>
@@ -527,37 +539,6 @@
       </categories>
   </entry>
   <entry>
-    <title>提升Hexo颜值</title>
-    <url>/2020/05/04/%E6%8F%90%E5%8D%87Hexo%E9%A2%9C%E5%80%BC/</url>
-    <content><![CDATA[<h3 id="去掉翻页乱码"><a href="#去掉翻页乱码" class="headerlink" title="去掉翻页乱码"></a>去掉翻页乱码</h3><p>当我打开我的hexo博客，<br>在上一页下一页后面总是跟着以下乱码：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&amp;raquto</span><br></pre></td></tr></table></figure>
-<p>找到以下路径里的archive.ejs文件，<br><code>/themes/landscape/layout/_partial</code><br>将最后一段中的以上乱码去除，<br>提交之后，显示修改成功。<br>终于不再觉得自己的博客像个山寨版的了。</p>
-<a id="more"></a>
-
-<h3 id="让Read-More更好看一些"><a href="#让Read-More更好看一些" class="headerlink" title="让Read More更好看一些"></a>让Read More更好看一些</h3><p>找到以下路径里的arctile.styl文件，<br><code>/themes/landscape/source/css/_partial</code><br>用ctrl+F搜索：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">article-more-link a</span><br></pre></td></tr></table></figure>
-<p>并修改此选项color值</p>
-<p><code>hover是指鼠标放到Read More上时的背景颜色和字体颜色。</code><br><code>前面的background和color分别设置鼠标未点击时的背景色和字体颜色。</code></p>
-<h3 id="让单篇文章底部的翻页更靓仔一些"><a href="#让单篇文章底部的翻页更靓仔一些" class="headerlink" title="让单篇文章底部的翻页更靓仔一些"></a>让单篇文章底部的翻页更靓仔一些</h3><p>还是刚才的arctile.styl文件<br>搜索以下两个关键词：<br>并修改对应选项color值，</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">article-nav-caption:修改翻页字体颜色</span><br><span class="line">article-nav-title：修改文章标题字体颜色</span><br></pre></td></tr></table></figure>
-
-<h3 id="让博客左下角按个性显示信息"><a href="#让博客左下角按个性显示信息" class="headerlink" title="让博客左下角按个性显示信息"></a>让博客左下角按个性显示信息</h3><p>在以下路径找到footer.ejs文件<br><code>/themes/landscape/layout/_partial</code><br>将</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&amp;copy;</span><br></pre></td></tr></table></figure>
-<p>改成自己想要的字，<br>比如我的是：<br><code>网站信息：后面跟着的是年份和作者</code></p>
-<p>将&amp;copy下一行的</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&lt;%&#x3D;_(&#39;power_by&#39;) %&gt;注释或删除</span><br></pre></td></tr></table></figure>
-<p>然后在a标签前面加上自己想要的，比如我加的是：<br><code>友情链接：</code><br>并且还可以将a标签里href改成自己想要的链接。</p>
-<p>打完收工。<br>搞完以上自己的博客好看多了。</p>
-<h3 id="接下来的计划"><a href="#接下来的计划" class="headerlink" title="接下来的计划"></a>接下来的计划</h3><p>下次把提交搜索引擎和百度统计搞定。</p>
-<p>然后就一心写文章。<br>什么RSS，评论和分享都不弄了，<br>弄了也没用，<br>RSS已经过时了，推送的还看不完，谁还订阅？<br>不可能天天盯着博客看，所以不弄评论了，<br>分享就更不用弄了，<br>还不如直接放上自己qq：1668088439，<br>或者自己微信，联系方便。</p>
-<p>就酱，以后如果不是必须，<br>就不在博客的功能和界面上下功夫了。</p>
-<p>一心写文章。</p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-  </entry>
-  <entry>
     <title>智慧与思想之花因何而开</title>
     <url>/2016/03/17/%E6%99%BA%E6%85%A7%E4%B8%8E%E6%80%9D%E6%83%B3%E4%B9%8B%E8%8A%B1%E5%9B%A0%E4%BD%95%E8%80%8C%E5%BC%80/</url>
     <content><![CDATA[<p>圣人之所以为圣人，<br>就是因为在百死千难中，<br>不断努力的思考自己的思维的过程；<br>而这个过程就是思想和智慧了。</p>
@@ -597,6 +578,37 @@
 ]]></content>
       <categories>
         <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>提升Hexo颜值</title>
+    <url>/2020/05/04/%E6%8F%90%E5%8D%87Hexo%E9%A2%9C%E5%80%BC/</url>
+    <content><![CDATA[<h3 id="去掉翻页乱码"><a href="#去掉翻页乱码" class="headerlink" title="去掉翻页乱码"></a>去掉翻页乱码</h3><p>当我打开我的hexo博客，<br>在上一页下一页后面总是跟着以下乱码：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&amp;raquto</span><br></pre></td></tr></table></figure>
+<p>找到以下路径里的archive.ejs文件，<br><code>/themes/landscape/layout/_partial</code><br>将最后一段中的以上乱码去除，<br>提交之后，显示修改成功。<br>终于不再觉得自己的博客像个山寨版的了。</p>
+<a id="more"></a>
+
+<h3 id="让Read-More更好看一些"><a href="#让Read-More更好看一些" class="headerlink" title="让Read More更好看一些"></a>让Read More更好看一些</h3><p>找到以下路径里的arctile.styl文件，<br><code>/themes/landscape/source/css/_partial</code><br>用ctrl+F搜索：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">article-more-link a</span><br></pre></td></tr></table></figure>
+<p>并修改此选项color值</p>
+<p><code>hover是指鼠标放到Read More上时的背景颜色和字体颜色。</code><br><code>前面的background和color分别设置鼠标未点击时的背景色和字体颜色。</code></p>
+<h3 id="让单篇文章底部的翻页更靓仔一些"><a href="#让单篇文章底部的翻页更靓仔一些" class="headerlink" title="让单篇文章底部的翻页更靓仔一些"></a>让单篇文章底部的翻页更靓仔一些</h3><p>还是刚才的arctile.styl文件<br>搜索以下两个关键词：<br>并修改对应选项color值，</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">article-nav-caption:修改翻页字体颜色</span><br><span class="line">article-nav-title：修改文章标题字体颜色</span><br></pre></td></tr></table></figure>
+
+<h3 id="让博客左下角按个性显示信息"><a href="#让博客左下角按个性显示信息" class="headerlink" title="让博客左下角按个性显示信息"></a>让博客左下角按个性显示信息</h3><p>在以下路径找到footer.ejs文件<br><code>/themes/landscape/layout/_partial</code><br>将</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">&amp;copy;</span><br></pre></td></tr></table></figure>
+<p>改成自己想要的字，<br>比如我的是：<br><code>网站信息：后面跟着的是年份和作者</code></p>
+<p>将&amp;copy下一行的</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">&lt;%&#x3D;_(&#39;power_by&#39;) %&gt;注释或删除</span><br></pre></td></tr></table></figure>
+<p>然后在a标签前面加上自己想要的，比如我加的是：<br><code>友情链接：</code><br>并且还可以将a标签里href改成自己想要的链接。</p>
+<p>打完收工。<br>搞完以上自己的博客好看多了。</p>
+<h3 id="接下来的计划"><a href="#接下来的计划" class="headerlink" title="接下来的计划"></a>接下来的计划</h3><p>下次把提交搜索引擎和百度统计搞定。</p>
+<p>然后就一心写文章。<br>什么RSS，评论和分享都不弄了，<br>弄了也没用，<br>RSS已经过时了，推送的还看不完，谁还订阅？<br>不可能天天盯着博客看，所以不弄评论了，<br>分享就更不用弄了，<br>还不如直接放上自己qq：1668088439，<br>或者自己微信，联系方便。</p>
+<p>就酱，以后如果不是必须，<br>就不在博客的功能和界面上下功夫了。</p>
+<p>一心写文章。</p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
       </categories>
   </entry>
   <entry>
@@ -705,16 +717,6 @@
       </categories>
   </entry>
   <entry>
-    <title>苏阿芒—自学外语怎能不知道他</title>
-    <url>/2016/03/17/%E8%8B%8F%E9%98%BF%E8%8A%92%E2%80%94%E8%87%AA%E5%AD%A6%E5%A4%96%E8%AF%AD%E6%80%8E%E8%83%BD%E4%B8%8D%E7%9F%A5%E9%81%93%E4%BB%96/</url>
-    <content><![CDATA[<p>原籍安徽省太平县（今黄山区）广阳乡（今属安徽石台）人，本名苏承宗，因发表作品多以苏阿芒为名，故以苏阿芒一名蜚声海内外。<br>中学毕业后曾任天津机床厂夜校英文教师，1957年加入世界语协会，历任国际世界语博物馆馆员，<br>国际世界语《世界文学》特约撰稿人，国际世界读者青年联合会中央委员，“文革”中1968年蒙冤入狱，1979年平反后任百花出版社编辑。<br>1951年开始发表作品。1979年加入中国作家协会。<br>以上借用一段百科文字，<br>我知道苏阿芒其人其事，<br>是在父亲书箱里翻到的一本叫做《成才之路》的书上。<br>以上是摘要<a id="more"></a><br>当时看到就热血沸腾，<br>最近在学习日语和英语，<br>又想起这个名字。<br>由苏阿芒的故事，<br>我觉得无论学习外语还是学习其他东西，<br>就是不疯魔不成活。<br>想想你我诸位，<br>谁在地铁或者在商务活动中，<br>没有遇到过这样的场景：<br>你原本很以为难的一门外语，<br>在地铁中你身旁的一位美女或者老兄，<br>正在和外国人侃侃而谈，<br>不时发出爽朗的笑声。<br>又或者在商务活动中，<br>你的同事与谈判对手，<br>正在用一门你觉得很难的外语，<br>唇枪舌剑，你来我往。<br>当时你除了发蒙，<br>第二个感觉就是，<br>真TMD的太牛逼了。<br>我要是外语也这么牛逼，<br>那该多好啊！<br>可你就是无法做到……<br>这么牛逼！<br>是的你无法做到。</p>
-<p>因为等你下了地铁或者在结束那次谈判后，<br>你就又想着今天回去吃什么，<br>或者想着购物车里那件好看的鞋子或者衣服，<br>是不是又降价了。<br>事实就是如此，<br>我从遇到这种情况之后，<br>发奋学英语，<br>到如今也已有五六年时间，<br>到如今英语的水平，<br>也只能令自己呵呵了。<br>自己看了下掌握多门外语的牛逼人物，<br>远者如辜鸿铭，近者如苏阿芒。<br>他们有神马了不得方法吗？<br>还是天赋异禀。<br>非也！<br>唯苦练勤学尔。<br>我自己的猜测啊！<br>学第一门外语的难度，<br>和第二门第三门外语的难度肯定成几何级降低的。<br>因为你在学第一门外语的时候，<br>已经有了一套成熟的方法论；<br>区别只是在学其他外语的时候，<br>对方法论体系中的某个细节进行改动，<br>并且随着学的外语门数增多；<br>这个方法论的体系一定会不断完善，不断得到补充；<br>那么等到你学第二十门的时候，<br>肯定已经是手到擒来，如探囊取物般容易了。<br>所以根结在神马地方，<br>第一个是恒心，第二个是勤奋；<br>第三是保证你自己必须先学会一门外语。<br>如果你想学更多门外语，肯定会越来越容易的。<br>因此，无论你学英语还是韩语，无论意大利语还是西班牙语。<br>如果你真的想学多门外语，保证你先精通一门外语。<br>其他外语定然是可以得其门而入的。<br>那么你一定要知道苏阿芒的故事，<br>也就是题中应有之意了。</p>
-]]></content>
-      <categories>
-        <category>外语学习</category>
-      </categories>
-  </entry>
-  <entry>
     <title>编程学习心得</title>
     <url>/2016/03/17/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/</url>
     <content><![CDATA[<p>似乎每个人对一件从未接触过的事物着迷时；<br>都恨不得一下子就对其融会贯通；<br>这种急切心理，极有可能导致稍遇挫折，便丧失兴趣。</p>
@@ -730,6 +732,16 @@
       <categories>
         <category>编程</category>
         <category>IOS</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>苏阿芒—自学外语怎能不知道他</title>
+    <url>/2016/03/17/%E8%8B%8F%E9%98%BF%E8%8A%92%E2%80%94%E8%87%AA%E5%AD%A6%E5%A4%96%E8%AF%AD%E6%80%8E%E8%83%BD%E4%B8%8D%E7%9F%A5%E9%81%93%E4%BB%96/</url>
+    <content><![CDATA[<p>原籍安徽省太平县（今黄山区）广阳乡（今属安徽石台）人，本名苏承宗，因发表作品多以苏阿芒为名，故以苏阿芒一名蜚声海内外。<br>中学毕业后曾任天津机床厂夜校英文教师，1957年加入世界语协会，历任国际世界语博物馆馆员，<br>国际世界语《世界文学》特约撰稿人，国际世界读者青年联合会中央委员，“文革”中1968年蒙冤入狱，1979年平反后任百花出版社编辑。<br>1951年开始发表作品。1979年加入中国作家协会。<br>以上借用一段百科文字，<br>我知道苏阿芒其人其事，<br>是在父亲书箱里翻到的一本叫做《成才之路》的书上。<br>以上是摘要<a id="more"></a><br>当时看到就热血沸腾，<br>最近在学习日语和英语，<br>又想起这个名字。<br>由苏阿芒的故事，<br>我觉得无论学习外语还是学习其他东西，<br>就是不疯魔不成活。<br>想想你我诸位，<br>谁在地铁或者在商务活动中，<br>没有遇到过这样的场景：<br>你原本很以为难的一门外语，<br>在地铁中你身旁的一位美女或者老兄，<br>正在和外国人侃侃而谈，<br>不时发出爽朗的笑声。<br>又或者在商务活动中，<br>你的同事与谈判对手，<br>正在用一门你觉得很难的外语，<br>唇枪舌剑，你来我往。<br>当时你除了发蒙，<br>第二个感觉就是，<br>真TMD的太牛逼了。<br>我要是外语也这么牛逼，<br>那该多好啊！<br>可你就是无法做到……<br>这么牛逼！<br>是的你无法做到。</p>
+<p>因为等你下了地铁或者在结束那次谈判后，<br>你就又想着今天回去吃什么，<br>或者想着购物车里那件好看的鞋子或者衣服，<br>是不是又降价了。<br>事实就是如此，<br>我从遇到这种情况之后，<br>发奋学英语，<br>到如今也已有五六年时间，<br>到如今英语的水平，<br>也只能令自己呵呵了。<br>自己看了下掌握多门外语的牛逼人物，<br>远者如辜鸿铭，近者如苏阿芒。<br>他们有神马了不得方法吗？<br>还是天赋异禀。<br>非也！<br>唯苦练勤学尔。<br>我自己的猜测啊！<br>学第一门外语的难度，<br>和第二门第三门外语的难度肯定成几何级降低的。<br>因为你在学第一门外语的时候，<br>已经有了一套成熟的方法论；<br>区别只是在学其他外语的时候，<br>对方法论体系中的某个细节进行改动，<br>并且随着学的外语门数增多；<br>这个方法论的体系一定会不断完善，不断得到补充；<br>那么等到你学第二十门的时候，<br>肯定已经是手到擒来，如探囊取物般容易了。<br>所以根结在神马地方，<br>第一个是恒心，第二个是勤奋；<br>第三是保证你自己必须先学会一门外语。<br>如果你想学更多门外语，肯定会越来越容易的。<br>因此，无论你学英语还是韩语，无论意大利语还是西班牙语。<br>如果你真的想学多门外语，保证你先精通一门外语。<br>其他外语定然是可以得其门而入的。<br>那么你一定要知道苏阿芒的故事，<br>也就是题中应有之意了。</p>
+]]></content>
+      <categories>
+        <category>外语学习</category>
       </categories>
   </entry>
   <entry>
@@ -992,18 +1004,6 @@
 ]]></content>
       <categories>
         <category>影视歌</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>《王阳明大传》读后感</title>
-    <url>/2016/03/17/%E3%80%8A%E7%8E%8B%E9%98%B3%E6%98%8E%E5%A4%A7%E4%BC%A0%E3%80%8B%E8%AF%BB%E5%90%8E%E6%84%9F/</url>
-    <content><![CDATA[<p>最近读了《王阳明大传》<br>模模糊糊理解了一些<br>王阳明心学要解决的问题是什么?<br>记录在此，以备后用。<br>心学在阳明后来讲学时，<br>为使学生容易理解，<br>便表述为良知学，<br>而实现的方法则是致良知。</p>
-<p>心学要解决的问题就是：找到“人生的意义”，<br>在百千万年的人类史中，<br>人类肯定形成了同一的人性内容，<br>也就是阳明心学中讲的“心体”，<br>也就是本元，最初的那种状态，<br>在阳明以前人们为了找到‘意义’，<br>都会去求助于外物，<br>从外物求理，以期望最终找到‘意义’。<br>以上是摘要<a id="more"></a><br>但是阳明‘龙场悟道’后，告诉大家，意义不在外界万物上，<br>而在每个人心上；<br>但是人们搞不懂，<br>既然在每个人心上，<br>那我们都有心，<br>为什么没有找到‘意义’所在呢？<br>这时王先生告诉他们：<br>不是没有，而是已经被遮蔽了。<br>是被外界鸡零狗碎的私心杂念蒙蔽了。<br>王先生不但告诉他们为什么你们现在从自己心上找不到意义，<br>而且还说我有方法能让你们找到，<br>那就是：“知行合一”；<br>只要坚持知行合一肯定会有人，<br>能将那些鸡零狗碎的私心杂念的遮蔽去掉，<br>看到自己的心的本体，<br>找到意义所在。</p>
-<p>注意他说的是有人会，<br>有人会找到，肯定就有人不会找到<br>所以心学本身对于每个个人来说<br>是一个悲喜参半的对意义的答案，<br>喜的是终于有方法能找到那个终极的问题的答案了。<br>而悲的则是，即使你真去知行合一了，<br>临死之前也不一定能找到。</p>
-<p>从王先生自己的经历来说，<br>他笃信每个人原本都是圣人，<br>只要坚持知行合一，<br>找到意义，最后每个人都会成为真正的圣人。<br>但是这里就有个时间的死结，<br>每个人的时间都不是无限，</p>
-]]></content>
-      <categories>
-        <category>阳明心学</category>
       </categories>
   </entry>
   <entry>
