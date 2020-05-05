@@ -531,9 +531,6 @@ body {
 }
 .article-category:before {
   content: "\2023";
-  font-family: FontAwesome;
-  padding-right: 6px;
-  color: #ff7;
 }
 .article-category-link {
   margin: 0 12px 1em;
