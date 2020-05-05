@@ -531,12 +531,12 @@ body {
 }
 .article-category:before {
   content: "\2023";
-  color: #ff7;
+  color: #0f0;
+  font-weight: bold;
 }
 .article-category-link {
   margin: 0 12px 1em;
   color: #30f;
-  font-weight: bold;
 }
 .article-header {
   padding: 20px 20px 0;
