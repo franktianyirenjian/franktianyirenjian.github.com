@@ -1026,12 +1026,12 @@ a.article-title:hover {
 #page-nav {
   margin: 50px auto;
   background: #ff7;
-  color: #800;
   -webkit-box-shadow: 1px 2px 3px #ddd;
   box-shadow: 1px 2px 3px #ddd;
   border: 1px solid #ddd;
   border-radius: 3px;
   text-align: center;
+  color: #999;
   overflow: hidden;
 }
 #page-nav:before,
@@ -1058,20 +1058,26 @@ a.article-title:hover {
 }
 #page-nav .prev {
   float: left;
+  color: #800;
 }
-.next {
+#page-nav .next {
   float: right;
+  color: #800;
 }
-.page-number {
+#page-nav .page-number {
   display: inline-block;
+  color: #800;
 }
 @media screen and (max-width: 479px) {
+  #page-nav {
+    display: none;
+  }
 }
-.current {
+#page-nav .current {
   font-weight: bold;
   color: #0f0;
 }
-.space {
+#page-nav .space {
   color: #000;
 }
 #footer {
