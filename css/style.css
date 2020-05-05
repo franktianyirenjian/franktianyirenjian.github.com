@@ -1076,10 +1076,10 @@ a.article-title:hover {
 }
 #page-nav .current {
   font-weight: bold;
-  color: #800;
+  color: #0f0;
 }
 #page-nav .space {
-  color: #ff7;
+  color: #ddd;
 }
 #footer {
   background: #262a30;
