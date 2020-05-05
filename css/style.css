@@ -1084,7 +1084,6 @@ a.article-title:hover {
   background: #262a30;
   padding: 50px 0;
   border-top: 1px solid #ddd;
-  color: #999;
 }
 #footer a {
   color: #258fb8;
@@ -1096,6 +1095,7 @@ a.article-title:hover {
 #footer-info {
   line-height: 1.6em;
   font-size: "2";
+  color: #f00;
 }
 .article-entry pre,
 .article-entry .highlight {
