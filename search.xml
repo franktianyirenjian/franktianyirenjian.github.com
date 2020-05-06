@@ -1,30 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title>Hexo添加Rss和评论插件</title>
-    <url>/2016/03/20/Hexo%E6%B7%BB%E5%8A%A0Rss%E5%92%8C%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/</url>
-    <content><![CDATA[<p>一、添加RSS<br>我的主题配置文件已含有rss：  /atom.xml<br>因此我就直接安装部署了。<br>根目录下的配置信息：在# Extensions中添加，已经有的就免了。</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plugins: hexo-generator-feed</span><br></pre></td></tr></table></figure>
-<p>打开Terminal（终端）输入：运行</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">npm install hero-generator-feed</span><br></pre></td></tr></table></figure>
-<p>重新部署：</p>
-<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo d -</span><br></pre></td></tr></table></figure>
-<a id="more"></a>
-<p>二、开启评论<br>1、首先，注册多说，并在根目录下的配置文件添加shot_name,这里是duoshuo_shortname<br>short name指你在注册多说时二级域名里你自己输入的那部分，不包括htpp://和.duoshuo.com。<br>这里有人说在主题配置信息里配置duoshuo_shortname，但是我的始终搞不定，<br>我曾怀疑是不是data－thread－key等三个参数的问题，然后将page.path改为post.path,<br>仍然不行，只能慢慢试验了。<br>2、若使用默认主题landscape，则进入themes\landscape\layout_partial\articles.ejs中，<br>将这段div中的disqus_shortname统统改为duoshuo_shortname，有的人没有这段，按实际情况来。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;footer class="article-footer"&gt;</span></span><br><span class="line"><span class="regexp">&lt;a data-url="&lt;%- post.permalink %&gt;" data-id="&lt;%= post._id %&gt;" class="article-share-link"&gt;</span></span><br><span class="line"><span class="regexp">&lt;%= __('share') %&gt;&lt;/</span>a&gt;</span><br><span class="line">&lt;% <span class="keyword">if</span> (post.comments &amp;&amp; config.duoshuo_shortname)&#123; %&gt;</span><br><span class="line">&lt;a href=<span class="string">"&lt;%- post.permalink %&gt;#duoshuo_thread"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"article-comment-link"</span>&gt;&lt;%= __(<span class="string">'comment'</span>) %&gt;&lt;<span class="regexp">/a&gt;</span></span><br><span class="line"><span class="regexp">&lt;% &#125; %&gt;</span></span><br><span class="line"><span class="regexp">&lt;%- partial('post/</span>tag<span class="string">') %&gt;</span></span><br><span class="line"><span class="string">&lt;/footer&gt;</span></span><br><span class="line"><span class="string">&lt;/div&gt;</span></span><br></pre></td></tr></table></figure>
-<p>3、网上大多数的都是说的这段代码替换：<br>替换&lt;% section %&gt;到&lt;／section&gt;之间的部分。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments &amp;&amp; config.disqus_shortname)&#123; %&gt;</span><br><span class="line">&lt;section id=<span class="string">"comments"</span>&gt;</span><br><span class="line">&lt;div id=<span class="string">"disqus_thread"</span>&gt;</span><br><span class="line">&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=<span class="string">"//disqus.com/?ref_noscript"</span>&gt;comments </span><br><span class="line">powered by Disqus.&lt;<span class="regexp">/a&gt;&lt;/</span>noscript&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>section&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
-<p>替换为：</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments &amp;&amp; config.duoshuo_shortname)&#123; %&gt;</span><br><span class="line">&lt;section id=<span class="string">"comments"</span>&gt;</span><br><span class="line">&lt;!-- 多说评论框 start --&gt;</span><br><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"ds-thread"</span> data-thread-key=<span class="string">"&lt;%= post.path %&gt;"</span> data-title=<span class="string">"&lt;%= page.title %&gt;"</span> </span><br><span class="line">data-url=<span class="string">"&lt;%= page.permalink %&gt;"</span>&gt;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;!-- 多说评论框 end --&gt;</span></span><br><span class="line"><span class="regexp">&lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;</span></span><br><span class="line"><span class="regexp">&lt;script type="text/</span>javascript<span class="string">"&gt;</span></span><br><span class="line"><span class="string">var duoshuoQuery = &#123;short_name:'&lt;%= config.duoshuo_shortname %&gt;'&#125;;</span></span><br><span class="line"><span class="string">(function() &#123;</span></span><br><span class="line"><span class="string">var ds = document.createElement('script');</span></span><br><span class="line"><span class="string">ds.type = 'text/javascript';ds.async = true;</span></span><br><span class="line"><span class="string">ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') </span></span><br><span class="line"><span class="string">+ '//static.duoshuo.com/embed.js';</span></span><br><span class="line"><span class="string">ds.charset = 'UTF-8';</span></span><br><span class="line"><span class="string">(document.getElementsByTagName('head')[0] </span></span><br><span class="line"><span class="string">|| document.getElementsByTagName('body')[0]).appendChild(ds);</span></span><br><span class="line"><span class="string">&#125;)();</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;!-- 多说公共JS代码 end --&gt;</span></span><br><span class="line"><span class="string">&lt;/section&gt;</span></span><br><span class="line"><span class="string">&lt;% &#125; %&gt;</span></span><br></pre></td></tr></table></figure>
-<p>这里需要注意的是data-thread-key等三个参数，对小白来说并不知道如何设置：<br>我的设置如下：大多数网上的也都设的这个。</p>
-<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">data-thread-key：&lt;%= page.path %&gt;</span><br><span class="line">data-title：&lt;%= page.title %&gt;</span><br><span class="line">data-url（稳定版没有这个，开发版有这个参数）：&lt;%= page.permalink %&gt;</span><br></pre></td></tr></table></figure>
-<p>4、重新部署<br>hexo clean<br>hexo d －<br>搞定。</p>
-]]></content>
-      <categories>
-        <category>Hexo</category>
-      </categories>
-  </entry>
-  <entry>
     <title>Hexo安装百度统计流程</title>
     <url>/2016/03/22/Hexo%E5%AE%89%E8%A3%85%E7%99%BE%E5%BA%A6%E7%BB%9F%E8%AE%A1%E6%B5%81%E7%A8%8B/</url>
     <content><![CDATA[<p>用了两天时间将Hexo博客搭建好了，<br>之后便开始一点一点儿增加一些小插件，<br>很顺利的安装了RSS和评论插件后，<br>决定安装统计插件，<br>最后经过对比决定安装百度统计，<br>虽然不如谷歌，但还凑合吧。<br>闲言少叙，正文开始</p>
@@ -46,6 +22,30 @@
 <p>如果你想检查其它页面，复制一个其它页面的网址粘贴过去，点开始检查，成功界面如下：</p>
 <figure class="highlight"><table><tr><td class="code"><pre><span class="line">代码安装详情</span><br><span class="line">已安装账户<span class="string">"username"</span>的站点<span class="string">"franktianyirenjian.github.io"</span>对应的代码：</span><br><span class="line">&lt;script&gt;</span><br><span class="line">var _hmt = _hmt || [];</span><br><span class="line">(function() &#123;</span><br><span class="line">  var hm = document.createElement(<span class="string">"script"</span>);</span><br><span class="line">  hm.src = <span class="string">"//hm.baidu.com/hm.js?cf20d66409118a4390e3147d0f31366d"</span>;</span><br><span class="line">  var s = document.getElementsByTagName(<span class="string">"script"</span>)[<span class="number">0</span>]; </span><br><span class="line">  s.parentNode.insertBefore(hm, s);</span><br><span class="line">&#125;)();</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
 <p>等候二十分钟你就可以去查看网页统计报告了，打完收功。<br>另外还有人说会出现恶心的百度logo，我也不知道是人云亦云还是怎样，反正我的没有。</p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>Hexo添加Rss和评论插件</title>
+    <url>/2016/03/20/Hexo%E6%B7%BB%E5%8A%A0Rss%E5%92%8C%E8%AF%84%E8%AE%BA%E6%8F%92%E4%BB%B6/</url>
+    <content><![CDATA[<p>一、添加RSS<br>我的主题配置文件已含有rss：  /atom.xml<br>因此我就直接安装部署了。<br>根目录下的配置信息：在# Extensions中添加，已经有的就免了。</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">plugins: hexo-generator-feed</span><br></pre></td></tr></table></figure>
+<p>打开Terminal（终端）输入：运行</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">npm install hero-generator-feed</span><br></pre></td></tr></table></figure>
+<p>重新部署：</p>
+<figure class="highlight python"><table><tr><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo d -</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>二、开启评论<br>1、首先，注册多说，并在根目录下的配置文件添加shot_name,这里是duoshuo_shortname<br>short name指你在注册多说时二级域名里你自己输入的那部分，不包括htpp://和.duoshuo.com。<br>这里有人说在主题配置信息里配置duoshuo_shortname，但是我的始终搞不定，<br>我曾怀疑是不是data－thread－key等三个参数的问题，然后将page.path改为post.path,<br>仍然不行，只能慢慢试验了。<br>2、若使用默认主题landscape，则进入themes\landscape\layout_partial\articles.ejs中，<br>将这段div中的disqus_shortname统统改为duoshuo_shortname，有的人没有这段，按实际情况来。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;footer class="article-footer"&gt;</span></span><br><span class="line"><span class="regexp">&lt;a data-url="&lt;%- post.permalink %&gt;" data-id="&lt;%= post._id %&gt;" class="article-share-link"&gt;</span></span><br><span class="line"><span class="regexp">&lt;%= __('share') %&gt;&lt;/</span>a&gt;</span><br><span class="line">&lt;% <span class="keyword">if</span> (post.comments &amp;&amp; config.duoshuo_shortname)&#123; %&gt;</span><br><span class="line">&lt;a href=<span class="string">"&lt;%- post.permalink %&gt;#duoshuo_thread"</span> <span class="class"><span class="keyword">class</span></span>=<span class="string">"article-comment-link"</span>&gt;&lt;%= __(<span class="string">'comment'</span>) %&gt;&lt;<span class="regexp">/a&gt;</span></span><br><span class="line"><span class="regexp">&lt;% &#125; %&gt;</span></span><br><span class="line"><span class="regexp">&lt;%- partial('post/</span>tag<span class="string">') %&gt;</span></span><br><span class="line"><span class="string">&lt;/footer&gt;</span></span><br><span class="line"><span class="string">&lt;/div&gt;</span></span><br></pre></td></tr></table></figure>
+<p>3、网上大多数的都是说的这段代码替换：<br>替换&lt;% section %&gt;到&lt;／section&gt;之间的部分。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments &amp;&amp; config.disqus_shortname)&#123; %&gt;</span><br><span class="line">&lt;section id=<span class="string">"comments"</span>&gt;</span><br><span class="line">&lt;div id=<span class="string">"disqus_thread"</span>&gt;</span><br><span class="line">&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=<span class="string">"//disqus.com/?ref_noscript"</span>&gt;comments </span><br><span class="line">powered by Disqus.&lt;<span class="regexp">/a&gt;&lt;/</span>noscript&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>section&gt;</span><br><span class="line">&lt;% &#125; %&gt;</span><br></pre></td></tr></table></figure>
+<p>替换为：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;% <span class="keyword">if</span> (!index &amp;&amp; post.comments &amp;&amp; config.duoshuo_shortname)&#123; %&gt;</span><br><span class="line">&lt;section id=<span class="string">"comments"</span>&gt;</span><br><span class="line">&lt;!-- 多说评论框 start --&gt;</span><br><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"ds-thread"</span> data-thread-key=<span class="string">"&lt;%= post.path %&gt;"</span> data-title=<span class="string">"&lt;%= page.title %&gt;"</span> </span><br><span class="line">data-url=<span class="string">"&lt;%= page.permalink %&gt;"</span>&gt;&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">&lt;!-- 多说评论框 end --&gt;</span></span><br><span class="line"><span class="regexp">&lt;!-- 多说公共JS代码 start (一个网页只需插入一次) --&gt;</span></span><br><span class="line"><span class="regexp">&lt;script type="text/</span>javascript<span class="string">"&gt;</span></span><br><span class="line"><span class="string">var duoshuoQuery = &#123;short_name:'&lt;%= config.duoshuo_shortname %&gt;'&#125;;</span></span><br><span class="line"><span class="string">(function() &#123;</span></span><br><span class="line"><span class="string">var ds = document.createElement('script');</span></span><br><span class="line"><span class="string">ds.type = 'text/javascript';ds.async = true;</span></span><br><span class="line"><span class="string">ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') </span></span><br><span class="line"><span class="string">+ '//static.duoshuo.com/embed.js';</span></span><br><span class="line"><span class="string">ds.charset = 'UTF-8';</span></span><br><span class="line"><span class="string">(document.getElementsByTagName('head')[0] </span></span><br><span class="line"><span class="string">|| document.getElementsByTagName('body')[0]).appendChild(ds);</span></span><br><span class="line"><span class="string">&#125;)();</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;!-- 多说公共JS代码 end --&gt;</span></span><br><span class="line"><span class="string">&lt;/section&gt;</span></span><br><span class="line"><span class="string">&lt;% &#125; %&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这里需要注意的是data-thread-key等三个参数，对小白来说并不知道如何设置：<br>我的设置如下：大多数网上的也都设的这个。</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><span class="line">data-thread-key：&lt;%= page.path %&gt;</span><br><span class="line">data-title：&lt;%= page.title %&gt;</span><br><span class="line">data-url（稳定版没有这个，开发版有这个参数）：&lt;%= page.permalink %&gt;</span><br></pre></td></tr></table></figure>
+<p>4、重新部署<br>hexo clean<br>hexo d －<br>搞定。</p>
 ]]></content>
       <categories>
         <category>Hexo</category>
@@ -153,6 +153,16 @@
       </categories>
   </entry>
   <entry>
+    <title>UIviewcontroller与UIview</title>
+    <url>/2016/03/17/UIviewcontroller%E4%B8%8EUIview/</url>
+    <content><![CDATA[<p>UIviewcontroller名字叫做视图控制器，是一个类，UIview也是一个类；<br>UIviewcontroller控制放在它上面的所有UIview的事件；<br>UIview只负责加载数据与图片；<br>UIviewcontroller顾名思义，就是控制；<br>比如飞机大战中，加载子弹和飞机的图片需要UIview实现；<br>而发射子弹则需要UIviewcontroller来实现。<br>目前就理解到这个程度。</p>
+]]></content>
+      <categories>
+        <category>编程</category>
+        <category>IOS</category>
+      </categories>
+  </entry>
+  <entry>
     <title>oc中的类和对象</title>
     <url>/2016/03/17/oc%E4%B8%AD%E7%9A%84%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1/</url>
     <content><![CDATA[<p>一、类是什么</p>
@@ -231,6 +241,19 @@
       </categories>
   </entry>
   <entry>
+    <title>可还记得《甘十九妹》</title>
+    <url>/2016/03/17/%E5%8F%AF%E8%BF%98%E8%AE%B0%E5%BE%97%E3%80%8A%E7%94%98%E5%8D%81%E4%B9%9D%E5%A6%B9%E3%80%8B/</url>
+    <content><![CDATA[<p>一、《甘十九妹》是谁？<br>《甘十九妹》是我小时候看的一部武侠剧，<br>原著是萧逸先生。<br>故事是说一个男人对一个女人始乱终弃后，<br>女人从沮丧、堕落到后来复仇的故事。</p>
+<p>结果恩怨就传递到了下一辈身上，<br>作为那个男人后代的尹剑平，<br>与作为那个女人二弟子的甘十九妹，<br>由仇到怨以至于最后双双殉情。<br>以上是摘要<a id="more"></a><br>二、为什么写《甘十九妹》<br>之所以想起为这部武侠剧写篇文章作纪念，<br>有两点原因<br>其一，小时候的所有记忆如今想起来都是最美好的，<br>不同意的出去；<br>其二，电视剧的制作水平，<br>无论是武打动作，服装造型以及演员的选择，<br>就今天看来也堪称完美，<br>倘若再对比下如今许多粗制滥造<br>杀马特造型充斥的武侠剧，<br>那这部《甘十九妹》简直就是完美了。</p>
+<p>三、一部好的武侠剧是什么样的？<br>写到这里想到一个问题，<br>什么样的武侠剧是一部高水平的武侠剧？<br>我的观点是这样，<br>首先，演员必须要选准；<br>外貌要符合武侠剧剧本中的人物形象<br>性格要匹配剧本的描写；<br>其次，武打动作以及整个故事的编排一定要引人入胜。<br>比如《甘十九妹》中，<br>以灭『岳阳门』开场，<br>绝对是个妙笔。<br>第三，武侠剧本身一定要传递一些本质的东西，<br>那么什么是本质的东西呢，<br>正如我在《今人谁识侠客行》所写，<br>大音希声，大象无形，<br>什么东西越大越没有脾气；<br>这都可以很精准的传递本质的东西。</p>
+<p>这些年看的武侠剧里面我觉得能同时做到这三点的有以下几部；<br>《侠客行》，《笑傲江湖》，《燕子李三》，再有就是这部《甘十九妹》了。<br>听度娘说08年山东卫视对《甘十九妹》进行了高清数码修复；<br>2010年已出版发行，见到后我一定来两套一套收藏，一套常观。</p>
+<p>四、经典永不过时<br>距小时候观看《甘十九妹》这部武侠剧，<br>虽然已过去了二十多年，<br>但今天重复观看，仍然是暗叹不已，惊喜连连；<br>小时候只会看男主角够不够英雄，武功够不够好，<br>女主角够不够漂亮（绝对是最纯真的那种漂亮），<br>从来不会关注现实中演员的信息，<br>以及里面人物对话背后所传递的东西。<br>但如今看，确实是妙不可言，<br>会去百度每个演员的经历，<br>会去思考经典对白为什么经典，<br>剧本作者对白背后想传递什么价值观或者什么信息。<br>总之常看常新。<br>着实验证了一句话。<br>经典永不过时。<br>so『魑魅喜人过，文章憎命达』也好，<br>『文以人传，人以文传』也好。<br>做一个经典的人，绝对永不过时。</p>
+]]></content>
+      <categories>
+        <category>影视歌</category>
+      </categories>
+  </entry>
+  <entry>
     <title>吐槽互联网上关于hexo添加本地搜索的文章</title>
     <url>/2020/05/01/%E5%90%90%E6%A7%BD%E4%BA%92%E8%81%94%E7%BD%91%E4%B8%8A%E5%85%B3%E4%BA%8Ehexo%E6%B7%BB%E5%8A%A0%E6%9C%AC%E5%9C%B0%E6%90%9C%E7%B4%A2%E7%9A%84%E6%96%87%E7%AB%A0/</url>
     <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p><code>1、填坑的开始</code><br>重装hexo时，解决了node版本错误和中文乱码之后，<br>满心欢喜，<br>本以为可以愉快的重复以下过程了</p>
@@ -260,19 +283,6 @@
       </categories>
   </entry>
   <entry>
-    <title>可还记得《甘十九妹》</title>
-    <url>/2016/03/17/%E5%8F%AF%E8%BF%98%E8%AE%B0%E5%BE%97%E3%80%8A%E7%94%98%E5%8D%81%E4%B9%9D%E5%A6%B9%E3%80%8B/</url>
-    <content><![CDATA[<p>一、《甘十九妹》是谁？<br>《甘十九妹》是我小时候看的一部武侠剧，<br>原著是萧逸先生。<br>故事是说一个男人对一个女人始乱终弃后，<br>女人从沮丧、堕落到后来复仇的故事。</p>
-<p>结果恩怨就传递到了下一辈身上，<br>作为那个男人后代的尹剑平，<br>与作为那个女人二弟子的甘十九妹，<br>由仇到怨以至于最后双双殉情。<br>以上是摘要<a id="more"></a><br>二、为什么写《甘十九妹》<br>之所以想起为这部武侠剧写篇文章作纪念，<br>有两点原因<br>其一，小时候的所有记忆如今想起来都是最美好的，<br>不同意的出去；<br>其二，电视剧的制作水平，<br>无论是武打动作，服装造型以及演员的选择，<br>就今天看来也堪称完美，<br>倘若再对比下如今许多粗制滥造<br>杀马特造型充斥的武侠剧，<br>那这部《甘十九妹》简直就是完美了。</p>
-<p>三、一部好的武侠剧是什么样的？<br>写到这里想到一个问题，<br>什么样的武侠剧是一部高水平的武侠剧？<br>我的观点是这样，<br>首先，演员必须要选准；<br>外貌要符合武侠剧剧本中的人物形象<br>性格要匹配剧本的描写；<br>其次，武打动作以及整个故事的编排一定要引人入胜。<br>比如《甘十九妹》中，<br>以灭『岳阳门』开场，<br>绝对是个妙笔。<br>第三，武侠剧本身一定要传递一些本质的东西，<br>那么什么是本质的东西呢，<br>正如我在《今人谁识侠客行》所写，<br>大音希声，大象无形，<br>什么东西越大越没有脾气；<br>这都可以很精准的传递本质的东西。</p>
-<p>这些年看的武侠剧里面我觉得能同时做到这三点的有以下几部；<br>《侠客行》，《笑傲江湖》，《燕子李三》，再有就是这部《甘十九妹》了。<br>听度娘说08年山东卫视对《甘十九妹》进行了高清数码修复；<br>2010年已出版发行，见到后我一定来两套一套收藏，一套常观。</p>
-<p>四、经典永不过时<br>距小时候观看《甘十九妹》这部武侠剧，<br>虽然已过去了二十多年，<br>但今天重复观看，仍然是暗叹不已，惊喜连连；<br>小时候只会看男主角够不够英雄，武功够不够好，<br>女主角够不够漂亮（绝对是最纯真的那种漂亮），<br>从来不会关注现实中演员的信息，<br>以及里面人物对话背后所传递的东西。<br>但如今看，确实是妙不可言，<br>会去百度每个演员的经历，<br>会去思考经典对白为什么经典，<br>剧本作者对白背后想传递什么价值观或者什么信息。<br>总之常看常新。<br>着实验证了一句话。<br>经典永不过时。<br>so『魑魅喜人过，文章憎命达』也好，<br>『文以人传，人以文传』也好。<br>做一个经典的人，绝对永不过时。</p>
-]]></content>
-      <categories>
-        <category>影视歌</category>
-      </categories>
-  </entry>
-  <entry>
     <title>如何利用知行合一提升学习效率</title>
     <url>/2016/03/20/%E5%A6%82%E4%BD%95%E5%88%A9%E7%94%A8%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E6%8F%90%E5%8D%87%E5%AD%A6%E4%B9%A0%E6%95%88%E7%8E%87/</url>
     <content><![CDATA[<p>一、心学里的三类人<br>阳明将人分三类：生知安行，学知力行，困知勉行。<br>生知安行就是我们现在所说的天才，<br>如果按二八法则，全人类中，<br>似乎会有百分之二十的天才存在，<br>可是去掉那些后来伤仲永的，<br>最多会留下百分之十，就不错了。<br>困知勉行，就是脑袋死不开窍的，<br>最多也就百分之十，<br>剩下的就是百分之八十的普通人了。</p>
@@ -288,39 +298,6 @@
 <p>四、关于理由<br>即便看到这里，<br>我相信很多人还是能找到，<br>拒绝做自己应该做的事情的理由。<br>我相信还是有很多人会说：<br>你不知道我有多忙，<br>你说得倒轻巧，<br>我都看不懂你说的这些什么Hexo和Github，<br>怎么去搭建？<br>balabalabala……<br>好吧，我承认大家都很忙，<br>这里稍微跟大家玩个文字游戏，<br>大家比较下‘忙’和‘忘’两个字，<br>没错，聪明的已经看出来了，<br>你的心躺下自己就什么都忘了，<br>你的心立起来，自然一直都很忙。<br>so，如果你到现在还找各种理由，<br>不去做自己应该做的事情，<br>那我只能说你决心还不够，<br>而你老说自己忙，<br>则是需要重新修炼心学的静坐工夫，<br>还是建议参考曾剃头的方法。</p>
 <p>最后，借用陌陌的广告词<br>送给那些迟迟不下决心做自己向往事情的人们：<br>别和陌生人说话，别做新鲜事，<br>继续过平常的生活，胆小一点儿，<br>别好奇，就玩你会的，离冒险远远的，<br>有些事想想就好，没必要改变，<br>待在熟悉的地方，最好待在家里，<br>听一样的音乐，见一样的人，重复同样的话题，<br>心思别太活，梦想要实际，<br>不要什么都尝试，就这样活着吧。</p>
 <p>本期推荐电影：<br>一、《沙漠之花》导演：雪瑞·霍尔曼<br>推荐语：如果你曾对沙漠里是否真的能开出花产生过疑问，这部片子很肯定的告诉你：能。<br>二、《白日火焰》导演：刁亦男<br>推荐语：对豆瓣什么的一些影评，我没太多感觉，本片亮点在于开始五分钟在你认为不可能发生的时候，两个警察被干掉了。<br>三、《爱在战火蔓延时》导演：戴维·塞尔策<br>推荐语：片子不算超精彩的那种，但是里面有一个场景令我很触动，当男女主角在国境线外呼救的时候，边防兵无动于衷，但当他们跨进国境线那一刻，边防兵毫不客气的还击。<br>本期推荐书籍：<br>一、《一阵风，留下了千古绝唱》作者：章诒和<br>推荐语：书里讲马连良对精致生活的享受部分，很是引人入胜。<br>二、《王阳明大传》作者：周月亮<br>推荐语：用通俗的话语较有深度的讲述了王阳明的一生，看完这个，就没必要看其学生吕峥写的《明朝一哥王阳明》了，基本照抄，没太多新意。<br>三、《历史深处的民国》作者：江城<br>推荐语：框架比《民国就是这么生猛》搭的好，细节则没后者全，但里面用数据分析了一个很有意思的现象，袁世凯家里的牛人没有活过58岁的。</p>
-]]></content>
-      <categories>
-        <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>工夫与境界（一）</title>
-    <url>/2016/03/17/%E5%B7%A5%E5%A4%AB%E4%B8%8E%E5%A2%83%E7%95%8C%EF%BC%88%E4%B8%80%EF%BC%89/</url>
-    <content><![CDATA[<p>工夫与境界古人常论之；<br>这里工夫是指心力，境界是指胸襟。<br>心力与胸襟外在综合显现为气质。</p>
-<p>在陈来所著《有无之境》中，<br>专门有一章论及工夫，<br>陈来阐释说：”阳明的工夫论就是通过适当的实践和精神修养的方法或形式，来达到理想的境界”。<br>在下深以为然。<br>说白了工夫既要具体的去进行体力锻炼，又要独立的思考进行精神修养。</p>
-<p>我的意思是除去以‘心学’装点门面者外，<br>我们所有人接触并学习心学，<br>都是为了用其指导我们自己的生活，<br>让自己的生活慢慢的圆满起来。<br>以上是摘要<a id="more"></a><br>那么怎么做才可以具体的将心学应用在我们生活中呢？<br>这个事情，在于我自己也并没有融会贯通。<br>因此以下所说，只是适用于我自己的方法，供大家借鉴。<br>原因前面文章已有述及：“任是阳明自己已成圣，也只能用其心学为我们指出一门径而已。”</p>
-<p>我运用心学的经验源于两方面：就是开头所说：工夫与境界；<br>也即心力与胸襟。</p>
-<p>阳明说：“知之真切笃实便是行，行之明觉精察便是知”。<br>意思是生命有限，虽说知行合一要求多实践，<br>但以有限之生命，对无限之实践是不现实的。<br>那么可以有个替代方法，即：‘知之真切笃实便是行’。<br>这同时给了我们不直接实践也可以获得实践效果的一个门径。</p>
-<p>实践工夫我是这样做的，<br>有时间我会抽出一个小时，<br>这一个小时保证不会有人打扰你。</p>
-<p>思考以下三个方面的事情：</p>
-<p>一、未发生之事；<br>未发生之事，往往更多的引起我们的恐惧，<br>用阳明的话说，这时恐惧遮蔽了我们的本心，<br>正如罗斯福夫人所说：“恐惧源于恐惧本身”，<br>在你心中去演绎未发生的事情，比如你对明天的恐惧，<br>如果这样说有点儿抽象，那么我么可以说具体一点儿；<br>想一下，如果明天你突然没工作了，不要问我为什么，<br>或者是做的不开心自己辞职的，或者是公司倒闭被动离职，鬼知道为什么？<br>就想象你已经没工作了。<br>你身上的钱还够你生活半年，<br>接着想下去，这时候你会怎么办？<br>就按着这条线想下去；</p>
-<p>我是这么演绎的：</p>
-<p>1、首先我要统计我生活的所有开支在什么事情上，减少不必要的开支；<br>比如原来抽烟，这时候正是戒烟的好机会；<br>比如你原来冲动之下，会买一些没有用的物品，可以提高你购物的实用性。<br>比如你原来经常爱学文青，去电影院或者为了附庸风雅甚至去看歌剧舞剧。<br>这些都可以按暂停键了。</p>
-<p>2、我将如何利用待业期间的宝贵时间；<br>这里有两个关键点，<br>第一，往往你会因刚失业而忽略掉待业期间的这宝贵时间。<br>因为失业了，你会手足无措，你会很没有安全感，你并没有意识到，这段时间，恰恰是你枕戈待旦，好整以暇的修炼时间。<br>一边因失业而无精打采，一边又因不能马上找到满意的工作而患得患失。<br>而待业的时间就会在这种等待招聘电话与患得患失中流失。<br>等到投入到新的工作之后，又后悔没有在待业期间的那不短时间内学习到新的东西。<br>第二，你如果好好利用这段时间，你会获得惊喜；<br>这段时间弥足珍贵的地方在于，<br>你只要冷静下来就会想清楚：“即便我再患得患失，我再沮丧，再无精打采”；现在就是失业了，就是没工作了，钱就是还够用半年。<br>与其患得患失，不如好好利用；<br>如果你一旦树立这个意识，<br>相信我，下次再失业也好，遇到其他突发事件也好你会淡定的多得多。<br>这无疑会实实在在的增进你的心力，<br>换句话说，会提高你面对不确定性的能力。</p>
-<p>用这段时间可以做好多事情，除了把简历改好，每天投递外，<br>余下的时间全部是你自己的。<br>你可以用余下的时间做你喜欢的事情。</p>
-<p>思考如何增加你的收入来源，<br>是不是可以开个淘宝店，<br>别人都说在行这个app不错，<br>可不可以用你独特的技能在上面赚点儿零花钱。<br>假如你对写作情有独钟，这时候可以提高下你的写作水平。<br>每天写一篇文章练手应该不是难事，等等很多。<br>既符合你的兴趣，又可以借此增加这方面的素质，<br>还可以顺便赚些零花钱。</p>
-<p>看你工作时没时间看的书籍；<br>这个不多说，甭管是否跟你的职业技能直接相关，<br>你可以随便按照你的兴趣来，<br>如果以前老是看德鲁克等方面的商业书籍；<br>这时你不妨重读你最爱的金庸，古龙武侠小说；<br>可以分析下，他们写作的笔法，架构，以及整个小说的布局。<br>对你自己写文章也是不无进益的。</p>
-<p>学习你工作时没时间学的技能<br>比如编程，音乐，甚至做饭。<br>你说我爱编程，喜欢键盘噼里啪啦若干时间，就可以看到很流畅的网页被我写出来。<br>你说我喜欢音乐，我想自己写自己的歌，<br>你说我爱吃红烧排骨或者狮子头。<br>好了，这正是最好的机会，你都可以去尝试了。</p>
-<p>工作时你没时间去的地方<br>当然远的地方就不要去了，<br>毕竟钱包里还有几个子儿，你最清楚了。<br>工作时周边好玩的地方，你都没时间去。<br>这时候可以好好畅玩一番了。<br>对了有单反，还可以拍些很好的照片回来。<br>还可以借此提高你的摄影技能。</p>
-<p>3、职业转换<br>我是不是一辈子做这个工作，<br>有没有可能转换职业，如果转换需要哪些技能，<br>我现在是不是就可以给他学起来。<br>如果转换职业机会成本怎么样等等。<br>这些你都可以好好思考下。</p>
-<p>二、已发生之事；<br>已发生之事不会引起你的恐惧，<br>它会给你带来经验以及教训，当然还有后悔。<br>总结一下自己这几年的人生经历，工作得失。<br>思考一下自己的亲情，爱情以及友情，<br>这些年在经营这些事上，有什么不好的地方，<br>有哪些需要改正的地方。<br>这里你需要想明白一件事情，不要后悔。<br>过去的事，是无须后悔也是后悔无用的。<br>所以在这里真正的目的就是勿恋旧事。<br>旧事带给我们的是经验，是教训，是回忆也是经历。<br>而就是不能是后悔或者哀怨。<br>三、正在行之事；<br>过去的事情，你不再有后悔后者留恋，<br>对于未发生但是使你恐惧的事情也已经思考好了对策，<br>现在你是好整以暇，再不会瞻前顾后了。<br>自然而然的就会专注于正在行的事上了。</p>
-<p>举例子也好，分类别也罢，以上所有的文字都是为了说明一件事，<br>未来不迎，过往不恋，当下不杂。<br>哀莫大于心死，如果你不断的这样练习，<br>你的心力就会越来越强，不自觉的就会增加自信。<br>那到时候你的气质自然就来了。</p>
-<p>说白了气质还是在于你对于未来不确定的事情不再恐惧，<br>对于已过去的事情不再留恋和哀怨。<br>对于现在的事情，能够专心致志。<br>做到这些之后，自信而且淡定的外在表现就是你的气质了。<br>只有不恐惧于未来不确定的事情，不留恋于过去的事，你才能更专心的做你现在的事情。<br>那样你才足够淡定，足够自信，足够有气质。</p>
-<p>我还是要说语言文字的局限性，决定了它并不能表达所有的事情。<br>气质就是其中最好的例子，什么是气质，可以有很多定义。<br>但绝不会如这是一只猫，那是一只狗清晰。<br>因此，以上说的再详尽，也还是需要自己去实践。</p>
-<p>关于境界的文字，<br>由于此篇“工夫”文章已经很长，<br>为了让读到的人不花费太长时间。<br>下一期发出来。<br>敬请期待。</p>
-<p>本期推荐书籍：<br>一、《民国就是这么生猛》<br>推荐理由；<br>1、虽然本书讲的不是关于工夫的事，但是里面讲到的人可以教给你很多关于：“工夫”的事儿。<br>2、文字幽默诙谐，通俗易懂，可以作为茶余饭后的休闲阅读。<br>3、民国入门读物。<br>二、《红太阳是怎样升起的》<br>1、此书可以学习一些推广方面的经验；你如果没看到那就仔细看；<br>2、可以看到为什么会发生文革？<br>3、验证了一句话，在政治面前，从来没有永远的朋友和敌人。<br>4、也可以看到领袖的缔造，绝对需要大大的：“工夫”。<br>三、《最后的文化贵族》<br>学习下这些在文化上有气质的人，是怎样修炼：“工夫”的。</p>
-<p>本期推荐电影：</p>
-<p>1、《杀手没有假期》<br>我常常讲，我以前是个道德感很重的人，非要把善恶很分明的人，<br>但是我越来越感到，人性复杂性大于两分性，偶然性大于必然性。<br>杀手的人生会带给你怎样的启示呢？看了就知道。<br>2、《返老还童》又叫《本杰明巴顿奇事》<br>豆瓣评分8.6，以男女爱情为线索探讨生老病死价值体系的一部电影。<br>3、《杏花三月天》<br>我看这部主要看蒋雯丽和张国立年轻时的表演的。里面和《菊豆》异曲同工，都表现了旧社会妇女从属地位的悲哀和无奈。</p>
 ]]></content>
       <categories>
         <category>阳明心学</category>
@@ -378,6 +355,39 @@
       </categories>
   </entry>
   <entry>
+    <title>工夫与境界（一）</title>
+    <url>/2016/03/17/%E5%B7%A5%E5%A4%AB%E4%B8%8E%E5%A2%83%E7%95%8C%EF%BC%88%E4%B8%80%EF%BC%89/</url>
+    <content><![CDATA[<p>工夫与境界古人常论之；<br>这里工夫是指心力，境界是指胸襟。<br>心力与胸襟外在综合显现为气质。</p>
+<p>在陈来所著《有无之境》中，<br>专门有一章论及工夫，<br>陈来阐释说：”阳明的工夫论就是通过适当的实践和精神修养的方法或形式，来达到理想的境界”。<br>在下深以为然。<br>说白了工夫既要具体的去进行体力锻炼，又要独立的思考进行精神修养。</p>
+<p>我的意思是除去以‘心学’装点门面者外，<br>我们所有人接触并学习心学，<br>都是为了用其指导我们自己的生活，<br>让自己的生活慢慢的圆满起来。<br>以上是摘要<a id="more"></a><br>那么怎么做才可以具体的将心学应用在我们生活中呢？<br>这个事情，在于我自己也并没有融会贯通。<br>因此以下所说，只是适用于我自己的方法，供大家借鉴。<br>原因前面文章已有述及：“任是阳明自己已成圣，也只能用其心学为我们指出一门径而已。”</p>
+<p>我运用心学的经验源于两方面：就是开头所说：工夫与境界；<br>也即心力与胸襟。</p>
+<p>阳明说：“知之真切笃实便是行，行之明觉精察便是知”。<br>意思是生命有限，虽说知行合一要求多实践，<br>但以有限之生命，对无限之实践是不现实的。<br>那么可以有个替代方法，即：‘知之真切笃实便是行’。<br>这同时给了我们不直接实践也可以获得实践效果的一个门径。</p>
+<p>实践工夫我是这样做的，<br>有时间我会抽出一个小时，<br>这一个小时保证不会有人打扰你。</p>
+<p>思考以下三个方面的事情：</p>
+<p>一、未发生之事；<br>未发生之事，往往更多的引起我们的恐惧，<br>用阳明的话说，这时恐惧遮蔽了我们的本心，<br>正如罗斯福夫人所说：“恐惧源于恐惧本身”，<br>在你心中去演绎未发生的事情，比如你对明天的恐惧，<br>如果这样说有点儿抽象，那么我么可以说具体一点儿；<br>想一下，如果明天你突然没工作了，不要问我为什么，<br>或者是做的不开心自己辞职的，或者是公司倒闭被动离职，鬼知道为什么？<br>就想象你已经没工作了。<br>你身上的钱还够你生活半年，<br>接着想下去，这时候你会怎么办？<br>就按着这条线想下去；</p>
+<p>我是这么演绎的：</p>
+<p>1、首先我要统计我生活的所有开支在什么事情上，减少不必要的开支；<br>比如原来抽烟，这时候正是戒烟的好机会；<br>比如你原来冲动之下，会买一些没有用的物品，可以提高你购物的实用性。<br>比如你原来经常爱学文青，去电影院或者为了附庸风雅甚至去看歌剧舞剧。<br>这些都可以按暂停键了。</p>
+<p>2、我将如何利用待业期间的宝贵时间；<br>这里有两个关键点，<br>第一，往往你会因刚失业而忽略掉待业期间的这宝贵时间。<br>因为失业了，你会手足无措，你会很没有安全感，你并没有意识到，这段时间，恰恰是你枕戈待旦，好整以暇的修炼时间。<br>一边因失业而无精打采，一边又因不能马上找到满意的工作而患得患失。<br>而待业的时间就会在这种等待招聘电话与患得患失中流失。<br>等到投入到新的工作之后，又后悔没有在待业期间的那不短时间内学习到新的东西。<br>第二，你如果好好利用这段时间，你会获得惊喜；<br>这段时间弥足珍贵的地方在于，<br>你只要冷静下来就会想清楚：“即便我再患得患失，我再沮丧，再无精打采”；现在就是失业了，就是没工作了，钱就是还够用半年。<br>与其患得患失，不如好好利用；<br>如果你一旦树立这个意识，<br>相信我，下次再失业也好，遇到其他突发事件也好你会淡定的多得多。<br>这无疑会实实在在的增进你的心力，<br>换句话说，会提高你面对不确定性的能力。</p>
+<p>用这段时间可以做好多事情，除了把简历改好，每天投递外，<br>余下的时间全部是你自己的。<br>你可以用余下的时间做你喜欢的事情。</p>
+<p>思考如何增加你的收入来源，<br>是不是可以开个淘宝店，<br>别人都说在行这个app不错，<br>可不可以用你独特的技能在上面赚点儿零花钱。<br>假如你对写作情有独钟，这时候可以提高下你的写作水平。<br>每天写一篇文章练手应该不是难事，等等很多。<br>既符合你的兴趣，又可以借此增加这方面的素质，<br>还可以顺便赚些零花钱。</p>
+<p>看你工作时没时间看的书籍；<br>这个不多说，甭管是否跟你的职业技能直接相关，<br>你可以随便按照你的兴趣来，<br>如果以前老是看德鲁克等方面的商业书籍；<br>这时你不妨重读你最爱的金庸，古龙武侠小说；<br>可以分析下，他们写作的笔法，架构，以及整个小说的布局。<br>对你自己写文章也是不无进益的。</p>
+<p>学习你工作时没时间学的技能<br>比如编程，音乐，甚至做饭。<br>你说我爱编程，喜欢键盘噼里啪啦若干时间，就可以看到很流畅的网页被我写出来。<br>你说我喜欢音乐，我想自己写自己的歌，<br>你说我爱吃红烧排骨或者狮子头。<br>好了，这正是最好的机会，你都可以去尝试了。</p>
+<p>工作时你没时间去的地方<br>当然远的地方就不要去了，<br>毕竟钱包里还有几个子儿，你最清楚了。<br>工作时周边好玩的地方，你都没时间去。<br>这时候可以好好畅玩一番了。<br>对了有单反，还可以拍些很好的照片回来。<br>还可以借此提高你的摄影技能。</p>
+<p>3、职业转换<br>我是不是一辈子做这个工作，<br>有没有可能转换职业，如果转换需要哪些技能，<br>我现在是不是就可以给他学起来。<br>如果转换职业机会成本怎么样等等。<br>这些你都可以好好思考下。</p>
+<p>二、已发生之事；<br>已发生之事不会引起你的恐惧，<br>它会给你带来经验以及教训，当然还有后悔。<br>总结一下自己这几年的人生经历，工作得失。<br>思考一下自己的亲情，爱情以及友情，<br>这些年在经营这些事上，有什么不好的地方，<br>有哪些需要改正的地方。<br>这里你需要想明白一件事情，不要后悔。<br>过去的事，是无须后悔也是后悔无用的。<br>所以在这里真正的目的就是勿恋旧事。<br>旧事带给我们的是经验，是教训，是回忆也是经历。<br>而就是不能是后悔或者哀怨。<br>三、正在行之事；<br>过去的事情，你不再有后悔后者留恋，<br>对于未发生但是使你恐惧的事情也已经思考好了对策，<br>现在你是好整以暇，再不会瞻前顾后了。<br>自然而然的就会专注于正在行的事上了。</p>
+<p>举例子也好，分类别也罢，以上所有的文字都是为了说明一件事，<br>未来不迎，过往不恋，当下不杂。<br>哀莫大于心死，如果你不断的这样练习，<br>你的心力就会越来越强，不自觉的就会增加自信。<br>那到时候你的气质自然就来了。</p>
+<p>说白了气质还是在于你对于未来不确定的事情不再恐惧，<br>对于已过去的事情不再留恋和哀怨。<br>对于现在的事情，能够专心致志。<br>做到这些之后，自信而且淡定的外在表现就是你的气质了。<br>只有不恐惧于未来不确定的事情，不留恋于过去的事，你才能更专心的做你现在的事情。<br>那样你才足够淡定，足够自信，足够有气质。</p>
+<p>我还是要说语言文字的局限性，决定了它并不能表达所有的事情。<br>气质就是其中最好的例子，什么是气质，可以有很多定义。<br>但绝不会如这是一只猫，那是一只狗清晰。<br>因此，以上说的再详尽，也还是需要自己去实践。</p>
+<p>关于境界的文字，<br>由于此篇“工夫”文章已经很长，<br>为了让读到的人不花费太长时间。<br>下一期发出来。<br>敬请期待。</p>
+<p>本期推荐书籍：<br>一、《民国就是这么生猛》<br>推荐理由；<br>1、虽然本书讲的不是关于工夫的事，但是里面讲到的人可以教给你很多关于：“工夫”的事儿。<br>2、文字幽默诙谐，通俗易懂，可以作为茶余饭后的休闲阅读。<br>3、民国入门读物。<br>二、《红太阳是怎样升起的》<br>1、此书可以学习一些推广方面的经验；你如果没看到那就仔细看；<br>2、可以看到为什么会发生文革？<br>3、验证了一句话，在政治面前，从来没有永远的朋友和敌人。<br>4、也可以看到领袖的缔造，绝对需要大大的：“工夫”。<br>三、《最后的文化贵族》<br>学习下这些在文化上有气质的人，是怎样修炼：“工夫”的。</p>
+<p>本期推荐电影：</p>
+<p>1、《杀手没有假期》<br>我常常讲，我以前是个道德感很重的人，非要把善恶很分明的人，<br>但是我越来越感到，人性复杂性大于两分性，偶然性大于必然性。<br>杀手的人生会带给你怎样的启示呢？看了就知道。<br>2、《返老还童》又叫《本杰明巴顿奇事》<br>豆瓣评分8.6，以男女爱情为线索探讨生老病死价值体系的一部电影。<br>3、《杏花三月天》<br>我看这部主要看蒋雯丽和张国立年轻时的表演的。里面和《菊豆》异曲同工，都表现了旧社会妇女从属地位的悲哀和无奈。</p>
+]]></content>
+      <categories>
+        <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
     <title>当你说知行合一的时候你在说什么</title>
     <url>/2016/03/17/%E5%BD%93%E4%BD%A0%E8%AF%B4%E7%9F%A5%E8%A1%8C%E5%90%88%E4%B8%80%E7%9A%84%E6%97%B6%E5%80%99%E4%BD%A0%E5%9C%A8%E8%AF%B4%E4%BB%80%E4%B9%88/</url>
     <content><![CDATA[<p>一、前面的话<br>知行合一是心学的支柱和核心，<br>心学没了知行合一也就不是心学，<br>因此我要反复讲，时时刻刻讲，<br>这篇也不例外，还是要讲知行合一。</p>
@@ -431,6 +441,61 @@
       <categories>
         <category>编程</category>
         <category>IOS</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>我的英语学习小结</title>
+    <url>/2016/03/17/%E6%88%91%E7%9A%84%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93/</url>
+    <content><![CDATA[<p>之所以有这篇文章；<br>是因为最近正在学习ios开发，<br>需要看很多英语文档及英文网站 ；<br>并且成考那边也需要加强英语学习；<br>无论从开阔眼界或和人用英语聊天（装逼）而言；<br>都到了不得不学，逼上梁山的地步；</p>
+<p>学了这么多年英语，<br>才发现自己的两个问题 ；<br>也真是笨的可以；<br>第一原来在学校学习英语完全是为了应付考试；<br>根本没想到将来它会如何有用；</p>
+<p>第二是原来学校老师的水平确实有限；<br>最重要的是老师没教给我们正确的语音；<br>以上是摘要<a id="more"></a><br>我去年听赖世雄的英语教学录音；<br>才真正掌握了正确练习英语读音的方法；<br>印象最深刻的是关于：“good、book以及look”的读法；<br>问了身边几个英语还不错的人；<br>他们都读：“古德，不渴以及鲁克”；<br>可是正确的读音应该是：“格奥德，博哦可以及乐额科”；</p>
+<p>这才发现不但读音不对；<br>最重要的是发现自己断断续续学了这么多年英语；<br>竟然连正确的拼读方法都不会；<br>因为老师直接上去就教你念一个单词；<br>而不会一个一个去教你怎么拼读；<br>只要你最后读出来的效果听起来和老师差不多；<br>就觉得自己学得差不多了；<br>但是，你根本不知道它是怎么拼读出来的；</p>
+<p>就我个人目前的英语水平来说；<br>读一篇英语文章，障碍可能不大；<br>但听录音之后才发觉；<br>我靠，我每个单词都认识；<br>自己把一篇文章顺下来也没问题；<br>可就是录音一句都TMD听不懂；<br>就这样陆陆续续又看了些网上的文章；<br>渐渐有了些学英语的心得；<br>最后终于寻寻觅觅，积攒了一些小心得；<br>在此记录下来，以备后查；</p>
+<p>首先，时间是必须投入的资源；<br>少于一万小时是不靠谱的；<br>其次，必须掌握单词的拼写方法及句子的拼读方法，才算入门而已；<br>单独的单词你会读了，不一定能将句子读的连贯顺畅；<br>这两种读法是完全不同的；<br>最后，一定要坚持练习。</p>
+<p>在积攒这些心得过程中发现；<br>根本没有放之四海皆准的方法论；<br>无论谁以三寸不烂之舌，<br>说某个方法多么管用；<br>都完全是扯淡；<br>即便真的对他自己很有用；<br>但是如果每个人不是自己去摸索一套适合自己的方法；<br>其他人再经典的方法；<br>也基本无用；</p>
+<p>很简单的一个例子，雷军用：“专注、极致、口碑、快”七字诀打造出了小米；<br>你觉得还有谁可以在国内用这个方法复制一个小米吗?<br>所以说方法永远都是对别人有用的东西；<br>你真正要学的其实是别人思考的路径，<br>以及别人看事情的角度；<br>而不仅仅是人云亦云的方法论。<br>所以说所有将某个牛人的方法论拿来学习的人或者公司，基本结局都会很惨；</p>
+<p>硬功夫是省不得的；<br>所以必须用自己的时间，加上自己摸索出来的一套方法；<br>才可以让你离目标更近一些。</p>
+]]></content>
+      <categories>
+        <category>外语学习</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>我是这样认识王阳明的</title>
+    <url>/2016/03/17/%E6%88%91%E6%98%AF%E8%BF%99%E6%A0%B7%E8%AE%A4%E8%AF%86%E7%8E%8B%E9%98%B3%E6%98%8E%E7%9A%84/</url>
+    <content><![CDATA[<p>大多数喜欢王阳明的朋友，总是标榜“知行合一”，“致良知”；<br>我的微信关注了一个也标榜自己喜欢阳明思想的朋友；<br>做什么事都和：“心性”、“致良知”这些字眼联系起来；</p>
+<p>细看了下，要么就是参加了一个活动，说今天主讲人讲的真好；<br>是：“知行合一”；是“致良知”云云。<br>要么就是参加了个管理培训班，<br>完后就说：稻盛和夫的管理哲学和致良知完美契合。<br>  以上是文章摘要 <a id="more"></a> 以下是余下全文<br>我也真是醉了，哲学本来就和生活息息相关；<br>经常和生活联系起来倒也合情合理。<br>但是拉个屎撒个尿都要和知行合一与致良知联系起来，<br>要么就是没有真正理解阳明先生的思想。<br>要么就是中了“教条主义”的毒。</p>
+<p>在下不才，从听说王阳明这个人到最后逐渐对其思想了解一些；<br>也将近有十年的时间了。<br>遥想当年哥在高中学的是小三门儿—音乐；<br>上过高中的都知道，这个专业考试要提前考。<br>05年春节去郑州进行专业考试；<br>有天晚上和同去的同学到外面逛街，<br>逛到地下通道，有个书摊大家便驻足观看；<br>我一眼就看到了周月亮写的那本《王阳明大传》；<br>盗版的。</p>
+<p>封皮上的两句话把我给震住了。<br>“雅可上九天揽月，俗可下五洋捉鳖”；<br>当时连王阳明是谁都不知道，<br>更不会懂什么知行合一和致良知了。<br>但就觉得这两句话真牛逼；<br>说到我心里去了。</p>
+<p>之后，王阳明这个名字算是记住了。<br>当时对于买不买还是有些踌躇；<br>这时有个同学一句话让我下了买的决心；<br>他说：“你遇见了就一定要买，即使贵一点儿，免得以后后悔。<br>（当时的二十块一本盗版，对我等把县城当大城市的高中生来说的确算贵得。）</p>
+<p>随后这本周月亮的《王阳明大传》，<br>跟随我转战南北，东奔西跑；<br>南到浙杭，北到首都；<br>中间阅览无数遍，<br>每次看都有新感悟；<br>透明胶和尼龙绳修补多次；<br>最终，在最近一次搬家中遗失掉了。</p>
+<p>随着这本书打开我对王阳明的一扇门；<br>随后又在网上下载了好多关于王阳明的书；<br>什么《明朝一哥王阳明》，《王阳明的哲学精神》<br>乃至《有无之境》；<br>一路看下来，最后必须要看《传习录》啊！<br>就买了本叶圣陶解读的《传习录》来看；<br>虽然大师解读，但在下古文修养不高；<br>看着也是半懂不懂。</p>
+<p>最后就逛贴吧，逛论坛；<br>偶尔在天涯上发现了“沙滩孤雁”的帖子；<br>看了一页之后，惊为天人；<br>然后就开始了对这本《开谈传习录》的反复阅读。<br>以上大概就是我对王阳明的认识过程。<br>也许文字枯燥，也许词不达意；<br>也许行文不畅；<br>但作为自己对一个伟人的从认识到熟悉的回顾；<br>我想还是足够了。</p>
+]]></content>
+      <categories>
+        <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>智慧与思想之花因何而开</title>
+    <url>/2016/03/17/%E6%99%BA%E6%85%A7%E4%B8%8E%E6%80%9D%E6%83%B3%E4%B9%8B%E8%8A%B1%E5%9B%A0%E4%BD%95%E8%80%8C%E5%BC%80/</url>
+    <content><![CDATA[<p>圣人之所以为圣人，<br>就是因为在百死千难中，<br>不断努力的思考自己的思维的过程；<br>而这个过程就是思想和智慧了。</p>
+<p>上次撰文说到致良知，<br>那么，致良知与智慧和思想是什么关系呢？<br>答案是没一毛钱关系。</p>
+<p>那么问题来了，<br>既然智慧和思想，和致良知没一毛钱关系。<br>那阳明先生为什么整个致良知之学呢？<br>莫急，听咱家慢慢道来；<br>以上是摘要<a id="more"></a><br>雾满拦江说，<br>人类所有学科的基础是哲学、数学与逻辑形式；<br>所有人类的学科莫不是建立在此三个要素上；<br>而阳明先生龙场悟道的“道”，却不在此列。<br>因为无论这三者再精密，<br>他还是属于人类已有的语言和思维范畴，<br>显然终极智慧和思想，是比此三者更高境界的东西。</p>
+<p>所以说圣人可以自己悟道，<br>但是他是无法用语言和你清晰描述的，<br>不然阳明也不会有：“吾性自足”一说了；</p>
+<p>打个比方说，<br>世上未通终极智慧之人，<br>都像是背对着一副栅栏和栅栏外的一堆篝火；<br>栅栏就是遮蔽良知也就是本心的欲望，<br>而篝火正是道家说的道，<br>儒家的一以及佛家的无无明。</p>
+<p>所有人是不知道自己后面的栅栏和篝火的，<br>一旦像阳明先生这样的人，<br>告诉他们你们身后有栅栏和篝火；<br>他们是不会信的，<br>这就像你和盲者谈论颜色，<br>你说得再惟妙惟肖，<br>他也是没有认识颜色的工具的，<br>或者聋哑人谈论音律，<br>即使你说的再声情并茂，<br>他也是没有认识音律的工具的。</p>
+<p>因此圣人先贤悟道终极智慧之后，<br>也是没有描述终极智慧的工具的。</p>
+<p>尽管终极智慧和致良知之间，<br>没有一毛钱的关系，<br>但如果你追求善良，苦求于良知；<br>那么你对这个世界的认知角度，<br>就会从外界转向对自己内心的审视。</p>
+<p>如此你会减少与外界的摩擦，<br>不会再苛求别人按你的想法行事，<br>而会反求诸己。</p>
+<p>反之如果你不追求善良，<br>不从内心审视自己，<br>就会将关注焦点放在外界，<br>而这种关注，必然会让你远离思想和智慧。</p>
+<p>思想与智慧无法复制也无法传承；<br>甚至连对身边人熏陶的功能都不存在，<br>比如苏格拉底与其妻子，<br>比如阳明先生身后的妻离子散。</p>
+<p>这是因为智慧和思想完全是个人化的思维运作过程，<br>是单独一个人不断采用探究式的思维模式，<br>对自己的大脑进行个人化开发，<br>这种开发的过程就是智慧与思想本身，</p>
+<p>而圣贤所能表达的不过是智慧和思想的结果，<br>但这个结果既不是思想也不是智慧，<br>最多不过是思想与智慧的行进方向而已。</p>
+<p>所以阳明先生说：“致良知”，<br>良知不是智慧，<br>致良知更不是思想，<br>思想与智慧，<br>是指你不断地努力，<br>让自己达到致良知境界的思维过程。<br>换句话说，<br>你可以把致良知理解为这个思维过程（也即思想和智慧过程）的一个显性结果以及方向。</p>
+]]></content>
+      <categories>
+        <category>阳明心学</category>
       </categories>
   </entry>
   <entry>
@@ -524,61 +589,6 @@
 ]]></content>
       <categories>
         <category>Hexo</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>我是这样认识王阳明的</title>
-    <url>/2016/03/17/%E6%88%91%E6%98%AF%E8%BF%99%E6%A0%B7%E8%AE%A4%E8%AF%86%E7%8E%8B%E9%98%B3%E6%98%8E%E7%9A%84/</url>
-    <content><![CDATA[<p>大多数喜欢王阳明的朋友，总是标榜“知行合一”，“致良知”；<br>我的微信关注了一个也标榜自己喜欢阳明思想的朋友；<br>做什么事都和：“心性”、“致良知”这些字眼联系起来；</p>
-<p>细看了下，要么就是参加了一个活动，说今天主讲人讲的真好；<br>是：“知行合一”；是“致良知”云云。<br>要么就是参加了个管理培训班，<br>完后就说：稻盛和夫的管理哲学和致良知完美契合。<br>  以上是文章摘要 <a id="more"></a> 以下是余下全文<br>我也真是醉了，哲学本来就和生活息息相关；<br>经常和生活联系起来倒也合情合理。<br>但是拉个屎撒个尿都要和知行合一与致良知联系起来，<br>要么就是没有真正理解阳明先生的思想。<br>要么就是中了“教条主义”的毒。</p>
-<p>在下不才，从听说王阳明这个人到最后逐渐对其思想了解一些；<br>也将近有十年的时间了。<br>遥想当年哥在高中学的是小三门儿—音乐；<br>上过高中的都知道，这个专业考试要提前考。<br>05年春节去郑州进行专业考试；<br>有天晚上和同去的同学到外面逛街，<br>逛到地下通道，有个书摊大家便驻足观看；<br>我一眼就看到了周月亮写的那本《王阳明大传》；<br>盗版的。</p>
-<p>封皮上的两句话把我给震住了。<br>“雅可上九天揽月，俗可下五洋捉鳖”；<br>当时连王阳明是谁都不知道，<br>更不会懂什么知行合一和致良知了。<br>但就觉得这两句话真牛逼；<br>说到我心里去了。</p>
-<p>之后，王阳明这个名字算是记住了。<br>当时对于买不买还是有些踌躇；<br>这时有个同学一句话让我下了买的决心；<br>他说：“你遇见了就一定要买，即使贵一点儿，免得以后后悔。<br>（当时的二十块一本盗版，对我等把县城当大城市的高中生来说的确算贵得。）</p>
-<p>随后这本周月亮的《王阳明大传》，<br>跟随我转战南北，东奔西跑；<br>南到浙杭，北到首都；<br>中间阅览无数遍，<br>每次看都有新感悟；<br>透明胶和尼龙绳修补多次；<br>最终，在最近一次搬家中遗失掉了。</p>
-<p>随着这本书打开我对王阳明的一扇门；<br>随后又在网上下载了好多关于王阳明的书；<br>什么《明朝一哥王阳明》，《王阳明的哲学精神》<br>乃至《有无之境》；<br>一路看下来，最后必须要看《传习录》啊！<br>就买了本叶圣陶解读的《传习录》来看；<br>虽然大师解读，但在下古文修养不高；<br>看着也是半懂不懂。</p>
-<p>最后就逛贴吧，逛论坛；<br>偶尔在天涯上发现了“沙滩孤雁”的帖子；<br>看了一页之后，惊为天人；<br>然后就开始了对这本《开谈传习录》的反复阅读。<br>以上大概就是我对王阳明的认识过程。<br>也许文字枯燥，也许词不达意；<br>也许行文不畅；<br>但作为自己对一个伟人的从认识到熟悉的回顾；<br>我想还是足够了。</p>
-]]></content>
-      <categories>
-        <category>阳明心学</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>我的英语学习小结</title>
-    <url>/2016/03/17/%E6%88%91%E7%9A%84%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0%E5%B0%8F%E7%BB%93/</url>
-    <content><![CDATA[<p>之所以有这篇文章；<br>是因为最近正在学习ios开发，<br>需要看很多英语文档及英文网站 ；<br>并且成考那边也需要加强英语学习；<br>无论从开阔眼界或和人用英语聊天（装逼）而言；<br>都到了不得不学，逼上梁山的地步；</p>
-<p>学了这么多年英语，<br>才发现自己的两个问题 ；<br>也真是笨的可以；<br>第一原来在学校学习英语完全是为了应付考试；<br>根本没想到将来它会如何有用；</p>
-<p>第二是原来学校老师的水平确实有限；<br>最重要的是老师没教给我们正确的语音；<br>以上是摘要<a id="more"></a><br>我去年听赖世雄的英语教学录音；<br>才真正掌握了正确练习英语读音的方法；<br>印象最深刻的是关于：“good、book以及look”的读法；<br>问了身边几个英语还不错的人；<br>他们都读：“古德，不渴以及鲁克”；<br>可是正确的读音应该是：“格奥德，博哦可以及乐额科”；</p>
-<p>这才发现不但读音不对；<br>最重要的是发现自己断断续续学了这么多年英语；<br>竟然连正确的拼读方法都不会；<br>因为老师直接上去就教你念一个单词；<br>而不会一个一个去教你怎么拼读；<br>只要你最后读出来的效果听起来和老师差不多；<br>就觉得自己学得差不多了；<br>但是，你根本不知道它是怎么拼读出来的；</p>
-<p>就我个人目前的英语水平来说；<br>读一篇英语文章，障碍可能不大；<br>但听录音之后才发觉；<br>我靠，我每个单词都认识；<br>自己把一篇文章顺下来也没问题；<br>可就是录音一句都TMD听不懂；<br>就这样陆陆续续又看了些网上的文章；<br>渐渐有了些学英语的心得；<br>最后终于寻寻觅觅，积攒了一些小心得；<br>在此记录下来，以备后查；</p>
-<p>首先，时间是必须投入的资源；<br>少于一万小时是不靠谱的；<br>其次，必须掌握单词的拼写方法及句子的拼读方法，才算入门而已；<br>单独的单词你会读了，不一定能将句子读的连贯顺畅；<br>这两种读法是完全不同的；<br>最后，一定要坚持练习。</p>
-<p>在积攒这些心得过程中发现；<br>根本没有放之四海皆准的方法论；<br>无论谁以三寸不烂之舌，<br>说某个方法多么管用；<br>都完全是扯淡；<br>即便真的对他自己很有用；<br>但是如果每个人不是自己去摸索一套适合自己的方法；<br>其他人再经典的方法；<br>也基本无用；</p>
-<p>很简单的一个例子，雷军用：“专注、极致、口碑、快”七字诀打造出了小米；<br>你觉得还有谁可以在国内用这个方法复制一个小米吗?<br>所以说方法永远都是对别人有用的东西；<br>你真正要学的其实是别人思考的路径，<br>以及别人看事情的角度；<br>而不仅仅是人云亦云的方法论。<br>所以说所有将某个牛人的方法论拿来学习的人或者公司，基本结局都会很惨；</p>
-<p>硬功夫是省不得的；<br>所以必须用自己的时间，加上自己摸索出来的一套方法；<br>才可以让你离目标更近一些。</p>
-]]></content>
-      <categories>
-        <category>外语学习</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>智慧与思想之花因何而开</title>
-    <url>/2016/03/17/%E6%99%BA%E6%85%A7%E4%B8%8E%E6%80%9D%E6%83%B3%E4%B9%8B%E8%8A%B1%E5%9B%A0%E4%BD%95%E8%80%8C%E5%BC%80/</url>
-    <content><![CDATA[<p>圣人之所以为圣人，<br>就是因为在百死千难中，<br>不断努力的思考自己的思维的过程；<br>而这个过程就是思想和智慧了。</p>
-<p>上次撰文说到致良知，<br>那么，致良知与智慧和思想是什么关系呢？<br>答案是没一毛钱关系。</p>
-<p>那么问题来了，<br>既然智慧和思想，和致良知没一毛钱关系。<br>那阳明先生为什么整个致良知之学呢？<br>莫急，听咱家慢慢道来；<br>以上是摘要<a id="more"></a><br>雾满拦江说，<br>人类所有学科的基础是哲学、数学与逻辑形式；<br>所有人类的学科莫不是建立在此三个要素上；<br>而阳明先生龙场悟道的“道”，却不在此列。<br>因为无论这三者再精密，<br>他还是属于人类已有的语言和思维范畴，<br>显然终极智慧和思想，是比此三者更高境界的东西。</p>
-<p>所以说圣人可以自己悟道，<br>但是他是无法用语言和你清晰描述的，<br>不然阳明也不会有：“吾性自足”一说了；</p>
-<p>打个比方说，<br>世上未通终极智慧之人，<br>都像是背对着一副栅栏和栅栏外的一堆篝火；<br>栅栏就是遮蔽良知也就是本心的欲望，<br>而篝火正是道家说的道，<br>儒家的一以及佛家的无无明。</p>
-<p>所有人是不知道自己后面的栅栏和篝火的，<br>一旦像阳明先生这样的人，<br>告诉他们你们身后有栅栏和篝火；<br>他们是不会信的，<br>这就像你和盲者谈论颜色，<br>你说得再惟妙惟肖，<br>他也是没有认识颜色的工具的，<br>或者聋哑人谈论音律，<br>即使你说的再声情并茂，<br>他也是没有认识音律的工具的。</p>
-<p>因此圣人先贤悟道终极智慧之后，<br>也是没有描述终极智慧的工具的。</p>
-<p>尽管终极智慧和致良知之间，<br>没有一毛钱的关系，<br>但如果你追求善良，苦求于良知；<br>那么你对这个世界的认知角度，<br>就会从外界转向对自己内心的审视。</p>
-<p>如此你会减少与外界的摩擦，<br>不会再苛求别人按你的想法行事，<br>而会反求诸己。</p>
-<p>反之如果你不追求善良，<br>不从内心审视自己，<br>就会将关注焦点放在外界，<br>而这种关注，必然会让你远离思想和智慧。</p>
-<p>思想与智慧无法复制也无法传承；<br>甚至连对身边人熏陶的功能都不存在，<br>比如苏格拉底与其妻子，<br>比如阳明先生身后的妻离子散。</p>
-<p>这是因为智慧和思想完全是个人化的思维运作过程，<br>是单独一个人不断采用探究式的思维模式，<br>对自己的大脑进行个人化开发，<br>这种开发的过程就是智慧与思想本身，</p>
-<p>而圣贤所能表达的不过是智慧和思想的结果，<br>但这个结果既不是思想也不是智慧，<br>最多不过是思想与智慧的行进方向而已。</p>
-<p>所以阳明先生说：“致良知”，<br>良知不是智慧，<br>致良知更不是思想，<br>思想与智慧，<br>是指你不断地努力，<br>让自己达到致良知境界的思维过程。<br>换句话说，<br>你可以把致良知理解为这个思维过程（也即思想和智慧过程）的一个显性结果以及方向。</p>
-]]></content>
-      <categories>
-        <category>阳明心学</category>
       </categories>
   </entry>
   <entry>
@@ -677,21 +687,44 @@
       </categories>
   </entry>
   <entry>
-    <title>编程学习心得</title>
-    <url>/2016/03/17/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/</url>
-    <content><![CDATA[<p>似乎每个人对一件从未接触过的事物着迷时；<br>都恨不得一下子就对其融会贯通；<br>这种急切心理，极有可能导致稍遇挫折，便丧失兴趣。</p>
-<p>比如我对编程的学习；<br>在刚开始时的确一腔热情；<br>但是稍微接触到不容易理解的地方；<br>就会不由自主地怀疑自己！<br>自己真的适合学编程吗?<br>我怎么这么笨？<br>我这个年龄学编程还成吗？</p>
-<p>其实，这都是由于刚开始热情太盛；<br>努力一段时间后，<br>得不到自己期望的效果，<br>便兴趣缺缺了。<br>以上是摘要<a id="more"></a><br>学习始终遵循循序渐进的原则；<br>而不是像玩游戏一样，<br>能得到及时的满足和成就感。<br>所以很多颇有成就的人，<br>都是最善于推迟自己满足感的人。</p>
-<p>其实我最该问的问题不应该是以上那些；<br>而只应该问一个问题？<br>我怎么才能学好编程?<br>那些已经有了些许成就的程序员，<br>是如何取得今天的成就的？</p>
-<p>在学习中还发现一个问题；<br>就是学习一个知识点，<br>一定不要紧追着一个人的讲解不放；<br>同是一个知识点，<br>这个人讲解的既轻松又清晰，<br>而你紧抱着不放的那个则是既繁琐又模糊。</p>
-<p>所以在学习中必须灵活，<br>灵活不是投机取巧；<br>而是在网络信息如此发达的今日；<br>不应该紧抱着某一个信息源不放；<br>某个信息源的讲解听不明白，<br>则必须及时寻找能让你更容易明白的信息源；<br>相信我，一定可以找得到。</p>
-<p>比如在学习oc的三大特性封装、继承与多态时；<br>我花钱买的课程讲解时既模糊又乏味；<br>这时我就对自己产生怀疑了；<br>难道我真的笨蛋如此；<br>可是后来偶然间看到一篇博客；<br>瞬间让我豁然开朗。<br>就是那种梦里千百度，蓦然回首处的感觉。</p>
-<p>总之学习一定不是揪着某个问题不放；<br>当然不是真的放下不管；<br>而是先放到潜意识里；<br>往往会出现这种情况；</p>
-<p>某日你对A问题产生疑惑；<br>又一日，你对B问题更是纠结不已；<br>但是，还一日，你去查找C问题的答案，<br>发现竟然找到了A的答案。<br>这往往是持续学习中，<br>最令人痛快之时。</p>
+    <title>要赚钱先提升思维</title>
+    <url>/2020/04/29/%E8%A6%81%E8%B5%9A%E9%92%B1%E5%85%88%E6%8F%90%E5%8D%87%E6%80%9D%E7%BB%B4/</url>
+    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>以前听到有谁说，<br>思维提升这个词，<br>那我基本上会判定他是个骗子。<br>并且认为思维提升是个伪命题，<br>对这个概念本身也是排斥的。</p>
+<p>现在对说思维提升这个词的人，<br>还是一样厌恶和排斥，<br>但对思维提升这个概念，<br>已经在内心认可了，<br>因为它确确实实存在。</p>
+<a id="more"></a>
+
+<h3 id="一、如何提升思维"><a href="#一、如何提升思维" class="headerlink" title="一、如何提升思维"></a>一、如何提升思维</h3><h5 id="1、不要给自己的思考划定范围"><a href="#1、不要给自己的思考划定范围" class="headerlink" title="1、不要给自己的思考划定范围"></a>1、不要给自己的思考划定范围</h5><p>学会发散思维，不要形成定式思维。</p>
+<h5 id="2、要学会反着想事情"><a href="#2、要学会反着想事情" class="headerlink" title="2、要学会反着想事情"></a>2、要学会反着想事情</h5><p>把事情翻个个，可能会豁然开朗。<br>比如在北京晨间拥挤的车流中，<br>有很多被临时雇佣的人，<br>他们在做一件事情，</p>
+<p>你只见他们闪转腾挪，见缝插针，有条不紊，干净利落，<br>他们的行动以红灯作为信号，整齐划一，敏捷且迅速<br>红灯亮他们开始行动，绿灯亮他们停止行动。</p>
+<p>他们的动作分为三个步骤，<br>接近目标，在等红灯的司机，<br>敲车窗，<br>迅速将手里的名片扔到驾驶室。<br>没错他们是在路边发招嫖广告的人，<br>发给司机的当然就是招嫖广告。</p>
+<p>首先，你作为一个旁观者，内心是不齿的，<br>其次，你觉得肯定不会有人按照广告上的电话打过去。<br>最后，你还会鄙视的看看欣然笑纳名片的司机，<br>更会在内心里对发广告的人，进行一番道德批判。</p>
+<p>但是，你有没有想过，<br>他们为什么会一直发这种广告呢？<br>答案只有两个字，赚钱。</p>
+<p>不赚钱谁忙活这个，赚钱的不是发广告的那些人，<br>而是雇佣他们的人。<br>所以你看境随心转，你心里转个弯，立马就看到了事情不一样的地方。<br>心也随境转，你通过这个结论，就会去思考下，<br>别的还有没有这样赚钱的项目。<br>你看转变思维是多么简单，就是多问一个为什么？</p>
+<h5 id="3、搞清楚你是谁？你从哪里来？你要到哪里去？"><a href="#3、搞清楚你是谁？你从哪里来？你要到哪里去？" class="headerlink" title="3、搞清楚你是谁？你从哪里来？你要到哪里去？"></a>3、搞清楚你是谁？你从哪里来？你要到哪里去？</h5><p>这个不是开玩笑，搞清楚你是谁和你从哪里来，<br>你就知道将要往哪里去，<br>你知道自己要往哪里去，你就能决定当下要做什么？<br>搞清楚你从哪里来，你要到哪里去？<br>你对自己是谁这个问题，<br>就会有一个更全面的认识。</p>
+<h3 id="二、自己解决问题"><a href="#二、自己解决问题" class="headerlink" title="二、自己解决问题"></a>二、自己解决问题</h3><p>比如我自己，<br>以前遇到问题，总是自己解决完就完了，<br>丝毫没有注意，<br>当我在解决问题的过程中，<br>也有很多人和我遇到了同样的问题，<br>我的问题虽然解决了，<br>但是这些和我遇到同样问题，没有解决的人，<br>他们会不会付费获取我的帮助呢？<br>这是近期思维提升的一大成果。<br>很显然我发现了一些赚小钱的秘密。<br>以上是第一点，</p>
+<p>第二点，<br>以前总觉得自己没什么优势，<br>建立个人品牌是很缥缈，很遥远的事情。<br>但是自打最近独立思考了一些问题之后，<br>发觉自己错的实在离谱，<br>其实每个人都有自己的优势。<br>人类社会的一个基本原则就是等价交换。<br>因此，<br>只要你有别人没有的东西，<br>他们还需要这个东西，<br>你就有赚钱的机会，<br>你缺的只是让他们知道你有他们需要的东西，<br>还有就是让他们知道怎么联系到你。</p>
+<h3 id="三、帮别人解决问题"><a href="#三、帮别人解决问题" class="headerlink" title="三、帮别人解决问题"></a>三、帮别人解决问题</h3><p>所以，以后我就会这样思考事情，<br>不仅要从个人角度思考事情，<br>还要从他人角度思考事情。<br>比如遇到一个问题，<br>要首先这样想，<br>有没有其他人和我遇到同样的问题。<br>那些和我遇到同样问题而没有解决的人，<br>是否愿意付费获取我的帮助，<br>或者那些现在虽然没遇到此类问题，<br>但是他们遇到和我同样的问题之后，<br>是否愿意付费获取我的帮助。</p>
+<h3 id="四、自己是可以打造个人品牌的"><a href="#四、自己是可以打造个人品牌的" class="headerlink" title="四、自己是可以打造个人品牌的"></a>四、自己是可以打造个人品牌的</h3><p>以前总觉得自己没什么优势，<br>建立个人品牌是很缥缈，很遥远的事情。<br>但是自打最近独立思考了一些问题之后，<br>发觉自己错的实在离谱。</p>
+<p>我的优势就是我有互联网的基础，<br>如果持续并精心经营，<br>是很容易从各种平台获取流量的，<br>而在互联网的世界里，<br>流量就约等于金钱。</p>
+<p>这些都是思维提升的具体表现。</p>
+<h3 id="五、思维提升后，想不赚钱都难"><a href="#五、思维提升后，想不赚钱都难" class="headerlink" title="五、思维提升后，想不赚钱都难"></a>五、思维提升后，想不赚钱都难</h3><p>比如基于以上我思维提升的两个点，<br>我会去做以下两件事情，</p>
+<h6 id="第一-推己及人"><a href="#第一-推己及人" class="headerlink" title="第一 推己及人"></a>第一 推己及人</h6><p>下次我在互联网上搜索问题的时候<br>我自己解决完之后，会考虑怎么去帮助别人，<br>还会考虑怎么让他们知道我可以给他们提供帮助，<br>那么这就是选择发布个人联系方式的平台。<br>如百度知道、百度贴吧等等。</p>
+<h6 id="第二-优化解决问题的方法"><a href="#第二-优化解决问题的方法" class="headerlink" title="第二 优化解决问题的方法"></a>第二 优化解决问题的方法</h6><p>我会千方百计的优化解决这个问题的方法，<br>以节省帮助其他人所花费的时间，<br>其实，也是提升我的赚钱效率，<br>因为我为他们提供帮助，是用远程的方式，<br>所以方法稍微复杂一些，<br>有很多人就没耐心了。<br>即便有耐心的人，<br>其实解决问题的方法，也是越简单越好。<br>这是思维提升后，对解决问题的信息差的商业化。</p>
+<h6 id="第三-打造个人品牌"><a href="#第三-打造个人品牌" class="headerlink" title="第三 打造个人品牌"></a>第三 打造个人品牌</h6><p>我会着力经营用hexo搭建的独立博客，</p>
+<p>以作为自己的一个私域流量来源。</p>
+<p>还会精细运营，</p>
+<p>知乎、微信公众号和饭否三个平台账号。</p>
+<p>搞清楚他们的用户画像，</p>
+<p>搞清楚各个平台的规则，</p>
+<p>尽力挖掘各个平台的盈利模式。</p>
+<p>我有这个耐心在这两个方面都赚到钱，</p>
+<p>但是一切都得慢慢来，</p>
+<p>因为慢就是快，快就是慢。</p>
+<p>正如一句话说得好：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Slow  is  smooth ,  and  smooth  is  fast.</span><br><span class="line">慢是平滑的，  而平滑是快的。</span><br></pre></td></tr></table></figure>
 ]]></content>
       <categories>
-        <category>编程</category>
-        <category>IOS</category>
+        <category>阳明心学</category>
       </categories>
   </entry>
   <entry>
@@ -735,44 +768,21 @@
       </categories>
   </entry>
   <entry>
-    <title>要赚钱先提升思维</title>
-    <url>/2020/04/29/%E8%A6%81%E8%B5%9A%E9%92%B1%E5%85%88%E6%8F%90%E5%8D%87%E6%80%9D%E7%BB%B4/</url>
-    <content><![CDATA[<h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>以前听到有谁说，<br>思维提升这个词，<br>那我基本上会判定他是个骗子。<br>并且认为思维提升是个伪命题，<br>对这个概念本身也是排斥的。</p>
-<p>现在对说思维提升这个词的人，<br>还是一样厌恶和排斥，<br>但对思维提升这个概念，<br>已经在内心认可了，<br>因为它确确实实存在。</p>
-<a id="more"></a>
-
-<h3 id="一、如何提升思维"><a href="#一、如何提升思维" class="headerlink" title="一、如何提升思维"></a>一、如何提升思维</h3><h5 id="1、不要给自己的思考划定范围"><a href="#1、不要给自己的思考划定范围" class="headerlink" title="1、不要给自己的思考划定范围"></a>1、不要给自己的思考划定范围</h5><p>学会发散思维，不要形成定式思维。</p>
-<h5 id="2、要学会反着想事情"><a href="#2、要学会反着想事情" class="headerlink" title="2、要学会反着想事情"></a>2、要学会反着想事情</h5><p>把事情翻个个，可能会豁然开朗。<br>比如在北京晨间拥挤的车流中，<br>有很多被临时雇佣的人，<br>他们在做一件事情，</p>
-<p>你只见他们闪转腾挪，见缝插针，有条不紊，干净利落，<br>他们的行动以红灯作为信号，整齐划一，敏捷且迅速<br>红灯亮他们开始行动，绿灯亮他们停止行动。</p>
-<p>他们的动作分为三个步骤，<br>接近目标，在等红灯的司机，<br>敲车窗，<br>迅速将手里的名片扔到驾驶室。<br>没错他们是在路边发招嫖广告的人，<br>发给司机的当然就是招嫖广告。</p>
-<p>首先，你作为一个旁观者，内心是不齿的，<br>其次，你觉得肯定不会有人按照广告上的电话打过去。<br>最后，你还会鄙视的看看欣然笑纳名片的司机，<br>更会在内心里对发广告的人，进行一番道德批判。</p>
-<p>但是，你有没有想过，<br>他们为什么会一直发这种广告呢？<br>答案只有两个字，赚钱。</p>
-<p>不赚钱谁忙活这个，赚钱的不是发广告的那些人，<br>而是雇佣他们的人。<br>所以你看境随心转，你心里转个弯，立马就看到了事情不一样的地方。<br>心也随境转，你通过这个结论，就会去思考下，<br>别的还有没有这样赚钱的项目。<br>你看转变思维是多么简单，就是多问一个为什么？</p>
-<h5 id="3、搞清楚你是谁？你从哪里来？你要到哪里去？"><a href="#3、搞清楚你是谁？你从哪里来？你要到哪里去？" class="headerlink" title="3、搞清楚你是谁？你从哪里来？你要到哪里去？"></a>3、搞清楚你是谁？你从哪里来？你要到哪里去？</h5><p>这个不是开玩笑，搞清楚你是谁和你从哪里来，<br>你就知道将要往哪里去，<br>你知道自己要往哪里去，你就能决定当下要做什么？<br>搞清楚你从哪里来，你要到哪里去？<br>你对自己是谁这个问题，<br>就会有一个更全面的认识。</p>
-<h3 id="二、自己解决问题"><a href="#二、自己解决问题" class="headerlink" title="二、自己解决问题"></a>二、自己解决问题</h3><p>比如我自己，<br>以前遇到问题，总是自己解决完就完了，<br>丝毫没有注意，<br>当我在解决问题的过程中，<br>也有很多人和我遇到了同样的问题，<br>我的问题虽然解决了，<br>但是这些和我遇到同样问题，没有解决的人，<br>他们会不会付费获取我的帮助呢？<br>这是近期思维提升的一大成果。<br>很显然我发现了一些赚小钱的秘密。<br>以上是第一点，</p>
-<p>第二点，<br>以前总觉得自己没什么优势，<br>建立个人品牌是很缥缈，很遥远的事情。<br>但是自打最近独立思考了一些问题之后，<br>发觉自己错的实在离谱，<br>其实每个人都有自己的优势。<br>人类社会的一个基本原则就是等价交换。<br>因此，<br>只要你有别人没有的东西，<br>他们还需要这个东西，<br>你就有赚钱的机会，<br>你缺的只是让他们知道你有他们需要的东西，<br>还有就是让他们知道怎么联系到你。</p>
-<h3 id="三、帮别人解决问题"><a href="#三、帮别人解决问题" class="headerlink" title="三、帮别人解决问题"></a>三、帮别人解决问题</h3><p>所以，以后我就会这样思考事情，<br>不仅要从个人角度思考事情，<br>还要从他人角度思考事情。<br>比如遇到一个问题，<br>要首先这样想，<br>有没有其他人和我遇到同样的问题。<br>那些和我遇到同样问题而没有解决的人，<br>是否愿意付费获取我的帮助，<br>或者那些现在虽然没遇到此类问题，<br>但是他们遇到和我同样的问题之后，<br>是否愿意付费获取我的帮助。</p>
-<h3 id="四、自己是可以打造个人品牌的"><a href="#四、自己是可以打造个人品牌的" class="headerlink" title="四、自己是可以打造个人品牌的"></a>四、自己是可以打造个人品牌的</h3><p>以前总觉得自己没什么优势，<br>建立个人品牌是很缥缈，很遥远的事情。<br>但是自打最近独立思考了一些问题之后，<br>发觉自己错的实在离谱。</p>
-<p>我的优势就是我有互联网的基础，<br>如果持续并精心经营，<br>是很容易从各种平台获取流量的，<br>而在互联网的世界里，<br>流量就约等于金钱。</p>
-<p>这些都是思维提升的具体表现。</p>
-<h3 id="五、思维提升后，想不赚钱都难"><a href="#五、思维提升后，想不赚钱都难" class="headerlink" title="五、思维提升后，想不赚钱都难"></a>五、思维提升后，想不赚钱都难</h3><p>比如基于以上我思维提升的两个点，<br>我会去做以下两件事情，</p>
-<h6 id="第一-推己及人"><a href="#第一-推己及人" class="headerlink" title="第一 推己及人"></a>第一 推己及人</h6><p>下次我在互联网上搜索问题的时候<br>我自己解决完之后，会考虑怎么去帮助别人，<br>还会考虑怎么让他们知道我可以给他们提供帮助，<br>那么这就是选择发布个人联系方式的平台。<br>如百度知道、百度贴吧等等。</p>
-<h6 id="第二-优化解决问题的方法"><a href="#第二-优化解决问题的方法" class="headerlink" title="第二 优化解决问题的方法"></a>第二 优化解决问题的方法</h6><p>我会千方百计的优化解决这个问题的方法，<br>以节省帮助其他人所花费的时间，<br>其实，也是提升我的赚钱效率，<br>因为我为他们提供帮助，是用远程的方式，<br>所以方法稍微复杂一些，<br>有很多人就没耐心了。<br>即便有耐心的人，<br>其实解决问题的方法，也是越简单越好。<br>这是思维提升后，对解决问题的信息差的商业化。</p>
-<h6 id="第三-打造个人品牌"><a href="#第三-打造个人品牌" class="headerlink" title="第三 打造个人品牌"></a>第三 打造个人品牌</h6><p>我会着力经营用hexo搭建的独立博客，</p>
-<p>以作为自己的一个私域流量来源。</p>
-<p>还会精细运营，</p>
-<p>知乎、微信公众号和饭否三个平台账号。</p>
-<p>搞清楚他们的用户画像，</p>
-<p>搞清楚各个平台的规则，</p>
-<p>尽力挖掘各个平台的盈利模式。</p>
-<p>我有这个耐心在这两个方面都赚到钱，</p>
-<p>但是一切都得慢慢来，</p>
-<p>因为慢就是快，快就是慢。</p>
-<p>正如一句话说得好：</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">Slow  is  smooth ,  and  smooth  is  fast.</span><br><span class="line">慢是平滑的，  而平滑是快的。</span><br></pre></td></tr></table></figure>
+    <title>编程学习心得</title>
+    <url>/2016/03/17/%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0%E5%BF%83%E5%BE%97/</url>
+    <content><![CDATA[<p>似乎每个人对一件从未接触过的事物着迷时；<br>都恨不得一下子就对其融会贯通；<br>这种急切心理，极有可能导致稍遇挫折，便丧失兴趣。</p>
+<p>比如我对编程的学习；<br>在刚开始时的确一腔热情；<br>但是稍微接触到不容易理解的地方；<br>就会不由自主地怀疑自己！<br>自己真的适合学编程吗?<br>我怎么这么笨？<br>我这个年龄学编程还成吗？</p>
+<p>其实，这都是由于刚开始热情太盛；<br>努力一段时间后，<br>得不到自己期望的效果，<br>便兴趣缺缺了。<br>以上是摘要<a id="more"></a><br>学习始终遵循循序渐进的原则；<br>而不是像玩游戏一样，<br>能得到及时的满足和成就感。<br>所以很多颇有成就的人，<br>都是最善于推迟自己满足感的人。</p>
+<p>其实我最该问的问题不应该是以上那些；<br>而只应该问一个问题？<br>我怎么才能学好编程?<br>那些已经有了些许成就的程序员，<br>是如何取得今天的成就的？</p>
+<p>在学习中还发现一个问题；<br>就是学习一个知识点，<br>一定不要紧追着一个人的讲解不放；<br>同是一个知识点，<br>这个人讲解的既轻松又清晰，<br>而你紧抱着不放的那个则是既繁琐又模糊。</p>
+<p>所以在学习中必须灵活，<br>灵活不是投机取巧；<br>而是在网络信息如此发达的今日；<br>不应该紧抱着某一个信息源不放；<br>某个信息源的讲解听不明白，<br>则必须及时寻找能让你更容易明白的信息源；<br>相信我，一定可以找得到。</p>
+<p>比如在学习oc的三大特性封装、继承与多态时；<br>我花钱买的课程讲解时既模糊又乏味；<br>这时我就对自己产生怀疑了；<br>难道我真的笨蛋如此；<br>可是后来偶然间看到一篇博客；<br>瞬间让我豁然开朗。<br>就是那种梦里千百度，蓦然回首处的感觉。</p>
+<p>总之学习一定不是揪着某个问题不放；<br>当然不是真的放下不管；<br>而是先放到潜意识里；<br>往往会出现这种情况；</p>
+<p>某日你对A问题产生疑惑；<br>又一日，你对B问题更是纠结不已；<br>但是，还一日，你去查找C问题的答案，<br>发现竟然找到了A的答案。<br>这往往是持续学习中，<br>最令人痛快之时。</p>
 ]]></content>
       <categories>
-        <category>阳明心学</category>
+        <category>编程</category>
+        <category>IOS</category>
       </categories>
   </entry>
   <entry>
@@ -795,6 +805,17 @@
 ]]></content>
       <categories>
         <category>阳明心学</category>
+      </categories>
+  </entry>
+  <entry>
+    <title>读《所有的男人都是消耗品》</title>
+    <url>/2016/03/17/%E8%AF%BB%E3%80%8A%E6%89%80%E6%9C%89%E7%9A%84%E7%94%B7%E4%BA%BA%E9%83%BD%E6%98%AF%E6%B6%88%E8%80%97%E5%93%81%E3%80%8B/</url>
+    <content><![CDATA[<p>一、书和作者<br>《所有的男人都是消耗品》作者村上龙，<br>和村上春树合称：W村上；<br>这本书是其最有代表性的随笔；<br>从男女，恋爱，性出发，<br>对日本经济社会的功能不全进行猛烈抨击。<br>我是全盘读完的，<br>追求速度的同学建议只读和书同名的文章即可，<br>和书同名的只有三篇，速度会很快，<br>但是收获绝对不会少。<br>其他篇章要么只适用于日本国内，<br>要么就是其它碎碎念。</p>
+<p>由于全书都是格言式的话语，<br>没有论证等要素，<br>因此，照录我比较认同的话在下。<br>以上是摘要<a id="more"></a><br>二、女人与和平<br>女大学生气焰嚣张这是不言而喻的，<br>和平持续的时间越长，女人就越是飞扬跋扈。<br>我最认同的一句话，<br>有句话也说得不错，<br>忘记在哪儿看到的了，<br>它说：和平年代的主题是体育和女人，战争年代的主题是武器和男人。<br>谁说不是呢，真是太tmd精辟啦。<br>三、快乐和才能<br>如果想要得到快乐，就必须冒风险站到体制外面去，<br>郑渊洁自己在家教育郑亚旗，效果还可以吧，<br>倪匡当年从内蒙古偷渡到香港，今天的日子是相当逍遥啊。<br>才能是没有理由的，没有才能的家伙才希望找到理由。<br>靠努力是不能孕育才能的。<br>四、关于女人<br>女人总是在发情，<br>女人有希望被强暴的愿望，<br>娘们儿正垂涎三尺的等待被勾引，<br>如果成为强悍的男人，女人要多少都可以弄到手。<br>这出自一位自称玩笑的女权主义者之口，<br>真的是玩笑吗？<br>这是一个值得你我深思的问题。</p>
+]]></content>
+      <categories>
+        <category>读书明道</category>
+        <category>小说</category>
       </categories>
   </entry>
   <entry>
@@ -838,40 +859,6 @@
       <categories>
         <category>读书明道</category>
         <category>小说</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>读《所有的男人都是消耗品》</title>
-    <url>/2016/03/17/%E8%AF%BB%E3%80%8A%E6%89%80%E6%9C%89%E7%9A%84%E7%94%B7%E4%BA%BA%E9%83%BD%E6%98%AF%E6%B6%88%E8%80%97%E5%93%81%E3%80%8B/</url>
-    <content><![CDATA[<p>一、书和作者<br>《所有的男人都是消耗品》作者村上龙，<br>和村上春树合称：W村上；<br>这本书是其最有代表性的随笔；<br>从男女，恋爱，性出发，<br>对日本经济社会的功能不全进行猛烈抨击。<br>我是全盘读完的，<br>追求速度的同学建议只读和书同名的文章即可，<br>和书同名的只有三篇，速度会很快，<br>但是收获绝对不会少。<br>其他篇章要么只适用于日本国内，<br>要么就是其它碎碎念。</p>
-<p>由于全书都是格言式的话语，<br>没有论证等要素，<br>因此，照录我比较认同的话在下。<br>以上是摘要<a id="more"></a><br>二、女人与和平<br>女大学生气焰嚣张这是不言而喻的，<br>和平持续的时间越长，女人就越是飞扬跋扈。<br>我最认同的一句话，<br>有句话也说得不错，<br>忘记在哪儿看到的了，<br>它说：和平年代的主题是体育和女人，战争年代的主题是武器和男人。<br>谁说不是呢，真是太tmd精辟啦。<br>三、快乐和才能<br>如果想要得到快乐，就必须冒风险站到体制外面去，<br>郑渊洁自己在家教育郑亚旗，效果还可以吧，<br>倪匡当年从内蒙古偷渡到香港，今天的日子是相当逍遥啊。<br>才能是没有理由的，没有才能的家伙才希望找到理由。<br>靠努力是不能孕育才能的。<br>四、关于女人<br>女人总是在发情，<br>女人有希望被强暴的愿望，<br>娘们儿正垂涎三尺的等待被勾引，<br>如果成为强悍的男人，女人要多少都可以弄到手。<br>这出自一位自称玩笑的女权主义者之口，<br>真的是玩笑吗？<br>这是一个值得你我深思的问题。</p>
-]]></content>
-      <categories>
-        <category>读书明道</category>
-        <category>小说</category>
-      </categories>
-  </entry>
-  <entry>
-    <title>那时那你—杨潞是最完美的甘十九妹</title>
-    <url>/2020/05/04/%E9%82%A3%E6%97%B6%E9%82%A3%E4%BD%A0%E2%80%94%E6%9D%A8%E6%BD%9E%E6%98%AF%E6%9C%80%E5%AE%8C%E7%BE%8E%E7%9A%84%E7%94%98%E5%8D%81%E4%B9%9D%E5%A6%B9/</url>
-    <content><![CDATA[<p>具体已经记不清是九岁还是十岁看的这个片子了。</p>
-<p>但是杨潞那绝世的容颜，<br>干净利落的武打动作，<br>以及会说话的眼神，让人久久不能忘怀。<br>真的从此之后，除了电影《双旗镇刀客》<br>再没有任何一部武侠电视剧能打动我，<br>就算曾经最喜欢的金庸武侠《连城诀》都不行。</p>
-<a id="more"></a>
-
-<p>暂且不说尹剑平那个**了，<br>意思就是不说感情线了。</p>
-<p>单单就只看杨潞拔剑和收剑的姿势，<br>就已经是飒爽英姿<br>再加上飘逸的身影，<br>得体的服装和配饰。</p>
-<p>我想没有几个甘粉或者叫甘露吧，<br>不把他视为天仙下凡。</p>
-<p>即便女孩也肯定一样的感觉。</p>
-<p>就感觉这种姿色，这种气质，<br>是多少人的梦想里都不曾出现的女人形象。</p>
-<p>甘明珠这样的女人，<br>要刚有刚，要柔有柔。<br>刚的时候，刚到霸气侧漏，<br>比如灭尹剑平师门的时候。</p>
-<p>柔的时候，百炼钢也抵挡不住。<br>比如在和尹剑平坠落悬崖之后，<br>那期间的一颦一笑。<br>不吹不捧。<br>杨潞的演技一些后来之辈，<br>一辈子也撵不上。</p>
-<p>我自打有独立思考能力之后，（<br>某些人现在还不曾有过这种能力。<br>）</p>
-<p>从来没见过任何一位女性能超过杨潞对甘十九妹的武侠形象的诠释。<br>对于我个人来说，<br>杨潞就是甘十九妹，<br>甘十九妹就是杨潞。</p>
-<p>毫不夸张的说，杨潞饰演的甘十九妹，<br>是我有生以来观看过的最完美的武侠女主形象，<br>没有之一。</p>
-<p>甚至当我不知道干什么的时候，<br>都会默默打开重新看一遍。<br>我对自己说，<br>每看一遍，就是对完美的一次体验。</p>
-]]></content>
-      <categories>
-        <category>影视歌</category>
       </categories>
   </entry>
   <entry>
@@ -1059,13 +1046,26 @@
       </categories>
   </entry>
   <entry>
-    <title>UIviewcontroller与UIview</title>
-    <url>/2016/03/17/UIviewcontroller%E4%B8%8EUIview/</url>
-    <content><![CDATA[<p>UIviewcontroller名字叫做视图控制器，是一个类，UIview也是一个类；<br>UIviewcontroller控制放在它上面的所有UIview的事件；<br>UIview只负责加载数据与图片；<br>UIviewcontroller顾名思义，就是控制；<br>比如飞机大战中，加载子弹和飞机的图片需要UIview实现；<br>而发射子弹则需要UIviewcontroller来实现。<br>目前就理解到这个程度。</p>
+    <title>那时那你—杨潞是最完美的甘十九妹</title>
+    <url>/2020/05/04/%E9%82%A3%E6%97%B6%E9%82%A3%E4%BD%A0%E2%80%94%E6%9D%A8%E6%BD%9E%E6%98%AF%E6%9C%80%E5%AE%8C%E7%BE%8E%E7%9A%84%E7%94%98%E5%8D%81%E4%B9%9D%E5%A6%B9/</url>
+    <content><![CDATA[<p>具体已经记不清是九岁还是十岁看的这个片子了。</p>
+<p>但是杨潞那绝世的容颜，<br>干净利落的武打动作，<br>以及会说话的眼神，让人久久不能忘怀。<br>真的从此之后，除了电影《双旗镇刀客》<br>再没有任何一部武侠电视剧能打动我，<br>就算曾经最喜欢的金庸武侠《连城诀》都不行。</p>
+<a id="more"></a>
+
+<p>暂且不说尹剑平那个**了，<br>意思就是不说感情线了。</p>
+<p>单单就只看杨潞拔剑和收剑的姿势，<br>就已经是飒爽英姿<br>再加上飘逸的身影，<br>得体的服装和配饰。</p>
+<p>我想没有几个甘粉或者叫甘露吧，<br>不把他视为天仙下凡。</p>
+<p>即便女孩也肯定一样的感觉。</p>
+<p>就感觉这种姿色，这种气质，<br>是多少人的梦想里都不曾出现的女人形象。</p>
+<p>甘明珠这样的女人，<br>要刚有刚，要柔有柔。<br>刚的时候，刚到霸气侧漏，<br>比如灭尹剑平师门的时候。</p>
+<p>柔的时候，百炼钢也抵挡不住。<br>比如在和尹剑平坠落悬崖之后，<br>那期间的一颦一笑。<br>不吹不捧。<br>杨潞的演技一些后来之辈，<br>一辈子也撵不上。</p>
+<p>我自打有独立思考能力之后，（<br>某些人现在还不曾有过这种能力。<br>）</p>
+<p>从来没见过任何一位女性能超过杨潞对甘十九妹的武侠形象的诠释。<br>对于我个人来说，<br>杨潞就是甘十九妹，<br>甘十九妹就是杨潞。</p>
+<p>毫不夸张的说，杨潞饰演的甘十九妹，<br>是我有生以来观看过的最完美的武侠女主形象，<br>没有之一。</p>
+<p>甚至当我不知道干什么的时候，<br>都会默默打开重新看一遍。<br>我对自己说，<br>每看一遍，就是对完美的一次体验。</p>
 ]]></content>
       <categories>
-        <category>编程</category>
-        <category>IOS</category>
+        <category>影视歌</category>
       </categories>
   </entry>
 </search>
